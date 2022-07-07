@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{221AE0E4-D789-44EA-9CF3-93D1EBE66B57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SHDML.ConsoleApp.UI", "SHDML.ConsoleApp.UI\SHDML.ConsoleApp.UI.csproj", "{96441A9F-84C6-45AA-B912-46CBB8F8313B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SHDML.CORE.JSON", "SHDML.CORE.JSON\SHDML.CORE.JSON.csproj", "{D35AD796-FC04-4C7F-B912-856B04B9BD4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SHDML.CORE.MODEL", "SHDML.CORE.MODEL\SHDML.CORE.MODEL.csproj", "{46F7288E-295C-4A82-9C6C-C2A100123BA2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96441A9F-84C6-45AA-B912-46CBB8F8313B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96441A9F-84C6-45AA-B912-46CBB8F8313B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96441A9F-84C6-45AA-B912-46CBB8F8313B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96441A9F-84C6-45AA-B912-46CBB8F8313B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D35AD796-FC04-4C7F-B912-856B04B9BD4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D35AD796-FC04-4C7F-B912-856B04B9BD4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D35AD796-FC04-4C7F-B912-856B04B9BD4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D35AD796-FC04-4C7F-B912-856B04B9BD4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46F7288E-295C-4A82-9C6C-C2A100123BA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46F7288E-295C-4A82-9C6C-C2A100123BA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46F7288E-295C-4A82-9C6C-C2A100123BA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46F7288E-295C-4A82-9C6C-C2A100123BA2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{96441A9F-84C6-45AA-B912-46CBB8F8313B} = {221AE0E4-D789-44EA-9CF3-93D1EBE66B57}
+	EndGlobalSection
+EndGlobal
