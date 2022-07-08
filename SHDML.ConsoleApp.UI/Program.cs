@@ -1,5 +1,5 @@
 ﻿using System;
-using SHDML.CORE.JSON;
+using SHDML.Core.JSON;
 
 namespace SHDML.ConsoleApp.UI
 {

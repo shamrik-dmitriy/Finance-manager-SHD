@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json.Linq;
 
-namespace SHDML.CORE.JSON
+namespace SHDML.Core.JSON
 {
     public class JsonReceiptParser
     {
