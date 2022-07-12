@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using SHDML.Core.Model.Types;
+using SHDML.CORE.MODEL.Receipt.Types;
 
-namespace SHDML.Core.Model
+namespace SHDML.CORE.MODEL.Receipt
 {
     public class ReceiptModel
     {

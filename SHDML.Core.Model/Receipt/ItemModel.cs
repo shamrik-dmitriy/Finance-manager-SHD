@@ -1,4 +1,4 @@
-namespace SHDML.Core.Model
+namespace SHDML.CORE.MODEL.Receipt
 {
     public class ItemModel
     {

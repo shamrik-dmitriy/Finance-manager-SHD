@@ -1,4 +1,4 @@
-namespace SHDML.Core.Model.Types
+namespace SHDML.CORE.MODEL.Receipt.Types
 {
     /// <summary>
     ///     Тип налогообложения

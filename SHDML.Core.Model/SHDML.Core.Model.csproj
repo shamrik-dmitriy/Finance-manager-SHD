@@ -5,8 +5,4 @@
         <RootNamespace>SHDML.CORE.MODEL</RootNamespace>
     </PropertyGroup>
 
-    <ItemGroup>
-      <Folder Include="Receipt" />
-    </ItemGroup>
-
 </Project>
