@@ -139,6 +139,6 @@ namespace SHDML.Core.Model
         /// <summary>
         ///     Список позиций в чеке
         /// </summary>
-        public IEnumerable<GoodsModel> Goods { get; set; }
+        public IEnumerable<ItemModel> Items { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 namespace SHDML.Core.Model
 {
-    public class GoodsModel
+    public class ItemModel
     {
         /// <summary>
         ///     Наименование товара
