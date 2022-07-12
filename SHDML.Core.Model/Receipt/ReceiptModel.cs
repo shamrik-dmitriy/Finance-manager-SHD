@@ -6,32 +6,60 @@ namespace SHDML.CORE.MODEL.Receipt
 {
     public class ReceiptModel
     {
+        public ReceiptModel(string retailName, string retailPlaceAddress, string retailInn, string retailPlaceName,
+            string sellerCashier, decimal nds18, decimal nds10, TaxationType taxationType, ulong fiscalSign,
+            long fiscalDocumentNumber, string shiftNumber, decimal totalSum, decimal cashTotalSum,
+            decimal eCashTotalSum, decimal prepaidSum, decimal creditSum, decimal provisionSum,
+            OperationType operationType, DateTime dateTime, IEnumerable<ItemModel> items)
+        {
+            RetailName = retailName;
+            RetailPlaceAddress = retailPlaceAddress;
+            RetailInn = retailInn;
+            RetailPlaceName = retailPlaceName;
+            SellerCashier = sellerCashier;
+            Nds18 = nds18;
+            Nds10 = nds10;
+            TaxationType = taxationType;
+            FiscalSign = fiscalSign;
+            FiscalDocumentNumber = fiscalDocumentNumber;
+            ShiftNumber = shiftNumber;
+            TotalSum = totalSum;
+            CashTotalSum = cashTotalSum;
+            ECashTotalSum = eCashTotalSum;
+            PrepaidSum = prepaidSum;
+            CreditSum = creditSum;
+            ProvisionSum = provisionSum;
+            OperationType = operationType;
+            DateTime = dateTime;
+            Items = items;
+        }
+
         #region Retail info
 
         /// <summary>
         ///     Наименование организации, включая её тип (ООО, АО, ОАО, ЗАО и т.д.)
         /// </summary>
-        public string RetailName { get; set; }
+        public string RetailName { get; }
 
         /// <summary>
         ///     Место продажи
         /// </summary>
-        public string RetailPlaceAddress { get; set; }
+        public string RetailPlaceAddress { get; }
 
         /// <summary>
         ///     Инн организации
         /// </summary>
-        public string RetailInn { get; set; }
+        public string RetailInn { get; }
 
         /// <summary>
         ///     Наименование торговой точки
         /// </summary>
-        public string RetailPlaceName { get; set; }
+        public string RetailPlaceName { get; }
 
         /// <summary>
         ///     Данные продавца-кассира
         /// </summary>
-        public string SellerCashier { get; set; }
+        public string SellerCashier { get; }
 
         #endregion
 
@@ -40,22 +68,22 @@ namespace SHDML.CORE.MODEL.Receipt
         /// <summary>
         ///     Сумма удерживаемого налога на добавленную стоимость (НДС) по ставке 18 %
         /// </summary>
-        public decimal Nds18 { get; set; }
+        public decimal Nds18 { get; }
 
         /// <summary>
         ///     Сумма удерживаемого налога на добавленную стоимость (НДС) по ставке 10 %
         /// </summary>
-        public decimal Nds10 { get; set; }
+        public decimal Nds10 { get; }
 
         /// <summary>
         ///     Сумма по операциям, не облагаемая НДС
         /// </summary>
-        public decimal nds0 { get; set; }
+        public decimal Nds0 { get; }
 
         /// <summary>
         ///     Тип налогообложения
         /// </summary>
-        public TaxationType TaxationType { get; set; }
+        public TaxationType TaxationType { get; }
 
         #endregion
 
@@ -64,27 +92,27 @@ namespace SHDML.CORE.MODEL.Receipt
         /// <summary>
         ///     Фискальная подпись, ФП, ФПД
         /// </summary>
-        public ulong FiscalSign { get; set; }
+        public ulong FiscalSign { get; }
 
         /// <summary>
         ///     Номер фискального документа, ФД
         /// </summary>
-        public long FiscalDocumentNumber { get; set; }
+        public long FiscalDocumentNumber { get; }
 
         /// <summary>
         ///     Регистрационный номер ККТ
         /// </summary>
-        public string KKTRegId { get; set; }
+        public string KktRegId { get; }
 
         /// <summary>
         ///     Номер смены, в течение которой был сгенерирован документ
         /// </summary>
-        public string ShiftNumber { get; set; }
+        public string ShiftNumber { get; }
 
         /// <summary>
         ///     Номер документа внутри смены
         /// </summary>
-        public string DocShiftNumber { get; set; }
+        public string DocShiftNumber { get; }
 
         #endregion
 
@@ -93,32 +121,32 @@ namespace SHDML.CORE.MODEL.Receipt
         /// <summary>
         ///     Общая сумма чека
         /// </summary>
-        public decimal TotalSum { get; set; }
+        public decimal TotalSum { get; }
 
         /// <summary>
         ///     Сумма к оплате наличными
         /// </summary>
-        public decimal CashTotalSum { get; set; }
+        public decimal CashTotalSum { get; }
 
         /// <summary>
         ///     Сумма к оплате электронными деньгами
         /// </summary>
-        public decimal ECashTotalSum { get; set; }
+        public decimal ECashTotalSum { get; }
 
         /// <summary>
         ///     Сумма предоплаты (авансами)
         /// </summary>
-        public decimal PrepaidSum { get; set; }
+        public decimal PrepaidSum { get; }
 
         /// <summary>
         ///     Сумма постоплаты (кредитами)
         /// </summary>
-        public decimal CreditSum { get; set; }
+        public decimal CreditSum { get; }
 
         /// <summary>
         ///     Сумма резерва (встречные предоставления)
         /// </summary>
-        public decimal ProvisionSum { get; set; }
+        public decimal ProvisionSum { get; }
 
         #endregion
 
@@ -127,18 +155,18 @@ namespace SHDML.CORE.MODEL.Receipt
         /// <summary>
         ///     Тип операции
         /// </summary>
-        public OperationType OperationType { get; set; }
+        public OperationType OperationType { get; }
 
         /// <summary>
         ///     Дата совершения операции
         /// </summary>
-        public DateTime DateTime { get; set; }
+        public DateTime DateTime { get; }
 
         #endregion
 
         /// <summary>
         ///     Список позиций в чеке
         /// </summary>
-        public IEnumerable<ItemModel> Items { get; set; }
+        public IEnumerable<ItemModel> Items { get; }
     }
 }
