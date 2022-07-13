@@ -1,5 +1,6 @@
 ﻿using System;
 using SHDML.Core.JSON;
+using SHDML.CORE.MODEL.Receipt;
 
 namespace SHDML.ConsoleApp.UI
 {
@@ -8,8 +9,10 @@ namespace SHDML.ConsoleApp.UI
         static void Main(string[] args)
         {
             Console.WriteLine("First version UI of finance checker by Shamrik Dmitriy");
-            JsonReceiptParser t = new JsonReceiptParser(@$"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\receipt.json");
-            t.Parse();
+            JsonReceiptLoader t = new JsonReceiptLoader(@$"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\receipt.json");
+            var s = t.Load();
+
+       //     var receipt = new ReceiptModel();
         }
     }
 }
