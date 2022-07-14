@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SHDML.BLL.DTO", "SHDML.BLL.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SHDML.BLL", "SHDML.BLL\SHDML.BLL.csproj", "{625D1775-A743-4863-B4B7-984E0BFD01F4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{235D03A8-E915-41F1-9407-2DC111551292}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,5 +43,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{96441A9F-84C6-45AA-B912-46CBB8F8313B} = {221AE0E4-D789-44EA-9CF3-93D1EBE66B57}
+		{D35AD796-FC04-4C7F-B912-856B04B9BD4A} = {235D03A8-E915-41F1-9407-2DC111551292}
 	EndGlobalSection
 EndGlobal
