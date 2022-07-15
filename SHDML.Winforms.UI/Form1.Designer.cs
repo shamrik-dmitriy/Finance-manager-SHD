@@ -45,8 +45,14 @@ namespace SHDML.Winforms.UI
             this.panel2 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.userControlAccountInfo2 = new SHDML.Winforms.UI.UserControls.Wallet.UserControlAccountInfo();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.buttonAddReceipt = new System.Windows.Forms.Button();
+            this.splitter3 = new System.Windows.Forms.Splitter();
+            this.comboBoxTypeOperation = new System.Windows.Forms.ComboBox();
+            this.buttonAddTransaction = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ColumnVerified = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColumnTypeOperation = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,6 +78,11 @@ namespace SHDML.Winforms.UI
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -265,14 +276,6 @@ namespace SHDML.Winforms.UI
             this.userControlAccountInfo2.Size = new System.Drawing.Size(313, 40);
             this.userControlAccountInfo2.TabIndex = 0;
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.dataGridView1);
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(887, 521);
-            this.panel3.TabIndex = 0;
-            // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -280,6 +283,88 @@ namespace SHDML.Winforms.UI
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(313, 477);
             this.flowLayoutPanel2.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.splitContainer2);
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(887, 521);
+            this.panel3.TabIndex = 0;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Cursor = System.Windows.Forms.Cursors.HSplit;
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.flowLayoutPanel3);
+            this.splitContainer2.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer2_Panel1_Paint);
+            this.splitContainer2.Panel1MinSize = 27;
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.dataGridView1);
+            this.splitContainer2.Size = new System.Drawing.Size(887, 521);
+            this.splitContainer2.SplitterDistance = 30;
+            this.splitContainer2.TabIndex = 1;
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.buttonAddReceipt);
+            this.flowLayoutPanel3.Controls.Add(this.splitter3);
+            this.flowLayoutPanel3.Controls.Add(this.comboBoxTypeOperation);
+            this.flowLayoutPanel3.Controls.Add(this.buttonAddTransaction);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(887, 30);
+            this.flowLayoutPanel3.TabIndex = 0;
+            // 
+            // buttonAddReceipt
+            // 
+            this.buttonAddReceipt.Location = new System.Drawing.Point(3, 3);
+            this.buttonAddReceipt.Name = "buttonAddReceipt";
+            this.buttonAddReceipt.Size = new System.Drawing.Size(116, 23);
+            this.buttonAddReceipt.TabIndex = 3;
+            this.buttonAddReceipt.Text = "Добавить чек";
+            this.buttonAddReceipt.UseVisualStyleBackColor = true;
+            // 
+            // splitter3
+            // 
+            this.splitter3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitter3.Location = new System.Drawing.Point(125, 3);
+            this.splitter3.Name = "splitter3";
+            this.splitter3.Size = new System.Drawing.Size(3, 23);
+            this.splitter3.TabIndex = 4;
+            this.splitter3.TabStop = false;
+            // 
+            // comboBoxTypeOperation
+            // 
+            this.comboBoxTypeOperation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTypeOperation.FormattingEnabled = true;
+            this.comboBoxTypeOperation.Items.AddRange(new object[] {
+            "Доход",
+            "Расход",
+            "Перевод"});
+            this.comboBoxTypeOperation.Location = new System.Drawing.Point(134, 3);
+            this.comboBoxTypeOperation.Name = "comboBoxTypeOperation";
+            this.comboBoxTypeOperation.Size = new System.Drawing.Size(121, 23);
+            this.comboBoxTypeOperation.TabIndex = 0;
+            // 
+            // buttonAddTransaction
+            // 
+            this.buttonAddTransaction.Location = new System.Drawing.Point(261, 3);
+            this.buttonAddTransaction.Name = "buttonAddTransaction";
+            this.buttonAddTransaction.Size = new System.Drawing.Size(132, 23);
+            this.buttonAddTransaction.TabIndex = 1;
+            this.buttonAddTransaction.Text = "Добавить операцию";
+            this.buttonAddTransaction.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -296,7 +381,7 @@ namespace SHDML.Winforms.UI
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(887, 521);
+            this.dataGridView1.Size = new System.Drawing.Size(887, 487);
             this.dataGridView1.TabIndex = 0;
             // 
             // ColumnVerified
@@ -369,6 +454,11 @@ namespace SHDML.Winforms.UI
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            this.flowLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -403,6 +493,12 @@ namespace SHDML.Winforms.UI
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSumm;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnDelete;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.Button buttonAddReceipt;
+        private System.Windows.Forms.Splitter splitter3;
+        private System.Windows.Forms.ComboBox comboBoxTypeOperation;
+        private System.Windows.Forms.Button buttonAddTransaction;
     }
 }
 

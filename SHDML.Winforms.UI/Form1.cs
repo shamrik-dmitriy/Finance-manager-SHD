@@ -46,5 +46,10 @@ namespace SHDML.Winforms.UI
         private void button2_Click(object sender, EventArgs e)
         {
         }
+
+        private void splitContainer2_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

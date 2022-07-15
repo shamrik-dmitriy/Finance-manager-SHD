@@ -30,21 +30,33 @@ namespace SHDML.Winforms.UI.UserControls.Wallet
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
+            this.labelTotalAccountsSum = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 13);
+            this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 15);
+            this.label1.Size = new System.Drawing.Size(103, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Сумма средств:";
+            this.label1.Text = "Сумма на счетах:";
+            // 
+            // labelTotalAccountsSum
+            // 
+            this.labelTotalAccountsSum.AutoSize = true;
+            this.labelTotalAccountsSum.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelTotalAccountsSum.Location = new System.Drawing.Point(3, 15);
+            this.labelTotalAccountsSum.Name = "labelTotalAccountsSum";
+            this.labelTotalAccountsSum.Size = new System.Drawing.Size(262, 25);
+            this.labelTotalAccountsSum.TabIndex = 1;
+            this.labelTotalAccountsSum.Text = "1200000000000000000 Rub";
             // 
             // UserControlAccountInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelTotalAccountsSum);
             this.Controls.Add(this.label1);
             this.Name = "UserControlAccountInfo";
             this.Size = new System.Drawing.Size(373, 47);
@@ -56,5 +68,6 @@ namespace SHDML.Winforms.UI.UserControls.Wallet
         #endregion
 
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelTotalAccountsSum;
     }
 }
