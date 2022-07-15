@@ -47,6 +47,14 @@ namespace SHDML.Winforms.UI
             this.userControlAccountInfo2 = new SHDML.Winforms.UI.UserControls.Wallet.UserControlAccountInfo();
             this.panel3 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ColumnVerified = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnTypeOperation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDateOperation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSumm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMainDesktop)).BeginInit();
             this.splitContainerMainDesktop.Panel1.SuspendLayout();
             this.splitContainerMainDesktop.Panel2.SuspendLayout();
@@ -63,6 +71,8 @@ namespace SHDML.Winforms.UI
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainerMainDesktop
@@ -257,6 +267,7 @@ namespace SHDML.Winforms.UI
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.dataGridView1);
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(887, 521);
@@ -269,6 +280,63 @@ namespace SHDML.Winforms.UI
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(313, 477);
             this.flowLayoutPanel2.TabIndex = 0;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnVerified,
+            this.ColumnTypeOperation,
+            this.ColumnAccount,
+            this.ColumnDateOperation,
+            this.ColumnSumm,
+            this.ColumnEdit,
+            this.ColumnDelete});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.Size = new System.Drawing.Size(887, 521);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // ColumnVerified
+            // 
+            this.ColumnVerified.HeaderText = "Проверено";
+            this.ColumnVerified.Name = "ColumnVerified";
+            // 
+            // ColumnTypeOperation
+            // 
+            this.ColumnTypeOperation.HeaderText = "Тип операции";
+            this.ColumnTypeOperation.Name = "ColumnTypeOperation";
+            // 
+            // ColumnAccount
+            // 
+            this.ColumnAccount.HeaderText = "Счёт";
+            this.ColumnAccount.Name = "ColumnAccount";
+            // 
+            // ColumnDateOperation
+            // 
+            this.ColumnDateOperation.HeaderText = "Дата";
+            this.ColumnDateOperation.Name = "ColumnDateOperation";
+            // 
+            // ColumnSumm
+            // 
+            this.ColumnSumm.HeaderText = "Сумма";
+            this.ColumnSumm.Name = "ColumnSumm";
+            // 
+            // ColumnEdit
+            // 
+            this.ColumnEdit.HeaderText = "Изменить";
+            this.ColumnEdit.Name = "ColumnEdit";
+            this.ColumnEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnEdit.Text = "Изменить";
+            // 
+            // ColumnDelete
+            // 
+            this.ColumnDelete.HeaderText = "Удалить";
+            this.ColumnDelete.Name = "ColumnDelete";
+            this.ColumnDelete.Text = "Удалить";
             // 
             // Form1
             // 
@@ -300,6 +368,8 @@ namespace SHDML.Winforms.UI
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -325,6 +395,14 @@ namespace SHDML.Winforms.UI
         private UserControls.Wallet.UserControlAccountInfo userControlAccountInfo2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnVerified;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTypeOperation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAccount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateOperation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSumm;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnDelete;
     }
 }
 
