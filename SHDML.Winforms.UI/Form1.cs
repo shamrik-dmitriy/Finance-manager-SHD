@@ -24,23 +24,27 @@ namespace SHDML.Winforms.UI
 
         private void Sign_Click(object sender, EventArgs e)
         {
-            if (!userControlAuth1.IsSigned)
+            if (!userControlAuth.IsSigned)
             {
-                userControlAuth1.IsSigned = true;
-                userControlAuth1.UserName.Text = "Hello!, you signed in!";
+                userControlAuth.IsSigned = true;
+                userControlAuth.UserName.Text = "Hello!, you signed in!";
                 buttonSign.Text = "Выйти";
             }
             else
             {
-                userControlAuth1.IsSigned = false;
+                userControlAuth.IsSigned = false;
                 buttonSign.Text = "Войти";
-                userControlAuth1.UserName.Text = "Пользователь не задан";
+                userControlAuth.UserName.Text = "Пользователь не задан";
             }
         }
 
         private void buttonTransactionReview_Click(object sender, EventArgs e)
         {
             splitContainerMainDesktop.Panel2.Controls.Add(new Label() { Text="Yep!"});
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
         }
     }
 }

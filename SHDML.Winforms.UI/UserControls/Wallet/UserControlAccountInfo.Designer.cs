@@ -1,7 +1,7 @@
 ﻿
-namespace SHDML.Winforms.UI.UserControls
+namespace SHDML.Winforms.UI.UserControls.Wallet
 {
-    partial class UserControlAuth
+    partial class UserControlAccountInfo
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -30,40 +30,24 @@ namespace SHDML.Winforms.UI.UserControls
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.UserName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(8, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 15);
+            this.label1.Size = new System.Drawing.Size(93, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Пользователь:";
+            this.label1.Text = "Сумма средств:";
             // 
-            // UserName
-            // 
-            this.UserName.AutoSize = true;
-            this.UserName.Location = new System.Drawing.Point(3, 15);
-            this.UserName.Name = "UserName";
-            this.UserName.Size = new System.Drawing.Size(177, 15);
-            this.UserName.TabIndex = 1;
-            this.UserName.Text = "Шамрик Дмитрий Леонидович";
-            // 
-            // UserControlAuth
+            // UserControlAccountInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.Controls.Add(this.UserName);
             this.Controls.Add(this.label1);
-            this.MaximumSize = new System.Drawing.Size(198, 40);
-            this.MinimumSize = new System.Drawing.Size(198, 40);
-            this.Name = "UserControlAuth";
-            this.Size = new System.Drawing.Size(198, 40);
+            this.Name = "UserControlAccountInfo";
+            this.Size = new System.Drawing.Size(373, 47);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -72,7 +56,5 @@ namespace SHDML.Winforms.UI.UserControls
         #endregion
 
         private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Label UserName;
-        public bool IsSigned = false;
     }
 }

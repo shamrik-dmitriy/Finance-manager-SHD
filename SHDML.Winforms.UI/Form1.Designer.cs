@@ -32,15 +32,21 @@ namespace SHDML.Winforms.UI
             this.splitContainerMainDesktop = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.userControlAuth1 = new SHDML.Winforms.UI.UserControls.UserControlAuth();
+            this.userControlAuth = new SHDML.Winforms.UI.UserControls.UserControlAuth();
             this.buttonSign = new System.Windows.Forms.Button();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.buttonTransactionReview = new System.Windows.Forms.Button();
-            this.splitter1 = new System.Windows.Forms.Splitter();
             this.buttonCategories = new System.Windows.Forms.Button();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
+            this.splitContainerView = new System.Windows.Forms.SplitContainer();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.userControlAccountInfo2 = new SHDML.Winforms.UI.UserControls.Wallet.UserControlAccountInfo();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMainDesktop)).BeginInit();
             this.splitContainerMainDesktop.Panel1.SuspendLayout();
             this.splitContainerMainDesktop.Panel2.SuspendLayout();
@@ -48,12 +54,22 @@ namespace SHDML.Winforms.UI
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerView)).BeginInit();
+            this.splitContainerView.Panel1.SuspendLayout();
+            this.splitContainerView.Panel2.SuspendLayout();
+            this.splitContainerView.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainerMainDesktop
             // 
             this.splitContainerMainDesktop.Cursor = System.Windows.Forms.Cursors.HSplit;
             this.splitContainerMainDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerMainDesktop.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainerMainDesktop.Location = new System.Drawing.Point(0, 0);
             this.splitContainerMainDesktop.Name = "splitContainerMainDesktop";
             this.splitContainerMainDesktop.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -65,9 +81,9 @@ namespace SHDML.Winforms.UI
             // 
             // splitContainerMainDesktop.Panel2
             // 
-            this.splitContainerMainDesktop.Panel2.Controls.Add(this.label1);
+            this.splitContainerMainDesktop.Panel2.Controls.Add(this.splitContainerView);
             this.splitContainerMainDesktop.Size = new System.Drawing.Size(1208, 627);
-            this.splitContainerMainDesktop.SplitterDistance = 81;
+            this.splitContainerMainDesktop.SplitterDistance = 100;
             this.splitContainerMainDesktop.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -76,40 +92,44 @@ namespace SHDML.Winforms.UI
             this.flowLayoutPanel1.Controls.Add(this.buttonSign);
             this.flowLayoutPanel1.Controls.Add(this.splitter2);
             this.flowLayoutPanel1.Controls.Add(this.buttonTransactionReview);
-            this.flowLayoutPanel1.Controls.Add(this.splitter1);
             this.flowLayoutPanel1.Controls.Add(this.buttonCategories);
+            this.flowLayoutPanel1.Controls.Add(this.splitter1);
+            this.flowLayoutPanel1.Controls.Add(this.button1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1208, 57);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1208, 76);
             this.flowLayoutPanel1.TabIndex = 1;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.userControlAuth1);
+            this.panel1.AutoSize = true;
+            this.panel1.Controls.Add(this.userControlAuth);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(210, 49);
+            this.panel1.Size = new System.Drawing.Size(309, 70);
             this.panel1.TabIndex = 17;
             // 
-            // userControlAuth1
+            // userControlAuth
             // 
-            this.userControlAuth1.AutoSize = true;
-            this.userControlAuth1.Location = new System.Drawing.Point(9, 3);
-            this.userControlAuth1.MaximumSize = new System.Drawing.Size(198, 40);
-            this.userControlAuth1.MinimumSize = new System.Drawing.Size(198, 40);
-            this.userControlAuth1.Name = "userControlAuth1";
-            this.userControlAuth1.Size = new System.Drawing.Size(198, 40);
-            this.userControlAuth1.TabIndex = 0;
+            this.userControlAuth.AutoSize = true;
+            this.userControlAuth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.userControlAuth.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControlAuth.Location = new System.Drawing.Point(0, 0);
+            this.userControlAuth.MaximumSize = new System.Drawing.Size(309, 70);
+            this.userControlAuth.MinimumSize = new System.Drawing.Size(309, 70);
+            this.userControlAuth.Name = "userControlAuth";
+            this.userControlAuth.Size = new System.Drawing.Size(309, 70);
+            this.userControlAuth.TabIndex = 1;
             // 
             // buttonSign
             // 
             this.buttonSign.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSign.Location = new System.Drawing.Point(219, 3);
+            this.buttonSign.Location = new System.Drawing.Point(318, 3);
             this.buttonSign.Name = "buttonSign";
-            this.buttonSign.Size = new System.Drawing.Size(75, 49);
+            this.buttonSign.Size = new System.Drawing.Size(75, 70);
             this.buttonSign.TabIndex = 1;
             this.buttonSign.Text = "Войти";
             this.buttonSign.UseVisualStyleBackColor = true;
@@ -117,40 +137,50 @@ namespace SHDML.Winforms.UI
             // 
             // splitter2
             // 
-            this.splitter2.Location = new System.Drawing.Point(300, 3);
+            this.splitter2.Location = new System.Drawing.Point(399, 3);
             this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(3, 49);
+            this.splitter2.Size = new System.Drawing.Size(3, 70);
             this.splitter2.TabIndex = 4;
             this.splitter2.TabStop = false;
             // 
             // buttonTransactionReview
             // 
             this.buttonTransactionReview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTransactionReview.Location = new System.Drawing.Point(309, 3);
+            this.buttonTransactionReview.Location = new System.Drawing.Point(408, 3);
             this.buttonTransactionReview.Name = "buttonTransactionReview";
-            this.buttonTransactionReview.Size = new System.Drawing.Size(84, 49);
+            this.buttonTransactionReview.Size = new System.Drawing.Size(84, 70);
             this.buttonTransactionReview.TabIndex = 5;
             this.buttonTransactionReview.Text = "Обзор транзакций";
             this.buttonTransactionReview.UseVisualStyleBackColor = true;
             this.buttonTransactionReview.Click += new System.EventHandler(this.buttonTransactionReview_Click);
             // 
-            // splitter1
-            // 
-            this.splitter1.Location = new System.Drawing.Point(399, 3);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 49);
-            this.splitter1.TabIndex = 6;
-            this.splitter1.TabStop = false;
-            // 
             // buttonCategories
             // 
             this.buttonCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCategories.Location = new System.Drawing.Point(408, 3);
+            this.buttonCategories.Location = new System.Drawing.Point(498, 3);
             this.buttonCategories.Name = "buttonCategories";
-            this.buttonCategories.Size = new System.Drawing.Size(75, 49);
+            this.buttonCategories.Size = new System.Drawing.Size(75, 70);
             this.buttonCategories.TabIndex = 7;
-            this.buttonCategories.Text = "Категории";
+            this.buttonCategories.Text = "Обзор счетов";
             this.buttonCategories.UseVisualStyleBackColor = true;
+            // 
+            // splitter1
+            // 
+            this.splitter1.Location = new System.Drawing.Point(579, 3);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(3, 70);
+            this.splitter1.TabIndex = 20;
+            this.splitter1.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(588, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 70);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "Категории";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // menuStrip1
             // 
@@ -168,14 +198,77 @@ namespace SHDML.Winforms.UI
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
-            // label1
+            // splitContainerView
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(627, 226);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.splitContainerView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerView.Cursor = System.Windows.Forms.Cursors.VSplit;
+            this.splitContainerView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerView.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerView.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerView.Name = "splitContainerView";
+            // 
+            // splitContainerView.Panel1
+            // 
+            this.splitContainerView.Panel1.Controls.Add(this.panel2);
+            // 
+            // splitContainerView.Panel2
+            // 
+            this.splitContainerView.Panel2.Controls.Add(this.panel3);
+            this.splitContainerView.Size = new System.Drawing.Size(1208, 523);
+            this.splitContainerView.SplitterDistance = 315;
+            this.splitContainerView.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.splitContainer1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(313, 521);
+            this.panel2.TabIndex = 0;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Cursor = System.Windows.Forms.Cursors.HSplit;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.userControlAccountInfo2);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanel2);
+            this.splitContainer1.Size = new System.Drawing.Size(313, 521);
+            this.splitContainer1.SplitterDistance = 40;
+            this.splitContainer1.TabIndex = 0;
+            // 
+            // userControlAccountInfo2
+            // 
+            this.userControlAccountInfo2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControlAccountInfo2.Location = new System.Drawing.Point(0, 0);
+            this.userControlAccountInfo2.Name = "userControlAccountInfo2";
+            this.userControlAccountInfo2.Size = new System.Drawing.Size(313, 40);
+            this.userControlAccountInfo2.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(887, 521);
+            this.panel3.TabIndex = 0;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(313, 477);
+            this.flowLayoutPanel2.TabIndex = 0;
             // 
             // Form1
             // 
@@ -190,14 +283,23 @@ namespace SHDML.Winforms.UI
             this.splitContainerMainDesktop.Panel1.ResumeLayout(false);
             this.splitContainerMainDesktop.Panel1.PerformLayout();
             this.splitContainerMainDesktop.Panel2.ResumeLayout(false);
-            this.splitContainerMainDesktop.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMainDesktop)).EndInit();
             this.splitContainerMainDesktop.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.splitContainerView.Panel1.ResumeLayout(false);
+            this.splitContainerView.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerView)).EndInit();
+            this.splitContainerView.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 
 		}
@@ -211,11 +313,18 @@ namespace SHDML.Winforms.UI
 		private System.Windows.Forms.Button buttonSign;
 		private System.Windows.Forms.Splitter splitter2;
 		private System.Windows.Forms.Button buttonTransactionReview;
-		private System.Windows.Forms.Splitter splitter1;
 		private System.Windows.Forms.Button buttonCategories;
         private System.Windows.Forms.Panel panel1;
-        private UserControls.UserControlAuth userControlAuth1;
-        public System.Windows.Forms.Label label1;
+        private System.Windows.Forms.SplitContainer splitContainerView;
+        private System.Windows.Forms.Splitter splitter1;
+        private System.Windows.Forms.Button button1;
+        private UserControls.Wallet.UserControlAccountInfo userControlAccountInfo1;
+        private UserControls.UserControlAuth userControlAuth;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private UserControls.Wallet.UserControlAccountInfo userControlAccountInfo2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
     }
 }
 
