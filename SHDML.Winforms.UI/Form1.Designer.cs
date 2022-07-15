@@ -88,7 +88,7 @@ namespace SHDML.Winforms.UI
             // 
             // splitContainerMainDesktop
             // 
-            this.splitContainerMainDesktop.Cursor = System.Windows.Forms.Cursors.HSplit;
+            this.splitContainerMainDesktop.Cursor = System.Windows.Forms.Cursors.Default;
             this.splitContainerMainDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerMainDesktop.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainerMainDesktop.Location = new System.Drawing.Point(0, 0);
@@ -116,6 +116,7 @@ namespace SHDML.Winforms.UI
             this.flowLayoutPanel1.Controls.Add(this.buttonCategories);
             this.flowLayoutPanel1.Controls.Add(this.splitter1);
             this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Cursor = System.Windows.Forms.Cursors.Default;
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -158,6 +159,7 @@ namespace SHDML.Winforms.UI
             // 
             // splitter2
             // 
+            this.splitter2.Cursor = System.Windows.Forms.Cursors.Default;
             this.splitter2.Location = new System.Drawing.Point(399, 3);
             this.splitter2.Name = "splitter2";
             this.splitter2.Size = new System.Drawing.Size(3, 70);
@@ -177,6 +179,7 @@ namespace SHDML.Winforms.UI
             // 
             // buttonCategories
             // 
+            this.buttonCategories.Cursor = System.Windows.Forms.Cursors.Default;
             this.buttonCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCategories.Location = new System.Drawing.Point(498, 3);
             this.buttonCategories.Name = "buttonCategories";
@@ -187,6 +190,7 @@ namespace SHDML.Winforms.UI
             // 
             // splitter1
             // 
+            this.splitter1.Cursor = System.Windows.Forms.Cursors.Default;
             this.splitter1.Location = new System.Drawing.Point(579, 3);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(3, 70);
@@ -195,6 +199,7 @@ namespace SHDML.Winforms.UI
             // 
             // button1
             // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Default;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(588, 3);
             this.button1.Name = "button1";
@@ -222,7 +227,7 @@ namespace SHDML.Winforms.UI
             // splitContainerView
             // 
             this.splitContainerView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerView.Cursor = System.Windows.Forms.Cursors.VSplit;
+            this.splitContainerView.Cursor = System.Windows.Forms.Cursors.Default;
             this.splitContainerView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerView.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainerView.Location = new System.Drawing.Point(0, 0);
@@ -242,6 +247,7 @@ namespace SHDML.Winforms.UI
             // panel2
             // 
             this.panel2.Controls.Add(this.splitContainer1);
+            this.panel2.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
@@ -250,7 +256,7 @@ namespace SHDML.Winforms.UI
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Cursor = System.Windows.Forms.Cursors.HSplit;
+            this.splitContainer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
@@ -278,6 +284,7 @@ namespace SHDML.Winforms.UI
             // 
             // flowLayoutPanel2
             // 
+            this.flowLayoutPanel2.Cursor = System.Windows.Forms.Cursors.Default;
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -287,6 +294,7 @@ namespace SHDML.Winforms.UI
             // panel3
             // 
             this.panel3.Controls.Add(this.splitContainer2);
+            this.panel3.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(887, 521);
@@ -294,7 +302,7 @@ namespace SHDML.Winforms.UI
             // 
             // splitContainer2
             // 
-            this.splitContainer2.Cursor = System.Windows.Forms.Cursors.HSplit;
+            this.splitContainer2.Cursor = System.Windows.Forms.Cursors.Default;
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
@@ -320,6 +328,7 @@ namespace SHDML.Winforms.UI
             this.flowLayoutPanel3.Controls.Add(this.splitter3);
             this.flowLayoutPanel3.Controls.Add(this.comboBoxTypeOperation);
             this.flowLayoutPanel3.Controls.Add(this.buttonAddTransaction);
+            this.flowLayoutPanel3.Cursor = System.Windows.Forms.Cursors.Default;
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
@@ -328,6 +337,7 @@ namespace SHDML.Winforms.UI
             // 
             // buttonAddReceipt
             // 
+            this.buttonAddReceipt.Cursor = System.Windows.Forms.Cursors.Default;
             this.buttonAddReceipt.Location = new System.Drawing.Point(3, 3);
             this.buttonAddReceipt.Name = "buttonAddReceipt";
             this.buttonAddReceipt.Size = new System.Drawing.Size(116, 23);
@@ -338,6 +348,7 @@ namespace SHDML.Winforms.UI
             // splitter3
             // 
             this.splitter3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitter3.Cursor = System.Windows.Forms.Cursors.Default;
             this.splitter3.Location = new System.Drawing.Point(125, 3);
             this.splitter3.Name = "splitter3";
             this.splitter3.Size = new System.Drawing.Size(3, 23);
@@ -346,6 +357,7 @@ namespace SHDML.Winforms.UI
             // 
             // comboBoxTypeOperation
             // 
+            this.comboBoxTypeOperation.Cursor = System.Windows.Forms.Cursors.Default;
             this.comboBoxTypeOperation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTypeOperation.FormattingEnabled = true;
             this.comboBoxTypeOperation.Items.AddRange(new object[] {
@@ -359,6 +371,7 @@ namespace SHDML.Winforms.UI
             // 
             // buttonAddTransaction
             // 
+            this.buttonAddTransaction.Cursor = System.Windows.Forms.Cursors.Default;
             this.buttonAddTransaction.Location = new System.Drawing.Point(261, 3);
             this.buttonAddTransaction.Name = "buttonAddTransaction";
             this.buttonAddTransaction.Size = new System.Drawing.Size(132, 23);
@@ -377,6 +390,7 @@ namespace SHDML.Winforms.UI
             this.ColumnSumm,
             this.ColumnEdit,
             this.ColumnDelete});
+            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
