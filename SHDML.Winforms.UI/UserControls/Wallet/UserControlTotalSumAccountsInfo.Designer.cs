@@ -1,7 +1,7 @@
 ﻿
 namespace SHDML.Winforms.UI.UserControls.Wallet
 {
-    partial class UserControlAccountInfo
+    partial class UserControlTotalSumAccountsInfo
     {
         /// <summary> 
         /// Обязательная переменная конструктора.

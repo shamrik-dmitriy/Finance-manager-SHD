@@ -36,11 +36,13 @@ namespace SHDML.Winforms.UI
                 buttonSign.Text = "Войти";
                 userControlAuth.UserName.Text = "Пользователь не задан";
             }
+            userControlCategoryAccount1.Update();
+            userControlCategoryAccount1.Refresh();
         }
 
         private void buttonTransactionReview_Click(object sender, EventArgs e)
         {
-            splitContainerMainDesktop.Panel2.Controls.Add(new Label() { Text="Yep!"});
+            splitContainerMainDesktop.Panel2.Controls.Add(new Label() { Text = "Yep!" });
         }
 
         private void button2_Click(object sender, EventArgs e)

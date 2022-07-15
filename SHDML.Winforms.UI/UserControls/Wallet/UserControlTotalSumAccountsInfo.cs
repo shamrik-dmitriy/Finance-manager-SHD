@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SHDML.Winforms.UI.UserControls.Wallet
 {
-    public partial class UserControlAccountInfo : UserControl
+    public partial class UserControlTotalSumAccountsInfo : UserControl
     {
-        public UserControlAccountInfo()
+        public UserControlTotalSumAccountsInfo()
         {
             InitializeComponent();
         }

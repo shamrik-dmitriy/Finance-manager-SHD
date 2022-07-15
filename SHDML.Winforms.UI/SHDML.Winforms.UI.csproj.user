@@ -7,7 +7,10 @@
     <Compile Update="UserControls\Authorization\UserControlAuth.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UserControls\Wallet\UserControlAccountInfo.cs">
+    <Compile Update="UserControls\Wallet\UserControlCategoryAccount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UserControls\Wallet\UserControlTotalSumAccountsInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
