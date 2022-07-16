@@ -47,6 +47,9 @@ namespace SHDML.Winforms.UI
             this.userControlAccountInfo2 = new SHDML.Winforms.UI.UserControls.Wallet.UserControlTotalSumAccountsInfo();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.userControlCategoryAccount1 = new SHDML.Winforms.UI.UserControls.Wallet.UserControlCategoryAccount();
+            this.userControlCategoryAccount2 = new SHDML.Winforms.UI.UserControls.Wallet.UserControlCategoryAccount();
+            this.userControlCategoryAccount3 = new SHDML.Winforms.UI.UserControls.Wallet.UserControlCategoryAccount();
+            this.userControlCategoryAccount4 = new SHDML.Winforms.UI.UserControls.Wallet.UserControlCategoryAccount();
             this.panel3 = new System.Windows.Forms.Panel();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
@@ -62,9 +65,6 @@ namespace SHDML.Winforms.UI
             this.ColumnSumm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.userControlCategoryAccount2 = new SHDML.Winforms.UI.UserControls.Wallet.UserControlCategoryAccount();
-            this.userControlCategoryAccount3 = new SHDML.Winforms.UI.UserControls.Wallet.UserControlCategoryAccount();
-            this.userControlCategoryAccount4 = new SHDML.Winforms.UI.UserControls.Wallet.UserControlCategoryAccount();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMainDesktop)).BeginInit();
             this.splitContainerMainDesktop.Panel1.SuspendLayout();
             this.splitContainerMainDesktop.Panel2.SuspendLayout();
@@ -311,8 +311,44 @@ namespace SHDML.Winforms.UI
             this.userControlCategoryAccount1.MaximumSize = new System.Drawing.Size(310, 250);
             this.userControlCategoryAccount1.MinimumSize = new System.Drawing.Size(310, 10);
             this.userControlCategoryAccount1.Name = "userControlCategoryAccount1";
-            this.userControlCategoryAccount1.Size = new System.Drawing.Size(310, 43);
+            this.userControlCategoryAccount1.Size = new System.Drawing.Size(310, 46);
             this.userControlCategoryAccount1.TabIndex = 0;
+            // 
+            // userControlCategoryAccount2
+            // 
+            this.userControlCategoryAccount2.AutoScroll = true;
+            this.userControlCategoryAccount2.AutoSize = true;
+            this.userControlCategoryAccount2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.userControlCategoryAccount2.Location = new System.Drawing.Point(3, 55);
+            this.userControlCategoryAccount2.MaximumSize = new System.Drawing.Size(310, 250);
+            this.userControlCategoryAccount2.MinimumSize = new System.Drawing.Size(310, 10);
+            this.userControlCategoryAccount2.Name = "userControlCategoryAccount2";
+            this.userControlCategoryAccount2.Size = new System.Drawing.Size(310, 46);
+            this.userControlCategoryAccount2.TabIndex = 1;
+            // 
+            // userControlCategoryAccount3
+            // 
+            this.userControlCategoryAccount3.AutoScroll = true;
+            this.userControlCategoryAccount3.AutoSize = true;
+            this.userControlCategoryAccount3.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.userControlCategoryAccount3.Location = new System.Drawing.Point(3, 107);
+            this.userControlCategoryAccount3.MaximumSize = new System.Drawing.Size(310, 250);
+            this.userControlCategoryAccount3.MinimumSize = new System.Drawing.Size(310, 10);
+            this.userControlCategoryAccount3.Name = "userControlCategoryAccount3";
+            this.userControlCategoryAccount3.Size = new System.Drawing.Size(310, 46);
+            this.userControlCategoryAccount3.TabIndex = 2;
+            // 
+            // userControlCategoryAccount4
+            // 
+            this.userControlCategoryAccount4.AutoScroll = true;
+            this.userControlCategoryAccount4.AutoSize = true;
+            this.userControlCategoryAccount4.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.userControlCategoryAccount4.Location = new System.Drawing.Point(3, 159);
+            this.userControlCategoryAccount4.MaximumSize = new System.Drawing.Size(310, 250);
+            this.userControlCategoryAccount4.MinimumSize = new System.Drawing.Size(310, 10);
+            this.userControlCategoryAccount4.Name = "userControlCategoryAccount4";
+            this.userControlCategoryAccount4.Size = new System.Drawing.Size(310, 46);
+            this.userControlCategoryAccount4.TabIndex = 3;
             // 
             // panel3
             // 
@@ -401,6 +437,7 @@ namespace SHDML.Winforms.UI
             this.buttonAddTransaction.TabIndex = 1;
             this.buttonAddTransaction.Text = "Добавить операцию";
             this.buttonAddTransaction.UseVisualStyleBackColor = true;
+            this.buttonAddTransaction.Click += new System.EventHandler(this.buttonAddTransaction_Click);
             // 
             // dataGridView1
             // 
@@ -459,42 +496,6 @@ namespace SHDML.Winforms.UI
             this.ColumnDelete.HeaderText = "Удалить";
             this.ColumnDelete.Name = "ColumnDelete";
             this.ColumnDelete.Text = "Удалить";
-            // 
-            // userControlCategoryAccount2
-            // 
-            this.userControlCategoryAccount2.AutoScroll = true;
-            this.userControlCategoryAccount2.AutoSize = true;
-            this.userControlCategoryAccount2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.userControlCategoryAccount2.Location = new System.Drawing.Point(3, 52);
-            this.userControlCategoryAccount2.MaximumSize = new System.Drawing.Size(310, 250);
-            this.userControlCategoryAccount2.MinimumSize = new System.Drawing.Size(310, 10);
-            this.userControlCategoryAccount2.Name = "userControlCategoryAccount2";
-            this.userControlCategoryAccount2.Size = new System.Drawing.Size(310, 43);
-            this.userControlCategoryAccount2.TabIndex = 1;
-            // 
-            // userControlCategoryAccount3
-            // 
-            this.userControlCategoryAccount3.AutoScroll = true;
-            this.userControlCategoryAccount3.AutoSize = true;
-            this.userControlCategoryAccount3.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.userControlCategoryAccount3.Location = new System.Drawing.Point(3, 101);
-            this.userControlCategoryAccount3.MaximumSize = new System.Drawing.Size(310, 250);
-            this.userControlCategoryAccount3.MinimumSize = new System.Drawing.Size(310, 10);
-            this.userControlCategoryAccount3.Name = "userControlCategoryAccount3";
-            this.userControlCategoryAccount3.Size = new System.Drawing.Size(310, 43);
-            this.userControlCategoryAccount3.TabIndex = 2;
-            // 
-            // userControlCategoryAccount4
-            // 
-            this.userControlCategoryAccount4.AutoScroll = true;
-            this.userControlCategoryAccount4.AutoSize = true;
-            this.userControlCategoryAccount4.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.userControlCategoryAccount4.Location = new System.Drawing.Point(3, 150);
-            this.userControlCategoryAccount4.MaximumSize = new System.Drawing.Size(310, 250);
-            this.userControlCategoryAccount4.MinimumSize = new System.Drawing.Size(310, 10);
-            this.userControlCategoryAccount4.Name = "userControlCategoryAccount4";
-            this.userControlCategoryAccount4.Size = new System.Drawing.Size(310, 43);
-            this.userControlCategoryAccount4.TabIndex = 3;
             // 
             // Form1
             // 

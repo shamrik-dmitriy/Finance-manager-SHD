@@ -4,6 +4,24 @@
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Transactions\SingleTransaction\AddSingleTransactionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Transactions\SingleTransaction\SingleTransactionUserControls\AccountInfoUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Transactions\SingleTransaction\SingleTransactionUserControls\DateTransactionUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Transactions\SingleTransaction\SingleTransactionUserControls\SelectAccountUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Transactions\SingleTransaction\SingleTransactionUserControls\SelectTypeTransactionUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Transactions\SingleTransaction\SingleTransactionUserControls\SumTransactionUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UserControls\Authorization\UserControlAuth.cs">
       <SubType>UserControl</SubType>
     </Compile>

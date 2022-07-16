@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SHDML.Winforms.UI.Transactions.SingleTransaction;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -52,6 +53,11 @@ namespace SHDML.Winforms.UI
         private void splitContainer2_Panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void buttonAddTransaction_Click(object sender, EventArgs e)
+        {
+            new AddSingleTransactionForm().ShowDialog();
         }
     }
 }

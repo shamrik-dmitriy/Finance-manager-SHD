@@ -21,4 +21,8 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Transactions\MultipleTransaction\" />
+  </ItemGroup>
+
 </Project>
