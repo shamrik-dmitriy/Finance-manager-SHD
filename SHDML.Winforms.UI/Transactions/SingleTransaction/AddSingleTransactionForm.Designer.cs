@@ -39,7 +39,11 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             this.selectCategoryUserControl1 = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.SelectCategoryUserControl();
             this.selectContrAgentUserControl1 = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.SelectContrAgentUserControl();
             this.selectFamilyMemberUserControl1 = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.SelectFamilyMemberUserControl();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -53,7 +57,9 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             this.flowLayoutPanel1.Controls.Add(this.selectCategoryUserControl1);
             this.flowLayoutPanel1.Controls.Add(this.selectContrAgentUserControl1);
             this.flowLayoutPanel1.Controls.Add(this.selectFamilyMemberUserControl1);
+            this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanel1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(368, 461);
@@ -100,7 +106,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             this.flowLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.flowLayoutPanel2.AutoSize = true;
             this.flowLayoutPanel2.BackColor = System.Drawing.SystemColors.Control;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 116);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(183, 116);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(0, 0);
             this.flowLayoutPanel2.TabIndex = 9;
@@ -135,10 +141,46 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             this.selectFamilyMemberUserControl1.Size = new System.Drawing.Size(360, 28);
             this.selectFamilyMemberUserControl1.TabIndex = 13;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button2, 2, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 226);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(353, 38);
+            this.tableLayoutPanel1.TabIndex = 14;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(3, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(111, 32);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Добавить";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button2.Location = new System.Drawing.Point(237, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(113, 32);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Отмена";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // AddSingleTransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(368, 461);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "AddSingleTransactionForm";
@@ -147,6 +189,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             this.Load += new System.EventHandler(this.AddSingleTransactionForm_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -165,5 +208,8 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
         private SingleTransactionUserControls.SelectCategoryUserControl selectCategoryUserControl1;
         private SingleTransactionUserControls.SelectContrAgentUserControl selectContrAgentUserControl1;
         private SingleTransactionUserControls.SelectFamilyMemberUserControl selectFamilyMemberUserControl1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
