@@ -17,11 +17,6 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
             InitializeComponent();
         }
 
-        private void SelectTypeTransactionUserControl_Load(object sender, EventArgs e)
-        {
-            typeOperationsCombobox.SelectedIndex = 0;
-        }
-
         [Browsable(true)]
         [Category("Action")]
         [Description("Вызывается когда пользователь выбирает тип транзакции")]

@@ -21,6 +21,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
         private void AddSingleTransactionForm_Load(object sender, EventArgs e)
         {
             selectTypeTransactionUserControl1.TypeOperationSelectedIndexChanged += new EventHandler(SelectTypeTransaction_SelectedIndexChanged);
+            selectTypeTransactionUserControl1.typeOperationsCombobox.SelectedIndex = 0;
         }
 
         protected void SelectTypeTransaction_SelectedIndexChanged(object sender, EventArgs e)

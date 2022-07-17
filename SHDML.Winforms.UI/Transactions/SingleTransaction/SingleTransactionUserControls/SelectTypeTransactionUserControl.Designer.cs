@@ -65,7 +65,6 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
             this.Controls.Add(this.typeOperationsCombobox);
             this.Name = "SelectTypeTransactionUserControl";
             this.Size = new System.Drawing.Size(358, 23);
-            this.Load += new System.EventHandler(this.SelectTypeTransactionUserControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
