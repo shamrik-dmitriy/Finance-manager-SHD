@@ -16,6 +16,15 @@
     <Compile Update="Transactions\SingleTransaction\SingleTransactionUserControls\SelectAccountUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Transactions\SingleTransaction\SingleTransactionUserControls\SelectCategoryUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Transactions\SingleTransaction\SingleTransactionUserControls\SelectContrAgentUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Transactions\SingleTransaction\SingleTransactionUserControls\SelectFamilyMemberUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Transactions\SingleTransaction\SingleTransactionUserControls\SelectTypeTransactionUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

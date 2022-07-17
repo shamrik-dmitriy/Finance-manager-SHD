@@ -35,6 +35,10 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.selectCategoryUserControl1 = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.SelectCategoryUserControl();
+            this.selectContrAgentUserControl1 = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.SelectContrAgentUserControl();
+            this.selectFamilyMemberUserControl1 = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.SelectFamilyMemberUserControl();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,6 +49,10 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             this.flowLayoutPanel1.Controls.Add(this.textBox2);
             this.flowLayoutPanel1.Controls.Add(this.label1);
             this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
+            this.flowLayoutPanel1.Controls.Add(this.label2);
+            this.flowLayoutPanel1.Controls.Add(this.selectCategoryUserControl1);
+            this.flowLayoutPanel1.Controls.Add(this.selectContrAgentUserControl1);
+            this.flowLayoutPanel1.Controls.Add(this.selectFamilyMemberUserControl1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -97,6 +105,36 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             this.flowLayoutPanel2.Size = new System.Drawing.Size(0, 0);
             this.flowLayoutPanel2.TabIndex = 9;
             // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.Location = new System.Drawing.Point(3, 119);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(359, 2);
+            this.label2.TabIndex = 10;
+            // 
+            // selectCategoryUserControl1
+            // 
+            this.selectCategoryUserControl1.Location = new System.Drawing.Point(3, 124);
+            this.selectCategoryUserControl1.Name = "selectCategoryUserControl1";
+            this.selectCategoryUserControl1.Size = new System.Drawing.Size(360, 28);
+            this.selectCategoryUserControl1.TabIndex = 11;
+            // 
+            // selectContrAgentUserControl1
+            // 
+            this.selectContrAgentUserControl1.Location = new System.Drawing.Point(3, 158);
+            this.selectContrAgentUserControl1.Name = "selectContrAgentUserControl1";
+            this.selectContrAgentUserControl1.Size = new System.Drawing.Size(360, 28);
+            this.selectContrAgentUserControl1.TabIndex = 12;
+            // 
+            // selectFamilyMemberUserControl1
+            // 
+            this.selectFamilyMemberUserControl1.Location = new System.Drawing.Point(3, 192);
+            this.selectFamilyMemberUserControl1.Name = "selectFamilyMemberUserControl1";
+            this.selectFamilyMemberUserControl1.Size = new System.Drawing.Size(360, 28);
+            this.selectFamilyMemberUserControl1.TabIndex = 13;
+            // 
             // AddSingleTransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -123,5 +161,9 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
         private SingleTransactionUserControls.SelectTypeTransactionUserControl selectTypeTransactionUserControl;
         private SingleTransactionUserControls.SelectTypeTransactionUserControl selectTypeTransactionUserControl1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Label label2;
+        private SingleTransactionUserControls.SelectCategoryUserControl selectCategoryUserControl1;
+        private SingleTransactionUserControls.SelectContrAgentUserControl selectContrAgentUserControl1;
+        private SingleTransactionUserControls.SelectFamilyMemberUserControl selectFamilyMemberUserControl1;
     }
 }
