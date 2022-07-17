@@ -36,7 +36,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
             // typeTransactionLabel
             // 
             this.typeTransactionLabel.AutoSize = true;
-            this.typeTransactionLabel.Location = new System.Drawing.Point(3, 6);
+            this.typeTransactionLabel.Location = new System.Drawing.Point(3, 3);
             this.typeTransactionLabel.Name = "typeTransactionLabel";
             this.typeTransactionLabel.Size = new System.Drawing.Size(84, 15);
             this.typeTransactionLabel.TabIndex = 3;
@@ -51,7 +51,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
             "Расход",
             "Доход",
             "Перевод"});
-            this.typeOperationsCombobox.Location = new System.Drawing.Point(93, 3);
+            this.typeOperationsCombobox.Location = new System.Drawing.Point(93, 0);
             this.typeOperationsCombobox.Name = "typeOperationsCombobox";
             this.typeOperationsCombobox.Size = new System.Drawing.Size(259, 23);
             this.typeOperationsCombobox.TabIndex = 2;
@@ -64,7 +64,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
             this.Controls.Add(this.typeTransactionLabel);
             this.Controls.Add(this.typeOperationsCombobox);
             this.Name = "SelectTypeTransactionUserControl";
-            this.Size = new System.Drawing.Size(358, 31);
+            this.Size = new System.Drawing.Size(358, 23);
             this.Load += new System.EventHandler(this.SelectTypeTransactionUserControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

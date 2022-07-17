@@ -45,6 +45,8 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
                         break;
                     }
             }
+            flowLayoutPanel2.Refresh();
+            flowLayoutPanel2.Update();
         }
 
     }

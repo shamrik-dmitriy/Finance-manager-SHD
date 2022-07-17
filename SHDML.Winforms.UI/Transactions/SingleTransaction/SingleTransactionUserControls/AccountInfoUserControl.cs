@@ -12,6 +12,15 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
 {
     public partial class AccountInfoUserControl : UserControl
     {
+        [Browsable(true)]
+        [Category("Property")]
+        [Description("Изменяет текст лейбла рядом с элементов выбора")]
+        public string LabelOfTypeOperation
+        {
+            get { return infoAccountLabel.Text; }
+            set { infoAccountLabel.Text = value; }
+        }
+
         public AccountInfoUserControl()
         {
             InitializeComponent();

@@ -36,7 +36,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
             // labelSum
             // 
             this.labelSum.AutoSize = true;
-            this.labelSum.Location = new System.Drawing.Point(5, 10);
+            this.labelSum.Location = new System.Drawing.Point(10, 5);
             this.labelSum.Name = "labelSum";
             this.labelSum.Size = new System.Drawing.Size(45, 15);
             this.labelSum.TabIndex = 5;
@@ -44,7 +44,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(56, 7);
+            this.textBox1.Location = new System.Drawing.Point(124, 2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(230, 23);
             this.textBox1.TabIndex = 4;
@@ -53,10 +53,11 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.Controls.Add(this.labelSum);
             this.Controls.Add(this.textBox1);
             this.Name = "SumTransactionUserControl";
-            this.Size = new System.Drawing.Size(292, 34);
+            this.Size = new System.Drawing.Size(360, 28);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -14,38 +14,42 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
     {
         private int TransactionType { get; }
 
-        public SelectAccountUserControl(int transactionType)
+        public SelectAccountUserControl()
+        {
+            InitializeComponent();
+        }
+
+        public SelectAccountUserControl(int transactionType) : this()
         {
             TransactionType = transactionType;
-            InitializeComponent();
         }
 
         private void SelectAccountUserControl_Load(object sender, EventArgs e)
         {
 
-            Controls.Remove(creditAccountLabel);
-            Controls.Remove(creditAccountComboBox);
+            flowLayoutPanel1.Controls.Remove(creditAccountInfoUserControl);
             switch (TransactionType)
             {
                 case 0:
                     {
-                        debitAccountLabel.Text = "Списать со счёта";
+                        debitAccountInfoUserControl.LabelOfTypeOperation = "Списать со счёта";
                         break;
                     }
                 case 1:
                     {
-                        debitAccountLabel.Text = "Зачислить на счёт";
+                        debitAccountInfoUserControl.LabelOfTypeOperation = "Зачислить на счёт";
                         break;
                     }
                 case 2:
                     {
-                        debitAccountLabel.Text = "Списать со счёта";
-                        Controls.Add(creditAccountLabel);
-                        creditAccountLabel.Text = "Зачислить на счёт";
-                        Controls.Add(creditAccountComboBox);
+                        debitAccountInfoUserControl.LabelOfTypeOperation = "Списать со счёта";
+                        flowLayoutPanel1.Controls.Add(creditAccountInfoUserControl);
+                        creditAccountInfoUserControl.LabelOfTypeOperation = "Зачислить на счёт";
                         break;
                     }
             }
+            flowLayoutPanel1.Refresh();
+            flowLayoutPanel1.Update();
         }
 
         private void debitAccountComboBox_SelectedIndexChanged(object sender, EventArgs e)

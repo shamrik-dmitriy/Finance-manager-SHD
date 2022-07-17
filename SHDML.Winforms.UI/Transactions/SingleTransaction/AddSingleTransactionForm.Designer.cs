@@ -53,6 +53,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             // 
             // selectTypeTransactionUserControl1
             // 
+            this.selectTypeTransactionUserControl1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.selectTypeTransactionUserControl1.Location = new System.Drawing.Point(3, 3);
             this.selectTypeTransactionUserControl1.Name = "selectTypeTransactionUserControl1";
             this.selectTypeTransactionUserControl1.Size = new System.Drawing.Size(359, 31);
@@ -60,6 +61,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBox1.Location = new System.Drawing.Point(3, 40);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(359, 23);
@@ -68,6 +70,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             // 
             // textBox2
             // 
+            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBox2.Location = new System.Drawing.Point(3, 69);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
@@ -77,6 +80,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Location = new System.Drawing.Point(3, 111);
             this.label1.Name = "label1";
