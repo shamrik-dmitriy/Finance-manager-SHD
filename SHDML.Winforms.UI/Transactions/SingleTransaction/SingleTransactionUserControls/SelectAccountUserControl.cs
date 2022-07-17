@@ -27,7 +27,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
         private void SelectAccountUserControl_Load(object sender, EventArgs e)
         {
 
-            flowLayoutPanel1.Controls.Remove(creditAccountInfoUserControl);
+            financeInfoOfOperationflowLayoutPanel.Controls.Remove(creditAccountInfoUserControl);
             switch (TransactionType)
             {
                 case 0:
@@ -43,13 +43,13 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
                 case 2:
                     {
                         debitAccountInfoUserControl.LabelOfTypeOperation = "Списать со счёта";
-                        flowLayoutPanel1.Controls.Add(creditAccountInfoUserControl);
+                        financeInfoOfOperationflowLayoutPanel.Controls.Add(creditAccountInfoUserControl);
                         creditAccountInfoUserControl.LabelOfTypeOperation = "Зачислить на счёт";
                         break;
                     }
             }
-            flowLayoutPanel1.Refresh();
-            flowLayoutPanel1.Update();
+            financeInfoOfOperationflowLayoutPanel.Refresh();
+            financeInfoOfOperationflowLayoutPanel.Update();
         }
 
         private void debitAccountComboBox_SelectedIndexChanged(object sender, EventArgs e)

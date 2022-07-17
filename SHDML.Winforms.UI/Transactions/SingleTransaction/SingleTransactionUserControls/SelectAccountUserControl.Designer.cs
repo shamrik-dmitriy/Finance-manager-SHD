@@ -29,29 +29,30 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
         /// </summary>
         private void InitializeComponent()
         {
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.financeInfoOfOperationflowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.debitAccountInfoUserControl = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.AccountInfoUserControl();
             this.sumTransactionUserControl = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.SumTransactionUserControl();
             this.creditAccountInfoUserControl = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.AccountInfoUserControl();
             this.dateTransactionUserControl = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.DateTransactionUserControl();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.financeInfoOfOperationflowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // flowLayoutPanel1
+            // financeInfoOfOperationflowLayoutPanel
             // 
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.flowLayoutPanel1.Controls.Add(this.debitAccountInfoUserControl);
-            this.flowLayoutPanel1.Controls.Add(this.sumTransactionUserControl);
-            this.flowLayoutPanel1.Controls.Add(this.creditAccountInfoUserControl);
-            this.flowLayoutPanel1.Controls.Add(this.dateTransactionUserControl);
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(-1, 0);
-            this.flowLayoutPanel1.MaximumSize = new System.Drawing.Size(363, 136);
-            this.flowLayoutPanel1.MinimumSize = new System.Drawing.Size(363, 102);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(363, 136);
-            this.flowLayoutPanel1.TabIndex = 8;
+            this.financeInfoOfOperationflowLayoutPanel.AutoSize = true;
+            this.financeInfoOfOperationflowLayoutPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.financeInfoOfOperationflowLayoutPanel.Controls.Add(this.debitAccountInfoUserControl);
+            this.financeInfoOfOperationflowLayoutPanel.Controls.Add(this.sumTransactionUserControl);
+            this.financeInfoOfOperationflowLayoutPanel.Controls.Add(this.creditAccountInfoUserControl);
+            this.financeInfoOfOperationflowLayoutPanel.Controls.Add(this.dateTransactionUserControl);
+            this.financeInfoOfOperationflowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.financeInfoOfOperationflowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.financeInfoOfOperationflowLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.financeInfoOfOperationflowLayoutPanel.MaximumSize = new System.Drawing.Size(363, 136);
+            this.financeInfoOfOperationflowLayoutPanel.MinimumSize = new System.Drawing.Size(363, 102);
+            this.financeInfoOfOperationflowLayoutPanel.Name = "financeInfoOfOperationflowLayoutPanel";
+            this.financeInfoOfOperationflowLayoutPanel.Size = new System.Drawing.Size(363, 136);
+            this.financeInfoOfOperationflowLayoutPanel.TabIndex = 8;
             // 
             // debitAccountInfoUserControl
             // 
@@ -93,19 +94,19 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.financeInfoOfOperationflowLayoutPanel);
             this.Name = "SelectAccountUserControl";
             this.Size = new System.Drawing.Size(365, 139);
             this.Load += new System.EventHandler(this.SelectAccountUserControl_Load);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            this.financeInfoOfOperationflowLayoutPanel.ResumeLayout(false);
+            this.financeInfoOfOperationflowLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel financeInfoOfOperationflowLayoutPanel;
         private AccountInfoUserControl debitAccountInfoUserControl;
         private SumTransactionUserControl sumTransactionUserControl;
         private DateTransactionUserControl dateTransactionUserControl;
