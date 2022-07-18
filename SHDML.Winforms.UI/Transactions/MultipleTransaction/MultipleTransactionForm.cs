@@ -27,11 +27,12 @@ namespace SHDML.Winforms.UI.Transactions.MultipleTransaction
 
         private void addedTransactionButton_Click(object sender, EventArgs e)
         {
-            new SingleTransaction.SingleTransactionForm("Добавить в чек транзакцию").ShowDialog();
-            var t = new ItemOfMultipleTransaction();
-            t.DeleteItemFromReceipt += new EventHandler(DeleteTransaction);
-
-            ItemsFlowLayoutPanel.Controls.Add(t);
+            var addedTransaction = new SingleTransaction.SingleTransactionForm("Добавить в чек транзакцию");
+            addedTransaction.ShowDialog();
+            
+            var newItem = new ItemOfMultipleTransaction(addedTransaction.SingleTransactionDTO.Name, addedTransaction.SingleTransactionDTO.Sum.ToString());
+            newItem.DeleteItemFromReceipt += new EventHandler(DeleteTransaction);
+            ItemsFlowLayoutPanel.Controls.Add(newItem);
         }
 
         private void DeleteTransaction(object sender, EventArgs e)

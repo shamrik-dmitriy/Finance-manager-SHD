@@ -30,7 +30,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
         private void InitializeComponent()
         {
             this.labelSum = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.sumTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // labelSum
@@ -42,12 +42,12 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
             this.labelSum.TabIndex = 5;
             this.labelSum.Text = "Сумма";
             // 
-            // textBox1
+            // sumTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(124, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(230, 23);
-            this.textBox1.TabIndex = 4;
+            this.sumTextBox.Location = new System.Drawing.Point(124, 2);
+            this.sumTextBox.Name = "sumTextBox";
+            this.sumTextBox.Size = new System.Drawing.Size(230, 23);
+            this.sumTextBox.TabIndex = 4;
             // 
             // SumTransactionUserControl
             // 
@@ -55,7 +55,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.Controls.Add(this.labelSum);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.sumTextBox);
             this.Name = "SumTransactionUserControl";
             this.Size = new System.Drawing.Size(360, 28);
             this.ResumeLayout(false);
@@ -66,6 +66,6 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
         #endregion
 
         private System.Windows.Forms.Label labelSum;
-        private System.Windows.Forms.TextBox textBox1;
+        protected internal System.Windows.Forms.TextBox sumTextBox;
     }
 }

@@ -1,4 +1,5 @@
-﻿using SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls;
+﻿using SHDML.BLL.DTO.DTO;
+using SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
     public partial class SingleTransactionForm : Form
     {
         private string Title { get => Text; set { Text = value; } }
-        private string TitleDefault { get;}
+        private string TitleDefault { get; }
 
         public SingleTransactionForm()
         {
@@ -29,40 +30,55 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
 
         private void AddSingleTransactionForm_Load(object sender, EventArgs e)
         {
-            selectTypeTransactionUserControl1.TypeOperationSelectedIndexChanged += new EventHandler(SelectTypeTransaction_SelectedIndexChanged);
-            selectTypeTransactionUserControl1.typeOperationsCombobox.SelectedIndex = 0;
+            selectTypeTransactionUserControl.TypeOperationSelectedIndexChanged += new EventHandler(SelectTypeTransaction_SelectedIndexChanged);
+            selectTypeTransactionUserControl.typeOperationsCombobox.SelectedIndex = 0;
         }
 
         protected void SelectTypeTransaction_SelectedIndexChanged(object sender, EventArgs e)
         {
             var s = (SelectTypeTransactionUserControl)sender;
-            flowLayoutPanel2.Controls.Clear();
+            billingInfoFlowLayoutPanel.Controls.Clear();
             switch (s.typeOperationsCombobox.SelectedIndex)
             {
                 case 0:
                     {
-                        flowLayoutPanel2.Controls.Add(new SelectAccountUserControl(s.typeOperationsCombobox.SelectedIndex));
+                        billingInfoFlowLayoutPanel.Controls.Add(new SelectAccountUserControl(s.typeOperationsCombobox.SelectedIndex));
                         break;
                     }
                 case 1:
                     {
-                        flowLayoutPanel2.Controls.Add(new SelectAccountUserControl(s.typeOperationsCombobox.SelectedIndex));
+                        billingInfoFlowLayoutPanel.Controls.Add(new SelectAccountUserControl(s.typeOperationsCombobox.SelectedIndex));
                         break;
                     }
                 case 2:
                     {
-                        flowLayoutPanel2.Controls.Add(new SelectAccountUserControl(s.typeOperationsCombobox.SelectedIndex));
+                        billingInfoFlowLayoutPanel.Controls.Add(new SelectAccountUserControl(s.typeOperationsCombobox.SelectedIndex));
                         break;
                     }
             }
-            flowLayoutPanel2.Refresh();
-            flowLayoutPanel2.Update();
+            billingInfoFlowLayoutPanel.Refresh();
+            billingInfoFlowLayoutPanel.Update();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             var textBox = sender as TextBox;
             Title = string.IsNullOrWhiteSpace(textBox.Text) ? TitleDefault : TitleDefault + ": " + textBox.Text;
+        }
+
+        protected internal SingleTransactionDTO SingleTransactionDTO { get; set; }
+
+        private void addedSingleTransactionButton_Click(object sender, EventArgs e)
+        {
+
+            var t = billingInfoFlowLayoutPanel.Controls[0] as SelectAccountUserControl;
+            SingleTransactionDTO = new SingleTransactionDTO
+            {
+                Name = nameTransactiontextBox.Text,
+                Description = descriptionTransactiontextBox.Text,
+                Sum = t.Sum
+            };
+            this.Close();
         }
     }
 }

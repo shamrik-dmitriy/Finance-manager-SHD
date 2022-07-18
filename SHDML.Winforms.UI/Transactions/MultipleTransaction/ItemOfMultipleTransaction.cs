@@ -16,6 +16,11 @@ namespace SHDML.Winforms.UI.Transactions.MultipleTransaction
         {
             InitializeComponent();
         }
+        public ItemOfMultipleTransaction(string productName, string price) : this()
+        {
+            labelProductName.Text = productName;
+            pricelProductName.Text = price + " ₽";
+        }
 
         [Browsable(true)]
         [Category("Action")]

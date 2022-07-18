@@ -29,188 +29,189 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
         /// </summary>
         private void InitializeComponent()
         {
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.selectTypeTransactionUserControl1 = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.SelectTypeTransactionUserControl();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.selectCategoryUserControl1 = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.SelectCategoryUserControl();
-            this.selectContrAgentUserControl1 = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.SelectContrAgentUserControl();
-            this.selectFamilyMemberUserControl1 = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.SelectFamilyMemberUserControl();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.singleTransactionDesktopflowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.selectTypeTransactionUserControl = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.SelectTypeTransactionUserControl();
+            this.nameTransactiontextBox = new System.Windows.Forms.TextBox();
+            this.descriptionTransactiontextBox = new System.Windows.Forms.TextBox();
+            this.hrBorderLabel1 = new System.Windows.Forms.Label();
+            this.billingInfoFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.hrBorderLabel2 = new System.Windows.Forms.Label();
+            this.selectCategoryUserControl = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.SelectCategoryUserControl();
+            this.selectContrAgentUserControl = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.SelectContrAgentUserControl();
+            this.selectFamilyMemberUserControl = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.SelectFamilyMemberUserControl();
+            this.buttonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.addedSingleTransactionButton = new System.Windows.Forms.Button();
+            this.cancelSingleTransactionButton = new System.Windows.Forms.Button();
+            this.singleTransactionDesktopflowLayoutPanel.SuspendLayout();
+            this.buttonsTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // flowLayoutPanel1
+            // singleTransactionDesktopflowLayoutPanel
             // 
-            this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.Control;
-            this.flowLayoutPanel1.Controls.Add(this.selectTypeTransactionUserControl1);
-            this.flowLayoutPanel1.Controls.Add(this.textBox1);
-            this.flowLayoutPanel1.Controls.Add(this.textBox2);
-            this.flowLayoutPanel1.Controls.Add(this.label1);
-            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
-            this.flowLayoutPanel1.Controls.Add(this.label2);
-            this.flowLayoutPanel1.Controls.Add(this.selectCategoryUserControl1);
-            this.flowLayoutPanel1.Controls.Add(this.selectContrAgentUserControl1);
-            this.flowLayoutPanel1.Controls.Add(this.selectFamilyMemberUserControl1);
-            this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanel1);
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(366, 267);
-            this.flowLayoutPanel1.TabIndex = 6;
+            this.singleTransactionDesktopflowLayoutPanel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.singleTransactionDesktopflowLayoutPanel.AutoSize = true;
+            this.singleTransactionDesktopflowLayoutPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.singleTransactionDesktopflowLayoutPanel.Controls.Add(this.selectTypeTransactionUserControl);
+            this.singleTransactionDesktopflowLayoutPanel.Controls.Add(this.nameTransactiontextBox);
+            this.singleTransactionDesktopflowLayoutPanel.Controls.Add(this.descriptionTransactiontextBox);
+            this.singleTransactionDesktopflowLayoutPanel.Controls.Add(this.hrBorderLabel1);
+            this.singleTransactionDesktopflowLayoutPanel.Controls.Add(this.billingInfoFlowLayoutPanel);
+            this.singleTransactionDesktopflowLayoutPanel.Controls.Add(this.hrBorderLabel2);
+            this.singleTransactionDesktopflowLayoutPanel.Controls.Add(this.selectCategoryUserControl);
+            this.singleTransactionDesktopflowLayoutPanel.Controls.Add(this.selectContrAgentUserControl);
+            this.singleTransactionDesktopflowLayoutPanel.Controls.Add(this.selectFamilyMemberUserControl);
+            this.singleTransactionDesktopflowLayoutPanel.Controls.Add(this.buttonsTableLayoutPanel);
+            this.singleTransactionDesktopflowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.singleTransactionDesktopflowLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.singleTransactionDesktopflowLayoutPanel.Name = "singleTransactionDesktopflowLayoutPanel";
+            this.singleTransactionDesktopflowLayoutPanel.Size = new System.Drawing.Size(366, 267);
+            this.singleTransactionDesktopflowLayoutPanel.TabIndex = 6;
             // 
-            // selectTypeTransactionUserControl1
+            // selectTypeTransactionUserControl
             // 
-            this.selectTypeTransactionUserControl1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.selectTypeTransactionUserControl1.AutoSize = true;
-            this.selectTypeTransactionUserControl1.Location = new System.Drawing.Point(5, 3);
-            this.selectTypeTransactionUserControl1.Name = "selectTypeTransactionUserControl1";
-            this.selectTypeTransactionUserControl1.Size = new System.Drawing.Size(355, 26);
-            this.selectTypeTransactionUserControl1.TabIndex = 8;
+            this.selectTypeTransactionUserControl.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.selectTypeTransactionUserControl.AutoSize = true;
+            this.selectTypeTransactionUserControl.Location = new System.Drawing.Point(5, 3);
+            this.selectTypeTransactionUserControl.Name = "selectTypeTransactionUserControl";
+            this.selectTypeTransactionUserControl.Size = new System.Drawing.Size(355, 26);
+            this.selectTypeTransactionUserControl.TabIndex = 8;
             // 
-            // textBox1
+            // nameTransactiontextBox
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox1.Location = new System.Drawing.Point(3, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "Введите название транзакции";
-            this.textBox1.Size = new System.Drawing.Size(359, 23);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.nameTransactiontextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.nameTransactiontextBox.Location = new System.Drawing.Point(3, 35);
+            this.nameTransactiontextBox.Name = "nameTransactiontextBox";
+            this.nameTransactiontextBox.PlaceholderText = "Введите название транзакции";
+            this.nameTransactiontextBox.Size = new System.Drawing.Size(359, 23);
+            this.nameTransactiontextBox.TabIndex = 2;
+            this.nameTransactiontextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // textBox2
+            // descriptionTransactiontextBox
             // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox2.Location = new System.Drawing.Point(3, 64);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PlaceholderText = "Введите описание транзакции";
-            this.textBox2.Size = new System.Drawing.Size(359, 39);
-            this.textBox2.TabIndex = 4;
+            this.descriptionTransactiontextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.descriptionTransactiontextBox.Location = new System.Drawing.Point(3, 64);
+            this.descriptionTransactiontextBox.Multiline = true;
+            this.descriptionTransactiontextBox.Name = "descriptionTransactiontextBox";
+            this.descriptionTransactiontextBox.PlaceholderText = "Введите описание транзакции";
+            this.descriptionTransactiontextBox.Size = new System.Drawing.Size(359, 39);
+            this.descriptionTransactiontextBox.TabIndex = 4;
             // 
-            // label1
+            // hrBorderLabel1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(3, 106);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(359, 2);
-            this.label1.TabIndex = 5;
+            this.hrBorderLabel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.hrBorderLabel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.hrBorderLabel1.Location = new System.Drawing.Point(3, 106);
+            this.hrBorderLabel1.Name = "hrBorderLabel1";
+            this.hrBorderLabel1.Size = new System.Drawing.Size(359, 2);
+            this.hrBorderLabel1.TabIndex = 5;
             // 
-            // flowLayoutPanel2
+            // billingInfoFlowLayoutPanel
             // 
-            this.flowLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.flowLayoutPanel2.AutoSize = true;
-            this.flowLayoutPanel2.BackColor = System.Drawing.SystemColors.Control;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(183, 111);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(0, 0);
-            this.flowLayoutPanel2.TabIndex = 9;
+            this.billingInfoFlowLayoutPanel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.billingInfoFlowLayoutPanel.AutoSize = true;
+            this.billingInfoFlowLayoutPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.billingInfoFlowLayoutPanel.Location = new System.Drawing.Point(183, 111);
+            this.billingInfoFlowLayoutPanel.Name = "billingInfoFlowLayoutPanel";
+            this.billingInfoFlowLayoutPanel.Size = new System.Drawing.Size(0, 0);
+            this.billingInfoFlowLayoutPanel.TabIndex = 9;
             // 
-            // label2
+            // hrBorderLabel2
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Location = new System.Drawing.Point(3, 114);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(359, 2);
-            this.label2.TabIndex = 10;
+            this.hrBorderLabel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.hrBorderLabel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.hrBorderLabel2.Location = new System.Drawing.Point(3, 114);
+            this.hrBorderLabel2.Name = "hrBorderLabel2";
+            this.hrBorderLabel2.Size = new System.Drawing.Size(359, 2);
+            this.hrBorderLabel2.TabIndex = 10;
             // 
-            // selectCategoryUserControl1
+            // selectCategoryUserControl
             // 
-            this.selectCategoryUserControl1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.selectCategoryUserControl1.AutoSize = true;
-            this.selectCategoryUserControl1.Location = new System.Drawing.Point(4, 119);
-            this.selectCategoryUserControl1.Name = "selectCategoryUserControl1";
-            this.selectCategoryUserControl1.Size = new System.Drawing.Size(357, 28);
-            this.selectCategoryUserControl1.TabIndex = 11;
+            this.selectCategoryUserControl.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.selectCategoryUserControl.AutoSize = true;
+            this.selectCategoryUserControl.Location = new System.Drawing.Point(4, 119);
+            this.selectCategoryUserControl.Name = "selectCategoryUserControl";
+            this.selectCategoryUserControl.Size = new System.Drawing.Size(357, 28);
+            this.selectCategoryUserControl.TabIndex = 11;
             // 
-            // selectContrAgentUserControl1
+            // selectContrAgentUserControl
             // 
-            this.selectContrAgentUserControl1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.selectContrAgentUserControl1.AutoSize = true;
-            this.selectContrAgentUserControl1.Location = new System.Drawing.Point(4, 153);
-            this.selectContrAgentUserControl1.Name = "selectContrAgentUserControl1";
-            this.selectContrAgentUserControl1.Size = new System.Drawing.Size(357, 28);
-            this.selectContrAgentUserControl1.TabIndex = 12;
+            this.selectContrAgentUserControl.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.selectContrAgentUserControl.AutoSize = true;
+            this.selectContrAgentUserControl.Location = new System.Drawing.Point(4, 153);
+            this.selectContrAgentUserControl.Name = "selectContrAgentUserControl";
+            this.selectContrAgentUserControl.Size = new System.Drawing.Size(357, 28);
+            this.selectContrAgentUserControl.TabIndex = 12;
             // 
-            // selectFamilyMemberUserControl1
+            // selectFamilyMemberUserControl
             // 
-            this.selectFamilyMemberUserControl1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.selectFamilyMemberUserControl1.AutoSize = true;
-            this.selectFamilyMemberUserControl1.Location = new System.Drawing.Point(4, 187);
-            this.selectFamilyMemberUserControl1.Name = "selectFamilyMemberUserControl1";
-            this.selectFamilyMemberUserControl1.Size = new System.Drawing.Size(357, 28);
-            this.selectFamilyMemberUserControl1.TabIndex = 13;
+            this.selectFamilyMemberUserControl.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.selectFamilyMemberUserControl.AutoSize = true;
+            this.selectFamilyMemberUserControl.Location = new System.Drawing.Point(4, 187);
+            this.selectFamilyMemberUserControl.Name = "selectFamilyMemberUserControl";
+            this.selectFamilyMemberUserControl.Size = new System.Drawing.Size(357, 28);
+            this.selectFamilyMemberUserControl.TabIndex = 13;
             // 
-            // tableLayoutPanel1
+            // buttonsTableLayoutPanel
             // 
-            this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 2, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 221);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(360, 38);
-            this.tableLayoutPanel1.TabIndex = 14;
+            this.buttonsTableLayoutPanel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonsTableLayoutPanel.AutoSize = true;
+            this.buttonsTableLayoutPanel.ColumnCount = 3;
+            this.buttonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.buttonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.buttonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.buttonsTableLayoutPanel.Controls.Add(this.addedSingleTransactionButton, 0, 0);
+            this.buttonsTableLayoutPanel.Controls.Add(this.cancelSingleTransactionButton, 2, 0);
+            this.buttonsTableLayoutPanel.Location = new System.Drawing.Point(3, 221);
+            this.buttonsTableLayoutPanel.Name = "buttonsTableLayoutPanel";
+            this.buttonsTableLayoutPanel.RowCount = 1;
+            this.buttonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.buttonsTableLayoutPanel.Size = new System.Drawing.Size(360, 38);
+            this.buttonsTableLayoutPanel.TabIndex = 14;
             // 
-            // button1
+            // addedSingleTransactionButton
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button1.AutoSize = true;
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 32);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Добавить";
-            this.button1.UseVisualStyleBackColor = true;
+            this.addedSingleTransactionButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.addedSingleTransactionButton.AutoSize = true;
+            this.addedSingleTransactionButton.Location = new System.Drawing.Point(3, 3);
+            this.addedSingleTransactionButton.Name = "addedSingleTransactionButton";
+            this.addedSingleTransactionButton.Size = new System.Drawing.Size(114, 32);
+            this.addedSingleTransactionButton.TabIndex = 0;
+            this.addedSingleTransactionButton.Text = "Добавить";
+            this.addedSingleTransactionButton.UseVisualStyleBackColor = true;
+            this.addedSingleTransactionButton.Click += new System.EventHandler(this.addedSingleTransactionButton_Click);
             // 
-            // button2
+            // cancelSingleTransactionButton
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button2.AutoSize = true;
-            this.button2.Location = new System.Drawing.Point(243, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(114, 32);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Отмена";
-            this.button2.UseVisualStyleBackColor = true;
+            this.cancelSingleTransactionButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cancelSingleTransactionButton.AutoSize = true;
+            this.cancelSingleTransactionButton.Location = new System.Drawing.Point(243, 3);
+            this.cancelSingleTransactionButton.Name = "cancelSingleTransactionButton";
+            this.cancelSingleTransactionButton.Size = new System.Drawing.Size(114, 32);
+            this.cancelSingleTransactionButton.TabIndex = 1;
+            this.cancelSingleTransactionButton.Text = "Отмена";
+            this.cancelSingleTransactionButton.UseVisualStyleBackColor = true;
             // 
-            // AddSingleTransactionForm
+            // SingleTransactionForm
             // 
-            this.AcceptButton = this.button1;
+            this.AcceptButton = this.addedSingleTransactionButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.CancelButton = this.button2;
+            this.CancelButton = this.cancelSingleTransactionButton;
             this.ClientSize = new System.Drawing.Size(366, 267);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.singleTransactionDesktopflowLayoutPanel);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(382, 306);
-            this.Name = "AddSingleTransactionForm";
+            this.Name = "SingleTransactionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddSingleTransactionForm";
             this.Load += new System.EventHandler(this.AddSingleTransactionForm_Load);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.singleTransactionDesktopflowLayoutPanel.ResumeLayout(false);
+            this.singleTransactionDesktopflowLayoutPanel.PerformLayout();
+            this.buttonsTableLayoutPanel.ResumeLayout(false);
+            this.buttonsTableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,20 +219,18 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label1;
-        private SingleTransactionUserControls.SelectAccountUserControl selectAccountUserControl1;
+        private System.Windows.Forms.FlowLayoutPanel singleTransactionDesktopflowLayoutPanel;
+        private System.Windows.Forms.TextBox nameTransactiontextBox;
+        private System.Windows.Forms.TextBox descriptionTransactiontextBox;
+        private System.Windows.Forms.Label hrBorderLabel1;
         private SingleTransactionUserControls.SelectTypeTransactionUserControl selectTypeTransactionUserControl;
-        private SingleTransactionUserControls.SelectTypeTransactionUserControl selectTypeTransactionUserControl1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.Label label2;
-        private SingleTransactionUserControls.SelectCategoryUserControl selectCategoryUserControl1;
-        private SingleTransactionUserControls.SelectContrAgentUserControl selectContrAgentUserControl1;
-        private SingleTransactionUserControls.SelectFamilyMemberUserControl selectFamilyMemberUserControl1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.FlowLayoutPanel billingInfoFlowLayoutPanel;
+        private System.Windows.Forms.Label hrBorderLabel2;
+        private SingleTransactionUserControls.SelectCategoryUserControl selectCategoryUserControl;
+        private SingleTransactionUserControls.SelectContrAgentUserControl selectContrAgentUserControl;
+        private SingleTransactionUserControls.SelectFamilyMemberUserControl selectFamilyMemberUserControl;
+        private System.Windows.Forms.TableLayoutPanel buttonsTableLayoutPanel;
+        private System.Windows.Forms.Button addedSingleTransactionButton;
+        private System.Windows.Forms.Button cancelSingleTransactionButton;
     }
 }

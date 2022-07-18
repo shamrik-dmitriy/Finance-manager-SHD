@@ -30,7 +30,7 @@
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.pricelProductName = new System.Windows.Forms.Label();
             this.labelProductName = new System.Windows.Forms.Label();
             this.deleteTransactionButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -50,7 +50,7 @@
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel1.AutoSize = true;
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.pricelProductName);
             this.panel1.Controls.Add(this.labelProductName);
             this.panel1.Location = new System.Drawing.Point(36, 3);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
@@ -58,16 +58,16 @@
             this.panel1.Size = new System.Drawing.Size(285, 32);
             this.panel1.TabIndex = 2;
             // 
-            // label1
+            // pricelProductName
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(220, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 19);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "125.00 Р";
+            this.pricelProductName.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.pricelProductName.AutoSize = true;
+            this.pricelProductName.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.pricelProductName.Location = new System.Drawing.Point(220, 6);
+            this.pricelProductName.Name = "pricelProductName";
+            this.pricelProductName.Size = new System.Drawing.Size(62, 19);
+            this.pricelProductName.TabIndex = 1;
+            this.pricelProductName.Text = "125.00 Р";
             // 
             // labelProductName
             // 
@@ -116,7 +116,7 @@
         #endregion
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label pricelProductName;
         private System.Windows.Forms.Label labelProductName;
         private System.Windows.Forms.Button deleteTransactionButton;
     }

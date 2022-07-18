@@ -12,6 +12,11 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
 {
     public partial class SumTransactionUserControl : UserControl
     {
+        public decimal Sum { get { return Convert.ToDecimal(_sum); } }
+        private string _sum { 
+            get { return sumTextBox.Text; }
+            set { sumTextBox.Text = value; }
+        }
         public SumTransactionUserControl()
         {
             InitializeComponent();

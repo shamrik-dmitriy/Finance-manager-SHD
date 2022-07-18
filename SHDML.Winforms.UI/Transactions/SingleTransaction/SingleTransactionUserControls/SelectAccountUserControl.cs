@@ -12,6 +12,8 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
 {
     public partial class SelectAccountUserControl : UserControl
     {
+        public decimal Sum => sumTransactionUserControl.Sum;
+
         private int TransactionType { get; }
 
         public SelectAccountUserControl()
