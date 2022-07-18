@@ -48,44 +48,54 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
             this.financeInfoOfOperationflowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.financeInfoOfOperationflowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.financeInfoOfOperationflowLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.financeInfoOfOperationflowLayoutPanel.MaximumSize = new System.Drawing.Size(363, 136);
-            this.financeInfoOfOperationflowLayoutPanel.MinimumSize = new System.Drawing.Size(363, 102);
             this.financeInfoOfOperationflowLayoutPanel.Name = "financeInfoOfOperationflowLayoutPanel";
-            this.financeInfoOfOperationflowLayoutPanel.Size = new System.Drawing.Size(363, 136);
+            this.financeInfoOfOperationflowLayoutPanel.Size = new System.Drawing.Size(355, 115);
             this.financeInfoOfOperationflowLayoutPanel.TabIndex = 8;
             // 
             // debitAccountInfoUserControl
             // 
             this.debitAccountInfoUserControl.AutoSize = true;
             this.debitAccountInfoUserControl.LabelOfTypeOperation = "Зачислить на счёт";
-            this.debitAccountInfoUserControl.Location = new System.Drawing.Point(3, 3);
+            this.debitAccountInfoUserControl.Location = new System.Drawing.Point(0, 0);
+            this.debitAccountInfoUserControl.Margin = new System.Windows.Forms.Padding(0);
+            this.debitAccountInfoUserControl.MaximumSize = new System.Drawing.Size(354, 28);
+            this.debitAccountInfoUserControl.MinimumSize = new System.Drawing.Size(354, 28);
             this.debitAccountInfoUserControl.Name = "debitAccountInfoUserControl";
-            this.debitAccountInfoUserControl.Size = new System.Drawing.Size(357, 28);
+            this.debitAccountInfoUserControl.Size = new System.Drawing.Size(354, 28);
             this.debitAccountInfoUserControl.TabIndex = 0;
             // 
             // sumTransactionUserControl
             // 
             this.sumTransactionUserControl.AutoSize = true;
-            this.sumTransactionUserControl.Location = new System.Drawing.Point(3, 37);
+            this.sumTransactionUserControl.Location = new System.Drawing.Point(0, 28);
+            this.sumTransactionUserControl.Margin = new System.Windows.Forms.Padding(0);
+            this.sumTransactionUserControl.MaximumSize = new System.Drawing.Size(354, 28);
+            this.sumTransactionUserControl.MinimumSize = new System.Drawing.Size(354, 28);
             this.sumTransactionUserControl.Name = "sumTransactionUserControl";
-            this.sumTransactionUserControl.Size = new System.Drawing.Size(357, 28);
+            this.sumTransactionUserControl.Size = new System.Drawing.Size(354, 28);
             this.sumTransactionUserControl.TabIndex = 1;
             // 
             // creditAccountInfoUserControl
             // 
             this.creditAccountInfoUserControl.AutoSize = true;
             this.creditAccountInfoUserControl.LabelOfTypeOperation = "Зачислить на счёт";
-            this.creditAccountInfoUserControl.Location = new System.Drawing.Point(3, 71);
+            this.creditAccountInfoUserControl.Location = new System.Drawing.Point(0, 56);
+            this.creditAccountInfoUserControl.Margin = new System.Windows.Forms.Padding(0);
+            this.creditAccountInfoUserControl.MaximumSize = new System.Drawing.Size(354, 28);
+            this.creditAccountInfoUserControl.MinimumSize = new System.Drawing.Size(354, 28);
             this.creditAccountInfoUserControl.Name = "creditAccountInfoUserControl";
-            this.creditAccountInfoUserControl.Size = new System.Drawing.Size(357, 28);
+            this.creditAccountInfoUserControl.Size = new System.Drawing.Size(354, 28);
             this.creditAccountInfoUserControl.TabIndex = 2;
             // 
             // dateTransactionUserControl
             // 
             this.dateTransactionUserControl.AutoSize = true;
-            this.dateTransactionUserControl.Location = new System.Drawing.Point(3, 105);
+            this.dateTransactionUserControl.Location = new System.Drawing.Point(0, 84);
+            this.dateTransactionUserControl.Margin = new System.Windows.Forms.Padding(0);
+            this.dateTransactionUserControl.MaximumSize = new System.Drawing.Size(354, 28);
+            this.dateTransactionUserControl.MinimumSize = new System.Drawing.Size(354, 28);
             this.dateTransactionUserControl.Name = "dateTransactionUserControl";
-            this.dateTransactionUserControl.Size = new System.Drawing.Size(357, 28);
+            this.dateTransactionUserControl.Size = new System.Drawing.Size(354, 28);
             this.dateTransactionUserControl.TabIndex = 3;
             // 
             // SelectAccountUserControl
@@ -95,8 +105,9 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.financeInfoOfOperationflowLayoutPanel);
+            this.MaximumSize = new System.Drawing.Size(355, 115);
             this.Name = "SelectAccountUserControl";
-            this.Size = new System.Drawing.Size(365, 139);
+            this.Size = new System.Drawing.Size(355, 115);
             this.Load += new System.EventHandler(this.SelectAccountUserControl_Load);
             this.financeInfoOfOperationflowLayoutPanel.ResumeLayout(false);
             this.financeInfoOfOperationflowLayoutPanel.PerformLayout();

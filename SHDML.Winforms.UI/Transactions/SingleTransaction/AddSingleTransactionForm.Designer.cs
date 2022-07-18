@@ -48,6 +48,9 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.Control;
             this.flowLayoutPanel1.Controls.Add(this.selectTypeTransactionUserControl1);
             this.flowLayoutPanel1.Controls.Add(this.textBox1);
             this.flowLayoutPanel1.Controls.Add(this.textBox2);
@@ -58,25 +61,25 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             this.flowLayoutPanel1.Controls.Add(this.selectContrAgentUserControl1);
             this.flowLayoutPanel1.Controls.Add(this.selectFamilyMemberUserControl1);
             this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanel1);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(368, 461);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(366, 267);
             this.flowLayoutPanel1.TabIndex = 6;
             // 
             // selectTypeTransactionUserControl1
             // 
             this.selectTypeTransactionUserControl1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.selectTypeTransactionUserControl1.Location = new System.Drawing.Point(3, 3);
+            this.selectTypeTransactionUserControl1.AutoSize = true;
+            this.selectTypeTransactionUserControl1.Location = new System.Drawing.Point(5, 3);
             this.selectTypeTransactionUserControl1.Name = "selectTypeTransactionUserControl1";
-            this.selectTypeTransactionUserControl1.Size = new System.Drawing.Size(359, 31);
+            this.selectTypeTransactionUserControl1.Size = new System.Drawing.Size(355, 26);
             this.selectTypeTransactionUserControl1.TabIndex = 8;
             // 
             // textBox1
             // 
             this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox1.Location = new System.Drawing.Point(3, 40);
+            this.textBox1.Location = new System.Drawing.Point(3, 35);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(359, 23);
             this.textBox1.TabIndex = 2;
@@ -85,7 +88,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             // textBox2
             // 
             this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox2.Location = new System.Drawing.Point(3, 69);
+            this.textBox2.Location = new System.Drawing.Point(3, 64);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(359, 39);
@@ -96,7 +99,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(3, 111);
+            this.label1.Location = new System.Drawing.Point(3, 106);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(359, 2);
             this.label1.TabIndex = 5;
@@ -106,7 +109,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             this.flowLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.flowLayoutPanel2.AutoSize = true;
             this.flowLayoutPanel2.BackColor = System.Drawing.SystemColors.Control;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(183, 116);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(183, 111);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(0, 0);
             this.flowLayoutPanel2.TabIndex = 9;
@@ -115,74 +118,90 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Location = new System.Drawing.Point(3, 119);
+            this.label2.Location = new System.Drawing.Point(3, 114);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(359, 2);
             this.label2.TabIndex = 10;
             // 
             // selectCategoryUserControl1
             // 
-            this.selectCategoryUserControl1.Location = new System.Drawing.Point(3, 124);
+            this.selectCategoryUserControl1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.selectCategoryUserControl1.AutoSize = true;
+            this.selectCategoryUserControl1.Location = new System.Drawing.Point(4, 119);
             this.selectCategoryUserControl1.Name = "selectCategoryUserControl1";
-            this.selectCategoryUserControl1.Size = new System.Drawing.Size(360, 28);
+            this.selectCategoryUserControl1.Size = new System.Drawing.Size(357, 28);
             this.selectCategoryUserControl1.TabIndex = 11;
             // 
             // selectContrAgentUserControl1
             // 
-            this.selectContrAgentUserControl1.Location = new System.Drawing.Point(3, 158);
+            this.selectContrAgentUserControl1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.selectContrAgentUserControl1.AutoSize = true;
+            this.selectContrAgentUserControl1.Location = new System.Drawing.Point(4, 153);
             this.selectContrAgentUserControl1.Name = "selectContrAgentUserControl1";
-            this.selectContrAgentUserControl1.Size = new System.Drawing.Size(360, 28);
+            this.selectContrAgentUserControl1.Size = new System.Drawing.Size(357, 28);
             this.selectContrAgentUserControl1.TabIndex = 12;
             // 
             // selectFamilyMemberUserControl1
             // 
-            this.selectFamilyMemberUserControl1.Location = new System.Drawing.Point(3, 192);
+            this.selectFamilyMemberUserControl1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.selectFamilyMemberUserControl1.AutoSize = true;
+            this.selectFamilyMemberUserControl1.Location = new System.Drawing.Point(4, 187);
             this.selectFamilyMemberUserControl1.Name = "selectFamilyMemberUserControl1";
-            this.selectFamilyMemberUserControl1.Size = new System.Drawing.Size(360, 28);
+            this.selectFamilyMemberUserControl1.Size = new System.Drawing.Size(357, 28);
             this.selectFamilyMemberUserControl1.TabIndex = 13;
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.button2, 2, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 226);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 221);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(353, 38);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(360, 38);
             this.tableLayoutPanel1.TabIndex = 14;
             // 
             // button1
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button1.AutoSize = true;
             this.button1.Location = new System.Drawing.Point(3, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 32);
+            this.button1.Size = new System.Drawing.Size(114, 32);
             this.button1.TabIndex = 0;
             this.button1.Text = "Добавить";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Location = new System.Drawing.Point(237, 3);
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button2.AutoSize = true;
+            this.button2.Location = new System.Drawing.Point(243, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(113, 32);
+            this.button2.Size = new System.Drawing.Size(114, 32);
             this.button2.TabIndex = 1;
             this.button2.Text = "Отмена";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // AddSingleTransactionForm
             // 
+            this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(368, 461);
+            this.CancelButton = this.button2;
+            this.ClientSize = new System.Drawing.Size(366, 267);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(382, 306);
             this.Name = "AddSingleTransactionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddSingleTransactionForm";
@@ -190,7 +209,9 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
