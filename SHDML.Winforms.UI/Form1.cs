@@ -57,7 +57,7 @@ namespace SHDML.Winforms.UI
 
         private void buttonAddTransaction_Click(object sender, EventArgs e)
         {
-            new AddSingleTransactionForm().ShowDialog();
+            new AddSingleTransactionForm("Добавить операцию").ShowDialog();
         }
     }
 }

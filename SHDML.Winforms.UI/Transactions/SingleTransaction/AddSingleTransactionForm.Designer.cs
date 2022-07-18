@@ -84,6 +84,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             this.textBox1.Size = new System.Drawing.Size(359, 23);
             this.textBox1.TabIndex = 2;
             this.textBox1.Text = "Введите название транзакции";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
             // 

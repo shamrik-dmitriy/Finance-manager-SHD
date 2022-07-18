@@ -13,9 +13,18 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
 {
     public partial class AddSingleTransactionForm : Form
     {
+        private string Title { get => Text; set { Text = value; } }
+        private string TitleDefault { get;}
+
         public AddSingleTransactionForm()
         {
             InitializeComponent();
+        }
+
+        public AddSingleTransactionForm(string typeTransactionOperations) : this()
+        {
+            Title = typeTransactionOperations;
+            TitleDefault = typeTransactionOperations+": ";
         }
 
         private void AddSingleTransactionForm_Load(object sender, EventArgs e)
@@ -50,5 +59,10 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             flowLayoutPanel2.Update();
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            var textBox = sender as TextBox;
+            Title = TitleDefault + textBox.Text;
+        }
     }
 }
