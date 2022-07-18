@@ -63,7 +63,7 @@ namespace SHDML.Winforms.UI
 
         private void buttonAddReceipt_Click(object sender, EventArgs e)
         {
-            new MultipleTransactionForm().ShowDialog();
+            new MultipleTransactionForm("Добавить группу транзакций (чек)").ShowDialog();
         }
     }
 }

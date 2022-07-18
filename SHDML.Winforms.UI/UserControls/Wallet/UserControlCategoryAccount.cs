@@ -22,10 +22,5 @@ namespace SHDML.Winforms.UI.UserControls.Wallet
         {
 
         }
-
-        private void labelCategoryName_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

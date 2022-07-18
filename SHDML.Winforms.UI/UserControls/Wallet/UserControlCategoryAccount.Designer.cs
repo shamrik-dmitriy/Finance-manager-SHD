@@ -38,21 +38,23 @@ namespace SHDML.Winforms.UI.UserControls.Wallet
             // labelCategoryName
             // 
             this.labelCategoryName.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.labelCategoryName.AutoSize = true;
-            this.labelCategoryName.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelCategoryName.AutoEllipsis = true;
+            this.labelCategoryName.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelCategoryName.Location = new System.Drawing.Point(3, 3);
             this.labelCategoryName.Margin = new System.Windows.Forms.Padding(3);
             this.labelCategoryName.MaximumSize = new System.Drawing.Size(150, 150);
             this.labelCategoryName.Name = "labelCategoryName";
             this.labelCategoryName.Size = new System.Drawing.Size(150, 40);
             this.labelCategoryName.TabIndex = 0;
-            this.labelCategoryName.Text = "Полуфабрикаты по пробуй приготовь";
-            this.labelCategoryName.Click += new System.EventHandler(this.labelCategoryName_Click);
+            this.labelCategoryName.Text = "Полуфабрикаты по пробуй приготовь\r\nПолуфабрикаты по пробуй приготовь\r\nПолуфабрика" +
+    "ты по пробуй приготовь\r\n\r\n";
+            this.labelCategoryName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelCategorySum
             // 
             this.labelCategorySum.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelCategorySum.AutoEllipsis = true;
+            this.labelCategorySum.AutoSize = true;
             this.labelCategorySum.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelCategorySum.ForeColor = System.Drawing.Color.Green;
             this.labelCategorySum.Location = new System.Drawing.Point(161, 3);
@@ -64,10 +66,11 @@ namespace SHDML.Winforms.UI.UserControls.Wallet
             // 
             // panel1
             // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel1.AutoSize = true;
+            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.Controls.Add(this.labelCategorySum);
             this.panel1.Controls.Add(this.labelCategoryName);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.MaximumSize = new System.Drawing.Size(310, 100);
             this.panel1.MinimumSize = new System.Drawing.Size(310, 28);
@@ -85,7 +88,7 @@ namespace SHDML.Winforms.UI.UserControls.Wallet
             this.MaximumSize = new System.Drawing.Size(310, 100);
             this.MinimumSize = new System.Drawing.Size(310, 28);
             this.Name = "UserControlCategoryAccount";
-            this.Size = new System.Drawing.Size(310, 46);
+            this.Size = new System.Drawing.Size(310, 49);
             this.Load += new System.EventHandler(this.CategoryAccount_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

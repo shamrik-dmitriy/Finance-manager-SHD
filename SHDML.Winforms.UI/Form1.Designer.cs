@@ -54,8 +54,6 @@ namespace SHDML.Winforms.UI
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonAddReceipt = new System.Windows.Forms.Button();
-            this.splitter3 = new System.Windows.Forms.Splitter();
-            this.comboBoxTypeOperation = new System.Windows.Forms.ComboBox();
             this.buttonAddTransaction = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ColumnVerified = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -372,8 +370,6 @@ namespace SHDML.Winforms.UI
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.Controls.Add(this.buttonAddReceipt);
-            this.flowLayoutPanel3.Controls.Add(this.splitter3);
-            this.flowLayoutPanel3.Controls.Add(this.comboBoxTypeOperation);
             this.flowLayoutPanel3.Controls.Add(this.buttonAddTransaction);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 0);
@@ -391,31 +387,9 @@ namespace SHDML.Winforms.UI
             this.buttonAddReceipt.UseVisualStyleBackColor = true;
             this.buttonAddReceipt.Click += new System.EventHandler(this.buttonAddReceipt_Click);
             // 
-            // splitter3
-            // 
-            this.splitter3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitter3.Location = new System.Drawing.Point(125, 3);
-            this.splitter3.Name = "splitter3";
-            this.splitter3.Size = new System.Drawing.Size(3, 23);
-            this.splitter3.TabIndex = 4;
-            this.splitter3.TabStop = false;
-            // 
-            // comboBoxTypeOperation
-            // 
-            this.comboBoxTypeOperation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxTypeOperation.FormattingEnabled = true;
-            this.comboBoxTypeOperation.Items.AddRange(new object[] {
-            "Доход",
-            "Расход",
-            "Перевод"});
-            this.comboBoxTypeOperation.Location = new System.Drawing.Point(134, 3);
-            this.comboBoxTypeOperation.Name = "comboBoxTypeOperation";
-            this.comboBoxTypeOperation.Size = new System.Drawing.Size(121, 23);
-            this.comboBoxTypeOperation.TabIndex = 0;
-            // 
             // buttonAddTransaction
             // 
-            this.buttonAddTransaction.Location = new System.Drawing.Point(261, 3);
+            this.buttonAddTransaction.Location = new System.Drawing.Point(125, 3);
             this.buttonAddTransaction.Name = "buttonAddTransaction";
             this.buttonAddTransaction.Size = new System.Drawing.Size(132, 23);
             this.buttonAddTransaction.TabIndex = 1;
@@ -554,8 +528,6 @@ namespace SHDML.Winforms.UI
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Button buttonAddReceipt;
-        private System.Windows.Forms.Splitter splitter3;
-        private System.Windows.Forms.ComboBox comboBoxTypeOperation;
         private System.Windows.Forms.Button buttonAddTransaction;
         private UserControls.Wallet.UserControlCategoryAccount userControlCategoryAccount1;
         private UserControls.Wallet.UserControlCategoryAccount userControlCategoryAccount2;

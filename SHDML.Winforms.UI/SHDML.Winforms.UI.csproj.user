@@ -13,10 +13,10 @@
     <Compile Update="Transactions\SingleTransaction\SingleTransactionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Transactions\SingleTransaction\SingleTransactionUserControls\AccountInfoUserControl.cs">
+    <Compile Update="Transactions\UserControlsOfTransactions\AccountInfoUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Transactions\SingleTransaction\SingleTransactionUserControls\DateTransactionUserControl.cs">
+    <Compile Update="Transactions\UserControlsOfTransactions\DateTransactionUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Transactions\SingleTransaction\SingleTransactionUserControls\SelectAccountUserControl.cs">
@@ -25,10 +25,10 @@
     <Compile Update="Transactions\SingleTransaction\SingleTransactionUserControls\SelectCategoryUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Transactions\SingleTransaction\SingleTransactionUserControls\SelectContrAgentUserControl.cs">
+    <Compile Update="Transactions\UserControlsOfTransactions\SelectContrAgentUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Transactions\SingleTransaction\SingleTransactionUserControls\SelectFamilyMemberUserControl.cs">
+    <Compile Update="Transactions\UserControlsOfTransactions\SelectFamilyMemberUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Transactions\SingleTransaction\SingleTransactionUserControls\SelectTypeTransactionUserControl.cs">

@@ -12,14 +12,17 @@ namespace SHDML.Winforms.UI.Transactions.MultipleTransaction
 {
     public partial class MultipleTransactionForm : Form
     {
+        private string Title { get => Text; set { Text = value; } }
+        private string TitleDefault { get; }
+
         public MultipleTransactionForm()
         {
             InitializeComponent();
         }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        public MultipleTransactionForm(string typeTransactionOperations) : this()
         {
-
+            Title = typeTransactionOperations;
+            TitleDefault = typeTransactionOperations;
         }
 
         private void addedTransactionButton_Click(object sender, EventArgs e)
@@ -44,6 +47,13 @@ namespace SHDML.Winforms.UI.Transactions.MultipleTransaction
         private void accountInfoUserControl1_Load(object sender, EventArgs e)
         {
             accountInfoUserControl1.LabelOfTypeOperation = "Списать со счёта";
+
+        }
+
+        private void nameOfRetailertextBox_TextChanged(object sender, EventArgs e)
+        {
+            var textBox = sender as TextBox;
+            Title = string.IsNullOrWhiteSpace(textBox.Text) ? TitleDefault : TitleDefault + ": " + textBox.Text;
 
         }
     }
