@@ -32,7 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.labelProductName = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.deleteTransactionButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -80,15 +80,16 @@
             this.labelProductName.TabIndex = 0;
             this.labelProductName.Text = "Молоко Лужайкино 2.5%";
             // 
-            // button1
+            // deleteTransactionButton
             // 
-            this.button1.AutoSize = true;
-            this.button1.Location = new System.Drawing.Point(324, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(29, 32);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "❌";
-            this.button1.UseVisualStyleBackColor = true;
+            this.deleteTransactionButton.AutoSize = true;
+            this.deleteTransactionButton.Location = new System.Drawing.Point(324, 2);
+            this.deleteTransactionButton.Name = "deleteTransactionButton";
+            this.deleteTransactionButton.Size = new System.Drawing.Size(29, 32);
+            this.deleteTransactionButton.TabIndex = 3;
+            this.deleteTransactionButton.Text = "❌";
+            this.deleteTransactionButton.UseVisualStyleBackColor = true;
+            this.deleteTransactionButton.Click += new System.EventHandler(this.deleteTransactionButton_Click);
             // 
             // ItemOfMultipleTransaction
             // 
@@ -96,7 +97,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.deleteTransactionButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
             this.Margin = new System.Windows.Forms.Padding(0);
@@ -117,6 +118,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelProductName;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button deleteTransactionButton;
     }
 }

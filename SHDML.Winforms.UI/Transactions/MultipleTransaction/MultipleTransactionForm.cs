@@ -25,8 +25,18 @@ namespace SHDML.Winforms.UI.Transactions.MultipleTransaction
         private void addedTransactionButton_Click(object sender, EventArgs e)
         {
             new SingleTransaction.SingleTransactionForm("Добавить в чек транзакцию").ShowDialog();
-            ItemsFlowLayoutPanel.Controls.Add(new ItemOfMultipleTransaction());
+            var t = new ItemOfMultipleTransaction();
+            t.DeleteItemFromReceipt += new EventHandler(DeleteTransaction);
+
+            ItemsFlowLayoutPanel.Controls.Add(t);
         }
+
+        private void DeleteTransaction(object sender, EventArgs e)
+        {
+            var s = sender as ItemOfMultipleTransaction;
+            ItemsFlowLayoutPanel.Controls.Remove(s);
+        }
+
 
         private void accountInfoUserControl1_Load(object sender, EventArgs e)
         {
