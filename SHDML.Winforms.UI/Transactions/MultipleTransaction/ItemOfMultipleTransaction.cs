@@ -34,11 +34,24 @@ namespace SHDML.Winforms.UI.Transactions.MultipleTransaction
         [Description("Вызывается когда пользователь удаляет транзакцию из чека")]
         public EventHandler DeleteItemFromReceipt;
 
+        [Browsable(true)]
+        [Category("Action")]
+        [Description("Вызывается когда пользователь изменяет транзакцию из чека")]
+        public EventHandler ChangeItemFromReceipt;
+
         private void deleteTransactionButton_Click(object sender, EventArgs e)
         {
             if (this.DeleteItemFromReceipt != null)
             {
                 this.DeleteItemFromReceipt(this, e);
+            }
+        }
+
+        private void changeItemInfo_click(object sender, EventArgs e)
+        {
+            if (this.ChangeItemFromReceipt != null)
+            {
+                this.ChangeItemFromReceipt(this, e);
             }
         }
     }

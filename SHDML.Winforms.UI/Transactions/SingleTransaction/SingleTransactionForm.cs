@@ -1,4 +1,5 @@
 ﻿using SHDML.BLL.DTO.DTO;
+using SHDML.Winforms.UI.Transactions.MultipleTransaction;
 using SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
         {
             InitializeComponent();
         }
+        protected internal SingleTransactionDTO SingleTransactionDTO { get; set; }
 
         public SingleTransactionForm(string typeTransactionOperations) : this()
         {
@@ -30,8 +32,15 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
 
         private void AddSingleTransactionForm_Load(object sender, EventArgs e)
         {
-            selectTypeTransactionUserControl.TypeOperationSelectedIndexChanged += new EventHandler(SelectTypeTransaction_SelectedIndexChanged);
-            selectTypeTransactionUserControl.typeOperationsCombobox.SelectedIndex = 0;
+            if (SingleTransactionDTO != null)
+            {
+
+            }
+            else
+            {
+                selectTypeTransactionUserControl.TypeOperationSelectedIndexChanged += new EventHandler(SelectTypeTransaction_SelectedIndexChanged);
+                selectTypeTransactionUserControl.typeOperationsCombobox.SelectedIndex = 0;
+            }
         }
 
         protected void SelectTypeTransaction_SelectedIndexChanged(object sender, EventArgs e)
@@ -66,8 +75,6 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             Title = string.IsNullOrWhiteSpace(textBox.Text) ? TitleDefault : TitleDefault + ": " + textBox.Text;
         }
 
-        protected internal SingleTransactionDTO SingleTransactionDTO { get; set; }
-
         private void addedSingleTransactionButton_Click(object sender, EventArgs e)
         {
 
@@ -78,6 +85,8 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
                 Description = descriptionTransactiontextBox.Text,
                 Sum = t.Sum
             };
+            // TODO: Отправить данные в БД
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
     }

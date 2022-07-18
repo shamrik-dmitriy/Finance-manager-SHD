@@ -29,13 +29,17 @@ namespace SHDML.Winforms.UI.Transactions.MultipleTransaction
         private void addedTransactionButton_Click(object sender, EventArgs e)
         {
             var addedTransaction = new SingleTransaction.SingleTransactionForm("Добавить в чек транзакцию");
-            addedTransaction.ShowDialog();
-            
-            var newItem = new ItemOfMultipleTransaction(addedTransaction.SingleTransactionDTO.Name, addedTransaction.SingleTransactionDTO.Sum.ToString());
-            newItem.DeleteItemFromReceipt += new EventHandler(DeleteTransaction);
-            ItemsFlowLayoutPanel.Controls.Add(newItem);
+            if (addedTransaction.ShowDialog() == DialogResult.OK)
+            {
+                // TODO: Отправить данные в БД
 
-            totalSumTransactionUserControl.Sum += addedTransaction.SingleTransactionDTO.Sum;
+                var newItem = new ItemOfMultipleTransaction(addedTransaction.SingleTransactionDTO.Name, addedTransaction.SingleTransactionDTO.Sum.ToString());
+                newItem.DeleteItemFromReceipt += new EventHandler(DeleteTransaction);
+                newItem.ChangeItemFromReceipt += new EventHandler(UpdateTransaction);
+                ItemsFlowLayoutPanel.Controls.Add(newItem);
+
+                totalSumTransactionUserControl.Sum += addedTransaction.SingleTransactionDTO.Sum;
+            }
         }
 
         private void DeleteTransaction(object sender, EventArgs e)
@@ -48,6 +52,16 @@ namespace SHDML.Winforms.UI.Transactions.MultipleTransaction
             this.Update();
         }
 
+        private void UpdateTransaction(object sender, EventArgs e)
+        {
+            var s = sender as ItemOfMultipleTransaction;
+            var addedTransaction = new SingleTransaction.SingleTransactionForm();
+            if (addedTransaction.ShowDialog() == DialogResult.OK)
+            { 
+            
+                // TODO: Извлечь данные из БД, заполнить сигнлтранзакшн и открыть её
+            }
+        }
 
         private void accountInfoUserControl1_Load(object sender, EventArgs e)
         {

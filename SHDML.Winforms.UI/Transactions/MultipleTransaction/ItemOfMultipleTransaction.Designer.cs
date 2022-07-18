@@ -45,6 +45,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(32, 32);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.changeItemInfo_click);
             // 
             // panel1
             // 
@@ -57,6 +58,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(285, 32);
             this.panel1.TabIndex = 2;
+            this.panel1.Click += new System.EventHandler(this.changeItemInfo_click);
             // 
             // pricelProductName
             // 
@@ -68,6 +70,7 @@
             this.pricelProductName.Size = new System.Drawing.Size(62, 19);
             this.pricelProductName.TabIndex = 1;
             this.pricelProductName.Text = "125.00 Р";
+            this.pricelProductName.Click += new System.EventHandler(this.changeItemInfo_click);
             // 
             // productNameLabel
             // 
@@ -79,6 +82,7 @@
             this.productNameLabel.Size = new System.Drawing.Size(149, 15);
             this.productNameLabel.TabIndex = 0;
             this.productNameLabel.Text = "Молоко Лужайкино 2.5%";
+            this.productNameLabel.Click += new System.EventHandler(this.changeItemInfo_click);
             // 
             // deleteTransactionButton
             // 
@@ -105,6 +109,7 @@
             this.MinimumSize = new System.Drawing.Size(358, 38);
             this.Name = "ItemOfMultipleTransaction";
             this.Size = new System.Drawing.Size(356, 36);
+            this.Click += new System.EventHandler(this.changeItemInfo_click);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
