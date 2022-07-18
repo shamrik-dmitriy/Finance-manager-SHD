@@ -1,7 +1,7 @@
 ﻿
 namespace SHDML.Winforms.UI.Transactions.SingleTransaction
 {
-    partial class AddSingleTransactionForm
+    partial class SingleTransactionForm
     {
         /// <summary>
         /// Required designer variable.

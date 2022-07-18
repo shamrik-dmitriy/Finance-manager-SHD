@@ -11,20 +11,20 @@ using System.Windows.Forms;
 
 namespace SHDML.Winforms.UI.Transactions.SingleTransaction
 {
-    public partial class AddSingleTransactionForm : Form
+    public partial class SingleTransactionForm : Form
     {
         private string Title { get => Text; set { Text = value; } }
         private string TitleDefault { get;}
 
-        public AddSingleTransactionForm()
+        public SingleTransactionForm()
         {
             InitializeComponent();
         }
 
-        public AddSingleTransactionForm(string typeTransactionOperations) : this()
+        public SingleTransactionForm(string typeTransactionOperations) : this()
         {
             Title = typeTransactionOperations;
-            TitleDefault = typeTransactionOperations+": ";
+            TitleDefault = typeTransactionOperations;
         }
 
         private void AddSingleTransactionForm_Load(object sender, EventArgs e)
@@ -62,7 +62,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             var textBox = sender as TextBox;
-            Title = TitleDefault + textBox.Text;
+            Title = string.IsNullOrWhiteSpace(textBox.Text) ? TitleDefault : TitleDefault + ": " + textBox.Text;
         }
     }
 }

@@ -4,7 +4,13 @@
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Transactions\SingleTransaction\AddSingleTransactionForm.cs">
+    <Compile Update="Transactions\MultipleTransaction\ItemOfMultipleTransaction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Transactions\MultipleTransaction\MultipleTransactionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Transactions\SingleTransaction\SingleTransactionForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Transactions\SingleTransaction\SingleTransactionUserControls\AccountInfoUserControl.cs">

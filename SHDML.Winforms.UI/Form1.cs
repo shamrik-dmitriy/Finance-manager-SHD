@@ -1,4 +1,5 @@
-﻿using SHDML.Winforms.UI.Transactions.SingleTransaction;
+﻿using SHDML.Winforms.UI.Transactions.MultipleTransaction;
+using SHDML.Winforms.UI.Transactions.SingleTransaction;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -57,7 +58,12 @@ namespace SHDML.Winforms.UI
 
         private void buttonAddTransaction_Click(object sender, EventArgs e)
         {
-            new AddSingleTransactionForm("Добавить операцию").ShowDialog();
+            new SingleTransactionForm("Добавить операцию").ShowDialog();
+        }
+
+        private void buttonAddReceipt_Click(object sender, EventArgs e)
+        {
+            new MultipleTransactionForm().ShowDialog();
         }
     }
 }
