@@ -36,7 +36,6 @@
             this.addedTransactionButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.ItemsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
@@ -49,6 +48,7 @@
             // 
             this.multipleTransactionFlowLayoutPanel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.multipleTransactionFlowLayoutPanel.AutoSize = true;
+            this.multipleTransactionFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.multipleTransactionFlowLayoutPanel.BackColor = System.Drawing.SystemColors.Control;
             this.multipleTransactionFlowLayoutPanel.Controls.Add(this.nameOfRetailertextBox);
             this.multipleTransactionFlowLayoutPanel.Controls.Add(this.selectFamilyMemberUserControl1);
@@ -57,13 +57,12 @@
             this.multipleTransactionFlowLayoutPanel.Controls.Add(this.addedTransactionButton);
             this.multipleTransactionFlowLayoutPanel.Controls.Add(this.label1);
             this.multipleTransactionFlowLayoutPanel.Controls.Add(this.ItemsFlowLayoutPanel);
-            this.multipleTransactionFlowLayoutPanel.Controls.Add(this.flowLayoutPanel2);
             this.multipleTransactionFlowLayoutPanel.Controls.Add(this.label2);
             this.multipleTransactionFlowLayoutPanel.Controls.Add(this.tableLayoutPanel1);
             this.multipleTransactionFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.multipleTransactionFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.multipleTransactionFlowLayoutPanel.Name = "multipleTransactionFlowLayoutPanel";
-            this.multipleTransactionFlowLayoutPanel.Size = new System.Drawing.Size(367, 223);
+            this.multipleTransactionFlowLayoutPanel.Size = new System.Drawing.Size(365, 216);
             this.multipleTransactionFlowLayoutPanel.TabIndex = 7;
             this.multipleTransactionFlowLayoutPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
@@ -130,27 +129,18 @@
             // 
             this.ItemsFlowLayoutPanel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.ItemsFlowLayoutPanel.AutoSize = true;
+            this.ItemsFlowLayoutPanel.BackColor = System.Drawing.SystemColors.Control;
             this.ItemsFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.ItemsFlowLayoutPanel.Location = new System.Drawing.Point(182, 174);
             this.ItemsFlowLayoutPanel.Name = "ItemsFlowLayoutPanel";
             this.ItemsFlowLayoutPanel.Size = new System.Drawing.Size(0, 0);
             this.ItemsFlowLayoutPanel.TabIndex = 17;
             // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.flowLayoutPanel2.AutoSize = true;
-            this.flowLayoutPanel2.BackColor = System.Drawing.SystemColors.Control;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(182, 180);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(0, 0);
-            this.flowLayoutPanel2.TabIndex = 9;
-            // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Location = new System.Drawing.Point(3, 183);
+            this.label2.Location = new System.Drawing.Point(3, 177);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(359, 2);
             this.label2.TabIndex = 10;
@@ -165,7 +155,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.button2, 2, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(59, 188);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(59, 182);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -200,8 +190,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(367, 223);
             this.Controls.Add(this.multipleTransactionFlowLayoutPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(383, 524);
             this.MinimizeBox = false;
@@ -226,7 +218,6 @@
         private SingleTransaction.SingleTransactionUserControls.AccountInfoUserControl accountInfoUserControl1;
         private System.Windows.Forms.Button addedTransactionButton;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button button1;
