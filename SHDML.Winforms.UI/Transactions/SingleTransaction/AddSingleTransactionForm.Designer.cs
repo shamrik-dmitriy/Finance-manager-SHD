@@ -81,9 +81,9 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBox1.Location = new System.Drawing.Point(3, 35);
             this.textBox1.Name = "textBox1";
+            this.textBox1.PlaceholderText = "Введите название транзакции";
             this.textBox1.Size = new System.Drawing.Size(359, 23);
             this.textBox1.TabIndex = 2;
-            this.textBox1.Text = "Введите название транзакции";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
@@ -92,9 +92,9 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             this.textBox2.Location = new System.Drawing.Point(3, 64);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
+            this.textBox2.PlaceholderText = "Введите описание транзакции";
             this.textBox2.Size = new System.Drawing.Size(359, 39);
             this.textBox2.TabIndex = 4;
-            this.textBox2.Text = "Введите описание транзакции";
             // 
             // label1
             // 
