@@ -41,13 +41,17 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.addReceiptButton = new System.Windows.Forms.Button();
             this.cancelReceipButton = new System.Windows.Forms.Button();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.totalSumTransactionUserControl = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.SumTransactionUserControl();
             this.multipleTransactionFlowLayoutPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // multipleTransactionFlowLayoutPanel
             // 
-            this.multipleTransactionFlowLayoutPanel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.multipleTransactionFlowLayoutPanel.AutoSize = true;
             this.multipleTransactionFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.multipleTransactionFlowLayoutPanel.BackColor = System.Drawing.SystemColors.Control;
@@ -60,11 +64,12 @@
             this.multipleTransactionFlowLayoutPanel.Controls.Add(this.label1);
             this.multipleTransactionFlowLayoutPanel.Controls.Add(this.ItemsFlowLayoutPanel);
             this.multipleTransactionFlowLayoutPanel.Controls.Add(this.label2);
+            this.multipleTransactionFlowLayoutPanel.Controls.Add(this.totalSumTransactionUserControl);
             this.multipleTransactionFlowLayoutPanel.Controls.Add(this.tableLayoutPanel1);
             this.multipleTransactionFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.multipleTransactionFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.multipleTransactionFlowLayoutPanel.Name = "multipleTransactionFlowLayoutPanel";
-            this.multipleTransactionFlowLayoutPanel.Size = new System.Drawing.Size(366, 250);
+            this.multipleTransactionFlowLayoutPanel.Size = new System.Drawing.Size(366, 284);
             this.multipleTransactionFlowLayoutPanel.TabIndex = 7;
             // 
             // nameOfRetailertextBox
@@ -165,7 +170,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.Controls.Add(this.addReceiptButton, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.cancelReceipButton, 2, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 216);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 250);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -194,6 +199,51 @@
             this.cancelReceipButton.Text = "Отмена";
             this.cancelReceipButton.UseVisualStyleBackColor = true;
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.Controls.Add(this.button1, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(200, 100);
+            this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.AutoSize = true;
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(3, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(60, 94);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Сохранить";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.AutoSize = true;
+            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button2.Location = new System.Drawing.Point(135, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(62, 94);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Отмена";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // totalSumTransactionUserControl
+            // 
+            this.totalSumTransactionUserControl.AutoSize = true;
+            this.totalSumTransactionUserControl.Location = new System.Drawing.Point(3, 216);
+            this.totalSumTransactionUserControl.Name = "totalSumTransactionUserControl";
+            this.totalSumTransactionUserControl.Size = new System.Drawing.Size(357, 28);
+            this.totalSumTransactionUserControl.TabIndex = 21;
+            // 
             // MultipleTransactionForm
             // 
             this.AcceptButton = this.addReceiptButton;
@@ -203,7 +253,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.cancelReceipButton;
-            this.ClientSize = new System.Drawing.Size(367, 251);
+            this.ClientSize = new System.Drawing.Size(367, 282);
             this.Controls.Add(this.multipleTransactionFlowLayoutPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -217,6 +267,8 @@
             this.multipleTransactionFlowLayoutPanel.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,5 +289,9 @@
         private System.Windows.Forms.FlowLayoutPanel ItemsFlowLayoutPanel;
         private SingleTransaction.SingleTransactionUserControls.DateTransactionUserControl dateTransactionUserControl1;
         private SingleTransaction.SingleTransactionUserControls.SelectContrAgentUserControl selectContrAgentUserControl1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private SingleTransaction.SingleTransactionUserControls.SumTransactionUserControl totalSumTransactionUserControl;
     }
 }

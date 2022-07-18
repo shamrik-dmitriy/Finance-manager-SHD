@@ -18,6 +18,7 @@ namespace SHDML.Winforms.UI.Transactions.MultipleTransaction
         public MultipleTransactionForm()
         {
             InitializeComponent();
+            totalSumTransactionUserControl.IsEnabledSumField = false;
         }
         public MultipleTransactionForm(string typeTransactionOperations) : this()
         {
@@ -33,11 +34,14 @@ namespace SHDML.Winforms.UI.Transactions.MultipleTransaction
             var newItem = new ItemOfMultipleTransaction(addedTransaction.SingleTransactionDTO.Name, addedTransaction.SingleTransactionDTO.Sum.ToString());
             newItem.DeleteItemFromReceipt += new EventHandler(DeleteTransaction);
             ItemsFlowLayoutPanel.Controls.Add(newItem);
+
+            totalSumTransactionUserControl.Sum += addedTransaction.SingleTransactionDTO.Sum;
         }
 
         private void DeleteTransaction(object sender, EventArgs e)
         {
             var s = sender as ItemOfMultipleTransaction;
+            totalSumTransactionUserControl.Sum -= s.Price;
             ItemsFlowLayoutPanel.Controls.Remove(s);
             this.Invalidate();
             this.Refresh();

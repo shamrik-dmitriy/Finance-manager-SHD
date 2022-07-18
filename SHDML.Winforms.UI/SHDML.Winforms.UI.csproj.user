@@ -34,7 +34,7 @@
     <Compile Update="Transactions\SingleTransaction\SingleTransactionUserControls\SelectTypeTransactionUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Transactions\SingleTransaction\SingleTransactionUserControls\SumTransactionUserControl.cs">
+    <Compile Update="Transactions\UserControlsOfTransactions\SumTransactionUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControls\Authorization\UserControlAuth.cs">

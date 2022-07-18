@@ -66,6 +66,6 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
         #endregion
 
         private System.Windows.Forms.Label labelSum;
-        protected internal System.Windows.Forms.TextBox sumTextBox;
+        private System.Windows.Forms.TextBox sumTextBox;
     }
 }

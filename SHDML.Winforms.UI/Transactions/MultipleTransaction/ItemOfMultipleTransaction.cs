@@ -16,9 +16,16 @@ namespace SHDML.Winforms.UI.Transactions.MultipleTransaction
         {
             InitializeComponent();
         }
+        public decimal Price
+        {
+            get
+            {
+                return Convert.ToDecimal(pricelProductName.Text.Trim(' ', '₽'));
+            }
+        }
         public ItemOfMultipleTransaction(string productName, string price) : this()
         {
-            labelProductName.Text = productName;
+            productNameLabel.Text = productName;
             pricelProductName.Text = price + " ₽";
         }
 

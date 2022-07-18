@@ -31,7 +31,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pricelProductName = new System.Windows.Forms.Label();
-            this.labelProductName = new System.Windows.Forms.Label();
+            this.productNameLabel = new System.Windows.Forms.Label();
             this.deleteTransactionButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -51,7 +51,7 @@
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel1.AutoSize = true;
             this.panel1.Controls.Add(this.pricelProductName);
-            this.panel1.Controls.Add(this.labelProductName);
+            this.panel1.Controls.Add(this.productNameLabel);
             this.panel1.Location = new System.Drawing.Point(36, 3);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
@@ -69,16 +69,16 @@
             this.pricelProductName.TabIndex = 1;
             this.pricelProductName.Text = "125.00 Р";
             // 
-            // labelProductName
+            // productNameLabel
             // 
-            this.labelProductName.AutoEllipsis = true;
-            this.labelProductName.AutoSize = true;
-            this.labelProductName.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelProductName.Location = new System.Drawing.Point(3, 10);
-            this.labelProductName.Name = "labelProductName";
-            this.labelProductName.Size = new System.Drawing.Size(149, 15);
-            this.labelProductName.TabIndex = 0;
-            this.labelProductName.Text = "Молоко Лужайкино 2.5%";
+            this.productNameLabel.AutoEllipsis = true;
+            this.productNameLabel.AutoSize = true;
+            this.productNameLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.productNameLabel.Location = new System.Drawing.Point(3, 10);
+            this.productNameLabel.Name = "productNameLabel";
+            this.productNameLabel.Size = new System.Drawing.Size(149, 15);
+            this.productNameLabel.TabIndex = 0;
+            this.productNameLabel.Text = "Молоко Лужайкино 2.5%";
             // 
             // deleteTransactionButton
             // 
@@ -117,7 +117,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label pricelProductName;
-        private System.Windows.Forms.Label labelProductName;
+        private System.Windows.Forms.Label productNameLabel;
         private System.Windows.Forms.Button deleteTransactionButton;
     }
 }
