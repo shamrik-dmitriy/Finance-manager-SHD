@@ -63,7 +63,7 @@
             this.multipleTransactionFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.multipleTransactionFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.multipleTransactionFlowLayoutPanel.Name = "multipleTransactionFlowLayoutPanel";
-            this.multipleTransactionFlowLayoutPanel.Size = new System.Drawing.Size(367, 450);
+            this.multipleTransactionFlowLayoutPanel.Size = new System.Drawing.Size(367, 223);
             this.multipleTransactionFlowLayoutPanel.TabIndex = 7;
             this.multipleTransactionFlowLayoutPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
@@ -87,9 +87,10 @@
             // 
             // accountInfoUserControl1
             // 
+            this.accountInfoUserControl1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.accountInfoUserControl1.AutoSize = true;
             this.accountInfoUserControl1.LabelOfTypeOperation = "Зачислить на счёт";
-            this.accountInfoUserControl1.Location = new System.Drawing.Point(3, 66);
+            this.accountInfoUserControl1.Location = new System.Drawing.Point(4, 66);
             this.accountInfoUserControl1.Name = "accountInfoUserControl1";
             this.accountInfoUserControl1.Size = new System.Drawing.Size(357, 28);
             this.accountInfoUserControl1.TabIndex = 15;
@@ -97,8 +98,9 @@
             // 
             // dateTransactionUserControl1
             // 
+            this.dateTransactionUserControl1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dateTransactionUserControl1.AutoSize = true;
-            this.dateTransactionUserControl1.Location = new System.Drawing.Point(3, 100);
+            this.dateTransactionUserControl1.Location = new System.Drawing.Point(4, 100);
             this.dateTransactionUserControl1.Name = "dateTransactionUserControl1";
             this.dateTransactionUserControl1.Size = new System.Drawing.Size(357, 28);
             this.dateTransactionUserControl1.TabIndex = 19;
@@ -197,9 +199,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(367, 450);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(367, 223);
             this.Controls.Add(this.multipleTransactionFlowLayoutPanel);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(383, 524);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(383, 262);
             this.Name = "MultipleTransactionForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MultipleTransactionForm";
             this.multipleTransactionFlowLayoutPanel.ResumeLayout(false);
             this.multipleTransactionFlowLayoutPanel.PerformLayout();

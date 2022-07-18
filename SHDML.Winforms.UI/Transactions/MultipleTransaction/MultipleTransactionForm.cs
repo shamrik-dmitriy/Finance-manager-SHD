@@ -35,6 +35,9 @@ namespace SHDML.Winforms.UI.Transactions.MultipleTransaction
         {
             var s = sender as ItemOfMultipleTransaction;
             ItemsFlowLayoutPanel.Controls.Remove(s);
+            this.Invalidate();
+            this.Refresh();
+            this.Update();
         }
 
 
