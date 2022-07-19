@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SHDML.Presenters
+namespace ClassLibrary1
 {
     public class Class1
     {

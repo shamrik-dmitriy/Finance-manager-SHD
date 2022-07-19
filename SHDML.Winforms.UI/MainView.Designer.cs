@@ -38,7 +38,7 @@ namespace SHDML.Winforms.UI
             this.buttonTransactionReview = new System.Windows.Forms.Button();
             this.buttonCategories = new System.Windows.Forms.Button();
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.button1 = new System.Windows.Forms.Button();
+            this.seeCategoriesButton = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainerView = new System.Windows.Forms.SplitContainer();
@@ -117,7 +117,7 @@ namespace SHDML.Winforms.UI
             this.flowLayoutPanel1.Controls.Add(this.buttonTransactionReview);
             this.flowLayoutPanel1.Controls.Add(this.buttonCategories);
             this.flowLayoutPanel1.Controls.Add(this.splitter1);
-            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Controls.Add(this.seeCategoriesButton);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -146,6 +146,7 @@ namespace SHDML.Winforms.UI
             this.userControlAuth.Name = "userControlAuth";
             this.userControlAuth.Size = new System.Drawing.Size(309, 70);
             this.userControlAuth.TabIndex = 1;
+            this.userControlAuth.Visible = false;
             // 
             // buttonSign
             // 
@@ -156,6 +157,7 @@ namespace SHDML.Winforms.UI
             this.buttonSign.TabIndex = 1;
             this.buttonSign.Text = "Войти";
             this.buttonSign.UseVisualStyleBackColor = true;
+            this.buttonSign.Visible = false;
             this.buttonSign.Click += new System.EventHandler(this.Sign_Click);
             // 
             // splitter2
@@ -186,6 +188,7 @@ namespace SHDML.Winforms.UI
             this.buttonCategories.TabIndex = 7;
             this.buttonCategories.Text = "Обзор счетов";
             this.buttonCategories.UseVisualStyleBackColor = true;
+            this.buttonCategories.Visible = false;
             // 
             // splitter1
             // 
@@ -195,15 +198,17 @@ namespace SHDML.Winforms.UI
             this.splitter1.TabIndex = 20;
             this.splitter1.TabStop = false;
             // 
-            // button1
+            // seeCategoriesButton
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(588, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 70);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "Категории";
-            this.button1.UseVisualStyleBackColor = true;
+            this.seeCategoriesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.seeCategoriesButton.Location = new System.Drawing.Point(588, 3);
+            this.seeCategoriesButton.Name = "seeCategoriesButton";
+            this.seeCategoriesButton.Size = new System.Drawing.Size(75, 70);
+            this.seeCategoriesButton.TabIndex = 21;
+            this.seeCategoriesButton.Text = "Категории";
+            this.seeCategoriesButton.UseVisualStyleBackColor = true;
+            this.seeCategoriesButton.Visible = false;
+            this.seeCategoriesButton.Click += new System.EventHandler(this.seeCategoriesButton_Click);
             // 
             // menuStrip1
             // 
@@ -299,7 +304,7 @@ namespace SHDML.Winforms.UI
             this.userControlCategoryAccount1.MaximumSize = new System.Drawing.Size(310, 250);
             this.userControlCategoryAccount1.MinimumSize = new System.Drawing.Size(310, 10);
             this.userControlCategoryAccount1.Name = "userControlCategoryAccount1";
-            this.userControlCategoryAccount1.Size = new System.Drawing.Size(310, 46);
+            this.userControlCategoryAccount1.Size = new System.Drawing.Size(310, 49);
             this.userControlCategoryAccount1.TabIndex = 0;
             // 
             // userControlCategoryAccount2
@@ -307,11 +312,11 @@ namespace SHDML.Winforms.UI
             this.userControlCategoryAccount2.AutoScroll = true;
             this.userControlCategoryAccount2.AutoSize = true;
             this.userControlCategoryAccount2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.userControlCategoryAccount2.Location = new System.Drawing.Point(3, 55);
+            this.userControlCategoryAccount2.Location = new System.Drawing.Point(3, 58);
             this.userControlCategoryAccount2.MaximumSize = new System.Drawing.Size(310, 250);
             this.userControlCategoryAccount2.MinimumSize = new System.Drawing.Size(310, 10);
             this.userControlCategoryAccount2.Name = "userControlCategoryAccount2";
-            this.userControlCategoryAccount2.Size = new System.Drawing.Size(310, 46);
+            this.userControlCategoryAccount2.Size = new System.Drawing.Size(310, 49);
             this.userControlCategoryAccount2.TabIndex = 1;
             // 
             // userControlCategoryAccount3
@@ -319,11 +324,11 @@ namespace SHDML.Winforms.UI
             this.userControlCategoryAccount3.AutoScroll = true;
             this.userControlCategoryAccount3.AutoSize = true;
             this.userControlCategoryAccount3.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.userControlCategoryAccount3.Location = new System.Drawing.Point(3, 107);
+            this.userControlCategoryAccount3.Location = new System.Drawing.Point(3, 113);
             this.userControlCategoryAccount3.MaximumSize = new System.Drawing.Size(310, 250);
             this.userControlCategoryAccount3.MinimumSize = new System.Drawing.Size(310, 10);
             this.userControlCategoryAccount3.Name = "userControlCategoryAccount3";
-            this.userControlCategoryAccount3.Size = new System.Drawing.Size(310, 46);
+            this.userControlCategoryAccount3.Size = new System.Drawing.Size(310, 49);
             this.userControlCategoryAccount3.TabIndex = 2;
             // 
             // userControlCategoryAccount4
@@ -331,11 +336,11 @@ namespace SHDML.Winforms.UI
             this.userControlCategoryAccount4.AutoScroll = true;
             this.userControlCategoryAccount4.AutoSize = true;
             this.userControlCategoryAccount4.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.userControlCategoryAccount4.Location = new System.Drawing.Point(3, 159);
+            this.userControlCategoryAccount4.Location = new System.Drawing.Point(3, 168);
             this.userControlCategoryAccount4.MaximumSize = new System.Drawing.Size(310, 250);
             this.userControlCategoryAccount4.MinimumSize = new System.Drawing.Size(310, 10);
             this.userControlCategoryAccount4.Name = "userControlCategoryAccount4";
-            this.userControlCategoryAccount4.Size = new System.Drawing.Size(310, 46);
+            this.userControlCategoryAccount4.Size = new System.Drawing.Size(310, 49);
             this.userControlCategoryAccount4.TabIndex = 3;
             // 
             // panel3
@@ -454,14 +459,14 @@ namespace SHDML.Winforms.UI
             this.ColumnDelete.Name = "ColumnDelete";
             this.ColumnDelete.Text = "Удалить";
             // 
-            // Form1
+            // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1208, 627);
             this.Controls.Add(this.splitContainerMainDesktop);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "MainView";
             this.Text = "Form1";
             this.splitContainerMainDesktop.Panel1.ResumeLayout(false);
             this.splitContainerMainDesktop.Panel1.PerformLayout();
@@ -509,7 +514,7 @@ namespace SHDML.Winforms.UI
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.SplitContainer splitContainerView;
         private System.Windows.Forms.Splitter splitter1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button seeCategoriesButton;
         private UserControls.Wallet.UserControlTotalSumAccountsInfo userControlAccountInfo1;
         private UserControls.UserControlAuth userControlAuth;
         private System.Windows.Forms.Panel panel2;

@@ -1,4 +1,5 @@
-﻿using SHDML.Winforms.UI.Transactions.MultipleTransaction;
+﻿using SHDML.Presenters;
+using SHDML.Winforms.UI.Transactions.MultipleTransaction;
 using SHDML.Winforms.UI.Transactions.SingleTransaction;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace SHDML.Winforms.UI
 {
-    public partial class MainView : Form
+    public partial class MainView : Form, IMainView
     {
         public MainView()
         {
@@ -64,6 +65,11 @@ namespace SHDML.Winforms.UI
         private void buttonAddReceipt_Click(object sender, EventArgs e)
         {
             new MultipleTransactionForm("Добавить группу транзакций (чек)").ShowDialog();
+        }
+
+        private void seeCategoriesButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
