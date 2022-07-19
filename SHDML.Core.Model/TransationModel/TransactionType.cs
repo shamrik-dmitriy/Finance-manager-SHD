@@ -11,7 +11,7 @@ namespace SHDML.CORE.MODEL.TransationModel
         Income = 0,
         
         /// <summary>
-        ///     Рвсход
+        ///     Расход
         /// </summary>
         Expense = 1,
         
