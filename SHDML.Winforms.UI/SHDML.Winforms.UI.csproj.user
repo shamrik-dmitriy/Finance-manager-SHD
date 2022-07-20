@@ -4,37 +4,37 @@
     <Compile Update="MainView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Transactions\MultipleTransaction\ItemOfMultipleTransaction.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Transactions\MultipleTransaction\MultipleTransactionForm.cs">
+    <Compile Update="Transactions\MultipleTransactionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Transactions\SingleTransaction\SingleTransactionForm.cs">
+    <Compile Update="UserControls\Transactions\ItemOfMultipleTransaction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Transactions\SingleTransactionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Transactions\UserControlsOfTransactions\AccountInfoUserControl.cs">
+    <Compile Update="UserControls\Transactions\UserControlsOfTransactions\AccountInfoUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Transactions\UserControlsOfTransactions\DateTransactionUserControl.cs">
+    <Compile Update="UserControls\Transactions\UserControlsOfTransactions\DateTransactionUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Transactions\SingleTransaction\SingleTransactionUserControls\SelectAccountUserControl.cs">
+    <Compile Update="UserControls\Transactions\SingleTransactionUserControls\SelectAccountUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Transactions\SingleTransaction\SingleTransactionUserControls\SelectCategoryUserControl.cs">
+    <Compile Update="UserControls\Transactions\SingleTransactionUserControls\SelectCategoryUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Transactions\UserControlsOfTransactions\SelectContrAgentUserControl.cs">
+    <Compile Update="UserControls\Transactions\UserControlsOfTransactions\SelectContrAgentUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Transactions\UserControlsOfTransactions\SelectFamilyMemberUserControl.cs">
+    <Compile Update="UserControls\Transactions\UserControlsOfTransactions\SelectFamilyMemberUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Transactions\SingleTransaction\SingleTransactionUserControls\SelectTypeTransactionUserControl.cs">
+    <Compile Update="UserControls\Transactions\SingleTransactionUserControls\SelectTypeTransactionUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Transactions\UserControlsOfTransactions\SumTransactionUserControl.cs">
+    <Compile Update="UserControls\Transactions\UserControlsOfTransactions\SumTransactionUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControls\Authorization\UserControlAuth.cs">

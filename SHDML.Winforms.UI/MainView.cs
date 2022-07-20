@@ -1,5 +1,4 @@
-﻿using SHDML.Presenters;
-using SHDML.Winforms.UI.Transactions.MultipleTransaction;
+﻿using SHDML.Winforms.UI.Transactions.MultipleTransaction;
 using SHDML.Winforms.UI.Transactions.SingleTransaction;
 using System;
 using System.Collections.Generic;
@@ -13,7 +12,7 @@ using System.Windows.Forms;
 
 namespace SHDML.Winforms.UI
 {
-    public partial class MainView : Form, IMainView
+    public partial class MainView : Form
     {
         public MainView()
         {

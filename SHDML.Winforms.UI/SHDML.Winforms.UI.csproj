@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SHDML.BLL.DTO\SHDML.BLL.DTO.csproj" />
-    <ProjectReference Include="..\SHDML.Presenters\SHDML.Presenters.csproj" />
   </ItemGroup>
 
   <ItemGroup>
