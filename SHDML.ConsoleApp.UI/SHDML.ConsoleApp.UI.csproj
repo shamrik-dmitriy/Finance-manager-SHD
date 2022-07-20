@@ -7,7 +7,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\SHDML.CORE.JSON\SHDML.CORE.JSON.csproj" />
-      <ProjectReference Include="..\SHDML.Core.Model\SHDML.Core.Model.csproj" />
+      <ProjectReference Include="..\SHDML.Core.Model\SHDML.Core.Model_Old.csproj" />
     </ItemGroup>
 
 </Project>
