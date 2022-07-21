@@ -20,7 +20,7 @@ namespace FM.SHDML.Core.Models.TransactionModels
 
         string Sum { get; set; }
 
-        DateTime Date { get; set; }
+        string Date { get; set; }
 
         string Category { get; set; }
 

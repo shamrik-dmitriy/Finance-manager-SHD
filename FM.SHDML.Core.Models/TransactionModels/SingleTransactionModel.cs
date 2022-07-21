@@ -21,7 +21,7 @@ namespace FM.SHDML.Core.Models.TransactionModels
         public string Sum { get; set; }
 
         [Required(ErrorMessage = "Укажите дату совершения транзакции")]
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
 
         public string Category { get; set; }
 
