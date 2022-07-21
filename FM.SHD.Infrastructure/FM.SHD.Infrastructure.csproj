@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FM.SHD.Services\FM.SHD.Services.csproj" />
     <ProjectReference Include="..\FM.SHDML.Core.Models\FM.SHDML.Core.Models.csproj" />
   </ItemGroup>
 

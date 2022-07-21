@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32630.194
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32516.85
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{221AE0E4-D789-44EA-9CF3-93D1EBE66B57}"
 EndProject
@@ -33,7 +33,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FM.SHD.Services", "FM.SHD.S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FM.SHD.Infrastructure", "FM.SHD.Infrastructure\FM.SHD.Infrastructure.csproj", "{D48AD59B-5F4F-4F84-A477-AA588F9684CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FM.SHD.Services.Tests", "FM.SHD.Services.Tests\FM.SHD.Services.Tests.csproj", "{DC30D91B-BD2B-49C6-ACBB-29A4735C4E2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FM.SHD.Services.Tests", "FM.SHD.Services.Tests\FM.SHD.Services.Tests.csproj", "{DC30D91B-BD2B-49C6-ACBB-29A4735C4E2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FM.SHD.Infastructure.Impl", "FM.SHD.Infastructure.Impl\FM.SHD.Infastructure.Impl.csproj", "{2E983435-1E3E-4179-A439-071C627749D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FM.SHD.Infrastructure.Dal", "FM.SHD.Infrastructure.Dal\FM.SHD.Infrastructure.Dal.csproj", "{7A7AE49C-1C3A-4C1A-80C0-AD6AC4E35F4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +85,14 @@ Global
 		{DC30D91B-BD2B-49C6-ACBB-29A4735C4E2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC30D91B-BD2B-49C6-ACBB-29A4735C4E2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC30D91B-BD2B-49C6-ACBB-29A4735C4E2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E983435-1E3E-4179-A439-071C627749D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E983435-1E3E-4179-A439-071C627749D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E983435-1E3E-4179-A439-071C627749D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E983435-1E3E-4179-A439-071C627749D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A7AE49C-1C3A-4C1A-80C0-AD6AC4E35F4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A7AE49C-1C3A-4C1A-80C0-AD6AC4E35F4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A7AE49C-1C3A-4C1A-80C0-AD6AC4E35F4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A7AE49C-1C3A-4C1A-80C0-AD6AC4E35F4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,6 +108,8 @@ Global
 		{1E92E5FD-2586-4120-B0A6-FA9769B178D3} = {62F4F71A-D81C-4804-A1D1-2FC387964DE9}
 		{DC89589F-69CB-4BC3-9B30-2276F1E670FC} = {07E270EB-C0D5-4298-BDFF-A2509EB941FA}
 		{D48AD59B-5F4F-4F84-A477-AA588F9684CF} = {A5AB77FA-53AB-479C-9CEC-11111ECEB8E9}
+		{2E983435-1E3E-4179-A439-071C627749D1} = {A5AB77FA-53AB-479C-9CEC-11111ECEB8E9}
+		{7A7AE49C-1C3A-4C1A-80C0-AD6AC4E35F4F} = {A5AB77FA-53AB-479C-9CEC-11111ECEB8E9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {113471EA-60C2-4820-9880-80921366C122}

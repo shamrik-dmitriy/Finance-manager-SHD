@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FM.SHD.Infrastructure\FM.SHD.Infrastructure.csproj" />
     <ProjectReference Include="..\FM.SHD.Services\FM.SHD.Services.csproj" />
   </ItemGroup>
 
