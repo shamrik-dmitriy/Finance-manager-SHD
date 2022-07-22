@@ -5,8 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.17" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FM.SHD.Infrastructure.Dal\FM.SHD.Infrastructure.Dal.csproj" />
-    <ProjectReference Include="..\FM.SHD.Infrastructure\FM.SHD.Infrastructure.csproj" />
+    <ProjectReference Include="..\FM.SHD.Services\FM.SHD.Services.csproj" />
   </ItemGroup>
 
 </Project>

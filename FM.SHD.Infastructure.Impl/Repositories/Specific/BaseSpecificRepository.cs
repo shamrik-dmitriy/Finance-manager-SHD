@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FM.SHD.Infrastructure.DataAccess.Repositories.Specific
+namespace FM.SHD.Infrastructure.Impl.Repositories.Specific
 {
     public abstract class BaseSpecificRepository
     {

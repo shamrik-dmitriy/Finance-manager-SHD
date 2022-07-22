@@ -1,4 +1,4 @@
-using FM.SHD.Infrastructure.DataAccess.Repositories.Specific.SingleTransaction;
+using FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction;
 using FM.SHD.Services.CommonServices;
 using FM.SHDML.Core.Models.TransactionModels;
 using Newtonsoft.Json.Linq;
@@ -25,7 +25,7 @@ namespace FM.SHD.Services.Tests
         public SingleTransactionDataAccessValidationTests(ITestOutputHelper testOutputHelper)
         {
             _testOutputHelper = testOutputHelper;
-            _connectionString = @"DataSource=C:\Repositories\Finance-manager-SHD\db\default-db.db;";
+            _connectionString = @"DataSource=A:\Repositories\SHDML.FINANCECHECKER\db\default-db.db;";
             _singleTransactionServices = new SingleTransactionServices.SingleTransactionServices(new SingleTransactionRepository(_connectionString), new ModelValidator());
         }
 
@@ -54,8 +54,12 @@ namespace FM.SHD.Services.Tests
             {
                 _singleTransactionServices.Add(singleTransaction);
             }
-            catch { }
-          //  finally { _testOutputHelper.WriteLine(); }
+            catch (Exception exception)
+            {
+                WriteExceptionTestResult(exception);
+
+            }
+            //  finally { _testOutputHelper.WriteLine(); }
 
             //var exception = Record.Exception(() => _singleTransactionServicesFixutre.SingleTransactionServices.ValidateModel(_singleTransactionServicesFixutre.SingleTransactionModel));
 
@@ -70,23 +74,23 @@ namespace FM.SHD.Services.Tests
 
         #region Helper Methods
 
-        /*  private void WriteExceptionTestResult(Exception exception)
-          {
-              if (exception != null)
-              {
-                  _testOutputHelper.WriteLine("****** Возникла одна или несколько ошибок: ******");
-                  _testOutputHelper.WriteLine(exception.Message);
-              }
-              var sBuilder = new StringBuilder();
-              JObject jObject = JObject.FromObject(_singleTransactionServicesFixutre.SingleTransactionModel);
-              sBuilder.AppendLine("****** Нет ошибок ******");
-              foreach (var jProp in jObject.Properties())
-              {
-                  sBuilder.Append(jProp.Name).Append(" ---> ").Append(jProp.Value).AppendLine();
-              }
-              _testOutputHelper.WriteLine(sBuilder.ToString());
-          }
-          */
+        private void WriteExceptionTestResult(Exception exception)
+        {
+            if (exception != null)
+            {
+                _testOutputHelper.WriteLine("****** Возникла одна или несколько ошибок: ******");
+                _testOutputHelper.WriteLine(exception.Message);
+            }
+           /* var sBuilder = new StringBuilder();
+            JObject jObject = JObject.FromObject(_singleTransactionServicesFixutre.SingleTransactionModel);
+            sBuilder.AppendLine("****** Нет ошибок ******");
+            foreach (var jProp in jObject.Properties())
+            {
+                sBuilder.Append(jProp.Name).Append(" ---> ").Append(jProp.Value).AppendLine();
+            }
+            _testOutputHelper.WriteLine(sBuilder.ToString());*/
+        }
+
         #endregion
     }
 }

@@ -120,10 +120,11 @@ namespace FM.SHD.Infastructure.Impl.Providers.Sqlite
         {
             using (SqliteCommand command = CreateCommand(parameters))
             {
-                command.CommandText = sqlCommand + " returning id";
+                command.CommandText = sqlCommand + " SELECT last_insert_rowid();";
                 command.CommandType = CommandType.Text;
                 try
                 {
+                    
                     using (new LongRunningQueryDetector(() => sqlCommand, () => parameters))
                         return Convert.ToInt64(command.ExecuteScalar());
                 }
