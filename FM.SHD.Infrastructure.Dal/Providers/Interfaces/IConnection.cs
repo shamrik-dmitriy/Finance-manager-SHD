@@ -16,6 +16,6 @@ namespace FM.SHD.Infrastructure.Dal.Providers.Interfaces
         /// <summary>
         ///     Создать транзакцию и работать с ней
         /// </summary>
-        ITransaction Transaction { get; }
+        ITransaction BeginTransaction();
     }
 }

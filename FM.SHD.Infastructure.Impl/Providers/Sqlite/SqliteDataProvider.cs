@@ -1,17 +1,26 @@
-﻿using FM.SHD.Infrastructure.Dal.Providers;
+﻿using FM.SHD.Infastructure.Impl.DataProvider;
+using FM.SHD.Infrastructure.Dal.Providers;
 using FM.SHD.Infrastructure.Dal.Providers.Interfaces;
 using Microsoft.Data.Sqlite;
 using System;
 using System.Data;
 
-namespace FM.SHD.Infastructure.Impl.DataProvider
+namespace FM.SHD.Infastructure.Impl.Providers.Sqlite
 {
     public class SqliteDataProvider : IDataProvider
     {
+        #region Private member variables
+
         private readonly SqliteConnection _connection;
         private readonly SqliteTransaction _transaction;
 
+        #endregion
+
+        #region Public properties
+
         public SqliteConnection Connection => _connection;
+
+        #endregion 
 
         #region Constructors
 
@@ -34,6 +43,29 @@ namespace FM.SHD.Infastructure.Impl.DataProvider
         #endregion
 
         #region Public methods
+
+        public IDataReader CreateReader(string sql, params DataParameter[] parameters)
+        {
+            using (SqliteCommand sqliteCommand = CreateCommand(parameters))
+            {
+                sqliteCommand.CommandText = sql;
+                sqliteCommand.CommandType = CommandType.Text;
+
+                try
+                {
+                    using (new LongRunningQueryDetector(() => sql, () => parameters))
+                        return sqliteCommand.ExecuteReader();
+                }
+                catch (SqliteException sqliteException)
+                {
+                    throw new DataProviderException($"Ошибка при выполнении запроса", sqliteException);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
 
         public DataTable ExecuteQuery(string sql, int startIndex, int count, params DataParameter[] parameters)
         {
@@ -135,9 +167,8 @@ namespace FM.SHD.Infastructure.Impl.DataProvider
         private SqliteCommand CreateCommand(params DataParameter[] parameters)
         {
             OpenConnection();
-
             var command = Connection.CreateCommand();
-
+            
             if (_transaction != null)
                 command.Transaction = _transaction;
 

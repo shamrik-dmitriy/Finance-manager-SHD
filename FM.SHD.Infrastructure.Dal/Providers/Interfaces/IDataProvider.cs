@@ -13,5 +13,6 @@ namespace FM.SHD.Infrastructure.Dal.Providers.Interfaces
         void ExecuteNonQuery(string sqlCommand, params DataParameter[] parameters);
         object ExecuteScalar(string sql, params DataParameter[] parameters);
         long ExecuteSqlInsertCommand(string sqlCommand, params DataParameter[] parameters);
+        IDataReader CreateReader(string sql, params DataParameter[] parameters);
     }
 }

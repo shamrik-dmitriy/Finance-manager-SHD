@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FM.SHD.Infrastructure.Dal.Providers
+namespace FM.SHD.Infrastructure.Dal.Providers.DataBaseParameters
 {
+    [Obsolete("Класс некорректно реализован. Обдумать реализацию для всех БД")]
     public class DataBaseParameters
     {
         #region Public properties
@@ -60,6 +61,11 @@ namespace FM.SHD.Infrastructure.Dal.Providers
             Password = password;
             Server = server;
             Port = port;
+        }
+
+        public string ToString()
+        {
+            return "";
         }
 
         #endregion
