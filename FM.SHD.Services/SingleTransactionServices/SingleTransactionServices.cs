@@ -50,5 +50,10 @@ namespace FM.SHD.Services.SingleTransactionServices
             _modelValidator.ValidateModel(singleTransactionModel);
             // Тут вызываем дополнительную валидацию
         }
+
+        public IEnumerable<ISingleTransactionModel> GetAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

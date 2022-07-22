@@ -33,9 +33,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FM.SHD.Infrastructure", "FM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FM.SHD.Services.Tests", "FM.SHD.Services.Tests\FM.SHD.Services.Tests.csproj", "{DC30D91B-BD2B-49C6-ACBB-29A4735C4E2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FM.SHD.Infastructure.Impl", "FM.SHD.Infastructure.Impl\FM.SHD.Infastructure.Impl.csproj", "{2E983435-1E3E-4179-A439-071C627749D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FM.SHD.Infastructure.Impl", "FM.SHD.Infastructure.Impl\FM.SHD.Infastructure.Impl.csproj", "{2E983435-1E3E-4179-A439-071C627749D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FM.SHD.Infrastructure.Dal", "FM.SHD.Infrastructure.Dal\FM.SHD.Infrastructure.Dal.csproj", "{7A7AE49C-1C3A-4C1A-80C0-AD6AC4E35F4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FM.SHD.Infrastructure.Dal", "FM.SHD.Infrastructure.Dal\FM.SHD.Infrastructure.Dal.csproj", "{7A7AE49C-1C3A-4C1A-80C0-AD6AC4E35F4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
