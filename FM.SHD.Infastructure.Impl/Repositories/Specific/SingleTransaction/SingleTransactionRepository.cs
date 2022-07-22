@@ -13,11 +13,6 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
     {
         private readonly IDataProvider _sqliteDataProvider;
 
-        public SingleTransactionRepository()
-        {
-
-        }
-
         public SingleTransactionRepository(string connectionString)
         {
             _sqliteDataProvider = new SqliteConnectionFactory().CreateConnection(connectionString).DataProvider;
