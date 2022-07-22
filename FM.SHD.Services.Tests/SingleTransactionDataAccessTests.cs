@@ -69,6 +69,41 @@ namespace FM.SHD.Services.Tests
 
         }
 
+        [Fact]
+        public void ShouldSuccesDelTest()
+        {
+            var singleTransaction = new SingleTransactionModel()
+            {
+                Account = "Банковская карта",
+                Category = "Продукты",
+                Contragent = "АО ТАНДЕР",
+                Date = DateTime.Now.ToString(),
+                Description = "Вкусное молочко",
+                Name = "Молоко Лужайкино 2.5%",
+                Id = "1",
+                FamilyMember = "Дима",
+                Sum = "10.00",
+                Type = "Расход"
+            };
+
+            try
+            {
+                _singleTransactionServices.Delete(singleTransaction);
+            }
+            catch (Exception exception)
+            {
+                WriteExceptionTestResult(exception);
+
+            }
+            //  finally { _testOutputHelper.WriteLine(); }
+
+            //var exception = Record.Exception(() => _singleTransactionServicesFixutre.SingleTransactionServices.ValidateModel(_singleTransactionServicesFixutre.SingleTransactionModel));
+
+            //Assert.Null(exception);
+
+            //WriteExceptionTestResult(exception);
+
+        }
 
         #endregion
 

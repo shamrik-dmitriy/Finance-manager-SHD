@@ -40,7 +40,11 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
 
         public void Delete(ISingleTransactionModel singleTransactionModel)
         {
-            throw new NotImplementedException();
+            var sql = $"DELETE FROM SingleTransaction WHERE Id=@Id";
+            var dataparameters = new List<DataParameter>();
+            dataparameters.Add(new DataParameter("@Id", singleTransactionModel.Id));
+
+            _sqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
         }
 
         public void DeleteById(int singleTransactionId)
