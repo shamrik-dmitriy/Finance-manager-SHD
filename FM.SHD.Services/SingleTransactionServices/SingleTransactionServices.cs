@@ -53,7 +53,7 @@ namespace FM.SHD.Services.SingleTransactionServices
 
         public IEnumerable<ISingleTransactionModel> GetAll()
         {
-            throw new NotImplementedException();
+            return _singleTransactionRepository.GetAll();
         }
     }
 }

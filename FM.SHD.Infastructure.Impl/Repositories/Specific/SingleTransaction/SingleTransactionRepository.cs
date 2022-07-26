@@ -21,39 +21,52 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
 
         public long Add(ISingleTransactionModel singleTransactionModel)
         {
-            var sql = $"INSERT INTO SingleTransaction (Type, Name, Description, Account, Sum, Date, Category, Contragent, FamilyMember) " +
+            if (!CheckRecordIsExist(singleTransactionModel.Id))
+            {
+                var sql = $"INSERT INTO SingleTransaction (Type, Name, Description, Account, Sum, Date, Category, Contragent, FamilyMember) " +
                   $"VALUES (@Type, @Name, @Description, @Account, @Sum, @Date, @Category, @Contragent, @FamilyMember);";
 
-            var dataparameters = new List<DataParameter>();
-            dataparameters.Add(new DataParameter("@Type", singleTransactionModel.Type));
-            dataparameters.Add(new DataParameter("@Name", singleTransactionModel.Name));
-            dataparameters.Add(new DataParameter("@Description", singleTransactionModel.Description));
-            dataparameters.Add(new DataParameter("@Account", singleTransactionModel.Account));
-            dataparameters.Add(new DataParameter("@Sum", singleTransactionModel.Sum));
-            dataparameters.Add(new DataParameter("@Date", singleTransactionModel.Date));
-            dataparameters.Add(new DataParameter("@Category", singleTransactionModel.Category));
-            dataparameters.Add(new DataParameter("@Contragent", singleTransactionModel.Contragent));
-            dataparameters.Add(new DataParameter("@FamilyMember", singleTransactionModel.FamilyMember));
+                var dataparameters = new List<DataParameter>();
+                dataparameters.Add(new DataParameter("@Type", singleTransactionModel.Type));
+                dataparameters.Add(new DataParameter("@Name", singleTransactionModel.Name));
+                dataparameters.Add(new DataParameter("@Description", singleTransactionModel.Description));
+                dataparameters.Add(new DataParameter("@Account", singleTransactionModel.Account));
+                dataparameters.Add(new DataParameter("@Sum", singleTransactionModel.Sum));
+                dataparameters.Add(new DataParameter("@Date", singleTransactionModel.Date));
+                dataparameters.Add(new DataParameter("@Category", singleTransactionModel.Category));
+                dataparameters.Add(new DataParameter("@Contragent", singleTransactionModel.Contragent));
+                dataparameters.Add(new DataParameter("@FamilyMember", singleTransactionModel.FamilyMember));
 
-            return _sqliteDataProvider.ExecuteSqlInsertCommand(sql, dataparameters.ToArray());
+                return _sqliteDataProvider.ExecuteSqlInsertCommand(sql, dataparameters.ToArray());
+            }
+
+            throw new ArgumentException($"В хранилище уже есть запись с идентификатором {singleTransactionModel.Id}");
         }
 
         public void Delete(ISingleTransactionModel singleTransactionModel)
         {
-            var sql = $"DELETE FROM SingleTransaction WHERE Id=@Id;";
-            var dataparameters = new List<DataParameter>();
-            dataparameters.Add(new DataParameter("@Id", singleTransactionModel.Id));
+            if (CheckRecordIsExist(singleTransactionModel.Id))
+            {
+                var sql = $"DELETE FROM SingleTransaction WHERE Id=@Id;";
+                var dataparameters = new List<DataParameter>();
+                dataparameters.Add(new DataParameter("@Id", singleTransactionModel.Id));
 
-            _sqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
+                _sqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
+            }
+            throw new ArgumentException($"В хранилище отсутствует запись с идентификатором {singleTransactionModel.Id}");
         }
 
         public void DeleteById(int singleTransactionId)
         {
-            var sql = $"DELETE FROM SingleTransaction WHERE Id=@Id";
-            var dataparameters = new List<DataParameter>();
-            dataparameters.Add(new DataParameter("@Id", singleTransactionId));
+            if (CheckRecordIsExist(singleTransactionId))
+            {
+                var sql = $"DELETE FROM SingleTransaction WHERE Id=@Id";
+                var dataparameters = new List<DataParameter>();
+                dataparameters.Add(new DataParameter("@Id", singleTransactionId));
 
-            _sqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
+                _sqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
+            }
+            throw new ArgumentException($"В хранилище отсутствует запись с идентификатором {singleTransactionId}");
         }
 
         public IEnumerable<ISingleTransactionModel> GetAll()
@@ -85,55 +98,76 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
 
         public void Update(ISingleTransactionModel singleTransactionModel)
         {
+            if (CheckRecordIsExist(singleTransactionModel.Id))
+            {
+                var sql = $"UPDATE SingleTransaction SET " +
+                    $"Type = @Type, " +
+                    $"Name = @Name, " +
+                    $"Description = @Description, " +
+                    $"Account = @Account, " +
+                    $"Sum = @Sum, " +
+                    $"Date = @Date, " +
+                    $"Category = @Category, " +
+                    $"Contragent = @Contragent, " +
+                    $"FamilyMember = @FamilyMember " +
+                    $"WHERE Id = @Id;";
 
+                var dataparameters = new List<DataParameter>();
+                dataparameters.Add(new DataParameter("@Id", singleTransactionModel.Id));
+                dataparameters.Add(new DataParameter("@Type", singleTransactionModel.Type));
+                dataparameters.Add(new DataParameter("@Name", singleTransactionModel.Name));
+                dataparameters.Add(new DataParameter("@Description", singleTransactionModel.Description));
+                dataparameters.Add(new DataParameter("@Account", singleTransactionModel.Account));
+                dataparameters.Add(new DataParameter("@Sum", singleTransactionModel.Sum));
+                dataparameters.Add(new DataParameter("@Date", singleTransactionModel.Date));
+                dataparameters.Add(new DataParameter("@Category", singleTransactionModel.Category));
+                dataparameters.Add(new DataParameter("@Contragent", singleTransactionModel.Contragent));
+                dataparameters.Add(new DataParameter("@FamilyMember", singleTransactionModel.FamilyMember));
+
+                _sqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
+            }
+            throw new ArgumentException($"В хранилище отсутствует запись с идентификатором {singleTransactionModel.Id}");
         }
 
         SingleTransactionModel ISingleTransactionRepository.GetById(int id)
         {
-            /* var sql = "";
-             var singleTransactionModel = new SingleTransactionModel();
-             using (SqliteConnection sqliteConnection = new SqliteConnection(_connectionString))
-             {
-                 try
-                 {
-                     sqliteConnection.Open();
+            if (CheckRecordIsExist(id))
+            {
+                var sql = $"SELECT * FROM SingleTransaction WHERE Id = @Id;";
 
-                     using (SqliteCommand command = new SqliteCommand(sql, sqliteConnection))
-                     {
-                         command.CommandText = sql;
-                         command.Prepare();
-                         command.Parameters.Add(new SqliteParameter("@TransactionId", id));
+                var dataparameters = new List<DataParameter>();
+                dataparameters.Add(new DataParameter("@Id", id));
 
-                         bool isFind = false;
+                var transactionModel = new SingleTransactionModel();
 
-                         using (SqliteDataReader reader = command.ExecuteReader())
-                         {
-                             isFind = reader.HasRows;
-                             while (reader.Read())
-                             {
-                                 // TODO: Добавить вычитку в модель
-                             }
+                using (var reader = _sqliteDataProvider.CreateReader(sql, dataparameters.ToArray()))
+                {
+                    while (reader.Read())
+                    {
+                        transactionModel.Id = Int64.Parse(reader["Id"].ToString());
+                        transactionModel.Type = reader["Type"].ToString();
+                        transactionModel.Name = reader["Name"].ToString();
+                        transactionModel.Description = reader["Description"].ToString();
+                        transactionModel.Account = reader["Account"].ToString();
+                        transactionModel.Sum = reader["Sum"].ToString();
+                        transactionModel.Date = reader["Date"].ToString();
+                        transactionModel.Category = reader["Category"].ToString();
+                        transactionModel.Contragent = reader["Contragent"].ToString();
+                        transactionModel.FamilyMember = reader["FamilyMember"].ToString();
+                return transactionModel;
+                    }
+                }
 
-                         }
-                     }
-                 }
-                 catch (SqliteException sqliteException)
-                 {
-                     // Refactoring to custom exception
-                     throw new Exception(sqliteException.Message);
-                 }
-                 catch (Exception exception)
-                 {
-                     // Refactoring to custom exception
-                     throw new Exception(exception.Message);
-                 }
-                 finally
-                 {
-                     sqliteConnection.Close();
-                 }
-             }
-             return singleTransactionModel; ;*/
-            throw new NotImplementedException();
+            }
+            throw new ArgumentException($"В хранилище отсутствует запись с идентификатором {id}");
+        }
+
+        private bool CheckRecordIsExist(long singleTransactionId)
+        {
+            var dataparameters = new List<DataParameter>();
+            dataparameters.Add(new DataParameter("@Id", singleTransactionId));
+            var rowCount = Convert.ToInt32(_sqliteDataProvider.ExecuteScalar("SELECT COUNT(*) FROM SingleTransaction WHERE Id=@Id", dataparameters.ToArray()));
+            return rowCount > 0;
         }
     }
 }

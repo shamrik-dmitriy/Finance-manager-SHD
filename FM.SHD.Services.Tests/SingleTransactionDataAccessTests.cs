@@ -44,7 +44,7 @@ namespace FM.SHD.Services.Tests
                 Date = DateTime.Now.ToString(),
                 Description = "Вкусное молочко",
                 Name = "Молоко Лужайкино 2.5%",
-                Id = "1",
+                Id = 1,
                 FamilyMember = "Дима",
                 Sum = "10.00",
                 Type = "Расход"
@@ -57,15 +57,7 @@ namespace FM.SHD.Services.Tests
             catch (Exception exception)
             {
                 WriteExceptionTestResult(exception);
-
             }
-            //  finally { _testOutputHelper.WriteLine(); }
-
-            //var exception = Record.Exception(() => _singleTransactionServicesFixutre.SingleTransactionServices.ValidateModel(_singleTransactionServicesFixutre.SingleTransactionModel));
-
-            //Assert.Null(exception);
-
-            //WriteExceptionTestResult(exception);
 
         }
 
@@ -80,7 +72,7 @@ namespace FM.SHD.Services.Tests
                 Date = DateTime.Now.ToString(),
                 Description = "Вкусное молочко",
                 Name = "Молоко Лужайкино 2.5%",
-                Id = "1",
+                Id = 1,
                 FamilyMember = "Дима",
                 Sum = "10.00",
                 Type = "Расход"
@@ -95,14 +87,35 @@ namespace FM.SHD.Services.Tests
                 WriteExceptionTestResult(exception);
 
             }
-            //  finally { _testOutputHelper.WriteLine(); }
+        }
 
-            //var exception = Record.Exception(() => _singleTransactionServicesFixutre.SingleTransactionServices.ValidateModel(_singleTransactionServicesFixutre.SingleTransactionModel));
+        [Fact]
+        public void ShouldSuccesUpdateTest()
+        {
+            var s = _singleTransactionServices.GetById(3);
+            var singleTransaction = new SingleTransactionModel()
+            {
+                Account = "Банковская карта",
+                Category = "Продукты",
+                Contragent = "АО ТАНДЕР",
+                Date = DateTime.Now.ToString(),
+                Description = "Вкусное молочко",
+                Name = "Молоко Лужайкино 2.5%",
+                Id = 3,
+                FamilyMember = "Дима",
+                Sum = "10.00",
+                Type = "Расход"
+            };
 
-            //Assert.Null(exception);
+            try
+            {
+                _singleTransactionServices.Update(singleTransaction);
+            }
+            catch (Exception exception)
+            {
+                WriteExceptionTestResult(exception);
 
-            //WriteExceptionTestResult(exception);
-
+            }
         }
 
         #endregion
@@ -116,14 +129,14 @@ namespace FM.SHD.Services.Tests
                 _testOutputHelper.WriteLine("****** Возникла одна или несколько ошибок: ******");
                 _testOutputHelper.WriteLine(exception.Message);
             }
-           /* var sBuilder = new StringBuilder();
-            JObject jObject = JObject.FromObject(_singleTransactionServicesFixutre.SingleTransactionModel);
-            sBuilder.AppendLine("****** Нет ошибок ******");
-            foreach (var jProp in jObject.Properties())
-            {
-                sBuilder.Append(jProp.Name).Append(" ---> ").Append(jProp.Value).AppendLine();
-            }
-            _testOutputHelper.WriteLine(sBuilder.ToString());*/
+            /* var sBuilder = new StringBuilder();
+             JObject jObject = JObject.FromObject(_singleTransactionServicesFixutre.SingleTransactionModel);
+             sBuilder.AppendLine("****** Нет ошибок ******");
+             foreach (var jProp in jObject.Properties())
+             {
+                 sBuilder.Append(jProp.Name).Append(" ---> ").Append(jProp.Value).AppendLine();
+             }
+             _testOutputHelper.WriteLine(sBuilder.ToString());*/
         }
 
         #endregion

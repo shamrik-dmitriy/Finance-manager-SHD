@@ -74,7 +74,7 @@ namespace FM.SHD.Services.Tests
             _singleTransactionServicesFixutre.SingleTransactionModel.Date = DateTime.Now.ToString();
             _singleTransactionServicesFixutre.SingleTransactionModel.Description = "Вкусное молочко";
             _singleTransactionServicesFixutre.SingleTransactionModel.Name = "Молоко Лужайкино 2.5%";
-            _singleTransactionServicesFixutre.SingleTransactionModel.Id = "1";
+            _singleTransactionServicesFixutre.SingleTransactionModel.Id = 1;
             _singleTransactionServicesFixutre.SingleTransactionModel.FamilyMember = "Дима";
             _singleTransactionServicesFixutre.SingleTransactionModel.Sum = "10.00";
             _singleTransactionServicesFixutre.SingleTransactionModel.Type = "Расход";

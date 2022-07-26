@@ -54,7 +54,12 @@ namespace FM.SHD.Infastructure.Impl.Providers.Sqlite
                 try
                 {
                     using (new LongRunningQueryDetector(() => sql, () => parameters))
-                        return sqliteCommand.ExecuteReader();
+                    {
+                        var reader = sqliteCommand.ExecuteReader();
+                        var dt = new DataTable();
+                        dt.Load(reader);
+                        return dt.CreateDataReader();
+                    }
                 }
                 catch (SqliteException sqliteException)
                 {
@@ -124,7 +129,7 @@ namespace FM.SHD.Infastructure.Impl.Providers.Sqlite
                 command.CommandType = CommandType.Text;
                 try
                 {
-                    
+
                     using (new LongRunningQueryDetector(() => sqlCommand, () => parameters))
                         return Convert.ToInt64(command.ExecuteScalar());
                 }
@@ -169,7 +174,7 @@ namespace FM.SHD.Infastructure.Impl.Providers.Sqlite
         {
             OpenConnection();
             var command = Connection.CreateCommand();
-            
+
             if (_transaction != null)
                 command.Transaction = _transaction;
 
