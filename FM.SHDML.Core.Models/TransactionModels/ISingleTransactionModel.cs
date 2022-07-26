@@ -8,7 +8,7 @@ namespace FM.SHDML.Core.Models.TransactionModels
 {
     public interface ISingleTransactionModel
     {
-        string Id { get; set; }
+        long Id { get; set; }
 
         string Type { get; set; }
 

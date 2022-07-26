@@ -9,7 +9,7 @@ namespace FM.SHD.Services.SingleTransactionServices
 {
     public interface ISingleTransactionRepository
     {
-        void Add(ISingleTransactionModel singleTransactionModel);
+        long Add(ISingleTransactionModel singleTransactionModel);
         void Update(ISingleTransactionModel singleTransactionModel);
         void Delete(ISingleTransactionModel singleTransactionModel);
         void DeleteById(int singleTransactionId);

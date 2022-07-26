@@ -19,7 +19,7 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
             _connectionString = connectionString;
         }
 
-        public void Add(ISingleTransactionModel singleTransactionModel)
+        public long Add(ISingleTransactionModel singleTransactionModel)
         {
             var sql = $"INSERT INTO SingleTransaction (Type, Name, Description, Account, Sum, Date, Category, Contragent, FamilyMember) " +
                   $"VALUES (@Type, @Name, @Description, @Account, @Sum, @Date, @Category, @Contragent, @FamilyMember);";
@@ -35,12 +35,12 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
             dataparameters.Add(new DataParameter("@Contragent", singleTransactionModel.Contragent));
             dataparameters.Add(new DataParameter("@FamilyMember", singleTransactionModel.FamilyMember));
 
-            _sqliteDataProvider.ExecuteSqlInsertCommand(sql, dataparameters.ToArray());
+            return _sqliteDataProvider.ExecuteSqlInsertCommand(sql, dataparameters.ToArray());
         }
 
         public void Delete(ISingleTransactionModel singleTransactionModel)
         {
-            var sql = $"DELETE FROM SingleTransaction WHERE Id=@Id";
+            var sql = $"DELETE FROM SingleTransaction WHERE Id=@Id;";
             var dataparameters = new List<DataParameter>();
             dataparameters.Add(new DataParameter("@Id", singleTransactionModel.Id));
 
@@ -49,17 +49,43 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
 
         public void DeleteById(int singleTransactionId)
         {
-            throw new NotImplementedException();
+            var sql = $"DELETE FROM SingleTransaction WHERE Id=@Id";
+            var dataparameters = new List<DataParameter>();
+            dataparameters.Add(new DataParameter("@Id", singleTransactionId));
+
+            _sqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
         }
 
         public IEnumerable<ISingleTransactionModel> GetAll()
         {
-            throw new NotImplementedException();
+            var sql = $"SELECT * FROM SingleTransaction;";
+
+            var singleTransactions = new List<SingleTransactionModel>();
+
+            using (var reader = _sqliteDataProvider.CreateReader(sql))
+            {
+                while (reader.Read())
+                {
+                    var transactionModel = new SingleTransactionModel();
+                    transactionModel.Id = Int64.Parse(reader["Id"].ToString());
+                    transactionModel.Type = reader["Type"].ToString();
+                    transactionModel.Name = reader["Name"].ToString();
+                    transactionModel.Description = reader["Description"].ToString();
+                    transactionModel.Account = reader["Account"].ToString();
+                    transactionModel.Sum = reader["Sum"].ToString();
+                    transactionModel.Date = reader["Date"].ToString();
+                    transactionModel.Category = reader["Category"].ToString();
+                    transactionModel.Contragent = reader["Contragent"].ToString();
+                    transactionModel.FamilyMember = reader["FamilyMember"].ToString();
+                    singleTransactions.Add(transactionModel);
+                }
+            }
+            return singleTransactions;
         }
 
         public void Update(ISingleTransactionModel singleTransactionModel)
         {
-            throw new NotImplementedException();
+
         }
 
         SingleTransactionModel ISingleTransactionRepository.GetById(int id)

@@ -19,10 +19,10 @@ namespace FM.SHD.Services.SingleTransactionServices
             _modelValidator = modelValidator;
         }
 
-        public void Add(ISingleTransactionModel singleTransactionModel)
+        public long Add(ISingleTransactionModel singleTransactionModel)
         {
             ValidateModel(singleTransactionModel);
-            _singleTransactionRepository.Add(singleTransactionModel);
+            return _singleTransactionRepository.Add(singleTransactionModel);
         }
         public void Update(ISingleTransactionModel singleTransactionModel)
         {
