@@ -46,13 +46,13 @@ namespace FM.SHD.Infastructure.Impl.Providers.Sqlite
 
         public IDataReader CreateReader(string sql, params DataParameter[] parameters)
         {
-            using (SqliteCommand sqliteCommand = CreateCommand(parameters))
+            try
             {
-                sqliteCommand.CommandText = sql;
-                sqliteCommand.CommandType = CommandType.Text;
-
-                try
+                using (SqliteCommand sqliteCommand = CreateCommand(parameters))
                 {
+                    sqliteCommand.CommandText = sql;
+                    sqliteCommand.CommandType = CommandType.Text;
+
                     using (new LongRunningQueryDetector(() => sql, () => parameters))
                     {
                         var reader = sqliteCommand.ExecuteReader();
@@ -61,14 +61,18 @@ namespace FM.SHD.Infastructure.Impl.Providers.Sqlite
                         return dt.CreateDataReader();
                     }
                 }
-                catch (SqliteException sqliteException)
-                {
-                    throw new DataProviderException($"Ошибка при выполнении запроса", sqliteException);
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
+            }
+            catch (SqliteException sqliteException)
+            {
+                throw new DataProviderException($"Ошибка при выполнении запроса", sqliteException);
+            }
+            catch (Exception exception)
+            {
+                throw new Exception("Ошибка", exception);
+            }
+            finally
+            {
+                CloseConnection();
             }
         }
 
@@ -76,85 +80,108 @@ namespace FM.SHD.Infastructure.Impl.Providers.Sqlite
         {
             if (count > 0)
                 sql = string.Format("{0} offset {1} limit {2}", sql, startIndex, count);
-
-            using (SqliteCommand command = CreateCommand(parameters))
+            try
             {
-                var dataTable = new DataTable();
-
-                command.CommandText = sql;
-                command.CommandType = CommandType.Text;
-
-                try
+                using (SqliteCommand command = CreateCommand(parameters))
                 {
+                    var dataTable = new DataTable();
+
+                    command.CommandText = sql;
+                    command.CommandType = CommandType.Text;
+
                     using (SqliteDataReader reader = command.ExecuteReader())
                     {
                         dataTable.Load(reader);
                     }
                     return dataTable;
                 }
-                catch (SqliteException sqliteException)
-                {
-                    throw new DataProviderException("Ошибка при выполнении запроса", sqliteException);
-                }
-                catch (Exception exception)
-                {
-                    throw;
-                }
+            }
+            catch (SqliteException sqliteException)
+            {
+                throw new DataProviderException("Ошибка при выполнении запроса", sqliteException);
+            }
+            catch (Exception exception)
+            {
+                throw new Exception("Ошибка", exception);
+            }
+            finally
+            {
+                CloseConnection();
             }
         }
 
         public void ExecuteNonQuery(string sqlCommand, params DataParameter[] parameters)
         {
-            using (SqliteCommand command = CreateCommand(parameters))
+            try
             {
-                command.CommandText = sqlCommand;
-                command.CommandType = CommandType.Text;
-                try
+                using (SqliteCommand command = CreateCommand(parameters))
                 {
+                    command.CommandText = sqlCommand;
+                    command.CommandType = CommandType.Text;
+
                     using (new LongRunningQueryDetector(() => sqlCommand, () => parameters))
                         command.ExecuteNonQuery();
                 }
-                catch (SqliteException exception)
-                {
-                    throw new DataProviderException($"Ошибка при выполнении SQL-команды: {exception.Message}", exception);
-                }
+            }
+            catch (SqliteException exception)
+            {
+                throw new DataProviderException($"Ошибка при выполнении SQL-команды: {exception.Message}", exception);
+            }
+            finally
+            {
+                CloseConnection();
             }
         }
 
         public long ExecuteSqlInsertCommand(string sqlCommand, params DataParameter[] parameters)
         {
-            using (SqliteCommand command = CreateCommand(parameters))
+            try
             {
-                command.CommandText = sqlCommand + " SELECT last_insert_rowid();";
-                command.CommandType = CommandType.Text;
-                try
+                using (SqliteCommand command = CreateCommand(parameters))
                 {
+                    command.CommandText = sqlCommand + " SELECT last_insert_rowid();";
+                    command.CommandType = CommandType.Text;
 
                     using (new LongRunningQueryDetector(() => sqlCommand, () => parameters))
                         return Convert.ToInt64(command.ExecuteScalar());
                 }
-                catch (SqliteException ex)
-                {
-                    throw new DataProviderException($"Ошибка при выполнении SQL-команды: {ex.Message}", ex);
-                }
+            }
+            catch (SqliteException ex)
+            {
+                throw new DataProviderException($"Ошибка при выполнении SQL-команды: {ex.Message}", ex);
+            }
+            catch (Exception exception)
+            {
+                throw new Exception("Ошибка", exception);
+            }
+            finally
+            {
+                CloseConnection();
             }
         }
 
         public object ExecuteScalar(string sql, params DataParameter[] parameters)
         {
-            using (SqliteCommand command = CreateCommand(parameters))
+            try
             {
+                using SqliteCommand command = CreateCommand(parameters);
                 command.CommandText = sql;
                 command.CommandType = CommandType.Text;
-                try
-                {
-                    using (new LongRunningQueryDetector(() => sql, () => parameters))
-                        return command.ExecuteScalar();
-                }
-                catch (SqliteException exception)
-                {
-                    throw new DataProviderException("Ошибка при выполнении запроса", exception);
-                }
+
+                using (new LongRunningQueryDetector(() => sql, () => parameters))
+                    return command.ExecuteScalar();
+            }
+            catch (SqliteException exception)
+            {
+                throw new DataProviderException("Ошибка при выполнении запроса", exception);
+            }
+            catch (Exception exception)
+            {
+                throw new Exception("Ошибка", exception);
+            }
+            finally
+            {
+                CloseConnection();
             }
         }
 
@@ -167,6 +194,14 @@ namespace FM.SHD.Infastructure.Impl.Providers.Sqlite
             if (Connection.State == ConnectionState.Closed)
             {
                 Connection.Open();
+            }
+        }
+
+        private void CloseConnection()
+        {
+            if (Connection.State == ConnectionState.Open)
+            {
+                Connection.Close();
             }
         }
 

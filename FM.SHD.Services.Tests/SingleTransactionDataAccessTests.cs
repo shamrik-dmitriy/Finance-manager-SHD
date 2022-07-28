@@ -25,7 +25,7 @@ namespace FM.SHD.Services.Tests
         public SingleTransactionDataAccessValidationTests(ITestOutputHelper testOutputHelper)
         {
             _testOutputHelper = testOutputHelper;
-            _connectionString = @"DataSource=A:\Repositories\SHDML.FINANCECHECKER\db\default-db.db;";
+            _connectionString = @"DataSource=C:\Repositories\Finance-manager-SHD\db\default-db.db;";
             _singleTransactionServices = new SingleTransactionServices.SingleTransactionServices(new SingleTransactionRepository(_connectionString), new ModelValidator());
         }
 
@@ -101,7 +101,7 @@ namespace FM.SHD.Services.Tests
                 Date = DateTime.Now.ToString(),
                 Description = "Вкусное молочко",
                 Name = "Молоко Лужайкино 2.5%",
-                Id = 3,
+                Id = 4,
                 FamilyMember = "Дима",
                 Sum = "10.00",
                 Type = "Расход"

@@ -11,6 +11,7 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
 {
     public class SingleTransactionRepository : BaseSpecificRepository, ISingleTransactionRepository
     {
+
         private readonly IDataProvider _sqliteDataProvider;
 
         public SingleTransactionRepository(string connectionString)
@@ -39,8 +40,8 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
 
                 return _sqliteDataProvider.ExecuteSqlInsertCommand(sql, dataparameters.ToArray());
             }
-
-            throw new ArgumentException($"В хранилище уже есть запись с идентификатором {singleTransactionModel.Id}");
+            else
+                throw new ArgumentException($"В хранилище уже есть запись с идентификатором {singleTransactionModel.Id}");
         }
 
         public void Delete(ISingleTransactionModel singleTransactionModel)
@@ -53,7 +54,8 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
 
                 _sqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
             }
-            throw new ArgumentException($"В хранилище отсутствует запись с идентификатором {singleTransactionModel.Id}");
+            else
+                throw new ArgumentException($"В хранилище отсутствует запись с идентификатором {singleTransactionModel.Id}");
         }
 
         public void DeleteById(int singleTransactionId)
@@ -66,7 +68,8 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
 
                 _sqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
             }
-            throw new ArgumentException($"В хранилище отсутствует запись с идентификатором {singleTransactionId}");
+            else
+                throw new ArgumentException($"В хранилище отсутствует запись с идентификатором {singleTransactionId}");
         }
 
         public IEnumerable<ISingleTransactionModel> GetAll()
@@ -126,7 +129,8 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
 
                 _sqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
             }
-            throw new ArgumentException($"В хранилище отсутствует запись с идентификатором {singleTransactionModel.Id}");
+            else
+                throw new ArgumentException($"В хранилище отсутствует запись с идентификатором {singleTransactionModel.Id}");
         }
 
         SingleTransactionModel ISingleTransactionRepository.GetById(int id)
@@ -154,12 +158,13 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
                         transactionModel.Category = reader["Category"].ToString();
                         transactionModel.Contragent = reader["Contragent"].ToString();
                         transactionModel.FamilyMember = reader["FamilyMember"].ToString();
-                return transactionModel;
+                        return transactionModel;
                     }
                 }
 
             }
-            throw new ArgumentException($"В хранилище отсутствует запись с идентификатором {id}");
+            else
+                throw new ArgumentException($"В хранилище отсутствует запись с идентификатором {id}");
         }
 
         private bool CheckRecordIsExist(long singleTransactionId)
