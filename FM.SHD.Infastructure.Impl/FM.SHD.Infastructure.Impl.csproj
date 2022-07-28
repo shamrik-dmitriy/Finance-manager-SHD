@@ -13,8 +13,4 @@
     <ProjectReference Include="..\FM.SHD.Services\FM.SHD.Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositories\Specific\Account\" />
-  </ItemGroup>
-
 </Project>
