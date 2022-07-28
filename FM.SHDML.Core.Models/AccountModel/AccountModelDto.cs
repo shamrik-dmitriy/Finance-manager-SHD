@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace FM.SHDML.Core.Models.AccountModel
 {
-    internal class AccountModelDto
+    public class AccountModelDto
     {
+        public string Name { get; set; }
+
+        public string Description { get; set; }
+
+        public decimal CurrentSum { get; set; }
+
+        public decimal InitialSum { get; set; }
+
+        public bool IsClosed { get; set; }
+
+        public string Currency { get; set; }
     }
 }
