@@ -11,13 +11,8 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
 {
     public class SingleTransactionRepository : BaseSpecificRepository, ISingleTransactionRepository
     {
-
-        private readonly IDataProvider _sqliteDataProvider;
-
-        public SingleTransactionRepository(string connectionString)
+        public SingleTransactionRepository(string connectionString) : base(connectionString)
         {
-            _sqliteDataProvider = new SqliteConnectionFactory().CreateConnection(connectionString).DataProvider;
-            _connectionString = connectionString;
         }
 
         public long Add(ISingleTransactionModel singleTransactionModel)
@@ -159,19 +154,11 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
                         transactionModel.Contragent = reader["Contragent"].ToString();
                         transactionModel.FamilyMember = reader["FamilyMember"].ToString();
                     }
-                        return transactionModel;
+                    return transactionModel;
                 }
             }
             else
                 throw new ArgumentException($"В хранилище отсутствует запись с идентификатором {id}");
-        }
-
-        private bool CheckRecordIsExist(long singleTransactionId)
-        {
-            var dataparameters = new List<DataParameter>();
-            dataparameters.Add(new DataParameter("@Id", singleTransactionId));
-            var rowCount = Convert.ToInt32(_sqliteDataProvider.ExecuteScalar("SELECT COUNT(*) FROM SingleTransaction WHERE Id=@Id", dataparameters.ToArray()));
-            return rowCount > 0;
         }
     }
 }

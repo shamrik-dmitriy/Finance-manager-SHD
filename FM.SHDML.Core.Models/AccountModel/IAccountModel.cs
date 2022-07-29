@@ -9,6 +9,11 @@ namespace FM.SHDML.Core.Models.AccountModel
     public interface IAccountModel
     {
         /// <summary>
+        ///     Идентификатор
+        /// </summary>
+        public long Id { get; set; }   
+        
+        /// <summary>
         ///     Наименование счёта
         /// </summary>
         public string Name { get; set; }
@@ -37,5 +42,15 @@ namespace FM.SHDML.Core.Models.AccountModel
         ///     Валюта
         /// </summary>
         public string Currency { get; set; }
+        
+        /// <summary>
+        ///     Идентификатор категории счёта
+        /// </summary>
+        public long CategoryId { get; set; }
+
+        /// <summary>
+        ///     Идентификатор личности
+        /// </summary>
+        public long IdentityId { get; set; }
     }
 }

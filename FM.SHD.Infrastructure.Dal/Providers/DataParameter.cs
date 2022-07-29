@@ -91,6 +91,12 @@ namespace FM.SHD.Infrastructure.Dal.Providers
             _name = name;
             _value = value;
             _dataType = DataParameterType.Int32;
+        }    
+        public DataParameter(string name, bool value)
+        {
+            _name = name;
+            _value = value;
+            _dataType = DataParameterType.Boolean;
         }
         public DataParameter(string name, int? value)
         {

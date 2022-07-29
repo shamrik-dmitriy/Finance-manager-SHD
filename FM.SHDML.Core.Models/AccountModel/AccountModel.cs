@@ -9,6 +9,8 @@ namespace FM.SHDML.Core.Models.AccountModel
 {
     public class AccountModel : IAccountModel
     {
+        public long Id { get; set; }
+
         [MaxLength(255, ErrorMessage = "Длина названия счёта не может превышать 255 символов")]
         public string Name { get; set; }
 
@@ -23,5 +25,9 @@ namespace FM.SHDML.Core.Models.AccountModel
 
         [MaxLength(255, ErrorMessage = "Длина названия валюты не может превышать 255 символов")]
         public string Currency { get; set; }
+
+        public long CategoryId { get; set; }
+
+        public long IdentityId { get; set; }
     }
 }
