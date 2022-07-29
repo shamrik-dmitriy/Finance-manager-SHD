@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using FM.SHDML.Core.Models.AccountModel;
 using SHDML.CORE.MODEL.Categories;
 
 namespace SHDML.CORE.MODEL.TransationModel
@@ -18,7 +19,7 @@ namespace SHDML.CORE.MODEL.TransationModel
         /// <summary>
         ///     Счета с которых производится оплата за позицию в чеке
         /// </summary>
-        public List<Account.AccountModel> Accounts { get; set; }
+        public List<AccountModel> Accounts { get; set; }
 
         /// <summary>
         ///     Сумма за конкретную позицию в чеке

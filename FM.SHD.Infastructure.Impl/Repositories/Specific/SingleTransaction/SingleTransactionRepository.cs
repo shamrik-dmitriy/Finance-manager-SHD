@@ -158,8 +158,8 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
                         transactionModel.Category = reader["Category"].ToString();
                         transactionModel.Contragent = reader["Contragent"].ToString();
                         transactionModel.FamilyMember = reader["FamilyMember"].ToString();
-                        return transactionModel;
                     }
+                        return transactionModel;
                 }
 
             }
