@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FM.SHDML.Core.Models.TransactionModels
+namespace FM.SHDML.Core.Models.TransactionModels.SignleTransaction
 {
-    internal class SingleTransactionDto
+    public interface ISingleTransactionModel
     {
-        string Id { get; set; }
+        long Id { get; set; }
 
         string Type { get; set; }
 
@@ -20,12 +20,13 @@ namespace FM.SHDML.Core.Models.TransactionModels
 
         string Sum { get; set; }
 
-        DateTime Date { get; set; }
+        string Date { get; set; }
 
         string Category { get; set; }
 
         string Contragent { get; set; }
 
         string FamilyMember { get; set; }
+
     }
 }

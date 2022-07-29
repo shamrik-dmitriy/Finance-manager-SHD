@@ -2,10 +2,10 @@
 using FM.SHD.Infrastructure.Dal.Factory;
 using FM.SHD.Infrastructure.Dal.Providers.Interfaces;
 using FM.SHD.Services.SingleTransactionServices;
-using FM.SHDML.Core.Models.TransactionModels;
 using System;
 using System.Collections.Generic;
 using FM.SHD.Infrastructure.Dal.Providers;
+using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
 
 namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
 {
@@ -161,7 +161,6 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
                     }
                         return transactionModel;
                 }
-
             }
             else
                 throw new ArgumentException($"В хранилище отсутствует запись с идентификатором {id}");

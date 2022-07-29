@@ -1,7 +1,6 @@
 using FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction;
 using FM.SHD.Services.CommonServices;
-using FM.SHDML.Core.Models.TransactionModels;
-using Newtonsoft.Json.Linq;
+using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
 using System;
 using System.Text;
 using Xunit;

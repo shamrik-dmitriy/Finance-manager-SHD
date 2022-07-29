@@ -1,6 +1,6 @@
 ﻿using FM.SHD.Services.CommonServices;
 using FM.SHD.Services.SingleTransactionServices;
-using FM.SHDML.Core.Models.TransactionModels;
+using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
 using System;
 using System.Collections.Generic;
 using System.Linq;

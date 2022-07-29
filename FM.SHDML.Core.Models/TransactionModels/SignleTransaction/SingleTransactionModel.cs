@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace FM.SHDML.Core.Models.TransactionModels
+namespace FM.SHDML.Core.Models.TransactionModels.SignleTransaction
 {
     public class SingleTransactionModel : ISingleTransactionModel
     {
