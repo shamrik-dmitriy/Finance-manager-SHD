@@ -1,4 +1,5 @@
-﻿using SHDML.Winforms.UI.Transactions.MultipleTransaction;
+﻿using Microsoft.Extensions.Logging;
+using SHDML.Winforms.UI.Transactions.MultipleTransaction;
 using SHDML.Winforms.UI.Transactions.SingleTransaction;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,12 @@ namespace SHDML.Winforms.UI
 {
     public partial class MainView : Form
     {
-        public MainView()
+        private readonly ILogger _logger;
+        public MainView(ILogger<MainView> logger)
         {
             InitializeComponent();
+            _logger = logger;
+            _logger.LogTrace($"Приложение запущено {DateTime.Now}");
         }
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
