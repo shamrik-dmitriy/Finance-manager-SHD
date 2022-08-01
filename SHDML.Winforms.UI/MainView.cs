@@ -12,10 +12,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FM.SHD.Presenters;
 
 namespace SHDML.Winforms.UI
 {
-    public partial class MainView : Form
+    public partial class MainView : Form, IMainView
     {
         private readonly ILogger _logger;
         public MainView(ILogger<MainView> logger)

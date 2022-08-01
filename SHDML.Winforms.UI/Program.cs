@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Windows.Forms;
+using FM.SHD.Presenters;
 using FM.SHD.Services.Settings;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,13 +27,14 @@ namespace SHDML.Winforms.UI
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", false, true)
                 .Build();
-
+            
             var builder = new HostBuilder()
                 .ConfigureServices((hostBuilder, services) =>
                 {
                     services
-                    .AddScoped<MainView>()
-                    .AddSingleton(config)
+                    .AddTransient<IMainView, MainView>()
+                    .AddTransient<IMainPresenter, MainPresenter>()
+                    .AddSingleton<IConfiguration>(config)
                     .Configure<DatabaseOptions>(config.GetSection("ConnectionStrings"))
                     .AddLogging(configure =>
                     {
@@ -47,9 +49,8 @@ namespace SHDML.Winforms.UI
                 var services = serviceScope.ServiceProvider;
                 try
                 {
-                    var mainView = services.GetRequiredService<MainView>();
-
-                    Application.Run(mainView);
+                    var mainPresenter = services.GetRequiredService<MainPresenter>();
+                    Application.Run((MainView)mainPresenter.GetMainView());
                 }
                 catch (Exception exception)
                 {
