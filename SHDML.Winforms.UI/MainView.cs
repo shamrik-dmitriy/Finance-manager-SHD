@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using FM.SHD.Services.Settings;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using SHDML.Winforms.UI.Transactions.MultipleTransaction;
 using SHDML.Winforms.UI.Transactions.SingleTransaction;
 using System;

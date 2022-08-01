@@ -1,8 +1,12 @@
 using System;
+using System.IO;
 using System.Windows.Forms;
+using FM.SHD.Services.Settings;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace SHDML.Winforms.UI
 {
@@ -18,11 +22,23 @@ namespace SHDML.Winforms.UI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            var config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", false, true)
+                .Build();
+
             var builder = new HostBuilder()
                 .ConfigureServices((hostBuilder, services) =>
                 {
-                    services.AddScoped<MainView>()
-                   .AddLogging(configure => configure.AddConsole());
+                    services
+                    .AddScoped<MainView>()
+                    .AddSingleton(config)
+                    .Configure<DatabaseOptions>(config.GetSection("ConnectionStrings"))
+                    .AddLogging(configure =>
+                    {
+                        configure.SetMinimumLevel(LogLevel.Information);
+                        configure.AddConsole();
+                    });
                 });
 
             var host = builder.Build();
@@ -32,6 +48,7 @@ namespace SHDML.Winforms.UI
                 try
                 {
                     var mainView = services.GetRequiredService<MainView>();
+
                     Application.Run(mainView);
                 }
                 catch (Exception exception)
@@ -41,5 +58,7 @@ namespace SHDML.Winforms.UI
 
             }
         }
+
+
     }
 }
