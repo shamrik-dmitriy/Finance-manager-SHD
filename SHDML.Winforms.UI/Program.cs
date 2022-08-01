@@ -32,8 +32,8 @@ namespace SHDML.Winforms.UI
                 .ConfigureServices((hostBuilder, services) =>
                 {
                     services
-                    .AddTransient<IMainView, MainView>()
-                    .AddTransient<IMainPresenter, MainPresenter>()
+                    .AddScoped<IMainView, MainView>()
+                    .AddScoped<MainPresenter>()
                     .AddSingleton<IConfiguration>(config)
                     .Configure<DatabaseOptions>(config.GetSection("ConnectionStrings"))
                     .AddLogging(configure =>

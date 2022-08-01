@@ -1,6 +1,6 @@
 namespace FM.SHD.Presenters
 {
-    public interface IMainPresenter : IPresenter
+    public interface IMainPresenter
     {
         IMainView GetMainView();
     }
