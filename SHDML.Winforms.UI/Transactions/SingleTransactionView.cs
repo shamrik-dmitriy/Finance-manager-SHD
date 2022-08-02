@@ -1,22 +1,29 @@
-﻿using SHDML.BLL.DTO.DTO;
-using SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using FM.SHD.Presenters.IntrefacesViews;
+using SHDML.BLL.DTO.DTO;
+using SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls;
 
-namespace SHDML.Winforms.UI.Transactions.SingleTransaction
+namespace SHDML.Winforms.UI.Transactions
 {
-    public partial class SingleTransactionForm : Form
+    public partial class SingleTransactionView : Form, ISingleTransactionView
     {
-        private string Title { get => Text; set { Text = value; } }
-        private string TitleDefault { get; }
+        private string Title
+        {
+            get => Text;
+            set => Text = value;
+        }
 
-        public SingleTransactionForm()
+        private string TitleDefault { get; set; }
+
+        public SingleTransactionView()
         {
             InitializeComponent();
         }
+
         protected internal SingleTransactionDTO SingleTransactionDTO { get; set; }
 
-        public SingleTransactionForm(string typeTransactionOperations) : this()
+        public SingleTransactionView(string typeTransactionOperations) : this()
         {
             Title = typeTransactionOperations;
             TitleDefault = typeTransactionOperations;
@@ -26,11 +33,11 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
         {
             if (SingleTransactionDTO != null)
             {
-
             }
             else
             {
-                selectTypeTransactionUserControl.TypeOperationSelectedIndexChanged += new EventHandler(SelectTypeTransaction_SelectedIndexChanged);
+                selectTypeTransactionUserControl.TypeOperationSelectedIndexChanged +=
+                    new EventHandler(SelectTypeTransaction_SelectedIndexChanged);
                 selectTypeTransactionUserControl.typeOperationsCombobox.SelectedIndex = 0;
             }
         }
@@ -42,21 +49,25 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             switch (s.typeOperationsCombobox.SelectedIndex)
             {
                 case 0:
-                    {
-                        billingInfoFlowLayoutPanel.Controls.Add(new SelectAccountUserControl(s.typeOperationsCombobox.SelectedIndex));
-                        break;
-                    }
+                {
+                    billingInfoFlowLayoutPanel.Controls.Add(
+                        new SelectAccountUserControl(s.typeOperationsCombobox.SelectedIndex));
+                    break;
+                }
                 case 1:
-                    {
-                        billingInfoFlowLayoutPanel.Controls.Add(new SelectAccountUserControl(s.typeOperationsCombobox.SelectedIndex));
-                        break;
-                    }
+                {
+                    billingInfoFlowLayoutPanel.Controls.Add(
+                        new SelectAccountUserControl(s.typeOperationsCombobox.SelectedIndex));
+                    break;
+                }
                 case 2:
-                    {
-                        billingInfoFlowLayoutPanel.Controls.Add(new SelectAccountUserControl(s.typeOperationsCombobox.SelectedIndex));
-                        break;
-                    }
+                {
+                    billingInfoFlowLayoutPanel.Controls.Add(
+                        new SelectAccountUserControl(s.typeOperationsCombobox.SelectedIndex));
+                    break;
+                }
             }
+
             billingInfoFlowLayoutPanel.Refresh();
             billingInfoFlowLayoutPanel.Update();
         }
@@ -69,7 +80,6 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
 
         private void addedSingleTransactionButton_Click(object sender, EventArgs e)
         {
-
             var t = billingInfoFlowLayoutPanel.Controls[0] as SelectAccountUserControl;
             SingleTransactionDTO = new SingleTransactionDTO
             {
@@ -80,6 +90,19 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             // TODO: Отправить данные в БД
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        public new void ShowDialog()
+        {
+            base.ShowDialog();
+        }
+
+        public void ShowDialog(string title)
+        {
+            Title = title;
+            TitleDefault = title;
+            
+            base.ShowDialog();
         }
     }
 }

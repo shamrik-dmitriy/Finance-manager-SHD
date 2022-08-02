@@ -2,12 +2,14 @@ using System;
 using System.IO;
 using System.Windows.Forms;
 using FM.SHD.Presenters;
+using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Services.Settings;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using SHDML.Winforms.UI.Transactions;
 
 namespace SHDML.Winforms.UI
 {
@@ -33,7 +35,9 @@ namespace SHDML.Winforms.UI
                 {
                     services
                     .AddScoped<IMainView, MainView>()
-                    .AddScoped<MainPresenter>()
+                    .AddScoped<MainPresenter>() 
+                    .AddTransient<ISingleTransactionView, SingleTransactionView>()
+                    .AddTransient<SingleTransactionPresenter>()
                     .AddSingleton<IConfiguration>(config)
                     .Configure<DatabaseOptions>(config.GetSection("ConnectionStrings"))
                     .AddLogging(configure =>

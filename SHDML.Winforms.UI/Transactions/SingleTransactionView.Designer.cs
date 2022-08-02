@@ -1,7 +1,7 @@
 ﻿
-namespace SHDML.Winforms.UI.Transactions.SingleTransaction
+namespace SHDML.Winforms.UI.Transactions
 {
-    partial class SingleTransactionForm
+    partial class SingleTransactionView
     {
         /// <summary>
         /// Required designer variable.
@@ -204,7 +204,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(382, 306);
-            this.Name = "SingleTransactionForm";
+            this.Name = "SingleTransactionView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddSingleTransactionForm";
             this.Load += new System.EventHandler(this.AddSingleTransactionForm_Load);
@@ -223,12 +223,12 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction
         private System.Windows.Forms.TextBox nameTransactiontextBox;
         private System.Windows.Forms.TextBox descriptionTransactiontextBox;
         private System.Windows.Forms.Label hrBorderLabel1;
-        private SingleTransactionUserControls.SelectTypeTransactionUserControl selectTypeTransactionUserControl;
+        private SingleTransaction.SingleTransactionUserControls.SelectTypeTransactionUserControl selectTypeTransactionUserControl;
         private System.Windows.Forms.FlowLayoutPanel billingInfoFlowLayoutPanel;
         private System.Windows.Forms.Label hrBorderLabel2;
-        private SingleTransactionUserControls.SelectCategoryUserControl selectCategoryUserControl;
-        private SingleTransactionUserControls.SelectContrAgentUserControl selectContrAgentUserControl;
-        private SingleTransactionUserControls.SelectFamilyMemberUserControl selectFamilyMemberUserControl;
+        private SingleTransaction.SingleTransactionUserControls.SelectCategoryUserControl selectCategoryUserControl;
+        private SingleTransaction.SingleTransactionUserControls.SelectContrAgentUserControl selectContrAgentUserControl;
+        private SingleTransaction.SingleTransactionUserControls.SelectFamilyMemberUserControl selectFamilyMemberUserControl;
         private System.Windows.Forms.TableLayoutPanel buttonsTableLayoutPanel;
         private System.Windows.Forms.Button addedSingleTransactionButton;
         private System.Windows.Forms.Button cancelSingleTransactionButton;

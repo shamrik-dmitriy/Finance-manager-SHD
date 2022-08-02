@@ -13,12 +13,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FM.SHD.Presenters;
+using FM.SHD.Presenters.IntrefacesViews;
 
 namespace SHDML.Winforms.UI
 {
     public partial class MainView : Form, IMainView
     {
+        public event EventHandler AddTransaction;
+
         private readonly ILogger _logger;
+
         public MainView(ILogger<MainView> logger)
         {
             InitializeComponent();
@@ -28,7 +32,6 @@ namespace SHDML.Winforms.UI
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void Sign_Click(object sender, EventArgs e)
@@ -45,6 +48,7 @@ namespace SHDML.Winforms.UI
                 buttonSign.Text = "Войти";
                 userControlAuth.UserName.Text = "Пользователь не задан";
             }
+
             userControlCategoryAccount1.Update();
             userControlCategoryAccount1.Refresh();
         }
@@ -60,12 +64,11 @@ namespace SHDML.Winforms.UI
 
         private void splitContainer2_Panel1_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void buttonAddTransaction_Click(object sender, EventArgs e)
         {
-            new SingleTransactionForm("Добавить операцию").ShowDialog();
+            AddTransaction?.Invoke(sender, e);
         }
 
         private void buttonAddReceipt_Click(object sender, EventArgs e)
@@ -75,7 +78,17 @@ namespace SHDML.Winforms.UI
 
         private void seeCategoriesButton_Click(object sender, EventArgs e)
         {
+        }
 
+        public new void ShowDialog()
+        {
+            base.ShowDialog();
+        }
+
+        public void ShowDialog(string title)
+        {
+            base.Text = title;
+            base.ShowDialog();
         }
     }
 }
