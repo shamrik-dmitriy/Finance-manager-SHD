@@ -1,9 +1,12 @@
 using System;
 using System.IO;
 using System.Windows.Forms;
+using FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction;
 using FM.SHD.Presenters;
 using FM.SHD.Presenters.IntrefacesViews;
+using FM.SHD.Services.CommonServices;
 using FM.SHD.Services.Settings;
+using FM.SHD.Services.SingleTransactionServices;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -29,22 +32,29 @@ namespace SHDML.Winforms.UI
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", false, true)
                 .Build();
-            
+
             var builder = new HostBuilder()
                 .ConfigureServices((hostBuilder, services) =>
                 {
                     services
-                    .AddScoped<IMainView, MainView>()
-                    .AddScoped<MainPresenter>() 
-                    .AddTransient<ISingleTransactionView, SingleTransactionView>()
-                    .AddTransient<SingleTransactionPresenter>()
-                    .AddSingleton<IConfiguration>(config)
-                    .Configure<DatabaseOptions>(config.GetSection("ConnectionStrings"))
-                    .AddLogging(configure =>
-                    {
-                        configure.SetMinimumLevel(LogLevel.Information);
-                        configure.AddConsole();
-                    });
+                        .AddSingleton<IConfiguration>(config)
+                        .Configure<DatabaseOptions>(config.GetSection("ConnectionStrings"))
+                        .AddScoped<IMainView, MainView>()
+                        .AddScoped<MainPresenter>()
+                        .AddTransient<ISingleTransactionView, SingleTransactionView>()
+                        .AddTransient<SingleTransactionPresenter>()
+                        .AddTransient<ISingleTransactionRepository, SingleTransactionRepository>(provider =>
+                        {
+                            return new SingleTransactionRepository(
+                                config.GetConnectionString("DefaultConnection"));
+                        })
+                        .AddTransient<IModelValidator, ModelValidator>()
+                        .AddTransient<ISingleTransactionServices, SingleTransactionServices>()
+                        .AddLogging(configure =>
+                        {
+                            configure.SetMinimumLevel(LogLevel.Information);
+                            configure.AddConsole();
+                        });
                 });
 
             var host = builder.Build();
@@ -60,10 +70,7 @@ namespace SHDML.Winforms.UI
                 {
                     Console.WriteLine($"Error: {exception.Message}");
                 }
-
             }
         }
-
-
     }
 }

@@ -4,7 +4,6 @@ namespace FM.SHD.Presenters.IntrefacesViews
     {
         void ShowDialog();
         void ShowDialog(string title);
-
         void Show();
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using FM.SHD.Presenters.Interfaces;
 using FM.SHD.Presenters.IntrefacesViews;
+using FM.SHD.Services.SingleTransactionServices;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FM.SHD.Presenters
@@ -9,17 +10,15 @@ namespace FM.SHD.Presenters
     {
         private ISingleTransactionView _singleTransactionView;
         private IServiceProvider _serviceProvider;
+        private ISingleTransactionServices _singleTransactionServices;
         
-        public SingleTransactionPresenter(IServiceProvider serviceProvider, ISingleTransactionView singleTransactionView)
+        public SingleTransactionPresenter(IServiceProvider serviceProvider, ISingleTransactionView singleTransactionView, ISingleTransactionServices singleTransactionServices)
         {
             _singleTransactionView = singleTransactionView;
+            _singleTransactionServices = singleTransactionServices;
             _serviceProvider = serviceProvider;
-        }
-
-        private void MainViewOnAddTransaction(object sender, EventArgs e)
-        {
-            _serviceProvider.GetRequiredService<MainPresenter>();
-            // new SingleTransactionForm("Добавить операцию").ShowDialog();
+            
+            //_singleTransactionView.
         }
 
         public ISingleTransactionView GetView()
