@@ -468,6 +468,7 @@ namespace SHDML.Winforms.UI
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainView";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.MainView_Load);
             this.splitContainerMainDesktop.Panel1.ResumeLayout(false);
             this.splitContainerMainDesktop.Panel1.PerformLayout();
             this.splitContainerMainDesktop.Panel2.ResumeLayout(false);

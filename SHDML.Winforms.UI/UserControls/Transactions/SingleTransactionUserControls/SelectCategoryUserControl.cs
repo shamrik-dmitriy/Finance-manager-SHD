@@ -12,6 +12,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
 {
     public partial class SelectCategoryUserControl : UserControl
     {
+        public string CategoryName { get => comboBoxCategoryName.Text; set => comboBoxCategoryName.Text = value; }
         public SelectCategoryUserControl()
         {
             InitializeComponent();

@@ -30,7 +30,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxCategoryName = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -42,19 +42,19 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
             this.label1.TabIndex = 11;
             this.label1.Text = "Категория";
             // 
-            // comboBox1
+            // comboBoxCategoryName
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(124, 2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(230, 23);
-            this.comboBox1.TabIndex = 12;
+            this.comboBoxCategoryName.FormattingEnabled = true;
+            this.comboBoxCategoryName.Location = new System.Drawing.Point(124, 2);
+            this.comboBoxCategoryName.Name = "comboBoxCategoryName";
+            this.comboBoxCategoryName.Size = new System.Drawing.Size(230, 23);
+            this.comboBoxCategoryName.TabIndex = 12;
             // 
             // SelectCategoryUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxCategoryName);
             this.Controls.Add(this.label1);
             this.Name = "SelectCategoryUserControl";
             this.Size = new System.Drawing.Size(360, 28);
@@ -66,6 +66,6 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxCategoryName;
     }
 }

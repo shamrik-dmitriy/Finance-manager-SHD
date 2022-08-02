@@ -12,6 +12,8 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
 {
     public partial class SelectFamilyMemberUserControl : UserControl
     {
+        public string FamilyMemberName { get => comboBoxFamilyMemberName.Text; set => comboBoxFamilyMemberName.Text = value; }
+        
         public SelectFamilyMemberUserControl()
         {
             InitializeComponent();

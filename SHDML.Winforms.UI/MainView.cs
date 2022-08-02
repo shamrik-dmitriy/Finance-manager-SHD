@@ -90,5 +90,10 @@ namespace SHDML.Winforms.UI
             base.Text = title;
             base.ShowDialog();
         }
+
+        private void MainView_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

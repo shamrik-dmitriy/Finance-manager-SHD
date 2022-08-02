@@ -21,6 +21,8 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
             set { infoAccountLabel.Text = value; }
         }
 
+        public string Name { get => debitAccountComboBox.Text; set => debitAccountComboBox.Text = value; }
+
         public AccountInfoUserControl()
         {
             InitializeComponent();

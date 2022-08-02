@@ -10,6 +10,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\FM.SHD.Services\FM.SHD.Services.csproj" />
+      <ProjectReference Include="..\SHDML.BLL.DTO\SHDML.BLL.DTO.csproj" />
     </ItemGroup>
 
 </Project>

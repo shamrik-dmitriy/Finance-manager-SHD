@@ -29,17 +29,17 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxFamilyMemberName = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // comboBoxFamilyMemberName
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(124, 2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(230, 23);
-            this.comboBox1.TabIndex = 14;
+            this.comboBoxFamilyMemberName.FormattingEnabled = true;
+            this.comboBoxFamilyMemberName.Location = new System.Drawing.Point(124, 2);
+            this.comboBoxFamilyMemberName.Name = "comboBoxFamilyMemberName";
+            this.comboBoxFamilyMemberName.Size = new System.Drawing.Size(230, 23);
+            this.comboBoxFamilyMemberName.TabIndex = 14;
             // 
             // label1
             // 
@@ -54,7 +54,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxFamilyMemberName);
             this.Controls.Add(this.label1);
             this.Name = "SelectFamilyMemberUserControl";
             this.Size = new System.Drawing.Size(360, 28);
@@ -65,7 +65,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxFamilyMemberName;
         private System.Windows.Forms.Label label1;
     }
 }

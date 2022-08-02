@@ -22,6 +22,8 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
         [Description("Вызывается когда пользователь выбирает тип транзакции")]
         public EventHandler TypeOperationSelectedIndexChanged;
 
+        public int Transaction { get => typeOperationsCombobox.SelectedIndex; set => typeOperationsCombobox.SelectedIndex = value; }
+
         private void typeOperationsCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(this.TypeOperationSelectedIndexChanged != null)

@@ -7,11 +7,11 @@
     <Compile Update="Transactions\MultipleTransactionForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Transactions\SingleTransactionView.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="UserControls\Transactions\ItemOfMultipleTransaction.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Transactions\SingleTransactionForm.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Update="UserControls\Transactions\UserControlsOfTransactions\AccountInfoUserControl.cs">
       <SubType>UserControl</SubType>

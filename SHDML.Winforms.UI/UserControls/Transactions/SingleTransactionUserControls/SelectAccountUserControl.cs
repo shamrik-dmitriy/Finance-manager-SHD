@@ -14,7 +14,10 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
     {
         public decimal Sum => sumTransactionUserControl.Sum;
 
-        private int TransactionType { get; }
+        private int TransactionType { get; set; }
+        public string DebitAccount { get => debitAccountInfoUserControl.Name; set => debitAccountInfoUserControl.Name = value; }
+        public string CreditAccount { get => creditAccountInfoUserControl.Name; set => creditAccountInfoUserControl.Name = value; }
+        public DateTime Date { get => dateTransactionUserControl.DateTime; set => dateTransactionUserControl.DateTime = value; }
 
         public SelectAccountUserControl()
         {

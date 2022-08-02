@@ -12,6 +12,8 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
 {
     public partial class SelectContrAgentUserControl : UserControl
     {
+        public string ContragentName { get => comboBoxContrAgentName.Text; set => comboBoxContrAgentName.Text = value; }
+
         public SelectContrAgentUserControl()
         {
             InitializeComponent();

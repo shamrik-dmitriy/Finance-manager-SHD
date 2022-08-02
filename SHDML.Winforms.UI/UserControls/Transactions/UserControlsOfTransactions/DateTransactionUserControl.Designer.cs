@@ -30,7 +30,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -42,12 +42,12 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
             this.label1.TabIndex = 9;
             this.label1.Text = "Дата";
             // 
-            // dateTimePicker1
+            // dateTimePicker
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(124, 2);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(230, 23);
-            this.dateTimePicker1.TabIndex = 8;
+            this.dateTimePicker.Location = new System.Drawing.Point(124, 2);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(230, 23);
+            this.dateTimePicker.TabIndex = 8;
             // 
             // DateTransactionUserControl
             // 
@@ -55,9 +55,9 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dateTimePicker);
             this.Name = "DateTransactionUserControl";
-            this.Size = new System.Drawing.Size(360, 25);
+            this.Size = new System.Drawing.Size(360, 28);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -66,6 +66,6 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
     }
 }

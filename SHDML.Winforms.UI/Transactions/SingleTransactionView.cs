@@ -8,6 +8,8 @@ namespace SHDML.Winforms.UI.Transactions
 {
     public partial class SingleTransactionView : Form, ISingleTransactionView
     {
+        public event EventHandler Add;
+
         private string Title
         {
             get => Text;
@@ -80,6 +82,8 @@ namespace SHDML.Winforms.UI.Transactions
 
         private void addedSingleTransactionButton_Click(object sender, EventArgs e)
         {
+            Add?.Invoke(sender, e);
+
             var t = billingInfoFlowLayoutPanel.Controls[0] as SelectAccountUserControl;
             SingleTransactionDTO = new SingleTransactionDTO
             {
@@ -101,8 +105,26 @@ namespace SHDML.Winforms.UI.Transactions
         {
             Title = title;
             TitleDefault = title;
-            
+
             base.ShowDialog();
+        }
+
+        public SingleTransactionDTO GetTransactionInfo()
+        {
+            var accountUser = billingInfoFlowLayoutPanel.Controls[0] as SelectAccountUserControl;
+            return SingleTransactionDTO = new SingleTransactionDTO
+            {
+                TypeTransaction = selectTypeTransactionUserControl.Transaction,
+                Name = nameTransactiontextBox.Text,
+                Description = descriptionTransactiontextBox.Text,
+                Sum = accountUser.Sum,
+                DebitAccount = accountUser.DebitAccount,
+                CreditAccount = accountUser.CreditAccount,
+                Category = selectCategoryUserControl.CategoryName,
+                Date = accountUser.Date,
+                Contragent = selectContrAgentUserControl.ContragentName,
+                FamilyMember = selectFamilyMemberUserControl.FamilyMemberName
+            };
         }
     }
 }
