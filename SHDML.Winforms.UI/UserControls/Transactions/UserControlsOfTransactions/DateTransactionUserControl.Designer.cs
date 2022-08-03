@@ -30,7 +30,8 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.datePicker = new System.Windows.Forms.DateTimePicker();
+            this.timePicker = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -42,20 +43,30 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
             this.label1.TabIndex = 9;
             this.label1.Text = "Дата";
             // 
-            // dateTimePicker
+            // datePicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(124, 2);
-            this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(230, 23);
-            this.dateTimePicker.TabIndex = 8;
+            this.datePicker.Location = new System.Drawing.Point(124, 2);
+            this.datePicker.Name = "datePicker";
+            this.datePicker.Size = new System.Drawing.Size(148, 23);
+            this.datePicker.TabIndex = 8;
+            // 
+            // timePicker
+            // 
+            this.timePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.timePicker.Location = new System.Drawing.Point(278, 2);
+            this.timePicker.Name = "timePicker";
+            this.timePicker.ShowUpDown = true;
+            this.timePicker.Size = new System.Drawing.Size(78, 23);
+            this.timePicker.TabIndex = 10;
             // 
             // DateTransactionUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.Controls.Add(this.timePicker);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dateTimePicker);
+            this.Controls.Add(this.datePicker);
             this.Name = "DateTransactionUserControl";
             this.Size = new System.Drawing.Size(360, 28);
             this.ResumeLayout(false);
@@ -66,6 +77,7 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private System.Windows.Forms.DateTimePicker datePicker;
+        private System.Windows.Forms.DateTimePicker timePicker;
     }
 }

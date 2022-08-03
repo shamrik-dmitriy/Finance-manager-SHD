@@ -17,7 +17,8 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
         private int TransactionType { get; set; }
         public string DebitAccount { get => debitAccountInfoUserControl.Name; set => debitAccountInfoUserControl.Name = value; }
         public string CreditAccount { get => creditAccountInfoUserControl.Name; set => creditAccountInfoUserControl.Name = value; }
-        public DateTime Date { get => dateTransactionUserControl.DateTime; set => dateTransactionUserControl.DateTime = value; }
+        public DateTime Date { get => dateTransactionUserControl.Date; set => dateTransactionUserControl.Date = value; }
+        public TimeSpan Time { get => dateTransactionUserControl.Time; set => dateTransactionUserControl.Time = value; }
 
         public SelectAccountUserControl()
         {

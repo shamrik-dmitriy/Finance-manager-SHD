@@ -12,7 +12,8 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
 {
     public partial class DateTransactionUserControl : UserControl
     {
-        public DateTime DateTime { get => dateTimePicker.Value.Date; set => dateTimePicker.Value = value; }
+        public DateTime Date { get => datePicker.Value.Date; set => datePicker.Value = value; }
+        public TimeSpan Time { get => timePicker.Value.TimeOfDay; set => timePicker.Value = DateTime.Now.Add(value); }
 
         public DateTransactionUserControl()
         {

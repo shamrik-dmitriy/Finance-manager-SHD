@@ -112,6 +112,7 @@ namespace SHDML.Winforms.UI.Transactions
         public SingleTransactionDTO GetTransactionInfo()
         {
             var accountUser = billingInfoFlowLayoutPanel.Controls[0] as SelectAccountUserControl;
+            
             return SingleTransactionDTO = new SingleTransactionDTO
             {
                 TypeTransaction = selectTypeTransactionUserControl.Transaction,
@@ -121,7 +122,7 @@ namespace SHDML.Winforms.UI.Transactions
                 DebitAccount = accountUser.DebitAccount,
                 CreditAccount = accountUser.CreditAccount,
                 Category = selectCategoryUserControl.CategoryName,
-                Date = accountUser.Date,
+                Date = accountUser.Date + accountUser.Time,
                 Contragent = selectContrAgentUserControl.ContragentName,
                 FamilyMember = selectFamilyMemberUserControl.FamilyMemberName
             };
