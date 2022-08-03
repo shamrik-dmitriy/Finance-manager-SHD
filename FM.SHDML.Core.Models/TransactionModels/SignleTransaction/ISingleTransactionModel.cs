@@ -16,7 +16,9 @@ namespace FM.SHDML.Core.Models.TransactionModels.SignleTransaction
 
         string Description { get; set; }
 
-        string Account { get; set; }
+        public string DebitAccount { get; set; }
+
+        public string CreditAccount { get; set; }
 
         string Sum { get; set; }
 
@@ -27,6 +29,5 @@ namespace FM.SHDML.Core.Models.TransactionModels.SignleTransaction
         string Contragent { get; set; }
 
         string FamilyMember { get; set; }
-
     }
 }

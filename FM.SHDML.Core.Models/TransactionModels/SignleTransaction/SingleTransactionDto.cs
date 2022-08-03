@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FM.SHDML.Core.Models.TransactionModels.SignleTransaction
 {
-    internal class SingleTransactionDto
+    public class SingleTransactionDto
     {
         string Id { get; set; }
 

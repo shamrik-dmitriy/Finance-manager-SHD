@@ -1,11 +1,7 @@
-﻿using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
 
-namespace FM.SHD.Services.SingleTransactionServices
+namespace FM.SHD.Services.Repositories
 {
     public interface ISingleTransactionRepository
     {

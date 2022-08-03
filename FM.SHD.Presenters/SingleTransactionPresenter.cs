@@ -1,7 +1,9 @@
 using System;
 using FM.SHD.Presenters.Interfaces;
 using FM.SHD.Presenters.IntrefacesViews;
+using FM.SHD.Services.Repositories;
 using FM.SHD.Services.SingleTransactionServices;
+using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
 using Microsoft.Extensions.DependencyInjection;
 using SHDML.BLL.DTO.DTO;
 
@@ -27,6 +29,7 @@ namespace FM.SHD.Presenters
         private void SingleTransactionViewOnAdd(object sender, EventArgs e)
         {
             SingleTransactionDTO dto =  _singleTransactionView.GetTransactionInfo();
+            _singleTransactionServices.Add(dto);
         }
 
         public ISingleTransactionView GetView()

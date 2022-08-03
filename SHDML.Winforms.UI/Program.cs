@@ -5,6 +5,7 @@ using FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction;
 using FM.SHD.Presenters;
 using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Services.CommonServices;
+using FM.SHD.Services.Repositories;
 using FM.SHD.Services.Settings;
 using FM.SHD.Services.SingleTransactionServices;
 using Microsoft.Extensions.Configuration;

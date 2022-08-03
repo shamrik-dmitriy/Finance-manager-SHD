@@ -5,6 +5,7 @@ using FM.SHD.Services.SingleTransactionServices;
 using System;
 using System.Collections.Generic;
 using FM.SHD.Infrastructure.Dal.Providers;
+using FM.SHD.Services.Repositories;
 using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
 
 namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
@@ -19,14 +20,15 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
         {
             if (!CheckRecordIsExist(singleTransactionModel.Id))
             {
-                var sql = $"INSERT INTO SingleTransaction (Type, Name, Description, Account, Sum, Date, Category, Contragent, FamilyMember) " +
-                  $"VALUES (@Type, @Name, @Description, @Account, @Sum, @Date, @Category, @Contragent, @FamilyMember);";
+                var sql = $"INSERT INTO SingleTransaction (Type, Name, Description, DebitAccount, CreditAccount, Sum, Date, Category, Contragent, FamilyMember) " +
+                  $"VALUES (@Type, @Name, @Description, @DebitAccount, @CreditAccount,, @Sum, @Date, @Category, @Contragent, @FamilyMember);";
 
                 var dataparameters = new List<DataParameter>();
                 dataparameters.Add(new DataParameter("@Type", singleTransactionModel.Type));
                 dataparameters.Add(new DataParameter("@Name", singleTransactionModel.Name));
                 dataparameters.Add(new DataParameter("@Description", singleTransactionModel.Description));
-                dataparameters.Add(new DataParameter("@Account", singleTransactionModel.Account));
+                dataparameters.Add(new DataParameter("@DebitAccount", singleTransactionModel.DebitAccount));
+                dataparameters.Add(new DataParameter("@CreditAccount", singleTransactionModel.CreditAccount));
                 dataparameters.Add(new DataParameter("@Sum", singleTransactionModel.Sum));
                 dataparameters.Add(new DataParameter("@Date", singleTransactionModel.Date));
                 dataparameters.Add(new DataParameter("@Category", singleTransactionModel.Category));
@@ -82,7 +84,8 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
                     transactionModel.Type = reader["Type"].ToString();
                     transactionModel.Name = reader["Name"].ToString();
                     transactionModel.Description = reader["Description"].ToString();
-                    transactionModel.Account = reader["Account"].ToString();
+                    transactionModel.CreditAccount = reader["CreditAccount"].ToString();
+                    transactionModel.DebitAccount = reader["DebitAccount"].ToString();
                     transactionModel.Sum = reader["Sum"].ToString();
                     transactionModel.Date = reader["Date"].ToString();
                     transactionModel.Category = reader["Category"].ToString();
@@ -102,7 +105,8 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
                     $"Type = @Type, " +
                     $"Name = @Name, " +
                     $"Description = @Description, " +
-                    $"Account = @Account, " +
+                    $"DebitAccount = @DebitAccount, " +
+                    $"CreditAccount = @CreditAccount, " +
                     $"Sum = @Sum, " +
                     $"Date = @Date, " +
                     $"Category = @Category, " +
@@ -115,7 +119,8 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
                 dataparameters.Add(new DataParameter("@Type", singleTransactionModel.Type));
                 dataparameters.Add(new DataParameter("@Name", singleTransactionModel.Name));
                 dataparameters.Add(new DataParameter("@Description", singleTransactionModel.Description));
-                dataparameters.Add(new DataParameter("@Account", singleTransactionModel.Account));
+                dataparameters.Add(new DataParameter("@DebitAccount", singleTransactionModel.DebitAccount));
+                dataparameters.Add(new DataParameter("@CreditAccount", singleTransactionModel.CreditAccount));
                 dataparameters.Add(new DataParameter("@Sum", singleTransactionModel.Sum));
                 dataparameters.Add(new DataParameter("@Date", singleTransactionModel.Date));
                 dataparameters.Add(new DataParameter("@Category", singleTransactionModel.Category));
@@ -147,7 +152,8 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
                         transactionModel.Type = reader["Type"].ToString();
                         transactionModel.Name = reader["Name"].ToString();
                         transactionModel.Description = reader["Description"].ToString();
-                        transactionModel.Account = reader["Account"].ToString();
+                        transactionModel.CreditAccount = reader["CreditAccount"].ToString();
+                        transactionModel.DebitAccount = reader["DebitAccount"].ToString();
                         transactionModel.Sum = reader["Sum"].ToString();
                         transactionModel.Date = reader["Date"].ToString();
                         transactionModel.Category = reader["Category"].ToString();

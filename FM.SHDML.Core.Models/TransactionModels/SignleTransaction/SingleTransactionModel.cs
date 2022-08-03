@@ -16,7 +16,10 @@ namespace FM.SHDML.Core.Models.TransactionModels.SignleTransaction
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Укажите счёт для транзакции")]
-        public string Account { get; set; }
+        public string DebitAccount { get; set; }
+
+        [Required(ErrorMessage = "Укажите счёт для транзакции")]
+        public string CreditAccount { get; set; }
 
         public string Sum { get; set; }
 
@@ -28,6 +31,5 @@ namespace FM.SHDML.Core.Models.TransactionModels.SignleTransaction
         public string Contragent { get; set; }
 
         public string FamilyMember { get; set; }
-
     }
 }

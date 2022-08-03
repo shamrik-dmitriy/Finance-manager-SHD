@@ -5,10 +5,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FM.SHD.Services.Repositories;
+using SHDML.BLL.DTO.DTO;
 
 namespace FM.SHD.Services.SingleTransactionServices
 {
-    public class SingleTransactionServices : ISingleTransactionServices, ISingleTransactionRepository
+    public class SingleTransactionServices : ISingleTransactionServices
     {
         private ISingleTransactionRepository _singleTransactionRepository;
         private IModelValidator _modelValidator;
@@ -19,25 +21,48 @@ namespace FM.SHD.Services.SingleTransactionServices
             _modelValidator = modelValidator;
         }
 
-        public long Add(ISingleTransactionModel singleTransactionModel)
+        private SingleTransactionModel ToSingleTransactionModel(SingleTransactionDTO singleTransactionDto)
         {
-            ValidateModel(singleTransactionModel);
-            return _singleTransactionRepository.Add(singleTransactionModel);
+            return new SingleTransactionModel() { };
+        }       
+        
+        private IEnumerable<SingleTransactionDTO> ToSingleTransactionDTOs(IEnumerable<ISingleTransactionModel> singleTransactionModels)
+        {
+            return new List<SingleTransactionDTO>();
+        }    
+        
+        private SingleTransactionDTO ToSingleTransactionDTO(ISingleTransactionModel singleTransactionModel)
+        {
+            return new SingleTransactionDTO();
         }
-        public void Update(ISingleTransactionModel singleTransactionModel)
+        
+        public long Add(SingleTransactionDTO singleTransactionDto)
         {
-            ValidateModel(singleTransactionModel);
-            _singleTransactionRepository.Update(singleTransactionModel);
+            var model = ToSingleTransactionModel(singleTransactionDto);
+            ValidateModel(model);
+            return _singleTransactionRepository.Add(model);
         }
 
-        public SingleTransactionModel GetById(int id)
+        public void Update(SingleTransactionDTO singleTransactionDto)
         {
-            return _singleTransactionRepository.GetById(id);
+            var model = ToSingleTransactionModel(singleTransactionDto);
+            ValidateModel(model);
+            _singleTransactionRepository.Update(model);
         }
 
-        public void Delete(ISingleTransactionModel singleTransactionModel)
+        IEnumerable<SingleTransactionDTO> ISingleTransactionServices.GetAll()
         {
-            _singleTransactionRepository.Delete(singleTransactionModel);
+            return ToSingleTransactionDTOs(_singleTransactionRepository.GetAll());
+        }
+
+        public SingleTransactionDTO GetById(int id)
+        {
+            return ToSingleTransactionDTO(_singleTransactionRepository.GetById(id));
+        }
+
+        public void Delete(SingleTransactionDTO singleTransactionDto)
+        {
+            _singleTransactionRepository.Delete(ToSingleTransactionModel(singleTransactionDto));
         }
 
         public void DeleteById(int singleTransactionId)
@@ -45,15 +70,10 @@ namespace FM.SHD.Services.SingleTransactionServices
             _singleTransactionRepository.DeleteById(singleTransactionId);
         }
 
-        public void ValidateModel(ISingleTransactionModel singleTransactionModel)
+        public void ValidateModel(SingleTransactionModel singleTransactionModel)
         {
             _modelValidator.ValidateModel(singleTransactionModel);
             // Тут вызываем дополнительную валидацию
-        }
-
-        public IEnumerable<ISingleTransactionModel> GetAll()
-        {
-            return _singleTransactionRepository.GetAll();
         }
     }
 }
