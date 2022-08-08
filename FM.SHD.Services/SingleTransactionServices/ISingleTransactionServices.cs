@@ -1,9 +1,5 @@
 ﻿using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SHDML.BLL.DTO.DTO;
 
 namespace FM.SHD.Services.SingleTransactionServices
