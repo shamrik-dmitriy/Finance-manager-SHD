@@ -9,4 +9,8 @@
     <ProjectReference Include="..\SHDML.BLL.DTO\SHDML.BLL.DTO.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Collection" Version="8.0.0" />
+  </ItemGroup>
+
 </Project>

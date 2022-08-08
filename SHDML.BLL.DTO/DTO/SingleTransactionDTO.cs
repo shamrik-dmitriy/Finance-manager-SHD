@@ -8,6 +8,7 @@ namespace SHDML.BLL.DTO.DTO
 {
     public class SingleTransactionDTO
     {
+        public long Id { get; set; }
         public int TypeTransaction { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -17,7 +18,6 @@ namespace SHDML.BLL.DTO.DTO
         public DateTime Date { get; set; }
         public string Category { get; set; }
         public string Contragent { get; set; }
-
         public string FamilyMember { get; set; }
     }
 }

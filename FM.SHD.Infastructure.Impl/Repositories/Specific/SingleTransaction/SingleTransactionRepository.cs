@@ -1,14 +1,11 @@
-﻿using FM.SHD.Infastructure.Impl.Factory;
-using FM.SHD.Infrastructure.Dal.Factory;
-using FM.SHD.Infrastructure.Dal.Providers.Interfaces;
-using FM.SHD.Services.SingleTransactionServices;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using FM.SHD.Infrastructure.Dal.Providers;
+using FM.SHD.Infrastructure.Impl.Repositories.Specific;
 using FM.SHD.Services.Repositories;
 using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
 
-namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
+namespace FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction
 {
     public class SingleTransactionRepository : BaseSpecificRepository, ISingleTransactionRepository
     {
@@ -20,11 +17,12 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
         {
             if (!CheckRecordIsExist(singleTransactionModel.Id))
             {
-                var sql = $"INSERT INTO SingleTransaction (Type, Name, Description, DebitAccount, CreditAccount, Sum, Date, Category, Contragent, FamilyMember) " +
-                  $"VALUES (@Type, @Name, @Description, @DebitAccount, @CreditAccount,, @Sum, @Date, @Category, @Contragent, @FamilyMember);";
+                var sql =
+                    $"INSERT INTO SingleTransaction (Type_id, Name, Description, DebitAccount, CreditAccount, Sum, Date, Category, Contragent, FamilyMember) " +
+                    $"VALUES (@Type, @Name, @Description, @DebitAccount, @CreditAccount,, @Sum, @Date, @Category, @Contragent, @FamilyMember);";
 
                 var dataparameters = new List<DataParameter>();
-                dataparameters.Add(new DataParameter("@Type", singleTransactionModel.Type));
+                dataparameters.Add(new DataParameter("@Type", singleTransactionModel.TypeTransaction));
                 dataparameters.Add(new DataParameter("@Name", singleTransactionModel.Name));
                 dataparameters.Add(new DataParameter("@Description", singleTransactionModel.Description));
                 dataparameters.Add(new DataParameter("@DebitAccount", singleTransactionModel.DebitAccount));
@@ -38,7 +36,8 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
                 return _sqliteDataProvider.ExecuteSqlInsertCommand(sql, dataparameters.ToArray());
             }
             else
-                throw new ArgumentException($"В хранилище уже есть запись с идентификатором {singleTransactionModel.Id}");
+                throw new ArgumentException(
+                    $"В хранилище уже есть запись с идентификатором {singleTransactionModel.Id}");
         }
 
         public void Delete(ISingleTransactionModel singleTransactionModel)
@@ -52,7 +51,8 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
                 _sqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
             }
             else
-                throw new ArgumentException($"В хранилище отсутствует запись с идентификатором {singleTransactionModel.Id}");
+                throw new ArgumentException(
+                    $"В хранилище отсутствует запись с идентификатором {singleTransactionModel.Id}");
         }
 
         public void DeleteById(int singleTransactionId)
@@ -80,20 +80,21 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
                 while (reader.Read())
                 {
                     var transactionModel = new SingleTransactionModel();
-                    transactionModel.Id = Int64.Parse(reader["Id"].ToString());
-                    transactionModel.Type = reader["Type"].ToString();
+                    transactionModel.Id = long.Parse(reader["Id"].ToString());
+                    transactionModel.TypeTransaction = int.Parse(reader["Type"].ToString());
                     transactionModel.Name = reader["Name"].ToString();
                     transactionModel.Description = reader["Description"].ToString();
                     transactionModel.CreditAccount = reader["CreditAccount"].ToString();
                     transactionModel.DebitAccount = reader["DebitAccount"].ToString();
-                    transactionModel.Sum = reader["Sum"].ToString();
-                    transactionModel.Date = reader["Date"].ToString();
+                    transactionModel.Sum = decimal.Parse(reader["Sum"].ToString());
+                    transactionModel.Date = DateTime.Parse(reader["Date"].ToString());
                     transactionModel.Category = reader["Category"].ToString();
                     transactionModel.Contragent = reader["Contragent"].ToString();
                     transactionModel.FamilyMember = reader["FamilyMember"].ToString();
                     singleTransactions.Add(transactionModel);
                 }
             }
+
             return singleTransactions;
         }
 
@@ -102,21 +103,21 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
             if (CheckRecordIsExist(singleTransactionModel.Id))
             {
                 var sql = $"UPDATE SingleTransaction SET " +
-                    $"Type = @Type, " +
-                    $"Name = @Name, " +
-                    $"Description = @Description, " +
-                    $"DebitAccount = @DebitAccount, " +
-                    $"CreditAccount = @CreditAccount, " +
-                    $"Sum = @Sum, " +
-                    $"Date = @Date, " +
-                    $"Category = @Category, " +
-                    $"Contragent = @Contragent, " +
-                    $"FamilyMember = @FamilyMember " +
-                    $"WHERE Id = @Id;";
+                          $"Type_id = @TypeTransaction, " +
+                          $"Name = @Name, " +
+                          $"Description = @Description, " +
+                          $"DebitAccount = @DebitAccount, " +
+                          $"CreditAccount = @CreditAccount, " +
+                          $"Sum = @Sum, " +
+                          $"Date = @Date, " +
+                          $"Category = @Category, " +
+                          $"Contragent = @Contragent, " +
+                          $"FamilyMember = @FamilyMember " +
+                          $"WHERE Id = @Id;";
 
                 var dataparameters = new List<DataParameter>();
                 dataparameters.Add(new DataParameter("@Id", singleTransactionModel.Id));
-                dataparameters.Add(new DataParameter("@Type", singleTransactionModel.Type));
+                dataparameters.Add(new DataParameter("@TypeTransaction", singleTransactionModel.TypeTransaction));
                 dataparameters.Add(new DataParameter("@Name", singleTransactionModel.Name));
                 dataparameters.Add(new DataParameter("@Description", singleTransactionModel.Description));
                 dataparameters.Add(new DataParameter("@DebitAccount", singleTransactionModel.DebitAccount));
@@ -130,7 +131,8 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
                 _sqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
             }
             else
-                throw new ArgumentException($"В хранилище отсутствует запись с идентификатором {singleTransactionModel.Id}");
+                throw new ArgumentException(
+                    $"В хранилище отсутствует запись с идентификатором {singleTransactionModel.Id}");
         }
 
         SingleTransactionModel ISingleTransactionRepository.GetById(int id)
@@ -149,17 +151,18 @@ namespace FM.SHD.Infrastructure.Impl.Repositories.Specific.SingleTransaction
                     while (reader.Read())
                     {
                         transactionModel.Id = Int64.Parse(reader["Id"].ToString());
-                        transactionModel.Type = reader["Type"].ToString();
+                        transactionModel.TypeTransaction = int.Parse(reader["Type_id"].ToString());
                         transactionModel.Name = reader["Name"].ToString();
                         transactionModel.Description = reader["Description"].ToString();
                         transactionModel.CreditAccount = reader["CreditAccount"].ToString();
                         transactionModel.DebitAccount = reader["DebitAccount"].ToString();
-                        transactionModel.Sum = reader["Sum"].ToString();
-                        transactionModel.Date = reader["Date"].ToString();
+                        transactionModel.Sum = decimal.Parse(reader["Sum"].ToString());
+                        transactionModel.Date = DateTime.Parse(reader["Date"].ToString());
                         transactionModel.Category = reader["Category"].ToString();
                         transactionModel.Contragent = reader["Contragent"].ToString();
                         transactionModel.FamilyMember = reader["FamilyMember"].ToString();
                     }
+
                     return transactionModel;
                 }
             }
