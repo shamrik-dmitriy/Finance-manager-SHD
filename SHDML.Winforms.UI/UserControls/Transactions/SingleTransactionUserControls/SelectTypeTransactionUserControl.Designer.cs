@@ -1,5 +1,5 @@
 ﻿
-namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls
+namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls
 {
     partial class SelectTypeTransactionUserControl
     {

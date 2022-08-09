@@ -1,4 +1,6 @@
-﻿namespace SHDML.Winforms.UI.Transactions.MultipleTransaction
+﻿using SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions;
+
+namespace SHDML.Winforms.UI.Transactions
 {
     partial class MultipleTransactionForm
     {
@@ -30,10 +32,10 @@
         {
             this.multipleTransactionFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.nameOfRetailertextBox = new System.Windows.Forms.TextBox();
-            this.selectContrAgentUserControl1 = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.SelectContrAgentUserControl();
-            this.selectFamilyMemberUserControl1 = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.SelectFamilyMemberUserControl();
-            this.accountInfoUserControl1 = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.AccountInfoUserControl();
-            this.dateTransactionUserControl1 = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.DateTransactionUserControl();
+            this.selectContrAgentUserControl1 = new SelectContrAgentUserControl();
+            this.selectFamilyMemberUserControl1 = new SelectFamilyMemberUserControl();
+            this.accountInfoUserControl1 = new AccountInfoUserControl();
+            this.dateTransactionUserControl1 = new DateTransactionUserControl();
             this.addedTransactionButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.ItemsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -44,7 +46,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.totalSumTransactionUserControl = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.SumTransactionUserControl();
+            this.totalSumTransactionUserControl = new SumTransactionUserControl();
             this.multipleTransactionFlowLayoutPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -278,8 +280,8 @@
 
         private System.Windows.Forms.FlowLayoutPanel multipleTransactionFlowLayoutPanel;
         private System.Windows.Forms.TextBox nameOfRetailertextBox;
-        private SingleTransaction.SingleTransactionUserControls.SelectFamilyMemberUserControl selectFamilyMemberUserControl1;
-        private SingleTransaction.SingleTransactionUserControls.AccountInfoUserControl accountInfoUserControl1;
+        private SelectFamilyMemberUserControl selectFamilyMemberUserControl1;
+        private AccountInfoUserControl accountInfoUserControl1;
         private System.Windows.Forms.Button addedTransactionButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -287,11 +289,11 @@
         private System.Windows.Forms.Button addReceiptButton;
         private System.Windows.Forms.Button cancelReceipButton;
         private System.Windows.Forms.FlowLayoutPanel ItemsFlowLayoutPanel;
-        private SingleTransaction.SingleTransactionUserControls.DateTransactionUserControl dateTransactionUserControl1;
-        private SingleTransaction.SingleTransactionUserControls.SelectContrAgentUserControl selectContrAgentUserControl1;
+        private DateTransactionUserControl dateTransactionUserControl1;
+        private SelectContrAgentUserControl selectContrAgentUserControl1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private SingleTransaction.SingleTransactionUserControls.SumTransactionUserControl totalSumTransactionUserControl;
+        private SumTransactionUserControl totalSumTransactionUserControl;
     }
 }

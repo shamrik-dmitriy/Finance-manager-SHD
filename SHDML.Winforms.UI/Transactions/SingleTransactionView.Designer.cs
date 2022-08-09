@@ -1,4 +1,7 @@
 ﻿
+using SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls;
+using SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions;
+
 namespace SHDML.Winforms.UI.Transactions
 {
     partial class SingleTransactionView
@@ -30,15 +33,15 @@ namespace SHDML.Winforms.UI.Transactions
         private void InitializeComponent()
         {
             this.singleTransactionDesktopflowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.selectTypeTransactionUserControl = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.SelectTypeTransactionUserControl();
+            this.selectTypeTransactionUserControl = new SelectTypeTransactionUserControl();
             this.nameTransactiontextBox = new System.Windows.Forms.TextBox();
             this.descriptionTransactiontextBox = new System.Windows.Forms.TextBox();
             this.hrBorderLabel1 = new System.Windows.Forms.Label();
             this.billingInfoFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.hrBorderLabel2 = new System.Windows.Forms.Label();
-            this.selectCategoryUserControl = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.SelectCategoryUserControl();
-            this.selectContrAgentUserControl = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.SelectContrAgentUserControl();
-            this.selectFamilyMemberUserControl = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.SelectFamilyMemberUserControl();
+            this.selectCategoryUserControl = new SelectCategoryUserControl();
+            this.selectContrAgentUserControl = new SelectContrAgentUserControl();
+            this.selectFamilyMemberUserControl = new SelectFamilyMemberUserControl();
             this.buttonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.addedSingleTransactionButton = new System.Windows.Forms.Button();
             this.cancelSingleTransactionButton = new System.Windows.Forms.Button();
@@ -223,12 +226,12 @@ namespace SHDML.Winforms.UI.Transactions
         private System.Windows.Forms.TextBox nameTransactiontextBox;
         private System.Windows.Forms.TextBox descriptionTransactiontextBox;
         private System.Windows.Forms.Label hrBorderLabel1;
-        private SingleTransaction.SingleTransactionUserControls.SelectTypeTransactionUserControl selectTypeTransactionUserControl;
+        private SelectTypeTransactionUserControl selectTypeTransactionUserControl;
         private System.Windows.Forms.FlowLayoutPanel billingInfoFlowLayoutPanel;
         private System.Windows.Forms.Label hrBorderLabel2;
-        private SingleTransaction.SingleTransactionUserControls.SelectCategoryUserControl selectCategoryUserControl;
-        private SingleTransaction.SingleTransactionUserControls.SelectContrAgentUserControl selectContrAgentUserControl;
-        private SingleTransaction.SingleTransactionUserControls.SelectFamilyMemberUserControl selectFamilyMemberUserControl;
+        private SelectCategoryUserControl selectCategoryUserControl;
+        private SelectContrAgentUserControl selectContrAgentUserControl;
+        private SelectFamilyMemberUserControl selectFamilyMemberUserControl;
         private System.Windows.Forms.TableLayoutPanel buttonsTableLayoutPanel;
         private System.Windows.Forms.Button addedSingleTransactionButton;
         private System.Windows.Forms.Button cancelSingleTransactionButton;

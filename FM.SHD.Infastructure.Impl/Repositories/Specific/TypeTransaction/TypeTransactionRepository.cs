@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using FM.SHD.Infrastructure.Impl.Repositories.Specific;
 using FM.SHD.Services.Repositories;
 using FM.SHDML.Core.Models.TransactionModels.Transactions.TypeTransaction;
 

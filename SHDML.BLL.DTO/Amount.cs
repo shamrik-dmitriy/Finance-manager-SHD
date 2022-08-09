@@ -1,4 +1,4 @@
-namespace SHDML.BLL
+namespace SHDML.BLL.DTO
 {
     public class Amount
     {

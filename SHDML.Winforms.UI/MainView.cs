@@ -1,19 +1,8 @@
-﻿using FM.SHD.Services.Settings;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using SHDML.Winforms.UI.Transactions.MultipleTransaction;
-using SHDML.Winforms.UI.Transactions.SingleTransaction;
+﻿using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using FM.SHD.Presenters;
 using FM.SHD.Presenters.IntrefacesViews;
+using SHDML.Winforms.UI.Transactions;
 
 namespace SHDML.Winforms.UI
 {
@@ -93,7 +82,6 @@ namespace SHDML.Winforms.UI
 
         private void MainView_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

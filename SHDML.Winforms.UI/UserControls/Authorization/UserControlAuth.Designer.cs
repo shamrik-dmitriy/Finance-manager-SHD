@@ -1,5 +1,5 @@
 ﻿
-namespace SHDML.Winforms.UI.UserControls
+namespace SHDML.Winforms.UI.UserControls.Authorization
 {
     partial class UserControlAuth
     {

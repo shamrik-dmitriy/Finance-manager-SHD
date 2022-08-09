@@ -1,5 +1,7 @@
 ﻿
-namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls
+using SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions;
+
+namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls
 {
     partial class SelectAccountUserControl
     {
@@ -30,10 +32,10 @@ namespace SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUser
         private void InitializeComponent()
         {
             this.financeInfoOfOperationflowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.debitAccountInfoUserControl = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.AccountInfoUserControl();
-            this.sumTransactionUserControl = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.SumTransactionUserControl();
-            this.creditAccountInfoUserControl = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.AccountInfoUserControl();
-            this.dateTransactionUserControl = new SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls.DateTransactionUserControl();
+            this.debitAccountInfoUserControl = new AccountInfoUserControl();
+            this.sumTransactionUserControl = new SumTransactionUserControl();
+            this.creditAccountInfoUserControl = new AccountInfoUserControl();
+            this.dateTransactionUserControl = new DateTransactionUserControl();
             this.financeInfoOfOperationflowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 

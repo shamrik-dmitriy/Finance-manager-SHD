@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace SHDML.Core.JSON
+namespace SHDML.CORE.JSON
 {
     public interface IJsonReceiptLoader
     {

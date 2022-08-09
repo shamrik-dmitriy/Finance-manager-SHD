@@ -1,13 +1,10 @@
-﻿using FM.SHD.Infastructure.Impl.Factory;
+﻿using System;
+using System.Collections.Generic;
+using FM.SHD.Infastructure.Impl.Factory;
 using FM.SHD.Infrastructure.Dal.Providers;
 using FM.SHD.Infrastructure.Dal.Providers.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace FM.SHD.Infrastructure.Impl.Repositories.Specific
+namespace FM.SHD.Infastructure.Impl.Repositories.Specific
 {
     public abstract class BaseSpecificRepository
     {

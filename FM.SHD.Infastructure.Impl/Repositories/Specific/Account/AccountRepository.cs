@@ -1,7 +1,6 @@
 ﻿using FM.SHD.Infastructure.Impl.Factory;
 using FM.SHD.Infrastructure.Dal.Providers;
 using FM.SHD.Infrastructure.Dal.Providers.Interfaces;
-using FM.SHD.Infrastructure.Impl.Repositories.Specific;
 using FM.SHD.Services.Repositories;
 using FM.SHDML.Core.Models.AccountModel;
 using System;

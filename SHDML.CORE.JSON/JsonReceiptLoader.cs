@@ -2,7 +2,7 @@
 using System.IO;
 using Newtonsoft.Json;
 
-namespace SHDML.Core.JSON
+namespace SHDML.CORE.JSON
 {
     public class JsonReceiptLoader : IJsonReceiptLoader
     {

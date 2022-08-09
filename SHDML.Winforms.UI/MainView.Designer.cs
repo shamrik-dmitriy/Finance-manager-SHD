@@ -1,4 +1,6 @@
 ﻿
+using SHDML.Winforms.UI.UserControls.Authorization;
+
 namespace SHDML.Winforms.UI
 {
 	partial class MainView
@@ -32,7 +34,7 @@ namespace SHDML.Winforms.UI
             this.splitContainerMainDesktop = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.userControlAuth = new SHDML.Winforms.UI.UserControls.UserControlAuth();
+            this.userControlAuth = new UserControlAuth();
             this.buttonSign = new System.Windows.Forms.Button();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.buttonTransactionReview = new System.Windows.Forms.Button();
@@ -517,7 +519,7 @@ namespace SHDML.Winforms.UI
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Button seeCategoriesButton;
         private UserControls.Wallet.UserControlTotalSumAccountsInfo userControlAccountInfo1;
-        private UserControls.UserControlAuth userControlAuth;
+        private UserControlAuth userControlAuth;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private UserControls.Wallet.UserControlTotalSumAccountsInfo userControlAccountInfo2;

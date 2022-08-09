@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using FM.SHD.Presenters.IntrefacesViews;
 using SHDML.BLL.DTO.DTO;
-using SHDML.Winforms.UI.Transactions.SingleTransaction.SingleTransactionUserControls;
+using SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls;
 
 namespace SHDML.Winforms.UI.Transactions
 {
