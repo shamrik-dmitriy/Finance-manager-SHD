@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using SHDML.Winforms.UI.DependencyInjection;
 using SHDML.Winforms.UI.Transactions;
 
 namespace SHDML.Winforms.UI
@@ -40,17 +41,10 @@ namespace SHDML.Winforms.UI
                     services
                         .AddSingleton<IConfiguration>(config)
                         .Configure<DatabaseOptions>(config.GetSection("ConnectionStrings"))
-                        .AddScoped<IMainView, MainView>()
-                        .AddScoped<MainPresenter>()
-                        .AddTransient<ISingleTransactionView, SingleTransactionView>()
-                        .AddTransient<SingleTransactionPresenter>()
-                        .AddTransient<ISingleTransactionRepository, SingleTransactionRepository>(provider =>
-                        {
-                            return new SingleTransactionRepository(
-                                config.GetConnectionString("DefaultConnection"));
-                        })
+                        .AddViews()
+                        .AddRepositories(config)
                         .AddTransient<IModelValidator, ModelValidator>()
-                        .AddTransient<ISingleTransactionServices, SingleTransactionServices>()
+                        .AddServices()
                         .AddLogging(configure =>
                         {
                             configure.SetMinimumLevel(LogLevel.Information);
