@@ -11,31 +11,31 @@ namespace FM.SHD.Presenters.UserControlPresenters
 {
     public class SelectTypeTransactionUserControlPresenter : ISelectTypeTransactionUserControlPresenter
     {
-        private readonly ISelectTypeTransactionUserControlView _selectTypeTransactionUserControlView;
+        private readonly ITypeTransactionUserControlView _typeTransactionUserControlView;
         private readonly ITypeTransactionServices _typeTransactionServices;
         private readonly ITypeTransactionRepository _typeTransactionRepository;
 
         public SelectTypeTransactionUserControlPresenter(
-            ISelectTypeTransactionUserControlView selectTypeTransactionUserControlView,
+            ITypeTransactionUserControlView typeTransactionUserControlView,
             ITypeTransactionServices typeTransactionServices, ITypeTransactionRepository typeTransactionRepository)
         {
-            _selectTypeTransactionUserControlView = selectTypeTransactionUserControlView;
+            _typeTransactionUserControlView = typeTransactionUserControlView;
             _typeTransactionServices = typeTransactionServices;
             _typeTransactionRepository = typeTransactionRepository;
 
-            _selectTypeTransactionUserControlView.LoadUserControl +=
-                SelectTypeTransactionUserControlViewOnLoadUserControl;
+            _typeTransactionUserControlView.LoadUserControl +=
+                TypeTransactionUserControlViewOnLoadUserControl;
         }
 
-        private void SelectTypeTransactionUserControlViewOnLoadUserControl()
+        private void TypeTransactionUserControlViewOnLoadUserControl()
         {
-            _selectTypeTransactionUserControlView.SetTransactionTypes(_typeTransactionServices.GetAll());
+            _typeTransactionUserControlView.SetTransactionTypes(_typeTransactionServices.GetAll());
         }
 
 
-        public ISelectTypeTransactionUserControlView GetSelectTypeTransactionUserControlView()
+        public ITypeTransactionUserControlView GetSelectTypeTransactionUserControlView()
         {
-            return _selectTypeTransactionUserControlView;
+            return _typeTransactionUserControlView;
         }
     }
 }

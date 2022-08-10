@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace FM.SHD.Presenters.Interfaces
 {
-    public interface ISelectTypeTransactionUserControlPresenter
+    public interface ITypeTransactionUserControlPresenter
     {
-        ISelectTypeTransactionUserControlView GetSelectTypeTransactionUserControlView();
+        ITypeTransactionUserControlView GetSelectTypeTransactionUserControlView();
     }
 }
