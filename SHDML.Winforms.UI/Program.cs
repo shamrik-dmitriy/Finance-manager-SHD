@@ -2,7 +2,9 @@ using System;
 using System.IO;
 using System.Windows.Forms;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction;
+using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters;
+using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Services.CommonServices;
 using FM.SHD.Services.Repositories;
@@ -41,10 +43,13 @@ namespace SHDML.Winforms.UI
                     services
                         .AddSingleton<IConfiguration>(config)
                         .Configure<DatabaseOptions>(config.GetSection("ConnectionStrings"))
+                        .AddSingleton<EventAggregator>()
+                        .AddTransient<IApplicationEvent, SelectedTypeOfTransactionApplicationEvent>()
+                        .AddServices()
                         .AddViews()
+                        .AddUserControlViews()
                         .AddRepositories(config)
                         .AddTransient<IModelValidator, ModelValidator>()
-                        .AddServices()
                         .AddLogging(configure =>
                         {
                             configure.SetMinimumLevel(LogLevel.Information);

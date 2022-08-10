@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SHDML.BLL.DTO", "SHDML.BLL.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FM.SHD.Presenters", "FM.SHD.Presenters\FM.SHD.Presenters.csproj", "{A17533A3-076B-4D0A-BB49-84FFBFC82B8B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FM.SHD.Infrastructure.Events", "FM.SHD.Infrastructure.Events\FM.SHD.Infrastructure.Events.csproj", "{8211A58F-63FF-421A-8CF6-561CEA39BFE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{A17533A3-076B-4D0A-BB49-84FFBFC82B8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A17533A3-076B-4D0A-BB49-84FFBFC82B8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A17533A3-076B-4D0A-BB49-84FFBFC82B8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8211A58F-63FF-421A-8CF6-561CEA39BFE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8211A58F-63FF-421A-8CF6-561CEA39BFE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8211A58F-63FF-421A-8CF6-561CEA39BFE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8211A58F-63FF-421A-8CF6-561CEA39BFE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -93,6 +99,7 @@ Global
 		{DAD86EAF-49D1-497C-A5EC-0CC7A1940818} = {62F4F71A-D81C-4804-A1D1-2FC387964DE9}
 		{5797DB46-BAAC-4C8B-AA10-7E1EB9A764C0} = {221AE0E4-D789-44EA-9CF3-93D1EBE66B57}
 		{A17533A3-076B-4D0A-BB49-84FFBFC82B8B} = {221AE0E4-D789-44EA-9CF3-93D1EBE66B57}
+		{8211A58F-63FF-421A-8CF6-561CEA39BFE8} = {07E270EB-C0D5-4298-BDFF-A2509EB941FA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {113471EA-60C2-4820-9880-80921366C122}

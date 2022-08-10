@@ -10,11 +10,11 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions
         [Description("Изменяет текст лейбла рядом с элементов выбора")]
         public string LabelOfTypeOperation
         {
-            get { return infoAccountLabel.Text; }
-            set { infoAccountLabel.Text = value; }
+            get { return accountLabel.Text; }
+            set { accountLabel.Text = value; }
         }
 
-        public string Name { get => debitAccountComboBox.Text; set => debitAccountComboBox.Text = value; }
+        public string Name { get => accountComboBox.Text; set => accountComboBox.Text = value; }
 
         public AccountInfoUserControl()
         {

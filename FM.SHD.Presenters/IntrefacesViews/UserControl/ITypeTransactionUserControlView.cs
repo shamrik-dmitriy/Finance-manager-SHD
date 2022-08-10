@@ -7,10 +7,11 @@ using FM.SHDML.Core.Models.TransactionModels.Transactions.TypeTransaction;
 
 namespace FM.SHD.Presenters.IntrefacesViews.UserControl
 {
-    public interface ISelectTypeTransactionUserControlView
+    public interface ITypeTransactionUserControlView
     {
+        event Action LoadUserControlView;
         
         event Action LoadUserControl;
-        void SetTransactionTypes(IEnumerable<TypeTransactionDto> allTypesOfTransaction);
+        void LoadTransactionTypes(IEnumerable<TypeTransactionDto> allTypesOfTransaction);
     }
 }

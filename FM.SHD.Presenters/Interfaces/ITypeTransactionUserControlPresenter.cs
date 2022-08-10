@@ -10,5 +10,6 @@ namespace FM.SHD.Presenters.Interfaces
     public interface ITypeTransactionUserControlPresenter
     {
         ITypeTransactionUserControlView GetSelectTypeTransactionUserControlView();
+        ITypeTransactionUserControlView GetUserControlView();
     }
 }

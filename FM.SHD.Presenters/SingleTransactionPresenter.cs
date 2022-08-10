@@ -14,16 +14,31 @@ namespace FM.SHD.Presenters
         private ISingleTransactionView _singleTransactionView;
         private IServiceProvider _serviceProvider;
         private ISingleTransactionServices _singleTransactionServices;
-        private ISingleTransactionRepository _singleTransactionRepository;
-        
-        public SingleTransactionPresenter(IServiceProvider serviceProvider, ISingleTransactionView singleTransactionView, ISingleTransactionServices singleTransactionServices, ISingleTransactionRepository singleTransactionRepository)
+        private readonly ITypeTransactionUserControlPresenter _typeTransactionUserControlPresenter;
+
+        public SingleTransactionPresenter(
+            IServiceProvider serviceProvider, 
+            ISingleTransactionView singleTransactionView, 
+            ISingleTransactionServices singleTransactionServices,
+            ITypeTransactionUserControlPresenter typeTransactionUserControlPresenter)
         {
             _singleTransactionView = singleTransactionView;
             _singleTransactionServices = singleTransactionServices;
+            _typeTransactionUserControlPresenter = typeTransactionUserControlPresenter;
             _serviceProvider = serviceProvider;
-            _singleTransactionRepository = singleTransactionRepository;
-            
-            _singleTransactionView.Add += SingleTransactionViewOnAdd;
+            _singleTransactionView.OnLoadEventrsss += SingleTransactionViewOnOnLoad;
+            //_singleTransactionView.Add += SingleTransactionViewOnAdd;
+            //_singleTransactionView.OnChangeTypeTransaction += _singleTransactionView_OnChangeTypeTransaction;
+        }
+
+        private void SingleTransactionViewOnOnLoad()
+        {
+            _singleTransactionView.AddTypeTransactionUserControl(_typeTransactionUserControlPresenter.GetUserControlView());
+        }
+
+        private void _singleTransactionView_OnChangeTypeTransaction(int transactionType)
+        {
+
         }
 
         private void SingleTransactionViewOnAdd(object sender, EventArgs e)

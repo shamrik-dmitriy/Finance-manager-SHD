@@ -9,13 +9,13 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace FM.SHD.Presenters.UserControlPresenters
 {
-    public class SelectTypeTransactionUserControlPresenter : ISelectTypeTransactionUserControlPresenter
+    public class TypeTransactionUserControlPresenter : ITypeTransactionUserControlPresenter
     {
         private readonly ITypeTransactionUserControlView _typeTransactionUserControlView;
         private readonly ITypeTransactionServices _typeTransactionServices;
         private readonly ITypeTransactionRepository _typeTransactionRepository;
 
-        public SelectTypeTransactionUserControlPresenter(
+        public TypeTransactionUserControlPresenter(
             ITypeTransactionUserControlView typeTransactionUserControlView,
             ITypeTransactionServices typeTransactionServices, ITypeTransactionRepository typeTransactionRepository)
         {
@@ -23,17 +23,23 @@ namespace FM.SHD.Presenters.UserControlPresenters
             _typeTransactionServices = typeTransactionServices;
             _typeTransactionRepository = typeTransactionRepository;
 
-            _typeTransactionUserControlView.LoadUserControl +=
-                TypeTransactionUserControlViewOnLoadUserControl;
+            //_typeTransactionUserControlView.LoadUserControl +=
+             //   TypeTransactionUserControlViewOnLoadUserControl;
         }
 
         private void TypeTransactionUserControlViewOnLoadUserControl()
         {
-            _typeTransactionUserControlView.SetTransactionTypes(_typeTransactionServices.GetAll());
+            _typeTransactionUserControlView.LoadTransactionTypes(_typeTransactionServices.GetAll());
         }
 
 
+        [Obsolete]
         public ITypeTransactionUserControlView GetSelectTypeTransactionUserControlView()
+        {
+            return _typeTransactionUserControlView;
+        }
+
+        public ITypeTransactionUserControlView GetUserControlView()
         {
             return _typeTransactionUserControlView;
         }

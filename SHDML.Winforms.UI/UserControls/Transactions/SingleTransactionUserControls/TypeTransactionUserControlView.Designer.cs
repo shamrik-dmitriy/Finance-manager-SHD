@@ -1,7 +1,7 @@
 ﻿
 namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls
 {
-    partial class SelectTypeTransactionUserControl
+    partial class TypeTransactionUserControlView
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -57,14 +57,15 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserContr
             this.typeOperationsCombobox.TabIndex = 2;
             this.typeOperationsCombobox.SelectedIndexChanged += new System.EventHandler(this.typeOperationsCombobox_SelectedIndexChanged);
             // 
-            // SelectTypeTransactionUserControl
+            // TypeTransactionUserControlView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.typeTransactionLabel);
             this.Controls.Add(this.typeOperationsCombobox);
-            this.Name = "SelectTypeTransactionUserControl";
+            this.Name = "TypeTransactionUserControlView";
             this.Size = new System.Drawing.Size(358, 23);
+            this.Load += new System.EventHandler(this.TypeTransactionUserControlView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

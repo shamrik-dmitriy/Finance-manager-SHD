@@ -13,6 +13,9 @@
     <Compile Update="UserControls\Transactions\ItemOfMultipleTransaction.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UserControls\Transactions\SingleTransactionUserControls\TypeTransactionUserControlView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UserControls\Transactions\UserControlsOfTransactions\AccountInfoUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -29,9 +32,6 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControls\Transactions\UserControlsOfTransactions\SelectFamilyMemberUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControls\Transactions\SingleTransactionUserControls\SelectTypeTransactionUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControls\Transactions\UserControlsOfTransactions\SumTransactionUserControl.cs">

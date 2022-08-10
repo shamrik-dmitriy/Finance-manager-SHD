@@ -25,30 +25,29 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserContr
 
         private void SelectAccountUserControl_Load(object sender, EventArgs e)
         {
-
-            financeInfoOfOperationflowLayoutPanel.Controls.Remove(creditAccountInfoUserControl);
             switch (TransactionType)
             {
                 case 0:
                     {
                         debitAccountInfoUserControl.LabelOfTypeOperation = "Списать со счёта";
+                        creditAccountInfoUserControl.Visible = false;
                         break;
                     }
                 case 1:
                     {
-                        debitAccountInfoUserControl.LabelOfTypeOperation = "Зачислить на счёт";
+                        debitAccountInfoUserControl.LabelOfTypeOperation = "Зачслить на счёт";
+                        creditAccountInfoUserControl.Visible = false;
                         break;
                     }
                 case 2:
                     {
                         debitAccountInfoUserControl.LabelOfTypeOperation = "Списать со счёта";
-                        financeInfoOfOperationflowLayoutPanel.Controls.Add(creditAccountInfoUserControl);
-                        creditAccountInfoUserControl.LabelOfTypeOperation = "Зачислить на счёт";
+                        creditAccountInfoUserControl.Visible = true;
                         break;
                     }
             }
-            financeInfoOfOperationflowLayoutPanel.Refresh();
-            financeInfoOfOperationflowLayoutPanel.Update();
+            //  financeInfoOfOperationflowLayoutPanel.Refresh();
+            //financeInfoOfOperationflowLayoutPanel.Update();
         }
 
         private void debitAccountComboBox_SelectedIndexChanged(object sender, EventArgs e)

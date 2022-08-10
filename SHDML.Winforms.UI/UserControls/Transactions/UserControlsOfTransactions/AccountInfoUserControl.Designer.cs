@@ -29,35 +29,34 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions
         /// </summary>
         private void InitializeComponent()
         {
-            this.infoAccountLabel = new System.Windows.Forms.Label();
-            this.debitAccountComboBox = new System.Windows.Forms.ComboBox();
+            this.accountLabel = new System.Windows.Forms.Label();
+            this.accountComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // infoAccountLabel
+            // accountLabel
             // 
-            this.infoAccountLabel.AutoSize = true;
-            this.infoAccountLabel.Location = new System.Drawing.Point(10, 5);
-            this.infoAccountLabel.Name = "infoAccountLabel";
-            this.infoAccountLabel.Size = new System.Drawing.Size(108, 15);
-            this.infoAccountLabel.TabIndex = 3;
-            this.infoAccountLabel.Text = "Зачислить на счёт";
+            this.accountLabel.AutoSize = true;
+            this.accountLabel.Location = new System.Drawing.Point(10, 5);
+            this.accountLabel.Name = "accountLabel";
+            this.accountLabel.Size = new System.Drawing.Size(0, 15);
+            this.accountLabel.TabIndex = 3;
             // 
-            // debitAccountComboBox
+            // accountComboBox
             // 
-            this.debitAccountComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.debitAccountComboBox.FormattingEnabled = true;
-            this.debitAccountComboBox.Location = new System.Drawing.Point(124, 2);
-            this.debitAccountComboBox.Name = "debitAccountComboBox";
-            this.debitAccountComboBox.Size = new System.Drawing.Size(230, 23);
-            this.debitAccountComboBox.TabIndex = 2;
+            this.accountComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.accountComboBox.FormattingEnabled = true;
+            this.accountComboBox.Location = new System.Drawing.Point(124, 2);
+            this.accountComboBox.Name = "accountComboBox";
+            this.accountComboBox.Size = new System.Drawing.Size(230, 23);
+            this.accountComboBox.TabIndex = 2;
             // 
             // AccountInfoUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.Controls.Add(this.infoAccountLabel);
-            this.Controls.Add(this.debitAccountComboBox);
+            this.Controls.Add(this.accountLabel);
+            this.Controls.Add(this.accountComboBox);
             this.Name = "AccountInfoUserControl";
             this.Size = new System.Drawing.Size(360, 28);
             this.ResumeLayout(false);
@@ -67,7 +66,7 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions
 
         #endregion
 
-        private System.Windows.Forms.Label infoAccountLabel;
-        private System.Windows.Forms.ComboBox debitAccountComboBox;
+        private System.Windows.Forms.Label accountLabel;
+        private System.Windows.Forms.ComboBox accountComboBox;
     }
 }

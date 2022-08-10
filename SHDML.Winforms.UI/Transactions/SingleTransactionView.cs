@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
+using FM.SHD.Infrastructure.Events;
+using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.IntrefacesViews;
+using FM.SHD.Presenters.IntrefacesViews.UserControl;
 using SHDML.BLL.DTO.DTO;
 using SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls;
 
@@ -8,7 +11,10 @@ namespace SHDML.Winforms.UI.Transactions
 {
     public partial class SingleTransactionView : Form, ISingleTransactionView
     {
+        private readonly EventAggregator _eventAggregator;
+        public event Action OnLoadEventrsss;
         public event EventHandler Add;
+        public event Action<int> OnChangeTypeTransaction;
 
         private string Title
         {
@@ -23,16 +29,33 @@ namespace SHDML.Winforms.UI.Transactions
             InitializeComponent();
         }
 
+        public SingleTransactionView(EventAggregator eventAggregator) : this()
+        {
+            _eventAggregator = eventAggregator;
+            _eventAggregator.Subscribe<SelectedTypeOfTransactionApplicationEvent>(Action);
+            InitializeComponent();
+        }
+
+        private void Action(SelectedTypeOfTransactionApplicationEvent obj)
+        {
+            throw new NotImplementedException();
+        }
+
         protected internal SingleTransactionDTO SingleTransactionDTO { get; set; }
 
-        public SingleTransactionView(string typeTransactionOperations) : this()
+        public SingleTransactionView(string typeTransactionOperations, EventAggregator eventAggregator) : this()
         {
             Title = typeTransactionOperations;
             TitleDefault = typeTransactionOperations;
+            _eventAggregator = eventAggregator;
+            _eventAggregator.Subscribe<SelectedTypeOfTransactionApplicationEvent>(Action);
         }
 
         private void AddSingleTransactionForm_Load(object sender, EventArgs e)
         {
+            OnLoadEventrsss?.Invoke();
+            // _typeTransactionUserControlView.LoadUserControlView += TypeTransactionUserControlViewOnLoadUserControlView;
+            /*
             if (SingleTransactionDTO != null)
             {
             }
@@ -41,37 +64,70 @@ namespace SHDML.Winforms.UI.Transactions
                 selectTypeTransactionUserControl.TypeOperationSelectedIndexChanged +=
                     new EventHandler(SelectTypeTransaction_SelectedIndexChanged);
                 selectTypeTransactionUserControl.typeOperationsCombobox.SelectedIndex = 0;
-            }
+            }*/
+        }
+
+        private void TypeTransactionUserControlViewOnLoadUserControlView()
+        {
+            throw new NotImplementedException();
         }
 
         protected void SelectTypeTransaction_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var s = (SelectTypeTransactionUserControl)sender;
-            billingInfoFlowLayoutPanel.Controls.Clear();
-            switch (s.typeOperationsCombobox.SelectedIndex)
-            {
-                case 0:
-                {
-                    billingInfoFlowLayoutPanel.Controls.Add(
-                        new SelectAccountUserControl(s.typeOperationsCombobox.SelectedIndex));
-                    break;
-                }
-                case 1:
-                {
-                    billingInfoFlowLayoutPanel.Controls.Add(
-                        new SelectAccountUserControl(s.typeOperationsCombobox.SelectedIndex));
-                    break;
-                }
-                case 2:
-                {
-                    billingInfoFlowLayoutPanel.Controls.Add(
-                        new SelectAccountUserControl(s.typeOperationsCombobox.SelectedIndex));
-                    break;
-                }
-            }
-
-            billingInfoFlowLayoutPanel.Refresh();
-            billingInfoFlowLayoutPanel.Update();
+            OnChangeTypeTransaction?.Invoke(((TypeTransactionUserControlView)sender).typeOperationsCombobox
+                .SelectedIndex);
+            /*  
+               switch (s.typeOperationsCombobox.SelectedIndex)
+               {
+                   case 0:
+                   {
+                           billingAccountInfo.
+   
+                       billingInfoFlowLayoutPanel.Controls.Add(
+                           new SelectAccountUserControl(s.typeOperationsCombobox.SelectedIndex));
+                       break;
+                   }
+                   case 1:
+                   {
+                       billingInfoFlowLayoutPanel.Controls.Add(
+                           new SelectAccountUserControl(s.typeOperationsCombobox.SelectedIndex));
+                       break;
+                   }
+                   case 2:
+                   {
+                       billingInfoFlowLayoutPanel.Controls.Add(
+                           new SelectAccountUserControl(s.typeOperationsCombobox.SelectedIndex));
+                       break;
+                   }
+               }
+   
+               billingInfoFlowLayoutPanel.Refresh();
+               billingInfoFlowLayoutPanel.Update();
+   
+               switch (TransactionType)
+               {
+                   case 0:
+                       {
+                           debitAccountInfoUserControl.LabelOfTypeOperation = "Списать со счёта";
+                           creditAccountInfoUserControl.Visible = false;
+                           break;
+                       }
+                   case 1:
+                       {
+                           debitAccountInfoUserControl.LabelOfTypeOperation = "Зачслить на счёт";
+                           creditAccountInfoUserControl.Visible = false;
+                           break;
+                       }
+                   case 2:
+                       {
+                           debitAccountInfoUserControl.LabelOfTypeOperation = "Списать со счёта";
+                           creditAccountInfoUserControl.Visible = true;
+                           break;
+                       }
+               }
+               //  financeInfoOfOperationflowLayoutPanel.Refresh();
+               //financeInfoOfOperationflowLayoutPanel.Update();
+               */
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -84,7 +140,7 @@ namespace SHDML.Winforms.UI.Transactions
         {
             Add?.Invoke(sender, e);
 
-            var t = billingInfoFlowLayoutPanel.Controls[0] as SelectAccountUserControl;
+            /*var t = billingInfoFlowLayoutPanel.Controls[0] as SelectAccountUserControl;
             SingleTransactionDTO = new SingleTransactionDTO
             {
                 Name = nameTransactiontextBox.Text,
@@ -92,6 +148,7 @@ namespace SHDML.Winforms.UI.Transactions
                 Sum = t.Sum
             };
             // TODO: Отправить данные в БД
+            */
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -111,6 +168,8 @@ namespace SHDML.Winforms.UI.Transactions
 
         public SingleTransactionDTO GetTransactionInfo()
         {
+            return new SingleTransactionDTO();
+            /*
             var accountUser = billingInfoFlowLayoutPanel.Controls[0] as SelectAccountUserControl;
             
             return SingleTransactionDTO = new SingleTransactionDTO
@@ -125,7 +184,37 @@ namespace SHDML.Winforms.UI.Transactions
                 Date = accountUser.Date + accountUser.Time,
                 Contragent = selectContrAgentUserControl.ContragentName,
                 FamilyMember = selectFamilyMemberUserControl.FamilyMemberName
-            };
+            };*/
+        }
+
+        public void AddTypeTransactionUserControl(ITypeTransactionUserControlView userControlView)
+        {
+            Controls.Clear();
+            var t = (UserControl)userControlView;
+            Controls.Add(t);
+            //BringToFront();
+            /*t.Visible = true;
+            singleTransactionDesktopflowLayoutPanel.Controls.Add(t);
+            t.BringToFront();
+            singleTransactionDesktopflowLayoutPanel.Refresh();
+            singleTransactionDesktopflowLayoutPanel.Update();
+            singleTransactionDesktopflowLayoutPanel.Invalidate();
+            */
+            //Invalidate();
+           // Refresh();
+           // Update();
+        }
+
+        private void singleTransactionDesktopflowLayoutPanel_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void selectTypeTransactionUserControl_Load(object sender, EventArgs e)
+        {
+        }
+
+        public void SetVisibleCreditAccout(bool isVisible)
+        {
         }
     }
 }
