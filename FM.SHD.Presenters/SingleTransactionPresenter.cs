@@ -15,20 +15,20 @@ namespace FM.SHD.Presenters
         private ISingleTransactionView _singleTransactionView;
         private IServiceProvider _serviceProvider;
         private ISingleTransactionServices _singleTransactionServices;
-        private readonly ITypeTransactionUserControlPresenter _typeTransactionUserControlPresenter;
-        private readonly INameTransactionUserControlPresenter _nameTransactionUserControlPresenter;
+        private readonly ITypeTransactionUCPresenter _typeTransactionUcPresenter;
+        private readonly INameTransactionUCPresenter _nameTransactionUcPresenter;
 
         public SingleTransactionPresenter(
             IServiceProvider serviceProvider,
             ISingleTransactionView singleTransactionView,
             ISingleTransactionServices singleTransactionServices,
-            ITypeTransactionUserControlPresenter typeTransactionUserControlPresenter,
-            INameTransactionUserControlPresenter nameTransactionUserControlPresenter)
+            ITypeTransactionUCPresenter typeTransactionUcPresenter,
+            INameTransactionUCPresenter nameTransactionUcPresenter)
         {
             _singleTransactionView = singleTransactionView;
             _singleTransactionServices = singleTransactionServices;
-            _typeTransactionUserControlPresenter = typeTransactionUserControlPresenter;
-            _nameTransactionUserControlPresenter = nameTransactionUserControlPresenter;
+            _typeTransactionUcPresenter = typeTransactionUcPresenter;
+            _nameTransactionUcPresenter = nameTransactionUcPresenter;
             _serviceProvider = serviceProvider;
             _singleTransactionView.OnLoadEventrsss += SingleTransactionViewOnOnLoad;
             //_singleTransactionView.Add += SingleTransactionViewOnAdd;
@@ -37,8 +37,8 @@ namespace FM.SHD.Presenters
 
         private void SingleTransactionViewOnOnLoad()
         {
-            _singleTransactionView.AddTypeTransactionUserControl(_typeTransactionUserControlPresenter.GetUserControlView());
-            _singleTransactionView.AddNameTransactionUserControl(_nameTransactionUserControlPresenter.GetUserControlView());
+            _singleTransactionView.AddTypeTransactionUserControl(_typeTransactionUcPresenter.GetUserControlView());
+            _singleTransactionView.AddNameTransactionUserControl(_nameTransactionUcPresenter.GetUserControlView());
         }
 
         private void _singleTransactionView_OnChangeTypeTransaction(int transactionType)

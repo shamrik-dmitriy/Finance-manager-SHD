@@ -60,7 +60,7 @@ namespace SHDML.Winforms.UI.Transactions
             _eventAggregator.Subscribe<SelectedTypeOfTransactionApplicationEvent>(ActionSelectedTypeOfTransaction);
             _eventAggregator.Subscribe<ChangeTextBoxNameTransactionText>(ActionChangeTextBoxNameTransaction);
 
-            // _typeTransactionUserControlView.LoadUserControlView += TypeTransactionUserControlViewOnLoadUserControlView;
+            // _typeTransactionUcView.LoadUserControlView += TypeTransactionUserControlViewOnLoadUserControlView;
             /*
             if (SingleTransactionDTO != null)
             {
@@ -75,7 +75,7 @@ namespace SHDML.Winforms.UI.Transactions
 
         protected void SelectTypeTransaction_SelectedIndexChanged(object sender, EventArgs e)
         {
-            OnChangeTypeTransaction?.Invoke(((TypeTransactionUserControlView)sender).typeOperationsCombobox
+            OnChangeTypeTransaction?.Invoke(((TypeTransactionUCView)sender).typeOperationsCombobox
                 .SelectedIndex);
             /*  
                switch (s.typeOperationsCombobox.SelectedIndex)
@@ -85,19 +85,19 @@ namespace SHDML.Winforms.UI.Transactions
                            billingAccountInfo.
    
                        billingInfoFlowLayoutPanel.Controls.Add(
-                           new SelectAccountUserControl(s.typeOperationsCombobox.SelectedIndex));
+                           new AccountUCView(s.typeOperationsCombobox.SelectedIndex));
                        break;
                    }
                    case 1:
                    {
                        billingInfoFlowLayoutPanel.Controls.Add(
-                           new SelectAccountUserControl(s.typeOperationsCombobox.SelectedIndex));
+                           new AccountUCView(s.typeOperationsCombobox.SelectedIndex));
                        break;
                    }
                    case 2:
                    {
                        billingInfoFlowLayoutPanel.Controls.Add(
-                           new SelectAccountUserControl(s.typeOperationsCombobox.SelectedIndex));
+                           new AccountUCView(s.typeOperationsCombobox.SelectedIndex));
                        break;
                    }
                }
@@ -135,7 +135,7 @@ namespace SHDML.Winforms.UI.Transactions
         {
             Add?.Invoke(sender, e);
 
-            /*var t = billingInfoFlowLayoutPanel.Controls[0] as SelectAccountUserControl;
+            /*var t = billingInfoFlowLayoutPanel.Controls[0] as AccountUCView;
             SingleTransactionDTO = new SingleTransactionDTO
             {
                 Name = nameTransactiontextBox.Text,
@@ -165,7 +165,7 @@ namespace SHDML.Winforms.UI.Transactions
         {
             return new SingleTransactionDTO();
             /*
-            var accountUser = billingInfoFlowLayoutPanel.Controls[0] as SelectAccountUserControl;
+            var accountUser = billingInfoFlowLayoutPanel.Controls[0] as AccountUCView;
             
             return SingleTransactionDTO = new SingleTransactionDTO
             {
@@ -175,22 +175,22 @@ namespace SHDML.Winforms.UI.Transactions
                 Sum = accountUser.Sum,
                 DebitAccount = accountUser.DebitAccount,
                 CreditAccount = accountUser.CreditAccount,
-                Category = selectCategoryUserControl.CategoryName,
+                Category = _categoryUcView.CategoryName,
                 Date = accountUser.Date + accountUser.Time,
-                Contragent = selectContrAgentUserControl.ContragentName,
-                FamilyMember = selectFamilyMemberUserControl.FamilyMemberName
+                Contragent = _contrAgentUcView.ContragentName,
+                FamilyMember = _familyMemberUcView.FamilyMemberName
             };*/
         }
 
-        public void AddTypeTransactionUserControl(ITypeTransactionUserControlView userControlView)
+        public void AddTypeTransactionUserControl(ITypeTransactionUCView ucView)
         {
-            var typeTransactionUc = (UserControl)userControlView;
+            var typeTransactionUc = (UserControl)ucView;
             singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
         }
 
-        public void AddNameTransactionUserControl(INameTransactionUserControlView userControlView)
+        public void AddNameTransactionUserControl(INameTransactionUCView ucView)
         {
-            var typeTransactionUc = (UserControl)userControlView;
+            var typeTransactionUc = (UserControl)ucView;
             singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
         }
 

@@ -25,21 +25,21 @@ namespace SHDML.Winforms.UI
 
         private void Sign_Click(object sender, EventArgs e)
         {
-            if (!userControlAuth.IsSigned)
+            if (!_authUcView.IsSigned)
             {
-                userControlAuth.IsSigned = true;
-                userControlAuth.UserName.Text = "Hello!, you signed in!";
+                _authUcView.IsSigned = true;
+                _authUcView.UserName.Text = "Hello!, you signed in!";
                 buttonSign.Text = "Выйти";
             }
             else
             {
-                userControlAuth.IsSigned = false;
+                _authUcView.IsSigned = false;
                 buttonSign.Text = "Войти";
-                userControlAuth.UserName.Text = "Пользователь не задан";
+                _authUcView.UserName.Text = "Пользователь не задан";
             }
 
-            userControlCategoryAccount1.Update();
-            userControlCategoryAccount1.Refresh();
+            _categoryAccount1.Update();
+            _categoryAccount1.Refresh();
         }
 
         private void buttonTransactionReview_Click(object sender, EventArgs e)
@@ -62,7 +62,7 @@ namespace SHDML.Winforms.UI
 
         private void buttonAddReceipt_Click(object sender, EventArgs e)
         {
-            new MultipleTransactionForm("Добавить группу транзакций (чек)").ShowDialog();
+            new MultipleTransactionView("Добавить группу транзакций (чек)").ShowDialog();
         }
 
         private void seeCategoriesButton_Click(object sender, EventArgs e)

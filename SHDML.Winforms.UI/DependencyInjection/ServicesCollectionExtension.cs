@@ -30,10 +30,10 @@ namespace SHDML.Winforms.UI.DependencyInjection
         public static IServiceCollection AddUserControlViews(this IServiceCollection serviceCollection)
         {
             return serviceCollection
-                .AddScoped<ITypeTransactionUserControlView, TypeTransactionUserControlView>()
-                .AddScoped<ITypeTransactionUserControlPresenter, TypeTransactionUserControlPresenter>()      
-                .AddScoped<INameTransactionUserControlView, NameTransactionUserControlView>()
-                .AddScoped<INameTransactionUserControlPresenter, NameTransactionUserControlPresenter>();
+                .AddScoped<ITypeTransactionUCView, TypeTransactionUCView>()
+                .AddScoped<ITypeTransactionUCPresenter, TypeTransactionUCPresenter>()      
+                .AddScoped<INameTransactionUCView, NameTransactionUCView>()
+                .AddScoped<INameTransactionUCPresenter, NameTransactionUcPresenter>();
         }
 
         public static IServiceCollection AddRepositories(this IServiceCollection serviceCollection,

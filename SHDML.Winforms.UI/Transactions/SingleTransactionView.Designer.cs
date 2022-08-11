@@ -34,11 +34,11 @@ namespace SHDML.Winforms.UI.Transactions
         {
             this.singleTransactionDesktopflowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.hrBorderLabel1 = new System.Windows.Forms.Label();
-            this.billingAccountInfo = new SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls.SelectAccountUserControl();
+            this.billingAccountInfo = new SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls.AccountUCView();
             this.hrBorderLabel2 = new System.Windows.Forms.Label();
-            this.selectCategoryUserControl = new SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls.SelectCategoryUserControl();
-            this.selectContrAgentUserControl = new SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions.SelectContrAgentUserControl();
-            this.selectFamilyMemberUserControl = new SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions.SelectFamilyMemberUserControl();
+            this._categoryUcView = new SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls.CategoryUCView();
+            this._contrAgentUcView = new SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions.ContrAgentUCView();
+            this._familyMemberUcView = new SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions.FamilyMemberUCView();
             this.buttonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.addedSingleTransactionButton = new System.Windows.Forms.Button();
             this.cancelSingleTransactionButton = new System.Windows.Forms.Button();
@@ -54,9 +54,9 @@ namespace SHDML.Winforms.UI.Transactions
             this.singleTransactionDesktopflowLayoutPanel.Controls.Add(this.hrBorderLabel1);
             this.singleTransactionDesktopflowLayoutPanel.Controls.Add(this.billingAccountInfo);
             this.singleTransactionDesktopflowLayoutPanel.Controls.Add(this.hrBorderLabel2);
-            this.singleTransactionDesktopflowLayoutPanel.Controls.Add(this.selectCategoryUserControl);
-            this.singleTransactionDesktopflowLayoutPanel.Controls.Add(this.selectContrAgentUserControl);
-            this.singleTransactionDesktopflowLayoutPanel.Controls.Add(this.selectFamilyMemberUserControl);
+            this.singleTransactionDesktopflowLayoutPanel.Controls.Add(this._categoryUcView);
+            this.singleTransactionDesktopflowLayoutPanel.Controls.Add(this._contrAgentUcView);
+            this.singleTransactionDesktopflowLayoutPanel.Controls.Add(this._familyMemberUcView);
             this.singleTransactionDesktopflowLayoutPanel.Controls.Add(this.buttonsTableLayoutPanel);
             this.singleTransactionDesktopflowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.singleTransactionDesktopflowLayoutPanel.Location = new System.Drawing.Point(0, 0);
@@ -96,35 +96,35 @@ namespace SHDML.Winforms.UI.Transactions
             this.hrBorderLabel2.Size = new System.Drawing.Size(359, 2);
             this.hrBorderLabel2.TabIndex = 10;
             // 
-            // selectCategoryUserControl
+            // _categoryUcView
             // 
-            this.selectCategoryUserControl.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.selectCategoryUserControl.AutoSize = true;
-            this.selectCategoryUserControl.CategoryName = "";
-            this.selectCategoryUserControl.Location = new System.Drawing.Point(4, 97);
-            this.selectCategoryUserControl.Name = "selectCategoryUserControl";
-            this.selectCategoryUserControl.Size = new System.Drawing.Size(357, 28);
-            this.selectCategoryUserControl.TabIndex = 11;
+            this._categoryUcView.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this._categoryUcView.AutoSize = true;
+            this._categoryUcView.CategoryName = "";
+            this._categoryUcView.Location = new System.Drawing.Point(4, 97);
+            this._categoryUcView.Name = "_categoryUcView";
+            this._categoryUcView.Size = new System.Drawing.Size(357, 28);
+            this._categoryUcView.TabIndex = 11;
             // 
-            // selectContrAgentUserControl
+            // _contrAgentUcView
             // 
-            this.selectContrAgentUserControl.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.selectContrAgentUserControl.AutoSize = true;
-            this.selectContrAgentUserControl.ContragentName = "";
-            this.selectContrAgentUserControl.Location = new System.Drawing.Point(4, 131);
-            this.selectContrAgentUserControl.Name = "selectContrAgentUserControl";
-            this.selectContrAgentUserControl.Size = new System.Drawing.Size(357, 28);
-            this.selectContrAgentUserControl.TabIndex = 12;
+            this._contrAgentUcView.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this._contrAgentUcView.AutoSize = true;
+            this._contrAgentUcView.ContragentName = "";
+            this._contrAgentUcView.Location = new System.Drawing.Point(4, 131);
+            this._contrAgentUcView.Name = "_contrAgentUcView";
+            this._contrAgentUcView.Size = new System.Drawing.Size(357, 28);
+            this._contrAgentUcView.TabIndex = 12;
             // 
-            // selectFamilyMemberUserControl
+            // _familyMemberUcView
             // 
-            this.selectFamilyMemberUserControl.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.selectFamilyMemberUserControl.AutoSize = true;
-            this.selectFamilyMemberUserControl.FamilyMemberName = "";
-            this.selectFamilyMemberUserControl.Location = new System.Drawing.Point(4, 165);
-            this.selectFamilyMemberUserControl.Name = "selectFamilyMemberUserControl";
-            this.selectFamilyMemberUserControl.Size = new System.Drawing.Size(357, 28);
-            this.selectFamilyMemberUserControl.TabIndex = 13;
+            this._familyMemberUcView.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this._familyMemberUcView.AutoSize = true;
+            this._familyMemberUcView.FamilyMemberName = "";
+            this._familyMemberUcView.Location = new System.Drawing.Point(4, 165);
+            this._familyMemberUcView.Name = "_familyMemberUcView";
+            this._familyMemberUcView.Size = new System.Drawing.Size(357, 28);
+            this._familyMemberUcView.TabIndex = 13;
             // 
             // buttonsTableLayoutPanel
             // 
@@ -198,10 +198,10 @@ namespace SHDML.Winforms.UI.Transactions
         private System.Windows.Forms.FlowLayoutPanel singleTransactionDesktopflowLayoutPanel;
         private System.Windows.Forms.Label hrBorderLabel1;
         private System.Windows.Forms.Label hrBorderLabel2;
-        private SelectCategoryUserControl selectCategoryUserControl;
-        private SelectContrAgentUserControl selectContrAgentUserControl;
-        private SelectFamilyMemberUserControl selectFamilyMemberUserControl;
-        public SelectAccountUserControl billingAccountInfo;
+        private CategoryUCView _categoryUcView;
+        private ContrAgentUCView _contrAgentUcView;
+        private FamilyMemberUCView _familyMemberUcView;
+        public AccountUCView billingAccountInfo;
         private System.Windows.Forms.TableLayoutPanel buttonsTableLayoutPanel;
         private System.Windows.Forms.Button addedSingleTransactionButton;
         private System.Windows.Forms.Button cancelSingleTransactionButton;
