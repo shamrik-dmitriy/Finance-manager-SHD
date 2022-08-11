@@ -28,17 +28,11 @@ namespace SHDML.Winforms.UI.Transactions
         public SingleTransactionView()
         {
             InitializeComponent();
-            singleTransactionDesktopflowLayoutPanel.Controls.Clear();
         }
 
         public SingleTransactionView(EventAggregator eventAggregator) : this()
         {
             _eventAggregator = eventAggregator;
-        }
-
-        private void ActionSelectedTypeOfTransaction(SelectedTypeOfTransactionApplicationEvent obj)
-        {
-            throw new NotImplementedException();
         }
 
         protected internal SingleTransactionDTO SingleTransactionDTO { get; set; }
@@ -48,7 +42,7 @@ namespace SHDML.Winforms.UI.Transactions
             Title = typeTransactionOperations;
             TitleDefault = typeTransactionOperations;
             _eventAggregator = eventAggregator;
-   }
+        }
 
         private void ActionChangeTextBoxNameTransaction(ChangeTextBoxNameTransactionText obj)
         {
@@ -175,11 +169,35 @@ namespace SHDML.Winforms.UI.Transactions
                 Sum = accountUser.Sum,
                 DebitAccount = accountUser.DebitAccount,
                 CreditAccount = accountUser.CreditAccount,
-                Category = _categoryUcView.CategoryName,
+                Category = _categoryTransactionUcView.CategoryName,
                 Date = accountUser.Date + accountUser.Time,
                 Contragent = _contrAgentUcView.ContragentName,
                 FamilyMember = _familyMemberUcView.FamilyMemberName
             };*/
+        }
+
+        public void AddCategoryTransactionUserControl(ICategoryTransactionUCView ucView)
+        {
+            var typeTransactionUc = (UserControl)ucView;
+            singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
+        }
+
+        public void AddAddCancelButtonsUserControl(IAddCancelButtonsUCView ucView)
+        {
+            var typeTransactionUc = (UserControl)ucView;
+            singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
+        }
+
+        public void AddFamilyMemberUserControl(IFamilyMemberUCView ucView)
+        {
+            var typeTransactionUc = (UserControl)ucView;
+            singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
+        }
+
+        public void AddContrAgentUserControl(IContrAgentUCView ucView)
+        {
+            var typeTransactionUc = (UserControl)ucView;
+            singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
         }
 
         public void AddTypeTransactionUserControl(ITypeTransactionUCView ucView)
@@ -190,15 +208,16 @@ namespace SHDML.Winforms.UI.Transactions
 
         public void AddHorizontalLine()
         {
-            singleTransactionDesktopflowLayoutPanel.Controls.Add(new Label(){BorderStyle = BorderStyle.FixedSingle,Anchor = AnchorStyles.Top, Size = new Size(359,2)});
+            singleTransactionDesktopflowLayoutPanel.Controls.Add(new Label()
+                { BorderStyle = BorderStyle.FixedSingle, Anchor = AnchorStyles.Top, Size = new Size(359, 2) });
         }
-        
+
         public void AddAccountsInfoTransactionUserControl(IAccountsInfoTransactionUCView ucView)
         {
             var typeTransactionUc = (UserControl)ucView;
             singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
-        }  
-        
+        }
+
         public void AddDescriptionTransactionUserControl(IDescriptionTransactionUCView ucView)
         {
             var typeTransactionUc = (UserControl)ucView;
@@ -225,7 +244,7 @@ namespace SHDML.Winforms.UI.Transactions
 
         private void OnFormClosing(object sender, FormClosingEventArgs e)
         {
-           // _eventAggregator.Unsubscribe<SelectedTypeOfTransactionApplicationEvent>(ActionSelectedTypeOfTransaction);
+            // _eventAggregator.Unsubscribe<SelectedTypeOfTransactionApplicationEvent>(ActionSelectedTypeOfTransaction);
             _eventAggregator.Unsubscribe<ChangeTextBoxNameTransactionText>(ActionChangeTextBoxNameTransaction);
         }
     }

@@ -13,6 +13,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SHDML.Winforms.UI.Transactions;
 using SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls;
+using SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions;
+using IContrAgentUCPresenter = FM.SHD.Presenters.Interfaces.UserControls.IContrAgentUCPresenter;
 
 namespace SHDML.Winforms.UI.DependencyInjection
 {
@@ -31,14 +33,22 @@ namespace SHDML.Winforms.UI.DependencyInjection
         {
             return serviceCollection
                 .AddScoped<ITypeTransactionUCView, TypeTransactionUCView>()
-                .AddScoped<ITypeTransactionUCPresenter, TypeTransactionUCPresenter>()      
+                .AddScoped<ITypeTransactionUCPresenter, TypeTransactionUCPresenter>()
                 .AddScoped<INameTransactionUCView, NameTransactionUCView>()
                 .AddScoped<INameTransactionUCPresenter, NameTransactionUcPresenter>()
                 .AddScoped<IDescriptionTransactionUCView, DescriptionTransactionUCView>()
                 .AddScoped<IDescriptionTransactionUCPresenter, DescriptionTransactionUCPresenter>()
                 //Добавить то, что находится внутри IAccountsInfoTransactionUCView
                 .AddScoped<IAccountsInfoTransactionUCView, AccountsInfoTransactionUCView>()
-                .AddScoped<IAccountsInfoTransactionUCPresenter, AccountsInfoTransactionUCPresenter>();
+                .AddScoped<IAccountsInfoTransactionUCPresenter, AccountsInfoTransactionUCPresenter>()
+                .AddScoped<ICategoryTransactionUCView, CategoryTransactionUCView>()
+                .AddScoped<ICategoryTransactionUCPresenter, CategoryTransactionUCPresenter>()
+                .AddScoped<IContrAgentUCView, ContrAgentUCView>()
+                .AddScoped<IContrAgentUCPresenter, ContrAgentUCPresenter>()
+                .AddScoped<IFamilyMemberUCView, FamilyMemberUCView>()
+                .AddScoped<IFamilyMemberUCPresenter, FamilyMemberUCPresenter>()
+                .AddScoped<IAddCancelButtonsUCView, AddCancelButtonsUCView>()
+                .AddScoped<IAddCancelButtonsUCPresenter, AddCancelButtonsUCPresenter>();
         }
 
         public static IServiceCollection AddRepositories(this IServiceCollection serviceCollection,

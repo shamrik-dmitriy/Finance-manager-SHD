@@ -22,6 +22,12 @@
     <Compile Update="UserControls\Transactions\ItemOfMultipleTransactionView.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UserControls\Transactions\SingleTransactionUserControls\AccountsInfoTransactionUCView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UserControls\Transactions\SingleTransactionUserControls\AccountsUCView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UserControls\Transactions\SingleTransactionUserControls\AccountUCView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -50,6 +56,9 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControls\Transactions\UserControlsOfTransactions\AccountInfoUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UserControls\Transactions\UserControlsOfTransactions\AccountsInfoUCView.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControls\Transactions\UserControlsOfTransactions\ContrAgentUCView.cs">

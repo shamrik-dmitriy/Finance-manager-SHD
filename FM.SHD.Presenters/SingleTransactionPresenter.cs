@@ -20,6 +20,10 @@ namespace FM.SHD.Presenters
         private readonly INameTransactionUCPresenter _nameTransactionUcPresenter;
         private readonly IDescriptionTransactionUCPresenter _descriptionTransactionUcPresenter;
         private readonly IAccountsInfoTransactionUCPresenter _accountsInfoTransactionUcPresenter;
+        private readonly ICategoryTransactionUCPresenter _categoryTransactionUcPresenter;
+        private readonly IContrAgentUCPresenter _contrAgentUcPresenter;
+        private readonly IFamilyMemberUCPresenter _familyMemberUcPresenter;
+        private readonly IAddCancelButtonsUCPresenter _addCancelButtonsUcPresenter;
 
         public SingleTransactionPresenter(
             IServiceProvider serviceProvider,
@@ -28,7 +32,11 @@ namespace FM.SHD.Presenters
             ITypeTransactionUCPresenter typeTransactionUcPresenter,
             INameTransactionUCPresenter nameTransactionUcPresenter,
             IDescriptionTransactionUCPresenter descriptionTransactionUcPresenter,
-            IAccountsInfoTransactionUCPresenter accountsInfoTransactionUcPresenter)
+            IAccountsInfoTransactionUCPresenter accountsInfoTransactionUcPresenter,
+            ICategoryTransactionUCPresenter categoryTransactionUcPresenter,
+            IContrAgentUCPresenter contrAgentUcPresenter,
+            IFamilyMemberUCPresenter familyMemberUcPresenter,
+            IAddCancelButtonsUCPresenter addCancelButtonsUcPresenter)
         {
             _singleTransactionView = singleTransactionView;
             _singleTransactionServices = singleTransactionServices;
@@ -36,6 +44,10 @@ namespace FM.SHD.Presenters
             _nameTransactionUcPresenter = nameTransactionUcPresenter;
             _descriptionTransactionUcPresenter = descriptionTransactionUcPresenter;
             _accountsInfoTransactionUcPresenter = accountsInfoTransactionUcPresenter;
+            _categoryTransactionUcPresenter = categoryTransactionUcPresenter;
+            _contrAgentUcPresenter = contrAgentUcPresenter;
+            _familyMemberUcPresenter = familyMemberUcPresenter;
+            _addCancelButtonsUcPresenter = addCancelButtonsUcPresenter;
             _serviceProvider = serviceProvider;
             _singleTransactionView.OnLoadEventrsss += SingleTransactionViewOnOnLoad;
         }
@@ -44,10 +56,17 @@ namespace FM.SHD.Presenters
         {
             _singleTransactionView.AddTypeTransactionUserControl(_typeTransactionUcPresenter.GetUserControlView());
             _singleTransactionView.AddNameTransactionUserControl(_nameTransactionUcPresenter.GetUserControlView());
-            _singleTransactionView.AddDescriptionTransactionUserControl(_descriptionTransactionUcPresenter.GetUserControlView());
+            _singleTransactionView.AddDescriptionTransactionUserControl(_descriptionTransactionUcPresenter
+                .GetUserControlView());
             _singleTransactionView.AddHorizontalLine();
-            _singleTransactionView.AddAccountsInfoTransactionUserControl(_accountsInfoTransactionUcPresenter.GetUserControlView());
+            _singleTransactionView.AddAccountsInfoTransactionUserControl(_accountsInfoTransactionUcPresenter
+                .GetUserControlView());
             _singleTransactionView.AddHorizontalLine();
+            _singleTransactionView.AddCategoryTransactionUserControl(
+                _categoryTransactionUcPresenter.GetUserControlView());
+            _singleTransactionView.AddContrAgentUserControl(_contrAgentUcPresenter.GetUserControlView());
+            _singleTransactionView.AddFamilyMemberUserControl(_familyMemberUcPresenter.GetUserControlView());
+            _singleTransactionView.AddAddCancelButtonsUserControl(_addCancelButtonsUcPresenter.GetUserControlView());
         }
 
         private void _singleTransactionView_OnChangeTypeTransaction(int transactionType)
