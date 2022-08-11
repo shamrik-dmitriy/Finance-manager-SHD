@@ -59,7 +59,7 @@ namespace SHDML.Winforms.UI.Transactions
 
         private void accountInfoUserControl1_Load(object sender, EventArgs e)
         {
-            accountInfoUserControl1.LabelOfTypeOperation = "Списать со счёта";
+            _accountInfoUserControl1.LabelOfTypeOperation = "Списать со счёта";
 
         }
 

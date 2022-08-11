@@ -15,5 +15,7 @@ namespace FM.SHD.Presenters.IntrefacesViews
         void AddTypeTransactionUserControl(ITypeTransactionUCView getUcView);
         void AddNameTransactionUserControl(INameTransactionUCView getUcView);
         void AddDescriptionTransactionUserControl(IDescriptionTransactionUCView getUcView);
+        void AddAccountsInfoTransactionUserControl(IAccountsInfoTransactionUCView getUcView);
+        void AddHorizontalLine();
     }
 }

@@ -35,7 +35,10 @@ namespace SHDML.Winforms.UI.DependencyInjection
                 .AddScoped<INameTransactionUCView, NameTransactionUCView>()
                 .AddScoped<INameTransactionUCPresenter, NameTransactionUcPresenter>()
                 .AddScoped<IDescriptionTransactionUCView, DescriptionTransactionUCView>()
-                .AddScoped<IDescriptionTransactionUCPresenter, DescriptionTransactionUCPresenter>();
+                .AddScoped<IDescriptionTransactionUCPresenter, DescriptionTransactionUCPresenter>()
+                //Добавить то, что находится внутри IAccountsInfoTransactionUCView
+                .AddScoped<IAccountsInfoTransactionUCView, AccountsInfoTransactionUCView>()
+                .AddScoped<IAccountsInfoTransactionUCPresenter, AccountsInfoTransactionUCPresenter>();
         }
 
         public static IServiceCollection AddRepositories(this IServiceCollection serviceCollection,

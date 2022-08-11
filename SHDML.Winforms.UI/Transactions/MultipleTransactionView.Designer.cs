@@ -34,7 +34,7 @@ namespace SHDML.Winforms.UI.Transactions
             this.nameOfRetailertextBox = new System.Windows.Forms.TextBox();
             this._contrAgentUserControl1 = new ContrAgentUCView();
             this._familyMemberUserControl1 = new FamilyMemberUCView();
-            this.accountInfoUserControl1 = new AccountInfoUCView();
+            this._accountInfoUserControl1 = new AccountInfoUCView();
             this.dateTransactionUserControl1 = new DateTransactionUCView();
             this.addedTransactionButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -60,7 +60,7 @@ namespace SHDML.Winforms.UI.Transactions
             this.multipleTransactionFlowLayoutPanel.Controls.Add(this.nameOfRetailertextBox);
             this.multipleTransactionFlowLayoutPanel.Controls.Add(this._contrAgentUserControl1);
             this.multipleTransactionFlowLayoutPanel.Controls.Add(this._familyMemberUserControl1);
-            this.multipleTransactionFlowLayoutPanel.Controls.Add(this.accountInfoUserControl1);
+            this.multipleTransactionFlowLayoutPanel.Controls.Add(this._accountInfoUserControl1);
             this.multipleTransactionFlowLayoutPanel.Controls.Add(this.dateTransactionUserControl1);
             this.multipleTransactionFlowLayoutPanel.Controls.Add(this.addedTransactionButton);
             this.multipleTransactionFlowLayoutPanel.Controls.Add(this.label1);
@@ -102,16 +102,16 @@ namespace SHDML.Winforms.UI.Transactions
             this._familyMemberUserControl1.Size = new System.Drawing.Size(357, 28);
             this._familyMemberUserControl1.TabIndex = 13;
             // 
-            // accountInfoUserControl1
+            // _accountInfoUserControl1
             // 
-            this.accountInfoUserControl1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.accountInfoUserControl1.AutoSize = true;
-            this.accountInfoUserControl1.LabelOfTypeOperation = "Зачислить на счёт";
-            this.accountInfoUserControl1.Location = new System.Drawing.Point(4, 100);
-            this.accountInfoUserControl1.Name = "accountInfoUserControl1";
-            this.accountInfoUserControl1.Size = new System.Drawing.Size(357, 28);
-            this.accountInfoUserControl1.TabIndex = 15;
-            this.accountInfoUserControl1.Load += new System.EventHandler(this.accountInfoUserControl1_Load);
+            this._accountInfoUserControl1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this._accountInfoUserControl1.AutoSize = true;
+            this._accountInfoUserControl1.LabelOfTypeOperation = "Зачислить на счёт";
+            this._accountInfoUserControl1.Location = new System.Drawing.Point(4, 100);
+            this._accountInfoUserControl1.Name = "_accountInfoUserControl1";
+            this._accountInfoUserControl1.Size = new System.Drawing.Size(357, 28);
+            this._accountInfoUserControl1.TabIndex = 15;
+            this._accountInfoUserControl1.Load += new System.EventHandler(this.accountInfoUserControl1_Load);
             // 
             // dateTransactionUserControl1
             // 
@@ -281,7 +281,7 @@ namespace SHDML.Winforms.UI.Transactions
         private System.Windows.Forms.FlowLayoutPanel multipleTransactionFlowLayoutPanel;
         private System.Windows.Forms.TextBox nameOfRetailertextBox;
         private FamilyMemberUCView _familyMemberUserControl1;
-        private AccountInfoUCView accountInfoUserControl1;
+        private AccountInfoUCView _accountInfoUserControl1;
         private System.Windows.Forms.Button addedTransactionButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

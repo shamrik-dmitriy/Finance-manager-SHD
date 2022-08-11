@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
@@ -57,7 +58,6 @@ namespace SHDML.Winforms.UI.Transactions
         private void AddSingleTransactionForm_Load(object sender, EventArgs e)
         {
             OnLoadEventrsss?.Invoke();
-            _eventAggregator.Subscribe<SelectedTypeOfTransactionApplicationEvent>(ActionSelectedTypeOfTransaction);
             _eventAggregator.Subscribe<ChangeTextBoxNameTransactionText>(ActionChangeTextBoxNameTransaction);
 
             // _typeTransactionUcView.LoadUserControlView += TypeTransactionUserControlViewOnLoadUserControlView;
@@ -82,22 +82,22 @@ namespace SHDML.Winforms.UI.Transactions
                {
                    case 0:
                    {
-                           billingAccountInfo.
+                           BillingAccountsInfoTransactionInfo.
    
                        billingInfoFlowLayoutPanel.Controls.Add(
-                           new AccountUCView(s.typeOperationsCombobox.SelectedIndex));
+                           new AccountsInfoTransactionUCView(s.typeOperationsCombobox.SelectedIndex));
                        break;
                    }
                    case 1:
                    {
                        billingInfoFlowLayoutPanel.Controls.Add(
-                           new AccountUCView(s.typeOperationsCombobox.SelectedIndex));
+                           new AccountsInfoTransactionUCView(s.typeOperationsCombobox.SelectedIndex));
                        break;
                    }
                    case 2:
                    {
                        billingInfoFlowLayoutPanel.Controls.Add(
-                           new AccountUCView(s.typeOperationsCombobox.SelectedIndex));
+                           new AccountsInfoTransactionUCView(s.typeOperationsCombobox.SelectedIndex));
                        break;
                    }
                }
@@ -135,7 +135,7 @@ namespace SHDML.Winforms.UI.Transactions
         {
             Add?.Invoke(sender, e);
 
-            /*var t = billingInfoFlowLayoutPanel.Controls[0] as AccountUCView;
+            /*var t = billingInfoFlowLayoutPanel.Controls[0] as AccountsInfoTransactionUCView;
             SingleTransactionDTO = new SingleTransactionDTO
             {
                 Name = nameTransactiontextBox.Text,
@@ -165,7 +165,7 @@ namespace SHDML.Winforms.UI.Transactions
         {
             return new SingleTransactionDTO();
             /*
-            var accountUser = billingInfoFlowLayoutPanel.Controls[0] as AccountUCView;
+            var accountUser = billingInfoFlowLayoutPanel.Controls[0] as AccountsInfoTransactionUCView;
             
             return SingleTransactionDTO = new SingleTransactionDTO
             {
@@ -186,7 +186,18 @@ namespace SHDML.Winforms.UI.Transactions
         {
             var typeTransactionUc = (UserControl)ucView;
             singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
-        }      
+        }
+
+        public void AddHorizontalLine()
+        {
+            singleTransactionDesktopflowLayoutPanel.Controls.Add(new Label(){BorderStyle = BorderStyle.FixedSingle,Anchor = AnchorStyles.Top, Size = new Size(359,2)});
+        }
+        
+        public void AddAccountsInfoTransactionUserControl(IAccountsInfoTransactionUCView ucView)
+        {
+            var typeTransactionUc = (UserControl)ucView;
+            singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
+        }  
         
         public void AddDescriptionTransactionUserControl(IDescriptionTransactionUCView ucView)
         {
@@ -214,7 +225,7 @@ namespace SHDML.Winforms.UI.Transactions
 
         private void OnFormClosing(object sender, FormClosingEventArgs e)
         {
-            _eventAggregator.Unsubscribe<SelectedTypeOfTransactionApplicationEvent>(ActionSelectedTypeOfTransaction);
+           // _eventAggregator.Unsubscribe<SelectedTypeOfTransactionApplicationEvent>(ActionSelectedTypeOfTransaction);
             _eventAggregator.Unsubscribe<ChangeTextBoxNameTransactionText>(ActionChangeTextBoxNameTransaction);
         }
     }

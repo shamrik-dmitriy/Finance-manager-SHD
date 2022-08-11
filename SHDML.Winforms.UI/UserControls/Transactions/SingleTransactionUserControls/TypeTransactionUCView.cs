@@ -35,7 +35,7 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserContr
 
         private void typeOperationsCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _eventAggregator.Publish(new SelectedTypeOfTransactionApplicationEvent() { TypeOfTransaction = 0 });
+            _eventAggregator.Publish(new SelectedTypeOfTransactionApplicationEvent() { TypeOfTransaction = ((ComboBox)sender).SelectedIndex });
             // TypeOperationSelectedIndexChanged?.Invoke(this, e);
         }
 
