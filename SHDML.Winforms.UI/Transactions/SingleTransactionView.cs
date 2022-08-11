@@ -186,6 +186,12 @@ namespace SHDML.Winforms.UI.Transactions
         {
             var typeTransactionUc = (UserControl)ucView;
             singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
+        }      
+        
+        public void AddDescriptionTransactionUserControl(IDescriptionTransactionUCView ucView)
+        {
+            var typeTransactionUc = (UserControl)ucView;
+            singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
         }
 
         public void AddNameTransactionUserControl(INameTransactionUCView ucView)

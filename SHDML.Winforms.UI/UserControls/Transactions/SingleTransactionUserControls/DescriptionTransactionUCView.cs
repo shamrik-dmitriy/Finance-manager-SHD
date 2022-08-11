@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FM.SHD.Presenters.IntrefacesViews.UserControl;
 
 namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls
 {
-    public partial class DescriptionTransactionUCView : UserControl
+    public partial class DescriptionTransactionUCView : UserControl, IDescriptionTransactionUCView
     {
         public DescriptionTransactionUCView()
         {

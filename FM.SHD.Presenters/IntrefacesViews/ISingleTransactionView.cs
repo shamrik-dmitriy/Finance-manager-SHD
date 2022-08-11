@@ -14,5 +14,6 @@ namespace FM.SHD.Presenters.IntrefacesViews
         SingleTransactionDTO GetTransactionInfo();
         void AddTypeTransactionUserControl(ITypeTransactionUCView getUcView);
         void AddNameTransactionUserControl(INameTransactionUCView getUcView);
+        void AddDescriptionTransactionUserControl(IDescriptionTransactionUCView getUcView);
     }
 }
