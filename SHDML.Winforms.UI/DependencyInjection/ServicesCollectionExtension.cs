@@ -3,18 +3,21 @@ using FM.SHD.Infastructure.Impl.Repositories.Specific.TypeTransaction;
 using FM.SHD.Presenters;
 using FM.SHD.Presenters.Interfaces;
 using FM.SHD.Presenters.Interfaces.UserControls;
+using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
 using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
+using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using FM.SHD.Presenters.UserControlPresenters;
+using FM.SHD.Presenters.UserControlPresenters.Transactions;
+using FM.SHD.Services.ComponentsServices.TypeTransactionService;
 using FM.SHD.Services.Repositories;
 using FM.SHD.Services.SingleTransactionServices;
-using FM.SHD.Services.TypeTransactionService;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SHDML.Winforms.UI.Transactions;
 using SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls;
 using SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions;
-using IContrAgentUCPresenter = FM.SHD.Presenters.Interfaces.UserControls.IContrAgentUCPresenter;
+using IContrAgentUCPresenter = FM.SHD.Presenters.Interfaces.UserControls.Transactions.IContrAgentUCPresenter;
 
 namespace SHDML.Winforms.UI.DependencyInjection
 {

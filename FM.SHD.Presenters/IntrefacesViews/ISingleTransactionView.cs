@@ -1,5 +1,6 @@
 using System;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
+using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using SHDML.BLL.DTO.DTO;
 
 namespace FM.SHD.Presenters.IntrefacesViews

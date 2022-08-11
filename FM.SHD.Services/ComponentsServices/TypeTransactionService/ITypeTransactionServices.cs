@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using FM.SHDML.Core.Models.TransactionModels.Transactions.TypeTransaction;
-using SHDML.BLL.DTO.DTO;
 
-namespace FM.SHD.Services.TypeTransactionService
+namespace FM.SHD.Services.ComponentsServices.TypeTransactionService
 {
     public interface ITypeTransactionServices
     {

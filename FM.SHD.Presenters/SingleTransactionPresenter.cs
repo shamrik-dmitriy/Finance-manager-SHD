@@ -1,6 +1,7 @@
 using System;
 using FM.SHD.Presenters.Interfaces;
 using FM.SHD.Presenters.Interfaces.UserControls;
+using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
 using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
 using FM.SHD.Services.Repositories;

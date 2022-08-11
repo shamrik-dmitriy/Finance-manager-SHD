@@ -5,6 +5,7 @@ using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
+using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using SHDML.BLL.DTO.DTO;
 using SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls;
 

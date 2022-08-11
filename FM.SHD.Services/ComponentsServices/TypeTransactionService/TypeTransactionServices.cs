@@ -4,9 +4,8 @@ using AutoMapper;
 using FM.SHD.Services.Repositories;
 using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
 using FM.SHDML.Core.Models.TransactionModels.Transactions.TypeTransaction;
-using SHDML.BLL.DTO.DTO;
 
-namespace FM.SHD.Services.TypeTransactionService
+namespace FM.SHD.Services.ComponentsServices.TypeTransactionService
 {
     public class TypeTransactionServices : ITypeTransactionServices
     {

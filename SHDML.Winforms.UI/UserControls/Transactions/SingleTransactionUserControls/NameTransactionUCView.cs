@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
+using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 
 namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls
 {
