@@ -13,10 +13,21 @@ namespace SHDML.Winforms.UI.Transactions
 {
     public partial class SingleTransactionView : Form, ISingleTransactionView
     {
+        #region Private member variables
+
         private readonly EventAggregator _eventAggregator;
-        public event Action OnLoadEventrsss;
+
+        #endregion
+
+        #region Public events
+
+        public event Action OnLoadView;
         public event EventHandler Add;
         public event Action<int> OnChangeTypeTransaction;
+
+        #endregion
+
+        #region Private properties
 
         private string Title
         {
@@ -25,6 +36,10 @@ namespace SHDML.Winforms.UI.Transactions
         }
 
         private string TitleDefault { get; set; }
+
+        #endregion
+
+        #region Constructors
 
         public SingleTransactionView()
         {
@@ -36,14 +51,16 @@ namespace SHDML.Winforms.UI.Transactions
             _eventAggregator = eventAggregator;
         }
 
-        protected internal SingleTransactionDTO SingleTransactionDTO { get; set; }
-
         public SingleTransactionView(string typeTransactionOperations, EventAggregator eventAggregator) : this()
         {
             Title = typeTransactionOperations;
             TitleDefault = typeTransactionOperations;
             _eventAggregator = eventAggregator;
         }
+
+        #endregion
+
+        #region Private methods
 
         private void ActionChangeTextBoxNameTransaction(ChangeTextBoxNameTransactionText obj)
         {
@@ -52,7 +69,7 @@ namespace SHDML.Winforms.UI.Transactions
 
         private void AddSingleTransactionForm_Load(object sender, EventArgs e)
         {
-            OnLoadEventrsss?.Invoke();
+            OnLoadView?.Invoke();
             _eventAggregator.Subscribe<ChangeTextBoxNameTransactionText>(ActionChangeTextBoxNameTransaction);
 
             // _typeTransactionUcView.LoadUserControlView += TypeTransactionUserControlViewOnLoadUserControlView;
@@ -68,63 +85,9 @@ namespace SHDML.Winforms.UI.Transactions
             }*/
         }
 
-        protected void SelectTypeTransaction_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            OnChangeTypeTransaction?.Invoke(((TypeTransactionUCView)sender).typeOperationsCombobox
-                .SelectedIndex);
-            /*  
-               switch (s.typeOperationsCombobox.SelectedIndex)
-               {
-                   case 0:
-                   {
-                           BillingAccountsInfoTransactionInfo.
-   
-                       billingInfoFlowLayoutPanel.Controls.Add(
-                           new AccountsInfoTransactionUCView(s.typeOperationsCombobox.SelectedIndex));
-                       break;
-                   }
-                   case 1:
-                   {
-                       billingInfoFlowLayoutPanel.Controls.Add(
-                           new AccountsInfoTransactionUCView(s.typeOperationsCombobox.SelectedIndex));
-                       break;
-                   }
-                   case 2:
-                   {
-                       billingInfoFlowLayoutPanel.Controls.Add(
-                           new AccountsInfoTransactionUCView(s.typeOperationsCombobox.SelectedIndex));
-                       break;
-                   }
-               }
-   
-               billingInfoFlowLayoutPanel.Refresh();
-               billingInfoFlowLayoutPanel.Update();
-   
-               switch (TransactionType)
-               {
-                   case 0:
-                       {
-                           debitAccountInfoUserControl.LabelOfTypeOperation = "Списать со счёта";
-                           creditAccountInfoUserControl.Visible = false;
-                           break;
-                       }
-                   case 1:
-                       {
-                           debitAccountInfoUserControl.LabelOfTypeOperation = "Зачслить на счёт";
-                           creditAccountInfoUserControl.Visible = false;
-                           break;
-                       }
-                   case 2:
-                       {
-                           debitAccountInfoUserControl.LabelOfTypeOperation = "Списать со счёта";
-                           creditAccountInfoUserControl.Visible = true;
-                           break;
-                       }
-               }
-               //  financeInfoOfOperationflowLayoutPanel.Refresh();
-               //financeInfoOfOperationflowLayoutPanel.Update();
-               */
-        }
+        #endregion
+
+        protected internal SingleTransactionDTO SingleTransactionDTO { get; set; }
 
         private void addedSingleTransactionButton_Click(object sender, EventArgs e)
         {
@@ -154,6 +117,11 @@ namespace SHDML.Winforms.UI.Transactions
             TitleDefault = title;
 
             base.ShowDialog();
+        }
+
+        public void SetVisibleCreditAccout(bool isVisible)
+        {
+            throw new NotImplementedException();
         }
 
         public SingleTransactionDTO GetTransactionInfo()
@@ -231,21 +199,8 @@ namespace SHDML.Winforms.UI.Transactions
             singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
         }
 
-        private void singleTransactionDesktopflowLayoutPanel_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void selectTypeTransactionUserControl_Load(object sender, EventArgs e)
-        {
-        }
-
-        public void SetVisibleCreditAccout(bool isVisible)
-        {
-        }
-
         private void OnFormClosing(object sender, FormClosingEventArgs e)
         {
-            // _eventAggregator.Unsubscribe<SelectedTypeOfTransactionApplicationEvent>(ActionSelectedTypeOfTransaction);
             _eventAggregator.Unsubscribe<ChangeTextBoxNameTransactionText>(ActionChangeTextBoxNameTransaction);
         }
     }

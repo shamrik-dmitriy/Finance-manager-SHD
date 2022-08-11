@@ -7,11 +7,10 @@ namespace FM.SHD.Presenters.IntrefacesViews
 {
     public interface ISingleTransactionView : IView
     {
-        event Action OnLoadEventrsss;
+        event Action OnLoadView;
         event EventHandler Add;
         event Action<int> OnChangeTypeTransaction;
 
-        void SetVisibleCreditAccout(bool isVisible);
         SingleTransactionDTO GetTransactionInfo();
         void AddTypeTransactionUserControl(ITypeTransactionUCView getUcView);
         void AddNameTransactionUserControl(INameTransactionUCView getUcView);

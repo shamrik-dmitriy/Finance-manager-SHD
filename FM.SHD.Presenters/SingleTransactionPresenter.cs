@@ -1,13 +1,8 @@
 using System;
 using FM.SHD.Presenters.Interfaces;
-using FM.SHD.Presenters.Interfaces.UserControls;
 using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
 using FM.SHD.Presenters.IntrefacesViews;
-using FM.SHD.Presenters.IntrefacesViews.UserControl;
-using FM.SHD.Services.Repositories;
 using FM.SHD.Services.SingleTransactionServices;
-using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
-using Microsoft.Extensions.DependencyInjection;
 using SHDML.BLL.DTO.DTO;
 
 namespace FM.SHD.Presenters
@@ -15,7 +10,6 @@ namespace FM.SHD.Presenters
     public class SingleTransactionPresenter : ISingleTransactionPresenter
     {
         private ISingleTransactionView _singleTransactionView;
-        private IServiceProvider _serviceProvider;
         private ISingleTransactionServices _singleTransactionServices;
         private readonly ITypeTransactionUCPresenter _typeTransactionUcPresenter;
         private readonly INameTransactionUCPresenter _nameTransactionUcPresenter;
@@ -27,7 +21,6 @@ namespace FM.SHD.Presenters
         private readonly IAddCancelButtonsUCPresenter _addCancelButtonsUcPresenter;
 
         public SingleTransactionPresenter(
-            IServiceProvider serviceProvider,
             ISingleTransactionView singleTransactionView,
             ISingleTransactionServices singleTransactionServices,
             ITypeTransactionUCPresenter typeTransactionUcPresenter,
@@ -41,6 +34,7 @@ namespace FM.SHD.Presenters
         {
             _singleTransactionView = singleTransactionView;
             _singleTransactionServices = singleTransactionServices;
+
             _typeTransactionUcPresenter = typeTransactionUcPresenter;
             _nameTransactionUcPresenter = nameTransactionUcPresenter;
             _descriptionTransactionUcPresenter = descriptionTransactionUcPresenter;
@@ -49,8 +43,8 @@ namespace FM.SHD.Presenters
             _contrAgentUcPresenter = contrAgentUcPresenter;
             _familyMemberUcPresenter = familyMemberUcPresenter;
             _addCancelButtonsUcPresenter = addCancelButtonsUcPresenter;
-            _serviceProvider = serviceProvider;
-            _singleTransactionView.OnLoadEventrsss += SingleTransactionViewOnOnLoad;
+
+            _singleTransactionView.OnLoadView += SingleTransactionViewOnOnLoad;
         }
 
         private void SingleTransactionViewOnOnLoad()
