@@ -13,6 +13,9 @@
     <Compile Update="UserControls\Transactions\ItemOfMultipleTransaction.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UserControls\Transactions\SingleTransactionUserControls\NameTransactionUserControlView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UserControls\Transactions\SingleTransactionUserControls\TypeTransactionUserControlView.cs">
       <SubType>UserControl</SubType>
     </Compile>

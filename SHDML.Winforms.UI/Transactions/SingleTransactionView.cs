@@ -27,16 +27,15 @@ namespace SHDML.Winforms.UI.Transactions
         public SingleTransactionView()
         {
             InitializeComponent();
+            singleTransactionDesktopflowLayoutPanel.Controls.Clear();
         }
 
         public SingleTransactionView(EventAggregator eventAggregator) : this()
         {
             _eventAggregator = eventAggregator;
-            _eventAggregator.Subscribe<SelectedTypeOfTransactionApplicationEvent>(Action);
-            InitializeComponent();
         }
 
-        private void Action(SelectedTypeOfTransactionApplicationEvent obj)
+        private void ActionSelectedTypeOfTransaction(SelectedTypeOfTransactionApplicationEvent obj)
         {
             throw new NotImplementedException();
         }
@@ -48,12 +47,19 @@ namespace SHDML.Winforms.UI.Transactions
             Title = typeTransactionOperations;
             TitleDefault = typeTransactionOperations;
             _eventAggregator = eventAggregator;
-            _eventAggregator.Subscribe<SelectedTypeOfTransactionApplicationEvent>(Action);
+   }
+
+        private void ActionChangeTextBoxNameTransaction(ChangeTextBoxNameTransactionText obj)
+        {
+            Title = string.IsNullOrWhiteSpace(obj.Text) ? TitleDefault : TitleDefault + ": " + obj.Text;
         }
 
         private void AddSingleTransactionForm_Load(object sender, EventArgs e)
         {
             OnLoadEventrsss?.Invoke();
+            _eventAggregator.Subscribe<SelectedTypeOfTransactionApplicationEvent>(ActionSelectedTypeOfTransaction);
+            _eventAggregator.Subscribe<ChangeTextBoxNameTransactionText>(ActionChangeTextBoxNameTransaction);
+
             // _typeTransactionUserControlView.LoadUserControlView += TypeTransactionUserControlViewOnLoadUserControlView;
             /*
             if (SingleTransactionDTO != null)
@@ -65,11 +71,6 @@ namespace SHDML.Winforms.UI.Transactions
                     new EventHandler(SelectTypeTransaction_SelectedIndexChanged);
                 selectTypeTransactionUserControl.typeOperationsCombobox.SelectedIndex = 0;
             }*/
-        }
-
-        private void TypeTransactionUserControlViewOnLoadUserControlView()
-        {
-            throw new NotImplementedException();
         }
 
         protected void SelectTypeTransaction_SelectedIndexChanged(object sender, EventArgs e)
@@ -130,12 +131,6 @@ namespace SHDML.Winforms.UI.Transactions
                */
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            var textBox = sender as TextBox;
-            Title = string.IsNullOrWhiteSpace(textBox.Text) ? TitleDefault : TitleDefault + ": " + textBox.Text;
-        }
-
         private void addedSingleTransactionButton_Click(object sender, EventArgs e)
         {
             Add?.Invoke(sender, e);
@@ -189,20 +184,14 @@ namespace SHDML.Winforms.UI.Transactions
 
         public void AddTypeTransactionUserControl(ITypeTransactionUserControlView userControlView)
         {
-            Controls.Clear();
-            var t = (UserControl)userControlView;
-            Controls.Add(t);
-            //BringToFront();
-            /*t.Visible = true;
-            singleTransactionDesktopflowLayoutPanel.Controls.Add(t);
-            t.BringToFront();
-            singleTransactionDesktopflowLayoutPanel.Refresh();
-            singleTransactionDesktopflowLayoutPanel.Update();
-            singleTransactionDesktopflowLayoutPanel.Invalidate();
-            */
-            //Invalidate();
-           // Refresh();
-           // Update();
+            var typeTransactionUc = (UserControl)userControlView;
+            singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
+        }
+
+        public void AddNameTransactionUserControl(INameTransactionUserControlView userControlView)
+        {
+            var typeTransactionUc = (UserControl)userControlView;
+            singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
         }
 
         private void singleTransactionDesktopflowLayoutPanel_Paint(object sender, PaintEventArgs e)
@@ -215,6 +204,12 @@ namespace SHDML.Winforms.UI.Transactions
 
         public void SetVisibleCreditAccout(bool isVisible)
         {
+        }
+
+        private void OnFormClosing(object sender, FormClosingEventArgs e)
+        {
+            _eventAggregator.Unsubscribe<SelectedTypeOfTransactionApplicationEvent>(ActionSelectedTypeOfTransaction);
+            _eventAggregator.Unsubscribe<ChangeTextBoxNameTransactionText>(ActionChangeTextBoxNameTransaction);
         }
     }
 }

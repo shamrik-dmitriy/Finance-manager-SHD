@@ -13,5 +13,6 @@ namespace FM.SHD.Presenters.IntrefacesViews
         void SetVisibleCreditAccout(bool isVisible);
         SingleTransactionDTO GetTransactionInfo();
         void AddTypeTransactionUserControl(ITypeTransactionUserControlView getUserControlView);
+        void AddNameTransactionUserControl(INameTransactionUserControlView getUserControlView);
     }
 }

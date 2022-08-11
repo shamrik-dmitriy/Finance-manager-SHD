@@ -183,6 +183,7 @@ namespace SHDML.Winforms.UI.Transactions
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddSingleTransactionForm";
             this.Load += new System.EventHandler(this.AddSingleTransactionForm_Load);
+            this.FormClosing += OnFormClosing;
             this.singleTransactionDesktopflowLayoutPanel.ResumeLayout(false);
             this.singleTransactionDesktopflowLayoutPanel.PerformLayout();
             this.buttonsTableLayoutPanel.ResumeLayout(false);

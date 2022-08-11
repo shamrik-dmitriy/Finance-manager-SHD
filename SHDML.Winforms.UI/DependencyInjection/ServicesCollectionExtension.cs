@@ -2,6 +2,7 @@ using FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.TypeTransaction;
 using FM.SHD.Presenters;
 using FM.SHD.Presenters.Interfaces;
+using FM.SHD.Presenters.Interfaces.UserControls;
 using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
 using FM.SHD.Presenters.UserControlPresenters;
@@ -30,7 +31,9 @@ namespace SHDML.Winforms.UI.DependencyInjection
         {
             return serviceCollection
                 .AddScoped<ITypeTransactionUserControlView, TypeTransactionUserControlView>()
-                .AddScoped<ITypeTransactionUserControlPresenter, TypeTransactionUserControlPresenter>();
+                .AddScoped<ITypeTransactionUserControlPresenter, TypeTransactionUserControlPresenter>()      
+                .AddScoped<INameTransactionUserControlView, NameTransactionUserControlView>()
+                .AddScoped<INameTransactionUserControlPresenter, NameTransactionUserControlPresenter>();
         }
 
         public static IServiceCollection AddRepositories(this IServiceCollection serviceCollection,
