@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction;
 using FM.SHD.Infrastructure.Events;
@@ -31,6 +32,10 @@ namespace SHDML.Winforms.UI
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+            Application.ThreadException += ApplicationOnThreadException;
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
+
 
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -71,6 +76,26 @@ namespace SHDML.Winforms.UI
                     Console.WriteLine($"Error: {exception.Message}");
                 }
             }
+        }
+
+        private static void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            var message = String.Format(
+                $"Произошла ошибка. {Environment.NewLine}" +
+                $"{((Exception)e.ExceptionObject).Message}" +
+                $"Пожалуйста свяжитесь с разработчиком");
+
+            MessageBox.Show(message, "Неожиданная ошибка");
+        }
+
+        private static void ApplicationOnThreadException(object sender, ThreadExceptionEventArgs e)
+        {
+            var message = String.Format(
+                $"Произошла ошибка. {Environment.NewLine}" +
+                $"{e.Exception.Message}" +
+                $"Пожалуйста свяжитесь с разработчиком");
+
+            MessageBox.Show(message, "Неожиданная ошибка");
         }
     }
 }
