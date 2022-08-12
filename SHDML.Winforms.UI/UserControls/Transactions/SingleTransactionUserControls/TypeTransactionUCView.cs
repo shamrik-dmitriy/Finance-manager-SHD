@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
@@ -36,17 +37,16 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserContr
 
         private void typeOperationsCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _eventAggregator.Publish(new SelectedTypeOfTransactionApplicationEvent() { TypeOfTransaction = ((ComboBox)sender).SelectedIndex });
-        }
-
-        public event Action LoadUserControl;
-
-        public void LoadTransactionTypes(IEnumerable<TypeTransactionDto> allTypesOfTransaction)
-        {
-            throw new NotImplementedException();
+            _eventAggregator.Publish(new SelectedTypeOfTransactionApplicationEvent()
+                { TypeOfTransaction = ((ComboBox)sender).SelectedIndex });
         }
 
         #region UI actions
+
+        public void SetTransactionTypes(IEnumerable<TypeTransactionDto> allTypesOfTransaction)
+        {
+            typeOperationsCombobox.Items.AddRange(allTypesOfTransaction.Select(x => x.Name).ToArray());
+        }
 
         public void SetTransactionType(int index)
         {
@@ -58,6 +58,7 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserContr
         private void TypeTransactionUserControlView_Load(object sender, EventArgs e)
         {
             LoadUserControlView?.Invoke();
+            SetTransactionType(0);
         }
     }
 }

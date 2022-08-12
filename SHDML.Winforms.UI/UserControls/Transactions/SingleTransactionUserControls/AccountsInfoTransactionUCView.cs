@@ -83,36 +83,5 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserContr
         {
             TransactionType = transactionType;
         }
-
-        private void SelectAccountUserControl_Load(object sender, EventArgs e)
-        {
-            switch (TransactionType)
-            {
-                case 0:
-                {
-                    _debitAccountInfoUcView.LabelOfTypeOperation = "Списать со счёта";
-                    _creditAccountInfoUcView.Visible = false;
-                    break;
-                }
-                case 1:
-                {
-                    _debitAccountInfoUcView.LabelOfTypeOperation = "Зачслить на счёт";
-                    _creditAccountInfoUcView.Visible = false;
-                    break;
-                }
-                case 2:
-                {
-                    _debitAccountInfoUcView.LabelOfTypeOperation = "Списать со счёта";
-                    _creditAccountInfoUcView.Visible = true;
-                    break;
-                }
-            }
-            //  financeInfoOfOperationflowLayoutPanel.Refresh();
-            //financeInfoOfOperationflowLayoutPanel.Update();
-        }
-
-        private void debitAccountComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
     }
 }

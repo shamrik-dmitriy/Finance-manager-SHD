@@ -17,7 +17,8 @@ namespace FM.SHD.Services.ComponentsServices.TypeTransactionService
             _typeTransactionRepository = typeTransactionRepository;
             _mapper = new MapperConfiguration(config =>
             {
-                config.CreateMap<SingleTransactionDto, SingleTransactionModel>();
+                config.CreateMap<TypeTransactionModel, TypeTransactionDto>();
+                config.CreateMap<TypeTransactionDto, TypeTransactionModel>();
             }).CreateMapper();
         }
 

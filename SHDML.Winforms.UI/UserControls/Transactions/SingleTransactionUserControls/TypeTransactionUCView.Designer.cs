@@ -47,10 +47,6 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserContr
             // 
             this.typeOperationsCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.typeOperationsCombobox.FormattingEnabled = true;
-            this.typeOperationsCombobox.Items.AddRange(new object[] {
-            "Расход",
-            "Доход",
-            "Перевод"});
             this.typeOperationsCombobox.Location = new System.Drawing.Point(93, 0);
             this.typeOperationsCombobox.Name = "typeOperationsCombobox";
             this.typeOperationsCombobox.Size = new System.Drawing.Size(259, 23);

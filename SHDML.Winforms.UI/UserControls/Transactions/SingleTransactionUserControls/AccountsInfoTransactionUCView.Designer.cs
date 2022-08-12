@@ -110,7 +110,6 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserContr
             this.MaximumSize = new System.Drawing.Size(355, 115);
             this.Name = "AccountsInfoTransactionUCView";
             this.Size = new System.Drawing.Size(355, 115);
-            this.Load += new System.EventHandler(this.SelectAccountUserControl_Load);
             this.financeInfoOfOperationflowLayoutPanel.ResumeLayout(false);
             this.financeInfoOfOperationflowLayoutPanel.PerformLayout();
             this.ResumeLayout(false);

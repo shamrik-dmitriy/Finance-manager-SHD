@@ -8,7 +8,6 @@ namespace FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions
     {
         event Action LoadUserControlView;
         
-        event Action LoadUserControl;
-        void LoadTransactionTypes(IEnumerable<TypeTransactionDto> allTypesOfTransaction);
+        void SetTransactionTypes(IEnumerable<TypeTransactionDto> allTypesOfTransaction);
     }
 }
