@@ -1,0 +1,7 @@
+namespace FM.SHD.Presenters.UserControlPresenters.Transactions
+{
+    public class DateTransactionUCPresenter
+    {
+        
+    }
+}

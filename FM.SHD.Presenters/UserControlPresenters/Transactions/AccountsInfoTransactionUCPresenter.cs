@@ -8,14 +8,26 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
     {
         private readonly IAccountsInfoTransactionUCView _accountsInfoTransactionUcView;
         private readonly IAccountServices _accountServices;
+        private readonly IAccountsInfoTransactionUCPresenter _debitAccountsInfoTransactionUcPresenter;
+        private readonly ISumTransactionUCPresenter _sumTransactionUcPresenter;
+        private readonly IAccountsInfoTransactionUCPresenter _creditAccountsInfoTransactionUcPresenter;
+        private readonly IDateTransactionUCPresenter _dateTransactionUcView;
 
         public AccountsInfoTransactionUCPresenter(
             IAccountsInfoTransactionUCView accountsInfoTransactionUcView,
-            IAccountServices accountServices)
+            IAccountServices accountServices,
+            IAccountsInfoTransactionUCPresenter debitAccountsInfoTransactionUcPresenter,
+            ISumTransactionUCPresenter sumTransactionUcPresenter,
+            IAccountsInfoTransactionUCPresenter creditAccountsInfoTransactionUcPresenter,
+            IDateTransactionUCPresenter dateTransactionUcView)
         {
             _accountsInfoTransactionUcView = accountsInfoTransactionUcView;
             _accountServices = accountServices;
-            
+            _debitAccountsInfoTransactionUcPresenter = debitAccountsInfoTransactionUcPresenter;
+            _sumTransactionUcPresenter = sumTransactionUcPresenter;
+            _creditAccountsInfoTransactionUcPresenter = creditAccountsInfoTransactionUcPresenter;
+            _dateTransactionUcView = dateTransactionUcView;
+
             _accountsInfoTransactionUcView.LoadUserControlView +=AccountsInfoUcViewOnLoadControlView;
         }
 
