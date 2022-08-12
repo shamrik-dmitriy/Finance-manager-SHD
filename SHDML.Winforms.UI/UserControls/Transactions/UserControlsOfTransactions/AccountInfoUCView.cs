@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel;
 using System.Windows.Forms;
+using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 
 namespace SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions
 {
-    public partial class AccountInfoUCView : UserControl
+    public partial class AccountInfoUCView : UserControl, IAccountInfoUCView
     {
         [Browsable(true)]
         [Category("Property")]

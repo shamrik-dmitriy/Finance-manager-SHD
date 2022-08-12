@@ -1,7 +1,20 @@
+using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
+using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
+
 namespace FM.SHD.Presenters.UserControlPresenters.Transactions
 {
-    public class DateTransactionUCPresenter
+    public class DateTransactionUCPresenter : IDateTransactionUCPresenter
     {
-        
+        private readonly IDateTransactionUCView _dateTransactionUcView;
+
+        public DateTransactionUCPresenter(IDateTransactionUCView dateTransactionUcView)
+        {
+            _dateTransactionUcView = dateTransactionUcView;
+        }
+
+        public IDateTransactionUCView GetUserControlView()
+        {
+            return _dateTransactionUcView;
+        }
     }
 }

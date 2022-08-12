@@ -53,7 +53,13 @@ namespace SHDML.Winforms.UI.DependencyInjection
                 .AddScoped<IFamilyMemberUCView, FamilyMemberUCView>()
                 .AddScoped<IFamilyMemberUCPresenter, FamilyMemberUCPresenter>()
                 .AddScoped<IAddCancelButtonsUCView, AddCancelButtonsUCView>()
-                .AddScoped<IAddCancelButtonsUCPresenter, AddCancelButtonsUCPresenter>();
+                .AddScoped<IAddCancelButtonsUCPresenter, AddCancelButtonsUCPresenter>()
+                .AddScoped<IAccountInfoUCView, AccountInfoUCView>()
+                .AddScoped<IAccountInfoUCPresenter, AccountInfoUCPresenter>()
+                .AddScoped<ISumTransactionUCView, SumTransactionUCView>()
+                .AddScoped<ISumTransactionUCPresenter, SumTransactionUCPresenter>()
+                .AddScoped<IDateTransactionUCView, DateTransactionUCView>()
+                .AddScoped<IDateTransactionUCPresenter, DateTransactionUCPresenter>();
         }
 
         public static IServiceCollection AddRepositories(this IServiceCollection serviceCollection,
