@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
 using System.Windows.Forms;
+using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.IntrefacesViews;
 using SHDML.Winforms.UI.Transactions;
 
@@ -10,17 +11,12 @@ namespace SHDML.Winforms.UI
     {
         public event EventHandler AddTransaction;
 
-        private readonly ILogger _logger;
+        private readonly EventAggregator _eventAggregator;
 
-        public MainView(ILogger<MainView> logger)
+        public MainView(EventAggregator eventAggregator)
         {
             InitializeComponent();
-            _logger = logger;
-            _logger.LogTrace($"Приложение запущено {DateTime.Now}");
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
+            _eventAggregator = eventAggregator;
         }
 
         private void Sign_Click(object sender, EventArgs e)
@@ -45,14 +41,6 @@ namespace SHDML.Winforms.UI
         private void buttonTransactionReview_Click(object sender, EventArgs e)
         {
             splitContainerMainDesktop.Panel2.Controls.Add(new Label() { Text = "Yep!" });
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void splitContainer2_Panel1_Paint(object sender, PaintEventArgs e)
-        {
         }
 
         private void buttonAddTransaction_Click(object sender, EventArgs e)
@@ -82,6 +70,11 @@ namespace SHDML.Winforms.UI
 
         private void MainView_Load(object sender, EventArgs e)
         {
+        }
+
+        private void MainView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _eventAggregator.Dispose();
         }
     }
 }

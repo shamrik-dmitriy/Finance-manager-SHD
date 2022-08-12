@@ -34,7 +34,7 @@ namespace SHDML.Winforms.UI
             this.splitContainerMainDesktop = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this._authUcView = new AuthUCView();
+            this._authUcView = new SHDML.Winforms.UI.UserControls.Authorization.AuthUCView();
             this.buttonSign = new System.Windows.Forms.Button();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.buttonTransactionReview = new System.Windows.Forms.Button();
@@ -125,7 +125,6 @@ namespace SHDML.Winforms.UI
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1208, 76);
             this.flowLayoutPanel1.TabIndex = 1;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // panel1
             // 
@@ -364,7 +363,6 @@ namespace SHDML.Winforms.UI
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.Controls.Add(this.flowLayoutPanel3);
-            this.splitContainer2.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer2_Panel1_Paint);
             this.splitContainer2.Panel1MinSize = 27;
             // 
             // splitContainer2.Panel2
@@ -470,6 +468,7 @@ namespace SHDML.Winforms.UI
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainView";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainView_FormClosing);
             this.Load += new System.EventHandler(this.MainView_Load);
             this.splitContainerMainDesktop.Panel1.ResumeLayout(false);
             this.splitContainerMainDesktop.Panel1.PerformLayout();

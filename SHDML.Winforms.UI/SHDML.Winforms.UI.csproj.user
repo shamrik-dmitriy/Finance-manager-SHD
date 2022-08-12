@@ -31,6 +31,9 @@
     <Compile Update="UserControls\Transactions\SingleTransactionUserControls\AccountUCView.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UserControls\Transactions\SingleTransactionUserControls\CategoryTransactionUCView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UserControls\Transactions\SingleTransactionUserControls\CategoryUCView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -59,6 +62,12 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControls\Transactions\UserControlsOfTransactions\AccountsInfoUCView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UserControls\Transactions\UserControlsOfTransactions\AddCancelButtonsUCView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UserControls\Transactions\UserControlsOfTransactions\AddCancelUCView.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControls\Transactions\UserControlsOfTransactions\ContrAgentUCView.cs">
