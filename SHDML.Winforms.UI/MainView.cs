@@ -9,7 +9,7 @@ namespace SHDML.Winforms.UI
 {
     public partial class MainView : Form, IMainView
     {
-        public event EventHandler AddTransaction;
+        public event Action AddTransaction;
 
         private readonly EventAggregator _eventAggregator;
 
@@ -45,7 +45,7 @@ namespace SHDML.Winforms.UI
 
         private void buttonAddTransaction_Click(object sender, EventArgs e)
         {
-            AddTransaction?.Invoke(sender, e);
+            AddTransaction?.Invoke();
         }
 
         private void buttonAddReceipt_Click(object sender, EventArgs e)

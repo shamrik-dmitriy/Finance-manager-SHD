@@ -17,7 +17,7 @@ namespace FM.SHD.Presenters
             _mainView.AddTransaction += MainViewOnAddTransaction;
         }
 
-        private void MainViewOnAddTransaction(object sender, EventArgs e)
+        private void MainViewOnAddTransaction()
         {
             var singleTransactionPresenter = _serviceProvider.GetRequiredService<SingleTransactionPresenter>();
             var view = singleTransactionPresenter.GetView();
