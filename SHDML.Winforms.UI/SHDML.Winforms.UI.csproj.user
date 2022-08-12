@@ -4,9 +4,6 @@
     <Compile Update="MainView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Transactions\MultipleTransactionForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Transactions\MultipleTransactionView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -16,58 +13,28 @@
     <Compile Update="UserControls\Authorization\AuthUCView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UserControls\Transactions\ItemOfMultipleTransaction.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="UserControls\Transactions\ItemOfMultipleTransactionView.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControls\Transactions\SingleTransactionUserControls\AccountsInfoTransactionUCView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UserControls\Transactions\SingleTransactionUserControls\AccountsUCView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControls\Transactions\SingleTransactionUserControls\AccountUCView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="UserControls\Transactions\SingleTransactionUserControls\CategoryTransactionUCView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControls\Transactions\SingleTransactionUserControls\CategoryUCView.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControls\Transactions\SingleTransactionUserControls\DescriptionTransactionUCView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UserControls\Transactions\SingleTransactionUserControls\DescriptionTransactionUserControlView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="UserControls\Transactions\SingleTransactionUserControls\NameTransactionUCView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControls\Transactions\SingleTransactionUserControls\NameTransactionUserControlView.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControls\Transactions\SingleTransactionUserControls\TypeTransactionUCView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UserControls\Transactions\SingleTransactionUserControls\TypeTransactionUserControlView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="UserControls\Transactions\UserControlsOfTransactions\AccountInfoUCView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UserControls\Transactions\UserControlsOfTransactions\AccountInfoUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControls\Transactions\UserControlsOfTransactions\AccountsInfoUCView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="UserControls\Transactions\UserControlsOfTransactions\AddCancelButtonsUCView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControls\Transactions\UserControlsOfTransactions\AddCancelUCView.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControls\Transactions\UserControlsOfTransactions\ContrAgentUCView.cs">
@@ -76,43 +43,16 @@
     <Compile Update="UserControls\Transactions\UserControlsOfTransactions\DateTransactionUCView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UserControls\Transactions\UserControlsOfTransactions\DateTransactionUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControls\Transactions\SingleTransactionUserControls\SelectAccountUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControls\Transactions\SingleTransactionUserControls\SelectCategoryUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="UserControls\Transactions\UserControlsOfTransactions\FamilyMemberUCView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UserControls\Transactions\UserControlsOfTransactions\SelectContrAgentUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControls\Transactions\UserControlsOfTransactions\SelectFamilyMemberUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="UserControls\Transactions\UserControlsOfTransactions\SumTransactionUCView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControls\Transactions\UserControlsOfTransactions\SumTransactionUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControls\Authorization\UserControlAuth.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControls\Wallet\CategoryAccountUCView.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControls\Wallet\TotalSumAccountsInfoUCView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControls\Wallet\UserControlCategoryAccount.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControls\Wallet\UserControlTotalSumAccountsInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>

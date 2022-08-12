@@ -11,7 +11,7 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
         private readonly IAccountInfoUCPresenter _debitAccountInfoUcPresenter;
         private readonly ISumTransactionUCPresenter _sumTransactionUcPresenter;
         private readonly IAccountInfoUCPresenter _creditAccountInfoUcPresenter;
-        private readonly IDateTransactionUCPresenter _dateTransactionUcView;
+        private readonly IDateTransactionUCPresenter _dateTransactionUcPresenter;
 
         public AccountsInfoTransactionUCPresenter(
             IAccountsInfoTransactionUCView accountsInfoTransactionUcView,
@@ -19,21 +19,25 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
             IAccountInfoUCPresenter debitAccountInfoUcPresenter,
             ISumTransactionUCPresenter sumTransactionUcPresenter,
             IAccountInfoUCPresenter creditAccountInfoUcPresenter,
-            IDateTransactionUCPresenter dateTransactionUcView)
+            IDateTransactionUCPresenter dateTransactionUcPresenter)
         {
             _accountsInfoTransactionUcView = accountsInfoTransactionUcView;
             _accountServices = accountServices;
             _debitAccountInfoUcPresenter = debitAccountInfoUcPresenter;
             _sumTransactionUcPresenter = sumTransactionUcPresenter;
             _creditAccountInfoUcPresenter = creditAccountInfoUcPresenter;
-            _dateTransactionUcView = dateTransactionUcView;
+            _dateTransactionUcPresenter = dateTransactionUcPresenter;
 
-            _accountsInfoTransactionUcView.LoadUserControlView += AccountsInfoUcViewOnLoadControlView;
+            _accountsInfoTransactionUcView.OnLoadUserControlView += AccountsInfoUcViewOnOnLoadControlView;
         }
 
-        private void AccountsInfoUcViewOnLoadControlView()
+        private void AccountsInfoUcViewOnOnLoadControlView()
         {
-            _accountsInfoTransactionUcView.SetAccounts(_accountServices.GetAll());
+            _accountsInfoTransactionUcView.AddAccountInfo(_creditAccountInfoUcPresenter.GetUserControlView());
+            _accountsInfoTransactionUcView.AddSumm(_sumTransactionUcPresenter.GetUserControlView());
+            _accountsInfoTransactionUcView.AddAccountInfo(_debitAccountInfoUcPresenter.GetUserControlView());
+            _accountsInfoTransactionUcView.AddDate(_dateTransactionUcPresenter.GetUserControlView());
+            //_accountsInfoTransactionUcView.SetAccounts(_accountServices.GetAll());
         }
 
         public IAccountsInfoTransactionUCView GetUserControlView()

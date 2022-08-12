@@ -14,7 +14,7 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
         
         public IAccountInfoUCView GetUserControlView()
         {
-            throw new System.NotImplementedException();
+            return _accountInfoUcView;
         }
     }
 }

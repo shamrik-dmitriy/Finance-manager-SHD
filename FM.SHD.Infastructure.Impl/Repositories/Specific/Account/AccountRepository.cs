@@ -85,13 +85,12 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
                     accountModel.Id = long.Parse(reader["Id"].ToString());
                     accountModel.Name = reader["Name"].ToString();
                     accountModel.Description = reader["Description"].ToString();
-                    accountModel.CurrentSum = (decimal)reader["CurrentSum"];
-                    accountModel.InitialSum = (decimal)reader["InitialSum"];
-                    accountModel.IsClosed = (bool)reader["IsClosed"];
+                    accountModel.CurrentSum = decimal.Parse(reader["CurrentSum"].ToString());
+                    accountModel.InitialSum = decimal.Parse(reader["InitialSum"].ToString());
+                    accountModel.IsClosed = Convert.ToBoolean(reader["IsClosed"]);
                     accountModel.Currency = reader["Currency"].ToString();
-                    ;
-                    accountModel.CategoryId = (int)reader["CategoryId"];
-                    accountModel.IdentityId = (int)reader["IdentityId"];
+                    accountModel.CategoryId = int.Parse(reader["CategoryId"].ToString());
+                    accountModel.IdentityId = int.Parse(reader["IdentityId"].ToString());
                     account.Add(accountModel);
                 }
             }

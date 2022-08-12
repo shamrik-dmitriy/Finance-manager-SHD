@@ -119,11 +119,6 @@ namespace SHDML.Winforms.UI.Transactions
             base.ShowDialog();
         }
 
-        public void SetVisibleCreditAccout(bool isVisible)
-        {
-            throw new NotImplementedException();
-        }
-
         public SingleTransactionDTO GetTransactionInfo()
         {
             return new SingleTransactionDTO();

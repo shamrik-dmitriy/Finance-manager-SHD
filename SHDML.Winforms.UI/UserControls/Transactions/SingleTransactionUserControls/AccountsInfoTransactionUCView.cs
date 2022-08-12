@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
@@ -14,35 +15,34 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserContr
     {
         private readonly EventAggregator _eventAggregator;
 
-        public event Action LoadUserControlView;
 
-        public decimal Sum => _sumTransactionUcView.Sum;
+        //public decimal Sum => _sumTransactionUcView.Sum;
 
         private int TransactionType { get; set; }
 
-        public string DebitAccount
-        {
-            get => _debitAccountInfoUcView.Name;
-            set => _debitAccountInfoUcView.Name = value;
-        }
+        //public string DebitAccount
+        //{
+        //    get => _debitAccountInfoUcView.Name;
+        //    set => _debitAccountInfoUcView.Name = value;
+        //}
 
-        public string CreditAccount
-        {
-            get => _creditAccountInfoUcView.Name;
-            set => _creditAccountInfoUcView.Name = value;
-        }
+        //public string CreditAccount
+        //{
+        //   get => _creditAccountInfoUcView.Name;
+        //    set => _creditAccountInfoUcView.Name = value;
+        //}
 
-        public DateTime Date
-        {
-            get => _dateTransactionUcView.Date;
-            set => _dateTransactionUcView.Date = value;
-        }
+        //public DateTime Date
+        //{
+        //   get => _dateTransactionUcView.Date;
+        //    set => _dateTransactionUcView.Date = value;
+        //}
 
-        public TimeSpan Time
-        {
-            get => _dateTransactionUcView.Time;
-            set => _dateTransactionUcView.Time = value;
-        }
+        //public TimeSpan Time
+        //{
+        //    get => _dateTransactionUcView.Time;
+        //    set => _dateTransactionUcView.Time = value;
+        //}
 
         public AccountsInfoTransactionUCView()
         {
@@ -62,26 +62,26 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserContr
             {
                 case 0:
                 {
-                    _debitAccountInfoUcView.LabelOfTypeOperation = "Списать со счёта";
-                    _creditAccountInfoUcView.Visible = false;
+                    //_debitAccountInfoUcView.LabelOfTypeOperation = "Списать со счёта";
+                    //_creditAccountInfoUcView.Visible = false;
                     break;
                 }
                 case 1:
                 {
-                    _debitAccountInfoUcView.LabelOfTypeOperation = "Зачслить на счёт";
-                    _creditAccountInfoUcView.Visible = false;
+                    //_debitAccountInfoUcView.LabelOfTypeOperation = "Зачслить на счёт";
+                    //_creditAccountInfoUcView.Visible = false;
                     break;
                 }
                 case 2:
                 {
-                    _debitAccountInfoUcView.LabelOfTypeOperation = "Списать со счёта";
-                    _creditAccountInfoUcView.Visible = true;
+                    //_debitAccountInfoUcView.LabelOfTypeOperation = "Списать со счёта";
+                    //_creditAccountInfoUcView.Visible = true;
                     break;
                 }
             }
 
-            financeInfoOfOperationflowLayoutPanel.Refresh();
-            financeInfoOfOperationflowLayoutPanel.Update();
+          //  financeInfoOfOperationflowLayoutPanel.Refresh();
+          //  financeInfoOfOperationflowLayoutPanel.Update();
         }
 
         public AccountsInfoTransactionUCView(int transactionType) : this()
@@ -91,7 +91,32 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserContr
 
         public void SetAccounts(IEnumerable<AccountDto> getAll)
         {
-            
+        }
+
+        public event Action OnLoadUserControlView;
+
+        #region UI
+
+        public void AddDate(IDateTransactionUCView userControlView)
+        {
+            financeInfoOfOperationflowLayoutPanel.Controls.Add((UserControl)userControlView);
+        }
+
+        public void AddAccountInfo(IAccountInfoUCView userControlView)
+        {
+            financeInfoOfOperationflowLayoutPanel.Controls.Add((UserControl)userControlView);
+        }
+
+        public void AddSumm(ISumTransactionUCView userControlView)
+        {
+            financeInfoOfOperationflowLayoutPanel.Controls.Add((UserControl)userControlView);
+        }
+
+        #endregion
+
+        private void AccountsInfoTransactionUCView_Load(object sender, EventArgs e)
+        {
+            OnLoadUserControlView?.Invoke();
         }
     }
 }
