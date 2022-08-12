@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FM.SHDML.Core.Models.AccountModel
 {
-    public class AccountModelDto
+    public class AccountDto
     {
         public string Name { get; set; }
 

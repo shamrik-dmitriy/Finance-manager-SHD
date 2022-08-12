@@ -1,3 +1,4 @@
+using FM.SHD.Infastructure.Impl.Repositories.Specific.Account;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.TypeTransaction;
 using FM.SHD.Presenters;
@@ -9,6 +10,7 @@ using FM.SHD.Presenters.IntrefacesViews.UserControl;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using FM.SHD.Presenters.UserControlPresenters;
 using FM.SHD.Presenters.UserControlPresenters.Transactions;
+using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.ComponentsServices.TypeTransactionService;
 using FM.SHD.Services.Repositories;
 using FM.SHD.Services.SingleTransactionServices;
@@ -61,8 +63,8 @@ namespace SHDML.Winforms.UI.DependencyInjection
                 .AddTransient<ISingleTransactionRepository, SingleTransactionRepository>(provider =>
                     new SingleTransactionRepository(
                         config.GetConnectionString("DefaultConnection")))
-                .AddTransient<ISingleTransactionRepository, SingleTransactionRepository>(provider =>
-                    new SingleTransactionRepository(
+                .AddTransient<IAccountRepository, AccountRepository>(provider =>
+                    new AccountRepository(
                         config.GetConnectionString("DefaultConnection")))
                 .AddTransient<ITypeTransactionRepository, TypeTransactionRepository>(provider =>
                     new TypeTransactionRepository(
@@ -73,6 +75,7 @@ namespace SHDML.Winforms.UI.DependencyInjection
         {
             return serviceCollection
                 .AddTransient<ISingleTransactionServices, SingleTransactionServices>()
+                .AddTransient<IAccountServices, AccountServices>()
                 .AddTransient<ITypeTransactionServices, TypeTransactionServices>();
         }
     }

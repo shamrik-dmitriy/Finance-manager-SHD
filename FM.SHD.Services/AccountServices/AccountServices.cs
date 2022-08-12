@@ -1,53 +1,62 @@
 ﻿using FM.SHD.Services.CommonServices;
 using FM.SHD.Services.Repositories;
 using FM.SHDML.Core.Models.AccountModel;
-using System;
 using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
 
 namespace FM.SHD.Services.AccountServices
 {
-    public class AccountServices : IAccountServices, IAccountRepository
+    public class AccountServices : IAccountServices
     {
-        private IAccountRepository _accountModel;
+        private IAccountRepository _accountRepository;
         private IModelValidator _modelValidator;
+        private readonly IMapper _mapper;
 
         public AccountServices(IAccountRepository singleTransactionRepository, IModelValidator modelValidator)
         {
-            _accountModel = singleTransactionRepository;
+            _accountRepository = singleTransactionRepository;
             _modelValidator = modelValidator;
+            _mapper = new MapperConfiguration(config =>
+            {
+                config.CreateMap<AccountDto, AccountModel>();
+            }).CreateMapper();
         }
 
-        public long Add(IAccountModel accountModel)
+        public long Add(AccountDto accountDto)
         {
-            ValidateModel(accountModel);
-            return _accountModel.Add(accountModel);
+            var model = _mapper.Map<AccountModel>(accountDto);
+            ValidateModel(model);
+            return _accountRepository.Add(model);
         }
 
-        public void Delete(IAccountModel accountModel)
+        public void Delete(AccountDto accountDto)
         {
-            ValidateModel(accountModel);
-            _accountModel.Delete(accountModel);
+            var model = _mapper.Map<AccountModel>(accountDto);
+            ValidateModel(model);
+            _accountRepository.Delete(model);
         }
 
-        public void DeleteById(int accountModelId)
+        public void DeleteById(long accountModelId)
         {
-            _accountModel.DeleteById(accountModelId);
+            _accountRepository.DeleteById(accountModelId);
         }
 
-        public IEnumerable<IAccountModel> GetAll()
+        public IEnumerable<AccountDto> GetAll()
         {
-            return _accountModel.GetAll();
+            return _accountRepository.GetAll().Select(x => _mapper.Map<AccountDto>(x));
         }
 
-        public AccountModel GetById(int id)
+        public AccountDto GetById(long id)
         {
-            return _accountModel.GetById(id);
+            return _mapper.Map<AccountDto>(_accountRepository.GetById(id));
         }
 
-        public void Update(IAccountModel accountModel)
+        public void Update(AccountDto accountDto)
         {
-            ValidateModel(accountModel);
-            _accountModel.Update(accountModel);
+            var model = _mapper.Map<AccountModel>(accountDto);
+            ValidateModel(model);
+            _accountRepository.Update(model);
         }
 
         public void ValidateModel(IAccountModel accountModel)

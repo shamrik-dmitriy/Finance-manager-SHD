@@ -12,8 +12,8 @@ namespace FM.SHD.Services.Repositories
         long Add(IAccountModel accountModel);
         void Update(IAccountModel accountModel);
         void Delete(IAccountModel accountModel);
-        void DeleteById(int accountModelId);
+        void DeleteById(long accountModelId);
         IEnumerable<IAccountModel> GetAll();
-        AccountModel GetById(int id);
+        AccountModel GetById(long id);
     }
 }

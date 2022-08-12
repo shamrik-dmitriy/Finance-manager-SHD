@@ -10,5 +10,12 @@ namespace FM.SHD.Services.AccountServices
     public interface IAccountServices
     {
         void ValidateModel(IAccountModel accountModel);
+
+        long Add(AccountDto accountDto);
+        void Update(AccountDto accountDto);
+        void Delete(AccountDto accountDto);
+        void DeleteById(long id);
+        IEnumerable<AccountDto> GetAll();
+        AccountDto GetById(long id);
     }
 }

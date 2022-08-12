@@ -1,16 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using FM.SHD.Presenters.UserControlPresenters;
+using FM.SHDML.Core.Models.AccountModel;
 
 namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls
 {
     public partial class AccountsInfoTransactionUCView : UserControl, IAccountsInfoTransactionUCView
     {
         private readonly EventAggregator _eventAggregator;
+
+        public event Action LoadUserControlView;
+
         public decimal Sum => _sumTransactionUcView.Sum;
 
         private int TransactionType { get; set; }
@@ -82,6 +87,11 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserContr
         public AccountsInfoTransactionUCView(int transactionType) : this()
         {
             TransactionType = transactionType;
+        }
+
+        public void SetAccounts(IEnumerable<AccountDto> getAll)
+        {
+            
         }
     }
 }
