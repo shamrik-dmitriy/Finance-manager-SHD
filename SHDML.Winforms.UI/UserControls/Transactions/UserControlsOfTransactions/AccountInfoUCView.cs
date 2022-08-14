@@ -21,5 +21,15 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions
         {
             InitializeComponent();
         }
+
+        public void SetText(string text)
+        {
+            LabelOfTypeOperation = text;
+        }
+
+        public void SetVisible(bool visible)
+        {
+           Visible = visible;
+        }
     }
 }

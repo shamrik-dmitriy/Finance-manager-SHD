@@ -1,3 +1,5 @@
+using FM.SHD.Infrastructure.Events;
+using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using FM.SHD.Services.AccountServices;
@@ -6,6 +8,7 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
 {
     public class AccountsInfoTransactionUCPresenter : IAccountsInfoTransactionUCPresenter
     {
+        private readonly EventAggregator _eventAggregator;
         private readonly IAccountsInfoTransactionUCView _accountsInfoTransactionUcView;
         private readonly IAccountServices _accountServices;
         private readonly IAccountInfoUCPresenter _debitAccountInfoUcPresenter;
@@ -14,6 +17,7 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
         private readonly IDateTransactionUCPresenter _dateTransactionUcPresenter;
 
         public AccountsInfoTransactionUCPresenter(
+            EventAggregator eventAggregator,
             IAccountsInfoTransactionUCView accountsInfoTransactionUcView,
             IAccountServices accountServices,
             IAccountInfoUCPresenter debitAccountInfoUcPresenter,
@@ -21,6 +25,7 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
             IAccountInfoUCPresenter creditAccountInfoUcPresenter,
             IDateTransactionUCPresenter dateTransactionUcPresenter)
         {
+            _eventAggregator = eventAggregator;
             _accountsInfoTransactionUcView = accountsInfoTransactionUcView;
             _accountServices = accountServices;
             _debitAccountInfoUcPresenter = debitAccountInfoUcPresenter;
@@ -29,6 +34,45 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
             _dateTransactionUcPresenter = dateTransactionUcPresenter;
 
             _accountsInfoTransactionUcView.OnLoadUserControlView += AccountsInfoUcViewOnOnLoadControlView;
+
+            _eventAggregator = eventAggregator;
+            _eventAggregator.Subscribe<OnSelectedTypeOfTransactionApplicationEvent>(
+                OnSelectedTypeOfTransactionApplicationEvent);
+        }
+
+        private void OnSelectedTypeOfTransactionApplicationEvent(OnSelectedTypeOfTransactionApplicationEvent obj)
+        {
+            switch (obj.TypeOfTransaction)
+            {
+                case 0:
+                {
+                    _creditAccountInfoUcPresenter.SetText("Списать со счёта");
+                    _debitAccountInfoUcPresenter.SetVisible(false);
+                    break;
+                }
+                case 1:
+                {
+                    _creditAccountInfoUcPresenter.SetText("Зачислить на счёт");
+                    _debitAccountInfoUcPresenter.SetVisible(false);
+                    break;
+                }
+                case 2:
+                {
+                    _creditAccountInfoUcPresenter.SetText("Списать со счёта");
+                    _debitAccountInfoUcPresenter.SetText("Зачислить на счёт");
+                    _debitAccountInfoUcPresenter.SetVisible(true);
+                    break;
+                }
+            }
+
+            //  financeInfoOfOperationflowLayoutPanel.Refresh();
+            //  financeInfoOfOperationflowLayoutPanel.Update();
+        }
+
+
+        private void Action(OnSelectedTypeOfTransactionApplicationEvent obj)
+        {
+            throw new System.NotImplementedException();
         }
 
         private void AccountsInfoUcViewOnOnLoadControlView()

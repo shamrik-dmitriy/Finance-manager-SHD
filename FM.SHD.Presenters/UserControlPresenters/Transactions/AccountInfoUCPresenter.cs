@@ -11,10 +11,20 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
         {
             _accountInfoUcView = accountInfoUCView;
         }
-        
+
         public IAccountInfoUCView GetUserControlView()
         {
             return _accountInfoUcView;
+        }
+
+        public void SetText(string text)
+        {
+            _accountInfoUcView.SetText(text);
+        }
+
+        public void SetVisible(bool visible)
+        {
+            _accountInfoUcView.SetVisible(visible);
         }
     }
 }

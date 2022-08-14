@@ -49,7 +49,7 @@ namespace SHDML.Winforms.UI
                         .AddSingleton<IConfiguration>(config)
                         .Configure<DatabaseOptions>(config.GetSection("ConnectionStrings"))
                         .AddSingleton<EventAggregator>()
-                        .AddTransient<IApplicationEvent, SelectedTypeOfTransactionApplicationEvent>()
+                        .AddTransient<IApplicationEvent, OnSelectedTypeOfTransactionApplicationEvent>()
                         .AddServices()
                         .AddViews()
                         .AddUserControlViews()

@@ -2,7 +2,7 @@ using FM.SHD.Infrastructure.Events;
 
 namespace FM.SHD.Presenters.Events
 {
-    public class SelectedTypeOfTransactionApplicationEvent : IApplicationEvent
+    public class OnSelectedTypeOfTransactionApplicationEvent : IApplicationEvent
     {
         public int TypeOfTransaction { get; set; }
     }

@@ -51,37 +51,6 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserContr
 
         public AccountsInfoTransactionUCView(EventAggregator eventAggregator) : this()
         {
-            _eventAggregator = eventAggregator;
-            _eventAggregator.Subscribe<SelectedTypeOfTransactionApplicationEvent>(ActionSelectedTypeOfTransaction);
-        }
-
-        private void ActionSelectedTypeOfTransaction(SelectedTypeOfTransactionApplicationEvent obj)
-        {
-            TransactionType = obj.TypeOfTransaction;
-            switch (TransactionType)
-            {
-                case 0:
-                {
-                    //_debitAccountInfoUcView.LabelOfTypeOperation = "Списать со счёта";
-                    //_creditAccountInfoUcView.Visible = false;
-                    break;
-                }
-                case 1:
-                {
-                    //_debitAccountInfoUcView.LabelOfTypeOperation = "Зачслить на счёт";
-                    //_creditAccountInfoUcView.Visible = false;
-                    break;
-                }
-                case 2:
-                {
-                    //_debitAccountInfoUcView.LabelOfTypeOperation = "Списать со счёта";
-                    //_creditAccountInfoUcView.Visible = true;
-                    break;
-                }
-            }
-
-          //  financeInfoOfOperationflowLayoutPanel.Refresh();
-          //  financeInfoOfOperationflowLayoutPanel.Update();
         }
 
         public AccountsInfoTransactionUCView(int transactionType) : this()
