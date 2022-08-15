@@ -3,8 +3,8 @@ using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 
 namespace FM.SHD.Presenters.Interfaces.UserControls.Transactions
 {
-    public interface IFamilyMemberUCPresenter
+    public interface IIdentityUCPresenter
     {
-        IFamilyMemberUCView GetUserControlView();
+        IIdentityUCView GetUserControlView();
     }
 }
