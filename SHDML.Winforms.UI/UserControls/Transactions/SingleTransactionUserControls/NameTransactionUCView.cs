@@ -30,7 +30,7 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserContr
 
         private void textBoxTransactionName_TextChanged(object sender, EventArgs e)
         {
-            _eventAggregator.Publish(new ChangeTextBoxNameTransactionText() { Text = textBoxTransactionName.Text });
+            _eventAggregator.Publish(new OnChangeNameTransactionTextApplicationEvent() { Text = textBoxTransactionName.Text });
         }
     }
 }

@@ -66,15 +66,9 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
             }
 
             //  financeInfoOfOperationflowLayoutPanel.Refresh();
-            //  financeInfoOfOperationflowLayoutPanel.Update();
+           //  financeInfoOfOperationflowLayoutPanel.Update();
         }
-
-
-        private void Action(OnSelectedTypeOfTransactionApplicationEvent obj)
-        {
-            throw new System.NotImplementedException();
-        }
-
+        
         private void AccountsInfoUcViewOnOnLoadControlView()
         {
             _accountsInfoTransactionUcView.AddAccountInfo(_creditAccountInfoUcPresenter.GetUserControlView());

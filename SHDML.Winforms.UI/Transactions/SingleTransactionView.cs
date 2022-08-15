@@ -62,7 +62,7 @@ namespace SHDML.Winforms.UI.Transactions
 
         #region Private methods
 
-        private void ActionChangeTextBoxNameTransaction(ChangeTextBoxNameTransactionText obj)
+        private void ActionChangeTextBoxNameTransaction(OnChangeNameTransactionTextApplicationEvent obj)
         {
             Title = string.IsNullOrWhiteSpace(obj.Text) ? TitleDefault : TitleDefault + ": " + obj.Text;
         }
@@ -70,7 +70,7 @@ namespace SHDML.Winforms.UI.Transactions
         private void AddSingleTransactionForm_Load(object sender, EventArgs e)
         {
             OnLoadView?.Invoke();
-            _eventAggregator.Subscribe<ChangeTextBoxNameTransactionText>(ActionChangeTextBoxNameTransaction);
+            _eventAggregator.Subscribe<OnChangeNameTransactionTextApplicationEvent>(ActionChangeTextBoxNameTransaction);
 
             // _typeTransactionUcView.OnLoadUserControlView += TypeTransactionUserControlViewOnLoadUserControlView;
             /*
@@ -196,7 +196,7 @@ namespace SHDML.Winforms.UI.Transactions
 
         private void OnFormClosing(object sender, FormClosingEventArgs e)
         {
-            _eventAggregator.Unsubscribe<ChangeTextBoxNameTransactionText>(ActionChangeTextBoxNameTransaction);
+            _eventAggregator.Unsubscribe<OnChangeNameTransactionTextApplicationEvent>(ActionChangeTextBoxNameTransaction);
         }
     }
 }
