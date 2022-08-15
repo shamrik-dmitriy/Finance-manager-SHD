@@ -46,7 +46,7 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions
             // 
             this.sumTextBox.Location = new System.Drawing.Point(124, 2);
             this.sumTextBox.Name = "sumTextBox";
-            this.sumTextBox.Size = new System.Drawing.Size(230, 23);
+            this.sumTextBox.Size = new System.Drawing.Size(227, 23);
             this.sumTextBox.TabIndex = 4;
             // 
             // SumTransactionUCView

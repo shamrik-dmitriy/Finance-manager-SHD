@@ -20,10 +20,10 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
             _typeTransactionServices = typeTransactionServices;
             _typeTransactionRepository = typeTransactionRepository;
             
-            _typeTransactionUcView.LoadUserControlView +=TypeTransactionUcViewOnLoadUserControlView;
+            _typeTransactionUcView.OnLoadUserControlView +=TypeTransactionUcViewOnOnLoadUserControlView;
         }
 
-        private void TypeTransactionUcViewOnLoadUserControlView()
+        private void TypeTransactionUcViewOnOnLoadUserControlView()
         {
             _typeTransactionUcView.SetTransactionTypes(_typeTransactionServices.GetAll());
         }

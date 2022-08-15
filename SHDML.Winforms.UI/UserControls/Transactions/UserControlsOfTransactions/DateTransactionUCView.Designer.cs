@@ -56,7 +56,7 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions
             this.timePicker.Location = new System.Drawing.Point(278, 2);
             this.timePicker.Name = "timePicker";
             this.timePicker.ShowUpDown = true;
-            this.timePicker.Size = new System.Drawing.Size(78, 23);
+            this.timePicker.Size = new System.Drawing.Size(73, 23);
             this.timePicker.TabIndex = 10;
             // 
             // DateTransactionUCView

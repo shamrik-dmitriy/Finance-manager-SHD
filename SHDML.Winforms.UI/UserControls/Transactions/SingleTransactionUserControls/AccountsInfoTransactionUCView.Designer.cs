@@ -52,6 +52,7 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserContr
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.financeInfoOfOperationflowLayoutPanel);
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.MaximumSize = new System.Drawing.Size(355, 150);
             this.Name = "AccountsInfoTransactionUCView";
             this.Size = new System.Drawing.Size(355, 150);

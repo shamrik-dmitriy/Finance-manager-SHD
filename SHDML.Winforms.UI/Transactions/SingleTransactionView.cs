@@ -72,7 +72,7 @@ namespace SHDML.Winforms.UI.Transactions
             OnLoadView?.Invoke();
             _eventAggregator.Subscribe<ChangeTextBoxNameTransactionText>(ActionChangeTextBoxNameTransaction);
 
-            // _typeTransactionUcView.LoadUserControlView += TypeTransactionUserControlViewOnLoadUserControlView;
+            // _typeTransactionUcView.OnLoadUserControlView += TypeTransactionUserControlViewOnLoadUserControlView;
             /*
             if (SingleTransactionDTO != null)
             {

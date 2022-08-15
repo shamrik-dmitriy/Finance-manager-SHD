@@ -20,6 +20,7 @@ namespace FM.SHD.Services.AccountServices
             _mapper = new MapperConfiguration(config =>
             {
                 config.CreateMap<AccountDto, AccountModel>();
+                config.CreateMap<AccountModel, AccountDto>();
             }).CreateMapper();
         }
 

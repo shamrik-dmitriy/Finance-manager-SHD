@@ -14,7 +14,7 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserContr
     public partial class TypeTransactionUCView : UserControl, ITypeTransactionUCView
     {
         private readonly EventAggregator _eventAggregator;
-        public event Action LoadUserControlView;
+        public event Action OnLoadUserControlView;
 
         public TypeTransactionUCView()
         {
@@ -57,7 +57,7 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserContr
 
         private void TypeTransactionUserControlView_Load(object sender, EventArgs e)
         {
-            LoadUserControlView?.Invoke();
+            OnLoadUserControlView?.Invoke();
             SetTransactionType(0);
         }
     }

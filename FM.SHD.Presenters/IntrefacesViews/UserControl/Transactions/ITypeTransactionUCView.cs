@@ -6,7 +6,7 @@ namespace FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions
 {
     public interface ITypeTransactionUCView
     {
-        event Action LoadUserControlView;
+        event Action OnLoadUserControlView;
         
         void SetTransactionTypes(IEnumerable<TypeTransactionDto> allTypesOfTransaction);
     }

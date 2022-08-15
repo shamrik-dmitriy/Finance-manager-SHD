@@ -47,7 +47,7 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions
             this.accountComboBox.FormattingEnabled = true;
             this.accountComboBox.Location = new System.Drawing.Point(124, 2);
             this.accountComboBox.Name = "accountComboBox";
-            this.accountComboBox.Size = new System.Drawing.Size(230, 23);
+            this.accountComboBox.Size = new System.Drawing.Size(226, 23);
             this.accountComboBox.TabIndex = 2;
             // 
             // AccountInfoUCView
@@ -59,6 +59,7 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions
             this.Controls.Add(this.accountComboBox);
             this.Name = "AccountInfoUCView";
             this.Size = new System.Drawing.Size(360, 28);
+            this.Load += new System.EventHandler(this.AccountsUserControlView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
