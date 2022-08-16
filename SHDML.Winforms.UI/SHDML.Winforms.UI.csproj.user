@@ -22,6 +22,9 @@
     <Compile Update="UserControls\Common\LabelTextBoxUCView.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UserControls\Main\DataGridTransactionUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UserControls\Transactions\ItemOfMultipleTransactionView.cs">
       <SubType>UserControl</SubType>
     </Compile>
