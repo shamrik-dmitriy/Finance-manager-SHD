@@ -5,9 +5,11 @@ using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
+using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using SHDML.BLL.DTO.DTO;
 using SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls;
+using SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions;
 
 namespace SHDML.Winforms.UI.Transactions
 {
@@ -146,13 +148,13 @@ namespace SHDML.Winforms.UI.Transactions
             singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
         }
 
-        public void AddAddCancelButtonsUserControl(IAddCancelButtonsUCView ucView)
+        public void AddIdentityUCView(IIdentityUCView ucView)
         {
             var typeTransactionUc = (UserControl)ucView;
             singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
         }
 
-        public void AddFamilyMemberUserControl(IFamilyMemberUCView ucView)
+        public void AddAddCancelButtonsUserControl(IAddCancelButtonsUCView ucView)
         {
             var typeTransactionUc = (UserControl)ucView;
             singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
@@ -182,13 +184,13 @@ namespace SHDML.Winforms.UI.Transactions
             singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
         }
 
-        public void AddDescriptionTransactionUserControl(IDescriptionTransactionUCView ucView)
+        public void AddDescriptionTransactionUserControl(IDescriptionTextboxUCView ucView)
         {
             var typeTransactionUc = (UserControl)ucView;
             singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
         }
 
-        public void AddNameTransactionUserControl(INameTransactionUCView ucView)
+        public void AddNameTransactionUserControl(INameTextboxUCView ucView)
         {
             var typeTransactionUc = (UserControl)ucView;
             singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
@@ -196,7 +198,8 @@ namespace SHDML.Winforms.UI.Transactions
 
         private void OnFormClosing(object sender, FormClosingEventArgs e)
         {
-            _eventAggregator.Unsubscribe<OnChangeNameTransactionTextApplicationEvent>(ActionChangeTextBoxNameTransaction);
+            _eventAggregator.Unsubscribe<OnChangeNameTransactionTextApplicationEvent>(
+                ActionChangeTextBoxNameTransaction);
         }
     }
 }

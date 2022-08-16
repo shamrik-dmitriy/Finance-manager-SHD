@@ -4,19 +4,25 @@ using FM.SHD.Infastructure.Impl.Repositories.Specific.TypeTransaction;
 using FM.SHD.Presenters;
 using FM.SHD.Presenters.Interfaces;
 using FM.SHD.Presenters.Interfaces.UserControls;
+using FM.SHD.Presenters.Interfaces.UserControls.Common;
 using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
 using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
+using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using FM.SHD.Presenters.UserControlPresenters;
+using FM.SHD.Presenters.UserControlPresenters.Common;
 using FM.SHD.Presenters.UserControlPresenters.Transactions;
+using FM.SHD.Presenters.ViewPresenters;
 using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.ComponentsServices.TypeTransactionService;
 using FM.SHD.Services.Repositories;
 using FM.SHD.Services.SingleTransactionServices;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SHDML.Winforms.UI.Account;
 using SHDML.Winforms.UI.Transactions;
+using SHDML.Winforms.UI.UserControls.Common;
 using SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls;
 using SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions;
 using IContrAgentUCPresenter = FM.SHD.Presenters.Interfaces.UserControls.Transactions.IContrAgentUCPresenter;
@@ -31,7 +37,9 @@ namespace SHDML.Winforms.UI.DependencyInjection
                 .AddScoped<IMainView, MainView>()
                 .AddScoped<MainPresenter>()
                 .AddTransient<ISingleTransactionView, SingleTransactionView>()
-                .AddTransient<SingleTransactionPresenter>();
+                .AddTransient<SingleTransactionPresenter>()
+                .AddTransient<IAccountView, AccountView>()
+                .AddTransient<AccountPresenter>();
         }
 
         public static IServiceCollection AddUserControlViews(this IServiceCollection serviceCollection)
@@ -39,19 +47,19 @@ namespace SHDML.Winforms.UI.DependencyInjection
             return serviceCollection
                 .AddScoped<ITypeTransactionUCView, TypeTransactionUCView>()
                 .AddScoped<ITypeTransactionUCPresenter, TypeTransactionUCPresenter>()
-                .AddScoped<INameTransactionUCView, NameTransactionUCView>()
-                .AddScoped<INameTransactionUCPresenter, NameTransactionUcPresenter>()
-                .AddScoped<IDescriptionTransactionUCView, DescriptionTransactionUCView>()
-                .AddScoped<IDescriptionTransactionUCPresenter, DescriptionTransactionUCPresenter>()
+                .AddScoped<INameTextboxUCView, NameTextboxUCView>()
+                .AddScoped<INameUCPresenter, NameUcPresenter>()
+                .AddScoped<IDescriptionTextboxUCView, DescriptionTextboxUCView>()
+                .AddScoped<IDescriptionUCPresenter, DescriptionUcPresenter>()
                 //Добавить то, что находится внутри IAccountsInfoTransactionUCView
                 .AddScoped<IAccountsInfoTransactionUCView, AccountsInfoTransactionUCView>()
                 .AddScoped<IAccountsInfoTransactionUCPresenter, AccountsInfoTransactionUCPresenter>()
-                .AddScoped<ICategoryTransactionUCView, CategoryTransactionUCView>()
-                .AddScoped<ICategoryTransactionUCPresenter, CategoryTransactionUCPresenter>()
+                .AddTransient<ICategoryTransactionUCView, CategoryUCView>()
+                .AddTransient<ICategoryUCPresenter, CategoryUcPresenter>()
                 .AddScoped<IContrAgentUCView, ContrAgentUCView>()
                 .AddScoped<IContrAgentUCPresenter, ContrAgentUCPresenter>()
-                .AddScoped<IFamilyMemberUCView, FamilyMemberUCView>()
-                .AddScoped<IFamilyMemberUCPresenter, FamilyMemberUCPresenter>()
+                .AddScoped<IIdentityUCView, IdentityUCView>()
+                .AddScoped<IIdentityUCPresenter, IdentityUCPresenter>()
                 .AddScoped<IAddCancelButtonsUCView, AddCancelButtonsUCView>()
                 .AddScoped<IAddCancelButtonsUCPresenter, AddCancelButtonsUCPresenter>()
                 .AddTransient<IAccountInfoUCView, AccountInfoUCView>()
@@ -59,7 +67,11 @@ namespace SHDML.Winforms.UI.DependencyInjection
                 .AddScoped<ISumTransactionUCView, SumTransactionUCView>()
                 .AddScoped<ISumTransactionUCPresenter, SumTransactionUCPresenter>()
                 .AddScoped<IDateTransactionUCView, DateTransactionUCView>()
-                .AddScoped<IDateTransactionUCPresenter, DateTransactionUCPresenter>();
+                .AddScoped<IDateTransactionUCPresenter, DateTransactionUCPresenter>()
+                .AddScoped<ILabelTextBoxUCView, LabelTextBoxUCView>()
+                .AddScoped<ILabelTextboxUcPresenter, LabelTextboxPresenter>()
+                .AddScoped<ICheckboxUCView, CheckboxUCView>()
+                .AddScoped<ICheckboxUCPresenter, CheckboxUCPresenter>();
         }
 
         public static IServiceCollection AddRepositories(this IServiceCollection serviceCollection,

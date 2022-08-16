@@ -3,16 +3,16 @@ using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 
 namespace FM.SHD.Presenters.UserControlPresenters.Transactions
 {
-    public class FamilyMemberUCPresenter : IFamilyMemberUCPresenter
+    public class IdentityUCPresenter : IIdentityUCPresenter
     {
-        private readonly IFamilyMemberUCView _familyMemberUcView;
+        private readonly IIdentityUCView _familyMemberUcView;
 
-        public FamilyMemberUCPresenter(IFamilyMemberUCView familyMemberUcView)
+        public IdentityUCPresenter(IIdentityUCView familyMemberUcView)
         {
             _familyMemberUcView = familyMemberUcView;
         }
 
-        public IFamilyMemberUCView GetUserControlView()
+        public IIdentityUCView GetUserControlView()
         {
             return _familyMemberUcView;
         }

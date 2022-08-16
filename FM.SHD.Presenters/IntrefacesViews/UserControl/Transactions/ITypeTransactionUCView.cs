@@ -4,7 +4,7 @@ using FM.SHDML.Core.Models.TransactionModels.Transactions.TypeTransaction;
 
 namespace FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions
 {
-    public interface ITypeTransactionUCView
+    public interface ITypeTransactionUCView : IUserControlView
     {
         event Action OnLoadUserControlView;
         

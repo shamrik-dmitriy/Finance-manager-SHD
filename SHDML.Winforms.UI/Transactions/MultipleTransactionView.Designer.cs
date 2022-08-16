@@ -33,7 +33,7 @@ namespace SHDML.Winforms.UI.Transactions
             this.multipleTransactionFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.nameOfRetailertextBox = new System.Windows.Forms.TextBox();
             this._contrAgentUserControl1 = new ContrAgentUCView();
-            this._familyMemberUserControl1 = new FamilyMemberUCView();
+            this._identityUserControl1 = new IdentityUCView();
             this._accountInfoUserControl1 = new AccountInfoUCView();
             this.dateTransactionUserControl1 = new DateTransactionUCView();
             this.addedTransactionButton = new System.Windows.Forms.Button();
@@ -59,7 +59,7 @@ namespace SHDML.Winforms.UI.Transactions
             this.multipleTransactionFlowLayoutPanel.BackColor = System.Drawing.SystemColors.Control;
             this.multipleTransactionFlowLayoutPanel.Controls.Add(this.nameOfRetailertextBox);
             this.multipleTransactionFlowLayoutPanel.Controls.Add(this._contrAgentUserControl1);
-            this.multipleTransactionFlowLayoutPanel.Controls.Add(this._familyMemberUserControl1);
+            this.multipleTransactionFlowLayoutPanel.Controls.Add(this._identityUserControl1);
             this.multipleTransactionFlowLayoutPanel.Controls.Add(this._accountInfoUserControl1);
             this.multipleTransactionFlowLayoutPanel.Controls.Add(this.dateTransactionUserControl1);
             this.multipleTransactionFlowLayoutPanel.Controls.Add(this.addedTransactionButton);
@@ -93,14 +93,14 @@ namespace SHDML.Winforms.UI.Transactions
             this._contrAgentUserControl1.Size = new System.Drawing.Size(357, 28);
             this._contrAgentUserControl1.TabIndex = 20;
             // 
-            // _familyMemberUserControl1
+            // _identityUserControl1
             // 
-            this._familyMemberUserControl1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this._familyMemberUserControl1.AutoSize = true;
-            this._familyMemberUserControl1.Location = new System.Drawing.Point(4, 66);
-            this._familyMemberUserControl1.Name = "_familyMemberUserControl1";
-            this._familyMemberUserControl1.Size = new System.Drawing.Size(357, 28);
-            this._familyMemberUserControl1.TabIndex = 13;
+            this._identityUserControl1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this._identityUserControl1.AutoSize = true;
+            this._identityUserControl1.Location = new System.Drawing.Point(4, 66);
+            this._identityUserControl1.Name = "_identityUserControl1";
+            this._identityUserControl1.Size = new System.Drawing.Size(357, 28);
+            this._identityUserControl1.TabIndex = 13;
             // 
             // _accountInfoUserControl1
             // 
@@ -280,7 +280,7 @@ namespace SHDML.Winforms.UI.Transactions
 
         private System.Windows.Forms.FlowLayoutPanel multipleTransactionFlowLayoutPanel;
         private System.Windows.Forms.TextBox nameOfRetailertextBox;
-        private FamilyMemberUCView _familyMemberUserControl1;
+        private IdentityUCView _identityUserControl1;
         private AccountInfoUCView _accountInfoUserControl1;
         private System.Windows.Forms.Button addedTransactionButton;
         private System.Windows.Forms.Label label1;

@@ -7,6 +7,7 @@ using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters;
 using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.IntrefacesViews;
+using FM.SHD.Presenters.ViewPresenters;
 using FM.SHD.Services.CommonServices;
 using FM.SHD.Services.Repositories;
 using FM.SHD.Services.Settings;

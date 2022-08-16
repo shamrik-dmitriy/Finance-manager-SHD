@@ -4,7 +4,7 @@ using FM.SHDML.Core.Models.AccountModel;
 
 namespace FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions
 {
-    public interface IAccountInfoUCView
+    public interface IAccountInfoUCView : IUserControlView
     {
         event Action OnLoadUserControlView;
         

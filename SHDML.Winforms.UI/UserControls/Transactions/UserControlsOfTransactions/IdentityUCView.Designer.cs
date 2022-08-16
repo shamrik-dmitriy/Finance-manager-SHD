@@ -1,7 +1,7 @@
 ﻿
 namespace SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions
 {
-    partial class FamilyMemberUCView
+    partial class IdentityUCView
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -50,13 +50,13 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions
             this.label1.TabIndex = 13;
             this.label1.Text = "Член семьи";
             // 
-            // FamilyMemberUCView
+            // IdentityUCView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.comboBoxFamilyMemberName);
             this.Controls.Add(this.label1);
-            this.Name = "FamilyMemberUCView";
+            this.Name = "IdentityUCView";
             this.Size = new System.Drawing.Size(360, 28);
             this.ResumeLayout(false);
             this.PerformLayout();

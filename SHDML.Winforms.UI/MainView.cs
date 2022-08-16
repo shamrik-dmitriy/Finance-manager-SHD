@@ -10,6 +10,7 @@ namespace SHDML.Winforms.UI
     public partial class MainView : Form, IMainView
     {
         public event Action AddTransaction;
+        public event Action AddAccount;
 
         private readonly EventAggregator _eventAggregator;
 
@@ -75,6 +76,15 @@ namespace SHDML.Winforms.UI
         private void MainView_FormClosing(object sender, FormClosingEventArgs e)
         {
             _eventAggregator.Dispose();
+        }
+
+        private void seeAccountButton_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void addAccountButton_Click(object sender, EventArgs e)
+        {
+            AddAccount?.Invoke();
         }
     }
 }

@@ -1,6 +1,6 @@
 namespace FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions
 {
-    public interface IContrAgentUCView
+    public interface IContrAgentUCView : IUserControlView
     {
         
     }
