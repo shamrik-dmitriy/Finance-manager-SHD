@@ -25,6 +25,7 @@ namespace SHDML.Winforms.UI.Account
         #region Public events
 
         public event Action OnLoadView;
+        public event Action OnClosingView;
 
         #endregion
 
@@ -65,7 +66,12 @@ namespace SHDML.Winforms.UI.Account
             var userControl = (UserControl)userControlView;
             flowLayoutPanel1.Controls.Add(userControl);
         }
-        
+
+        public void CloseView()
+        {
+            Close();
+        }
+
         private void AccountView_Load(object sender, EventArgs e)
         {
             OnLoadView?.Invoke();
@@ -75,6 +81,11 @@ namespace SHDML.Winforms.UI.Account
         private void ActionChangeTextBoxNameTransaction(OnChangeNameTransactionTextApplicationEvent obj)
         {
             Title = string.IsNullOrWhiteSpace(obj.Text) ? TitleDefault : TitleDefault + ": " + obj.Text;
+        }
+
+        private void AccountView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            OnClosingView?.Invoke();
         }
     }
 }

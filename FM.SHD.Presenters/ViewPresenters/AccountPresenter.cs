@@ -50,6 +50,13 @@ namespace FM.SHD.Presenters.ViewPresenters
             _accountView.AddUserControl(_categoryCurrencyUcPresenter.GetUserControlView());
             _accountView.AddUserControl(_checkboxUcPresenter.GetUserControlView());
             _accountView.AddUserControl(_addCancelButtonsUcPresenter.GetUserControlView());
+
+            _addCancelButtonsUcPresenter.Continue += AddCancelButtonsUcPresenterOnContinue;
+        }
+
+        private void AddCancelButtonsUcPresenterOnContinue()
+        {
+            _accountView.CloseView();
         }
 
         public IAccountView GetView()

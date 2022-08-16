@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.buttonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.addedSingleTransactionButton = new System.Windows.Forms.Button();
-            this.cancelSingleTransactionButton = new System.Windows.Forms.Button();
+            this.continueButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.buttonsTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,8 +42,8 @@
             this.buttonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.buttonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.buttonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.buttonsTableLayoutPanel.Controls.Add(this.addedSingleTransactionButton, 0, 0);
-            this.buttonsTableLayoutPanel.Controls.Add(this.cancelSingleTransactionButton, 2, 0);
+            this.buttonsTableLayoutPanel.Controls.Add(this.continueButton, 0, 0);
+            this.buttonsTableLayoutPanel.Controls.Add(this.cancelButton, 2, 0);
             this.buttonsTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.buttonsTableLayoutPanel.Name = "buttonsTableLayoutPanel";
             this.buttonsTableLayoutPanel.RowCount = 1;
@@ -51,27 +51,29 @@
             this.buttonsTableLayoutPanel.Size = new System.Drawing.Size(354, 32);
             this.buttonsTableLayoutPanel.TabIndex = 15;
             // 
-            // addedSingleTransactionButton
+            // continueButton
             // 
-            this.addedSingleTransactionButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.addedSingleTransactionButton.AutoSize = true;
-            this.addedSingleTransactionButton.Location = new System.Drawing.Point(3, 3);
-            this.addedSingleTransactionButton.Name = "addedSingleTransactionButton";
-            this.addedSingleTransactionButton.Size = new System.Drawing.Size(112, 26);
-            this.addedSingleTransactionButton.TabIndex = 0;
-            this.addedSingleTransactionButton.Text = "Добавить";
-            this.addedSingleTransactionButton.UseVisualStyleBackColor = true;
+            this.continueButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.continueButton.AutoSize = true;
+            this.continueButton.Location = new System.Drawing.Point(3, 3);
+            this.continueButton.Name = "continueButton";
+            this.continueButton.Size = new System.Drawing.Size(112, 26);
+            this.continueButton.TabIndex = 0;
+            this.continueButton.Text = "Добавить";
+            this.continueButton.UseVisualStyleBackColor = true;
+            this.continueButton.Click += new System.EventHandler(this.continueButton_Click);
             // 
-            // cancelSingleTransactionButton
+            // cancelButton
             // 
-            this.cancelSingleTransactionButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cancelSingleTransactionButton.AutoSize = true;
-            this.cancelSingleTransactionButton.Location = new System.Drawing.Point(239, 3);
-            this.cancelSingleTransactionButton.Name = "cancelSingleTransactionButton";
-            this.cancelSingleTransactionButton.Size = new System.Drawing.Size(112, 26);
-            this.cancelSingleTransactionButton.TabIndex = 1;
-            this.cancelSingleTransactionButton.Text = "Отмена";
-            this.cancelSingleTransactionButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cancelButton.AutoSize = true;
+            this.cancelButton.Location = new System.Drawing.Point(239, 3);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(112, 26);
+            this.cancelButton.TabIndex = 1;
+            this.cancelButton.Text = "Отмена";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // AddCancelButtonsUCView
             // 
@@ -92,7 +94,7 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel buttonsTableLayoutPanel;
-        private System.Windows.Forms.Button addedSingleTransactionButton;
-        private System.Windows.Forms.Button cancelSingleTransactionButton;
+        private System.Windows.Forms.Button continueButton;
+        private System.Windows.Forms.Button cancelButton;
     }
 }

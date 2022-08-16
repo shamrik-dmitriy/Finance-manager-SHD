@@ -51,6 +51,7 @@ namespace SHDML.Winforms.UI.Account
             this.Name = "AccountView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AccountView";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AccountView_FormClosing);
             this.Load += new System.EventHandler(this.AccountView_Load);
             this.ResumeLayout(false);
 
