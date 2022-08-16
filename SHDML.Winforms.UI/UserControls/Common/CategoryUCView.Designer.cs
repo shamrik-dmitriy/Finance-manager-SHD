@@ -30,7 +30,7 @@ namespace SHDML.Winforms.UI.UserControls.Common
         private void InitializeComponent()
         {
             this.label = new System.Windows.Forms.Label();
-            this.comboBoxCategoryName = new System.Windows.Forms.ComboBox();
+            this.categoryComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label
@@ -41,19 +41,21 @@ namespace SHDML.Winforms.UI.UserControls.Common
             this.label.Size = new System.Drawing.Size(0, 15);
             this.label.TabIndex = 11;
             // 
-            // comboBoxCategoryName
+            // categoryComboBox
             // 
-            this.comboBoxCategoryName.FormattingEnabled = true;
-            this.comboBoxCategoryName.Location = new System.Drawing.Point(124, 2);
-            this.comboBoxCategoryName.Name = "comboBoxCategoryName";
-            this.comboBoxCategoryName.Size = new System.Drawing.Size(230, 23);
-            this.comboBoxCategoryName.TabIndex = 12;
+            this.categoryComboBox.FormattingEnabled = true;
+            this.categoryComboBox.Location = new System.Drawing.Point(124, 2);
+            this.categoryComboBox.Name = "categoryComboBox";
+            this.categoryComboBox.Size = new System.Drawing.Size(230, 23);
+            this.categoryComboBox.TabIndex = 12;
+            this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBoxCategoryName_SelectedIndexChanged);
+            this.categoryComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxCategoryName_Validating);
             // 
             // CategoryUCView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.comboBoxCategoryName);
+            this.Controls.Add(this.categoryComboBox);
             this.Controls.Add(this.label);
             this.Name = "CategoryUCView";
             this.Size = new System.Drawing.Size(360, 28);
@@ -65,6 +67,6 @@ namespace SHDML.Winforms.UI.UserControls.Common
         #endregion
 
         private System.Windows.Forms.Label label;
-        private System.Windows.Forms.ComboBox comboBoxCategoryName;
+        private System.Windows.Forms.ComboBox categoryComboBox;
     }
 }
