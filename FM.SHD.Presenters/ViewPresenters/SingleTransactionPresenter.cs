@@ -51,19 +51,19 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void SingleTransactionViewOnOnLoad()
         {
-            _singleTransactionView.AddTypeTransactionUserControl(_typeTransactionUcPresenter.GetUserControlView());
-            _singleTransactionView.AddNameTransactionUserControl(_nameUcPresenter.GetUserControlView());
-            _singleTransactionView.AddDescriptionTransactionUserControl(_descriptionUcPresenter
+            _singleTransactionView.AddUserControl(_typeTransactionUcPresenter.GetUserControlView());
+            _singleTransactionView.AddUserControl(_nameUcPresenter.GetUserControlView());
+            _singleTransactionView.AddUserControl(_descriptionUcPresenter
                 .GetUserControlView());
             _singleTransactionView.AddHorizontalLine();
-            _singleTransactionView.AddAccountsInfoTransactionUserControl(_accountsInfoTransactionUcPresenter
+            _singleTransactionView.AddUserControl(_accountsInfoTransactionUcPresenter
                 .GetUserControlView());
             _singleTransactionView.AddHorizontalLine();
-            _singleTransactionView.AddCategoryTransactionUserControl(
+            _singleTransactionView.AddUserControl(
                 _categoryUcPresenter.GetUserControlView());
-            _singleTransactionView.AddContrAgentUserControl(_contrAgentUcPresenter.GetUserControlView());
-            _singleTransactionView.AddIdentityUCView(_identityUcPresenter.GetUserControlView());
-            _singleTransactionView.AddAddCancelButtonsUserControl(_addCancelButtonsUcPresenter.GetUserControlView());
+            _singleTransactionView.AddUserControl(_contrAgentUcPresenter.GetUserControlView());
+            _singleTransactionView.AddUserControl(_identityUcPresenter.GetUserControlView());
+            _singleTransactionView.AddUserControl(_addCancelButtonsUcPresenter.GetUserControlView());
         }
 
         private void _singleTransactionView_OnChangeTypeTransaction(int transactionType)

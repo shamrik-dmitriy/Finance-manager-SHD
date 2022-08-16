@@ -121,6 +121,12 @@ namespace SHDML.Winforms.UI.Transactions
             base.ShowDialog();
         }
 
+        public void AddUserControl(IUserControlView userControlView)
+        {
+            var userControl = (UserControl)userControlView;
+            singleTransactionDesktopflowLayoutPanel.Controls.Add(userControl);
+        }
+
         public SingleTransactionDTO GetTransactionInfo()
         {
             return new SingleTransactionDTO();
@@ -142,58 +148,11 @@ namespace SHDML.Winforms.UI.Transactions
             };*/
         }
 
-        public void AddCategoryTransactionUserControl(ICategoryTransactionUCView ucView)
-        {
-            var typeTransactionUc = (UserControl)ucView;
-            singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
-        }
-
-        public void AddIdentityUCView(IIdentityUCView ucView)
-        {
-            var typeTransactionUc = (UserControl)ucView;
-            singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
-        }
-
-        public void AddAddCancelButtonsUserControl(IAddCancelButtonsUCView ucView)
-        {
-            var typeTransactionUc = (UserControl)ucView;
-            singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
-        }
-
-        public void AddContrAgentUserControl(IContrAgentUCView ucView)
-        {
-            var typeTransactionUc = (UserControl)ucView;
-            singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
-        }
-
-        public void AddTypeTransactionUserControl(ITypeTransactionUCView ucView)
-        {
-            var typeTransactionUc = (UserControl)ucView;
-            singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
-        }
 
         public void AddHorizontalLine()
         {
             singleTransactionDesktopflowLayoutPanel.Controls.Add(new Label()
                 { BorderStyle = BorderStyle.FixedSingle, Anchor = AnchorStyles.Top, Size = new Size(359, 2) });
-        }
-
-        public void AddAccountsInfoTransactionUserControl(IAccountsInfoTransactionUCView ucView)
-        {
-            var typeTransactionUc = (UserControl)ucView;
-            singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
-        }
-
-        public void AddDescriptionTransactionUserControl(IDescriptionTextboxUCView ucView)
-        {
-            var typeTransactionUc = (UserControl)ucView;
-            singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
-        }
-
-        public void AddNameTransactionUserControl(INameTextboxUCView ucView)
-        {
-            var typeTransactionUc = (UserControl)ucView;
-            singleTransactionDesktopflowLayoutPanel.Controls.Add(typeTransactionUc);
         }
 
         private void OnFormClosing(object sender, FormClosingEventArgs e)

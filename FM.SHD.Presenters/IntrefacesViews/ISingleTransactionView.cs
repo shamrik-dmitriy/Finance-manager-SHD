@@ -12,15 +12,8 @@ namespace FM.SHD.Presenters.IntrefacesViews
         event EventHandler Add;
         event Action<int> OnChangeTypeTransaction;
 
+        void AddUserControl(IUserControlView userControlView);
         SingleTransactionDTO GetTransactionInfo();
-        void AddTypeTransactionUserControl(ITypeTransactionUCView getUcView);
-        void AddNameTransactionUserControl(INameTextboxUCView getUcView);
-        void AddDescriptionTransactionUserControl(IDescriptionTextboxUCView getUcView);
-        void AddAccountsInfoTransactionUserControl(IAccountsInfoTransactionUCView getUcView);
-        void AddCategoryTransactionUserControl(ICategoryTransactionUCView getUcView);
-        void AddContrAgentUserControl(IContrAgentUCView getUcView);
-        void AddIdentityUCView(IIdentityUCView ucView);
-        void AddAddCancelButtonsUserControl(IAddCancelButtonsUCView ucView);
         void AddHorizontalLine();
     }
 }
