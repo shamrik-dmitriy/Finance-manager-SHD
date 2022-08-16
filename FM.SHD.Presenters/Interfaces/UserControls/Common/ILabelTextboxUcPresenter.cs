@@ -5,5 +5,6 @@ namespace FM.SHD.Presenters.Interfaces.UserControls.Common
     public interface ILabelTextboxUcPresenter
     {
         ILabelTextBoxUCView GetUserControlView();
+        void SetText(string text);
     }
 }

@@ -40,6 +40,7 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void AccountViewOnOnLoadView()
         {
+            _labelTextboxUcPresenter.SetText("Начальная сумма");
             _accountView.AddUserControl(_nameUcPresenter.GetUserControlView());
             _accountView.AddUserControl(_descriptionUcPresenter.GetUserControlView());
             _accountView.AddUserControl(_labelTextboxUcPresenter.GetUserControlView());

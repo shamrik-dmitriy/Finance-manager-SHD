@@ -23,7 +23,7 @@ namespace FM.SHD.Presenters.ViewPresenters
         {
             var accountPresenter = _serviceProvider.GetRequiredService<AccountPresenter>();
             var view = accountPresenter.GetView();
-            view.ShowDialog();
+            view.ShowDialog("Добавить счёт");
         }
 
         private void MainViewOnAddTransaction()

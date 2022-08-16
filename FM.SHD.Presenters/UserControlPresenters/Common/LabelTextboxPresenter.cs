@@ -16,5 +16,10 @@ namespace FM.SHD.Presenters.UserControlPresenters.Common
         {
             return _labelTextBoxUcView;
         }
+
+        public void SetText(string text)
+        {
+            _labelTextBoxUcView.SetLabelText(text);
+        }
     }
 }

@@ -37,5 +37,10 @@ namespace SHDML.Winforms.UI.UserControls.Common
             label.Text = labelText;
             textBox.Text = textboxDefaultValue;
         }
+
+        public void SetLabelText(string text)
+        {
+            label.Text = text;
+        }
     }
 }
