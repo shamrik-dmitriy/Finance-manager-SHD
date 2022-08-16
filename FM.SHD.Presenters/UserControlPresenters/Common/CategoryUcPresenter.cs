@@ -16,5 +16,10 @@ namespace FM.SHD.Presenters.UserControlPresenters.Common
         {
             return _categoryTransactionUcView;
         }
+        
+        public void SetText(string text)
+        {
+            _categoryTransactionUcView.SetLabelText(text);
+        }
     }
 }

@@ -5,5 +5,7 @@ namespace FM.SHD.Presenters.Interfaces.UserControls.Common
     public interface ICategoryUCPresenter
     {
         ICategoryTransactionUCView GetUserControlView();
+
+        void SetText(string text);
     }
 }

@@ -45,5 +45,10 @@ namespace SHDML.Winforms.UI.UserControls.Common
         {
             categoryComboBox.SelectedIndex = index;
         }
+
+        public void SetLabelText(string text)
+        {
+            label.Text = text;
+        }
     }
 }

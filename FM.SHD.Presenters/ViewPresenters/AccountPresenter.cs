@@ -40,11 +40,13 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void AccountViewOnOnLoadView()
         {
-            _labelTextboxUcPresenter.SetText("Начальная сумма");
             _accountView.AddUserControl(_nameUcPresenter.GetUserControlView());
             _accountView.AddUserControl(_descriptionUcPresenter.GetUserControlView());
+            _labelTextboxUcPresenter.SetText("Начальная сумма");
             _accountView.AddUserControl(_labelTextboxUcPresenter.GetUserControlView());
+            _categoryAccountUcPresenter.SetText("Категория счёта");
             _accountView.AddUserControl(_categoryAccountUcPresenter.GetUserControlView());
+            _categoryCurrencyUcPresenter.SetText("Валюта");
             _accountView.AddUserControl(_categoryCurrencyUcPresenter.GetUserControlView());
             _accountView.AddUserControl(_checkboxUcPresenter.GetUserControlView());
             _accountView.AddUserControl(_addCancelButtonsUcPresenter.GetUserControlView());
