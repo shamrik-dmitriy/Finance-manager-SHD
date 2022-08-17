@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using FM.SHD.Presenters.Interfaces;
 using FM.SHD.Presenters.Interfaces.Views;
 using FM.SHD.Presenters.IntrefacesViews;
+using FM.SHD.Services.AccountServices;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FM.SHD.Presenters.ViewPresenters
@@ -10,13 +12,25 @@ namespace FM.SHD.Presenters.ViewPresenters
     {
         private IMainView _mainView;
         private IServiceProvider _serviceProvider;
+        private readonly IAccountServices _accountServices;
 
-        public MainPresenter(IServiceProvider serviceProvider, IMainView mainView)
+        public MainPresenter(
+            IServiceProvider serviceProvider,
+            IAccountServices accountServices,
+            IMainView mainView)
         {
             _mainView = mainView;
             _serviceProvider = serviceProvider;
+            _accountServices = accountServices;
+
+            _mainView.OnLoadView += MainViewOnOnLoadView;
             _mainView.AddTransaction += MainViewOnAddTransaction;
             _mainView.AddAccount += MainViewOnAddAccount;
+        }
+
+        private void MainViewOnOnLoadView()
+        {
+            _mainView.SetAccountsData(_accountServices.GetAll());
         }
 
         private void MainViewOnAddAccount()
