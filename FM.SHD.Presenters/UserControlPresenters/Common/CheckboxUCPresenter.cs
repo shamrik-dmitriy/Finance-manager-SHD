@@ -16,5 +16,10 @@ namespace FM.SHD.Presenters.UserControlPresenters.Common
         {
             return _checkboxUcView;
         }
+
+        public bool GetCheckboxState()
+        {
+            return _checkboxUcView.GetCheckboxState();
+        }
     }
 }

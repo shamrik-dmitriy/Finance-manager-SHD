@@ -16,5 +16,10 @@ namespace FM.SHD.Presenters.UserControlPresenters.Common
         {
             return _descriptionTextboxUcView;
         }
+
+        public string GetDescription()
+        {
+            return _descriptionTextboxUcView.GetDescription();
+        }
     }
 }

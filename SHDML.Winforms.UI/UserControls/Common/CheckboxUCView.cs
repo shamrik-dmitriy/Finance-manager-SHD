@@ -17,5 +17,10 @@ namespace SHDML.Winforms.UI.UserControls.Common
         {
             InitializeComponent();
         }
+
+        public bool GetCheckboxState()
+        {
+            return checkBox1.Checked;
+        }
     }
 }

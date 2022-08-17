@@ -5,5 +5,6 @@ namespace FM.SHD.Presenters.Interfaces.UserControls.Common
     public interface INameUCPresenter
     {
         INameTextboxUCView GetUserControlView();
+        string GetName();
     }
 }

@@ -17,5 +17,10 @@ namespace FM.SHD.Presenters.UserControlPresenters.Common
         {
             return _nameTextboxUcView;
         }
+
+        public string GetName()
+        {
+            return _nameTextboxUcView.GetName();
+        }
     }
 }

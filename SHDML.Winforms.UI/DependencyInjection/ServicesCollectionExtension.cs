@@ -85,6 +85,9 @@ namespace SHDML.Winforms.UI.DependencyInjection
                         config.GetConnectionString("DefaultConnection")))
                 .AddTransient<ITypeTransactionRepository, TypeTransactionRepository>(provider =>
                     new TypeTransactionRepository(
+                        config.GetConnectionString("DefaultConnection")))
+                .AddTransient<IAccountCategoryRepository, AccountCategoryRepository>(provider =>
+                    new AccountCategoryRepository(
                         config.GetConnectionString("DefaultConnection")));
         }
 
@@ -93,7 +96,8 @@ namespace SHDML.Winforms.UI.DependencyInjection
             return serviceCollection
                 .AddTransient<ISingleTransactionServices, SingleTransactionServices>()
                 .AddTransient<IAccountServices, AccountServices>()
-                .AddTransient<ITypeTransactionServices, TypeTransactionServices>();
+                .AddTransient<ITypeTransactionServices, TypeTransactionServices>()
+                .AddTransient<IAccountCategoryServices, AccountCategoryServices>();
         }
     }
 }

@@ -1,12 +1,16 @@
+using System;
 using FM.SHD.Presenters.Interfaces.UserControls.Common;
 using FM.SHD.Presenters.Interfaces.Views;
 using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
+using FM.SHD.Services.AccountServices;
+using FM.SHDML.Core.Models.AccountModel;
 
 namespace FM.SHD.Presenters.ViewPresenters
 {
     public class AccountPresenter : IAccountPresenter
     {
+        private readonly IAccountServices _accountServices;
         private readonly IAccountView _accountView;
         private readonly INameUCPresenter _nameUcPresenter;
         private readonly IDescriptionUCPresenter _descriptionUcPresenter;
@@ -17,6 +21,7 @@ namespace FM.SHD.Presenters.ViewPresenters
         private readonly IAddCancelButtonsUCPresenter _addCancelButtonsUcPresenter;
 
         public AccountPresenter(
+            IAccountServices accountServices,
             IAccountView accountView,
             INameUCPresenter nameUcPresenter,
             IDescriptionUCPresenter descriptionUcPresenter,
@@ -26,6 +31,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             ICheckboxUCPresenter checkboxUcPresenter,
             IAddCancelButtonsUCPresenter addCancelButtonsUcPresenter)
         {
+            _accountServices = accountServices;
             _accountView = accountView;
             _nameUcPresenter = nameUcPresenter;
             _descriptionUcPresenter = descriptionUcPresenter;
@@ -52,10 +58,20 @@ namespace FM.SHD.Presenters.ViewPresenters
             _accountView.AddUserControl(_addCancelButtonsUcPresenter.GetUserControlView());
 
             _addCancelButtonsUcPresenter.Continue += AddCancelButtonsUcPresenterOnContinue;
+            
+            _categoryAccountUcPresenter.SetCategoryValues();
         }
 
         private void AddCancelButtonsUcPresenterOnContinue()
         {
+            _accountServices.Add(new AccountDto()
+            {
+                Name = _nameUcPresenter.GetName(),
+                Description = _descriptionUcPresenter.GetDescription(),
+                Currency = _categoryCurrencyUcPresenter.GetCategoryInfo().Name,
+                InitialSum = Convert.ToDecimal(_labelTextboxUcPresenter.GetTextBoxValue()),
+                IsClosed = Convert.ToBoolean(_checkboxUcPresenter.GetCheckboxState())
+            });
             _accountView.CloseView();
         }
 

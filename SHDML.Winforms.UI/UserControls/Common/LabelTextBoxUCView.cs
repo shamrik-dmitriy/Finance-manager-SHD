@@ -9,10 +9,7 @@ namespace SHDML.Winforms.UI.UserControls.Common
     {
         public decimal Sum
         {
-            get
-            {
-                return string.IsNullOrWhiteSpace(_sum) ? 0 : Convert.ToDecimal(_sum.Trim('₽'));
-            }
+            get { return string.IsNullOrWhiteSpace(_sum) ? 0 : Convert.ToDecimal(_sum.Trim('₽')); }
             set { _sum = value.ToString(); }
         }
 
@@ -41,6 +38,11 @@ namespace SHDML.Winforms.UI.UserControls.Common
         public void SetLabelText(string text)
         {
             label.Text = text;
+        }
+
+        public string GetTextBoxValue()
+        {
+            return textBox.Text;
         }
     }
 }

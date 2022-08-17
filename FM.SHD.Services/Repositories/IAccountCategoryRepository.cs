@@ -1,0 +1,15 @@
+using System.Collections.Generic;
+using FM.SHDML.Core.Models.AccountModel;
+
+namespace FM.SHD.Services.Repositories
+{
+    public interface IAccountCategoryRepository
+    {
+        long Add(IAccountCategoryModel accountCategoryModel);
+        void Update(IAccountCategoryModel accountCategoryModel);
+        void Delete(IAccountCategoryModel accountCategoryModel);
+        void DeleteById(long accountCategoryModel);
+        IEnumerable<IAccountCategoryModel> GetAll();
+        IAccountCategoryModel GetById(long id);
+    }
+}

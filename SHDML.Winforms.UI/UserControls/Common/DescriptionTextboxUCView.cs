@@ -14,7 +14,11 @@ namespace SHDML.Winforms.UI.UserControls.Common
 
         private void textBoxDescriptionTransaction_TextChanged(object sender, EventArgs e)
         {
+        }
 
+        public string GetDescription()
+        {
+            return textBoxDescriptionTransaction.Text;
         }
     }
 }

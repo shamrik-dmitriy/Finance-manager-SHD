@@ -23,7 +23,13 @@ namespace SHDML.Winforms.UI.UserControls.Common
 
         private void textBoxTransactionName_TextChanged(object sender, EventArgs e)
         {
-            _eventAggregator.Publish(new OnChangeNameTransactionTextApplicationEvent() { Text = textBoxTransactionName.Text });
+            _eventAggregator.Publish(new OnChangeNameTransactionTextApplicationEvent()
+                { Text = textBoxTransactionName.Text });
+        }
+
+        public string GetName()
+        {
+            return textBoxTransactionName.Text;
         }
     }
 }

@@ -59,6 +59,7 @@ namespace SHDML.Winforms.UI.UserControls.Common
             this.Controls.Add(this.label);
             this.Name = "CategoryUCView";
             this.Size = new System.Drawing.Size(360, 28);
+            this.Load += new System.EventHandler(this.CategoryUCView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

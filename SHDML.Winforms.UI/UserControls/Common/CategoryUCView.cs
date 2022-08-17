@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
@@ -46,9 +48,26 @@ namespace SHDML.Winforms.UI.UserControls.Common
             categoryComboBox.SelectedIndex = index;
         }
 
+        public event Action OnLoadUserControlView;
+
         public void SetLabelText(string text)
         {
             label.Text = text;
+        }
+
+        public (int, string) GetCategoryInfo()
+        {
+            return (categoryComboBox.SelectedIndex, categoryComboBox.SelectedText);
+        }
+
+        public void SetCategoryValues(IEnumerable<string> value)
+        {
+            categoryComboBox.Items.AddRange(value.ToArray());
+        }
+
+        private void CategoryUCView_Load(object sender, EventArgs e)
+        {
+            OnLoadUserControlView?.Invoke();
         }
     }
 }
