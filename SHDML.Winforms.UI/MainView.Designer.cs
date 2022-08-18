@@ -48,7 +48,6 @@ namespace SHDML.Winforms.UI
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.accountActionAndTotalSumsplitContainer = new System.Windows.Forms.SplitContainer();
             this.addAccountButton = new System.Windows.Forms.Button();
-            this.totalSumAccountsInfoucView1 = new SHDML.Winforms.UI.UserControls.Wallet.TotalSumAccountsInfoUCView();
             this.accoutsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -291,7 +290,7 @@ namespace SHDML.Winforms.UI
             // 
             // accountActionAndTotalSumsplitContainer.Panel2
             // 
-            this.accountActionAndTotalSumsplitContainer.Panel2.Controls.Add(this.totalSumAccountsInfoucView1);
+            this.accountActionAndTotalSumsplitContainer.Panel2.Controls.Add(this._totalSumInAccountsInfoucView1);
             this.accountActionAndTotalSumsplitContainer.Size = new System.Drawing.Size(313, 91);
             this.accountActionAndTotalSumsplitContainer.SplitterDistance = 31;
             this.accountActionAndTotalSumsplitContainer.TabIndex = 0;
@@ -307,20 +306,16 @@ namespace SHDML.Winforms.UI
             this.addAccountButton.UseVisualStyleBackColor = true;
             this.addAccountButton.Click += new System.EventHandler(this.addAccountButton_Click);
             // 
-            // totalSumAccountsInfoucView1
+            // _totalSumInAccountsInfoucView1
             // 
-            this.totalSumAccountsInfoucView1.Location = new System.Drawing.Point(2, 3);
-            this.totalSumAccountsInfoucView1.Name = "totalSumAccountsInfoucView1";
-            this.totalSumAccountsInfoucView1.Size = new System.Drawing.Size(308, 52);
-            this.totalSumAccountsInfoucView1.TabIndex = 0;
+            this._totalSumInAccountsInfoucView1.Location = new System.Drawing.Point(2, 3);
+            this._totalSumInAccountsInfoucView1.Name = "_totalSumInAccountsInfoucView1";
+            this._totalSumInAccountsInfoucView1.Size = new System.Drawing.Size(308, 52);
+            this._totalSumInAccountsInfoucView1.TabIndex = 0;
             // 
             // accoutsFlowLayoutPanel
             // 
             this.accoutsFlowLayoutPanel.BackColor = System.Drawing.Color.White;
-            this.accoutsFlowLayoutPanel.Controls.Add(this._categoryAccount1);
-            this.accoutsFlowLayoutPanel.Controls.Add(this._categoryAccount2);
-            this.accoutsFlowLayoutPanel.Controls.Add(this._categoryAccount3);
-            this.accoutsFlowLayoutPanel.Controls.Add(this._categoryAccount4);
             this.accoutsFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.accoutsFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.accoutsFlowLayoutPanel.Name = "accoutsFlowLayoutPanel";
@@ -504,7 +499,7 @@ namespace SHDML.Winforms.UI
         private System.Windows.Forms.SplitContainer splitContainerView;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Button seeCategoriesButton;
-        private UserControls.Wallet.TotalSumAccountsInfoUCView _accountInfo1;
+        private UserControls.Wallet.TotalSumInAccountsUCView _inAccountInfo1;
         private AuthUCView _authUcView;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.SplitContainer splitContainer1;
@@ -522,13 +517,9 @@ namespace SHDML.Winforms.UI
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Button buttonAddReceipt;
         private System.Windows.Forms.Button buttonAddTransaction;
-        private UserControls.Wallet.CategoryAccountUCView _categoryAccount1;
-        private UserControls.Wallet.CategoryAccountUCView _categoryAccount2;
-        private UserControls.Wallet.CategoryAccountUCView _categoryAccount3;
-        private UserControls.Wallet.CategoryAccountUCView _categoryAccount4;
         private System.Windows.Forms.SplitContainer accountActionAndTotalSumsplitContainer;
         private System.Windows.Forms.Button addAccountButton;
-        private UserControls.Wallet.TotalSumAccountsInfoUCView totalSumAccountsInfoucView1;
+        private UserControls.Wallet.TotalSumInAccountsUCView _totalSumInAccountsInfoucView1;
     }
 }
 

@@ -22,5 +22,10 @@ namespace SHDML.Winforms.UI.UserControls.Common
         {
             return checkBox1.Checked;
         }
+
+        public void SetText(string text)
+        {
+            checkBox1.Text = text;
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.IntrefacesViews;
@@ -40,9 +41,6 @@ namespace SHDML.Winforms.UI
                 buttonSign.Text = "Войти";
                 _authUcView.UserName.Text = "Пользователь не задан";
             }
-
-            _categoryAccount1.Update();
-            _categoryAccount1.Refresh();
         }
 
         private void buttonTransactionReview_Click(object sender, EventArgs e)
@@ -98,8 +96,11 @@ namespace SHDML.Winforms.UI
         {
             foreach (var accountDto in accountDtos)
             {
-                accoutsFlowLayoutPanel.Controls.Add(new CategoryAccountUCView(accountDto));
+                accoutsFlowLayoutPanel.Controls.Add(new AccountSummaryUcView(accountDto));
             }
+
+            panel2.Controls.Add(
+                new TotalSumInAccountsUCView(accountDtos.Sum(accountDto => accountDto.CurrentSum).ToString()));
         }
     }
 }

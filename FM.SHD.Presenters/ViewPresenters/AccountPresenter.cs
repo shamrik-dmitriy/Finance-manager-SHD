@@ -54,6 +54,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             _accountView.AddUserControl(_categoryAccountUcPresenter.GetUserControlView());
             _categoryCurrencyUcPresenter.SetText("Валюта");
             _accountView.AddUserControl(_categoryCurrencyUcPresenter.GetUserControlView());
+            _checkboxUcPresenter.SetText("Закрытый счёт");
             _accountView.AddUserControl(_checkboxUcPresenter.GetUserControlView());
             _accountView.AddUserControl(_addCancelButtonsUcPresenter.GetUserControlView());
 
