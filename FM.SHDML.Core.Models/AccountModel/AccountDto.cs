@@ -8,6 +8,8 @@ namespace FM.SHDML.Core.Models.AccountModel
 {
     public class AccountDto
     {
+        public long Id { get; set; }
+
         public string Name { get; set; }
 
         public string Description { get; set; }

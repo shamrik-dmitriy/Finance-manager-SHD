@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.IntrefacesViews;
+using FM.SHD.Presenters.IntrefacesViews.UserControl;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Wallet;
 using FM.SHDML.Core.Models.AccountModel;
 using SHDML.Winforms.UI.Transactions;
@@ -92,14 +93,15 @@ namespace SHDML.Winforms.UI
             AddAccount?.Invoke();
         }
 
+        public void AddAccountsSummaryUserControl(IUserControlView userControlView)
+        {
+            var userControl = (UserControl)userControlView;
+            accoutsFlowLayoutPanel.Controls.Add(userControl);
+        }
+
         public void SetAccountsData(IEnumerable<AccountDto> accountDtos)
         {
-            foreach (var accountDto in accountDtos)
-            {
-                accoutsFlowLayoutPanel.Controls.Add(new AccountSummaryUcView(accountDto));
-            }
-
-            panel2.Controls.Add(
+            accountActionAndTotalSumsplitContainer.Panel2.Controls.Add(
                 new TotalSumInAccountsUCView(accountDtos.Sum(accountDto => accountDto.CurrentSum).ToString()));
         }
     }

@@ -14,7 +14,8 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
 
         public TypeTransactionUCPresenter(
             ITypeTransactionUCView typeTransactionUcView,
-            ITypeTransactionServices typeTransactionServices, ITypeTransactionRepository typeTransactionRepository)
+            ITypeTransactionServices typeTransactionServices,
+            ITypeTransactionRepository typeTransactionRepository)
         {
             _typeTransactionUcView = typeTransactionUcView;
             _typeTransactionServices = typeTransactionServices;
@@ -27,13 +28,7 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
         {
             _typeTransactionUcView.SetTransactionTypes(_typeTransactionServices.GetAll());
         }
-
-        [Obsolete]
-        public ITypeTransactionUCView GetSelectTypeTransactionUserControlView()
-        {
-            return _typeTransactionUcView;
-        }
-
+        
         public ITypeTransactionUCView GetUserControlView()
         {
             return _typeTransactionUcView;

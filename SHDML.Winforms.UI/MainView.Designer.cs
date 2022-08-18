@@ -80,9 +80,7 @@ namespace SHDML.Winforms.UI
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accountActionAndTotalSumsplitContainer)).BeginInit();
             this.accountActionAndTotalSumsplitContainer.Panel1.SuspendLayout();
-            this.accountActionAndTotalSumsplitContainer.Panel2.SuspendLayout();
             this.accountActionAndTotalSumsplitContainer.SuspendLayout();
-            this.accoutsFlowLayoutPanel.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
@@ -287,10 +285,6 @@ namespace SHDML.Winforms.UI
             // accountActionAndTotalSumsplitContainer.Panel1
             // 
             this.accountActionAndTotalSumsplitContainer.Panel1.Controls.Add(this.addAccountButton);
-            // 
-            // accountActionAndTotalSumsplitContainer.Panel2
-            // 
-            this.accountActionAndTotalSumsplitContainer.Panel2.Controls.Add(this._totalSumInAccountsInfoucView1);
             this.accountActionAndTotalSumsplitContainer.Size = new System.Drawing.Size(313, 91);
             this.accountActionAndTotalSumsplitContainer.SplitterDistance = 31;
             this.accountActionAndTotalSumsplitContainer.TabIndex = 0;
@@ -306,17 +300,11 @@ namespace SHDML.Winforms.UI
             this.addAccountButton.UseVisualStyleBackColor = true;
             this.addAccountButton.Click += new System.EventHandler(this.addAccountButton_Click);
             // 
-            // _totalSumInAccountsInfoucView1
-            // 
-            this._totalSumInAccountsInfoucView1.Location = new System.Drawing.Point(2, 3);
-            this._totalSumInAccountsInfoucView1.Name = "_totalSumInAccountsInfoucView1";
-            this._totalSumInAccountsInfoucView1.Size = new System.Drawing.Size(308, 52);
-            this._totalSumInAccountsInfoucView1.TabIndex = 0;
-            // 
             // accoutsFlowLayoutPanel
             // 
             this.accoutsFlowLayoutPanel.BackColor = System.Drawing.Color.White;
             this.accoutsFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.accoutsFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.accoutsFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.accoutsFlowLayoutPanel.Name = "accoutsFlowLayoutPanel";
             this.accoutsFlowLayoutPanel.Size = new System.Drawing.Size(313, 429);
@@ -469,11 +457,8 @@ namespace SHDML.Winforms.UI
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.accountActionAndTotalSumsplitContainer.Panel1.ResumeLayout(false);
-            this.accountActionAndTotalSumsplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.accountActionAndTotalSumsplitContainer)).EndInit();
             this.accountActionAndTotalSumsplitContainer.ResumeLayout(false);
-            this.accoutsFlowLayoutPanel.ResumeLayout(false);
-            this.accoutsFlowLayoutPanel.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);

@@ -6,13 +6,17 @@ using FM.SHD.Presenters.Interfaces;
 using FM.SHD.Presenters.Interfaces.UserControls;
 using FM.SHD.Presenters.Interfaces.UserControls.Common;
 using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
+using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
+using FM.SHD.Presenters.Interfaces.Views;
 using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
+using FM.SHD.Presenters.IntrefacesViews.UserControl.Wallet;
 using FM.SHD.Presenters.UserControlPresenters;
 using FM.SHD.Presenters.UserControlPresenters.Common;
 using FM.SHD.Presenters.UserControlPresenters.Transactions;
+using FM.SHD.Presenters.UserControlPresenters.Wallet;
 using FM.SHD.Presenters.ViewPresenters;
 using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.ComponentsServices.TypeTransactionService;
@@ -25,6 +29,7 @@ using SHDML.Winforms.UI.Transactions;
 using SHDML.Winforms.UI.UserControls.Common;
 using SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls;
 using SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions;
+using SHDML.Winforms.UI.UserControls.Wallet;
 using IContrAgentUCPresenter = FM.SHD.Presenters.Interfaces.UserControls.Transactions.IContrAgentUCPresenter;
 
 namespace SHDML.Winforms.UI.DependencyInjection
@@ -70,7 +75,11 @@ namespace SHDML.Winforms.UI.DependencyInjection
                 .AddTransient<ILabelTextBoxUCView, LabelTextBoxUCView>()
                 .AddTransient<ILabelTextboxUcPresenter, LabelTextboxPresenter>()
                 .AddTransient<ICheckboxUCView, CheckboxUCView>()
-                .AddTransient<ICheckboxUCPresenter, CheckboxUCPresenter>();
+                .AddTransient<ICheckboxUCPresenter, CheckboxUCPresenter>()
+                .AddTransient<IAccountView, AccountView>()
+                .AddTransient<IAccountPresenter, AccountPresenter>() 
+                .AddTransient<IAccountSummaryUCView, AccountSummaryUCView>()
+                .AddTransient<IAccountSummaryUCPresenter, AccountSummaryUCPresenter>();
         }
 
         public static IServiceCollection AddRepositories(this IServiceCollection serviceCollection,

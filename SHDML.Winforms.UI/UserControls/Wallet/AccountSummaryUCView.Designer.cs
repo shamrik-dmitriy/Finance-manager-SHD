@@ -1,7 +1,7 @@
 ﻿
 namespace SHDML.Winforms.UI.UserControls.Wallet
 {
-    partial class AccountSummaryUcView
+    partial class AccountSummaryUCView
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -87,7 +87,7 @@ namespace SHDML.Winforms.UI.UserControls.Wallet
             this.Controls.Add(this.panel1);
             this.MaximumSize = new System.Drawing.Size(310, 100);
             this.MinimumSize = new System.Drawing.Size(310, 28);
-            this.Name = "AccountSummaryUcView";
+            this.Name = "AccountSummaryUCView";
             this.Size = new System.Drawing.Size(310, 49);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

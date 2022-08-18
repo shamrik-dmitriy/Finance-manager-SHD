@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using FM.SHD.Presenters.Interfaces;
+using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
 using FM.SHD.Presenters.Interfaces.Views;
 using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Services.AccountServices;
@@ -13,15 +14,18 @@ namespace FM.SHD.Presenters.ViewPresenters
         private IMainView _mainView;
         private IServiceProvider _serviceProvider;
         private readonly IAccountServices _accountServices;
+        private readonly IAccountSummaryUCPresenter _accountSummaryUcPresenter;
 
         public MainPresenter(
             IServiceProvider serviceProvider,
             IAccountServices accountServices,
+            IAccountSummaryUCPresenter accountSummaryUcPresenter,
             IMainView mainView)
         {
             _mainView = mainView;
             _serviceProvider = serviceProvider;
             _accountServices = accountServices;
+            _accountSummaryUcPresenter = accountSummaryUcPresenter;
 
             _mainView.OnLoadView += MainViewOnOnLoadView;
             _mainView.AddTransaction += MainViewOnAddTransaction;
@@ -30,6 +34,11 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void MainViewOnOnLoadView()
         {
+            foreach (var accountDto in _accountServices.GetAll())
+            {
+                _mainView.AddAccountsSummaryUserControl(_accountSummaryUcPresenter.GetUserControlView(accountDto));
+            }
+
             _mainView.SetAccountsData(_accountServices.GetAll());
         }
 

@@ -12,23 +12,32 @@ using FM.SHDML.Core.Models.AccountModel;
 
 namespace SHDML.Winforms.UI.UserControls.Wallet
 {
-    public partial class AccountSummaryUcView : UserControl, IAccountSummaryUCView
+    public partial class AccountSummaryUCView : UserControl, IAccountSummaryUCView
     {
-        public AccountSummaryUcView(AccountDto accountDto)
+        private long Id { get; }
+
+        public AccountSummaryUCView()
         {
             InitializeComponent();
+        }
+
+        public AccountSummaryUCView(AccountDto accountDto) : this()
+        {
+            Id = accountDto.Id;
             SetData(accountDto);
         }
 
-        private void SetData(AccountDto accountDto)
+        public event Action<long> UpdateAccount;
+
+        public void SetData(AccountDto accountDto)
         {
             accountNameLabel.Text = accountDto.Name;
             accountSumLabel.Text = accountDto.CurrentSum.ToString();
         }
 
-
         private void account_Click(object sender, EventArgs e)
         {
+            UpdateAccount?.Invoke(Id);
         }
     }
 }
