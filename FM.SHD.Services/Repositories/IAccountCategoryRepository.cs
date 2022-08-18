@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using FM.SHDML.Core.Models.AccountModel;
+using FM.SHDML.Core.Models.Categories.AccountCategory;
 
 namespace FM.SHD.Services.Repositories
 {

@@ -4,6 +4,7 @@ using AutoMapper;
 using FM.SHD.Services.CommonServices;
 using FM.SHD.Services.Repositories;
 using FM.SHDML.Core.Models.AccountModel;
+using FM.SHDML.Core.Models.Categories.AccountCategory;
 
 namespace FM.SHD.Services.AccountServices
 {

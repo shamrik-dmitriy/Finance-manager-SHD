@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using FM.SHD.Infrastructure.Dal.Providers;
 using FM.SHD.Services.Repositories;
 using FM.SHDML.Core.Models.AccountModel;
+using FM.SHDML.Core.Models.Categories.AccountCategory;
 
 namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
 {
