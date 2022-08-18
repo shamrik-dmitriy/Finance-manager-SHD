@@ -29,48 +29,48 @@ namespace SHDML.Winforms.UI.UserControls.Wallet
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelCategoryName = new System.Windows.Forms.Label();
-            this.labelCategorySum = new System.Windows.Forms.Label();
+            this.accountNameLabel = new System.Windows.Forms.Label();
+            this.accountSumLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // labelCategoryName
+            // accountNameLabel
             // 
-            this.labelCategoryName.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.labelCategoryName.AutoEllipsis = true;
-            this.labelCategoryName.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelCategoryName.Location = new System.Drawing.Point(3, 3);
-            this.labelCategoryName.Margin = new System.Windows.Forms.Padding(3);
-            this.labelCategoryName.MaximumSize = new System.Drawing.Size(150, 150);
-            this.labelCategoryName.Name = "labelCategoryName";
-            this.labelCategoryName.Size = new System.Drawing.Size(150, 40);
-            this.labelCategoryName.TabIndex = 0;
-            this.labelCategoryName.Text = "Полуфабрикаты по пробуй приготовь\r\nПолуфабрикаты по пробуй приготовь\r\nПолуфабрика" +
+            this.accountNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.accountNameLabel.AutoEllipsis = true;
+            this.accountNameLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.accountNameLabel.Location = new System.Drawing.Point(3, 3);
+            this.accountNameLabel.Margin = new System.Windows.Forms.Padding(3);
+            this.accountNameLabel.MaximumSize = new System.Drawing.Size(150, 150);
+            this.accountNameLabel.Name = "accountNameLabel";
+            this.accountNameLabel.Size = new System.Drawing.Size(150, 40);
+            this.accountNameLabel.TabIndex = 0;
+            this.accountNameLabel.Text = "Полуфабрикаты по пробуй приготовь\r\nПолуфабрикаты по пробуй приготовь\r\nПолуфабрика" +
     "ты по пробуй приготовь\r\n\r\n";
-            this.labelCategoryName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.accountNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // labelCategorySum
+            // accountSumLabel
             // 
-            this.labelCategorySum.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.labelCategorySum.AutoEllipsis = true;
-            this.labelCategorySum.AutoSize = true;
-            this.labelCategorySum.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelCategorySum.ForeColor = System.Drawing.Color.Green;
-            this.labelCategorySum.Location = new System.Drawing.Point(161, 3);
-            this.labelCategorySum.Name = "labelCategorySum";
-            this.labelCategorySum.Size = new System.Drawing.Size(146, 21);
-            this.labelCategorySum.TabIndex = 1;
-            this.labelCategorySum.Text = "+200000000.00P";
-            this.labelCategorySum.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.accountSumLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.accountSumLabel.AutoEllipsis = true;
+            this.accountSumLabel.AutoSize = true;
+            this.accountSumLabel.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.accountSumLabel.ForeColor = System.Drawing.Color.Green;
+            this.accountSumLabel.Location = new System.Drawing.Point(161, 3);
+            this.accountSumLabel.Name = "accountSumLabel";
+            this.accountSumLabel.Size = new System.Drawing.Size(146, 21);
+            this.accountSumLabel.TabIndex = 1;
+            this.accountSumLabel.Text = "+200000000.00P";
+            this.accountSumLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel1
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel1.Controls.Add(this.labelCategorySum);
-            this.panel1.Controls.Add(this.labelCategoryName);
+            this.panel1.Controls.Add(this.accountSumLabel);
+            this.panel1.Controls.Add(this.accountNameLabel);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.MaximumSize = new System.Drawing.Size(310, 100);
             this.panel1.MinimumSize = new System.Drawing.Size(310, 28);
@@ -98,8 +98,8 @@ namespace SHDML.Winforms.UI.UserControls.Wallet
         }
 
         #endregion
-        public System.Windows.Forms.Label labelCategorySum;
-        public System.Windows.Forms.Label labelCategoryName;
+        public System.Windows.Forms.Label accountSumLabel;
+        public System.Windows.Forms.Label accountNameLabel;
         private System.Windows.Forms.Panel panel1;
     }
 }

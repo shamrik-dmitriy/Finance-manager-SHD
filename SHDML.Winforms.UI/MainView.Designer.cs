@@ -49,11 +49,7 @@ namespace SHDML.Winforms.UI
             this.accountActionAndTotalSumsplitContainer = new System.Windows.Forms.SplitContainer();
             this.addAccountButton = new System.Windows.Forms.Button();
             this.totalSumAccountsInfoucView1 = new SHDML.Winforms.UI.UserControls.Wallet.TotalSumAccountsInfoUCView();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this._categoryAccount1 = new SHDML.Winforms.UI.UserControls.Wallet.CategoryAccountUCView();
-            this._categoryAccount2 = new SHDML.Winforms.UI.UserControls.Wallet.CategoryAccountUCView();
-            this._categoryAccount3 = new SHDML.Winforms.UI.UserControls.Wallet.CategoryAccountUCView();
-            this._categoryAccount4 = new SHDML.Winforms.UI.UserControls.Wallet.CategoryAccountUCView();
+            this.accoutsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
@@ -87,7 +83,7 @@ namespace SHDML.Winforms.UI
             this.accountActionAndTotalSumsplitContainer.Panel1.SuspendLayout();
             this.accountActionAndTotalSumsplitContainer.Panel2.SuspendLayout();
             this.accountActionAndTotalSumsplitContainer.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
+            this.accoutsFlowLayoutPanel.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
@@ -276,7 +272,7 @@ namespace SHDML.Winforms.UI
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanel2);
+            this.splitContainer1.Panel2.Controls.Add(this.accoutsFlowLayoutPanel);
             this.splitContainer1.Size = new System.Drawing.Size(313, 521);
             this.splitContainer1.SplitterDistance = 91;
             this.splitContainer1.SplitterWidth = 1;
@@ -318,66 +314,18 @@ namespace SHDML.Winforms.UI
             this.totalSumAccountsInfoucView1.Size = new System.Drawing.Size(308, 52);
             this.totalSumAccountsInfoucView1.TabIndex = 0;
             // 
-            // flowLayoutPanel2
+            // accoutsFlowLayoutPanel
             // 
-            this.flowLayoutPanel2.BackColor = System.Drawing.Color.White;
-            this.flowLayoutPanel2.Controls.Add(this._categoryAccount1);
-            this.flowLayoutPanel2.Controls.Add(this._categoryAccount2);
-            this.flowLayoutPanel2.Controls.Add(this._categoryAccount3);
-            this.flowLayoutPanel2.Controls.Add(this._categoryAccount4);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(313, 429);
-            this.flowLayoutPanel2.TabIndex = 0;
-            // 
-            // _categoryAccount1
-            // 
-            this._categoryAccount1.AutoScroll = true;
-            this._categoryAccount1.AutoSize = true;
-            this._categoryAccount1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this._categoryAccount1.Location = new System.Drawing.Point(3, 3);
-            this._categoryAccount1.MaximumSize = new System.Drawing.Size(310, 250);
-            this._categoryAccount1.MinimumSize = new System.Drawing.Size(310, 10);
-            this._categoryAccount1.Name = "_categoryAccount1";
-            this._categoryAccount1.Size = new System.Drawing.Size(310, 49);
-            this._categoryAccount1.TabIndex = 0;
-            // 
-            // _categoryAccount2
-            // 
-            this._categoryAccount2.AutoScroll = true;
-            this._categoryAccount2.AutoSize = true;
-            this._categoryAccount2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this._categoryAccount2.Location = new System.Drawing.Point(3, 58);
-            this._categoryAccount2.MaximumSize = new System.Drawing.Size(310, 250);
-            this._categoryAccount2.MinimumSize = new System.Drawing.Size(310, 10);
-            this._categoryAccount2.Name = "_categoryAccount2";
-            this._categoryAccount2.Size = new System.Drawing.Size(310, 49);
-            this._categoryAccount2.TabIndex = 1;
-            // 
-            // _categoryAccount3
-            // 
-            this._categoryAccount3.AutoScroll = true;
-            this._categoryAccount3.AutoSize = true;
-            this._categoryAccount3.BackColor = System.Drawing.SystemColors.ControlLight;
-            this._categoryAccount3.Location = new System.Drawing.Point(3, 113);
-            this._categoryAccount3.MaximumSize = new System.Drawing.Size(310, 250);
-            this._categoryAccount3.MinimumSize = new System.Drawing.Size(310, 10);
-            this._categoryAccount3.Name = "_categoryAccount3";
-            this._categoryAccount3.Size = new System.Drawing.Size(310, 49);
-            this._categoryAccount3.TabIndex = 2;
-            // 
-            // _categoryAccount4
-            // 
-            this._categoryAccount4.AutoScroll = true;
-            this._categoryAccount4.AutoSize = true;
-            this._categoryAccount4.BackColor = System.Drawing.SystemColors.ControlLight;
-            this._categoryAccount4.Location = new System.Drawing.Point(3, 168);
-            this._categoryAccount4.MaximumSize = new System.Drawing.Size(310, 250);
-            this._categoryAccount4.MinimumSize = new System.Drawing.Size(310, 10);
-            this._categoryAccount4.Name = "_categoryAccount4";
-            this._categoryAccount4.Size = new System.Drawing.Size(310, 49);
-            this._categoryAccount4.TabIndex = 3;
+            this.accoutsFlowLayoutPanel.BackColor = System.Drawing.Color.White;
+            this.accoutsFlowLayoutPanel.Controls.Add(this._categoryAccount1);
+            this.accoutsFlowLayoutPanel.Controls.Add(this._categoryAccount2);
+            this.accoutsFlowLayoutPanel.Controls.Add(this._categoryAccount3);
+            this.accoutsFlowLayoutPanel.Controls.Add(this._categoryAccount4);
+            this.accoutsFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.accoutsFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.accoutsFlowLayoutPanel.Name = "accoutsFlowLayoutPanel";
+            this.accoutsFlowLayoutPanel.Size = new System.Drawing.Size(313, 429);
+            this.accoutsFlowLayoutPanel.TabIndex = 0;
             // 
             // panel3
             // 
@@ -529,8 +477,8 @@ namespace SHDML.Winforms.UI
             this.accountActionAndTotalSumsplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.accountActionAndTotalSumsplitContainer)).EndInit();
             this.accountActionAndTotalSumsplitContainer.ResumeLayout(false);
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
+            this.accoutsFlowLayoutPanel.ResumeLayout(false);
+            this.accoutsFlowLayoutPanel.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
@@ -561,7 +509,7 @@ namespace SHDML.Winforms.UI
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel accoutsFlowLayoutPanel;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnVerified;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTypeOperation;

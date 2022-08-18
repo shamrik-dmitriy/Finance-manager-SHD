@@ -1,14 +1,20 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.IntrefacesViews;
+using FM.SHD.Presenters.IntrefacesViews.UserControl.Wallet;
+using FM.SHDML.Core.Models.AccountModel;
 using SHDML.Winforms.UI.Transactions;
+using SHDML.Winforms.UI.UserControls.Common;
+using SHDML.Winforms.UI.UserControls.Wallet;
 
 namespace SHDML.Winforms.UI
 {
     public partial class MainView : Form, IMainView
     {
+        public event Action OnLoadView;
         public event Action AddTransaction;
         public event Action AddAccount;
 
@@ -71,6 +77,7 @@ namespace SHDML.Winforms.UI
 
         private void MainView_Load(object sender, EventArgs e)
         {
+            OnLoadView?.Invoke();
         }
 
         private void MainView_FormClosing(object sender, FormClosingEventArgs e)
@@ -85,6 +92,14 @@ namespace SHDML.Winforms.UI
         private void addAccountButton_Click(object sender, EventArgs e)
         {
             AddAccount?.Invoke();
+        }
+
+        public void SetAccountsData(IEnumerable<AccountDto> accountDtos)
+        {
+            foreach (var accountDto in accountDtos)
+            {
+                accoutsFlowLayoutPanel.Controls.Add(new CategoryAccountUCView(accountDto));
+            }
         }
     }
 }
