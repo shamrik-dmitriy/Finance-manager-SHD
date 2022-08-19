@@ -306,13 +306,6 @@ namespace SHDML.Winforms.UI
             this.addAccountButton.UseVisualStyleBackColor = true;
             this.addAccountButton.Click += new System.EventHandler(this.addAccountButton_Click);
             // 
-            // _totalSumInAccountsInfoucView1
-            // 
-            this._totalSumInAccountsInfoucView1.Location = new System.Drawing.Point(2, 3);
-            this._totalSumInAccountsInfoucView1.Name = "_totalSumInAccountsInfoucView1";
-            this._totalSumInAccountsInfoucView1.Size = new System.Drawing.Size(308, 52);
-            this._totalSumInAccountsInfoucView1.TabIndex = 0;
-            // 
             // accoutsFlowLayoutPanel
             // 
             this.accoutsFlowLayoutPanel.BackColor = System.Drawing.Color.White;

@@ -10,6 +10,7 @@ namespace FM.SHD.Presenters.Interfaces.UserControls.Common
         ICategoryTransactionUCView GetUserControlView();
 
         void SetText(string text);
-        (int Index, string Name) GetCategoryInfo();
+        (long Id, string Name) GetCategoryInfo();
+        void SetVisible(bool isVisible);
     }
 }

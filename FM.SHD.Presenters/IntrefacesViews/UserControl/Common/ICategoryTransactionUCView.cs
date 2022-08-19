@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Presenters.IntrefacesViews.UserControl.Common
 {
@@ -8,7 +9,9 @@ namespace FM.SHD.Presenters.IntrefacesViews.UserControl.Common
         event Action OnLoadUserControlView;
         
         void SetLabelText(string text);
-        (int, string) GetCategoryInfo();
-        void SetCategoryValues(IEnumerable<string> value);
+        (long, string) GetCategoryInfo();
+        void SetCategoryValues(IEnumerable<BaseCategoryDto> value);
+
+        void SetVisible(bool isVisible);
     }
 }

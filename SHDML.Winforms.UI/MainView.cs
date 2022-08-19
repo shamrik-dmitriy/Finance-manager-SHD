@@ -7,6 +7,7 @@ using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Wallet;
 using FM.SHDML.Core.Models.AccountModel;
+using FM.SHDML.Core.Models.Dtos;
 using SHDML.Winforms.UI.Transactions;
 using SHDML.Winforms.UI.UserControls.Common;
 using SHDML.Winforms.UI.UserControls.Wallet;
@@ -55,7 +56,7 @@ namespace SHDML.Winforms.UI
 
         private void buttonAddReceipt_Click(object sender, EventArgs e)
         {
-            new MultipleTransactionView("Добавить группу транзакций (чек)").ShowDialog();
+        //    new MultipleTransactionView("Добавить группу транзакций (чек)").ShowDialog();
         }
 
         private void seeCategoriesButton_Click(object sender, EventArgs e)

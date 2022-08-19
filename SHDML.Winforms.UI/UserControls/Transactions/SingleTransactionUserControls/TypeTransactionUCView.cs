@@ -48,6 +48,11 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserContr
             typeOperationsCombobox.Items.AddRange(allTypesOfTransaction.Select(x => x.Name).ToArray());
         }
 
+        public int GetTypeTransaction()
+        {
+            return typeOperationsCombobox.SelectedIndex;
+        }
+
         public void SetTransactionType(int index)
         {
             typeOperationsCombobox.SelectedIndex = index;

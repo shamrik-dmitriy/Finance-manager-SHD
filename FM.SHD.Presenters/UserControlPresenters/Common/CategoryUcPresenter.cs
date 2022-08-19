@@ -3,25 +3,26 @@ using System.Linq;
 using FM.SHD.Presenters.Interfaces.UserControls.Common;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
 using FM.SHD.Services.AccountServices;
+using FM.SHD.Services.CommonServices;
 
 namespace FM.SHD.Presenters.UserControlPresenters.Common
 {
     public class CategoryUcPresenter : ICategoryUCPresenter
     {
-        private readonly IAccountCategoryServices _accountCategoryServices;
+        private readonly ICategoryService _categoryService;
         private readonly ICategoryTransactionUCView _categoryTransactionUcView;
 
         public CategoryUcPresenter(
-            IAccountCategoryServices accountCategoryServices,
+            ICategoryService categoryService,
             ICategoryTransactionUCView categoryTransactionUcView)
         {
-            _accountCategoryServices = accountCategoryServices;
+            _categoryService = categoryService;
             _categoryTransactionUcView = categoryTransactionUcView;
         }
 
         public void SetCategoryValues()
         {
-            _categoryTransactionUcView.SetCategoryValues( _accountCategoryServices.GetAll().Select(x=>x.Name));
+            _categoryTransactionUcView.SetCategoryValues(_categoryService.GetAll());
         }
 
         public ICategoryTransactionUCView GetUserControlView()
@@ -34,9 +35,14 @@ namespace FM.SHD.Presenters.UserControlPresenters.Common
             _categoryTransactionUcView.SetLabelText(text);
         }
 
-        public (int, string) GetCategoryInfo()
+        public (long, string) GetCategoryInfo()
         {
             return _categoryTransactionUcView.GetCategoryInfo();
+        }
+
+        public void SetVisible(bool isVisible)
+        {
+            _categoryTransactionUcView.SetVisible(isVisible);
         }
     }
 }

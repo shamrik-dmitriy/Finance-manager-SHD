@@ -12,7 +12,6 @@ namespace SHDML.Winforms.UI.Transactions
         public MultipleTransactionView()
         {
             InitializeComponent();
-            _totalSumTransactionUcView.IsEnabledSumField = false;
         }
         public MultipleTransactionView(string typeTransactionOperations) : this()
         {
@@ -39,7 +38,6 @@ namespace SHDML.Winforms.UI.Transactions
         private void DeleteTransaction(object sender, EventArgs e)
         {
             var s = sender as ItemOfMultipleTransaction;
-            _totalSumTransactionUcView.Sum -= s.Price;
             ItemsFlowLayoutPanel.Controls.Remove(s);
             this.Invalidate();
             this.Refresh();

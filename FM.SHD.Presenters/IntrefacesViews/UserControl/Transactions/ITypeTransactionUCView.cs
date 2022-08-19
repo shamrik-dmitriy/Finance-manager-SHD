@@ -9,5 +9,6 @@ namespace FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions
         event Action OnLoadUserControlView;
         
         void SetTransactionTypes(IEnumerable<TypeTransactionDto> allTypesOfTransaction);
+        int GetTypeTransaction();
     }
 }

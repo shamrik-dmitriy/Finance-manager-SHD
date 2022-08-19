@@ -24,6 +24,7 @@ namespace FM.SHD.Services.SingleTransactionServices
             _mapper = new MapperConfiguration(config =>
             {
                 config.CreateMap<SingleTransactionDto, SingleTransactionModel>();
+                config.CreateMap<SingleTransactionModel, SingleTransactionDto>();
             }).CreateMapper();
         }
 
@@ -64,6 +65,10 @@ namespace FM.SHD.Services.SingleTransactionServices
         public void ValidateModel(SingleTransactionModel singleTransactionModel)
         {
             _modelValidator.ValidateModel(singleTransactionModel);
+            if (singleTransactionModel.CreditAccount == singleTransactionModel.DebitAccount)
+            {
+                throw new ArgumentException("Перевод при одинаковых счетах списания и пополнения невозможен");
+            }
             // Тут вызываем дополнительную валидацию
         }
     }

@@ -22,5 +22,10 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions
         {
             InitializeComponent();
         }
+
+        public DateTime GetDateTime()
+        {
+            return Date + Time;
+        }
     }
 }

@@ -25,7 +25,6 @@ using SHDML.Winforms.UI.Transactions;
 using SHDML.Winforms.UI.UserControls.Common;
 using SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls;
 using SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions;
-using IContrAgentUCPresenter = FM.SHD.Presenters.Interfaces.UserControls.Transactions.IContrAgentUCPresenter;
 
 namespace SHDML.Winforms.UI.DependencyInjection
 {
@@ -55,16 +54,8 @@ namespace SHDML.Winforms.UI.DependencyInjection
                 .AddScoped<IAccountsInfoTransactionUCPresenter, AccountsInfoTransactionUCPresenter>()
                 .AddTransient<ICategoryTransactionUCView, CategoryUCView>()
                 .AddTransient<ICategoryUCPresenter, CategoryUcPresenter>()
-                .AddTransient<IContrAgentUCView, ContrAgentUCView>()
-                .AddTransient<IContrAgentUCPresenter, ContrAgentUCPresenter>()
-                .AddTransient<IIdentityUCView, IdentityUCView>()
-                .AddTransient<IIdentityUCPresenter, IdentityUCPresenter>()
                 .AddTransient<IAddCancelButtonsUCView, AddCancelButtonsUCView>()
                 .AddTransient<IAddCancelButtonsUCPresenter, AddCancelButtonsUCPresenter>()
-                .AddTransient<IAccountInfoUCView, AccountInfoUCView>()
-                .AddTransient<IAccountInfoUCPresenter, AccountInfoUCPresenter>()
-                .AddTransient<ISumTransactionUCView, SumTransactionUCView>()
-                .AddTransient<ISumTransactionUCPresenter, SumTransactionUCPresenter>()
                 .AddTransient<IDateTransactionUCView, DateTransactionUCView>()
                 .AddTransient<IDateTransactionUCPresenter, DateTransactionUCPresenter>()
                 .AddTransient<ILabelTextBoxUCView, LabelTextBoxUCView>()

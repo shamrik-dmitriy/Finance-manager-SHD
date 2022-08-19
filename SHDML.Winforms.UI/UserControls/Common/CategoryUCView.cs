@@ -4,11 +4,14 @@ using System.Linq;
 using System.Windows.Forms;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
+using FM.SHDML.Core.Models.Dtos;
 
 namespace SHDML.Winforms.UI.UserControls.Common
 {
     public partial class CategoryUCView : UserControl, ICategoryTransactionUCView
     {
+        public event Action OnLoadUserControlView;
+
         public string CategoryName
         {
             get => categoryComboBox.Text;
@@ -48,26 +51,38 @@ namespace SHDML.Winforms.UI.UserControls.Common
             categoryComboBox.SelectedIndex = index;
         }
 
-        public event Action OnLoadUserControlView;
 
         public void SetLabelText(string text)
         {
             label.Text = text;
         }
 
-        public (int, string) GetCategoryInfo()
+        public (long, string) GetCategoryInfo()
         {
-            return (categoryComboBox.SelectedIndex, categoryComboBox.SelectedText);
+            return (long.Parse(categoryComboBox.ValueMember), categoryComboBox.SelectedText);
         }
 
-        public void SetCategoryValues(IEnumerable<string> value)
+        public void SetCategoryValues(IEnumerable<BaseCategoryDto> value)
         {
-            categoryComboBox.Items.AddRange(value.ToArray());
+            categoryComboBox.DisplayMember = "Name";
+            categoryComboBox.ValueMember = "Id";
+            categoryComboBox.DataSource = value;
+            SetDefaultSelectedIndex(0);
         }
 
         private void CategoryUCView_Load(object sender, EventArgs e)
         {
             OnLoadUserControlView?.Invoke();
+        }
+
+        public void SetVisible(bool visible)
+        {
+            Visible = visible;
+        }
+
+        private void SetDefaultSelectedIndex(int i)
+        {
+            categoryComboBox.SelectedIndex = i;
         }
     }
 }

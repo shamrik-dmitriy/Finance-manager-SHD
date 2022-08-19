@@ -5,6 +5,7 @@ using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
 using FM.SHD.Services.AccountServices;
 using FM.SHDML.Core.Models.AccountModel;
+using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Presenters.ViewPresenters
 {
@@ -61,6 +62,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             _addCancelButtonsUcPresenter.Continue += AddCancelButtonsUcPresenterOnContinue;
             
             _categoryAccountUcPresenter.SetCategoryValues();
+            _categoryCurrencyUcPresenter.SetCategoryValues();
         }
 
         private void AddCancelButtonsUcPresenterOnContinue()

@@ -1,17 +1,7 @@
 namespace FM.SHDML.Core.Models.Categories.AccountCategory
 {
-    public class IAccountCategoryModel
+    public interface IAccountCategoryModel : ICategoryModel
     {
-        /// <summary>
-        ///     Идентификатор
-        /// </summary>
-        public long Id { get; set; }
-
-        /// <summary>
-        ///     Наименование счёта
-        /// </summary>
-        public string Name { get; set; }
-
         /// <summary>
         ///     Описание счёта
         /// </summary>

@@ -8,24 +8,26 @@ namespace FM.SHDML.Core.Models.TransactionModels.SignleTransaction
 {
     public class SingleTransactionDto
     {
-        string Id { get; set; }
+        long Id { get; set; }
 
-        string Type { get; set; }
+        int TypeTransaction { get; set; }
 
         string Name { get; set; }
 
         string Description { get; set; }
 
-        string Account { get; set; }
+        long DebitAccount { get; set; }
 
-        string Sum { get; set; }
+        long CreditAccount { get; set; }
+
+        decimal Sum { get; set; }
 
         DateTime Date { get; set; }
 
-        string Category { get; set; }
+        long Category { get; set; }
 
-        string Contragent { get; set; }
+        long Contragent { get; set; }
 
-        string FamilyMember { get; set; }
+        long FamilyMember { get; set; }
     }
 }

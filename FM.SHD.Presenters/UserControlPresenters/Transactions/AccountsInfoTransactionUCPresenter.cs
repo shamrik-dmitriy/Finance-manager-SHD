@@ -1,5 +1,7 @@
+using System;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
+using FM.SHD.Presenters.Interfaces.UserControls.Common;
 using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using FM.SHD.Services.AccountServices;
@@ -11,18 +13,18 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
         private readonly EventAggregator _eventAggregator;
         private readonly IAccountsInfoTransactionUCView _accountsInfoTransactionUcView;
         private readonly IAccountServices _accountServices;
-        private readonly IAccountInfoUCPresenter _debitAccountInfoUcPresenter;
-        private readonly ISumTransactionUCPresenter _sumTransactionUcPresenter;
-        private readonly IAccountInfoUCPresenter _creditAccountInfoUcPresenter;
+        private readonly ICategoryUCPresenter _debitAccountInfoUcPresenter;
+        private readonly ILabelTextboxUcPresenter _sumTransactionUcPresenter;
+        private readonly ICategoryUCPresenter _creditAccountInfoUcPresenter;
         private readonly IDateTransactionUCPresenter _dateTransactionUcPresenter;
 
         public AccountsInfoTransactionUCPresenter(
             EventAggregator eventAggregator,
             IAccountsInfoTransactionUCView accountsInfoTransactionUcView,
             IAccountServices accountServices,
-            IAccountInfoUCPresenter debitAccountInfoUcPresenter,
-            ISumTransactionUCPresenter sumTransactionUcPresenter,
-            IAccountInfoUCPresenter creditAccountInfoUcPresenter,
+            ICategoryUCPresenter debitAccountInfoUcPresenter,
+            ILabelTextboxUcPresenter sumTransactionUcPresenter,
+            ICategoryUCPresenter creditAccountInfoUcPresenter,
             IDateTransactionUCPresenter dateTransactionUcPresenter)
         {
             _eventAggregator = eventAggregator;
@@ -64,23 +66,39 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
                     break;
                 }
             }
-
-            //  financeInfoOfOperationflowLayoutPanel.Refresh();
-           //  financeInfoOfOperationflowLayoutPanel.Update();
         }
-        
+
         private void AccountsInfoUcViewOnOnLoadControlView()
         {
-            _accountsInfoTransactionUcView.AddAccountInfo(_creditAccountInfoUcPresenter.GetUserControlView());
-            _accountsInfoTransactionUcView.AddSumm(_sumTransactionUcPresenter.GetUserControlView());
-            _accountsInfoTransactionUcView.AddAccountInfo(_debitAccountInfoUcPresenter.GetUserControlView());
-            _accountsInfoTransactionUcView.AddDate(_dateTransactionUcPresenter.GetUserControlView());
-            //_accountsInfoTransactionUcView.SetAccounts(_accountServices.GetAll());
+            _accountsInfoTransactionUcView.AddUserControl(_creditAccountInfoUcPresenter.GetUserControlView());
+            _accountsInfoTransactionUcView.AddUserControl(_sumTransactionUcPresenter.GetUserControlView());
+            _accountsInfoTransactionUcView.AddUserControl(_debitAccountInfoUcPresenter.GetUserControlView());
+            _accountsInfoTransactionUcView.AddUserControl(_dateTransactionUcPresenter.GetUserControlView());
         }
 
         public IAccountsInfoTransactionUCView GetUserControlView()
         {
             return _accountsInfoTransactionUcView;
+        }
+
+        public long GetCreditAccount()
+        {
+            return _creditAccountInfoUcPresenter.GetCategoryInfo().Id;
+        }
+
+        public long GetDebitAccount()
+        {
+            return _debitAccountInfoUcPresenter.GetCategoryInfo().Id;
+        }
+
+        public string GetSum()
+        {
+            return _sumTransactionUcPresenter.GetTextBoxValue();
+        }
+
+        public DateTime GetDate()
+        {
+            return _dateTransactionUcPresenter.GetDateTime();
         }
     }
 }

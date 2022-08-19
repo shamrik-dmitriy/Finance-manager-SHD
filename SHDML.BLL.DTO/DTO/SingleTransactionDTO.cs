@@ -12,12 +12,12 @@ namespace SHDML.BLL.DTO.DTO
         public int TypeTransaction { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string DebitAccount { get; set; }
-        public string CreditAccount { get; set; }
+        public long DebitAccount { get; set; }
+        public long CreditAccount { get; set; }
         public decimal Sum { get; set; }
         public DateTime Date { get; set; }
-        public string Category { get; set; }
-        public string Contragent { get; set; }
-        public string FamilyMember { get; set; }
+        public long Category { get; set; }
+        public long Contragent { get; set; }
+        public long FamilyMember { get; set; }
     }
 }

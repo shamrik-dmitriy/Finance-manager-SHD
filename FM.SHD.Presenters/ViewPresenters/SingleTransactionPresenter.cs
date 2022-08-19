@@ -18,8 +18,8 @@ namespace FM.SHD.Presenters.ViewPresenters
         private readonly IDescriptionUCPresenter _descriptionUcPresenter;
         private readonly IAccountsInfoTransactionUCPresenter _accountsInfoTransactionUcPresenter;
         private readonly ICategoryUCPresenter _categoryUcPresenter;
-        private readonly IContrAgentUCPresenter _contrAgentUcPresenter;
-        private readonly IIdentityUCPresenter _identityUcPresenter;
+        private readonly ICategoryUCPresenter _contrAgentUcPresenter;
+        private readonly ICategoryUCPresenter _identityUcPresenter;
         private readonly IAddCancelButtonsUCPresenter _addCancelButtonsUcPresenter;
 
         public SingleTransactionPresenter(
@@ -30,8 +30,8 @@ namespace FM.SHD.Presenters.ViewPresenters
             IDescriptionUCPresenter descriptionUcPresenter,
             IAccountsInfoTransactionUCPresenter accountsInfoTransactionUcPresenter,
             ICategoryUCPresenter categoryUcPresenter,
-            IContrAgentUCPresenter contrAgentUcPresenter,
-            IIdentityUCPresenter identityUcPresenter,
+            ICategoryUCPresenter contrAgentUcPresenter,
+            ICategoryUCPresenter identityUcPresenter,
             IAddCancelButtonsUCPresenter addCancelButtonsUcPresenter)
         {
             _singleTransactionView = singleTransactionView;
@@ -47,6 +47,24 @@ namespace FM.SHD.Presenters.ViewPresenters
             _addCancelButtonsUcPresenter = addCancelButtonsUcPresenter;
 
             _singleTransactionView.OnLoadView += SingleTransactionViewOnOnLoad;
+            _addCancelButtonsUcPresenter.Continue += AddCancelButtonsUcPresenterOnContinue;
+        }
+
+        private void AddCancelButtonsUcPresenterOnContinue()
+        {
+            _singleTransactionServices.Add(new SingleTransactionDTO()
+            {
+                TypeTransaction = _typeTransactionUcPresenter.GetTypeTransaction(),
+                Name = _nameUcPresenter.GetName(),
+                Description = _descriptionUcPresenter.GetDescription(),
+                CreditAccount = _accountsInfoTransactionUcPresenter.GetCreditAccount(),
+                DebitAccount = _accountsInfoTransactionUcPresenter.GetDebitAccount(),
+                Sum = Convert.ToDecimal(_accountsInfoTransactionUcPresenter.GetSum()),
+                Date = _accountsInfoTransactionUcPresenter.GetDate(),
+                Category = _categoryUcPresenter.GetCategoryInfo().Id,
+                Contragent = _contrAgentUcPresenter.GetCategoryInfo().Id,
+                FamilyMember = _identityUcPresenter.GetCategoryInfo().Id
+            });
         }
 
         private void SingleTransactionViewOnOnLoad()
@@ -59,9 +77,13 @@ namespace FM.SHD.Presenters.ViewPresenters
             _singleTransactionView.AddUserControl(_accountsInfoTransactionUcPresenter
                 .GetUserControlView());
             _singleTransactionView.AddHorizontalLine();
+            _categoryUcPresenter.SetText("Категория");
             _singleTransactionView.AddUserControl(
                 _categoryUcPresenter.GetUserControlView());
+            _categoryUcPresenter.SetCategoryValues();
+            _contrAgentUcPresenter.SetText("Контрагент");
             _singleTransactionView.AddUserControl(_contrAgentUcPresenter.GetUserControlView());
+            _identityUcPresenter.SetText("Член семьи");
             _singleTransactionView.AddUserControl(_identityUcPresenter.GetUserControlView());
             _singleTransactionView.AddUserControl(_addCancelButtonsUcPresenter.GetUserControlView());
         }

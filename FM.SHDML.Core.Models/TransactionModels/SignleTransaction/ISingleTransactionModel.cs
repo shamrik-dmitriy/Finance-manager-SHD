@@ -16,18 +16,18 @@ namespace FM.SHDML.Core.Models.TransactionModels.SignleTransaction
 
         string Description { get; set; }
 
-        string DebitAccount { get; set; }
+        long DebitAccount { get; set; }
 
-        string CreditAccount { get; set; }
+        long CreditAccount { get; set; }
 
         decimal Sum { get; set; }
 
         DateTime Date { get; set; }
 
-        string Category { get; set; }
+        long Category { get; set; }
 
-        string Contragent { get; set; }
+        long Contragent { get; set; }
 
-        string FamilyMember { get; set; }
+        long FamilyMember { get; set; }
     }
 }

@@ -18,23 +18,6 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific
             _connectionString = connectionString;
         }
 
-        public enum TypeOfExistenseCheck
-        {
-            DoesExistInDb,
-            DoesNotExistInDb
-        }
-
-        public enum RequestType
-        {
-            Add,
-            Update,
-            Read,
-            Delete,
-            ConfirmAdd,
-            ConfirmDelete
-        }
-
-
         protected bool CheckRecordIsExist(long singleTransactionId)
         {
             var dataparameters = new List<DataParameter>();

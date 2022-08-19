@@ -28,15 +28,14 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
             _typeTransactionUcView.SetTransactionTypes(_typeTransactionServices.GetAll());
         }
 
-        [Obsolete]
-        public ITypeTransactionUCView GetSelectTypeTransactionUserControlView()
+        public ITypeTransactionUCView GetUserControlView()
         {
             return _typeTransactionUcView;
         }
 
-        public ITypeTransactionUCView GetUserControlView()
+        public int GetTypeTransaction()
         {
-            return _typeTransactionUcView;
+            return _typeTransactionUcView.GetTypeTransaction();
         }
     }
 }

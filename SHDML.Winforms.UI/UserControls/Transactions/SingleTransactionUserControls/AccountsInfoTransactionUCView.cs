@@ -8,6 +8,7 @@ using FM.SHD.Presenters.IntrefacesViews.UserControl;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using FM.SHD.Presenters.UserControlPresenters;
 using FM.SHDML.Core.Models.AccountModel;
+using FM.SHDML.Core.Models.Dtos;
 
 namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls
 {
@@ -15,34 +16,8 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserContr
     {
         private readonly EventAggregator _eventAggregator;
 
-
-        //public decimal Sum => _sumTransactionUcView.Sum;
-
         private int TransactionType { get; set; }
 
-        //public string DebitAccount
-        //{
-        //    get => _debitAccountInfoUcView.Name;
-        //    set => _debitAccountInfoUcView.Name = value;
-        //}
-
-        //public string CreditAccount
-        //{
-        //   get => _creditAccountInfoUcView.Name;
-        //    set => _creditAccountInfoUcView.Name = value;
-        //}
-
-        //public DateTime Date
-        //{
-        //   get => _dateTransactionUcView.Date;
-        //    set => _dateTransactionUcView.Date = value;
-        //}
-
-        //public TimeSpan Time
-        //{
-        //    get => _dateTransactionUcView.Time;
-        //    set => _dateTransactionUcView.Time = value;
-        //}
 
         public AccountsInfoTransactionUCView()
         {
@@ -64,24 +39,10 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserContr
 
         public event Action OnLoadUserControlView;
 
-        #region UI
-
-        public void AddDate(IDateTransactionUCView userControlView)
+        public void AddUserControl(IUserControlView userControlView)
         {
             financeInfoOfOperationflowLayoutPanel.Controls.Add((UserControl)userControlView);
         }
-
-        public void AddAccountInfo(IAccountInfoUCView userControlView)
-        {
-            financeInfoOfOperationflowLayoutPanel.Controls.Add((UserControl)userControlView);
-        }
-
-        public void AddSumm(ISumTransactionUCView userControlView)
-        {
-            financeInfoOfOperationflowLayoutPanel.Controls.Add((UserControl)userControlView);
-        }
-
-        #endregion
 
         private void AccountsInfoTransactionUCView_Load(object sender, EventArgs e)
         {
