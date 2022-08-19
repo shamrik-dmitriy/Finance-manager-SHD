@@ -4,6 +4,7 @@ using FM.SHD.Presenters.Interfaces.UserControls.Common;
 using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
 using FM.SHD.Presenters.Interfaces.Views;
 using FM.SHD.Presenters.IntrefacesViews;
+using FM.SHD.Services.ComponentsServices.TypeTransactionService;
 using FM.SHD.Services.SingleTransactionServices;
 using SHDML.BLL.DTO.DTO;
 
@@ -13,11 +14,11 @@ namespace FM.SHD.Presenters.ViewPresenters
     {
         private ISingleTransactionView _singleTransactionView;
         private ISingleTransactionServices _singleTransactionServices;
-        private readonly ITypeTransactionUCPresenter _typeTransactionUcPresenter;
+        private readonly ICategoryUCPresenter<TypeTransactionServices> _typeTransactionUcPresenter;
         private readonly INameUCPresenter _nameUcPresenter;
         private readonly IDescriptionUCPresenter _descriptionUcPresenter;
         private readonly IAccountsInfoTransactionUCPresenter _accountsInfoTransactionUcPresenter;
-        private readonly ICategoryUCPresenter _categoryUcPresenter;
+        //private readonly ICategoryUCPresenter _categoryUcPresenter;
         private readonly IContrAgentUCPresenter _contrAgentUcPresenter;
         private readonly IIdentityUCPresenter _identityUcPresenter;
         private readonly IAddCancelButtonsUCPresenter _addCancelButtonsUcPresenter;
@@ -25,11 +26,11 @@ namespace FM.SHD.Presenters.ViewPresenters
         public SingleTransactionPresenter(
             ISingleTransactionView singleTransactionView,
             ISingleTransactionServices singleTransactionServices,
-            ITypeTransactionUCPresenter typeTransactionUcPresenter,
+            ICategoryUCPresenter<TypeTransactionServices> typeTransactionUcPresenter,
             INameUCPresenter nameUcPresenter,
             IDescriptionUCPresenter descriptionUcPresenter,
             IAccountsInfoTransactionUCPresenter accountsInfoTransactionUcPresenter,
-            ICategoryUCPresenter categoryUcPresenter,
+            //ICategoryUCPresenter categoryUcPresenter,
             IContrAgentUCPresenter contrAgentUcPresenter,
             IIdentityUCPresenter identityUcPresenter,
             IAddCancelButtonsUCPresenter addCancelButtonsUcPresenter)
@@ -41,7 +42,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             _nameUcPresenter = nameUcPresenter;
             _descriptionUcPresenter = descriptionUcPresenter;
             _accountsInfoTransactionUcPresenter = accountsInfoTransactionUcPresenter;
-            _categoryUcPresenter = categoryUcPresenter;
+           // _categoryUcPresenter = categoryUcPresenter;
             _contrAgentUcPresenter = contrAgentUcPresenter;
             _identityUcPresenter = identityUcPresenter;
             _addCancelButtonsUcPresenter = addCancelButtonsUcPresenter;
@@ -51,6 +52,7 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void SingleTransactionViewOnOnLoad()
         {
+            _typeTransactionUcPresenter.SetText("Тип транзакции");
             _singleTransactionView.AddUserControl(_typeTransactionUcPresenter.GetUserControlView());
             _singleTransactionView.AddUserControl(_nameUcPresenter.GetUserControlView());
             _singleTransactionView.AddUserControl(_descriptionUcPresenter
@@ -59,8 +61,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             _singleTransactionView.AddUserControl(_accountsInfoTransactionUcPresenter
                 .GetUserControlView());
             _singleTransactionView.AddHorizontalLine();
-            _singleTransactionView.AddUserControl(
-                _categoryUcPresenter.GetUserControlView());
+           // _singleTransactionView.AddUserControl(_categoryUcPresenter.GetUserControlView());
             _singleTransactionView.AddUserControl(_contrAgentUcPresenter.GetUserControlView());
             _singleTransactionView.AddUserControl(_identityUcPresenter.GetUserControlView());
             _singleTransactionView.AddUserControl(_addCancelButtonsUcPresenter.GetUserControlView());

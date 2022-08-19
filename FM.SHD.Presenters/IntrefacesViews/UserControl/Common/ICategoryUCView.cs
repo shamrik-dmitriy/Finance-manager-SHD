@@ -1,14 +1,16 @@
 using System;
 using System.Collections.Generic;
+using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Presenters.IntrefacesViews.UserControl.Common
 {
-    public interface ICategoryTransactionUCView : IUserControlView
+    public interface ICategoryUCView : IUserControlView
     {
         event Action OnLoadUserControlView;
         
         void SetLabelText(string text);
         (int, string) GetCategoryInfo();
-        void SetCategoryValues(IEnumerable<string> value);
+        void SetDataSource(IEnumerable<BaseDto> value);
+        void SetVisible(bool isVisible);
     }
 }

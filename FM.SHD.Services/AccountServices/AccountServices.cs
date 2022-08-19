@@ -4,10 +4,11 @@ using FM.SHDML.Core.Models.AccountModel;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Services.AccountServices
 {
-    public class AccountServices : IAccountServices
+    public class AccountServices : IAccountServices, ICategoryServices
     {
         private IAccountRepository _accountRepository;
         private IModelValidator _modelValidator;
@@ -64,6 +65,11 @@ namespace FM.SHD.Services.AccountServices
         {
             _modelValidator.ValidateModel(accountModel);
             // Тут вызываем дополнительную валидацию
+        }
+
+        IEnumerable<BaseDto> ICategoryServices.GetAll()
+        {
+            return GetAll();
         }
     }
 }

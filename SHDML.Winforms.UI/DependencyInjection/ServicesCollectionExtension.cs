@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Account;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.TypeTransaction;
@@ -19,9 +21,11 @@ using FM.SHD.Presenters.UserControlPresenters.Transactions;
 using FM.SHD.Presenters.UserControlPresenters.Wallet;
 using FM.SHD.Presenters.ViewPresenters;
 using FM.SHD.Services.AccountServices;
+using FM.SHD.Services.CommonServices;
 using FM.SHD.Services.ComponentsServices.TypeTransactionService;
 using FM.SHD.Services.Repositories;
 using FM.SHD.Services.SingleTransactionServices;
+using FM.SHDML.Core.Models.Dtos;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SHDML.Winforms.UI.Account;
@@ -58,8 +62,9 @@ namespace SHDML.Winforms.UI.DependencyInjection
                 .AddTransient<IDescriptionUCPresenter, DescriptionUcPresenter>()
                 .AddScoped<IAccountsInfoTransactionUCView, AccountsInfoTransactionUCView>()
                 .AddScoped<IAccountsInfoTransactionUCPresenter, AccountsInfoTransactionUCPresenter>()
-                .AddTransient<ICategoryTransactionUCView, CategoryUCView>()
-                .AddTransient<ICategoryUCPresenter, CategoryUcPresenter>()
+                .AddTransient<ICategoryUCPresenter<AccountServices>, CategoryUcPresenter<IAccountServices>>()
+                .AddTransient<ICategoryUCPresenter<TypeTransactionServices>, CategoryUcPresenter<ITypeTransactionServices>>()
+                .AddTransient<ICategoryUCView, CategoryUCView>()
                 .AddTransient<IContrAgentUCView, ContrAgentUCView>()
                 .AddTransient<IContrAgentUCPresenter, ContrAgentUCPresenter>()
                 .AddTransient<IIdentityUCView, IdentityUCView>()
@@ -77,7 +82,7 @@ namespace SHDML.Winforms.UI.DependencyInjection
                 .AddTransient<ICheckboxUCView, CheckboxUCView>()
                 .AddTransient<ICheckboxUCPresenter, CheckboxUCPresenter>()
                 .AddTransient<IAccountView, AccountView>()
-                .AddTransient<IAccountPresenter, AccountPresenter>() 
+                .AddTransient<IAccountPresenter, AccountPresenter>()
                 .AddTransient<IAccountSummaryUCView, AccountSummaryUCView>()
                 .AddTransient<IAccountSummaryUCPresenter, AccountSummaryUCPresenter>();
         }
@@ -106,7 +111,11 @@ namespace SHDML.Winforms.UI.DependencyInjection
                 .AddTransient<ISingleTransactionServices, SingleTransactionServices>()
                 .AddTransient<IAccountServices, AccountServices>()
                 .AddTransient<ITypeTransactionServices, TypeTransactionServices>()
-                .AddTransient<IAccountCategoryServices, AccountCategoryServices>();
+                .AddTransient<IAccountCategoryServices, AccountCategoryServices>()
+                .AddTransient<ICategoryServices, AccountServices>()
+                .AddTransient<ICategoryServices, TypeTransactionServices>();
+            //   .AddTransient<CategoryServices<AccountServices>>()
+            //   .AddTransient<CategoryServices<TypeTransactionServices>>();
         }
     }
 }

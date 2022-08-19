@@ -1,8 +1,10 @@
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
+using FM.SHD.Presenters.Interfaces.UserControls.Common;
 using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using FM.SHD.Services.AccountServices;
+using FM.SHD.Services.ComponentsServices.TypeTransactionService;
 
 namespace FM.SHD.Presenters.UserControlPresenters.Transactions
 {
@@ -11,18 +13,21 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
         private readonly EventAggregator _eventAggregator;
         private readonly IAccountsInfoTransactionUCView _accountsInfoTransactionUcView;
         private readonly IAccountServices _accountServices;
-        private readonly IAccountInfoUCPresenter _debitAccountInfoUcPresenter;
+
+        private readonly ICategoryUCPresenter<AccountServices> _debitAccountInfoUcPresenter;
+
+        //private readonly IAccountInfoUCPresenter _debitAccountInfoUcPresenter;
         private readonly ISumTransactionUCPresenter _sumTransactionUcPresenter;
-        private readonly IAccountInfoUCPresenter _creditAccountInfoUcPresenter;
+        private readonly ICategoryUCPresenter<AccountServices> _creditAccountInfoUcPresenter;
         private readonly IDateTransactionUCPresenter _dateTransactionUcPresenter;
 
         public AccountsInfoTransactionUCPresenter(
             EventAggregator eventAggregator,
             IAccountsInfoTransactionUCView accountsInfoTransactionUcView,
             IAccountServices accountServices,
-            IAccountInfoUCPresenter debitAccountInfoUcPresenter,
+            ICategoryUCPresenter<AccountServices> debitAccountInfoUcPresenter,
             ISumTransactionUCPresenter sumTransactionUcPresenter,
-            IAccountInfoUCPresenter creditAccountInfoUcPresenter,
+            ICategoryUCPresenter<AccountServices> creditAccountInfoUcPresenter,
             IDateTransactionUCPresenter dateTransactionUcPresenter)
         {
             _eventAggregator = eventAggregator;
@@ -64,11 +69,8 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
                     break;
                 }
             }
-
-            //  financeInfoOfOperationflowLayoutPanel.Refresh();
-           //  financeInfoOfOperationflowLayoutPanel.Update();
         }
-        
+
         private void AccountsInfoUcViewOnOnLoadControlView()
         {
             _accountsInfoTransactionUcView.AddAccountInfo(_creditAccountInfoUcPresenter.GetUserControlView());

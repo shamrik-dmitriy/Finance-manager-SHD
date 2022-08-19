@@ -302,6 +302,7 @@ namespace SHDML.Winforms.UI
             // 
             // accoutsFlowLayoutPanel
             // 
+            this.accoutsFlowLayoutPanel.AutoSize = true;
             this.accoutsFlowLayoutPanel.BackColor = System.Drawing.Color.White;
             this.accoutsFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.accoutsFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -454,6 +455,7 @@ namespace SHDML.Winforms.UI
             this.panel2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.accountActionAndTotalSumsplitContainer.Panel1.ResumeLayout(false);
@@ -489,7 +491,6 @@ namespace SHDML.Winforms.UI
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.FlowLayoutPanel accoutsFlowLayoutPanel;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnVerified;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTypeOperation;
@@ -505,6 +506,7 @@ namespace SHDML.Winforms.UI
         private System.Windows.Forms.SplitContainer accountActionAndTotalSumsplitContainer;
         private System.Windows.Forms.Button addAccountButton;
         private UserControls.Wallet.TotalSumInAccountsUCView _totalSumInAccountsInfoucView1;
+        private System.Windows.Forms.FlowLayoutPanel accoutsFlowLayoutPanel;
     }
 }
 

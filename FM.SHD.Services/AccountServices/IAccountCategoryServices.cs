@@ -7,7 +7,6 @@ namespace FM.SHD.Services.AccountServices
     public interface IAccountCategoryServices
     {
         void ValidateModel(IAccountCategoryModel accountCategoryModel);
-
         long Add(AccountCategoryDto accountCategoryDto);
         void Update(AccountCategoryDto accountCategoryDto);
         void Delete(AccountCategoryDto accountCategoryDto);

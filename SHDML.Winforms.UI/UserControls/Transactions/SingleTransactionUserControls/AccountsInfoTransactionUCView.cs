@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
+using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using FM.SHD.Presenters.UserControlPresenters;
 using FM.SHDML.Core.Models.AccountModel;
@@ -71,7 +72,7 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserContr
             financeInfoOfOperationflowLayoutPanel.Controls.Add((UserControl)userControlView);
         }
 
-        public void AddAccountInfo(IAccountInfoUCView userControlView)
+        public void AddAccountInfo(ICategoryUCView userControlView)
         {
             financeInfoOfOperationflowLayoutPanel.Controls.Add((UserControl)userControlView);
         }
