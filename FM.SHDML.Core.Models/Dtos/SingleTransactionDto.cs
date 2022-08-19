@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHDML.Core.Models.TransactionModels.SignleTransaction
 {
-    public class SingleTransactionDto
+    public class SingleTransactionDto : BaseDto
     {
-        string Id { get; set; }
-
         string Type { get; set; }
-
-        string Name { get; set; }
-
+        
         string Description { get; set; }
 
         string Account { get; set; }

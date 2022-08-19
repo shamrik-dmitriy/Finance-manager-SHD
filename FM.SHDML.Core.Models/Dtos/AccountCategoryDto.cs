@@ -1,12 +1,9 @@
+using FM.SHDML.Core.Models.Dtos;
+
 namespace FM.SHDML.Core.Models.Categories.AccountCategory
 {
-    public class AccountCategoryDto
+    public class AccountCategoryDto : BaseDto
     {
-        /// <summary>
-        ///     Наименование счёта
-        /// </summary>
-        public string Name { get; set; }
-
         /// <summary>
         ///     Описание счёта
         /// </summary>
