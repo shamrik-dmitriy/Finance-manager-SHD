@@ -30,6 +30,7 @@ namespace SHDML.Winforms.UI.UserControls.Common
         }
 
         public event Action OnLoadUserControlView;
+        public event Action<long> SelectedIndexChanged;
 
         public (int, string) GetCategoryInfo()
         {
@@ -51,9 +52,12 @@ namespace SHDML.Winforms.UI.UserControls.Common
         #endregion
 
         #region Combobox action
-      
+
         private void comboBoxCategoryName_SelectedIndexChanged(object sender, System.EventArgs e)
         {
+            if (sender is not ComboBox combobox) return;
+            var id = (long)combobox.SelectedValue;
+            SelectedIndexChanged?.Invoke(id);
         }
 
         private void comboBoxCategoryName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -62,7 +66,7 @@ namespace SHDML.Winforms.UI.UserControls.Common
             if (categoryComboBox.FindString(combobox.Text) == -1)
                 SetValue(0);
         }
-        
+
         public void SetDataSource(IEnumerable<BaseDto> data)
         {
             categoryComboBox.DisplayMember = "Name";

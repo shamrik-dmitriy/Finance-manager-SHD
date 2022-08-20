@@ -47,7 +47,13 @@ namespace FM.SHD.Presenters.ViewPresenters
             _identityUcPresenter = identityUcPresenter;
             _addCancelButtonsUcPresenter = addCancelButtonsUcPresenter;
 
+            _typeTransactionUcPresenter.CategoryChanged += TypeTransactionUcPresenterOnCategoryChanged;
             _singleTransactionView.OnLoadView += SingleTransactionViewOnOnLoad;
+        }
+
+        private void TypeTransactionUcPresenterOnCategoryChanged(long id)
+        {
+            _accountsInfoTransactionUcPresenter.CategoryChanged(id);
         }
 
         private void SingleTransactionViewOnOnLoad()

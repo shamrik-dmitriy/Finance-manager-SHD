@@ -7,6 +7,7 @@ namespace FM.SHD.Presenters.IntrefacesViews.UserControl.Common
     public interface ICategoryUCView : IUserControlView
     {
         event Action OnLoadUserControlView;
+        event Action<long> SelectedIndexChanged;
         
         void SetLabelText(string text);
         (int, string) GetCategoryInfo();

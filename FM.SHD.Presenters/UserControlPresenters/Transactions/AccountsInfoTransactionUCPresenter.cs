@@ -1,10 +1,10 @@
+using System;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.Interfaces.UserControls.Common;
 using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using FM.SHD.Services.AccountServices;
-using FM.SHD.Services.ComponentsServices.TypeTransactionService;
 
 namespace FM.SHD.Presenters.UserControlPresenters.Transactions
 {
@@ -84,5 +84,34 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
         {
             return _accountsInfoTransactionUcView;
         }
+
+        void IAccountsInfoTransactionUCPresenter.CategoryChanged(long id)
+        {
+            
+            switch (id)
+            {
+                case 1:
+                {
+                    _creditAccountInfoUcPresenter.SetText("Списать со счёта");
+                    _debitAccountInfoUcPresenter.SetVisible(false);
+                    break;
+                }
+                case 2:
+                {
+                    _creditAccountInfoUcPresenter.SetText("Зачислить на счёт");
+                    _debitAccountInfoUcPresenter.SetVisible(false);
+                    break;
+                }
+                case 3:
+                {
+                    _creditAccountInfoUcPresenter.SetText("Списать со счёта");
+                    _debitAccountInfoUcPresenter.SetText("Зачислить на счёт");
+                    _debitAccountInfoUcPresenter.SetVisible(true);
+                    break;
+                }
+            }
+        }
+
+        public event Action<long> CategoryChanged;
     }
 }
