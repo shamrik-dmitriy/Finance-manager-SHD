@@ -32,7 +32,7 @@ namespace FM.SHD.Presenters.UserControlPresenters.Common
 
         private void CategoryUcViewOnOnLoadUserControlView()
         {
-            _categoryUcView.SetDataSource(((ICategoryServices)_service).GetAll());
+            _categoryUcView.SetDataSource(((IBaseCategoryServices)_service).GetAll());
         }
 
         private event Action<long> SelectedIndexChanged;
@@ -51,7 +51,7 @@ namespace FM.SHD.Presenters.UserControlPresenters.Common
 
         public void SetCategoryValues()
         {
-            _categoryUcView.SetDataSource(((ICategoryServices)_service).GetAll());
+            _categoryUcView.SetDataSource(((IBaseCategoryServices)_service).GetAll());
         }
 
         public ICategoryUCView GetUserControlView()

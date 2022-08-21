@@ -5,7 +5,7 @@ using FM.SHD.Services.CommonServices;
 
 namespace FM.SHD.Presenters.Interfaces.UserControls.Common
 {
-    public interface ICategoryUCPresenter<T> where T : ICategoryServices
+    public interface ICategoryUCPresenter<T> where T : IBaseCategoryServices
     {
         event Action<long> CategoryChanged;
 

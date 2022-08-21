@@ -4,7 +4,7 @@ using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Services.CommonServices
 {
-    public class CategoryServices<T> where T : ICategoryServices
+    public class BaseCategoryServices<T> where T : IBaseCategoryServices
     {
         public IList<BaseDto> GetAll(T t)
         {
