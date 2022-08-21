@@ -27,8 +27,7 @@ namespace FM.SHD.Presenters.UserControlPresenters.Common
 
         private void CategoryUcViewOnSelectedIndexChanged(long id)
         {
-            _event?.Invoke(id);
-            //  throw new System.NotImplementedException();
+            SelectedIndexChanged?.Invoke(id);
         }
 
         private void CategoryUcViewOnOnLoadUserControlView()
@@ -36,18 +35,18 @@ namespace FM.SHD.Presenters.UserControlPresenters.Common
             _categoryUcView.SetDataSource(((ICategoryServices)_service).GetAll());
         }
 
-        public event Action<long> _event;
+        private event Action<long> SelectedIndexChanged;
 
         event Action<long> ICategoryUCPresenter<AccountServices>.CategoryChanged
         {
-            add => _event += value;
-            remove => _event -= value;
+            add => SelectedIndexChanged += value;
+            remove => SelectedIndexChanged -= value;
         }
 
         event Action<long> ICategoryUCPresenter<TypeTransactionServices>.CategoryChanged
         {
-            add => _event += value;
-            remove => _event -= value;
+            add => SelectedIndexChanged += value;
+            remove => SelectedIndexChanged -= value;
         }
 
         public void SetCategoryValues()
@@ -75,9 +74,24 @@ namespace FM.SHD.Presenters.UserControlPresenters.Common
             _categoryUcView.SetVisible(isVisible);
         }
 
-        protected virtual void OnEvent(long obj)
+        void ICategoryUCPresenter<TypeTransactionServices>.SetStyleDropDownList()
         {
-            _event?.Invoke(obj);
+            _categoryUcView.SetStyleDropDownList();
+        }
+
+        void ICategoryUCPresenter<TypeTransactionServices>.SetStyleDropDown()
+        {
+            _categoryUcView.SetStyleDropDown();
+        }
+
+        void ICategoryUCPresenter<AccountServices>.SetStyleDropDownList()
+        {
+            _categoryUcView.SetStyleDropDownList();
+        }
+
+        void ICategoryUCPresenter<AccountServices>.SetStyleDropDown()
+        {
+            _categoryUcView.SetStyleDropDown();
         }
     }
 }

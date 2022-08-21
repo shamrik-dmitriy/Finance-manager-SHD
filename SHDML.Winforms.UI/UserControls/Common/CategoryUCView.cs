@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
-using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using FM.SHDML.Core.Models.Dtos;
 
 namespace SHDML.Winforms.UI.UserControls.Common
@@ -88,7 +86,16 @@ namespace SHDML.Winforms.UI.UserControls.Common
             Visible = isVisible;
         }
 
-        public void SetDropDownStyle(ComboBoxStyle comboBoxStyle)
+        public void SetStyleDropDown()
+        {
+            SetDropDownStyle(ComboBoxStyle.DropDown);
+        }
+
+        public void SetStyleDropDownList()
+        {
+            SetDropDownStyle(ComboBoxStyle.DropDownList);
+        }
+        private void SetDropDownStyle(ComboBoxStyle comboBoxStyle)
         {
             categoryComboBox.DropDownStyle = comboBoxStyle;
         }

@@ -59,6 +59,7 @@ namespace FM.SHD.Presenters.ViewPresenters
         private void SingleTransactionViewOnOnLoad()
         {
             _typeTransactionUcPresenter.SetText("Тип транзакции");
+            _typeTransactionUcPresenter.SetStyleDropDownList();
             _singleTransactionView.AddUserControl(_typeTransactionUcPresenter.GetUserControlView());
             _singleTransactionView.AddUserControl(_nameUcPresenter.GetUserControlView());
             _singleTransactionView.AddUserControl(_descriptionUcPresenter

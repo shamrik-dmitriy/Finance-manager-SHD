@@ -17,5 +17,13 @@ namespace FM.SHD.Presenters.Interfaces.UserControls.Common
         (int Index, string Name) GetCategoryInfo();
         
         void SetVisible(bool isVisible);
+        
+        
+        #region DropDown styles
+
+        void SetStyleDropDownList();
+        void SetStyleDropDown();
+
+        #endregion
     }
 }
