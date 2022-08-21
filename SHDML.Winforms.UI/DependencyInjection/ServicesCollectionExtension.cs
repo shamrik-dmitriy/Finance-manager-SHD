@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Account;
+using FM.SHD.Infastructure.Impl.Repositories.Specific.Categories;
+using FM.SHD.Infastructure.Impl.Repositories.Specific.Contragents;
+using FM.SHD.Infastructure.Impl.Repositories.Specific.Identities;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.TypeTransaction;
 using FM.SHD.Presenters;
@@ -21,6 +24,7 @@ using FM.SHD.Presenters.UserControlPresenters.Transactions;
 using FM.SHD.Presenters.UserControlPresenters.Wallet;
 using FM.SHD.Presenters.ViewPresenters;
 using FM.SHD.Services.AccountServices;
+using FM.SHD.Services.CategoriesServices;
 using FM.SHD.Services.CommonServices;
 using FM.SHD.Services.ComponentsServices.TypeTransactionService;
 using FM.SHD.Services.Repositories;
@@ -64,6 +68,9 @@ namespace SHDML.Winforms.UI.DependencyInjection
                 .AddScoped<IAccountsInfoTransactionUCPresenter, AccountsInfoTransactionUCPresenter>()
                 .AddTransient<ICategoryUCPresenter<AccountServices>, CategoryUcPresenter<IAccountServices>>()
                 .AddTransient<ICategoryUCPresenter<TypeTransactionServices>, CategoryUcPresenter<ITypeTransactionServices>>()
+                .AddTransient<ICategoryUCPresenter<CategoriesServices>, CategoryUcPresenter<ICategoriesServices>>()
+                .AddTransient<ICategoryUCPresenter<ContragentServices>, CategoryUcPresenter<IContragentServices>>()
+                .AddTransient<ICategoryUCPresenter<IdentityServices>, CategoryUcPresenter<IIdentityServices>>()
                 .AddTransient<ICategoryUCView, CategoryUCView>()
                 .AddTransient<IContrAgentUCView, ContrAgentUCView>()
                 .AddTransient<IContrAgentUCPresenter, ContrAgentUCPresenter>()
@@ -102,6 +109,15 @@ namespace SHDML.Winforms.UI.DependencyInjection
                         config.GetConnectionString("DefaultConnection")))
                 .AddTransient<IAccountCategoryRepository, AccountCategoryRepository>(provider =>
                     new AccountCategoryRepository(
+                        config.GetConnectionString("DefaultConnection")))
+                .AddTransient<ICategoriesRepository, CategoriesRepository>(provider =>
+                    new CategoriesRepository(
+                        config.GetConnectionString("DefaultConnection")))
+                .AddTransient<IIdentitiesRepository, IdentitiesRepository>(provider =>
+                    new IdentitiesRepository(
+                        config.GetConnectionString("DefaultConnection")))
+                .AddTransient<IContragentsRepository, ContragentsRepository>(provider =>
+                    new ContragentsRepository(
                         config.GetConnectionString("DefaultConnection")));
         }
 
@@ -113,6 +129,9 @@ namespace SHDML.Winforms.UI.DependencyInjection
                 .AddTransient<ITypeTransactionServices, TypeTransactionServices>()
                 .AddTransient<IAccountCategoryServices, AccountCategoryServices>()
                 .AddTransient<IBaseCategoryServices, AccountServices>()
+                .AddTransient<ICategoriesServices, CategoriesServices>()
+                .AddTransient<IIdentityServices, IdentityServices>()
+                .AddTransient<IContragentServices, ContragentServices>()
                 .AddTransient<IBaseCategoryServices, TypeTransactionServices>();
             //   .AddTransient<CategoryServices<AccountServices>>()
             //   .AddTransient<CategoryServices<TypeTransactionServices>>();

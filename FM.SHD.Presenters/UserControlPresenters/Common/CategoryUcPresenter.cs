@@ -2,6 +2,7 @@ using System;
 using FM.SHD.Presenters.Interfaces.UserControls.Common;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
 using FM.SHD.Services.AccountServices;
+using FM.SHD.Services.CategoriesServices;
 using FM.SHD.Services.CommonServices;
 using FM.SHD.Services.ComponentsServices.TypeTransactionService;
 
@@ -9,7 +10,10 @@ namespace FM.SHD.Presenters.UserControlPresenters.Common
 {
     public class CategoryUcPresenter<T> :
         ICategoryUCPresenter<AccountServices>,
-        ICategoryUCPresenter<TypeTransactionServices>
+        ICategoryUCPresenter<TypeTransactionServices>,
+        ICategoryUCPresenter<CategoriesServices>,
+        ICategoryUCPresenter<IdentityServices>,
+        ICategoryUCPresenter<ContragentServices>
     {
         private readonly T _service;
         private readonly ICategoryUCView _categoryUcView;
@@ -49,6 +53,8 @@ namespace FM.SHD.Presenters.UserControlPresenters.Common
             remove => SelectedIndexChanged -= value;
         }
 
+        public event Action<long> CategoryChanged;
+
         public void SetCategoryValues()
         {
             _categoryUcView.SetDataSource(((IBaseCategoryServices)_service).GetAll());
@@ -72,6 +78,16 @@ namespace FM.SHD.Presenters.UserControlPresenters.Common
         public void SetVisible(bool isVisible)
         {
             _categoryUcView.SetVisible(isVisible);
+        }
+
+        public void SetStyleDropDownList()
+        {
+            _categoryUcView.SetStyleDropDownList();
+        }
+
+        public void SetStyleDropDown()
+        {
+            _categoryUcView.SetStyleDropDown();
         }
 
         void ICategoryUCPresenter<TypeTransactionServices>.SetStyleDropDownList()

@@ -20,8 +20,8 @@ namespace FM.SHD.Presenters.ViewPresenters
         private readonly IDescriptionUCPresenter _descriptionUcPresenter;
         private readonly IAccountsInfoTransactionUCPresenter _accountsInfoTransactionUcPresenter;
         private readonly ICategoryUCPresenter<CategoriesServices> _categoriesUcPresenter;
-        private readonly IContrAgentUCPresenter _contrAgentUcPresenter;
-        private readonly IIdentityUCPresenter _identityUcPresenter;
+        private readonly ICategoryUCPresenter<ContragentServices> _contrAgentUcPresenter;
+        private readonly ICategoryUCPresenter<IdentityServices> _identityUcPresenter;
         private readonly IAddCancelButtonsUCPresenter _addCancelButtonsUcPresenter;
 
         public SingleTransactionPresenter(
@@ -32,8 +32,8 @@ namespace FM.SHD.Presenters.ViewPresenters
             IDescriptionUCPresenter descriptionUcPresenter,
             IAccountsInfoTransactionUCPresenter accountsInfoTransactionUcPresenter,
             ICategoryUCPresenter<CategoriesServices> categoriesUcPresenter,
-            IContrAgentUCPresenter contrAgentUcPresenter,
-            IIdentityUCPresenter identityUcPresenter,
+            ICategoryUCPresenter<ContragentServices> contrAgentUcPresenter,
+            ICategoryUCPresenter<IdentityServices> identityUcPresenter,
             IAddCancelButtonsUCPresenter addCancelButtonsUcPresenter)
         {
             _singleTransactionView = singleTransactionView;
@@ -70,8 +70,13 @@ namespace FM.SHD.Presenters.ViewPresenters
                 .GetUserControlView());
             _singleTransactionView.AddHorizontalLine();
             _categoriesUcPresenter.SetStyleDropDown();
+            _categoriesUcPresenter.SetText("Категория");
             _singleTransactionView.AddUserControl(_categoriesUcPresenter.GetUserControlView());
+            _contrAgentUcPresenter.SetStyleDropDown();
+            _contrAgentUcPresenter.SetText("Контрагент");
             _singleTransactionView.AddUserControl(_contrAgentUcPresenter.GetUserControlView());
+            _identityUcPresenter.SetStyleDropDown();
+            _identityUcPresenter.SetText("Член семьи");
             _singleTransactionView.AddUserControl(_identityUcPresenter.GetUserControlView());
             _singleTransactionView.AddUserControl(_addCancelButtonsUcPresenter.GetUserControlView());
         }
