@@ -9,7 +9,7 @@ using FM.SHDML.Core.Models.TransactionModels.Transactions.TypeTransaction;
 
 namespace FM.SHD.Services.ComponentsServices.TypeTransactionService
 {
-    public class TypeTransactionServices : ITypeTransactionServices, ICategoryServices
+    public class TypeTransactionServices : ITypeTransactionServices, IBaseCategoryServices
     {
         private readonly ITypeTransactionRepository _typeTransactionRepository;
         private readonly IMapper _mapper;
@@ -34,7 +34,7 @@ namespace FM.SHD.Services.ComponentsServices.TypeTransactionService
             return _mapper.Map<TypeTransactionDto>(_typeTransactionRepository.GetById(id));
         }
 
-        IEnumerable<BaseDto> ICategoryServices.GetAll()
+        IEnumerable<BaseDto> IBaseCategoryServices.GetAll()
         {
             return GetAll();
         }

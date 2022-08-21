@@ -14,7 +14,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction
 
         public long Add(ISingleTransactionModel singleTransactionModel)
         {
-            if (!CheckRecordIsExist(singleTransactionModel.Id))
+            if (!CheckRecordIsExist("SingleTransaction", singleTransactionModel.Id))
             {
                 var sql =
                     $"INSERT INTO SingleTransaction (Type_id, Name, Description, DebitAccount, CreditAccount, Sum, Date, Category, Contragent, FamilyMember) " +
@@ -41,7 +41,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction
 
         public void Delete(ISingleTransactionModel singleTransactionModel)
         {
-            if (CheckRecordIsExist(singleTransactionModel.Id))
+            if (CheckRecordIsExist("SingleTransaction", singleTransactionModel.Id))
             {
                 var sql = $"DELETE FROM SingleTransaction WHERE Id=@Id;";
                 var dataparameters = new List<DataParameter>();
@@ -56,7 +56,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction
 
         public void DeleteById(int singleTransactionId)
         {
-            if (CheckRecordIsExist(singleTransactionId))
+            if (CheckRecordIsExist("SingleTransaction", singleTransactionId))
             {
                 var sql = $"DELETE FROM SingleTransaction WHERE Id=@Id";
                 var dataparameters = new List<DataParameter>();
@@ -99,7 +99,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction
 
         public void Update(ISingleTransactionModel singleTransactionModel)
         {
-            if (CheckRecordIsExist(singleTransactionModel.Id))
+            if (CheckRecordIsExist("SingleTransaction", singleTransactionModel.Id))
             {
                 var sql = $"UPDATE SingleTransaction SET " +
                           $"Type_id = @TypeTransaction, " +
@@ -136,7 +136,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction
 
         SingleTransactionModel ISingleTransactionRepository.GetById(int id)
         {
-            if (CheckRecordIsExist(id))
+            if (CheckRecordIsExist("SingleTransaction", id))
             {
                 var sql = $"SELECT * FROM SingleTransaction WHERE Id = @Id;";
 

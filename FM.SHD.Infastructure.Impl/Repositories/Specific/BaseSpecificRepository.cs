@@ -35,11 +35,23 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific
         }
 
 
-        protected bool CheckRecordIsExist(long singleTransactionId)
+        protected bool CheckRecordIsExist(string tableName, long id)
         {
             var dataparameters = new List<DataParameter>();
-            dataparameters.Add(new DataParameter("@Id", singleTransactionId));
-            var rowCount = Convert.ToInt32(_sqliteDataProvider.ExecuteScalar("SELECT COUNT(*) FROM SingleTransaction WHERE Id=@Id", dataparameters.ToArray()));
+            dataparameters.Add(new DataParameter("@Id", id));
+            var rowCount =
+                Convert.ToInt32(_sqliteDataProvider.ExecuteScalar($"SELECT COUNT(*) FROM {tableName} WHERE Id=@Id",
+                    dataparameters.ToArray()));
+            return rowCount > 0;
+        }
+
+        protected bool CheckRecordIsExist(string tableName, string name)
+        {
+            var dataparameters = new List<DataParameter>();
+            dataparameters.Add(new DataParameter("@Name", name));
+            var rowCount =
+                Convert.ToInt32(_sqliteDataProvider.ExecuteScalar($"SELECT COUNT(*) FROM {tableName} WHERE Id=@Id",
+                    dataparameters.ToArray()));
             return rowCount > 0;
         }
     }

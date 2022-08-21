@@ -19,7 +19,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
 
         public long Add(IAccountModel accountModel)
         {
-            if (!CheckRecordIsExist(accountModel.Id))
+            if (!CheckRecordIsExist("Account", accountModel.Id))
             {
                 var sql =
                     $"INSERT INTO Account (Name, Description, CurrentSum, InitialSum, IsClosed, Currency, CategoryId, IdentityId) " +
@@ -43,7 +43,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
 
         public void Delete(IAccountModel accountModel)
         {
-            if (CheckRecordIsExist(accountModel.Id))
+            if (CheckRecordIsExist("Account", accountModel.Id))
             {
                 var sql = $"DELETE FROM Account WHERE Id=@Id;";
                 var dataparameters = new List<DataParameter>();
@@ -58,7 +58,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
 
         public void DeleteById(long accountModelId)
         {
-            if (CheckRecordIsExist(accountModelId))
+            if (CheckRecordIsExist("Account", accountModelId))
             {
                 var sql = $"DELETE FROM SingleTransaction WHERE Id=@Id";
                 var dataparameters = new List<DataParameter>();
@@ -100,7 +100,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
 
         public AccountModel GetById(long id)
         {
-            if (CheckRecordIsExist(id))
+            if (CheckRecordIsExist("Account", id))
             {
                 var sql = $"SELECT * FROM Account WHERE Id = @Id;";
 
@@ -133,7 +133,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
 
         public void Update(IAccountModel accountModel)
         {
-            if (CheckRecordIsExist(accountModel.Id))
+            if (CheckRecordIsExist("Account", accountModel.Id))
             {
                 var sql = $"UPDATE Account SET " +
                           $"Name = @Name, " +

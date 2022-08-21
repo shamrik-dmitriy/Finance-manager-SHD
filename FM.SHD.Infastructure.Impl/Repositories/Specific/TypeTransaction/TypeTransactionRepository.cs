@@ -35,7 +35,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.TypeTransaction
 
         public TypeTransactionModel GetById(int id)
         {
-            if (CheckRecordIsExist(id))
+            if (CheckRecordIsExist("TransactionType", id))
             {
                 var sql = $"SELECT * FROM TransactionType WHERE Id = @Id;";
 
@@ -55,6 +55,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.TypeTransaction
                     return transactionModel;
                 }
             }
+
             throw new ArgumentException($"В хранилище отсутствует запись с идентификатором {id}");
         }
     }
