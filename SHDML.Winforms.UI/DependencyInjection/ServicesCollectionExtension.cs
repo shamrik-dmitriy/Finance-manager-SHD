@@ -112,8 +112,8 @@ namespace SHDML.Winforms.UI.DependencyInjection
                 .AddTransient<IAccountServices, AccountServices>()
                 .AddTransient<ITypeTransactionServices, TypeTransactionServices>()
                 .AddTransient<IAccountCategoryServices, AccountCategoryServices>()
-                .AddTransient<ICategoryServices, AccountServices>()
-                .AddTransient<ICategoryServices, TypeTransactionServices>();
+                .AddTransient<IBaseCategoryServices, AccountServices>()
+                .AddTransient<IBaseCategoryServices, TypeTransactionServices>();
             //   .AddTransient<CategoryServices<AccountServices>>()
             //   .AddTransient<CategoryServices<TypeTransactionServices>>();
         }
