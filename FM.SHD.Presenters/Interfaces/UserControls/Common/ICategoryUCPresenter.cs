@@ -10,15 +10,15 @@ namespace FM.SHD.Presenters.Interfaces.UserControls.Common
         event Action<long> CategoryChanged;
 
         void SetCategoryValues();
-        
+
         ICategoryUCView GetUserControlView();
 
         void SetText(string text);
-        (int Index, string Name) GetCategoryInfo();
-        
+        (long Id, string Text) GetCategoryInfo();
+
         void SetVisible(bool isVisible);
-        
-        
+
+
         #region DropDown styles
 
         void SetStyleDropDownList();

@@ -1,24 +1,18 @@
-using System.Collections.Generic;
-using System.Linq;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Account;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Categories;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Contragents;
+using FM.SHD.Infastructure.Impl.Repositories.Specific.Currency;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Identities;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.TypeTransaction;
-using FM.SHD.Presenters;
-using FM.SHD.Presenters.Interfaces;
-using FM.SHD.Presenters.Interfaces.UserControls;
 using FM.SHD.Presenters.Interfaces.UserControls.Common;
 using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
 using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
 using FM.SHD.Presenters.Interfaces.Views;
 using FM.SHD.Presenters.IntrefacesViews;
-using FM.SHD.Presenters.IntrefacesViews.UserControl;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Wallet;
-using FM.SHD.Presenters.UserControlPresenters;
 using FM.SHD.Presenters.UserControlPresenters.Common;
 using FM.SHD.Presenters.UserControlPresenters.Transactions;
 using FM.SHD.Presenters.UserControlPresenters.Wallet;
@@ -27,9 +21,9 @@ using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.CategoriesServices;
 using FM.SHD.Services.CommonServices;
 using FM.SHD.Services.ComponentsServices.TypeTransactionService;
+using FM.SHD.Services.CurrencyServices;
 using FM.SHD.Services.Repositories;
 using FM.SHD.Services.SingleTransactionServices;
-using FM.SHDML.Core.Models.Dtos;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SHDML.Winforms.UI.Account;
@@ -67,10 +61,12 @@ namespace SHDML.Winforms.UI.DependencyInjection
                 .AddScoped<IAccountsInfoTransactionUCView, AccountsInfoTransactionUCView>()
                 .AddScoped<IAccountsInfoTransactionUCPresenter, AccountsInfoTransactionUCPresenter>()
                 .AddTransient<ICategoryUCPresenter<AccountServices>, CategoryUcPresenter<IAccountServices>>()
-                .AddTransient<ICategoryUCPresenter<TypeTransactionServices>, CategoryUcPresenter<ITypeTransactionServices>>()
+                .AddTransient<ICategoryUCPresenter<TypeTransactionServices>,
+                    CategoryUcPresenter<ITypeTransactionServices>>()
                 .AddTransient<ICategoryUCPresenter<CategoriesServices>, CategoryUcPresenter<ICategoriesServices>>()
                 .AddTransient<ICategoryUCPresenter<ContragentServices>, CategoryUcPresenter<IContragentServices>>()
                 .AddTransient<ICategoryUCPresenter<IdentityServices>, CategoryUcPresenter<IIdentityServices>>()
+                .AddTransient<ICategoryUCPresenter<CurrencyServices>, CategoryUcPresenter<ICurrencyServices>>()
                 .AddTransient<ICategoryUCView, CategoryUCView>()
                 .AddTransient<IContrAgentUCView, ContrAgentUCView>()
                 .AddTransient<IContrAgentUCPresenter, ContrAgentUCPresenter>()
@@ -118,6 +114,9 @@ namespace SHDML.Winforms.UI.DependencyInjection
                         config.GetConnectionString("DefaultConnection")))
                 .AddTransient<IContragentsRepository, ContragentsRepository>(provider =>
                     new ContragentsRepository(
+                        config.GetConnectionString("DefaultConnection")))
+                .AddTransient<ICurrencyRepository, CurrencyRepository>(provider =>
+                    new CurrencyRepository(
                         config.GetConnectionString("DefaultConnection")));
         }
 
@@ -132,6 +131,7 @@ namespace SHDML.Winforms.UI.DependencyInjection
                 .AddTransient<ICategoriesServices, CategoriesServices>()
                 .AddTransient<IIdentityServices, IdentityServices>()
                 .AddTransient<IContragentServices, ContragentServices>()
+                .AddTransient<ICurrencyServices, CurrencyServices>()
                 .AddTransient<IBaseCategoryServices, TypeTransactionServices>();
             //   .AddTransient<CategoryServices<AccountServices>>()
             //   .AddTransient<CategoryServices<TypeTransactionServices>>();

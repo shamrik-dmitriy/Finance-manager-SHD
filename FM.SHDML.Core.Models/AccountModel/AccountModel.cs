@@ -24,7 +24,7 @@ namespace FM.SHDML.Core.Models.AccountModel
         public bool IsClosed { get; set; }
 
         [MaxLength(255, ErrorMessage = "Длина названия валюты не может превышать 255 символов")]
-        public string Currency { get; set; }
+        public long CurrencyId { get; set; }
 
         public long CategoryId { get; set; }
 

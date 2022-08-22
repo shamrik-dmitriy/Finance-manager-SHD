@@ -1,48 +1,74 @@
 using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
+using FM.SHD.Services.CommonServices;
+using FM.SHD.Services.Repositories;
 using FM.SHDML.Core.Models.Categories.CurrencyCategory;
+using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Services.CurrencyServices
 {
-    public class CurrencyServices : ICurrencyServices
+    public class CurrencyServices : ICurrencyServices, IBaseCategoryServices
     {
-        public CurrencyServices()
+        private readonly ICurrencyRepository _currencyRepository;
+        private readonly IModelValidator _modelValidator;
+        private readonly IMapper _mapper;
+
+        public CurrencyServices(ICurrencyRepository currencyRepository, IModelValidator modelValidator)
         {
-            
-        }
-        
-        public void ValidateModel(ICurrencyCategoryModel currencyCategoryModel)
-        {
-            throw new System.NotImplementedException();
+            _currencyRepository = currencyRepository;
+            _modelValidator = modelValidator;
+            _mapper = new MapperConfiguration(config =>
+            {
+                config.CreateMap<CurrencyModel, CurrencyDto>();
+                config.CreateMap<CurrencyDto, CurrencyModel>();
+            }).CreateMapper();
         }
 
-        public long Add(CurrencyCategoryModel currencyCategoryDto)
+        public void ValidateModel(ICurrencyModel currencyModel)
         {
-            throw new System.NotImplementedException();
+            _modelValidator.ValidateModel(currencyModel);
         }
 
-        public void Update(CurrencyCategoryModel currencyCategoryDto)
+        public long Add(CurrencyDto currencyDto)
         {
-            throw new System.NotImplementedException();
+            var model = _mapper.Map<CurrencyModel>(currencyDto);
+            ValidateModel(model);
+            return _currencyRepository.Add(model);
         }
 
-        public void Delete(CurrencyCategoryModel currencyCategoryDto)
+        public void Update(CurrencyDto currencyDto)
         {
-            throw new System.NotImplementedException();
+            var model = _mapper.Map<CurrencyModel>(currencyDto);
+            ValidateModel(model);
+            _currencyRepository.Update(model);
+        }
+
+        public void Delete(CurrencyDto currencyDto)
+        {
+            var model = _mapper.Map<CurrencyModel>(currencyDto);
+            ValidateModel(model);
+            _currencyRepository.Delete(model);
         }
 
         public void DeleteById(long id)
         {
-            throw new System.NotImplementedException();
+            _currencyRepository.DeleteById(id);
         }
 
-        public IEnumerable<CurrencyCategoryModel> GetAll()
+        public IEnumerable<CurrencyDto> GetAll()
         {
-            throw new System.NotImplementedException();
+            return _currencyRepository.GetAll().Select(x => _mapper.Map<CurrencyDto>(x));
         }
 
-        public CurrencyCategoryModel GetById(long id)
+        public CurrencyDto GetById(long id)
         {
-            throw new System.NotImplementedException();
+            return _mapper.Map<CurrencyDto>(_currencyRepository.GetById(id));
+        }
+
+        IEnumerable<BaseDto> IBaseCategoryServices.GetAll()
+        {
+            return GetAll();
         }
     }
 }

@@ -1,6 +1,8 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace FM.SHDML.Core.Models.Categories.CurrencyCategory
 {
-    public interface ICurrencyCategoryModel
+    public class CurrencyModel : ICurrencyModel
     {
         /// <summary>
         ///     Идентификатор
@@ -10,11 +12,13 @@ namespace FM.SHDML.Core.Models.Categories.CurrencyCategory
         /// <summary>
         ///     Наименование валюты
         /// </summary>
+        [MaxLength(50, ErrorMessage = "Длина названия валюты не может превышать 50 символов")]
         public string Name { get; set; }
 
         /// <summary>
         ///     Символ валюты
         /// </summary>
+        [MaxLength(1, ErrorMessage = "Символ валюты не может превышать 1 символов")]
         public string Symbol { get; set; }
     }
 }

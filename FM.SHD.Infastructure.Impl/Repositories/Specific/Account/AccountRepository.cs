@@ -22,8 +22,8 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
             if (!CheckRecordIsExist("Account", accountModel.Id))
             {
                 var sql =
-                    $"INSERT INTO Account (Name, Description, CurrentSum, InitialSum, IsClosed, Currency, CategoryId, IdentityId) " +
-                    $"VALUES (@Name, @Description, @CurrentSum, @InitialSum, @IsClosed, @Currency, @CategoryId, @IdentityId);";
+                    $"INSERT INTO Account (Name, Description, CurrentSum, InitialSum, IsClosed, CurrencyId, CategoryId, IdentityId) " +
+                    $"VALUES (@Name, @Description, @CurrentSum, @InitialSum, @IsClosed, @CurrencyId, @CategoryId, @IdentityId);";
 
                 var dataparameters = new List<DataParameter>();
                 dataparameters.Add(new DataParameter("@Name", accountModel.Name));
@@ -31,7 +31,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
                 dataparameters.Add(new DataParameter("@CurrentSum", accountModel.CurrentSum));
                 dataparameters.Add(new DataParameter("@InitialSum", accountModel.InitialSum));
                 dataparameters.Add(new DataParameter("@IsClosed", accountModel.IsClosed));
-                dataparameters.Add(new DataParameter("@Currency", accountModel.Currency));
+                dataparameters.Add(new DataParameter("@CurrencyId", accountModel.CurrencyId));
                 dataparameters.Add(new DataParameter("@CategoryId", accountModel.CategoryId));
                 dataparameters.Add(new DataParameter("@IdentityId", accountModel.IdentityId));
 
@@ -88,7 +88,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
                     accountModel.CurrentSum = decimal.Parse(reader["CurrentSum"].ToString());
                     accountModel.InitialSum = decimal.Parse(reader["InitialSum"].ToString());
                     accountModel.IsClosed = Convert.ToBoolean(reader["IsClosed"]);
-                    accountModel.Currency = reader["Currency"].ToString();
+                    accountModel.CurrencyId = long.Parse(reader["CurrencyId"].ToString());
                     accountModel.CategoryId = int.Parse(reader["CategoryId"].ToString());
                     accountModel.IdentityId = int.Parse(reader["IdentityId"].ToString());
                     account.Add(accountModel);
@@ -119,7 +119,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
                         accountModel.CurrentSum = (decimal)reader["CurrentSum"];
                         accountModel.InitialSum = (decimal)reader["InitialSum"];
                         accountModel.IsClosed = (bool)reader["IsClosed"];
-                        accountModel.Currency = reader["Currency"].ToString();
+                        accountModel.CurrencyId = long.Parse(reader["CurrencyId"].ToString());
                         accountModel.CategoryId = (int)reader["CategoryId"];
                         accountModel.IdentityId = (int)reader["IdentityId"];
                     }
@@ -141,7 +141,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
                           $"CurrentSum = @CurrentSum, " +
                           $"InitialSum = @InitialSum, " +
                           $"IsClosed = @IsClosed, " +
-                          $"Currency = @Currency, " +
+                          $"CurrencyId = @CurrencyId, " +
                           $"CategoryId = @CategoryId, " +
                           $"IdentityId = @IdentityId " +
                           $"WHERE Id = @Id;";
@@ -153,7 +153,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
                 dataparameters.Add(new DataParameter("@CurrentSum", accountModel.CurrentSum));
                 dataparameters.Add(new DataParameter("@InitialSum", accountModel.InitialSum));
                 dataparameters.Add(new DataParameter("@IsClosed", accountModel.IsClosed));
-                dataparameters.Add(new DataParameter("@Currency", accountModel.Currency));
+                dataparameters.Add(new DataParameter("@CurrencyId", accountModel.CurrencyId));
                 dataparameters.Add(new DataParameter("@CategoryId", accountModel.CategoryId));
                 dataparameters.Add(new DataParameter("@IdentityId", accountModel.IdentityId));
 

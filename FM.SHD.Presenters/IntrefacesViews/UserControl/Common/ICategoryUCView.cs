@@ -16,7 +16,7 @@ namespace FM.SHD.Presenters.IntrefacesViews.UserControl.Common
         #region Data actions
 
         void SetLabelText(string text);
-        (int, string) GetCategoryInfo();
+        (long, string) GetCategoryInfo();
         void SetDataSource(IEnumerable<BaseDto> value);
 
         #endregion

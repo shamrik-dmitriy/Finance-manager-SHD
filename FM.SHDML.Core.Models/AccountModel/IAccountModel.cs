@@ -41,7 +41,7 @@ namespace FM.SHDML.Core.Models.AccountModel
         /// <summary>
         ///     Валюта
         /// </summary>
-        public string Currency { get; set; }
+        public long CurrencyId { get; set; }
         
         /// <summary>
         ///     Идентификатор категории счёта

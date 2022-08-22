@@ -5,6 +5,7 @@ using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.CategoriesServices;
 using FM.SHD.Services.CommonServices;
 using FM.SHD.Services.ComponentsServices.TypeTransactionService;
+using FM.SHD.Services.CurrencyServices;
 
 namespace FM.SHD.Presenters.UserControlPresenters.Common
 {
@@ -13,7 +14,8 @@ namespace FM.SHD.Presenters.UserControlPresenters.Common
         ICategoryUCPresenter<TypeTransactionServices>,
         ICategoryUCPresenter<CategoriesServices>,
         ICategoryUCPresenter<IdentityServices>,
-        ICategoryUCPresenter<ContragentServices>
+        ICategoryUCPresenter<ContragentServices>,
+        ICategoryUCPresenter<CurrencyServices>
     {
         private readonly T _service;
         private readonly ICategoryUCView _categoryUcView;
@@ -45,6 +47,12 @@ namespace FM.SHD.Presenters.UserControlPresenters.Common
         {
             add => SelectedIndexChanged += value;
             remove => SelectedIndexChanged -= value;
+        }   
+        
+        event Action<long> ICategoryUCPresenter<CurrencyServices>.CategoryChanged
+        {
+            add => SelectedIndexChanged += value;
+            remove => SelectedIndexChanged -= value;
         }
 
         event Action<long> ICategoryUCPresenter<TypeTransactionServices>.CategoryChanged
@@ -70,7 +78,7 @@ namespace FM.SHD.Presenters.UserControlPresenters.Common
             _categoryUcView.SetLabelText(text);
         }
 
-        public (int, string) GetCategoryInfo()
+        public (long, string) GetCategoryInfo()
         {
             return _categoryUcView.GetCategoryInfo();
         }
