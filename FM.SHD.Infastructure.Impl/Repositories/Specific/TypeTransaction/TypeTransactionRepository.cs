@@ -9,13 +9,15 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.TypeTransaction
 {
     public class TypeTransactionRepository : BaseSpecificRepository, ITypeTransactionRepository
     {
+        private const string TABLE_NAME = "TransactionType";
+
         public TypeTransactionRepository(string connectionString) : base(connectionString)
         {
         }
 
         public IEnumerable<ITypeTransactionModel> GetAll()
         {
-            var sql = $"SELECT * FROM TransactionType;";
+            var sql = $"SELECT * FROM {TABLE_NAME};";
 
             var typeTransactions = new List<TypeTransactionModel>();
 
@@ -35,9 +37,9 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.TypeTransaction
 
         public TypeTransactionModel GetById(int id)
         {
-            if (CheckRecordIsExist("TransactionType", id))
+            if (CheckRecordIsExist(TABLE_NAME, id))
             {
-                var sql = $"SELECT * FROM TransactionType WHERE Id = @Id;";
+                var sql = $"SELECT * FROM {TABLE_NAME} WHERE Id = @Id;";
 
                 var dataparameters = new List<DataParameter>();
                 dataparameters.Add(new DataParameter("@Id", id));

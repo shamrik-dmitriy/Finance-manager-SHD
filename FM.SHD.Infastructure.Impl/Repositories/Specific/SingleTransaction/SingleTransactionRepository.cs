@@ -18,7 +18,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction
             {
                 var sql =
                     $"INSERT INTO SingleTransaction (Type_id, Name, Description, DebitAccount, CreditAccount, Sum, Date, Category, Contragent, FamilyMember) " +
-                    $"VALUES (@Type, @Name, @Description, @DebitAccount, @CreditAccount,, @Sum, @Date, @Category, @Contragent, @FamilyMember);";
+                    $"VALUES (@Type, @Name, @Description, @DebitAccount, @CreditAccount, @Sum, @Date, @Category, @Contragent, @FamilyMember);";
 
                 var dataparameters = new List<DataParameter>();
                 dataparameters.Add(new DataParameter("@Type", singleTransactionModel.TypeTransaction));
@@ -83,13 +83,13 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction
                     transactionModel.TypeTransaction = int.Parse(reader["Type"].ToString());
                     transactionModel.Name = reader["Name"].ToString();
                     transactionModel.Description = reader["Description"].ToString();
-                    transactionModel.CreditAccount = reader["CreditAccount"].ToString();
-                    transactionModel.DebitAccount = reader["DebitAccount"].ToString();
+                    transactionModel.CreditAccount = long.Parse(reader["CreditAccount"].ToString());
+                    transactionModel.DebitAccount = long.Parse(reader["DebitAccount"].ToString());
                     transactionModel.Sum = decimal.Parse(reader["Sum"].ToString());
                     transactionModel.Date = DateTime.Parse(reader["Date"].ToString());
-                    transactionModel.Category = reader["Category"].ToString();
-                    transactionModel.Contragent = reader["Contragent"].ToString();
-                    transactionModel.FamilyMember = reader["FamilyMember"].ToString();
+                    transactionModel.Category = long.Parse(reader["Category"].ToString());
+                    transactionModel.Contragent = long.Parse(reader["Contragent"].ToString());
+                    transactionModel.FamilyMember = long.Parse(reader["FamilyMember"].ToString());
                     singleTransactions.Add(transactionModel);
                 }
             }
@@ -153,13 +153,13 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction
                         transactionModel.TypeTransaction = int.Parse(reader["Type_id"].ToString());
                         transactionModel.Name = reader["Name"].ToString();
                         transactionModel.Description = reader["Description"].ToString();
-                        transactionModel.CreditAccount = reader["CreditAccount"].ToString();
-                        transactionModel.DebitAccount = reader["DebitAccount"].ToString();
+                        transactionModel.CreditAccount = long.Parse(reader["CreditAccount"].ToString());
+                        transactionModel.DebitAccount = long.Parse(reader["DebitAccount"].ToString());
                         transactionModel.Sum = decimal.Parse(reader["Sum"].ToString());
                         transactionModel.Date = DateTime.Parse(reader["Date"].ToString());
-                        transactionModel.Category = reader["Category"].ToString();
-                        transactionModel.Contragent = reader["Contragent"].ToString();
-                        transactionModel.FamilyMember = reader["FamilyMember"].ToString();
+                        transactionModel.Category = long.Parse(reader["Category"].ToString());
+                        transactionModel.Contragent = long.Parse(reader["Contragent"].ToString());
+                        transactionModel.FamilyMember = long.Parse(reader["FamilyMember"].ToString());
                     }
 
                     return transactionModel;

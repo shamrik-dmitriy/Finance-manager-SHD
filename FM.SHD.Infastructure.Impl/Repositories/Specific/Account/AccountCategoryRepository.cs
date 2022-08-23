@@ -8,6 +8,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
 {
     public class AccountCategoryRepository : BaseSpecificRepository, IAccountCategoryRepository
     {
+        private const string TABLE_NAME = "AccountCategory";
         public AccountCategoryRepository(string connectionString) : base(connectionString)
         {
         }
@@ -15,7 +16,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
         public long Add(IAccountCategoryModel accountCategoryModel)
         {
             var sql =
-                $"INSERT INTO AccountCategory (Name, Description) " +
+                $"INSERT INTO {TABLE_NAME} (Name, Description) " +
                 $"VALUES (@Name, @Description);";
 
             var dataparameters = new List<DataParameter>();
@@ -42,7 +43,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
 
         public IEnumerable<IAccountCategoryModel> GetAll()
         {
-            var sql = $"SELECT * FROM AccountCategory;";
+            var sql = $"SELECT * FROM {TABLE_NAME};";
 
             var account = new List<AccountCategoryModel>();
 

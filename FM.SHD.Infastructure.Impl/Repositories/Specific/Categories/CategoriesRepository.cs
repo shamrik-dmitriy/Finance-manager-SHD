@@ -8,13 +8,15 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Categories
 {
     public class CategoriesRepository : BaseSpecificRepository, ICategoriesRepository
     {
+        private const string TABLE_NAME = "Categories";
+
         public CategoriesRepository(string connectionString) : base(connectionString)
         {
         }
 
         public IEnumerable<CategoriesModel> GetAll()
         {
-            var sql = $"SELECT * FROM Categories;";
+            var sql = $"SELECT * FROM {TABLE_NAME};";
 
             var typeTransactions = new List<CategoriesModel>();
 
@@ -35,9 +37,9 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Categories
 
         public CategoriesModel GetById(long id)
         {
-            if (CheckRecordIsExist("Categories", id))
+            if (CheckRecordIsExist(TABLE_NAME, id))
             {
-                var sql = $"SELECT * FROM Categories WHERE Id = @Id;";
+                var sql = $"SELECT * FROM {TABLE_NAME} WHERE Id = @Id;";
 
                 var dataparameters = new List<DataParameter>();
                 dataparameters.Add(new DataParameter("@Id", id));
@@ -62,9 +64,9 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Categories
 
         public CategoriesModel GetByName(string name)
         {
-            if (CheckRecordIsExist("Categories", name))
+            if (CheckRecordIsExist(TABLE_NAME, name))
             {
-                var sql = $"SELECT * FROM Categories WHERE Id = @Id;";
+                var sql = $"SELECT * FROM {TABLE_NAME} WHERE Id = @Id;";
 
                 var dataparameters = new List<DataParameter>();
                 dataparameters.Add(new DataParameter("@Name", name));

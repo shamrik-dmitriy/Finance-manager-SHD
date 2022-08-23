@@ -17,24 +17,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific
             _sqliteDataProvider = new SqliteConnectionFactory().CreateConnection(connectionString).DataProvider;
             _connectionString = connectionString;
         }
-
-        public enum TypeOfExistenseCheck
-        {
-            DoesExistInDb,
-            DoesNotExistInDb
-        }
-
-        public enum RequestType
-        {
-            Add,
-            Update,
-            Read,
-            Delete,
-            ConfirmAdd,
-            ConfirmDelete
-        }
-
-
+ 
         protected bool CheckRecordIsExist(string tableName, long id)
         {
             var dataparameters = new List<DataParameter>();
