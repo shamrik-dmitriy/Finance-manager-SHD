@@ -78,8 +78,8 @@ namespace FM.SHD.Presenters.ViewPresenters
                 Name = _nameUcPresenter.GetName(),
                 Description = _descriptionUcPresenter.GetDescription(),
                 InitialSum = Convert.ToDecimal(_labelTextboxUcPresenter.GetTextBoxValue()),
-                CurrencyId = _currencyUcPresenter.GetCategoryInfo().Id,
-                CategoryId = _accountUcPresenter.GetCategoryInfo().Id,
+                CurrencyId = _currencyUcPresenter.GetCategoryId(),
+                CategoryId = _accountUcPresenter.GetCategoryId(),
                 IdentityId = 1,
                 IsClosed = Convert.ToBoolean(_checkboxUcPresenter.GetCheckboxState())
             });

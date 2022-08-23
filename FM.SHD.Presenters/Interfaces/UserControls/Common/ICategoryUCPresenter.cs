@@ -14,7 +14,7 @@ namespace FM.SHD.Presenters.Interfaces.UserControls.Common
         ICategoryUCView GetUserControlView();
 
         void SetText(string text);
-        (long Id, string Text) GetCategoryInfo();
+        long GetCategoryId();
 
         void SetVisible(bool isVisible);
 

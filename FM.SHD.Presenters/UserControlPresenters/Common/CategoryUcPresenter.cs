@@ -78,9 +78,9 @@ namespace FM.SHD.Presenters.UserControlPresenters.Common
             _categoryUcView.SetLabelText(text);
         }
 
-        public (long, string) GetCategoryInfo()
+        public long GetCategoryId()
         {
-            return _categoryUcView.GetCategoryInfo();
+            return _categoryUcView.GetCategoryId();
         }
 
         public void SetVisible(bool isVisible)

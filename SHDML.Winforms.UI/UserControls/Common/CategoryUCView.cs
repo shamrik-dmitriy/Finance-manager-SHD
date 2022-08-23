@@ -30,9 +30,9 @@ namespace SHDML.Winforms.UI.UserControls.Common
         public event Action OnLoadUserControlView;
         public event Action<long> SelectedIndexChanged;
 
-        public (long, string) GetCategoryInfo()
+        public long GetCategoryId()
         {
-            return ((long)categoryComboBox.SelectedValue, categoryComboBox.SelectedText);
+            return ((long)categoryComboBox.SelectedValue);
         }
 
         private void CategoryUCView_Load(object sender, EventArgs e)
