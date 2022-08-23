@@ -7,7 +7,7 @@ using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Services.CategoriesServices;
 using FM.SHD.Services.ComponentsServices.TypeTransactionService;
 using FM.SHD.Services.SingleTransactionServices;
-using SHDML.BLL.DTO.DTO;
+using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
 
 namespace FM.SHD.Presenters.ViewPresenters
 {
@@ -47,9 +47,10 @@ namespace FM.SHD.Presenters.ViewPresenters
             _contrAgentUcPresenter = contrAgentUcPresenter;
             _identityUcPresenter = identityUcPresenter;
             _addCancelButtonsUcPresenter = addCancelButtonsUcPresenter;
-
-            _typeTransactionUcPresenter.CategoryChanged += TypeTransactionUcPresenterOnCategoryChanged;
+            
             _singleTransactionView.OnLoadView += SingleTransactionViewOnOnLoad;
+            _typeTransactionUcPresenter.CategoryChanged += TypeTransactionUcPresenterOnCategoryChanged;
+
         }
 
         private void TypeTransactionUcPresenterOnCategoryChanged(long id)
@@ -79,15 +80,31 @@ namespace FM.SHD.Presenters.ViewPresenters
             _identityUcPresenter.SetText("Член семьи");
             _singleTransactionView.AddUserControl(_identityUcPresenter.GetUserControlView());
             _singleTransactionView.AddUserControl(_addCancelButtonsUcPresenter.GetUserControlView());
+
+            _addCancelButtonsUcPresenter.Continue += AddCancelButtonsUcPresenterOnContinue;
         }
 
-        private void _singleTransactionView_OnChangeTypeTransaction(int transactionType)
+        private void AddCancelButtonsUcPresenterOnContinue()
         {
+            _singleTransactionServices.Add(new SingleTransactionDto()
+            {
+                TypeTransaction = _typeTransactionUcPresenter.GetCategoryId(),
+                Name = _nameUcPresenter.GetName(),
+                Description = _descriptionUcPresenter.GetDescription(),
+                DebitAccount = _accountsInfoTransactionUcPresenter.GetDebitAccountId(),
+                Sum = _accountsInfoTransactionUcPresenter.GetSum(),
+                CreditAccount = _accountsInfoTransactionUcPresenter.GetCreditAccountId(),
+                Date = _accountsInfoTransactionUcPresenter.GetDate(),
+                Category = _categoriesUcPresenter.GetCategoryId(),
+                Contragent = _contrAgentUcPresenter.GetCategoryId(),
+                FamilyMember = _identityUcPresenter.GetCategoryId()
+            });
+            _singleTransactionView.CloseView();
         }
 
         private void SingleTransactionViewOnAdd(object sender, EventArgs e)
         {
-            SingleTransactionDTO dto = _singleTransactionView.GetTransactionInfo();
+            SingleTransactionDto dto = _singleTransactionView.GetTransactionInfo();
             _singleTransactionServices.Add(dto);
         }
 

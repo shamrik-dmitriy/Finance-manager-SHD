@@ -1,8 +1,6 @@
 using System;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
-using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
-using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
-using SHDML.BLL.DTO.DTO;
+using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
 
 namespace FM.SHD.Presenters.IntrefacesViews
 {
@@ -13,7 +11,7 @@ namespace FM.SHD.Presenters.IntrefacesViews
         event Action<int> OnChangeTypeTransaction;
 
         void AddUserControl(IUserControlView userControlView);
-        SingleTransactionDTO GetTransactionInfo();
+        SingleTransactionDto GetTransactionInfo();
         void AddHorizontalLine();
     }
 }

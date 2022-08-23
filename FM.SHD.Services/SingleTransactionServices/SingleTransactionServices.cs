@@ -1,13 +1,9 @@
 ﻿using FM.SHD.Services.CommonServices;
 using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AutoMapper;
 using FM.SHD.Services.Repositories;
-using SHDML.BLL.DTO.DTO;
 
 namespace FM.SHD.Services.SingleTransactionServices
 {
@@ -27,31 +23,31 @@ namespace FM.SHD.Services.SingleTransactionServices
             }).CreateMapper();
         }
 
-        public long Add(SingleTransactionDTO singleTransactionDto)
+        public long Add(SingleTransactionDto singleTransactionDto)
         {
             var model = _mapper.Map<SingleTransactionModel>(singleTransactionDto);
             ValidateModel(model);
             return _singleTransactionRepository.Add(model);
         }
 
-        public void Update(SingleTransactionDTO singleTransactionDto)
+        public void Update(SingleTransactionDto singleTransactionDto)
         {
             var model = _mapper.Map<SingleTransactionModel>(singleTransactionDto);
             ValidateModel(model);
             _singleTransactionRepository.Update(model);
         }
 
-        IEnumerable<SingleTransactionDTO> ISingleTransactionServices.GetAll()
+        IEnumerable<SingleTransactionDto> ISingleTransactionServices.GetAll()
         {
-            return _singleTransactionRepository.GetAll().Select(x => _mapper.Map<SingleTransactionDTO>(x));
+            return _singleTransactionRepository.GetAll().Select(x => _mapper.Map<SingleTransactionDto>(x));
         }
 
-        public SingleTransactionDTO GetById(int id)
+        public SingleTransactionDto GetById(int id)
         {
-            return _mapper.Map<SingleTransactionDTO>(_singleTransactionRepository.GetById(id));
+            return _mapper.Map<SingleTransactionDto>(_singleTransactionRepository.GetById(id));
         }
 
-        public void Delete(SingleTransactionDTO singleTransactionDto)
+        public void Delete(SingleTransactionDto singleTransactionDto)
         {
             _singleTransactionRepository.Delete(_mapper.Map<SingleTransactionModel>(singleTransactionDto));
         }
