@@ -74,6 +74,11 @@ namespace SHDML.Winforms.UI
             base.ShowDialog();
         }
 
+        public void CloseView()
+        {
+            Close();
+        }
+
         private void MainView_Load(object sender, EventArgs e)
         {
             OnLoadView?.Invoke();

@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHDML.Core.Models.AccountModel
 {
-    public class AccountDto
+    public class AccountDto : BaseDto
     {
-        public long Id { get; set; }
-
-        public string Name { get; set; }
-
         public string Description { get; set; }
 
         public decimal CurrentSum { get; set; }
@@ -20,6 +17,10 @@ namespace FM.SHDML.Core.Models.AccountModel
 
         public bool IsClosed { get; set; }
 
-        public string Currency { get; set; }
+        public long? CurrencyId { get; set; }
+
+        public long? CategoryId { get; set; }
+
+        public long IdentityId { get; set; }
     }
 }

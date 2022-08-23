@@ -39,7 +39,7 @@ namespace FM.SHD.Presenters.ViewPresenters
                 _mainView.AddAccountsSummaryUserControl(_accountSummaryUcPresenter.GetUserControlView(accountDto));
             }
 
-            _mainView.SetAccountsData(_accountServices.GetAll());
+           // _mainView.SetAccountsData(_accountServices.GetAll());
         }
 
         private void MainViewOnAddAccount()

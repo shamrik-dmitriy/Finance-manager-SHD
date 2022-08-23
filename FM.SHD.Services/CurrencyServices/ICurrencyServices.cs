@@ -5,13 +5,13 @@ namespace FM.SHD.Services.CurrencyServices
 {
     public interface ICurrencyServices
     {
-        void ValidateModel(ICurrencyCategoryModel currencyCategoryModel);
+        void ValidateModel(ICurrencyModel currencyModel);
 
-        long Add(CurrencyCategoryModel currencyCategoryDto);
-        void Update(CurrencyCategoryModel currencyCategoryDto);
-        void Delete(CurrencyCategoryModel currencyCategoryDto);
+        long Add(CurrencyDto currencyDto);
+        void Update(CurrencyDto currencyDto);
+        void Delete(CurrencyDto currencyDto);
         void DeleteById(long id);
-        IEnumerable<CurrencyCategoryModel> GetAll();
-        CurrencyCategoryModel GetById(long id);
+        IEnumerable<CurrencyDto> GetAll();
+        CurrencyDto GetById(long id);
     }
 }

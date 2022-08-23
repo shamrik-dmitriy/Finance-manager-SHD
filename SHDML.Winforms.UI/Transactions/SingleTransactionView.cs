@@ -5,11 +5,7 @@ using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
-using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
-using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
-using SHDML.BLL.DTO.DTO;
-using SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls;
-using SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions;
+using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
 
 namespace SHDML.Winforms.UI.Transactions
 {
@@ -88,9 +84,7 @@ namespace SHDML.Winforms.UI.Transactions
         }
 
         #endregion
-
-        protected internal SingleTransactionDTO SingleTransactionDTO { get; set; }
-
+        
         private void addedSingleTransactionButton_Click(object sender, EventArgs e)
         {
             Add?.Invoke(sender, e);
@@ -121,15 +115,20 @@ namespace SHDML.Winforms.UI.Transactions
             base.ShowDialog();
         }
 
+        public void CloseView()
+        {
+            Close();
+        }
+
         public void AddUserControl(IUserControlView userControlView)
         {
             var userControl = (UserControl)userControlView;
             singleTransactionDesktopflowLayoutPanel.Controls.Add(userControl);
         }
 
-        public SingleTransactionDTO GetTransactionInfo()
+        public SingleTransactionDto GetTransactionInfo()
         {
-            return new SingleTransactionDTO();
+            return new SingleTransactionDto();
             /*
             var accountUser = billingInfoFlowLayoutPanel.Controls[0] as AccountsInfoTransactionUCView;
             

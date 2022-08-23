@@ -17,5 +17,10 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
         {
             return _sumTransactionUcView;
         }
+
+        public decimal GetSum()
+        {
+            return _sumTransactionUcView.GetSum();
+        }
     }
 }

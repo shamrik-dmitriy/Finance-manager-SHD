@@ -1,6 +1,6 @@
-namespace FM.SHDML.Core.Models.Categories.CurrencyCategory
+namespace FM.SHDML.Core.Models.Categories.IdentitiesCategory
 {
-    public interface ICurrencyCategoryModel
+    public interface IIdentityModel
     {
         /// <summary>
         ///     Идентификатор
@@ -8,13 +8,13 @@ namespace FM.SHDML.Core.Models.Categories.CurrencyCategory
         public long Id { get; set; }
 
         /// <summary>
-        ///     Наименование валюты
+        ///     Наименование
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        ///     Символ валюты
+        ///     Описание
         /// </summary>
-        public string Symbol { get; set; }
+        public string Description { get; set; }
     }
 }

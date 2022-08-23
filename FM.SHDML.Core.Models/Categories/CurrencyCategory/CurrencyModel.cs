@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FM.SHDML.Core.Models.Categories.CurrencyCategory
 {
-    public class CurrencyCategoryModel : ICurrencyCategoryModel
+    public class CurrencyModel : ICurrencyModel
     {
         /// <summary>
         ///     Идентификатор

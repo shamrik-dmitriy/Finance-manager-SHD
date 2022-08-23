@@ -4,6 +4,7 @@ using FM.SHD.Presenters.Interfaces.Views;
 using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
 using FM.SHD.Services.AccountServices;
+using FM.SHD.Services.CurrencyServices;
 using FM.SHDML.Core.Models.AccountModel;
 
 namespace FM.SHD.Presenters.ViewPresenters
@@ -15,8 +16,8 @@ namespace FM.SHD.Presenters.ViewPresenters
         private readonly INameUCPresenter _nameUcPresenter;
         private readonly IDescriptionUCPresenter _descriptionUcPresenter;
         private readonly ILabelTextboxUcPresenter _labelTextboxUcPresenter;
-        private readonly ICategoryUCPresenter _categoryAccountUcPresenter;
-        private readonly ICategoryUCPresenter _categoryCurrencyUcPresenter;
+        private readonly ICategoryUCPresenter<AccountServices> _accountUcPresenter;
+        private readonly ICategoryUCPresenter<CurrencyServices> _currencyUcPresenter;
         private readonly ICheckboxUCPresenter _checkboxUcPresenter;
         private readonly IAddCancelButtonsUCPresenter _addCancelButtonsUcPresenter;
 
@@ -26,8 +27,8 @@ namespace FM.SHD.Presenters.ViewPresenters
             INameUCPresenter nameUcPresenter,
             IDescriptionUCPresenter descriptionUcPresenter,
             ILabelTextboxUcPresenter labelTextboxUcPresenter,
-            ICategoryUCPresenter categoryAccountUcPresenter,
-            ICategoryUCPresenter categoryCurrencyUcPresenter,
+            ICategoryUCPresenter<AccountServices>  accountUcPresenter,
+            ICategoryUCPresenter<CurrencyServices>  currencyUcPresenter,
             ICheckboxUCPresenter checkboxUcPresenter,
             IAddCancelButtonsUCPresenter addCancelButtonsUcPresenter)
         {
@@ -36,8 +37,8 @@ namespace FM.SHD.Presenters.ViewPresenters
             _nameUcPresenter = nameUcPresenter;
             _descriptionUcPresenter = descriptionUcPresenter;
             _labelTextboxUcPresenter = labelTextboxUcPresenter;
-            _categoryAccountUcPresenter = categoryAccountUcPresenter;
-            _categoryCurrencyUcPresenter = categoryCurrencyUcPresenter;
+            _accountUcPresenter = accountUcPresenter;
+            _currencyUcPresenter = currencyUcPresenter;
             _checkboxUcPresenter = checkboxUcPresenter;
             _addCancelButtonsUcPresenter = addCancelButtonsUcPresenter;
 
@@ -50,17 +51,24 @@ namespace FM.SHD.Presenters.ViewPresenters
             _accountView.AddUserControl(_descriptionUcPresenter.GetUserControlView());
             _labelTextboxUcPresenter.SetText("Начальная сумма");
             _accountView.AddUserControl(_labelTextboxUcPresenter.GetUserControlView());
-            _categoryAccountUcPresenter.SetText("Категория счёта");
-            _accountView.AddUserControl(_categoryAccountUcPresenter.GetUserControlView());
-            _categoryCurrencyUcPresenter.SetText("Валюта");
-            _accountView.AddUserControl(_categoryCurrencyUcPresenter.GetUserControlView());
+            _accountUcPresenter.SetText("Категория счёта");
+            _accountView.AddUserControl(_accountUcPresenter.GetUserControlView());
+            _currencyUcPresenter.SetStyleDropDownList();
+            _currencyUcPresenter.SetText("Валюта");
+            _accountView.AddUserControl(_currencyUcPresenter.GetUserControlView());
             _checkboxUcPresenter.SetText("Закрытый счёт");
             _accountView.AddUserControl(_checkboxUcPresenter.GetUserControlView());
             _accountView.AddUserControl(_addCancelButtonsUcPresenter.GetUserControlView());
 
             _addCancelButtonsUcPresenter.Continue += AddCancelButtonsUcPresenterOnContinue;
+            _currencyUcPresenter.CategoryChanged += CurrencyUcPresenterOnCategoryChanged;
+
+            //_categoryAccountUcPresenter.SetCategoryValues();
+        }
+
+        private void CurrencyUcPresenterOnCategoryChanged(long id)
+        {
             
-            _categoryAccountUcPresenter.SetCategoryValues();
         }
 
         private void AddCancelButtonsUcPresenterOnContinue()
@@ -69,8 +77,10 @@ namespace FM.SHD.Presenters.ViewPresenters
             {
                 Name = _nameUcPresenter.GetName(),
                 Description = _descriptionUcPresenter.GetDescription(),
-                Currency = _categoryCurrencyUcPresenter.GetCategoryInfo().Name,
                 InitialSum = Convert.ToDecimal(_labelTextboxUcPresenter.GetTextBoxValue()),
+                CurrencyId = _currencyUcPresenter.GetCategoryId(),
+                CategoryId = _accountUcPresenter.GetCategoryId(),
+                IdentityId = 1,
                 IsClosed = Convert.ToBoolean(_checkboxUcPresenter.GetCheckboxState())
             });
             _accountView.CloseView();

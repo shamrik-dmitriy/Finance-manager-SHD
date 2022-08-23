@@ -1,9 +1,9 @@
+using FM.SHDML.Core.Models.Dtos;
+
 namespace FM.SHDML.Core.Models.Categories.CurrencyCategory
 {
-    public class CurrencyCategoryDto
+    public class CurrencyDto : BaseDto
     {
-        public string Name { get; set; }
-
         public string Symbol { get; set; }
     }
 }

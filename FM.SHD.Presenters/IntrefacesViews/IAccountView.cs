@@ -9,6 +9,6 @@ namespace FM.SHD.Presenters.IntrefacesViews
         event Action OnClosingView;
 
         void AddUserControl(IUserControlView userControlView);
-        void CloseView();
+ 
     }
 }

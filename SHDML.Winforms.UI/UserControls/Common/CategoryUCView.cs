@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
-using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
+using FM.SHDML.Core.Models.Dtos;
 
 namespace SHDML.Winforms.UI.UserControls.Common
 {
-    public partial class CategoryUCView : UserControl, ICategoryTransactionUCView
+    public partial class CategoryUCView : UserControl, ICategoryUCView
     {
         public string CategoryName
         {
@@ -27,13 +27,35 @@ namespace SHDML.Winforms.UI.UserControls.Common
             label.Text = labelText;
         }
 
+        public event Action OnLoadUserControlView;
+        public event Action<long> SelectedIndexChanged;
 
-        public void SetDataSource(IEnumerable<string> data)
+        public long? GetCategoryId()
         {
+            return (long?)categoryComboBox.SelectedValue;
         }
+
+        private void CategoryUCView_Load(object sender, EventArgs e)
+        {
+            OnLoadUserControlView?.Invoke();
+        }
+
+        #region Label actions
+
+        public void SetLabelText(string text)
+        {
+            label.Text = text;
+        }
+
+        #endregion
+
+        #region Combobox action
 
         private void comboBoxCategoryName_SelectedIndexChanged(object sender, System.EventArgs e)
         {
+            if (sender is not ComboBox combobox) return;
+            var id = (long)combobox.SelectedValue;
+            SelectedIndexChanged?.Invoke(id);
         }
 
         private void comboBoxCategoryName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -43,31 +65,42 @@ namespace SHDML.Winforms.UI.UserControls.Common
                 SetValue(0);
         }
 
+        public void SetDataSource(IEnumerable<BaseDto> data)
+        {
+            categoryComboBox.DisplayMember = "Name";
+            categoryComboBox.ValueMember = "Id";
+            categoryComboBox.DataSource = data.ToList();
+        }
+
         private void SetValue(int index)
         {
             categoryComboBox.SelectedIndex = index;
         }
 
-        public event Action OnLoadUserControlView;
+        #endregion
 
-        public void SetLabelText(string text)
+        #region UI actions
+
+        public void SetVisible(bool isVisible)
         {
-            label.Text = text;
+            Visible = isVisible;
         }
 
-        public (int, string) GetCategoryInfo()
+        public void SetStyleDropDown()
         {
-            return (categoryComboBox.SelectedIndex, categoryComboBox.SelectedText);
+            SetDropDownStyle(ComboBoxStyle.DropDown);
         }
 
-        public void SetCategoryValues(IEnumerable<string> value)
+        public void SetStyleDropDownList()
         {
-            categoryComboBox.Items.AddRange(value.ToArray());
+            SetDropDownStyle(ComboBoxStyle.DropDownList);
         }
 
-        private void CategoryUCView_Load(object sender, EventArgs e)
+        private void SetDropDownStyle(ComboBoxStyle comboBoxStyle)
         {
-            OnLoadUserControlView?.Invoke();
+            categoryComboBox.DropDownStyle = comboBoxStyle;
         }
+
+        #endregion
     }
 }

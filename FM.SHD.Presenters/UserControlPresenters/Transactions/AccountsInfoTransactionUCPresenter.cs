@@ -1,5 +1,7 @@
+using System;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
+using FM.SHD.Presenters.Interfaces.UserControls.Common;
 using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using FM.SHD.Services.AccountServices;
@@ -11,18 +13,21 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
         private readonly EventAggregator _eventAggregator;
         private readonly IAccountsInfoTransactionUCView _accountsInfoTransactionUcView;
         private readonly IAccountServices _accountServices;
-        private readonly IAccountInfoUCPresenter _debitAccountInfoUcPresenter;
+
+        private readonly ICategoryUCPresenter<AccountServices> _debitAccountInfoUcPresenter;
+
+        //private readonly IAccountInfoUCPresenter _debitAccountInfoUcPresenter;
         private readonly ISumTransactionUCPresenter _sumTransactionUcPresenter;
-        private readonly IAccountInfoUCPresenter _creditAccountInfoUcPresenter;
+        private readonly ICategoryUCPresenter<AccountServices> _creditAccountInfoUcPresenter;
         private readonly IDateTransactionUCPresenter _dateTransactionUcPresenter;
 
         public AccountsInfoTransactionUCPresenter(
             EventAggregator eventAggregator,
             IAccountsInfoTransactionUCView accountsInfoTransactionUcView,
             IAccountServices accountServices,
-            IAccountInfoUCPresenter debitAccountInfoUcPresenter,
+            ICategoryUCPresenter<AccountServices> debitAccountInfoUcPresenter,
             ISumTransactionUCPresenter sumTransactionUcPresenter,
-            IAccountInfoUCPresenter creditAccountInfoUcPresenter,
+            ICategoryUCPresenter<AccountServices> creditAccountInfoUcPresenter,
             IDateTransactionUCPresenter dateTransactionUcPresenter)
         {
             _eventAggregator = eventAggregator;
@@ -64,11 +69,8 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
                     break;
                 }
             }
-
-            //  financeInfoOfOperationflowLayoutPanel.Refresh();
-           //  financeInfoOfOperationflowLayoutPanel.Update();
         }
-        
+
         private void AccountsInfoUcViewOnOnLoadControlView()
         {
             _accountsInfoTransactionUcView.AddAccountInfo(_creditAccountInfoUcPresenter.GetUserControlView());
@@ -82,5 +84,54 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
         {
             return _accountsInfoTransactionUcView;
         }
+
+        void IAccountsInfoTransactionUCPresenter.CategoryChanged(long id)
+        {
+            switch (id)
+            {
+                case 1:
+                {
+                    _creditAccountInfoUcPresenter.SetText("Списать со счёта");
+                    _debitAccountInfoUcPresenter.SetVisible(false);
+                    break;
+                }
+                case 2:
+                {
+                    _creditAccountInfoUcPresenter.SetText("Зачислить на счёт");
+                    _debitAccountInfoUcPresenter.SetVisible(false);
+                    break;
+                }
+                case 3:
+                {
+                    _creditAccountInfoUcPresenter.SetText("Списать со счёта");
+                    _debitAccountInfoUcPresenter.SetText("Зачислить на счёт");
+                    _debitAccountInfoUcPresenter.SetVisible(true);
+                    break;
+                }
+            }
+        }
+
+        public long? GetDebitAccountId()
+        {
+            // TODO: Переписать
+            return _debitAccountInfoUcPresenter.GetCategoryId(true);
+        }
+
+        public long? GetCreditAccountId()
+        {
+            return _creditAccountInfoUcPresenter.GetCategoryId();
+        }
+
+        public decimal GetSum()
+        {
+            return _sumTransactionUcPresenter.GetSum();
+        }
+
+        public DateTime GetDate()
+        {
+            return _dateTransactionUcPresenter.GetDate();
+        }
+
+        public event Action<long> CategoryChanged;
     }
 }

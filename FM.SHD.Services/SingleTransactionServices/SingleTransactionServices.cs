@@ -1,13 +1,9 @@
 ﻿using FM.SHD.Services.CommonServices;
 using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AutoMapper;
 using FM.SHD.Services.Repositories;
-using SHDML.BLL.DTO.DTO;
 
 namespace FM.SHD.Services.SingleTransactionServices
 {
@@ -23,35 +19,59 @@ namespace FM.SHD.Services.SingleTransactionServices
             _modelValidator = modelValidator;
             _mapper = new MapperConfiguration(config =>
             {
-                config.CreateMap<SingleTransactionDto, SingleTransactionModel>();
+                config.CreateMap<SingleTransactionDto, SingleTransactionModel>()
+                    .ForMember(
+                        x=>x.TypeTransactionId,
+                        opt => 
+                            opt.MapFrom(src => src.TypeTransactionId.HasValue ? src.TypeTransactionId.Value : (long?)null))
+                    .ForMember(
+                        x=>x.CategoryId,
+                        opt => 
+                            opt.MapFrom(src => src.CategoryId.HasValue ? src.CategoryId.Value : (long?)null))
+                    .ForMember(
+                        x=>x.ContragentId,
+                        opt => 
+                            opt.MapFrom(src => src.ContragentId.HasValue ? src.ContragentId.Value : (long?)null))
+                    .ForMember(
+                        x=>x.IdentityId,
+                        opt => 
+                            opt.MapFrom(src => src.IdentityId.HasValue ? src.IdentityId.Value : (long?)null))
+                    .ForMember(
+                        x=>x.CreditAccountId,
+                        opt => 
+                            opt.MapFrom(src => src.CreditAccountId.HasValue ? src.CreditAccountId.Value : (long?)null))
+                    .ForMember(
+                        x=>x.DebitAccountId,
+                        opt => 
+                            opt.MapFrom(src => src.DebitAccountId.HasValue ? src.DebitAccountId.Value : (long?)null));
             }).CreateMapper();
         }
 
-        public long Add(SingleTransactionDTO singleTransactionDto)
+        public long Add(SingleTransactionDto singleTransactionDto)
         {
             var model = _mapper.Map<SingleTransactionModel>(singleTransactionDto);
             ValidateModel(model);
             return _singleTransactionRepository.Add(model);
         }
 
-        public void Update(SingleTransactionDTO singleTransactionDto)
+        public void Update(SingleTransactionDto singleTransactionDto)
         {
             var model = _mapper.Map<SingleTransactionModel>(singleTransactionDto);
             ValidateModel(model);
             _singleTransactionRepository.Update(model);
         }
 
-        IEnumerable<SingleTransactionDTO> ISingleTransactionServices.GetAll()
+        IEnumerable<SingleTransactionDto> ISingleTransactionServices.GetAll()
         {
-            return _singleTransactionRepository.GetAll().Select(x => _mapper.Map<SingleTransactionDTO>(x));
+            return _singleTransactionRepository.GetAll().Select(x => _mapper.Map<SingleTransactionDto>(x));
         }
 
-        public SingleTransactionDTO GetById(int id)
+        public SingleTransactionDto GetById(int id)
         {
-            return _mapper.Map<SingleTransactionDTO>(_singleTransactionRepository.GetById(id));
+            return _mapper.Map<SingleTransactionDto>(_singleTransactionRepository.GetById(id));
         }
 
-        public void Delete(SingleTransactionDTO singleTransactionDto)
+        public void Delete(SingleTransactionDto singleTransactionDto)
         {
             _singleTransactionRepository.Delete(_mapper.Map<SingleTransactionModel>(singleTransactionDto));
         }
