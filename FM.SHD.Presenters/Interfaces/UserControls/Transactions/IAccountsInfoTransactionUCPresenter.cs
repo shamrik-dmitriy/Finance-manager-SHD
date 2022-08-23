@@ -9,8 +9,8 @@ namespace FM.SHD.Presenters.Interfaces.UserControls.Transactions
         IAccountsInfoTransactionUCView GetUserControlView();
 
         void CategoryChanged(long id);
-       long GetDebitAccountId();
-       long GetCreditAccountId();
+       long? GetDebitAccountId();
+       long? GetCreditAccountId();
        decimal GetSum();
        DateTime GetDate();
     }

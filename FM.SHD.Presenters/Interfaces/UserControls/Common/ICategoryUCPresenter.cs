@@ -14,10 +14,9 @@ namespace FM.SHD.Presenters.Interfaces.UserControls.Common
         ICategoryUCView GetUserControlView();
 
         void SetText(string text);
-        long GetCategoryId();
+        long? GetCategoryId(bool isPossibleNull = false);
 
         void SetVisible(bool isVisible);
-
 
         #region DropDown styles
 

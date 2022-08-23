@@ -19,7 +19,31 @@ namespace FM.SHD.Services.SingleTransactionServices
             _modelValidator = modelValidator;
             _mapper = new MapperConfiguration(config =>
             {
-                config.CreateMap<SingleTransactionDto, SingleTransactionModel>();
+                config.CreateMap<SingleTransactionDto, SingleTransactionModel>()
+                    .ForMember(
+                        x=>x.TypeTransactionId,
+                        opt => 
+                            opt.MapFrom(src => src.TypeTransactionId.HasValue ? src.TypeTransactionId.Value : (long?)null))
+                    .ForMember(
+                        x=>x.CategoryId,
+                        opt => 
+                            opt.MapFrom(src => src.CategoryId.HasValue ? src.CategoryId.Value : (long?)null))
+                    .ForMember(
+                        x=>x.ContragentId,
+                        opt => 
+                            opt.MapFrom(src => src.ContragentId.HasValue ? src.ContragentId.Value : (long?)null))
+                    .ForMember(
+                        x=>x.IdentityId,
+                        opt => 
+                            opt.MapFrom(src => src.IdentityId.HasValue ? src.IdentityId.Value : (long?)null))
+                    .ForMember(
+                        x=>x.CreditAccountId,
+                        opt => 
+                            opt.MapFrom(src => src.CreditAccountId.HasValue ? src.CreditAccountId.Value : (long?)null))
+                    .ForMember(
+                        x=>x.DebitAccountId,
+                        opt => 
+                            opt.MapFrom(src => src.DebitAccountId.HasValue ? src.DebitAccountId.Value : (long?)null));
             }).CreateMapper();
         }
 

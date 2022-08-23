@@ -10,24 +10,24 @@ namespace FM.SHDML.Core.Models.TransactionModels.SignleTransaction
     {
         long Id { get; set; }
 
-        long TypeTransaction { get; set; }
+        long? TypeTransactionId { get; set; }
 
         string Name { get; set; }
 
         string Description { get; set; }
 
-        long DebitAccount { get; set; }
+        long? DebitAccountId { get; set; }
 
-        long CreditAccount { get; set; }
+        long? CreditAccountId { get; set; }
 
         decimal Sum { get; set; }
 
         DateTime Date { get; set; }
 
-        long Category { get; set; }
+        long? CategoryId { get; set; }
 
-        long Contragent { get; set; }
+        long? ContragentId { get; set; }
 
-        long FamilyMember { get; set; }
+        long? IdentityId { get; set; }
     }
 }

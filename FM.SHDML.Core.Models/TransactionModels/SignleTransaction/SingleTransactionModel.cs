@@ -7,7 +7,8 @@ namespace FM.SHDML.Core.Models.TransactionModels.SignleTransaction
     {
         public long Id { get; set; }
 
-        public long TypeTransaction { get; set; }
+        [Required(ErrorMessage = "Укажите тип транзакции")]
+        public long? TypeTransactionId { get; set; }
 
         [MaxLength(255, ErrorMessage = "Длина названия транзакции не может превышать 255 символов")]
         public string Name { get; set; }
@@ -15,21 +16,20 @@ namespace FM.SHDML.Core.Models.TransactionModels.SignleTransaction
         [MaxLength(255, ErrorMessage = "Длина описания транзакции не может превышать 255 символов")]
         public string Description { get; set; }
 
-        [Required(ErrorMessage = "Укажите счёт для транзакции")]
-        public long DebitAccount { get; set; }
+        public long? DebitAccountId { get; set; }
 
         [Required(ErrorMessage = "Укажите счёт для транзакции")]
-        public long CreditAccount { get; set; }
+        public long? CreditAccountId { get; set; }
 
         public decimal Sum { get; set; }
 
         [Required(ErrorMessage = "Укажите дату совершения транзакции")]
         public DateTime Date { get; set; }
 
-        public long Category { get; set; }
+        public long? CategoryId { get; set; }
 
-        public long Contragent { get; set; }
+        public long? ContragentId { get; set; }
 
-        public long FamilyMember { get; set; }
+        public long? IdentityId { get; set; }
     }
 }

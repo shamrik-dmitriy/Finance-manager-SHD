@@ -30,10 +30,9 @@ namespace SHDML.Winforms.UI.UserControls.Common
         public event Action OnLoadUserControlView;
         public event Action<long> SelectedIndexChanged;
 
-        public long GetCategoryId()
+        public long? GetCategoryId()
         {
-            // TODO: Если селектедвалуе пуст, создать такую категорию
-            return ((long)categoryComboBox.SelectedValue);
+            return (long?)categoryComboBox.SelectedValue;
         }
 
         private void CategoryUCView_Load(object sender, EventArgs e)

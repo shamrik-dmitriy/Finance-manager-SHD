@@ -52,14 +52,14 @@ namespace SHDML.Winforms.UI.DependencyInjection
         public static IServiceCollection AddUserControlViews(this IServiceCollection serviceCollection)
         {
             return serviceCollection
-                .AddScoped<ITypeTransactionUCView, TypeTransactionUCView>()
-                .AddScoped<ITypeTransactionUCPresenter, TypeTransactionUCPresenter>()
+                .AddTransient<ITypeTransactionUCView, TypeTransactionUCView>()
+                .AddTransient<ITypeTransactionUCPresenter, TypeTransactionUCPresenter>()
                 .AddTransient<INameTextboxUCView, NameTextboxUCView>()
                 .AddTransient<INameUCPresenter, NameUcPresenter>()
                 .AddTransient<IDescriptionTextboxUCView, DescriptionTextboxUCView>()
                 .AddTransient<IDescriptionUCPresenter, DescriptionUcPresenter>()
-                .AddScoped<IAccountsInfoTransactionUCView, AccountsInfoTransactionUCView>()
-                .AddScoped<IAccountsInfoTransactionUCPresenter, AccountsInfoTransactionUCPresenter>()
+                .AddTransient<IAccountsInfoTransactionUCView, AccountsInfoTransactionUCView>()
+                .AddTransient<IAccountsInfoTransactionUCPresenter, AccountsInfoTransactionUCPresenter>()
                 .AddTransient<ICategoryUCPresenter<AccountServices>, CategoryUcPresenter<IAccountServices>>()
                 .AddTransient<ICategoryUCPresenter<TypeTransactionServices>,
                     CategoryUcPresenter<ITypeTransactionServices>>()

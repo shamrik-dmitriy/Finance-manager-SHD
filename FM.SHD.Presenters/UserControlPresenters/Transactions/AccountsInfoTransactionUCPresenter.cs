@@ -111,12 +111,13 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
             }
         }
 
-        public long GetDebitAccountId()
+        public long? GetDebitAccountId()
         {
-            return _debitAccountInfoUcPresenter.GetCategoryId();
+            // TODO: Переписать
+            return _debitAccountInfoUcPresenter.GetCategoryId(true);
         }
 
-        public long GetCreditAccountId()
+        public long? GetCreditAccountId()
         {
             return _creditAccountInfoUcPresenter.GetCategoryId();
         }

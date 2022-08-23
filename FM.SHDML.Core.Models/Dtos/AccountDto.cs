@@ -17,9 +17,9 @@ namespace FM.SHDML.Core.Models.AccountModel
 
         public bool IsClosed { get; set; }
 
-        public long CurrencyId { get; set; }
+        public long? CurrencyId { get; set; }
 
-        public long CategoryId { get; set; }
+        public long? CategoryId { get; set; }
 
         public long IdentityId { get; set; }
     }

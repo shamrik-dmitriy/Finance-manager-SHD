@@ -86,18 +86,18 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void AddCancelButtonsUcPresenterOnContinue()
         {
-            _singleTransactionServices.Add(new SingleTransactionDto()
+            _singleTransactionServices.Add(new SingleTransactionDto
             {
-                TypeTransaction = _typeTransactionUcPresenter.GetCategoryId(),
+                TypeTransactionId = _typeTransactionUcPresenter.GetCategoryId(),
                 Name = _nameUcPresenter.GetName(),
                 Description = _descriptionUcPresenter.GetDescription(),
-                DebitAccount = _accountsInfoTransactionUcPresenter.GetDebitAccountId(),
+                DebitAccountId = _accountsInfoTransactionUcPresenter.GetDebitAccountId(),
                 Sum = _accountsInfoTransactionUcPresenter.GetSum(),
-                CreditAccount = _accountsInfoTransactionUcPresenter.GetCreditAccountId(),
+                CreditAccountId = _accountsInfoTransactionUcPresenter.GetCreditAccountId(),
                 Date = _accountsInfoTransactionUcPresenter.GetDate(),
-                Category = _categoriesUcPresenter.GetCategoryId(),
-                Contragent = _contrAgentUcPresenter.GetCategoryId(),
-                FamilyMember = _identityUcPresenter.GetCategoryId()
+                CategoryId = _categoriesUcPresenter.GetCategoryId(),
+                ContragentId = _contrAgentUcPresenter.GetCategoryId(),
+                IdentityId = _identityUcPresenter.GetCategoryId()
             });
             _singleTransactionView.CloseView();
         }
