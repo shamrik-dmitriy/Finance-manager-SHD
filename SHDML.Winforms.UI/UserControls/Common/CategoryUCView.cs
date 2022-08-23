@@ -32,6 +32,7 @@ namespace SHDML.Winforms.UI.UserControls.Common
 
         public long GetCategoryId()
         {
+            // TODO: Если селектедвалуе пуст, создать такую категорию
             return ((long)categoryComboBox.SelectedValue);
         }
 
@@ -95,6 +96,7 @@ namespace SHDML.Winforms.UI.UserControls.Common
         {
             SetDropDownStyle(ComboBoxStyle.DropDownList);
         }
+
         private void SetDropDownStyle(ComboBoxStyle comboBoxStyle)
         {
             categoryComboBox.DropDownStyle = comboBoxStyle;

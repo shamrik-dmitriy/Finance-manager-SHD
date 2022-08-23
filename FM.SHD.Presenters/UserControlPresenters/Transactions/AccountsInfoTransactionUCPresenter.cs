@@ -87,7 +87,6 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
 
         void IAccountsInfoTransactionUCPresenter.CategoryChanged(long id)
         {
-            
             switch (id)
             {
                 case 1:
@@ -110,6 +109,26 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
                     break;
                 }
             }
+        }
+
+        public long GetDebitAccountId()
+        {
+            return _debitAccountInfoUcPresenter.GetCategoryId();
+        }
+
+        public long GetCreditAccountId()
+        {
+            return _creditAccountInfoUcPresenter.GetCategoryId();
+        }
+
+        public decimal GetSum()
+        {
+            return _sumTransactionUcPresenter.GetSum();
+        }
+
+        public DateTime GetDate()
+        {
+            return _dateTransactionUcPresenter.GetDate();
         }
 
         public event Action<long> CategoryChanged;

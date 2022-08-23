@@ -31,5 +31,10 @@ namespace SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions
         {
             InitializeComponent();
         }
+
+        public decimal GetSum()
+        {
+            return Sum;
+        }
     }
 }
