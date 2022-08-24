@@ -28,22 +28,6 @@ namespace SHDML.Winforms.UI
             _eventAggregator = eventAggregator;
         }
 
-        private void Sign_Click(object sender, EventArgs e)
-        {
-            if (!_authUcView.IsSigned)
-            {
-                _authUcView.IsSigned = true;
-                _authUcView.UserName.Text = "Hello!, you signed in!";
-                buttonSign.Text = "Выйти";
-            }
-            else
-            {
-                _authUcView.IsSigned = false;
-                buttonSign.Text = "Войти";
-                _authUcView.UserName.Text = "Пользователь не задан";
-            }
-        }
-
         private void buttonTransactionReview_Click(object sender, EventArgs e)
         {
             splitContainerMainDesktop.Panel2.Controls.Add(new Label() { Text = "Yep!" });
@@ -108,6 +92,11 @@ namespace SHDML.Winforms.UI
         {
             accountActionAndTotalSumsplitContainer.Panel2.Controls.Add(
                 new TotalSumInAccountsUCView(accountDtos.Sum(accountDto => accountDto.CurrentSum).ToString()));
+        }
+
+        private void выйтиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

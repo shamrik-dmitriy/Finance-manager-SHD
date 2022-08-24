@@ -35,7 +35,6 @@ namespace SHDML.Winforms.UI
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this._authUcView = new SHDML.Winforms.UI.UserControls.Authorization.AuthUCView();
-            this.buttonSign = new System.Windows.Forms.Button();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.buttonTransactionReview = new System.Windows.Forms.Button();
             this.seeAccountButton = new System.Windows.Forms.Button();
@@ -55,7 +54,19 @@ namespace SHDML.Winforms.UI
             this.buttonAddReceipt = new System.Windows.Forms.Button();
             this.buttonAddTransaction = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ColumnVerified = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.открытьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
+            this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ваToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
+            this.выйтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.инструментыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.пользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.пToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.калькуляторToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ColumnTypeOperation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDateOperation = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -113,7 +124,6 @@ namespace SHDML.Winforms.UI
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.panel1);
-            this.flowLayoutPanel1.Controls.Add(this.buttonSign);
             this.flowLayoutPanel1.Controls.Add(this.splitter2);
             this.flowLayoutPanel1.Controls.Add(this.buttonTransactionReview);
             this.flowLayoutPanel1.Controls.Add(this.seeAccountButton);
@@ -148,21 +158,9 @@ namespace SHDML.Winforms.UI
             this._authUcView.TabIndex = 1;
             this._authUcView.Visible = false;
             // 
-            // buttonSign
-            // 
-            this.buttonSign.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSign.Location = new System.Drawing.Point(318, 3);
-            this.buttonSign.Name = "buttonSign";
-            this.buttonSign.Size = new System.Drawing.Size(75, 70);
-            this.buttonSign.TabIndex = 1;
-            this.buttonSign.Text = "Войти";
-            this.buttonSign.UseVisualStyleBackColor = true;
-            this.buttonSign.Visible = false;
-            this.buttonSign.Click += new System.EventHandler(this.Sign_Click);
-            // 
             // splitter2
             // 
-            this.splitter2.Location = new System.Drawing.Point(399, 3);
+            this.splitter2.Location = new System.Drawing.Point(318, 3);
             this.splitter2.Name = "splitter2";
             this.splitter2.Size = new System.Drawing.Size(3, 70);
             this.splitter2.TabIndex = 4;
@@ -171,7 +169,7 @@ namespace SHDML.Winforms.UI
             // buttonTransactionReview
             // 
             this.buttonTransactionReview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTransactionReview.Location = new System.Drawing.Point(408, 3);
+            this.buttonTransactionReview.Location = new System.Drawing.Point(327, 3);
             this.buttonTransactionReview.Name = "buttonTransactionReview";
             this.buttonTransactionReview.Size = new System.Drawing.Size(84, 70);
             this.buttonTransactionReview.TabIndex = 5;
@@ -182,7 +180,7 @@ namespace SHDML.Winforms.UI
             // seeAccountButton
             // 
             this.seeAccountButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.seeAccountButton.Location = new System.Drawing.Point(498, 3);
+            this.seeAccountButton.Location = new System.Drawing.Point(417, 3);
             this.seeAccountButton.Name = "seeAccountButton";
             this.seeAccountButton.Size = new System.Drawing.Size(75, 70);
             this.seeAccountButton.TabIndex = 7;
@@ -193,7 +191,7 @@ namespace SHDML.Winforms.UI
             // 
             // splitter1
             // 
-            this.splitter1.Location = new System.Drawing.Point(579, 3);
+            this.splitter1.Location = new System.Drawing.Point(498, 3);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(3, 70);
             this.splitter1.TabIndex = 20;
@@ -202,7 +200,7 @@ namespace SHDML.Winforms.UI
             // seeCategoriesButton
             // 
             this.seeCategoriesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.seeCategoriesButton.Location = new System.Drawing.Point(588, 3);
+            this.seeCategoriesButton.Location = new System.Drawing.Point(507, 3);
             this.seeCategoriesButton.Name = "seeCategoriesButton";
             this.seeCategoriesButton.Size = new System.Drawing.Size(75, 70);
             this.seeCategoriesButton.TabIndex = 21;
@@ -214,7 +212,9 @@ namespace SHDML.Winforms.UI
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem});
+            this.файлToolStripMenuItem,
+            this.инструментыToolStripMenuItem,
+            this.пToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1208, 24);
@@ -223,6 +223,13 @@ namespace SHDML.Winforms.UI
             // 
             // файлToolStripMenuItem
             // 
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.открытьToolStripMenuItem,
+            this.открытьToolStripMenuItem1,
+            this.сохранитьToolStripMenuItem,
+            this.настройкиToolStripMenuItem,
+            this.ваToolStripMenuItem,
+            this.выйтиToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файлToolStripMenuItem.Text = "Файл";
@@ -373,7 +380,6 @@ namespace SHDML.Winforms.UI
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnVerified,
             this.ColumnTypeOperation,
             this.ColumnAccount,
             this.ColumnDateOperation,
@@ -387,10 +393,92 @@ namespace SHDML.Winforms.UI
             this.dataGridView1.Size = new System.Drawing.Size(887, 487);
             this.dataGridView1.TabIndex = 0;
             // 
-            // ColumnVerified
+            // открытьToolStripMenuItem
             // 
-            this.ColumnVerified.HeaderText = "Проверено";
-            this.ColumnVerified.Name = "ColumnVerified";
+            this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.открытьToolStripMenuItem.Text = "Создать";
+            this.открытьToolStripMenuItem.Visible = false;
+            // 
+            // открытьToolStripMenuItem1
+            // 
+            this.открытьToolStripMenuItem1.Name = "открытьToolStripMenuItem1";
+            this.открытьToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.открытьToolStripMenuItem1.Text = "Открыть";
+            this.открытьToolStripMenuItem1.Visible = false;
+            // 
+            // сохранитьToolStripMenuItem
+            // 
+            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(177, 6);
+            // 
+            // настройкиToolStripMenuItem
+            // 
+            this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
+            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.настройкиToolStripMenuItem.Text = "Настройки";
+            this.настройкиToolStripMenuItem.Visible = false;
+            // 
+            // ваToolStripMenuItem
+            // 
+            this.ваToolStripMenuItem.Name = "ваToolStripMenuItem";
+            this.ваToolStripMenuItem.Size = new System.Drawing.Size(177, 6);
+            // 
+            // выйтиToolStripMenuItem
+            // 
+            this.выйтиToolStripMenuItem.Name = "выйтиToolStripMenuItem";
+            this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.выйтиToolStripMenuItem.Text = "Выйти";
+            this.выйтиToolStripMenuItem.Click += new System.EventHandler(this.выйтиToolStripMenuItem_Click);
+            // 
+            // инструментыToolStripMenuItem
+            // 
+            this.инструментыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.пользователиToolStripMenuItem,
+            this.калькуляторToolStripMenuItem});
+            this.инструментыToolStripMenuItem.Name = "инструментыToolStripMenuItem";
+            this.инструментыToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.инструментыToolStripMenuItem.Text = "Инструменты";
+            // 
+            // пользователиToolStripMenuItem
+            // 
+            this.пользователиToolStripMenuItem.Name = "пользователиToolStripMenuItem";
+            this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.пользователиToolStripMenuItem.Text = "Пользователи";
+            this.пользователиToolStripMenuItem.Visible = false;
+            // 
+            // пToolStripMenuItem
+            // 
+            this.пToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.справкаToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.оПрограммеToolStripMenuItem});
+            this.пToolStripMenuItem.Name = "пToolStripMenuItem";
+            this.пToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.пToolStripMenuItem.Text = "Помощь";
+            // 
+            // справкаToolStripMenuItem
+            // 
+            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.справкаToolStripMenuItem.Text = "Справка";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // оПрограммеToolStripMenuItem
+            // 
+            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.оПрограммеToolStripMenuItem.Text = "О программе";
+            // 
+            // калькуляторToolStripMenuItem
+            // 
+            this.калькуляторToolStripMenuItem.Name = "калькуляторToolStripMenuItem";
+            this.калькуляторToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.калькуляторToolStripMenuItem.Text = "Калькулятор";
             // 
             // ColumnTypeOperation
             // 
@@ -478,7 +566,6 @@ namespace SHDML.Winforms.UI
 		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
-		private System.Windows.Forms.Button buttonSign;
 		private System.Windows.Forms.Splitter splitter2;
 		private System.Windows.Forms.Button buttonTransactionReview;
 		private System.Windows.Forms.Button seeAccountButton;
@@ -492,13 +579,6 @@ namespace SHDML.Winforms.UI
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnVerified;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTypeOperation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAccount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateOperation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSumm;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnDelete;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Button buttonAddReceipt;
@@ -507,6 +587,25 @@ namespace SHDML.Winforms.UI
         private System.Windows.Forms.Button addAccountButton;
         private UserControls.Wallet.TotalSumInAccountsUCView _totalSumInAccountsInfoucView1;
         private System.Windows.Forms.FlowLayoutPanel accoutsFlowLayoutPanel;
+        private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator сохранитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator ваToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem выйтиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem инструментыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem пользователиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem калькуляторToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem пToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTypeOperation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAccount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateOperation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSumm;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnDelete;
     }
 }
 
