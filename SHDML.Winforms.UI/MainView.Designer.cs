@@ -154,6 +154,7 @@ namespace SHDML.Winforms.UI
             this.выйтиToolStripMenuItem.Name = "выйтиToolStripMenuItem";
             this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.выйтиToolStripMenuItem.Text = "Выйти";
+            this.выйтиToolStripMenuItem.Click += new System.EventHandler(this.closeInToolStripMenuItem_Click);
             // 
             // инструментыToolStripMenuItem
             // 
@@ -297,7 +298,7 @@ namespace SHDML.Winforms.UI
             this.addAccountButton.TabIndex = 0;
             this.addAccountButton.Text = "Добавить счёт";
             this.addAccountButton.UseVisualStyleBackColor = true;
-            this.addAccountButton.Click += new System.EventHandler(this.addAccountButton_Click_1);
+            this.addAccountButton.Click += new System.EventHandler(this.addAccountButton_Click);
             // 
             // accoutsFlowLayoutPanel
             // 
@@ -309,12 +310,12 @@ namespace SHDML.Winforms.UI
             this.accoutsFlowLayoutPanel.Name = "accoutsFlowLayoutPanel";
             this.accoutsFlowLayoutPanel.Size = new System.Drawing.Size(319, 430);
             this.accoutsFlowLayoutPanel.TabIndex = 0;
-            this.accoutsFlowLayoutPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.accoutsFlowLayoutPanel_Paint);
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPageTransactions);
             this.tabControl1.Controls.Add(this.tabPageCategories);
+            this.tabControl1.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -371,6 +372,7 @@ namespace SHDML.Winforms.UI
             this.buttonAddReceipt.TabIndex = 3;
             this.buttonAddReceipt.Text = "Добавить чек";
             this.buttonAddReceipt.UseVisualStyleBackColor = true;
+            this.buttonAddReceipt.Click += new System.EventHandler(this.buttonAddReceipt_Click);
             // 
             // buttonAddTransaction
             // 
@@ -380,6 +382,7 @@ namespace SHDML.Winforms.UI
             this.buttonAddTransaction.TabIndex = 1;
             this.buttonAddTransaction.Text = "Добавить операцию";
             this.buttonAddTransaction.UseVisualStyleBackColor = true;
+            this.buttonAddTransaction.Click += new System.EventHandler(this.buttonAddTransaction_Click);
             // 
             // dataGridView1
             // 
@@ -437,7 +440,7 @@ namespace SHDML.Winforms.UI
             this.tabPageCategories.Location = new System.Drawing.Point(4, 24);
             this.tabPageCategories.Name = "tabPageCategories";
             this.tabPageCategories.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCategories.Size = new System.Drawing.Size(880, 575);
+            this.tabPageCategories.Size = new System.Drawing.Size(877, 575);
             this.tabPageCategories.TabIndex = 1;
             this.tabPageCategories.Text = "Категории";
             this.tabPageCategories.UseVisualStyleBackColor = true;
