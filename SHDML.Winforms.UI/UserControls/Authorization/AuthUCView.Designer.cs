@@ -72,11 +72,11 @@ namespace SHDML.Winforms.UI.UserControls.Authorization
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.UserName);
             this.Controls.Add(this.label1);
-            this.MaximumSize = new System.Drawing.Size(309, 70);
             this.MinimumSize = new System.Drawing.Size(309, 70);
             this.Name = "AuthUCView";
             this.Size = new System.Drawing.Size(307, 68);

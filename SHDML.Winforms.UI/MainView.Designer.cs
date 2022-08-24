@@ -31,29 +31,8 @@ namespace SHDML.Winforms.UI
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.splitContainerMainDesktop = new System.Windows.Forms.SplitContainer();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this._authUcView = new SHDML.Winforms.UI.UserControls.Authorization.AuthUCView();
-            this.splitter2 = new System.Windows.Forms.Splitter();
-            this.buttonTransactionReview = new System.Windows.Forms.Button();
-            this.seeAccountButton = new System.Windows.Forms.Button();
-            this.splitter1 = new System.Windows.Forms.Splitter();
-            this.seeCategoriesButton = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.splitContainerView = new System.Windows.Forms.SplitContainer();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.accountActionAndTotalSumsplitContainer = new System.Windows.Forms.SplitContainer();
-            this.addAccountButton = new System.Windows.Forms.Button();
-            this.accoutsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.buttonAddReceipt = new System.Windows.Forms.Button();
-            this.buttonAddTransaction = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.открытьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
@@ -62,29 +41,41 @@ namespace SHDML.Winforms.UI
             this.выйтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.инструментыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.калькуляторToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.калькуляторToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this._authUcView = new SHDML.Winforms.UI.UserControls.Authorization.AuthUCView();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.accountActionAndTotalSumsplitContainer = new System.Windows.Forms.SplitContainer();
+            this.addAccountButton = new System.Windows.Forms.Button();
+            this.accoutsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPageTransactions = new System.Windows.Forms.TabPage();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.buttonAddReceipt = new System.Windows.Forms.Button();
+            this.buttonAddTransaction = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ColumnTypeOperation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDateOperation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSumm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMainDesktop)).BeginInit();
-            this.splitContainerMainDesktop.Panel1.SuspendLayout();
-            this.splitContainerMainDesktop.Panel2.SuspendLayout();
-            this.splitContainerMainDesktop.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.tabPageCategories = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerView)).BeginInit();
-            this.splitContainerView.Panel1.SuspendLayout();
-            this.splitContainerView.Panel2.SuspendLayout();
-            this.splitContainerView.SuspendLayout();
-            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.Panel1.SuspendLayout();
+            this.splitContainer4.Panel2.SuspendLayout();
+            this.splitContainer4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -92,7 +83,8 @@ namespace SHDML.Winforms.UI
             ((System.ComponentModel.ISupportInitialize)(this.accountActionAndTotalSumsplitContainer)).BeginInit();
             this.accountActionAndTotalSumsplitContainer.Panel1.SuspendLayout();
             this.accountActionAndTotalSumsplitContainer.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPageTransactions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -100,114 +92,6 @@ namespace SHDML.Winforms.UI
             this.flowLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // splitContainerMainDesktop
-            // 
-            this.splitContainerMainDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerMainDesktop.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerMainDesktop.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerMainDesktop.Name = "splitContainerMainDesktop";
-            this.splitContainerMainDesktop.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainerMainDesktop.Panel1
-            // 
-            this.splitContainerMainDesktop.Panel1.Controls.Add(this.flowLayoutPanel1);
-            this.splitContainerMainDesktop.Panel1.Controls.Add(this.menuStrip1);
-            // 
-            // splitContainerMainDesktop.Panel2
-            // 
-            this.splitContainerMainDesktop.Panel2.Controls.Add(this.splitContainerView);
-            this.splitContainerMainDesktop.Size = new System.Drawing.Size(1208, 627);
-            this.splitContainerMainDesktop.SplitterDistance = 100;
-            this.splitContainerMainDesktop.TabIndex = 0;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.panel1);
-            this.flowLayoutPanel1.Controls.Add(this.splitter2);
-            this.flowLayoutPanel1.Controls.Add(this.buttonTransactionReview);
-            this.flowLayoutPanel1.Controls.Add(this.seeAccountButton);
-            this.flowLayoutPanel1.Controls.Add(this.splitter1);
-            this.flowLayoutPanel1.Controls.Add(this.seeCategoriesButton);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 24);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1208, 76);
-            this.flowLayoutPanel1.TabIndex = 1;
-            // 
-            // panel1
-            // 
-            this.panel1.AutoSize = true;
-            this.panel1.Controls.Add(this._authUcView);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(309, 70);
-            this.panel1.TabIndex = 17;
-            // 
-            // _authUcView
-            // 
-            this._authUcView.AutoSize = true;
-            this._authUcView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._authUcView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._authUcView.Location = new System.Drawing.Point(0, 0);
-            this._authUcView.MaximumSize = new System.Drawing.Size(309, 70);
-            this._authUcView.MinimumSize = new System.Drawing.Size(309, 70);
-            this._authUcView.Name = "_authUcView";
-            this._authUcView.Size = new System.Drawing.Size(309, 70);
-            this._authUcView.TabIndex = 1;
-            this._authUcView.Visible = false;
-            // 
-            // splitter2
-            // 
-            this.splitter2.Location = new System.Drawing.Point(318, 3);
-            this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(3, 70);
-            this.splitter2.TabIndex = 4;
-            this.splitter2.TabStop = false;
-            // 
-            // buttonTransactionReview
-            // 
-            this.buttonTransactionReview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTransactionReview.Location = new System.Drawing.Point(327, 3);
-            this.buttonTransactionReview.Name = "buttonTransactionReview";
-            this.buttonTransactionReview.Size = new System.Drawing.Size(84, 70);
-            this.buttonTransactionReview.TabIndex = 5;
-            this.buttonTransactionReview.Text = "Обзор транзакций";
-            this.buttonTransactionReview.UseVisualStyleBackColor = true;
-            this.buttonTransactionReview.Click += new System.EventHandler(this.buttonTransactionReview_Click);
-            // 
-            // seeAccountButton
-            // 
-            this.seeAccountButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.seeAccountButton.Location = new System.Drawing.Point(417, 3);
-            this.seeAccountButton.Name = "seeAccountButton";
-            this.seeAccountButton.Size = new System.Drawing.Size(75, 70);
-            this.seeAccountButton.TabIndex = 7;
-            this.seeAccountButton.Text = "Обзор счетов";
-            this.seeAccountButton.UseVisualStyleBackColor = true;
-            this.seeAccountButton.Visible = false;
-            this.seeAccountButton.Click += new System.EventHandler(this.seeAccountButton_Click);
-            // 
-            // splitter1
-            // 
-            this.splitter1.Location = new System.Drawing.Point(498, 3);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 70);
-            this.splitter1.TabIndex = 20;
-            this.splitter1.TabStop = false;
-            // 
-            // seeCategoriesButton
-            // 
-            this.seeCategoriesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.seeCategoriesButton.Location = new System.Drawing.Point(507, 3);
-            this.seeCategoriesButton.Name = "seeCategoriesButton";
-            this.seeCategoriesButton.Size = new System.Drawing.Size(75, 70);
-            this.seeCategoriesButton.TabIndex = 21;
-            this.seeCategoriesButton.Text = "Категории";
-            this.seeCategoriesButton.UseVisualStyleBackColor = true;
-            this.seeCategoriesButton.Visible = false;
-            this.seeCategoriesButton.Click += new System.EventHandler(this.seeCategoriesButton_Click);
             // 
             // menuStrip1
             // 
@@ -218,7 +102,7 @@ namespace SHDML.Winforms.UI
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1208, 24);
-            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // файлToolStripMenuItem
@@ -234,33 +118,142 @@ namespace SHDML.Winforms.UI
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
-            // splitContainerView
+            // открытьToolStripMenuItem
             // 
-            this.splitContainerView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerView.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerView.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerView.Name = "splitContainerView";
+            this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.открытьToolStripMenuItem.Text = "Создать";
+            this.открытьToolStripMenuItem.Visible = false;
             // 
-            // splitContainerView.Panel1
+            // открытьToolStripMenuItem1
             // 
-            this.splitContainerView.Panel1.Controls.Add(this.panel2);
+            this.открытьToolStripMenuItem1.Name = "открытьToolStripMenuItem1";
+            this.открытьToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
+            this.открытьToolStripMenuItem1.Text = "Открыть";
+            this.открытьToolStripMenuItem1.Visible = false;
             // 
-            // splitContainerView.Panel2
+            // сохранитьToolStripMenuItem
             // 
-            this.splitContainerView.Panel2.Controls.Add(this.panel3);
-            this.splitContainerView.Size = new System.Drawing.Size(1208, 523);
-            this.splitContainerView.SplitterDistance = 315;
-            this.splitContainerView.TabIndex = 0;
+            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(131, 6);
             // 
-            // panel2
+            // настройкиToolStripMenuItem
             // 
-            this.panel2.Controls.Add(this.splitContainer1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(313, 521);
-            this.panel2.TabIndex = 0;
+            this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
+            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.настройкиToolStripMenuItem.Text = "Настройки";
+            this.настройкиToolStripMenuItem.Visible = false;
+            // 
+            // ваToolStripMenuItem
+            // 
+            this.ваToolStripMenuItem.Name = "ваToolStripMenuItem";
+            this.ваToolStripMenuItem.Size = new System.Drawing.Size(131, 6);
+            // 
+            // выйтиToolStripMenuItem
+            // 
+            this.выйтиToolStripMenuItem.Name = "выйтиToolStripMenuItem";
+            this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.выйтиToolStripMenuItem.Text = "Выйти";
+            this.выйтиToolStripMenuItem.Click += new System.EventHandler(this.closeInToolStripMenuItem_Click);
+            // 
+            // инструментыToolStripMenuItem
+            // 
+            this.инструментыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.пользователиToolStripMenuItem,
+            this.калькуляторToolStripMenuItem});
+            this.инструментыToolStripMenuItem.Name = "инструментыToolStripMenuItem";
+            this.инструментыToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.инструментыToolStripMenuItem.Text = "Инструменты";
+            // 
+            // пользователиToolStripMenuItem
+            // 
+            this.пользователиToolStripMenuItem.Name = "пользователиToolStripMenuItem";
+            this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.пользователиToolStripMenuItem.Text = "Пользователи";
+            this.пользователиToolStripMenuItem.Visible = false;
+            // 
+            // калькуляторToolStripMenuItem
+            // 
+            this.калькуляторToolStripMenuItem.Name = "калькуляторToolStripMenuItem";
+            this.калькуляторToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.калькуляторToolStripMenuItem.Text = "Калькулятор";
+            // 
+            // пToolStripMenuItem
+            // 
+            this.пToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.справкаToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.оПрограммеToolStripMenuItem});
+            this.пToolStripMenuItem.Name = "пToolStripMenuItem";
+            this.пToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.пToolStripMenuItem.Text = "Помощь";
+            // 
+            // справкаToolStripMenuItem
+            // 
+            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.справкаToolStripMenuItem.Text = "Справка";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(146, 6);
+            // 
+            // оПрограммеToolStripMenuItem
+            // 
+            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.оПрограммеToolStripMenuItem.Text = "О программе";
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Cursor = System.Windows.Forms.Cursors.VSplit;
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 24);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.splitContainer4);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.tabControl1);
+            this.splitContainer3.Size = new System.Drawing.Size(1208, 603);
+            this.splitContainer3.SplitterDistance = 319;
+            this.splitContainer3.TabIndex = 2;
+            // 
+            // splitContainer4
+            // 
+            this.splitContainer4.Cursor = System.Windows.Forms.Cursors.Default;
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer4.Name = "splitContainer4";
+            this.splitContainer4.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this._authUcView);
+            this.splitContainer4.Panel1MinSize = 70;
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.splitContainer1);
+            this.splitContainer4.Size = new System.Drawing.Size(319, 603);
+            this.splitContainer4.SplitterDistance = 77;
+            this.splitContainer4.TabIndex = 0;
+            // 
+            // _authUcView
+            // 
+            this._authUcView.AutoSize = true;
+            this._authUcView.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this._authUcView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this._authUcView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._authUcView.Location = new System.Drawing.Point(0, 0);
+            this._authUcView.MinimumSize = new System.Drawing.Size(309, 70);
+            this._authUcView.Name = "_authUcView";
+            this._authUcView.Size = new System.Drawing.Size(319, 77);
+            this._authUcView.TabIndex = 2;
             // 
             // splitContainer1
             // 
@@ -277,10 +270,10 @@ namespace SHDML.Winforms.UI
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.accoutsFlowLayoutPanel);
-            this.splitContainer1.Size = new System.Drawing.Size(313, 521);
+            this.splitContainer1.Size = new System.Drawing.Size(319, 522);
             this.splitContainer1.SplitterDistance = 91;
             this.splitContainer1.SplitterWidth = 1;
-            this.splitContainer1.TabIndex = 0;
+            this.splitContainer1.TabIndex = 1;
             // 
             // accountActionAndTotalSumsplitContainer
             // 
@@ -292,7 +285,7 @@ namespace SHDML.Winforms.UI
             // accountActionAndTotalSumsplitContainer.Panel1
             // 
             this.accountActionAndTotalSumsplitContainer.Panel1.Controls.Add(this.addAccountButton);
-            this.accountActionAndTotalSumsplitContainer.Size = new System.Drawing.Size(313, 91);
+            this.accountActionAndTotalSumsplitContainer.Size = new System.Drawing.Size(319, 91);
             this.accountActionAndTotalSumsplitContainer.SplitterDistance = 31;
             this.accountActionAndTotalSumsplitContainer.TabIndex = 0;
             // 
@@ -301,7 +294,7 @@ namespace SHDML.Winforms.UI
             this.addAccountButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.addAccountButton.Location = new System.Drawing.Point(0, 0);
             this.addAccountButton.Name = "addAccountButton";
-            this.addAccountButton.Size = new System.Drawing.Size(313, 31);
+            this.addAccountButton.Size = new System.Drawing.Size(319, 31);
             this.addAccountButton.TabIndex = 0;
             this.addAccountButton.Text = "Добавить счёт";
             this.addAccountButton.UseVisualStyleBackColor = true;
@@ -315,22 +308,37 @@ namespace SHDML.Winforms.UI
             this.accoutsFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.accoutsFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.accoutsFlowLayoutPanel.Name = "accoutsFlowLayoutPanel";
-            this.accoutsFlowLayoutPanel.Size = new System.Drawing.Size(313, 429);
+            this.accoutsFlowLayoutPanel.Size = new System.Drawing.Size(319, 430);
             this.accoutsFlowLayoutPanel.TabIndex = 0;
             // 
-            // panel3
+            // tabControl1
             // 
-            this.panel3.Controls.Add(this.splitContainer2);
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(887, 521);
-            this.panel3.TabIndex = 0;
+            this.tabControl1.Controls.Add(this.tabPageTransactions);
+            this.tabControl1.Controls.Add(this.tabPageCategories);
+            this.tabControl1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(885, 603);
+            this.tabControl1.TabIndex = 0;
+            // 
+            // tabPageTransactions
+            // 
+            this.tabPageTransactions.Controls.Add(this.splitContainer2);
+            this.tabPageTransactions.Location = new System.Drawing.Point(4, 24);
+            this.tabPageTransactions.Name = "tabPageTransactions";
+            this.tabPageTransactions.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTransactions.Size = new System.Drawing.Size(877, 575);
+            this.tabPageTransactions.TabIndex = 0;
+            this.tabPageTransactions.Text = "Транзакции";
+            this.tabPageTransactions.UseVisualStyleBackColor = true;
             // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Location = new System.Drawing.Point(3, 3);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -342,9 +350,9 @@ namespace SHDML.Winforms.UI
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.dataGridView1);
-            this.splitContainer2.Size = new System.Drawing.Size(887, 521);
+            this.splitContainer2.Size = new System.Drawing.Size(871, 569);
             this.splitContainer2.SplitterDistance = 30;
-            this.splitContainer2.TabIndex = 1;
+            this.splitContainer2.TabIndex = 3;
             // 
             // flowLayoutPanel3
             // 
@@ -353,7 +361,7 @@ namespace SHDML.Winforms.UI
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(887, 30);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(871, 30);
             this.flowLayoutPanel3.TabIndex = 0;
             // 
             // buttonAddReceipt
@@ -390,95 +398,8 @@ namespace SHDML.Winforms.UI
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(887, 487);
+            this.dataGridView1.Size = new System.Drawing.Size(871, 535);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // открытьToolStripMenuItem
-            // 
-            this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.открытьToolStripMenuItem.Text = "Создать";
-            this.открытьToolStripMenuItem.Visible = false;
-            // 
-            // открытьToolStripMenuItem1
-            // 
-            this.открытьToolStripMenuItem1.Name = "открытьToolStripMenuItem1";
-            this.открытьToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.открытьToolStripMenuItem1.Text = "Открыть";
-            this.открытьToolStripMenuItem1.Visible = false;
-            // 
-            // сохранитьToolStripMenuItem
-            // 
-            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(177, 6);
-            // 
-            // настройкиToolStripMenuItem
-            // 
-            this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
-            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.настройкиToolStripMenuItem.Text = "Настройки";
-            this.настройкиToolStripMenuItem.Visible = false;
-            // 
-            // ваToolStripMenuItem
-            // 
-            this.ваToolStripMenuItem.Name = "ваToolStripMenuItem";
-            this.ваToolStripMenuItem.Size = new System.Drawing.Size(177, 6);
-            // 
-            // выйтиToolStripMenuItem
-            // 
-            this.выйтиToolStripMenuItem.Name = "выйтиToolStripMenuItem";
-            this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.выйтиToolStripMenuItem.Text = "Выйти";
-            this.выйтиToolStripMenuItem.Click += new System.EventHandler(this.выйтиToolStripMenuItem_Click);
-            // 
-            // инструментыToolStripMenuItem
-            // 
-            this.инструментыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.пользователиToolStripMenuItem,
-            this.калькуляторToolStripMenuItem});
-            this.инструментыToolStripMenuItem.Name = "инструментыToolStripMenuItem";
-            this.инструментыToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
-            this.инструментыToolStripMenuItem.Text = "Инструменты";
-            // 
-            // пользователиToolStripMenuItem
-            // 
-            this.пользователиToolStripMenuItem.Name = "пользователиToolStripMenuItem";
-            this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.пользователиToolStripMenuItem.Text = "Пользователи";
-            this.пользователиToolStripMenuItem.Visible = false;
-            // 
-            // пToolStripMenuItem
-            // 
-            this.пToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.справкаToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.оПрограммеToolStripMenuItem});
-            this.пToolStripMenuItem.Name = "пToolStripMenuItem";
-            this.пToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
-            this.пToolStripMenuItem.Text = "Помощь";
-            // 
-            // справкаToolStripMenuItem
-            // 
-            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.справкаToolStripMenuItem.Text = "Справка";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // оПрограммеToolStripMenuItem
-            // 
-            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.оПрограммеToolStripMenuItem.Text = "О программе";
-            // 
-            // калькуляторToolStripMenuItem
-            // 
-            this.калькуляторToolStripMenuItem.Name = "калькуляторToolStripMenuItem";
-            this.калькуляторToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.калькуляторToolStripMenuItem.Text = "Калькулятор";
             // 
             // ColumnTypeOperation
             // 
@@ -514,33 +435,38 @@ namespace SHDML.Winforms.UI
             this.ColumnDelete.Name = "ColumnDelete";
             this.ColumnDelete.Text = "Удалить";
             // 
+            // tabPageCategories
+            // 
+            this.tabPageCategories.Location = new System.Drawing.Point(4, 24);
+            this.tabPageCategories.Name = "tabPageCategories";
+            this.tabPageCategories.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageCategories.Size = new System.Drawing.Size(877, 575);
+            this.tabPageCategories.TabIndex = 1;
+            this.tabPageCategories.Text = "Категории";
+            this.tabPageCategories.UseVisualStyleBackColor = true;
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1208, 627);
-            this.Controls.Add(this.splitContainerMainDesktop);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.splitContainer3);
+            this.Controls.Add(this.menuStrip1);
             this.Name = "MainView";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainView_FormClosing);
             this.Load += new System.EventHandler(this.MainView_Load);
-            this.splitContainerMainDesktop.Panel1.ResumeLayout(false);
-            this.splitContainerMainDesktop.Panel1.PerformLayout();
-            this.splitContainerMainDesktop.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMainDesktop)).EndInit();
-            this.splitContainerMainDesktop.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.splitContainerView.Panel1.ResumeLayout(false);
-            this.splitContainerView.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerView)).EndInit();
-            this.splitContainerView.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
+            this.splitContainer4.Panel1.ResumeLayout(false);
+            this.splitContainer4.Panel1.PerformLayout();
+            this.splitContainer4.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
+            this.splitContainer4.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
@@ -549,7 +475,8 @@ namespace SHDML.Winforms.UI
             this.accountActionAndTotalSumsplitContainer.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.accountActionAndTotalSumsplitContainer)).EndInit();
             this.accountActionAndTotalSumsplitContainer.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPageTransactions.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
@@ -557,36 +484,15 @@ namespace SHDML.Winforms.UI
             this.flowLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 
 		#endregion
-
-		private System.Windows.Forms.SplitContainer splitContainerMainDesktop;
-		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-		private System.Windows.Forms.MenuStrip menuStrip1;
-		private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
-		private System.Windows.Forms.Splitter splitter2;
-		private System.Windows.Forms.Button buttonTransactionReview;
-		private System.Windows.Forms.Button seeAccountButton;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.SplitContainer splitContainerView;
-        private System.Windows.Forms.Splitter splitter1;
-        private System.Windows.Forms.Button seeCategoriesButton;
         private UserControls.Wallet.TotalSumInAccountsUCView _inAccountInfo1;
-        private AuthUCView _authUcView;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.Button buttonAddReceipt;
-        private System.Windows.Forms.Button buttonAddTransaction;
-        private System.Windows.Forms.SplitContainer accountActionAndTotalSumsplitContainer;
-        private System.Windows.Forms.Button addAccountButton;
         private UserControls.Wallet.TotalSumInAccountsUCView _totalSumInAccountsInfoucView1;
-        private System.Windows.Forms.FlowLayoutPanel accoutsFlowLayoutPanel;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator сохранитьToolStripMenuItem;
@@ -600,12 +506,27 @@ namespace SHDML.Winforms.UI
         private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.SplitContainer splitContainer4;
+        private AuthUCView _authUcView;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer accountActionAndTotalSumsplitContainer;
+        private System.Windows.Forms.Button addAccountButton;
+        private System.Windows.Forms.FlowLayoutPanel accoutsFlowLayoutPanel;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPageTransactions;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.Button buttonAddReceipt;
+        private System.Windows.Forms.Button buttonAddTransaction;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTypeOperation;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAccount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateOperation;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSumm;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnDelete;
+        private System.Windows.Forms.TabPage tabPageCategories;
     }
 }
 

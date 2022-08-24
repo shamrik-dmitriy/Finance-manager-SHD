@@ -28,11 +28,6 @@ namespace SHDML.Winforms.UI
             _eventAggregator = eventAggregator;
         }
 
-        private void buttonTransactionReview_Click(object sender, EventArgs e)
-        {
-            splitContainerMainDesktop.Panel2.Controls.Add(new Label() { Text = "Yep!" });
-        }
-
         private void buttonAddTransaction_Click(object sender, EventArgs e)
         {
             AddTransaction?.Invoke();
@@ -41,10 +36,6 @@ namespace SHDML.Winforms.UI
         private void buttonAddReceipt_Click(object sender, EventArgs e)
         {
             new MultipleTransactionView("Добавить группу транзакций (чек)").ShowDialog();
-        }
-
-        private void seeCategoriesButton_Click(object sender, EventArgs e)
-        {
         }
 
         public new void ShowDialog()
@@ -73,10 +64,6 @@ namespace SHDML.Winforms.UI
             _eventAggregator.Dispose();
         }
 
-        private void seeAccountButton_Click(object sender, EventArgs e)
-        {
-        }
-
         private void addAccountButton_Click(object sender, EventArgs e)
         {
             AddAccount?.Invoke();
@@ -94,9 +81,9 @@ namespace SHDML.Winforms.UI
                 new TotalSumInAccountsUCView(accountDtos.Sum(accountDto => accountDto.CurrentSum).ToString()));
         }
 
-        private void выйтиToolStripMenuItem_Click(object sender, EventArgs e)
+        private void closeInToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Close();
+            CloseView();
         }
     }
 }
