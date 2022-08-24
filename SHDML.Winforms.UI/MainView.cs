@@ -30,7 +30,6 @@ namespace SHDML.Winforms.UI
 
         private void buttonTransactionReview_Click(object sender, EventArgs e)
         {
-            splitContainerMainDesktop.Panel2.Controls.Add(new Label() { Text = "Yep!" });
         }
 
         private void buttonAddTransaction_Click(object sender, EventArgs e)
@@ -97,6 +96,16 @@ namespace SHDML.Winforms.UI
         private void выйтиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void addAccountButton_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void accoutsFlowLayoutPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
