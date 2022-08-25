@@ -46,16 +46,16 @@ namespace SHDML.Winforms.UI
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.splitContainerDesktop = new System.Windows.Forms.SplitContainer();
+            this.splitContainerLeftSideBar = new System.Windows.Forms.SplitContainer();
             this._authUcView = new SHDML.Winforms.UI.UserControls.Authorization.AuthUCView();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainerWallet = new System.Windows.Forms.SplitContainer();
             this.accountActionAndTotalSumsplitContainer = new System.Windows.Forms.SplitContainer();
             this.addAccountButton = new System.Windows.Forms.Button();
             this.accoutsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageTransactions = new System.Windows.Forms.TabPage();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.splitContainerTransactions = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonAddReceipt = new System.Windows.Forms.Button();
             this.buttonAddTransaction = new System.Windows.Forms.Button();
@@ -68,27 +68,27 @@ namespace SHDML.Winforms.UI
             this.ColumnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPageCategories = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
-            this.splitContainer3.Panel1.SuspendLayout();
-            this.splitContainer3.Panel2.SuspendLayout();
-            this.splitContainer3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
-            this.splitContainer4.Panel1.SuspendLayout();
-            this.splitContainer4.Panel2.SuspendLayout();
-            this.splitContainer4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDesktop)).BeginInit();
+            this.splitContainerDesktop.Panel1.SuspendLayout();
+            this.splitContainerDesktop.Panel2.SuspendLayout();
+            this.splitContainerDesktop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerLeftSideBar)).BeginInit();
+            this.splitContainerLeftSideBar.Panel1.SuspendLayout();
+            this.splitContainerLeftSideBar.Panel2.SuspendLayout();
+            this.splitContainerLeftSideBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerWallet)).BeginInit();
+            this.splitContainerWallet.Panel1.SuspendLayout();
+            this.splitContainerWallet.Panel2.SuspendLayout();
+            this.splitContainerWallet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accountActionAndTotalSumsplitContainer)).BeginInit();
             this.accountActionAndTotalSumsplitContainer.Panel1.SuspendLayout();
             this.accountActionAndTotalSumsplitContainer.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageTransactions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTransactions)).BeginInit();
+            this.splitContainerTransactions.Panel1.SuspendLayout();
+            this.splitContainerTransactions.Panel2.SuspendLayout();
+            this.splitContainerTransactions.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -205,75 +205,83 @@ namespace SHDML.Winforms.UI
             this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             // 
-            // splitContainer3
+            // splitContainerDesktop
             // 
-            this.splitContainer3.Cursor = System.Windows.Forms.Cursors.VSplit;
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 24);
-            this.splitContainer3.Name = "splitContainer3";
+            this.splitContainerDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerDesktop.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerDesktop.IsSplitterFixed = true;
+            this.splitContainerDesktop.Location = new System.Drawing.Point(0, 24);
+            this.splitContainerDesktop.Name = "splitContainerDesktop";
             // 
-            // splitContainer3.Panel1
+            // splitContainerDesktop.Panel1
             // 
-            this.splitContainer3.Panel1.Controls.Add(this.splitContainer4);
+            this.splitContainerDesktop.Panel1.Controls.Add(this.splitContainerLeftSideBar);
             // 
-            // splitContainer3.Panel2
+            // splitContainerDesktop.Panel2
             // 
-            this.splitContainer3.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer3.Size = new System.Drawing.Size(1208, 603);
-            this.splitContainer3.SplitterDistance = 319;
-            this.splitContainer3.TabIndex = 2;
+            this.splitContainerDesktop.Panel2.Controls.Add(this.tabControl1);
+            this.splitContainerDesktop.Size = new System.Drawing.Size(1208, 603);
+            this.splitContainerDesktop.SplitterDistance = 319;
+            this.splitContainerDesktop.TabIndex = 2;
             // 
-            // splitContainer4
+            // splitContainerLeftSideBar
             // 
-            this.splitContainer4.Cursor = System.Windows.Forms.Cursors.Default;
-            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer4.Name = "splitContainer4";
-            this.splitContainer4.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.splitContainerLeftSideBar.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContainerLeftSideBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerLeftSideBar.IsSplitterFixed = true;
+            this.splitContainerLeftSideBar.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerLeftSideBar.Name = "splitContainerLeftSideBar";
+            this.splitContainerLeftSideBar.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainer4.Panel1
+            // splitContainerLeftSideBar.Panel1
             // 
-            this.splitContainer4.Panel1.Controls.Add(this._authUcView);
-            this.splitContainer4.Panel1MinSize = 70;
+            this.splitContainerLeftSideBar.Panel1.Controls.Add(this._authUcView);
+            this.splitContainerLeftSideBar.Panel1MinSize = 70;
             // 
-            // splitContainer4.Panel2
+            // splitContainerLeftSideBar.Panel2
             // 
-            this.splitContainer4.Panel2.Controls.Add(this.splitContainer1);
-            this.splitContainer4.Size = new System.Drawing.Size(319, 603);
-            this.splitContainer4.SplitterDistance = 77;
-            this.splitContainer4.TabIndex = 0;
+            this.splitContainerLeftSideBar.Panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContainerLeftSideBar.Panel2.Controls.Add(this.splitContainerWallet);
+            this.splitContainerLeftSideBar.Size = new System.Drawing.Size(319, 603);
+            this.splitContainerLeftSideBar.SplitterDistance = 77;
+            this.splitContainerLeftSideBar.TabIndex = 0;
             // 
             // _authUcView
             // 
             this._authUcView.AutoSize = true;
             this._authUcView.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this._authUcView.BackColor = System.Drawing.SystemColors.Control;
             this._authUcView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this._authUcView.Dock = System.Windows.Forms.DockStyle.Fill;
             this._authUcView.Location = new System.Drawing.Point(0, 0);
+            this._authUcView.MaximumSize = new System.Drawing.Size(309, 70);
             this._authUcView.MinimumSize = new System.Drawing.Size(309, 70);
             this._authUcView.Name = "_authUcView";
-            this._authUcView.Size = new System.Drawing.Size(319, 77);
+            this._authUcView.Size = new System.Drawing.Size(309, 70);
             this._authUcView.TabIndex = 2;
             // 
-            // splitContainer1
+            // splitContainerWallet
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.splitContainerWallet.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContainerWallet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerWallet.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerWallet.IsSplitterFixed = true;
+            this.splitContainerWallet.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerWallet.Name = "splitContainerWallet";
+            this.splitContainerWallet.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainer1.Panel1
+            // splitContainerWallet.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.accountActionAndTotalSumsplitContainer);
+            this.splitContainerWallet.Panel1.Controls.Add(this.accountActionAndTotalSumsplitContainer);
             // 
-            // splitContainer1.Panel2
+            // splitContainerWallet.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.accoutsFlowLayoutPanel);
-            this.splitContainer1.Size = new System.Drawing.Size(319, 522);
-            this.splitContainer1.SplitterDistance = 91;
-            this.splitContainer1.SplitterWidth = 1;
-            this.splitContainer1.TabIndex = 1;
+            this.splitContainerWallet.Panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContainerWallet.Panel2.Controls.Add(this.accoutsFlowLayoutPanel);
+            this.splitContainerWallet.Size = new System.Drawing.Size(319, 522);
+            this.splitContainerWallet.SplitterDistance = 94;
+            this.splitContainerWallet.SplitterWidth = 1;
+            this.splitContainerWallet.TabIndex = 1;
             // 
             // accountActionAndTotalSumsplitContainer
             // 
@@ -285,14 +293,16 @@ namespace SHDML.Winforms.UI
             // accountActionAndTotalSumsplitContainer.Panel1
             // 
             this.accountActionAndTotalSumsplitContainer.Panel1.Controls.Add(this.addAccountButton);
-            this.accountActionAndTotalSumsplitContainer.Size = new System.Drawing.Size(319, 91);
-            this.accountActionAndTotalSumsplitContainer.SplitterDistance = 31;
+            this.accountActionAndTotalSumsplitContainer.Size = new System.Drawing.Size(319, 94);
+            this.accountActionAndTotalSumsplitContainer.SplitterDistance = 32;
             this.accountActionAndTotalSumsplitContainer.TabIndex = 0;
             // 
             // addAccountButton
             // 
             this.addAccountButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.addAccountButton.Location = new System.Drawing.Point(0, 0);
+            this.addAccountButton.MaximumSize = new System.Drawing.Size(319, 31);
+            this.addAccountButton.MinimumSize = new System.Drawing.Size(319, 31);
             this.addAccountButton.Name = "addAccountButton";
             this.addAccountButton.Size = new System.Drawing.Size(319, 31);
             this.addAccountButton.TabIndex = 0;
@@ -302,20 +312,18 @@ namespace SHDML.Winforms.UI
             // 
             // accoutsFlowLayoutPanel
             // 
-            this.accoutsFlowLayoutPanel.AutoSize = true;
             this.accoutsFlowLayoutPanel.BackColor = System.Drawing.Color.White;
             this.accoutsFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.accoutsFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.accoutsFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.accoutsFlowLayoutPanel.Name = "accoutsFlowLayoutPanel";
-            this.accoutsFlowLayoutPanel.Size = new System.Drawing.Size(319, 430);
+            this.accoutsFlowLayoutPanel.Size = new System.Drawing.Size(319, 427);
             this.accoutsFlowLayoutPanel.TabIndex = 0;
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPageTransactions);
             this.tabControl1.Controls.Add(this.tabPageCategories);
-            this.tabControl1.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -325,7 +333,7 @@ namespace SHDML.Winforms.UI
             // 
             // tabPageTransactions
             // 
-            this.tabPageTransactions.Controls.Add(this.splitContainer2);
+            this.tabPageTransactions.Controls.Add(this.splitContainerTransactions);
             this.tabPageTransactions.Location = new System.Drawing.Point(4, 24);
             this.tabPageTransactions.Name = "tabPageTransactions";
             this.tabPageTransactions.Padding = new System.Windows.Forms.Padding(3);
@@ -334,25 +342,25 @@ namespace SHDML.Winforms.UI
             this.tabPageTransactions.Text = "Транзакции";
             this.tabPageTransactions.UseVisualStyleBackColor = true;
             // 
-            // splitContainer2
+            // splitContainerTransactions
             // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer2.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.splitContainerTransactions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerTransactions.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerTransactions.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerTransactions.Name = "splitContainerTransactions";
+            this.splitContainerTransactions.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainer2.Panel1
+            // splitContainerTransactions.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.flowLayoutPanel3);
-            this.splitContainer2.Panel1MinSize = 27;
+            this.splitContainerTransactions.Panel1.Controls.Add(this.flowLayoutPanel3);
+            this.splitContainerTransactions.Panel1MinSize = 27;
             // 
-            // splitContainer2.Panel2
+            // splitContainerTransactions.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.dataGridView1);
-            this.splitContainer2.Size = new System.Drawing.Size(871, 569);
-            this.splitContainer2.SplitterDistance = 30;
-            this.splitContainer2.TabIndex = 3;
+            this.splitContainerTransactions.Panel2.Controls.Add(this.dataGridView1);
+            this.splitContainerTransactions.Size = new System.Drawing.Size(871, 569);
+            this.splitContainerTransactions.SplitterDistance = 30;
+            this.splitContainerTransactions.TabIndex = 3;
             // 
             // flowLayoutPanel3
             // 
@@ -450,7 +458,7 @@ namespace SHDML.Winforms.UI
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1208, 627);
-            this.Controls.Add(this.splitContainer3);
+            this.Controls.Add(this.splitContainerDesktop);
             this.Controls.Add(this.menuStrip1);
             this.Name = "MainView";
             this.Text = "Form1";
@@ -458,29 +466,28 @@ namespace SHDML.Winforms.UI
             this.Load += new System.EventHandler(this.MainView_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.splitContainer3.Panel1.ResumeLayout(false);
-            this.splitContainer3.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
-            this.splitContainer3.ResumeLayout(false);
-            this.splitContainer4.Panel1.ResumeLayout(false);
-            this.splitContainer4.Panel1.PerformLayout();
-            this.splitContainer4.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
-            this.splitContainer4.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.splitContainerDesktop.Panel1.ResumeLayout(false);
+            this.splitContainerDesktop.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDesktop)).EndInit();
+            this.splitContainerDesktop.ResumeLayout(false);
+            this.splitContainerLeftSideBar.Panel1.ResumeLayout(false);
+            this.splitContainerLeftSideBar.Panel1.PerformLayout();
+            this.splitContainerLeftSideBar.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerLeftSideBar)).EndInit();
+            this.splitContainerLeftSideBar.ResumeLayout(false);
+            this.splitContainerWallet.Panel1.ResumeLayout(false);
+            this.splitContainerWallet.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerWallet)).EndInit();
+            this.splitContainerWallet.ResumeLayout(false);
             this.accountActionAndTotalSumsplitContainer.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.accountActionAndTotalSumsplitContainer)).EndInit();
             this.accountActionAndTotalSumsplitContainer.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPageTransactions.ResumeLayout(false);
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
+            this.splitContainerTransactions.Panel1.ResumeLayout(false);
+            this.splitContainerTransactions.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTransactions)).EndInit();
+            this.splitContainerTransactions.ResumeLayout(false);
             this.flowLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -506,16 +513,12 @@ namespace SHDML.Winforms.UI
         private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
-        private System.Windows.Forms.SplitContainer splitContainer3;
-        private System.Windows.Forms.SplitContainer splitContainer4;
+        private System.Windows.Forms.SplitContainer splitContainerDesktop;
+        private System.Windows.Forms.SplitContainer splitContainerLeftSideBar;
         private AuthUCView _authUcView;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.SplitContainer accountActionAndTotalSumsplitContainer;
-        private System.Windows.Forms.Button addAccountButton;
-        private System.Windows.Forms.FlowLayoutPanel accoutsFlowLayoutPanel;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageTransactions;
-        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.SplitContainer splitContainerTransactions;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Button buttonAddReceipt;
         private System.Windows.Forms.Button buttonAddTransaction;
@@ -527,6 +530,10 @@ namespace SHDML.Winforms.UI
         private System.Windows.Forms.DataGridViewButtonColumn ColumnEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnDelete;
         private System.Windows.Forms.TabPage tabPageCategories;
+        private System.Windows.Forms.SplitContainer splitContainerWallet;
+        private System.Windows.Forms.SplitContainer accountActionAndTotalSumsplitContainer;
+        private System.Windows.Forms.Button addAccountButton;
+        private System.Windows.Forms.FlowLayoutPanel accoutsFlowLayoutPanel;
     }
 }
 
