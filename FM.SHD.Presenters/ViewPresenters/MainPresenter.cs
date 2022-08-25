@@ -18,14 +18,14 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         public MainPresenter(
             IServiceProvider serviceProvider,
-            IAccountServices accountServices,
-            IAccountSummaryUCPresenter accountSummaryUcPresenter,
+            //   IAccountServices accountServices,
+         //   IAccountSummaryUCPresenter accountSummaryUcPresenter,
             IMainView mainView)
         {
             _mainView = mainView;
             _serviceProvider = serviceProvider;
-            _accountServices = accountServices;
-            _accountSummaryUcPresenter = accountSummaryUcPresenter;
+            //_accountServices = accountServices;
+            //_accountSummaryUcPresenter = accountSummaryUcPresenter;
 
             _mainView.OnLoadView += MainViewOnOnLoadView;
             _mainView.AddTransaction += MainViewOnAddTransaction;
@@ -34,10 +34,15 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void MainViewOnOnLoadView()
         {
-            foreach (var accountDto in _accountServices.GetAll())
-            {
-                _mainView.AddAccountsSummaryUserControl(_accountSummaryUcPresenter.GetUserControlView(accountDto));
-            }
+            // TODO: Вызывать тут код для авторизации, опять таки
+            // TODO: проверить, есть ли пароль. Если пароль есть - вызвать форму авторизации
+            // TODO: иначе просто загрузить базу
+            // TODO: Написать код по добавлению репозиториев 
+            // TODO: после того как загрузилась система
+            //foreach (var accountDto in _accountServices.GetAll())
+            //{
+            //    _mainView.AddAccountsSummaryUserControl(_accountSummaryUcPresenter.GetUserControlView(accountDto));
+            //}
 
            // _mainView.SetAccountsData(_accountServices.GetAll());
         }

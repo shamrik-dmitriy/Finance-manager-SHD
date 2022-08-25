@@ -19,13 +19,13 @@ namespace SHDML.Winforms.UI
         public event Action OnLoadView;
         public event Action AddTransaction;
         public event Action AddAccount;
-
+        
         private readonly EventAggregator _eventAggregator;
 
         public MainView(EventAggregator eventAggregator)
         {
-            InitializeComponent();
             _eventAggregator = eventAggregator;
+            InitializeComponent();
         }
 
         private void buttonAddTransaction_Click(object sender, EventArgs e)
@@ -84,6 +84,14 @@ namespace SHDML.Winforms.UI
         private void closeInToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CloseView();
+        }
+
+        private void toolStripMenuItemOpenDataFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog() { 
+            };
+            openFileDialog.ShowDialog();
+            OpenDataFile?.Invoke(openFileDialog.FileName);
         }
     }
 }

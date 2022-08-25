@@ -33,8 +33,8 @@ namespace SHDML.Winforms.UI
 		{
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.открытьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemCreateDataFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemOpenDataFile = new System.Windows.Forms.ToolStripMenuItem();
             this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ваToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
@@ -108,8 +108,8 @@ namespace SHDML.Winforms.UI
             // файлToolStripMenuItem
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.открытьToolStripMenuItem,
-            this.открытьToolStripMenuItem1,
+            this.toolStripMenuItemCreateDataFile,
+            this.toolStripMenuItemOpenDataFile,
             this.сохранитьToolStripMenuItem,
             this.настройкиToolStripMenuItem,
             this.ваToolStripMenuItem,
@@ -118,41 +118,41 @@ namespace SHDML.Winforms.UI
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
-            // открытьToolStripMenuItem
+            // toolStripMenuItemCreateDataFile
             // 
-            this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
-            this.открытьToolStripMenuItem.Text = "Создать";
-            this.открытьToolStripMenuItem.Visible = false;
+            this.toolStripMenuItemCreateDataFile.Name = "toolStripMenuItemCreateDataFile";
+            this.toolStripMenuItemCreateDataFile.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemCreateDataFile.Text = "Создать";
+            this.toolStripMenuItemCreateDataFile.Visible = false;
             // 
-            // открытьToolStripMenuItem1
+            // toolStripMenuItemOpenDataFile
             // 
-            this.открытьToolStripMenuItem1.Name = "открытьToolStripMenuItem1";
-            this.открытьToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
-            this.открытьToolStripMenuItem1.Text = "Открыть";
-            this.открытьToolStripMenuItem1.Visible = false;
+            this.toolStripMenuItemOpenDataFile.Name = "toolStripMenuItemOpenDataFile";
+            this.toolStripMenuItemOpenDataFile.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemOpenDataFile.Text = "Открыть";
+            this.toolStripMenuItemOpenDataFile.Click += new System.EventHandler(this.toolStripMenuItemOpenDataFile_Click);
             // 
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(131, 6);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(177, 6);
             // 
             // настройкиToolStripMenuItem
             // 
             this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
-            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.настройкиToolStripMenuItem.Text = "Настройки";
             this.настройкиToolStripMenuItem.Visible = false;
             // 
             // ваToolStripMenuItem
             // 
             this.ваToolStripMenuItem.Name = "ваToolStripMenuItem";
-            this.ваToolStripMenuItem.Size = new System.Drawing.Size(131, 6);
+            this.ваToolStripMenuItem.Size = new System.Drawing.Size(177, 6);
             // 
             // выйтиToolStripMenuItem
             // 
             this.выйтиToolStripMenuItem.Name = "выйтиToolStripMenuItem";
-            this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.выйтиToolStripMenuItem.Text = "Выйти";
             this.выйтиToolStripMenuItem.Click += new System.EventHandler(this.closeInToolStripMenuItem_Click);
             // 
@@ -500,8 +500,8 @@ namespace SHDML.Winforms.UI
         private UserControls.Wallet.TotalSumInAccountsUCView _totalSumInAccountsInfoucView1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCreateDataFile;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOpenDataFile;
         private System.Windows.Forms.ToolStripSeparator сохранитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator ваToolStripMenuItem;
