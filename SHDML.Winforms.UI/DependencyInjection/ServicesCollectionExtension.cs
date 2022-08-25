@@ -73,7 +73,7 @@ namespace SHDML.Winforms.UI.DependencyInjection
                 .AddTransient<IIdentityUCView, IdentityUCView>()
                 .AddTransient<IIdentityUCPresenter, IdentityUCPresenter>()
                 .AddTransient<IAddCancelButtonsUCView, AddCancelButtonsUCView>()
-                .AddTransient<IAddCancelButtonsUCPresenter, AddCancelButtonsUCPresenter>()
+                .AddTransient<IContinueCancelButtonsUCPresenter, ContinueCancelButtonsUcPresenter>()
                 .AddTransient<IAccountInfoUCView, AccountInfoUCView>()
                 .AddTransient<IAccountInfoUCPresenter, AccountInfoUCPresenter>()
                 .AddTransient<ISumTransactionUCView, SumTransactionUCView>()

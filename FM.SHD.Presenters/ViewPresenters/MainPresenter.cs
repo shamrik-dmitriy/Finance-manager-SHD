@@ -56,7 +56,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             view.ShowDialog("Добавить операцию");
         }
 
-        public IMainView GetMainView()
+        public IMainView GetView()
         {
             return _mainView;
         }

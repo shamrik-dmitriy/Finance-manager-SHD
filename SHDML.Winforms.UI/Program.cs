@@ -74,7 +74,7 @@ namespace SHDML.Winforms.UI
                 try
                 {
                     var mainPresenter = services.GetRequiredService<MainPresenter>();
-                    Application.Run((MainView)mainPresenter.GetMainView());
+                    Application.Run((MainView)mainPresenter.GetView());
                 }
                 catch (Exception exception)
                 {
