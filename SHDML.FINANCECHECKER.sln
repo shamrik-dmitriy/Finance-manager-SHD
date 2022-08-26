@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FM.SHD.Presenters", "FM.SHD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FM.SHD.Infrastructure.Events", "FM.SHD.Infrastructure.Events\FM.SHD.Infrastructure.Events.csproj", "{8211A58F-63FF-421A-8CF6-561CEA39BFE8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FM.SHD.Settings.Services", "FM.SHD.Settings.Services\FM.SHD.Settings.Services.csproj", "{B6D52F62-73D6-4D67-AC9D-11EC3CCAA803}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +87,10 @@ Global
 		{8211A58F-63FF-421A-8CF6-561CEA39BFE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8211A58F-63FF-421A-8CF6-561CEA39BFE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8211A58F-63FF-421A-8CF6-561CEA39BFE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6D52F62-73D6-4D67-AC9D-11EC3CCAA803}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6D52F62-73D6-4D67-AC9D-11EC3CCAA803}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6D52F62-73D6-4D67-AC9D-11EC3CCAA803}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6D52F62-73D6-4D67-AC9D-11EC3CCAA803}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,6 +106,7 @@ Global
 		{5797DB46-BAAC-4C8B-AA10-7E1EB9A764C0} = {221AE0E4-D789-44EA-9CF3-93D1EBE66B57}
 		{A17533A3-076B-4D0A-BB49-84FFBFC82B8B} = {221AE0E4-D789-44EA-9CF3-93D1EBE66B57}
 		{8211A58F-63FF-421A-8CF6-561CEA39BFE8} = {07E270EB-C0D5-4298-BDFF-A2509EB941FA}
+		{B6D52F62-73D6-4D67-AC9D-11EC3CCAA803} = {07E270EB-C0D5-4298-BDFF-A2509EB941FA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {113471EA-60C2-4820-9880-80921366C122}

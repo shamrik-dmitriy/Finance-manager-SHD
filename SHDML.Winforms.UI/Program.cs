@@ -5,12 +5,15 @@ using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.ViewPresenters;
+using FM.SHD.Services;
 using FM.SHD.Services.CommonServices;
+using FM.SHD.Settings.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using SHDML.Winforms.UI.DependencyInjection;
+using Settings = SHDML.Winforms.UI.Properties.Settings;
 
 namespace SHDML.Winforms.UI
 {
@@ -42,9 +45,11 @@ namespace SHDML.Winforms.UI
                         .AddSingleton<IConfiguration>(config)
                         .AddSingleton<EventAggregator>()
                         .AddTransient<IApplicationEvent, OnSelectedTypeOfTransactionApplicationEvent>()
+                        .AddSingleton<ISettingServices, SettingServices>()
                         .AddServices()
                         .AddViews()
                         .AddUserControlViews()
+                        .AddSingleton<Settings>()
                         .AddRepositories(config)
                         .AddTransient<IModelValidator, ModelValidator>()
                         .AddLogging(configure =>

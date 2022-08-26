@@ -1,8 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
 using FM.SHD.Presenters.Interfaces.Views;
 using FM.SHD.Presenters.IntrefacesViews;
+using FM.SHD.Services;
 using FM.SHD.Services.AccountServices;
+using FM.SHD.Settings.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FM.SHD.Presenters.ViewPresenters
@@ -11,17 +16,20 @@ namespace FM.SHD.Presenters.ViewPresenters
     {
         private IMainView _mainView;
         private IServiceProvider _serviceProvider;
+        private readonly ISettingServices _settingServices;
         private readonly IAccountServices _accountServices;
         private readonly IAccountSummaryUCPresenter _accountSummaryUcPresenter;
 
         public MainPresenter(
             IServiceProvider serviceProvider,
+            ISettingServices settingServices, 
             //   IAccountServices accountServices,
             //   IAccountSummaryUCPresenter accountSummaryUcPresenter,
             IMainView mainView)
         {
             _mainView = mainView;
             _serviceProvider = serviceProvider;
+            _settingServices = settingServices;
             //_accountServices = accountServices;
             //_accountSummaryUcPresenter = accountSummaryUcPresenter;
 
@@ -33,34 +41,26 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void MainViewOnOpenDataFile(string filePath)
         {
-            
-         /*   _recentOpenOptions.Value.RecentOpen ??= new Dictionary<string, string>();
-
-            if (_recentOpenOptions.Value.RecentOpen.Count == 10)
+            var recentFiles = _settingServices.GetRecentOpenFiles();
+            if (recentFiles.Count == 10)
             {
-                _recentOpenOptions.Value.RecentOpen.Remove(_recentOpenOptions.Value.RecentOpen.First().Key);
+                if (recentFiles.Contains((Path.GetFileName(filePath), filePath)))
+                {
+                    var index = recentFiles.FindIndex(a => a.FileName == Path.GetFileName(filePath) && a.FilePath == filePath);
+                    (recentFiles[index], recentFiles[0]) = (recentFiles[0], recentFiles[index]);
+                }
             }
 
-            if (_recentOpenOptions.Value.RecentOpen.ContainsKey(Path.GetFileName(filePath)) &&
-                _recentOpenOptions.Value.RecentOpen.ContainsValue(filePath))
+            if (!recentFiles.Contains((Path.GetFileName(filePath), filePath)))
             {
-                
+                recentFiles.Add((Path.GetFileName(filePath), filePath));
             }
             else
             {
-                _recentOpenOptions.Value.RecentOpen.Add(Path.GetFileName(filePath), filePath);
+                var index = recentFiles.FindIndex(a => a.FileName == Path.GetFileName(filePath) && a.FilePath == filePath);
+                (recentFiles[index], recentFiles[0]) = (recentFiles[0], recentFiles[index]);
             }
-            
-            var jsonWriteOptions = new JsonSerializerOptions()
-            {
-                WriteIndented = true
-            };
-            jsonWriteOptions.Converters.Add(new JsonStringEnumConverter());
-
-            var newJson = JsonSerializer.Serialize(_recentOpenOptions, jsonWriteOptions);
-            
-            var appSettingsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json");
-            File.WriteAllText(appSettingsPath, newJson);*/
+            _settingServices.Save();
         }
 
         private void MainViewOnOnLoadView()
