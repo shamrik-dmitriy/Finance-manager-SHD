@@ -19,6 +19,8 @@ namespace SHDML.Winforms.UI
         public event Action OnLoadView;
         public event Action AddTransaction;
         public event Action AddAccount;
+
+        public event Action<string> OpenDataFile;
         
         private readonly EventAggregator _eventAggregator;
 
@@ -81,6 +83,40 @@ namespace SHDML.Winforms.UI
                 new TotalSumInAccountsUCView(accountDtos.Sum(accountDto => accountDto.CurrentSum).ToString()));
         }
 
+        public void SetViewOnUnCompleteLoadData()
+        {
+            splitContainerDesktop.Visible = false;
+
+            foreach (ToolStripItem menuStrip1Item in menuStrip1.Items)
+            {
+                switch (menuStrip1Item.Name)
+                {
+                    case "toolStripMenuItemOpenDataFile":
+                    case "quitToolStripMenuItem":
+                    case "файлToolStripMenuItem":
+                    {
+                        menuStrip1Item.Enabled = true;
+                        break;
+                    }
+                    default:
+                    {
+                        menuStrip1Item.Enabled = false;
+                        break;
+                    }
+                }
+            }
+        }
+
+        public void SetViewOnCompleteLoadData()
+        {
+            splitContainerDesktop.Visible = true;
+
+            foreach (ToolStripItem menuStrip1Item in menuStrip1.Items)
+            {
+                menuStrip1Item.Enabled = true;
+            }
+        }
+
         private void closeInToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CloseView();
@@ -88,7 +124,8 @@ namespace SHDML.Winforms.UI
 
         private void toolStripMenuItemOpenDataFile_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog() { 
+            OpenFileDialog openFileDialog = new OpenFileDialog()
+            {
             };
             openFileDialog.ShowDialog();
             OpenDataFile?.Invoke(openFileDialog.FileName);

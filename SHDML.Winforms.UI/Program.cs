@@ -2,27 +2,15 @@ using System;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
-using FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction;
 using FM.SHD.Infrastructure.Events;
-using FM.SHD.Presenters;
 using FM.SHD.Presenters.Events;
-using FM.SHD.Presenters.Interfaces.UserControls.Common;
-using FM.SHD.Presenters.IntrefacesViews;
-using FM.SHD.Presenters.UserControlPresenters.Common;
 using FM.SHD.Presenters.ViewPresenters;
-using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.CommonServices;
-using FM.SHD.Services.ComponentsServices.TypeTransactionService;
-using FM.SHD.Services.Repositories;
-using FM.SHD.Services.Settings;
-using FM.SHD.Services.SingleTransactionServices;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using SHDML.Winforms.UI.DependencyInjection;
-using SHDML.Winforms.UI.Transactions;
 
 namespace SHDML.Winforms.UI
 {
@@ -52,7 +40,6 @@ namespace SHDML.Winforms.UI
                 {
                     services
                         .AddSingleton<IConfiguration>(config)
-                        .Configure<DatabaseOptions>(config.GetSection("ConnectionStrings"))
                         .AddSingleton<EventAggregator>()
                         .AddTransient<IApplicationEvent, OnSelectedTypeOfTransactionApplicationEvent>()
                         .AddServices()

@@ -38,7 +38,7 @@ namespace SHDML.Winforms.UI
             this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ваToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
-            this.выйтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.инструментыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.калькуляторToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -113,7 +113,7 @@ namespace SHDML.Winforms.UI
             this.сохранитьToolStripMenuItem,
             this.настройкиToolStripMenuItem,
             this.ваToolStripMenuItem,
-            this.выйтиToolStripMenuItem});
+            this.quitToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файлToolStripMenuItem.Text = "Файл";
@@ -121,40 +121,40 @@ namespace SHDML.Winforms.UI
             // toolStripMenuItemCreateDataFile
             // 
             this.toolStripMenuItemCreateDataFile.Name = "toolStripMenuItemCreateDataFile";
-            this.toolStripMenuItemCreateDataFile.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemCreateDataFile.Size = new System.Drawing.Size(134, 22);
             this.toolStripMenuItemCreateDataFile.Text = "Создать";
             this.toolStripMenuItemCreateDataFile.Visible = false;
             // 
             // toolStripMenuItemOpenDataFile
             // 
             this.toolStripMenuItemOpenDataFile.Name = "toolStripMenuItemOpenDataFile";
-            this.toolStripMenuItemOpenDataFile.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemOpenDataFile.Size = new System.Drawing.Size(134, 22);
             this.toolStripMenuItemOpenDataFile.Text = "Открыть";
             this.toolStripMenuItemOpenDataFile.Click += new System.EventHandler(this.toolStripMenuItemOpenDataFile_Click);
             // 
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(177, 6);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(131, 6);
             // 
             // настройкиToolStripMenuItem
             // 
             this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
-            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.настройкиToolStripMenuItem.Text = "Настройки";
             this.настройкиToolStripMenuItem.Visible = false;
             // 
             // ваToolStripMenuItem
             // 
             this.ваToolStripMenuItem.Name = "ваToolStripMenuItem";
-            this.ваToolStripMenuItem.Size = new System.Drawing.Size(177, 6);
+            this.ваToolStripMenuItem.Size = new System.Drawing.Size(131, 6);
             // 
-            // выйтиToolStripMenuItem
+            // quitToolStripMenuItem
             // 
-            this.выйтиToolStripMenuItem.Name = "выйтиToolStripMenuItem";
-            this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.выйтиToolStripMenuItem.Text = "Выйти";
-            this.выйтиToolStripMenuItem.Click += new System.EventHandler(this.closeInToolStripMenuItem_Click);
+            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.quitToolStripMenuItem.Text = "Выйти";
+            this.quitToolStripMenuItem.Click += new System.EventHandler(this.closeInToolStripMenuItem_Click);
             // 
             // инструментыToolStripMenuItem
             // 
@@ -505,7 +505,7 @@ namespace SHDML.Winforms.UI
         private System.Windows.Forms.ToolStripSeparator сохранитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator ваToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem выйтиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem инструментыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem пользователиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem калькуляторToolStripMenuItem;

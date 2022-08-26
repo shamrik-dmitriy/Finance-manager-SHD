@@ -10,8 +10,10 @@ namespace FM.SHD.Presenters.IntrefacesViews
     {
         event Action AddTransaction;
         event Action AddAccount;
+        event Action<string> OpenDataFile;
 
         void AddAccountsSummaryUserControl(IUserControlView userControlView);
         void SetAccountsData(IEnumerable<AccountDto> accountDtos);
+        void SetViewOnUnCompleteLoadData();
     }
 }
