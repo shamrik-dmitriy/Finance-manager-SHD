@@ -16,20 +16,23 @@ namespace FM.SHD.Presenters.ViewPresenters
     {
         private IMainView _mainView;
         private IServiceProvider _serviceProvider;
-        private readonly ISettingServices _settingServices;
+       // private readonly ISettingServices _settingServices;
+        private readonly SettingServices<SystemSettings> _systemSettings;
         private readonly IAccountServices _accountServices;
         private readonly IAccountSummaryUCPresenter _accountSummaryUcPresenter;
 
         public MainPresenter(
             IServiceProvider serviceProvider,
-            ISettingServices settingServices, 
+            //ISettingServices settingServices, 
+            SettingServices<SystemSettings> systemSettings,
             //   IAccountServices accountServices,
             //   IAccountSummaryUCPresenter accountSummaryUcPresenter,
             IMainView mainView)
         {
             _mainView = mainView;
             _serviceProvider = serviceProvider;
-            _settingServices = settingServices;
+          //  _settingServices = settingServices;
+            _systemSettings = systemSettings;
             //_accountServices = accountServices;
             //_accountSummaryUcPresenter = accountSummaryUcPresenter;
 
@@ -41,7 +44,7 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void MainViewOnOpenDataFile(string filePath)
         {
-            var recentFiles = _settingServices.GetRecentOpenFiles();
+            var recentFiles = _systemSettings.Extract().RecentOpen;
             if (recentFiles.Count == 10)
             {
                 if (recentFiles.Contains((Path.GetFileName(filePath), filePath)))
@@ -60,7 +63,8 @@ namespace FM.SHD.Presenters.ViewPresenters
                 var index = recentFiles.FindIndex(a => a.FileName == Path.GetFileName(filePath) && a.FilePath == filePath);
                 (recentFiles[index], recentFiles[0]) = (recentFiles[0], recentFiles[index]);
             }
-            _settingServices.Save();
+            _systemSettings.Save();
+            //_settingServices.Save();
         }
 
         private void MainViewOnOnLoadView()

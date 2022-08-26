@@ -13,7 +13,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using SHDML.Winforms.UI.DependencyInjection;
-using Settings = SHDML.Winforms.UI.Properties.Settings;
 
 namespace SHDML.Winforms.UI
 {
@@ -49,7 +48,9 @@ namespace SHDML.Winforms.UI
                         .AddServices()
                         .AddViews()
                         .AddUserControlViews()
-                        .AddSingleton<Settings>()
+                        .AddSingleton<ISettings,SystemSettings>()
+                        .AddSingleton<SystemSettings>()
+                        .AddSingleton<SettingServices<SystemSettings>>()
                         .AddRepositories(config)
                         .AddTransient<IModelValidator, ModelValidator>()
                         .AddLogging(configure =>
