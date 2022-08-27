@@ -117,4 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="free-icon-font-time-twenty-four-39140651" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free-icon-font-time-twenty-four-39140651.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="free-icon-font-add-document-3914213" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free-icon-font-add-document-3914213.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="free-icon-font-folder-upload-7661446" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free-icon-font-folder-upload-7661446.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="free-icon-font-time-twenty-four-3914065" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free-icon-font-time-twenty-four-3914065.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="free-icon-font-folder-download-7653209" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free-icon-font-folder-download-7653209.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="free-icon-font-file-invoice-dollar-7928116" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free-icon-font-file-invoice-dollar-7928116.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="free-icon-font-file-invoice-dollar-7928219" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free-icon-font-file-invoice-dollar-7928219.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="free-icon-font-folder-upload-7653219" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free-icon-font-folder-upload-7653219.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="free-icon-font-settings-sliders-3917103" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free-icon-font-settings-sliders-3917103.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

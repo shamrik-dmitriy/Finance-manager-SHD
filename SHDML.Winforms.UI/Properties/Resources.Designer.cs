@@ -59,5 +59,95 @@ namespace SHDML.Winforms.UI.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap free_icon_font_add_document_3914213 {
+            get {
+                object obj = ResourceManager.GetObject("free-icon-font-add-document-3914213", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap free_icon_font_file_invoice_dollar_7928116 {
+            get {
+                object obj = ResourceManager.GetObject("free-icon-font-file-invoice-dollar-7928116", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap free_icon_font_file_invoice_dollar_7928219 {
+            get {
+                object obj = ResourceManager.GetObject("free-icon-font-file-invoice-dollar-7928219", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap free_icon_font_folder_download_7653209 {
+            get {
+                object obj = ResourceManager.GetObject("free-icon-font-folder-download-7653209", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap free_icon_font_folder_upload_7653219 {
+            get {
+                object obj = ResourceManager.GetObject("free-icon-font-folder-upload-7653219", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap free_icon_font_folder_upload_7661446 {
+            get {
+                object obj = ResourceManager.GetObject("free-icon-font-folder-upload-7661446", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap free_icon_font_settings_sliders_3917103 {
+            get {
+                object obj = ResourceManager.GetObject("free-icon-font-settings-sliders-3917103", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap free_icon_font_time_twenty_four_3914065 {
+            get {
+                object obj = ResourceManager.GetObject("free-icon-font-time-twenty-four-3914065", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap free_icon_font_time_twenty_four_39140651 {
+            get {
+                object obj = ResourceManager.GetObject("free-icon-font-time-twenty-four-39140651", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

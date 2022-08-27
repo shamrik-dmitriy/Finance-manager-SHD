@@ -35,6 +35,8 @@ namespace SHDML.Winforms.UI
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCreateDataFile = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemOpenDataFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemRecentOpens = new System.Windows.Forms.ToolStripMenuItem();
             this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ваToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
@@ -110,49 +112,70 @@ namespace SHDML.Winforms.UI
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemCreateDataFile,
             this.toolStripMenuItemOpenDataFile,
+            this.toolStripMenuItemSave,
+            this.toolStripMenuItemRecentOpens,
             this.сохранитьToolStripMenuItem,
             this.настройкиToolStripMenuItem,
             this.ваToolStripMenuItem,
             this.quitToolStripMenuItem});
+            this.файлToolStripMenuItem.Image = global::SHDML.Winforms.UI.Properties.Resources.free_icon_font_file_invoice_dollar_7928219;
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
             // toolStripMenuItemCreateDataFile
             // 
+            this.toolStripMenuItemCreateDataFile.Image = global::SHDML.Winforms.UI.Properties.Resources.free_icon_font_add_document_3914213;
             this.toolStripMenuItemCreateDataFile.Name = "toolStripMenuItemCreateDataFile";
-            this.toolStripMenuItemCreateDataFile.Size = new System.Drawing.Size(134, 22);
+            this.toolStripMenuItemCreateDataFile.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemCreateDataFile.Text = "Создать";
             this.toolStripMenuItemCreateDataFile.Visible = false;
             // 
             // toolStripMenuItemOpenDataFile
             // 
+            this.toolStripMenuItemOpenDataFile.Image = global::SHDML.Winforms.UI.Properties.Resources.free_icon_font_folder_upload_7653219;
             this.toolStripMenuItemOpenDataFile.Name = "toolStripMenuItemOpenDataFile";
-            this.toolStripMenuItemOpenDataFile.Size = new System.Drawing.Size(134, 22);
+            this.toolStripMenuItemOpenDataFile.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemOpenDataFile.Text = "Открыть";
             this.toolStripMenuItemOpenDataFile.Click += new System.EventHandler(this.toolStripMenuItemOpenDataFile_Click);
+            // 
+            // toolStripMenuItemSave
+            // 
+            this.toolStripMenuItemSave.Image = global::SHDML.Winforms.UI.Properties.Resources.free_icon_font_folder_download_7653209;
+            this.toolStripMenuItemSave.Name = "toolStripMenuItemSave";
+            this.toolStripMenuItemSave.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemSave.Text = "Сохранить";
+            // 
+            // toolStripMenuItemRecentOpens
+            // 
+            this.toolStripMenuItemRecentOpens.Image = global::SHDML.Winforms.UI.Properties.Resources.free_icon_font_time_twenty_four_3914065;
+            this.toolStripMenuItemRecentOpens.Name = "toolStripMenuItemRecentOpens";
+            this.toolStripMenuItemRecentOpens.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemRecentOpens.Text = "Недавние";
+            this.toolStripMenuItemRecentOpens.Visible = false;
             // 
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(131, 6);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(177, 6);
             // 
             // настройкиToolStripMenuItem
             // 
+            this.настройкиToolStripMenuItem.Image = global::SHDML.Winforms.UI.Properties.Resources.free_icon_font_settings_sliders_3917103;
             this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
-            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.настройкиToolStripMenuItem.Text = "Настройки";
             this.настройкиToolStripMenuItem.Visible = false;
             // 
             // ваToolStripMenuItem
             // 
             this.ваToolStripMenuItem.Name = "ваToolStripMenuItem";
-            this.ваToolStripMenuItem.Size = new System.Drawing.Size(131, 6);
+            this.ваToolStripMenuItem.Size = new System.Drawing.Size(177, 6);
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.quitToolStripMenuItem.Text = "Выйти";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.closeInToolStripMenuItem_Click);
             // 
@@ -534,6 +557,8 @@ namespace SHDML.Winforms.UI
         private System.Windows.Forms.SplitContainer accountActionAndTotalSumsplitContainer;
         private System.Windows.Forms.Button addAccountButton;
         private System.Windows.Forms.FlowLayoutPanel accoutsFlowLayoutPanel;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemRecentOpens;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSave;
     }
 }
 

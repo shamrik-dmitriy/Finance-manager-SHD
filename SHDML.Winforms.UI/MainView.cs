@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
@@ -129,6 +130,22 @@ namespace SHDML.Winforms.UI
             };
             openFileDialog.ShowDialog();
             OpenDataFile?.Invoke(openFileDialog.FileName);
+        }
+
+        public void SetVisibleRecentOpenMenuItem(bool isVisible)
+        {
+            toolStripMenuItemRecentOpens.Visible = isVisible;
+        }
+
+        public void AddElementInRecentOpenItems(string recentOpenFileName, string recentOpenFilePath)
+        {
+            var toolStripMenuItem = new ToolStripMenuItem()
+            {
+                Text = recentOpenFileName,
+                ToolTipText = recentOpenFilePath,
+                AutoToolTip = true
+            };
+            toolStripMenuItemRecentOpens.DropDownItems.Add(toolStripMenuItem);
         }
     }
 }

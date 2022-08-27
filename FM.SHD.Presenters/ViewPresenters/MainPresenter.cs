@@ -15,8 +15,10 @@ namespace FM.SHD.Presenters.ViewPresenters
     public class MainPresenter : IMainPresenter
     {
         private IMainView _mainView;
+
         private IServiceProvider _serviceProvider;
-       // private readonly ISettingServices _settingServices;
+
+        // private readonly ISettingServices _settingServices;
         private readonly SettingServices<SystemSettings> _systemSettings;
         private readonly IAccountServices _accountServices;
         private readonly IAccountSummaryUCPresenter _accountSummaryUcPresenter;
@@ -31,7 +33,7 @@ namespace FM.SHD.Presenters.ViewPresenters
         {
             _mainView = mainView;
             _serviceProvider = serviceProvider;
-          //  _settingServices = settingServices;
+            //  _settingServices = settingServices;
             _systemSettings = systemSettings;
             //_accountServices = accountServices;
             //_accountSummaryUcPresenter = accountSummaryUcPresenter;
@@ -49,7 +51,8 @@ namespace FM.SHD.Presenters.ViewPresenters
             {
                 if (recentFiles.Contains((Path.GetFileName(filePath), filePath)))
                 {
-                    var index = recentFiles.FindIndex(a => a.FileName == Path.GetFileName(filePath) && a.FilePath == filePath);
+                    var index = recentFiles.FindIndex(a =>
+                        a.FileName == Path.GetFileName(filePath) && a.FilePath == filePath);
                     (recentFiles[index], recentFiles[0]) = (recentFiles[0], recentFiles[index]);
                 }
             }
@@ -60,9 +63,13 @@ namespace FM.SHD.Presenters.ViewPresenters
             }
             else
             {
-                var index = recentFiles.FindIndex(a => a.FileName == Path.GetFileName(filePath) && a.FilePath == filePath);
+                var index = recentFiles.FindIndex(a =>
+                    a.FileName == Path.GetFileName(filePath) && a.FilePath == filePath);
                 (recentFiles[index], recentFiles[0]) = (recentFiles[0], recentFiles[index]);
             }
+
+            _mainView.SetVisibleRecentOpenMenuItem(true);
+            _mainView.AddElementInRecentOpenItems(Path.GetFileName(filePath), filePath);
             _systemSettings.Save();
             //_settingServices.Save();
         }
