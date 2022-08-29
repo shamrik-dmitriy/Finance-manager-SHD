@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using FM.SHD.Services.Repositories;
+using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Services.SingleTransactionServices
 {

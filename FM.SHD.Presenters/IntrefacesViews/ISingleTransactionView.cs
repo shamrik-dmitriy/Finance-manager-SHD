@@ -1,5 +1,6 @@
 using System;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
+using FM.SHDML.Core.Models.Dtos;
 using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
 
 namespace FM.SHD.Presenters.IntrefacesViews

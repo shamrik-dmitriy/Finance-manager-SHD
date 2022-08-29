@@ -6,7 +6,10 @@ using FM.SHD.Presenters.Interfaces.Views;
 using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Services.CategoriesServices;
 using FM.SHD.Services.ComponentsServices.TypeTransactionService;
+using FM.SHD.Services.ContragentServices;
+using FM.SHD.Services.IdentityServices;
 using FM.SHD.Services.SingleTransactionServices;
+using FM.SHDML.Core.Models.Dtos;
 using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
 
 namespace FM.SHD.Presenters.ViewPresenters

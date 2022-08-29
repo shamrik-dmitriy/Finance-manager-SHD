@@ -1,18 +1,11 @@
-﻿using FM.SHD.Presenters.IntrefacesViews;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
+using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
 
-namespace SHDML.Winforms.UI.Account
+namespace SHDML.Winforms.UI.Views.Account
 {
     public partial class AccountView : Form, IAccountView
     {

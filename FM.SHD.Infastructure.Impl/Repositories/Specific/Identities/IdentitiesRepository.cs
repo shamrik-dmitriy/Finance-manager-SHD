@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using FM.SHD.Infrastructure.Dal.Providers;
 using FM.SHD.Services.Repositories;
-using FM.SHDML.Core.Models.Categories.Contragents;
 using FM.SHDML.Core.Models.Categories.IdentitiesCategory;
 
 namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Identities

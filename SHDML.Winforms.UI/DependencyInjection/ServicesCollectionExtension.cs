@@ -21,17 +21,19 @@ using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.CategoriesServices;
 using FM.SHD.Services.CommonServices;
 using FM.SHD.Services.ComponentsServices.TypeTransactionService;
+using FM.SHD.Services.ContragentServices;
 using FM.SHD.Services.CurrencyServices;
+using FM.SHD.Services.IdentityServices;
 using FM.SHD.Services.Repositories;
 using FM.SHD.Services.SingleTransactionServices;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SHDML.Winforms.UI.Account;
-using SHDML.Winforms.UI.Transactions;
 using SHDML.Winforms.UI.UserControls.Common;
 using SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls;
 using SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions;
 using SHDML.Winforms.UI.UserControls.Wallet;
+using SHDML.Winforms.UI.Views.Account;
+using SHDML.Winforms.UI.Views.Transactions;
 using IContrAgentUCPresenter = FM.SHD.Presenters.Interfaces.UserControls.Transactions.IContrAgentUCPresenter;
 
 namespace SHDML.Winforms.UI.DependencyInjection

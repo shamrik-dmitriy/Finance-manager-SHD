@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using FM.SHDML.Core.Models.Categories.Contragents;
+using FM.SHDML.Core.Models.Categories.ContragentsCategory;
 
 namespace FM.SHD.Services.Repositories
 {

@@ -8,6 +8,7 @@ using FM.SHD.Presenters.ViewPresenters;
 using FM.SHD.Services;
 using FM.SHD.Services.CommonServices;
 using FM.SHD.Settings.Services;
+using FM.SHD.Settings.Services.SettingsCollection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -47,8 +48,8 @@ namespace SHDML.Winforms.UI
                         .AddServices()
                         .AddViews()
                         .AddUserControlViews()
-                        .AddSingleton<SystemSettingsServices>()
-                        .AddSingleton<SettingServices<SystemSettingsServices>>()
+                        .AddSingleton<SystemRecentOpenFilesSettings>()
+                        .AddSingleton<SettingServices<SystemRecentOpenFilesSettings>>()
                         .AddRepositories(config)
                         .AddTransient<IModelValidator, ModelValidator>()
                         .AddLogging(configure =>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Wallet;
 using FM.SHDML.Core.Models.AccountModel;
+using FM.SHDML.Core.Models.Dtos;
 using FM.SHDML.Core.Models.Dtos.UIDto;
 
 namespace FM.SHD.Presenters.IntrefacesViews

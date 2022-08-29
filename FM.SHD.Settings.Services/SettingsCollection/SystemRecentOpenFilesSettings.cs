@@ -2,16 +2,16 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace FM.SHD.Settings.Services
+namespace FM.SHD.Settings.Services.SettingsCollection
 {
     [Serializable]
-    public class SystemSettingsServices : ISettingsServices
+    public class SystemRecentOpenFilesSettings : ISettingsServices
     {
         [JsonIgnore]
         string ISettingsServices.Path =>
             $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\\recent-settings.dat";
 
-        public SystemSettingsServices()
+        public SystemRecentOpenFilesSettings()
         {
             RecentOpen = new List<(string FileName, string FilePath)>();
         }
@@ -25,7 +25,7 @@ namespace FM.SHD.Settings.Services
 
         void ISettingsServices.SetSettings(string settings)
         {
-            var deserializeObject = JsonConvert.DeserializeObject<SystemSettingsServices>(settings);
+            var deserializeObject = JsonConvert.DeserializeObject<SystemRecentOpenFilesSettings>(settings);
             this.RecentOpen = deserializeObject.RecentOpen;
         }
     }

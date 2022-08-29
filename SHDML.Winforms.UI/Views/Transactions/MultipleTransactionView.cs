@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using SHDML.Winforms.UI.UserControls.Transactions;
 
-namespace SHDML.Winforms.UI.Transactions
+namespace SHDML.Winforms.UI.Views.Transactions
 {
     public partial class MultipleTransactionView : Form
     {

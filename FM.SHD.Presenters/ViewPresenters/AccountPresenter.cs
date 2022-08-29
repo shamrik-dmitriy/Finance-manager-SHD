@@ -6,6 +6,7 @@ using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
 using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.CurrencyServices;
 using FM.SHDML.Core.Models.AccountModel;
+using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Presenters.ViewPresenters
 {

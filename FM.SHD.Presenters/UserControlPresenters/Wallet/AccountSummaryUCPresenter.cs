@@ -5,6 +5,7 @@ using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Wallet;
 using FM.SHD.Services.AccountServices;
 using FM.SHDML.Core.Models.AccountModel;
+using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Presenters.UserControlPresenters.Wallet
 {

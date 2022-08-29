@@ -1,4 +1,4 @@
-namespace FM.SHD.Settings.Services
+namespace FM.SHD.Settings.Services.Helpers
 {
     public interface ISettingsWriter
     {

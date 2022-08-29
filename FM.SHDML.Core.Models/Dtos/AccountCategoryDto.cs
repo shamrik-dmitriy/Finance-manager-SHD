@@ -1,6 +1,4 @@
-using FM.SHDML.Core.Models.Dtos;
-
-namespace FM.SHDML.Core.Models.Categories.AccountCategory
+namespace FM.SHDML.Core.Models.Dtos
 {
     public class AccountCategoryDto : BaseDto
     {

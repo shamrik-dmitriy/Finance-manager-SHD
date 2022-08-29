@@ -9,10 +9,11 @@ using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Wallet;
 using FM.SHDML.Core.Models.AccountModel;
+using FM.SHDML.Core.Models.Dtos;
 using FM.SHDML.Core.Models.Dtos.UIDto;
-using SHDML.Winforms.UI.Transactions;
 using SHDML.Winforms.UI.UserControls.Common;
 using SHDML.Winforms.UI.UserControls.Wallet;
+using SHDML.Winforms.UI.Views.Transactions;
 
 namespace SHDML.Winforms.UI
 {

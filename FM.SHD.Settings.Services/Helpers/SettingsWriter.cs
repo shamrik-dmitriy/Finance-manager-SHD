@@ -1,7 +1,6 @@
 using System.IO;
-using Newtonsoft.Json;
 
-namespace FM.SHD.Settings.Services
+namespace FM.SHD.Settings.Services.Helpers
 {
     public class SettingsWriter<T> where T : ISettingsServices
     {

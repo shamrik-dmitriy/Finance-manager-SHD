@@ -5,7 +5,9 @@ using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.CategoriesServices;
 using FM.SHD.Services.CommonServices;
 using FM.SHD.Services.ComponentsServices.TypeTransactionService;
+using FM.SHD.Services.ContragentServices;
 using FM.SHD.Services.CurrencyServices;
+using FM.SHD.Services.IdentityServices;
 
 namespace FM.SHD.Presenters.UserControlPresenters.Common
 {

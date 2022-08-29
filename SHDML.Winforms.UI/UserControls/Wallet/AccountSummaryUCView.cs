@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Wallet;
 using FM.SHDML.Core.Models.AccountModel;
+using FM.SHDML.Core.Models.Dtos;
 
 namespace SHDML.Winforms.UI.UserControls.Wallet
 {

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using FM.SHDML.Core.Models.AccountModel;
+using FM.SHDML.Core.Models.Dtos;
 
 namespace SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions
 {

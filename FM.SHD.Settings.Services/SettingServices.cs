@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using FM.SHD.Settings.Services.Helpers;
 
 namespace FM.SHD.Settings.Services
 {
@@ -27,7 +28,7 @@ namespace FM.SHD.Settings.Services
             _writer.WriteSettings();
         }
 
-        public T Extract()
+        public T GetSetting()
         {
             return _settings;
         }

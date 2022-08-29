@@ -1,6 +1,4 @@
-using FM.SHDML.Core.Models.Dtos;
-
-namespace FM.SHDML.Core.Models.Categories.CurrencyCategory
+namespace FM.SHDML.Core.Models.Dtos
 {
     public class CurrencyDto : BaseDto
     {

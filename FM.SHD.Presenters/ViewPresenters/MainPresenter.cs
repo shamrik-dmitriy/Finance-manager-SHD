@@ -8,6 +8,7 @@ using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Services;
 using FM.SHD.Services.AccountServices;
 using FM.SHD.Settings.Services;
+using FM.SHD.Settings.Services.SettingsCollection;
 using FM.SHDML.Core.Models.Dtos.UIDto;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -19,18 +20,18 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private IServiceProvider _serviceProvider;
 
-        private readonly SettingServices<SystemSettingsServices> _systemSettings;
+        private readonly SettingServices<SystemRecentOpenFilesSettings> _recentOpenFilesSettings;
         private readonly IAccountServices _accountServices;
         private readonly IAccountSummaryUCPresenter _accountSummaryUcPresenter;
 
         public MainPresenter(
             IServiceProvider serviceProvider,
-            SettingServices<SystemSettingsServices> systemSettings,
+            SettingServices<SystemRecentOpenFilesSettings> recentOpenFilesSettings,
             IMainView mainView)
         {
             _mainView = mainView;
             _serviceProvider = serviceProvider;
-            _systemSettings = systemSettings;
+            _recentOpenFilesSettings = recentOpenFilesSettings;
 
             _mainView.OnLoadView += MainViewOnOnLoadView;
             _mainView.OpenDataFile += MainViewOnOpenDataFile;
@@ -42,7 +43,7 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void LoadRecentOpenFiles()
         {
-            RecentOpenFilesDtos = _systemSettings.Extract().RecentOpen
+            RecentOpenFilesDtos = _recentOpenFilesSettings.GetSetting().RecentOpen
                 .Select(x => new RecentOpenFilesDto()
                 {
                     FileName = x.FileName, FilePath = x.FilePath
@@ -97,7 +98,9 @@ namespace FM.SHD.Presenters.ViewPresenters
             }
 
             _mainView.AddElementInRecentOpenItems(RecentOpenFilesDtos);
-            _systemSettings.Save();
+            _recentOpenFilesSettings.GetSetting().RecentOpen =
+                RecentOpenFilesDtos.Select(x => (x.FileName, x.FilePath)).ToList();
+            _recentOpenFilesSettings.Save();
         }
 
         private void MainViewOnOnLoadView()
