@@ -117,14 +117,9 @@ namespace SHDML.Winforms.UI
 
             toolStripMenuItemOpenDataFile.DropDownItems.Clear();
 
-            foreach (var recentOpenDto in recentOpenFiles)
-            {
-                baseOpenDropDownItems.Add(new ToolStripMenuItem(recentOpenDto.FileName, null, OnClickLoadDataFile)
-                {
-                    ToolTipText = recentOpenDto.FilePath,
-                    AutoToolTip = true,
-                });
-            }
+            baseOpenDropDownItems.AddRange(recentOpenFiles.Select(recentOpenDto =>
+                new ToolStripMenuItem(recentOpenDto.FileName, null, OnClickLoadDataFile)
+                    { ToolTipText = recentOpenDto.FilePath, AutoToolTip = true, }));
 
             toolStripMenuItemOpenDataFile.DropDownItems.AddRange(baseOpenDropDownItems.ToArray());
         }
@@ -157,11 +152,6 @@ namespace SHDML.Winforms.UI
             };
             openFileDialog.ShowDialog();
             OpenDataFile?.Invoke(openFileDialog.FileName);
-        }
-
-        public void SetVisibleRecentOpenMenuItem(bool isVisible)
-        {
-            //   toolStripMenuItemRecentOpens.Visible = isVisible;
         }
     }
 }

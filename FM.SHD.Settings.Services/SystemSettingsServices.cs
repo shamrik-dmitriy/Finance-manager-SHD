@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using FM.SHDML.Core.Models.Dtos.UIDto;
 using Newtonsoft.Json;
 
 namespace FM.SHD.Settings.Services
@@ -14,10 +13,10 @@ namespace FM.SHD.Settings.Services
 
         public SystemSettingsServices()
         {
-            RecentOpen = new List<RecentOpenFilesDto>();
+            RecentOpen = new List<(string FileName, string FilePath)>();
         }
 
-        public List<RecentOpenFilesDto> RecentOpen { get; set; }
+        public List<(string FileName, string FilePath)> RecentOpen { get; set; }
 
         string ISettingsServices.GetSettings()
         {

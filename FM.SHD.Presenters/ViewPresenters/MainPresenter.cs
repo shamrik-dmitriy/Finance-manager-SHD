@@ -23,8 +23,6 @@ namespace FM.SHD.Presenters.ViewPresenters
         private readonly IAccountServices _accountServices;
         private readonly IAccountSummaryUCPresenter _accountSummaryUcPresenter;
 
-        private List<RecentOpenFilesDto> RecentOpenFilesDto { get; set; }
-
         public MainPresenter(
             IServiceProvider serviceProvider,
             SettingServices<SystemSettingsServices> systemSettings,
@@ -40,19 +38,24 @@ namespace FM.SHD.Presenters.ViewPresenters
             _mainView.AddAccount += MainViewOnAddAccount;
         }
 
+        private List<RecentOpenFilesDto> RecentOpenFilesDtos { get; set; }
+
         private void LoadRecentOpenFiles()
         {
-            if (RecentOpenFilesDto.Count == 0)
+            RecentOpenFilesDtos = _systemSettings.Extract().RecentOpen
+                .Select(x => new RecentOpenFilesDto()
+                {
+                    FileName = x.FileName, FilePath = x.FilePath
+                }).ToList();
+
+            if (RecentOpenFilesDtos.Count == 0)
                 return;
 
-            _mainView.SetVisibleRecentOpenMenuItem(true);
-            _mainView.AddElementInRecentOpenItems(RecentOpenFilesDto);
+            _mainView.AddElementInRecentOpenItems(RecentOpenFilesDtos);
         }
-
 
         private void MainViewOnOpenDataFile(string filePath)
         {
-            var recentOpens = _systemSettings.Extract().RecentOpen;
             var fileName = Path.GetFileName(filePath);
             var recentOpenItem = new RecentOpenFilesDto()
             {
@@ -60,47 +63,45 @@ namespace FM.SHD.Presenters.ViewPresenters
                 FilePath = filePath
             };
 
-            if (recentOpens.Count != 0)
+            if (RecentOpenFilesDtos.Count != 0)
             {
-                if (recentOpens.Count == 3)
+                if (RecentOpenFilesDtos.Count == 3)
                 {
-                    var findElement = recentOpens.Where(x => x.FileName == fileName && x.FilePath == filePath);
+                    var findElement = RecentOpenFilesDtos.Where(x => x.FileName == fileName && x.FilePath == filePath);
                     if (findElement.Any())
                     {
-                        recentOpens.Remove(findElement.First());
-                        recentOpens.Add(recentOpenItem);
+                        RecentOpenFilesDtos.Remove(findElement.First());
+                        RecentOpenFilesDtos.Add(recentOpenItem);
                     }
                     else
                     {
-                        recentOpens.Remove(recentOpens.Last());
-                        recentOpens.Add(recentOpenItem);
+                        RecentOpenFilesDtos.Remove(RecentOpenFilesDtos.Last());
+                        RecentOpenFilesDtos.Add(recentOpenItem);
                     }
                 }
                 else
                 {
-                    if (!recentOpens.Contains(recentOpenItem))
+                    if (!RecentOpenFilesDtos.Contains(recentOpenItem))
                     {
-                        recentOpens.Add(recentOpenItem);
+                        RecentOpenFilesDtos.Add(recentOpenItem);
                     }
                 }
             }
             else
             {
-                recentOpens.Add(new RecentOpenFilesDto()
+                RecentOpenFilesDtos.Add(new RecentOpenFilesDto()
                 {
                     FileName = fileName,
                     FilePath = filePath
                 });
             }
 
-            _mainView.SetVisibleRecentOpenMenuItem(true);
-            _mainView.AddElementInRecentOpenItems(recentOpens);
+            _mainView.AddElementInRecentOpenItems(RecentOpenFilesDtos);
             _systemSettings.Save();
         }
 
         private void MainViewOnOnLoadView()
         {
-            RecentOpenFilesDto = _systemSettings.Extract().RecentOpen;
             LoadRecentOpenFiles();
 
             /*if (_recentOpenOptions.Value.RecentOpen == null)

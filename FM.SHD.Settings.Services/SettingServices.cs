@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
-using FM.SHDML.Core.Models.Dtos.UIDto;
-using Newtonsoft.Json;
-using JsonSerializer = System.Text.Json.JsonSerializer;
+﻿using System.IO;
 
 namespace FM.SHD.Settings.Services
 {
@@ -17,7 +11,7 @@ namespace FM.SHD.Settings.Services
         public SettingServices(T settings)
         {
             _settings = settings;
-            
+
             _writer = new SettingsWriter<T>(_settings);
             _reader = new SettingsReader<T>(_settings);
 

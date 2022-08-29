@@ -13,7 +13,6 @@ namespace FM.SHD.Presenters.IntrefacesViews
         event Action AddAccount;
         event Action<string> OpenDataFile;
 
-        void SetVisibleRecentOpenMenuItem(bool isVisible);
        void AddAccountsSummaryUserControl(IUserControlView userControlView);
         void SetAccountsData(IEnumerable<AccountDto> accountDtos);
         void SetViewOnUnCompleteLoadData();
