@@ -113,8 +113,11 @@ namespace SHDML.Winforms.UI
         public void AddElementInRecentOpenItems(List<RecentOpenFilesDto> recentOpenFiles)
         {
             var baseOpenDropDownItems = new List<ToolStripItem>();
-            baseOpenDropDownItems.Add(toolStripMenuItemOpenDataFile.DropDownItems[0]);
-            baseOpenDropDownItems.Add(toolStripMenuItemOpenDataFile.DropDownItems[1]);
+            if (recentOpenFiles.Count > 0)
+            {
+                baseOpenDropDownItems.Add(toolStripMenuItemOpenDataFile.DropDownItems[0]);
+                baseOpenDropDownItems.Add(new ToolStripSeparator());
+            }
 
             toolStripMenuItemOpenDataFile.DropDownItems.Clear();
 
@@ -148,7 +151,7 @@ namespace SHDML.Winforms.UI
 
         private void toolStripMenuItemOpenDataFile_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog()
+            var openFileDialog = new OpenFileDialog()
             {
             };
             openFileDialog.ShowDialog();

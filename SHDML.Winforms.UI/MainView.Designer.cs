@@ -36,7 +36,6 @@ namespace SHDML.Winforms.UI
             this.toolStripMenuItemCreateDataFile = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemOpenDataFile = new System.Windows.Forms.ToolStripMenuItem();
             this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
             this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -134,8 +133,7 @@ namespace SHDML.Winforms.UI
             // toolStripMenuItemOpenDataFile
             // 
             this.toolStripMenuItemOpenDataFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.открытьToolStripMenuItem,
-            this.toolStripSeparator2});
+            this.открытьToolStripMenuItem});
             this.toolStripMenuItemOpenDataFile.Image = global::SHDML.Winforms.UI.Properties.Resources.free_icon_font_folder_upload_7653219;
             this.toolStripMenuItemOpenDataFile.Name = "toolStripMenuItemOpenDataFile";
             this.toolStripMenuItemOpenDataFile.Size = new System.Drawing.Size(180, 22);
@@ -147,11 +145,6 @@ namespace SHDML.Winforms.UI
             this.открытьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.открытьToolStripMenuItem.Text = "Открыть...";
             this.открытьToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItemOpenDataFile_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // toolStripMenuItemSave
             // 
@@ -565,7 +558,6 @@ namespace SHDML.Winforms.UI
         private System.Windows.Forms.FlowLayoutPanel accoutsFlowLayoutPanel;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSave;
         private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }
 
