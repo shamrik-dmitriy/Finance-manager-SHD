@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace FM.SHD.Settings.Services
 {
-    public class SettingsReader<T> where T : ISettings
+    public class SettingsReader<T> where T : ISettingsServices
     {
         private readonly T _settings;
 

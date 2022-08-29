@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Wallet;
 using FM.SHDML.Core.Models.AccountModel;
+using FM.SHDML.Core.Models.Dtos.UIDto;
 
 namespace FM.SHD.Presenters.IntrefacesViews
 {
@@ -13,9 +14,9 @@ namespace FM.SHD.Presenters.IntrefacesViews
         event Action<string> OpenDataFile;
 
         void SetVisibleRecentOpenMenuItem(bool isVisible);
-        void AddElementInRecentOpenItems(string recentOpenFileName, string recentOpenFilePath);
        void AddAccountsSummaryUserControl(IUserControlView userControlView);
         void SetAccountsData(IEnumerable<AccountDto> accountDtos);
         void SetViewOnUnCompleteLoadData();
+        void AddElementInRecentOpenItems(List<RecentOpenFilesDto> recentOpenFiles);
     }
 }

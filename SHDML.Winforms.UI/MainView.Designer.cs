@@ -35,8 +35,9 @@ namespace SHDML.Winforms.UI
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCreateDataFile = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemOpenDataFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemRecentOpens = new System.Windows.Forms.ToolStripMenuItem();
             this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ваToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
@@ -113,7 +114,6 @@ namespace SHDML.Winforms.UI
             this.toolStripMenuItemCreateDataFile,
             this.toolStripMenuItemOpenDataFile,
             this.toolStripMenuItemSave,
-            this.toolStripMenuItemRecentOpens,
             this.сохранитьToolStripMenuItem,
             this.настройкиToolStripMenuItem,
             this.ваToolStripMenuItem,
@@ -133,11 +133,25 @@ namespace SHDML.Winforms.UI
             // 
             // toolStripMenuItemOpenDataFile
             // 
+            this.toolStripMenuItemOpenDataFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.открытьToolStripMenuItem,
+            this.toolStripSeparator2});
             this.toolStripMenuItemOpenDataFile.Image = global::SHDML.Winforms.UI.Properties.Resources.free_icon_font_folder_upload_7653219;
             this.toolStripMenuItemOpenDataFile.Name = "toolStripMenuItemOpenDataFile";
             this.toolStripMenuItemOpenDataFile.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemOpenDataFile.Text = "Открыть";
-            this.toolStripMenuItemOpenDataFile.Click += new System.EventHandler(this.toolStripMenuItemOpenDataFile_Click);
+            // 
+            // открытьToolStripMenuItem
+            // 
+            this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.открытьToolStripMenuItem.Text = "Открыть...";
+            this.открытьToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItemOpenDataFile_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // toolStripMenuItemSave
             // 
@@ -145,14 +159,6 @@ namespace SHDML.Winforms.UI
             this.toolStripMenuItemSave.Name = "toolStripMenuItemSave";
             this.toolStripMenuItemSave.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemSave.Text = "Сохранить";
-            // 
-            // toolStripMenuItemRecentOpens
-            // 
-            this.toolStripMenuItemRecentOpens.Image = global::SHDML.Winforms.UI.Properties.Resources.free_icon_font_time_twenty_four_3914065;
-            this.toolStripMenuItemRecentOpens.Name = "toolStripMenuItemRecentOpens";
-            this.toolStripMenuItemRecentOpens.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItemRecentOpens.Text = "Недавние";
-            this.toolStripMenuItemRecentOpens.Visible = false;
             // 
             // сохранитьToolStripMenuItem
             // 
@@ -557,8 +563,9 @@ namespace SHDML.Winforms.UI
         private System.Windows.Forms.SplitContainer accountActionAndTotalSumsplitContainer;
         private System.Windows.Forms.Button addAccountButton;
         private System.Windows.Forms.FlowLayoutPanel accoutsFlowLayoutPanel;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemRecentOpens;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSave;
+        private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }
 

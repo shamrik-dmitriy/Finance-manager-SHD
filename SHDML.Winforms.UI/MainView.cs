@@ -9,6 +9,7 @@ using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Wallet;
 using FM.SHDML.Core.Models.AccountModel;
+using FM.SHDML.Core.Models.Dtos.UIDto;
 using SHDML.Winforms.UI.Transactions;
 using SHDML.Winforms.UI.UserControls.Common;
 using SHDML.Winforms.UI.UserControls.Wallet;
@@ -22,7 +23,7 @@ namespace SHDML.Winforms.UI
         public event Action AddAccount;
 
         public event Action<string> OpenDataFile;
-        
+
         private readonly EventAggregator _eventAggregator;
 
         public MainView(EventAggregator eventAggregator)
@@ -108,6 +109,32 @@ namespace SHDML.Winforms.UI
             }
         }
 
+        public void AddElementInRecentOpenItems(List<RecentOpenFilesDto> recentOpenFiles)
+        {
+            var baseOpenDropDownItems = new List<ToolStripItem>();
+            baseOpenDropDownItems.Add(toolStripMenuItemOpenDataFile.DropDownItems[0]);
+            baseOpenDropDownItems.Add(toolStripMenuItemOpenDataFile.DropDownItems[1]);
+
+            toolStripMenuItemOpenDataFile.DropDownItems.Clear();
+
+            foreach (var recentOpenDto in recentOpenFiles)
+            {
+                baseOpenDropDownItems.Add(new ToolStripMenuItem(recentOpenDto.FileName, null, OnClickLoadDataFile)
+                {
+                    ToolTipText = recentOpenDto.FilePath,
+                    AutoToolTip = true,
+                });
+            }
+
+            toolStripMenuItemOpenDataFile.DropDownItems.AddRange(baseOpenDropDownItems.ToArray());
+        }
+
+        private void OnClickLoadDataFile(object sender, EventArgs e)
+        {
+            var filePath = ((ToolStripMenuItem)sender).ToolTipText;
+            OpenDataFile?.Invoke(filePath);
+        }
+
         public void SetViewOnCompleteLoadData()
         {
             splitContainerDesktop.Visible = true;
@@ -134,18 +161,7 @@ namespace SHDML.Winforms.UI
 
         public void SetVisibleRecentOpenMenuItem(bool isVisible)
         {
-            toolStripMenuItemRecentOpens.Visible = isVisible;
-        }
-
-        public void AddElementInRecentOpenItems(string recentOpenFileName, string recentOpenFilePath)
-        {
-            var toolStripMenuItem = new ToolStripMenuItem()
-            {
-                Text = recentOpenFileName,
-                ToolTipText = recentOpenFilePath,
-                AutoToolTip = true
-            };
-            toolStripMenuItemRecentOpens.DropDownItems.Add(toolStripMenuItem);
+            //   toolStripMenuItemRecentOpens.Visible = isVisible;
         }
     }
 }
