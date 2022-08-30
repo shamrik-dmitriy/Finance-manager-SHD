@@ -1,5 +1,5 @@
 ﻿
-using SHDML.Winforms.UI.UserControls.Authorization;
+using SHDML.Winforms.UI.UserControls.Login;
 
 namespace SHDML.Winforms.UI
 {
@@ -49,7 +49,7 @@ namespace SHDML.Winforms.UI
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainerDesktop = new System.Windows.Forms.SplitContainer();
             this.splitContainerLeftSideBar = new System.Windows.Forms.SplitContainer();
-            this._authUcView = new SHDML.Winforms.UI.UserControls.Authorization.AuthUCView();
+            this._authUcView = new LoginUCView();
             this.splitContainerWallet = new System.Windows.Forms.SplitContainer();
             this.accountActionAndTotalSumsplitContainer = new System.Windows.Forms.SplitContainer();
             this.addAccountButton = new System.Windows.Forms.Button();
@@ -124,7 +124,7 @@ namespace SHDML.Winforms.UI
             // 
             this.toolStripMenuItemCreateDataFile.Image = global::SHDML.Winforms.UI.Properties.Resources.free_icon_font_add_document_3914213;
             this.toolStripMenuItemCreateDataFile.Name = "toolStripMenuItemCreateDataFile";
-            this.toolStripMenuItemCreateDataFile.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemCreateDataFile.Size = new System.Drawing.Size(134, 22);
             this.toolStripMenuItemCreateDataFile.Text = "Создать";
             this.toolStripMenuItemCreateDataFile.Visible = false;
             // 
@@ -134,7 +134,7 @@ namespace SHDML.Winforms.UI
             this.открытьToolStripMenuItem});
             this.toolStripMenuItemOpenDataFile.Image = global::SHDML.Winforms.UI.Properties.Resources.free_icon_font_folder_upload_7653219;
             this.toolStripMenuItemOpenDataFile.Name = "toolStripMenuItemOpenDataFile";
-            this.toolStripMenuItemOpenDataFile.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemOpenDataFile.Size = new System.Drawing.Size(134, 22);
             this.toolStripMenuItemOpenDataFile.Text = "Открыть";
             // 
             // открытьToolStripMenuItem
@@ -147,25 +147,25 @@ namespace SHDML.Winforms.UI
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(177, 6);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(131, 6);
             // 
             // настройкиToolStripMenuItem
             // 
             this.настройкиToolStripMenuItem.Image = global::SHDML.Winforms.UI.Properties.Resources.free_icon_font_settings_sliders_3917103;
             this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
-            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.настройкиToolStripMenuItem.Text = "Настройки";
             this.настройкиToolStripMenuItem.Visible = false;
             // 
             // ваToolStripMenuItem
             // 
             this.ваToolStripMenuItem.Name = "ваToolStripMenuItem";
-            this.ваToolStripMenuItem.Size = new System.Drawing.Size(177, 6);
+            this.ваToolStripMenuItem.Size = new System.Drawing.Size(131, 6);
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.quitToolStripMenuItem.Text = "Выйти";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.closeInToolStripMenuItem_Click);
             // 
@@ -181,14 +181,14 @@ namespace SHDML.Winforms.UI
             // пользователиToolStripMenuItem
             // 
             this.пользователиToolStripMenuItem.Name = "пользователиToolStripMenuItem";
-            this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.пользователиToolStripMenuItem.Text = "Пользователи";
             this.пользователиToolStripMenuItem.Visible = false;
             // 
             // калькуляторToolStripMenuItem
             // 
             this.калькуляторToolStripMenuItem.Name = "калькуляторToolStripMenuItem";
-            this.калькуляторToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.калькуляторToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.калькуляторToolStripMenuItem.Text = "Калькулятор";
             // 
             // пToolStripMenuItem
@@ -204,18 +204,18 @@ namespace SHDML.Winforms.UI
             // справкаToolStripMenuItem
             // 
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.справкаToolStripMenuItem.Text = "Справка";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(146, 6);
             // 
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             // 
             // splitContainerDesktop
@@ -528,7 +528,7 @@ namespace SHDML.Winforms.UI
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainerDesktop;
         private System.Windows.Forms.SplitContainer splitContainerLeftSideBar;
-        private AuthUCView _authUcView;
+        private LoginUCView _authUcView;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageTransactions;
         private System.Windows.Forms.SplitContainer splitContainerTransactions;
