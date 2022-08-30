@@ -1,28 +1,19 @@
 using System;
-using System.IO;
 using System.Threading;
 using System.Windows.Forms;
-using FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction;
+using FM.SHD.Infastructure.Impl.Factory;
+using FM.SHD.Infastructure.Impl.Repositories;
+using FM.SHD.Infrastructure.Dal.Factory;
 using FM.SHD.Infrastructure.Events;
-using FM.SHD.Presenters;
 using FM.SHD.Presenters.Events;
-using FM.SHD.Presenters.Interfaces.UserControls.Common;
-using FM.SHD.Presenters.IntrefacesViews;
-using FM.SHD.Presenters.UserControlPresenters.Common;
 using FM.SHD.Presenters.ViewPresenters;
-using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.CommonServices;
-using FM.SHD.Services.ComponentsServices.TypeTransactionService;
-using FM.SHD.Services.Repositories;
-using FM.SHD.Services.Settings;
-using FM.SHD.Services.SingleTransactionServices;
-using Microsoft.Extensions.Configuration;
+using FM.SHD.Settings.Services;
+using FM.SHD.Settings.Services.SettingsCollection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using SHDML.Winforms.UI.DependencyInjection;
-using SHDML.Winforms.UI.Transactions;
 
 namespace SHDML.Winforms.UI
 {
@@ -42,23 +33,18 @@ namespace SHDML.Winforms.UI
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
 
 
-            var config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", false, true)
-                .Build();
-
-            var builder = new HostBuilder()
+          var builder = new HostBuilder()
                 .ConfigureServices((hostBuilder, services) =>
                 {
                     services
-                        .AddSingleton<IConfiguration>(config)
-                        .Configure<DatabaseOptions>(config.GetSection("ConnectionStrings"))
                         .AddSingleton<EventAggregator>()
                         .AddTransient<IApplicationEvent, OnSelectedTypeOfTransactionApplicationEvent>()
                         .AddServices()
                         .AddViews()
                         .AddUserControlViews()
-                        .AddRepositories(config)
+                        .AddSingleton<SystemRecentOpenFilesSettings>()
+                        .AddSingleton<SettingServices<SystemRecentOpenFilesSettings>>()
+                        .AddRepositories()
                         .AddTransient<IModelValidator, ModelValidator>()
                         .AddLogging(configure =>
                         {
@@ -74,7 +60,7 @@ namespace SHDML.Winforms.UI
                 try
                 {
                     var mainPresenter = services.GetRequiredService<MainPresenter>();
-                    Application.Run((MainView)mainPresenter.GetMainView());
+                    Application.Run((MainView)mainPresenter.GetView());
                 }
                 catch (Exception exception)
                 {

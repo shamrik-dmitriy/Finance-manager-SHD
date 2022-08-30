@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using FM.SHD.Infrastructure.Dal.Providers;
 using FM.SHD.Services.Repositories;
-using FM.SHDML.Core.Models.Categories.Contragents;
+using FM.SHDML.Core.Models.Categories.ContragentsCategory;
 
 namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Contragents
 {
@@ -10,7 +10,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Contragents
     {
         private const string TABLE_NAME = "Contragents";
 
-        public ContragentsRepository(string connectionString) : base(connectionString)
+        public ContragentsRepository(IRepositoryManager repositoryManager) : base(repositoryManager)
         {
         }
 
@@ -20,7 +20,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Contragents
 
             var typeTransactions = new List<ContragentModel>();
 
-            using (var reader = _sqliteDataProvider.CreateReader(sql))
+            using (var reader = SqliteDataProvider.CreateReader(sql))
             {
                 while (reader.Read())
                 {
@@ -46,7 +46,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Contragents
 
                 var categoriesModel = new ContragentModel();
 
-                using (var reader = _sqliteDataProvider.CreateReader(sql, dataparameters.ToArray()))
+                using (var reader = SqliteDataProvider.CreateReader(sql, dataparameters.ToArray()))
                 {
                     while (reader.Read())
                     {
@@ -73,7 +73,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Contragents
 
                 var categoriesModel = new ContragentModel();
 
-                using (var reader = _sqliteDataProvider.CreateReader(sql, dataparameters.ToArray()))
+                using (var reader = SqliteDataProvider.CreateReader(sql, dataparameters.ToArray()))
                 {
                     while (reader.Read())
                     {

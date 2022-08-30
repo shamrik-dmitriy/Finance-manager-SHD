@@ -4,6 +4,6 @@ namespace FM.SHD.Presenters.Interfaces.Views
 {
     public interface IMainPresenter
     {
-        IMainView GetMainView();
+        IMainView GetView();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using FM.SHDML.Core.Models.Dtos;
 using FM.SHDML.Core.Models.TransactionModels.Transactions.TypeTransaction;
 
 namespace FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions

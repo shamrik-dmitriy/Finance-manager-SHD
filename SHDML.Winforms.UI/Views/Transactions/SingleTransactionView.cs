@@ -5,9 +5,9 @@ using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
-using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
+using FM.SHDML.Core.Models.Dtos;
 
-namespace SHDML.Winforms.UI.Transactions
+namespace SHDML.Winforms.UI.Views.Transactions
 {
     public partial class SingleTransactionView : Form, ISingleTransactionView
     {

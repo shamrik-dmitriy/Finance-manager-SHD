@@ -1,6 +1,4 @@
-﻿using SHDML.Winforms.UI.UserControls.Common;
-
-namespace SHDML.Winforms.UI.Account
+﻿namespace SHDML.Winforms.UI.Views.Account
 {
     partial class AccountView
     {

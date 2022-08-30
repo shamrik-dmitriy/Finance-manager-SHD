@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using FM.SHD.Infrastructure.Dal.Providers;
 using FM.SHD.Services.Repositories;
-using FM.SHDML.Core.Models.Categories.Contragents;
 using FM.SHDML.Core.Models.Categories.IdentitiesCategory;
 
 namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Identities
@@ -11,17 +10,17 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Identities
     {
         private const string TABLE_NAME = "Identity";
 
-        public IdentitiesRepository(string connectionString) : base(connectionString)
+        public IdentitiesRepository(IRepositoryManager repositoryManager) : base(repositoryManager)
         {
         }
-
+        
         public IEnumerable<IdentityModel> GetAll()
         {
             var sql = $"SELECT * FROM {TABLE_NAME};";
 
             var typeTransactions = new List<IdentityModel>();
 
-            using (var reader = _sqliteDataProvider.CreateReader(sql))
+            using (var reader = SqliteDataProvider.CreateReader(sql))
             {
                 while (reader.Read())
                 {
@@ -47,7 +46,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Identities
 
                 var identityModel = new IdentityModel();
 
-                using (var reader = _sqliteDataProvider.CreateReader(sql, dataparameters.ToArray()))
+                using (var reader = SqliteDataProvider.CreateReader(sql, dataparameters.ToArray()))
                 {
                     while (reader.Read())
                     {
@@ -74,7 +73,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Identities
 
                 var identityModel = new IdentityModel();
 
-                using (var reader = _sqliteDataProvider.CreateReader(sql, dataparameters.ToArray()))
+                using (var reader = SqliteDataProvider.CreateReader(sql, dataparameters.ToArray()))
                 {
                     while (reader.Read())
                     {

@@ -1,6 +1,4 @@
-using FM.SHDML.Core.Models.Dtos;
-
-namespace FM.SHDML.Core.Models.TransactionModels.Transactions.TypeTransaction
+namespace FM.SHDML.Core.Models.Dtos
 {
     public class TypeTransactionDto : BaseDto
     {

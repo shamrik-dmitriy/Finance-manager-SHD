@@ -32,5 +32,15 @@ namespace SHDML.Winforms.UI.UserControls.Common
         {
             ((Form)TopLevelControl)?.Close();
         }
+
+        public void SetTextButtonCancel(string text)
+        {
+            cancelButton.Text = text;
+        }
+
+        public void SetTextButtonContinue(string text)
+        {
+            continueButton.Text = text;
+        }
     }
 }

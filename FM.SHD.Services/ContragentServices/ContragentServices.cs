@@ -3,11 +3,10 @@ using System.Linq;
 using AutoMapper;
 using FM.SHD.Services.CommonServices;
 using FM.SHD.Services.Repositories;
-using FM.SHDML.Core.Models.Categories.Categories;
-using FM.SHDML.Core.Models.Categories.Contragents;
+using FM.SHDML.Core.Models.Categories.ContragentsCategory;
 using FM.SHDML.Core.Models.Dtos;
 
-namespace FM.SHD.Services.CategoriesServices
+namespace FM.SHD.Services.ContragentServices
 {
     public class ContragentServices : IContragentServices, IBaseCategoryServices
     {

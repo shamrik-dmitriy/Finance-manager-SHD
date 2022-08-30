@@ -1,4 +1,4 @@
-namespace FM.SHDML.Core.Models.Categories.Contragents
+namespace FM.SHDML.Core.Models.Categories.ContragentsCategory
 {
     public interface IContragentModel
     {

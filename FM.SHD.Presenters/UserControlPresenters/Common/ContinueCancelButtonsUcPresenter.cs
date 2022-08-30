@@ -4,11 +4,11 @@ using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
 
 namespace FM.SHD.Presenters.UserControlPresenters.Common
 {
-    public class AddCancelButtonsUCPresenter : IAddCancelButtonsUCPresenter
+    public class ContinueCancelButtonsUcPresenter : IContinueCancelButtonsUCPresenter
     {
         private readonly IAddCancelButtonsUCView _addCancelButtonsUcView;
 
-        public AddCancelButtonsUCPresenter(IAddCancelButtonsUCView addCancelButtonsUcView)
+        public ContinueCancelButtonsUcPresenter(IAddCancelButtonsUCView addCancelButtonsUcView)
         {
             _addCancelButtonsUcView = addCancelButtonsUcView;
             _addCancelButtonsUcView.Continue+= AddCancelButtonsUcViewOnContinue;
@@ -31,5 +31,14 @@ namespace FM.SHD.Presenters.UserControlPresenters.Common
         }
 
         public event Action Continue;
+        public void SetTextButtonContinue(string text)
+        {
+            _addCancelButtonsUcView.SetTextButtonContinue(text);
+        }
+
+        public void SetTextButtonCancel(string text)
+        {
+            _addCancelButtonsUcView.SetTextButtonCancel(text);
+        }
     }
 }

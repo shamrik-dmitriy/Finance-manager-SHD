@@ -10,7 +10,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Currency
     {
         private const string TABLE_NAME = "Currency";
 
-        public CurrencyRepository(string connectionString) : base(connectionString)
+        public CurrencyRepository(IRepositoryManager repositoryManager) : base(repositoryManager)
         {
         }
         
@@ -26,7 +26,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Currency
                 dataparameters.Add(new DataParameter("@Name", currencyModel.Name));
                 dataparameters.Add(new DataParameter("@Symbol", currencyModel.Symbol));
 
-                return _sqliteDataProvider.ExecuteSqlInsertCommand(sql, dataparameters.ToArray());
+                return SqliteDataProvider.ExecuteSqlInsertCommand(sql, dataparameters.ToArray());
             }
             else
                 throw new ArgumentException($"В хранилище счетов уже есть запись с идентификатором {currencyModel.Id}");
@@ -47,7 +47,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Currency
                 dataparameters.Add(new DataParameter("@Name", currencyModel.Name));
                 dataparameters.Add(new DataParameter("@Description", currencyModel.Symbol));
 
-                _sqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
+                SqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
             }
             else
                 throw new ArgumentException(
@@ -62,7 +62,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Currency
                 var dataparameters = new List<DataParameter>();
                 dataparameters.Add(new DataParameter("@Id", currencyModel.Id));
 
-                _sqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
+                SqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
             }
             else
                 throw new ArgumentException(
@@ -77,7 +77,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Currency
                 var dataparameters = new List<DataParameter>();
                 dataparameters.Add(new DataParameter("@Id", id));
 
-                _sqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
+                SqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
             }
             else
                 throw new ArgumentException(
@@ -90,7 +90,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Currency
 
             var account = new List<CurrencyModel>();
 
-            using (var reader = _sqliteDataProvider.CreateReader(sql))
+            using (var reader = SqliteDataProvider.CreateReader(sql))
             {
                 while (reader.Read())
                 {
@@ -116,7 +116,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Currency
 
                 var currencyModel = new CurrencyModel();
 
-                using (var reader = _sqliteDataProvider.CreateReader(sql, dataparameters.ToArray()))
+                using (var reader = SqliteDataProvider.CreateReader(sql, dataparameters.ToArray()))
                 {
                     while (reader.Read())
                     {

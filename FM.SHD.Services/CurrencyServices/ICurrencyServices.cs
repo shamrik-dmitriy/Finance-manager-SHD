@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using FM.SHDML.Core.Models.Categories.CurrencyCategory;
+using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Services.CurrencyServices
 {

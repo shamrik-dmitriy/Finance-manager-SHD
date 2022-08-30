@@ -6,7 +6,10 @@ using FM.SHD.Presenters.Interfaces.Views;
 using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Services.CategoriesServices;
 using FM.SHD.Services.ComponentsServices.TypeTransactionService;
+using FM.SHD.Services.ContragentServices;
+using FM.SHD.Services.IdentityServices;
 using FM.SHD.Services.SingleTransactionServices;
+using FM.SHDML.Core.Models.Dtos;
 using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
 
 namespace FM.SHD.Presenters.ViewPresenters
@@ -22,7 +25,7 @@ namespace FM.SHD.Presenters.ViewPresenters
         private readonly ICategoryUCPresenter<CategoriesServices> _categoriesUcPresenter;
         private readonly ICategoryUCPresenter<ContragentServices> _contrAgentUcPresenter;
         private readonly ICategoryUCPresenter<IdentityServices> _identityUcPresenter;
-        private readonly IAddCancelButtonsUCPresenter _addCancelButtonsUcPresenter;
+        private readonly IContinueCancelButtonsUCPresenter _continueCancelButtonsUcPresenter;
 
         public SingleTransactionPresenter(
             ISingleTransactionView singleTransactionView,
@@ -34,7 +37,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             ICategoryUCPresenter<CategoriesServices> categoriesUcPresenter,
             ICategoryUCPresenter<ContragentServices> contrAgentUcPresenter,
             ICategoryUCPresenter<IdentityServices> identityUcPresenter,
-            IAddCancelButtonsUCPresenter addCancelButtonsUcPresenter)
+            IContinueCancelButtonsUCPresenter continueCancelButtonsUcPresenter)
         {
             _singleTransactionView = singleTransactionView;
             _singleTransactionServices = singleTransactionServices;
@@ -46,7 +49,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             _categoriesUcPresenter = categoriesUcPresenter;
             _contrAgentUcPresenter = contrAgentUcPresenter;
             _identityUcPresenter = identityUcPresenter;
-            _addCancelButtonsUcPresenter = addCancelButtonsUcPresenter;
+            _continueCancelButtonsUcPresenter = continueCancelButtonsUcPresenter;
             
             _singleTransactionView.OnLoadView += SingleTransactionViewOnOnLoad;
             _typeTransactionUcPresenter.CategoryChanged += TypeTransactionUcPresenterOnCategoryChanged;
@@ -79,12 +82,12 @@ namespace FM.SHD.Presenters.ViewPresenters
             _identityUcPresenter.SetStyleDropDown();
             _identityUcPresenter.SetText("Член семьи");
             _singleTransactionView.AddUserControl(_identityUcPresenter.GetUserControlView());
-            _singleTransactionView.AddUserControl(_addCancelButtonsUcPresenter.GetUserControlView());
+            _singleTransactionView.AddUserControl(_continueCancelButtonsUcPresenter.GetUserControlView());
 
-            _addCancelButtonsUcPresenter.Continue += AddCancelButtonsUcPresenterOnContinue;
+            _continueCancelButtonsUcPresenter.Continue += ContinueCancelButtonsUcPresenterOnContinue;
         }
 
-        private void AddCancelButtonsUcPresenterOnContinue()
+        private void ContinueCancelButtonsUcPresenterOnContinue()
         {
             _singleTransactionServices.Add(new SingleTransactionDto
             {

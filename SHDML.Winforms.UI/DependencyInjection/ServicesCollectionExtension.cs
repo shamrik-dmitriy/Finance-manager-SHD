@@ -1,3 +1,5 @@
+using FM.SHD.Infastructure.Impl.Factory;
+using FM.SHD.Infastructure.Impl.Repositories;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Account;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Categories;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Contragents;
@@ -5,6 +7,7 @@ using FM.SHD.Infastructure.Impl.Repositories.Specific.Currency;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Identities;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.TypeTransaction;
+using FM.SHD.Infrastructure.Dal.Factory;
 using FM.SHD.Presenters.Interfaces.UserControls.Common;
 using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
 using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
@@ -21,17 +24,19 @@ using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.CategoriesServices;
 using FM.SHD.Services.CommonServices;
 using FM.SHD.Services.ComponentsServices.TypeTransactionService;
+using FM.SHD.Services.ContragentServices;
 using FM.SHD.Services.CurrencyServices;
+using FM.SHD.Services.IdentityServices;
 using FM.SHD.Services.Repositories;
 using FM.SHD.Services.SingleTransactionServices;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SHDML.Winforms.UI.Account;
-using SHDML.Winforms.UI.Transactions;
 using SHDML.Winforms.UI.UserControls.Common;
 using SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls;
 using SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions;
 using SHDML.Winforms.UI.UserControls.Wallet;
+using SHDML.Winforms.UI.Views.Account;
+using SHDML.Winforms.UI.Views.Transactions;
 using IContrAgentUCPresenter = FM.SHD.Presenters.Interfaces.UserControls.Transactions.IContrAgentUCPresenter;
 
 namespace SHDML.Winforms.UI.DependencyInjection
@@ -73,7 +78,7 @@ namespace SHDML.Winforms.UI.DependencyInjection
                 .AddTransient<IIdentityUCView, IdentityUCView>()
                 .AddTransient<IIdentityUCPresenter, IdentityUCPresenter>()
                 .AddTransient<IAddCancelButtonsUCView, AddCancelButtonsUCView>()
-                .AddTransient<IAddCancelButtonsUCPresenter, AddCancelButtonsUCPresenter>()
+                .AddTransient<IContinueCancelButtonsUCPresenter, ContinueCancelButtonsUcPresenter>()
                 .AddTransient<IAccountInfoUCView, AccountInfoUCView>()
                 .AddTransient<IAccountInfoUCPresenter, AccountInfoUCPresenter>()
                 .AddTransient<ISumTransactionUCView, SumTransactionUCView>()
@@ -90,34 +95,20 @@ namespace SHDML.Winforms.UI.DependencyInjection
                 .AddTransient<IAccountSummaryUCPresenter, AccountSummaryUCPresenter>();
         }
 
-        public static IServiceCollection AddRepositories(this IServiceCollection serviceCollection,
-            IConfigurationRoot config)
+        public static IServiceCollection AddRepositories(this IServiceCollection
+                serviceCollection)
         {
             return serviceCollection
-                .AddTransient<ISingleTransactionRepository, SingleTransactionRepository>(provider =>
-                    new SingleTransactionRepository(
-                        config.GetConnectionString("DefaultConnection")))
-                .AddTransient<IAccountRepository, AccountRepository>(provider =>
-                    new AccountRepository(
-                        config.GetConnectionString("DefaultConnection")))
-                .AddTransient<ITypeTransactionRepository, TypeTransactionRepository>(provider =>
-                    new TypeTransactionRepository(
-                        config.GetConnectionString("DefaultConnection")))
-                .AddTransient<IAccountCategoryRepository, AccountCategoryRepository>(provider =>
-                    new AccountCategoryRepository(
-                        config.GetConnectionString("DefaultConnection")))
-                .AddTransient<ICategoriesRepository, CategoriesRepository>(provider =>
-                    new CategoriesRepository(
-                        config.GetConnectionString("DefaultConnection")))
-                .AddTransient<IIdentitiesRepository, IdentitiesRepository>(provider =>
-                    new IdentitiesRepository(
-                        config.GetConnectionString("DefaultConnection")))
-                .AddTransient<IContragentsRepository, ContragentsRepository>(provider =>
-                    new ContragentsRepository(
-                        config.GetConnectionString("DefaultConnection")))
-                .AddTransient<ICurrencyRepository, CurrencyRepository>(provider =>
-                    new CurrencyRepository(
-                        config.GetConnectionString("DefaultConnection")));
+                .AddScoped<ISqliteConnectionFactory, SqliteConnectionFactory>()
+                .AddScoped<IRepositoryManager, RepositoryManager>()
+                .AddTransient<ISingleTransactionRepository, SingleTransactionRepository>()
+                .AddTransient<IAccountRepository, AccountRepository>()
+                .AddTransient<ITypeTransactionRepository, TypeTransactionRepository>()
+                .AddTransient<IAccountCategoryRepository, AccountCategoryRepository>()
+                .AddTransient<ICategoriesRepository, CategoriesRepository>()
+                .AddTransient<IIdentitiesRepository, IdentitiesRepository>()
+                .AddTransient<IContragentsRepository, ContragentsRepository>()
+                .AddTransient<ICurrencyRepository, CurrencyRepository>();
         }
 
         public static IServiceCollection AddServices(this IServiceCollection serviceCollection)

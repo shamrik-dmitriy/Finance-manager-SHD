@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using FM.SHDML.Core.Models.Dtos;
 
-namespace FM.SHD.Services.CategoriesServices
+namespace FM.SHD.Services.IdentityServices
 {
     public interface IIdentityServices
     {

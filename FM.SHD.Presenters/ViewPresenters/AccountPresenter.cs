@@ -6,6 +6,7 @@ using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
 using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.CurrencyServices;
 using FM.SHDML.Core.Models.AccountModel;
+using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Presenters.ViewPresenters
 {
@@ -19,7 +20,7 @@ namespace FM.SHD.Presenters.ViewPresenters
         private readonly ICategoryUCPresenter<AccountServices> _accountUcPresenter;
         private readonly ICategoryUCPresenter<CurrencyServices> _currencyUcPresenter;
         private readonly ICheckboxUCPresenter _checkboxUcPresenter;
-        private readonly IAddCancelButtonsUCPresenter _addCancelButtonsUcPresenter;
+        private readonly IContinueCancelButtonsUCPresenter _continueCancelButtonsUcPresenter;
 
         public AccountPresenter(
             IAccountServices accountServices,
@@ -30,7 +31,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             ICategoryUCPresenter<AccountServices>  accountUcPresenter,
             ICategoryUCPresenter<CurrencyServices>  currencyUcPresenter,
             ICheckboxUCPresenter checkboxUcPresenter,
-            IAddCancelButtonsUCPresenter addCancelButtonsUcPresenter)
+            IContinueCancelButtonsUCPresenter continueCancelButtonsUcPresenter)
         {
             _accountServices = accountServices;
             _accountView = accountView;
@@ -40,7 +41,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             _accountUcPresenter = accountUcPresenter;
             _currencyUcPresenter = currencyUcPresenter;
             _checkboxUcPresenter = checkboxUcPresenter;
-            _addCancelButtonsUcPresenter = addCancelButtonsUcPresenter;
+            _continueCancelButtonsUcPresenter = continueCancelButtonsUcPresenter;
 
             _accountView.OnLoadView += AccountViewOnOnLoadView;
         }
@@ -58,9 +59,9 @@ namespace FM.SHD.Presenters.ViewPresenters
             _accountView.AddUserControl(_currencyUcPresenter.GetUserControlView());
             _checkboxUcPresenter.SetText("Закрытый счёт");
             _accountView.AddUserControl(_checkboxUcPresenter.GetUserControlView());
-            _accountView.AddUserControl(_addCancelButtonsUcPresenter.GetUserControlView());
+            _accountView.AddUserControl(_continueCancelButtonsUcPresenter.GetUserControlView());
 
-            _addCancelButtonsUcPresenter.Continue += AddCancelButtonsUcPresenterOnContinue;
+            _continueCancelButtonsUcPresenter.Continue += ContinueCancelButtonsUcPresenterOnContinue;
             _currencyUcPresenter.CategoryChanged += CurrencyUcPresenterOnCategoryChanged;
 
             //_categoryAccountUcPresenter.SetCategoryValues();
@@ -71,7 +72,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             
         }
 
-        private void AddCancelButtonsUcPresenterOnContinue()
+        private void ContinueCancelButtonsUcPresenterOnContinue()
         {
             _accountServices.Add(new AccountDto()
             {

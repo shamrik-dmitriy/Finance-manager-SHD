@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FM.SHD.Services.CommonServices;
+using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Services.AccountServices
 {
