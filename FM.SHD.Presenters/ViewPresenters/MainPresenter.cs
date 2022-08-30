@@ -47,7 +47,7 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private List<RecentOpenFilesDto> RecentOpenFilesDtos { get; set; }
 
-        private void LoadListRecentOpenFiles()
+        private bool LoadListRecentOpenFiles()
         {
             RecentOpenFilesDtos = _recentOpenFilesSettings.GetSetting().RecentOpen
                 .Select(x => new RecentOpenFilesDto()
@@ -56,9 +56,10 @@ namespace FM.SHD.Presenters.ViewPresenters
                 }).ToList();
 
             if (RecentOpenFilesDtos.Count == 0)
-                return;
+                return false;
 
             _mainView.AddElementInRecentOpenItems(RecentOpenFilesDtos);
+            return true;
         }
 
         private void MainViewOnOpenDataFile(string filePath)
@@ -116,15 +117,17 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void MainViewOnOnLoadView()
         {
-            LoadListRecentOpenFiles();
+            var isLoad = LoadListRecentOpenFiles();
+            _mainView.SetViewOnActiveUI(isLoad);
 
-            /*  if (_recentOpenFilesSettings.GetSetting().RecentOpen.Count != 0)
-              {
-                    CreateConnection($"DataSource={_recentOpenFilesSettings.GetSetting().RecentOpen.Last().FilePath}");
-              }*/
+            if (isLoad)
+            {
+                CreateConnection(_recentOpenFilesSettings.GetSetting().RecentOpen.Last().FilePath);
+            }
+
 
             /*if (_recentOpenOptions.Value.RecentOpen == null)
-                _mainView.SetViewOnUnCompleteLoadData();*/
+                _mainView.SetViewOnActiveUI();*/
 
             // TODO: Вызывать тут код для авторизации, опять таки
             // TODO: проверить, есть ли пароль. Если пароль есть - вызвать форму авторизации
