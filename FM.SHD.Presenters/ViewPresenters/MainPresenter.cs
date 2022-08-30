@@ -73,15 +73,9 @@ namespace FM.SHD.Presenters.ViewPresenters
 
             if (RecentOpenFilesDtos.Count != 0)
             {
-                if (RecentOpenFilesDtos.Count == 3)
+                if (RecentOpenFilesDtos.Count == 5)
                 {
-                    var findElement = RecentOpenFilesDtos.Where(x => x.FileName == fileName && x.FilePath == filePath);
-                    if (findElement.Any())
-                    {
-                        RecentOpenFilesDtos.Remove(findElement.First());
-                        RecentOpenFilesDtos.Add(recentOpenItem);
-                    }
-                    else
+                    if (!IsFindAndReplaceRecentOpenFile(filePath, fileName, recentOpenItem))
                     {
                         RecentOpenFilesDtos.Remove(RecentOpenFilesDtos.Last());
                         RecentOpenFilesDtos.Add(recentOpenItem);
@@ -89,7 +83,7 @@ namespace FM.SHD.Presenters.ViewPresenters
                 }
                 else
                 {
-                    if (!RecentOpenFilesDtos.Contains(recentOpenItem))
+                    if (!IsFindAndReplaceRecentOpenFile(filePath, fileName, recentOpenItem))
                     {
                         RecentOpenFilesDtos.Add(recentOpenItem);
                     }
@@ -106,8 +100,19 @@ namespace FM.SHD.Presenters.ViewPresenters
                 RecentOpenFilesDtos.Select(x => (x.FileName, x.FilePath)).ToList();
             _recentOpenFilesSettings.Save();
 
+            _mainView.SetViewOnActiveUI();
             CreateConnection(filePath);
         }
+
+        private bool IsFindAndReplaceRecentOpenFile(string filePath, string fileName, RecentOpenFilesDto recentOpenItem)
+        {
+            var findElement = RecentOpenFilesDtos.Where(x => x.FileName == fileName && x.FilePath == filePath);
+            if (!findElement.Any()) return false;
+            RecentOpenFilesDtos.Remove(findElement.First());
+            RecentOpenFilesDtos.Add(recentOpenItem);
+            return true;
+        }
+
 
         private void CreateConnection(string filePath)
         {
@@ -118,11 +123,15 @@ namespace FM.SHD.Presenters.ViewPresenters
         private void MainViewOnOnLoadView()
         {
             var isLoad = LoadListRecentOpenFiles();
-            _mainView.SetViewOnActiveUI(isLoad);
 
             if (isLoad)
             {
+                _mainView.SetViewOnActiveUI();
                 CreateConnection(_recentOpenFilesSettings.GetSetting().RecentOpen.Last().FilePath);
+            }
+            else
+            {
+                _mainView.SetViewOnUnActiveUI();
             }
 
 

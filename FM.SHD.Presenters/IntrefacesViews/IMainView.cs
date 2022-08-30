@@ -16,7 +16,8 @@ namespace FM.SHD.Presenters.IntrefacesViews
 
        void AddAccountsSummaryUserControl(IUserControlView userControlView);
         void SetAccountsData(IEnumerable<AccountDto> accountDtos);
-        void SetViewOnActiveUI(bool isActive);
+        void SetViewOnActiveUI();
         void AddElementInRecentOpenItems(List<RecentOpenFilesDto> recentOpenFiles);
+        void SetViewOnUnActiveUI();
     }
 }

@@ -36,7 +36,6 @@ namespace SHDML.Winforms.UI
             this.toolStripMenuItemCreateDataFile = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemOpenDataFile = new System.Windows.Forms.ToolStripMenuItem();
             this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
             this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ваToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
@@ -112,7 +111,6 @@ namespace SHDML.Winforms.UI
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemCreateDataFile,
             this.toolStripMenuItemOpenDataFile,
-            this.toolStripMenuItemSave,
             this.сохранитьToolStripMenuItem,
             this.настройкиToolStripMenuItem,
             this.ваToolStripMenuItem,
@@ -142,16 +140,9 @@ namespace SHDML.Winforms.UI
             // открытьToolStripMenuItem
             // 
             this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.открытьToolStripMenuItem.Text = "Открыть...";
             this.открытьToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItemOpenDataFile_Click);
-            // 
-            // toolStripMenuItemSave
-            // 
-            this.toolStripMenuItemSave.Image = global::SHDML.Winforms.UI.Properties.Resources.free_icon_font_folder_download_7653209;
-            this.toolStripMenuItemSave.Name = "toolStripMenuItemSave";
-            this.toolStripMenuItemSave.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItemSave.Text = "Сохранить";
             // 
             // сохранитьToolStripMenuItem
             // 
@@ -190,14 +181,14 @@ namespace SHDML.Winforms.UI
             // пользователиToolStripMenuItem
             // 
             this.пользователиToolStripMenuItem.Name = "пользователиToolStripMenuItem";
-            this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.пользователиToolStripMenuItem.Text = "Пользователи";
             this.пользователиToolStripMenuItem.Visible = false;
             // 
             // калькуляторToolStripMenuItem
             // 
             this.калькуляторToolStripMenuItem.Name = "калькуляторToolStripMenuItem";
-            this.калькуляторToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.калькуляторToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.калькуляторToolStripMenuItem.Text = "Калькулятор";
             // 
             // пToolStripMenuItem
@@ -213,18 +204,18 @@ namespace SHDML.Winforms.UI
             // справкаToolStripMenuItem
             // 
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.справкаToolStripMenuItem.Text = "Справка";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(146, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             // 
             // splitContainerDesktop
@@ -556,7 +547,6 @@ namespace SHDML.Winforms.UI
         private System.Windows.Forms.SplitContainer accountActionAndTotalSumsplitContainer;
         private System.Windows.Forms.Button addAccountButton;
         private System.Windows.Forms.FlowLayoutPanel accoutsFlowLayoutPanel;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSave;
         private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
     }
 }

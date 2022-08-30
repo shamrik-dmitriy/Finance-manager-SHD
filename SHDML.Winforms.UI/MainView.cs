@@ -86,9 +86,9 @@ namespace SHDML.Winforms.UI
                 new TotalSumInAccountsUCView(accountDtos.Sum(accountDto => accountDto.CurrentSum).ToString()));
         }
 
-        public void SetViewOnActiveUI(bool isActive)
+        public void SetViewOnUnActiveUI()
         {
-            splitContainerDesktop.Visible = isActive;
+            splitContainerDesktop.Visible = false;
 
             foreach (ToolStripItem menuStrip1Item in menuStrip1.Items)
             {
@@ -98,7 +98,31 @@ namespace SHDML.Winforms.UI
                     case "quitToolStripMenuItem":
                     case "файлToolStripMenuItem":
                     {
-                        menuStrip1Item.Enabled = isActive;
+                        menuStrip1Item.Enabled = true;
+                        break;
+                    }
+                    default:
+                    {
+                        menuStrip1Item.Enabled = false;
+                        break;
+                    }
+                }
+            }
+        }
+        
+        public void SetViewOnActiveUI()
+        {
+            splitContainerDesktop.Visible = true;
+
+            foreach (ToolStripItem menuStrip1Item in menuStrip1.Items)
+            {
+                switch (menuStrip1Item.Name)
+                {
+                    case "toolStripMenuItemOpenDataFile":
+                    case "quitToolStripMenuItem":
+                    case "файлToolStripMenuItem":
+                    {
+                        menuStrip1Item.Enabled = true;
                         break;
                     }
                     default:
