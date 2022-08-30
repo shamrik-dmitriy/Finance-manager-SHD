@@ -1,3 +1,5 @@
+using FM.SHD.Infastructure.Impl.Factory;
+using FM.SHD.Infastructure.Impl.Repositories;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Account;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Categories;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Contragents;
@@ -5,6 +7,7 @@ using FM.SHD.Infastructure.Impl.Repositories.Specific.Currency;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Identities;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.TypeTransaction;
+using FM.SHD.Infrastructure.Dal.Factory;
 using FM.SHD.Presenters.Interfaces.UserControls.Common;
 using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
 using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
@@ -96,6 +99,8 @@ namespace SHDML.Winforms.UI.DependencyInjection
                 serviceCollection)
         {
             return serviceCollection
+                .AddScoped<ISqliteConnectionFactory, SqliteConnectionFactory>()
+                .AddScoped<IRepositoryManager, RepositoryManager>()
                 .AddTransient<ISingleTransactionRepository, SingleTransactionRepository>()
                 .AddTransient<IAccountRepository, AccountRepository>()
                 .AddTransient<ITypeTransactionRepository, TypeTransactionRepository>()

@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using FM.SHD.Infastructure.Impl.Factory;
@@ -8,11 +7,9 @@ using FM.SHD.Infrastructure.Dal.Factory;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.ViewPresenters;
-using FM.SHD.Services;
 using FM.SHD.Services.CommonServices;
 using FM.SHD.Settings.Services;
 using FM.SHD.Settings.Services.SettingsCollection;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -36,16 +33,10 @@ namespace SHDML.Winforms.UI
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
 
 
-            var config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", false, true)
-                .Build();
-
-            var builder = new HostBuilder()
+          var builder = new HostBuilder()
                 .ConfigureServices((hostBuilder, services) =>
                 {
                     services
-                        .AddSingleton<IConfiguration>(config)
                         .AddSingleton<EventAggregator>()
                         .AddTransient<IApplicationEvent, OnSelectedTypeOfTransactionApplicationEvent>()
                         .AddServices()
@@ -53,8 +44,6 @@ namespace SHDML.Winforms.UI
                         .AddUserControlViews()
                         .AddSingleton<SystemRecentOpenFilesSettings>()
                         .AddSingleton<SettingServices<SystemRecentOpenFilesSettings>>()
-                        .AddScoped<ISqliteConnectionFactory, SqliteConnectionFactory>()
-                        .AddScoped<IRepositoryManager, RepositoryManager>()
                         .AddRepositories()
                         .AddTransient<IModelValidator, ModelValidator>()
                         .AddLogging(configure =>
