@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using FM.SHD.Infrastructure.Dal.Providers;
 using FM.SHD.Services.Repositories;
-using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
 using FM.SHDML.Core.Models.TransactionModels.Transactions.TypeTransaction;
 
 namespace FM.SHD.Infastructure.Impl.Repositories.Specific.TypeTransaction
@@ -11,7 +10,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.TypeTransaction
     {
         private const string TABLE_NAME = "TransactionType";
 
-        public TypeTransactionRepository(string connectionString) : base(connectionString)
+        public TypeTransactionRepository(IRepositoryManager repositoryManager) : base(repositoryManager)
         {
         }
 
@@ -21,7 +20,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.TypeTransaction
 
             var typeTransactions = new List<TypeTransactionModel>();
 
-            using (var reader = _sqliteDataProvider.CreateReader(sql))
+            using (var reader = SqliteDataProvider.CreateReader(sql))
             {
                 while (reader.Read())
                 {
@@ -46,7 +45,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.TypeTransaction
 
                 var transactionModel = new TypeTransactionModel();
 
-                using (var reader = _sqliteDataProvider.CreateReader(sql, dataparameters.ToArray()))
+                using (var reader = SqliteDataProvider.CreateReader(sql, dataparameters.ToArray()))
                 {
                     while (reader.Read())
                     {

@@ -2,6 +2,9 @@ using System;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
+using FM.SHD.Infastructure.Impl.Factory;
+using FM.SHD.Infastructure.Impl.Repositories;
+using FM.SHD.Infrastructure.Dal.Factory;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.ViewPresenters;
@@ -50,7 +53,9 @@ namespace SHDML.Winforms.UI
                         .AddUserControlViews()
                         .AddSingleton<SystemRecentOpenFilesSettings>()
                         .AddSingleton<SettingServices<SystemRecentOpenFilesSettings>>()
-                        .AddRepositories(config)
+                        .AddScoped<ISqliteConnectionFactory, SqliteConnectionFactory>()
+                        .AddScoped<IRepositoryManager, RepositoryManager>()
+                        .AddRepositories()
                         .AddTransient<IModelValidator, ModelValidator>()
                         .AddLogging(configure =>
                         {

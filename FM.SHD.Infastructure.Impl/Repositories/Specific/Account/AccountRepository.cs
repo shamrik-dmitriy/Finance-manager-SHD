@@ -1,20 +1,15 @@
-﻿using FM.SHD.Infastructure.Impl.Factory;
-using FM.SHD.Infrastructure.Dal.Providers;
-using FM.SHD.Infrastructure.Dal.Providers.Interfaces;
+﻿using FM.SHD.Infrastructure.Dal.Providers;
 using FM.SHD.Services.Repositories;
 using FM.SHDML.Core.Models.AccountModel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
 {
     public class AccountRepository : BaseSpecificRepository, IAccountRepository
     {
         private const string TABLE_NAME = "Account";
-        public AccountRepository(string connectionString) : base(connectionString)
+        public AccountRepository(IRepositoryManager repositoryManager) : base(repositoryManager)
         {
         }
 
@@ -36,7 +31,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
                 dataparameters.Add(new DataParameter("@CategoryId", accountModel.CategoryId));
                 dataparameters.Add(new DataParameter("@IdentityId", accountModel.IdentityId));
 
-                return _sqliteDataProvider.ExecuteSqlInsertCommand(sql, dataparameters.ToArray());
+                return SqliteDataProvider.ExecuteSqlInsertCommand(sql, dataparameters.ToArray());
             }
             else
                 throw new ArgumentException($"В хранилище счетов уже есть запись с идентификатором {accountModel.Id}");
@@ -50,7 +45,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
                 var dataparameters = new List<DataParameter>();
                 dataparameters.Add(new DataParameter("@Id", accountModel.Id));
 
-                _sqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
+                SqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
             }
             else
                 throw new ArgumentException(
@@ -65,7 +60,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
                 var dataparameters = new List<DataParameter>();
                 dataparameters.Add(new DataParameter("@Id", accountModelId));
 
-                _sqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
+                SqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
             }
             else
                 throw new ArgumentException(
@@ -78,7 +73,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
 
             var account = new List<AccountModel>();
 
-            using (var reader = _sqliteDataProvider.CreateReader(sql))
+            using (var reader = SqliteDataProvider.CreateReader(sql))
             {
                 while (reader.Read())
                 {
@@ -110,7 +105,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
 
                 var accountModel = new AccountModel();
 
-                using (var reader = _sqliteDataProvider.CreateReader(sql, dataparameters.ToArray()))
+                using (var reader = SqliteDataProvider.CreateReader(sql, dataparameters.ToArray()))
                 {
                     while (reader.Read())
                     {
@@ -158,7 +153,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
                 dataparameters.Add(new DataParameter("@CategoryId", accountModel.CategoryId));
                 dataparameters.Add(new DataParameter("@IdentityId", accountModel.IdentityId));
 
-                _sqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
+                SqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
             }
             else
                 throw new ArgumentException(

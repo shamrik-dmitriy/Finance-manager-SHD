@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using FM.SHD.Infastructure.Impl.Repositories;
+using FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction;
 using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
 using FM.SHD.Presenters.Interfaces.Views;
 using FM.SHD.Presenters.IntrefacesViews;
-using FM.SHD.Services;
 using FM.SHD.Services.AccountServices;
+using FM.SHD.Services.Repositories;
+using FM.SHD.Services.SingleTransactionServices;
 using FM.SHD.Settings.Services;
 using FM.SHD.Settings.Services.SettingsCollection;
 using FM.SHDML.Core.Models.Dtos.UIDto;
@@ -17,6 +20,7 @@ namespace FM.SHD.Presenters.ViewPresenters
     public class MainPresenter : IMainPresenter
     {
         private IMainView _mainView;
+        private readonly IRepositoryManager _repositoryManager;
 
         private IServiceProvider _serviceProvider;
 
@@ -27,9 +31,11 @@ namespace FM.SHD.Presenters.ViewPresenters
         public MainPresenter(
             IServiceProvider serviceProvider,
             SettingServices<SystemRecentOpenFilesSettings> recentOpenFilesSettings,
-            IMainView mainView)
+            IMainView mainView,
+            IRepositoryManager repositoryManager)
         {
             _mainView = mainView;
+            _repositoryManager = repositoryManager;
             _serviceProvider = serviceProvider;
             _recentOpenFilesSettings = recentOpenFilesSettings;
 
@@ -41,7 +47,7 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private List<RecentOpenFilesDto> RecentOpenFilesDtos { get; set; }
 
-        private void LoadRecentOpenFiles()
+        private void LoadListRecentOpenFiles()
         {
             RecentOpenFilesDtos = _recentOpenFilesSettings.GetSetting().RecentOpen
                 .Select(x => new RecentOpenFilesDto()
@@ -90,22 +96,32 @@ namespace FM.SHD.Presenters.ViewPresenters
             }
             else
             {
-                RecentOpenFilesDtos.Add(new RecentOpenFilesDto()
-                {
-                    FileName = fileName,
-                    FilePath = filePath
-                });
+                RecentOpenFilesDtos.Add(recentOpenItem);
             }
 
             _mainView.AddElementInRecentOpenItems(RecentOpenFilesDtos);
+
             _recentOpenFilesSettings.GetSetting().RecentOpen =
                 RecentOpenFilesDtos.Select(x => (x.FileName, x.FilePath)).ToList();
             _recentOpenFilesSettings.Save();
+
+            CreateConnection(filePath);
+        }
+
+        private void CreateConnection(string filePath)
+        {
+            _repositoryManager.ConfigureConnection($"DataSource={filePath}");
+            _repositoryManager.CreateConnection();
         }
 
         private void MainViewOnOnLoadView()
         {
-            LoadRecentOpenFiles();
+            LoadListRecentOpenFiles();
+
+            /*  if (_recentOpenFilesSettings.GetSetting().RecentOpen.Count != 0)
+              {
+                    CreateConnection($"DataSource={_recentOpenFilesSettings.GetSetting().RecentOpen.Last().FilePath}");
+              }*/
 
             /*if (_recentOpenOptions.Value.RecentOpen == null)
                 _mainView.SetViewOnUnCompleteLoadData();*/

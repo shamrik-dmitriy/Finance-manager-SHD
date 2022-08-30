@@ -20,6 +20,9 @@ namespace FM.SHD.Settings.Services.SettingsCollection
 
         string ISettingsServices.GetSettings()
         {
+            RecentOpen.RemoveAll(x => string.IsNullOrWhiteSpace(x.FileName) ||
+                                      string.IsNullOrWhiteSpace(x.FilePath));
+         
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 

@@ -92,34 +92,18 @@ namespace SHDML.Winforms.UI.DependencyInjection
                 .AddTransient<IAccountSummaryUCPresenter, AccountSummaryUCPresenter>();
         }
 
-        public static IServiceCollection AddRepositories(this IServiceCollection serviceCollection,
-            IConfigurationRoot config)
+        public static IServiceCollection AddRepositories(this IServiceCollection
+                serviceCollection)
         {
             return serviceCollection
-                .AddTransient<ISingleTransactionRepository, SingleTransactionRepository>(provider =>
-                    new SingleTransactionRepository(
-                        config.GetConnectionString("DefaultConnection")))
-                .AddTransient<IAccountRepository, AccountRepository>(provider =>
-                    new AccountRepository(
-                        config.GetConnectionString("DefaultConnection")))
-                .AddTransient<ITypeTransactionRepository, TypeTransactionRepository>(provider =>
-                    new TypeTransactionRepository(
-                        config.GetConnectionString("DefaultConnection")))
-                .AddTransient<IAccountCategoryRepository, AccountCategoryRepository>(provider =>
-                    new AccountCategoryRepository(
-                        config.GetConnectionString("DefaultConnection")))
-                .AddTransient<ICategoriesRepository, CategoriesRepository>(provider =>
-                    new CategoriesRepository(
-                        config.GetConnectionString("DefaultConnection")))
-                .AddTransient<IIdentitiesRepository, IdentitiesRepository>(provider =>
-                    new IdentitiesRepository(
-                        config.GetConnectionString("DefaultConnection")))
-                .AddTransient<IContragentsRepository, ContragentsRepository>(provider =>
-                    new ContragentsRepository(
-                        config.GetConnectionString("DefaultConnection")))
-                .AddTransient<ICurrencyRepository, CurrencyRepository>(provider =>
-                    new CurrencyRepository(
-                        config.GetConnectionString("DefaultConnection")));
+                .AddTransient<ISingleTransactionRepository, SingleTransactionRepository>()
+                .AddTransient<IAccountRepository, AccountRepository>()
+                .AddTransient<ITypeTransactionRepository, TypeTransactionRepository>()
+                .AddTransient<IAccountCategoryRepository, AccountCategoryRepository>()
+                .AddTransient<ICategoriesRepository, CategoriesRepository>()
+                .AddTransient<IIdentitiesRepository, IdentitiesRepository>()
+                .AddTransient<IContragentsRepository, ContragentsRepository>()
+                .AddTransient<ICurrencyRepository, CurrencyRepository>();
         }
 
         public static IServiceCollection AddServices(this IServiceCollection serviceCollection)

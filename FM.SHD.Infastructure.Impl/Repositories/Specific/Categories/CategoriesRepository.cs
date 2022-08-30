@@ -10,7 +10,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Categories
     {
         private const string TABLE_NAME = "Categories";
 
-        public CategoriesRepository(string connectionString) : base(connectionString)
+        public CategoriesRepository(IRepositoryManager repositoryManager) : base(repositoryManager)
         {
         }
 
@@ -20,7 +20,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Categories
 
             var typeTransactions = new List<CategoriesModel>();
 
-            using (var reader = _sqliteDataProvider.CreateReader(sql))
+            using (var reader = SqliteDataProvider.CreateReader(sql))
             {
                 while (reader.Read())
                 {
@@ -46,7 +46,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Categories
 
                 var categoriesModel = new CategoriesModel();
 
-                using (var reader = _sqliteDataProvider.CreateReader(sql, dataparameters.ToArray()))
+                using (var reader = SqliteDataProvider.CreateReader(sql, dataparameters.ToArray()))
                 {
                     while (reader.Read())
                     {
@@ -73,7 +73,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Categories
 
                 var categoriesModel = new CategoriesModel();
 
-                using (var reader = _sqliteDataProvider.CreateReader(sql, dataparameters.ToArray()))
+                using (var reader = SqliteDataProvider.CreateReader(sql, dataparameters.ToArray()))
                 {
                     while (reader.Read())
                     {

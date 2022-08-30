@@ -9,7 +9,8 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction
     public class SingleTransactionRepository : BaseSpecificRepository, ISingleTransactionRepository
     {
         private const string TABLE_NAME = "SingleTransaction";
-        public SingleTransactionRepository(string connectionString) : base(connectionString)
+
+        public SingleTransactionRepository(IRepositoryManager repositoryManager) : base(repositoryManager)
         {
         }
 
@@ -31,7 +32,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction
             dataparameters.Add(new DataParameter("@Contragent_id", singleTransactionModel.ContragentId));
             dataparameters.Add(new DataParameter("@Identity_id", singleTransactionModel.IdentityId));
 
-            return _sqliteDataProvider.ExecuteSqlInsertCommand(sql, dataparameters.ToArray());
+            return SqliteDataProvider.ExecuteSqlInsertCommand(sql, dataparameters.ToArray());
         }
 
         public void Delete(ISingleTransactionModel singleTransactionModel)
@@ -42,7 +43,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction
                 var dataparameters = new List<DataParameter>();
                 dataparameters.Add(new DataParameter("@Id", singleTransactionModel.Id));
 
-                _sqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
+                SqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
             }
             else
                 throw new ArgumentException(
@@ -57,7 +58,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction
                 var dataparameters = new List<DataParameter>();
                 dataparameters.Add(new DataParameter("@Id", singleTransactionId));
 
-                _sqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
+                SqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
             }
             else
                 throw new ArgumentException($"В хранилище отсутствует запись с идентификатором {singleTransactionId}");
@@ -69,7 +70,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction
 
             var singleTransactions = new List<SingleTransactionModel>();
 
-            using (var reader = _sqliteDataProvider.CreateReader(sql))
+            using (var reader = SqliteDataProvider.CreateReader(sql))
             {
                 while (reader.Read())
                 {
@@ -121,7 +122,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction
                 dataparameters.Add(new DataParameter("@Category_id", singleTransactionModel.CategoryId));
                 dataparameters.Add(new DataParameter("@Contragent_id", singleTransactionModel.ContragentId));
                 dataparameters.Add(new DataParameter("@Identity_id", singleTransactionModel.IdentityId));
-                _sqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
+                SqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
             }
             else
                 throw new ArgumentException(
@@ -139,7 +140,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction
 
                 var transactionModel = new SingleTransactionModel();
 
-                using (var reader = _sqliteDataProvider.CreateReader(sql, dataparameters.ToArray()))
+                using (var reader = SqliteDataProvider.CreateReader(sql, dataparameters.ToArray()))
                 {
                     while (reader.Read())
                     {
