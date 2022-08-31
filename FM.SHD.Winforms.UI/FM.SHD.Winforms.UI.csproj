@@ -4,6 +4,12 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyName>FM.SHD.Winforms.UI</AssemblyName>
+    <RootNamespace>FM.SHD.Winforms.UI</RootNamespace>
+    <PackageId>FM.SHD.Winforms.UI</PackageId>
+    <Authors>FM.SHD.Winforms.UI</Authors>
+    <Company>FM.SHD.Winforms.UI</Company>
+    <Product>FM.SHD.Winforms.UI</Product>
   </PropertyGroup>
 
   <ItemGroup>
