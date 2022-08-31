@@ -127,6 +127,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             if (isLoad)
             {
                 _mainView.SetViewOnActiveUI();
+
                 CreateConnection(_recentOpenFilesSettings.GetSetting().RecentOpen.Last().FilePath);
             }
             else
@@ -134,20 +135,14 @@ namespace FM.SHD.Presenters.ViewPresenters
                 _mainView.SetViewOnUnActiveUI();
             }
 
+            _mainView.SetVisibleUserLoginInfo(false);
 
-            /*if (_recentOpenOptions.Value.RecentOpen == null)
-                _mainView.SetViewOnActiveUI();*/
-
-            // TODO: Вызывать тут код для авторизации, опять таки
-            // TODO: проверить, есть ли пароль. Если пароль есть - вызвать форму авторизации
-            // TODO: иначе просто загрузить базу
-            // TODO: Написать код по добавлению репозиториев 
-            // TODO: после того как загрузилась система
-            //foreach (var accountDto in _accountServices.GetAll())
-            //{
-            //    _mainView.AddAccountsSummaryUserControl(_accountSummaryUcPresenter.GetUserControlView(accountDto));
-            //}
-
+            /*
+             * 1. Следует проверить, зашифрован ли открываемый файл.
+             *  1.1 Если файл зашифрован - вызываем форму логина. После успешного логина  _mainView.SetVisibleUserLoginInfo(true);
+             *  1.2 Если файл не зашифрован -  _mainView.SetVisibleUserLoginInfo(false);
+             * 2. Нужно загрузить все данные из файла - добавить методы на загрузку того, что лежит на главной форме - операции, кошельки, информация о пользователе 
+             */
             // _mainView.SetAccountsData(_accountServices.GetAll());
         }
 
