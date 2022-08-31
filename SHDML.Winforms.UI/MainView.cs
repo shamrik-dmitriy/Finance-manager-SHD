@@ -109,7 +109,21 @@ namespace SHDML.Winforms.UI
                 }
             }
         }
-        
+
+        public void SetVisibleUserLoginInfo(bool isVisible)
+        {
+            if (isVisible)
+            {
+                splitContainerLeftSideBar.Panel1.Visible = true;
+            }
+            else
+            {
+                splitContainerLeftSideBar.Panel1.Visible = false;
+                splitContainerLeftSideBar.Panel1MinSize = 0;
+                splitContainerLeftSideBar.SplitterDistance = 0;
+            }
+        }
+
         public void SetViewOnActiveUI()
         {
             splitContainerDesktop.Visible = true;

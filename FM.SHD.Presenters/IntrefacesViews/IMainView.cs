@@ -19,5 +19,6 @@ namespace FM.SHD.Presenters.IntrefacesViews
         void SetViewOnActiveUI();
         void AddElementInRecentOpenItems(List<RecentOpenFilesDto> recentOpenFiles);
         void SetViewOnUnActiveUI();
+        void SetVisibleUserLoginInfo(bool isVisible);
     }
 }
