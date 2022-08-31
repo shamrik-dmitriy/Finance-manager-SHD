@@ -49,7 +49,7 @@ namespace SHDML.Winforms.UI
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainerDesktop = new System.Windows.Forms.SplitContainer();
             this.splitContainerLeftSideBar = new System.Windows.Forms.SplitContainer();
-            this._authUcView = new LoginUCView();
+            this.loginucView1 = new SHDML.Winforms.UI.UserControls.Login.LoginUCView();
             this.splitContainerWallet = new System.Windows.Forms.SplitContainer();
             this.accountActionAndTotalSumsplitContainer = new System.Windows.Forms.SplitContainer();
             this.addAccountButton = new System.Windows.Forms.Button();
@@ -241,6 +241,7 @@ namespace SHDML.Winforms.UI
             // 
             this.splitContainerLeftSideBar.BackColor = System.Drawing.SystemColors.Control;
             this.splitContainerLeftSideBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerLeftSideBar.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainerLeftSideBar.IsSplitterFixed = true;
             this.splitContainerLeftSideBar.Location = new System.Drawing.Point(0, 0);
             this.splitContainerLeftSideBar.Name = "splitContainerLeftSideBar";
@@ -248,7 +249,7 @@ namespace SHDML.Winforms.UI
             // 
             // splitContainerLeftSideBar.Panel1
             // 
-            this.splitContainerLeftSideBar.Panel1.Controls.Add(this._authUcView);
+            this.splitContainerLeftSideBar.Panel1.Controls.Add(this.loginucView1);
             this.splitContainerLeftSideBar.Panel1MinSize = 70;
             // 
             // splitContainerLeftSideBar.Panel2
@@ -259,19 +260,16 @@ namespace SHDML.Winforms.UI
             this.splitContainerLeftSideBar.SplitterDistance = 77;
             this.splitContainerLeftSideBar.TabIndex = 0;
             // 
-            // _authUcView
+            // loginucView1
             // 
-            this._authUcView.AutoSize = true;
-            this._authUcView.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this._authUcView.BackColor = System.Drawing.SystemColors.Control;
-            this._authUcView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._authUcView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._authUcView.Location = new System.Drawing.Point(0, 0);
-            this._authUcView.MaximumSize = new System.Drawing.Size(309, 70);
-            this._authUcView.MinimumSize = new System.Drawing.Size(309, 70);
-            this._authUcView.Name = "_authUcView";
-            this._authUcView.Size = new System.Drawing.Size(309, 70);
-            this._authUcView.TabIndex = 2;
+            this.loginucView1.AutoSize = true;
+            this.loginucView1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.loginucView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loginucView1.Location = new System.Drawing.Point(0, 0);
+            this.loginucView1.MinimumSize = new System.Drawing.Size(309, 70);
+            this.loginucView1.Name = "loginucView1";
+            this.loginucView1.Size = new System.Drawing.Size(319, 77);
+            this.loginucView1.TabIndex = 0;
             // 
             // splitContainerWallet
             // 
@@ -528,7 +526,6 @@ namespace SHDML.Winforms.UI
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainerDesktop;
         private System.Windows.Forms.SplitContainer splitContainerLeftSideBar;
-        private LoginUCView _authUcView;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageTransactions;
         private System.Windows.Forms.SplitContainer splitContainerTransactions;
@@ -548,6 +545,7 @@ namespace SHDML.Winforms.UI
         private System.Windows.Forms.Button addAccountButton;
         private System.Windows.Forms.FlowLayoutPanel accoutsFlowLayoutPanel;
         private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
+        private LoginUCView loginucView1;
     }
 }
 
