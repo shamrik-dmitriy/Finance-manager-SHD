@@ -20,5 +20,10 @@ namespace SHDML.Winforms.UI.UserControls.Common
         {
             return textBoxDescriptionTransaction.Text;
         }
+
+        public void SetDescription(string description)
+        {
+            textBoxDescriptionTransaction.Text = description;
+        }
     }
 }

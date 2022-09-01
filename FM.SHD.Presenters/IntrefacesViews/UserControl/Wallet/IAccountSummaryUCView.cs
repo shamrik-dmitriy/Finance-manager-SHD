@@ -6,7 +6,7 @@ namespace FM.SHD.Presenters.IntrefacesViews.UserControl.Wallet
 {
     public interface IAccountSummaryUCView : IUserControlView
     {
-        event Action<long> UpdateAccount;
+        event Action<AccountDto> UpdateAccount;
 
         void SetData(AccountDto accountDto);
     }

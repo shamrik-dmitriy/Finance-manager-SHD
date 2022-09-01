@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using FM.SHD.Infastructure.Impl.Repositories;
+using FM.SHD.Infastructure.Impl.Repositories.Specific.Account;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction;
 using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
 using FM.SHD.Presenters.Interfaces.Views;
 using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Services.AccountServices;
+using FM.SHD.Services.CommonServices;
 using FM.SHD.Services.Repositories;
 using FM.SHD.Services.SingleTransactionServices;
 using FM.SHD.Settings.Services;
@@ -25,7 +27,7 @@ namespace FM.SHD.Presenters.ViewPresenters
         private IServiceProvider _serviceProvider;
 
         private readonly SettingServices<SystemRecentOpenFilesSettings> _recentOpenFilesSettings;
-        private readonly IAccountServices _accountServices;
+        private IAccountServices _accountServices;
         private readonly IAccountSummaryUCPresenter _accountSummaryUcPresenter;
 
         public MainPresenter(
@@ -129,6 +131,15 @@ namespace FM.SHD.Presenters.ViewPresenters
                 _mainView.SetViewOnActiveUI();
 
                 CreateConnection(_recentOpenFilesSettings.GetSetting().RecentOpen.Last().FilePath);
+                _accountServices = new AccountServices(new AccountRepository(_repositoryManager), new ModelValidator());
+                List<IAccountSummaryUCPresenter> data = new List<IAccountSummaryUCPresenter>();
+                foreach (var accountDto in _accountServices.GetAll().Select((value, index) => new {Index = index, Value = value}))
+                {
+                    var s = _serviceProvider.GetRequiredService<IAccountSummaryUCPresenter>();
+                    s.GetUserControlView().SetData(accountDto.Value);
+                    data.Add(s);
+                    _mainView.AddAccountsSummaryUserControl(s.GetUserControlView());
+                }
             }
             else
             {

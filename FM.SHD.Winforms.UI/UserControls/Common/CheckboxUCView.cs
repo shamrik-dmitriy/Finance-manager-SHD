@@ -27,5 +27,10 @@ namespace SHDML.Winforms.UI.UserControls.Common
         {
             checkBox1.Text = text;
         }
+
+        public void SetCheckboxState(bool isClosed)
+        {
+            checkBox1.CheckState = isClosed ? CheckState.Checked : CheckState.Unchecked;
+        }
     }
 }

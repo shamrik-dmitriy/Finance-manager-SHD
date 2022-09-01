@@ -28,8 +28,8 @@ namespace FM.SHD.Presenters.ViewPresenters
             INameUCPresenter nameUcPresenter,
             IDescriptionUCPresenter descriptionUcPresenter,
             ILabelTextboxUcPresenter labelTextboxUcPresenter,
-            ICategoryUCPresenter<AccountServices>  accountUcPresenter,
-            ICategoryUCPresenter<CurrencyServices>  currencyUcPresenter,
+            ICategoryUCPresenter<AccountServices> accountUcPresenter,
+            ICategoryUCPresenter<CurrencyServices> currencyUcPresenter,
             ICheckboxUCPresenter checkboxUcPresenter,
             IContinueCancelButtonsUCPresenter continueCancelButtonsUcPresenter)
         {
@@ -48,28 +48,54 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void AccountViewOnOnLoadView()
         {
-            _accountView.AddUserControl(_nameUcPresenter.GetUserControlView());
-            _accountView.AddUserControl(_descriptionUcPresenter.GetUserControlView());
             _labelTextboxUcPresenter.SetText("Начальная сумма");
-            _accountView.AddUserControl(_labelTextboxUcPresenter.GetUserControlView());
             _accountUcPresenter.SetText("Категория счёта");
-            _accountView.AddUserControl(_accountUcPresenter.GetUserControlView());
-            _currencyUcPresenter.SetStyleDropDownList();
             _currencyUcPresenter.SetText("Валюта");
-            _accountView.AddUserControl(_currencyUcPresenter.GetUserControlView());
             _checkboxUcPresenter.SetText("Закрытый счёт");
-            _accountView.AddUserControl(_checkboxUcPresenter.GetUserControlView());
-            _accountView.AddUserControl(_continueCancelButtonsUcPresenter.GetUserControlView());
+
+            if (AccountDto != null)
+            {
+                _nameUcPresenter.GetUserControlView().SetName(AccountDto.Name);
+                _accountView.AddUserControl(_nameUcPresenter.GetUserControlView());
+                
+                _descriptionUcPresenter.GetUserControlView().SetDescription(AccountDto.Description);
+                _accountView.AddUserControl(_descriptionUcPresenter.GetUserControlView());
+                
+                _labelTextboxUcPresenter.SetValue(AccountDto.InitialSum.ToString());
+                _accountView.AddUserControl(_labelTextboxUcPresenter.GetUserControlView());
+
+                _accountUcPresenter.SetCategoryValues();
+                _accountUcPresenter.GetUserControlView().SetCategoryId(AccountDto);
+                _accountView.AddUserControl(_accountUcPresenter.GetUserControlView());
+                
+                _currencyUcPresenter.SetCategoryValues();
+                _currencyUcPresenter.SetStyleDropDownList();
+                _currencyUcPresenter.GetUserControlView().SetCategoryId(AccountDto);
+                _accountView.AddUserControl(_currencyUcPresenter.GetUserControlView());
+                
+                _checkboxUcPresenter.GetUserControlView().SetCheckboxState(AccountDto.IsClosed);
+                _accountView.AddUserControl(_checkboxUcPresenter.GetUserControlView());
+                _accountView.AddUserControl(_continueCancelButtonsUcPresenter.GetUserControlView());
+            }
+            else
+            {
+                _accountView.AddUserControl(_nameUcPresenter.GetUserControlView());
+                _accountView.AddUserControl(_descriptionUcPresenter.GetUserControlView());
+                _accountView.AddUserControl(_labelTextboxUcPresenter.GetUserControlView());
+                _accountView.AddUserControl(_accountUcPresenter.GetUserControlView());
+                _currencyUcPresenter.SetStyleDropDownList();
+                _accountView.AddUserControl(_currencyUcPresenter.GetUserControlView());
+                _accountView.AddUserControl(_checkboxUcPresenter.GetUserControlView());
+                _accountView.AddUserControl(_continueCancelButtonsUcPresenter.GetUserControlView());
+            }
 
             _continueCancelButtonsUcPresenter.Continue += ContinueCancelButtonsUcPresenterOnContinue;
             _currencyUcPresenter.CategoryChanged += CurrencyUcPresenterOnCategoryChanged;
-
             //_categoryAccountUcPresenter.SetCategoryValues();
         }
 
         private void CurrencyUcPresenterOnCategoryChanged(long id)
         {
-            
         }
 
         private void ContinueCancelButtonsUcPresenterOnContinue()
@@ -86,6 +112,8 @@ namespace FM.SHD.Presenters.ViewPresenters
             });
             _accountView.CloseView();
         }
+
+        public AccountDto AccountDto { get; set; }
 
         public IAccountView GetView()
         {

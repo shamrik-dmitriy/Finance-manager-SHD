@@ -31,5 +31,10 @@ namespace SHDML.Winforms.UI.UserControls.Common
         {
             return textBoxTransactionName.Text;
         }
+
+        public void SetName(string name)
+        {
+            textBoxTransactionName.Text = name;
+        }
     }
 }

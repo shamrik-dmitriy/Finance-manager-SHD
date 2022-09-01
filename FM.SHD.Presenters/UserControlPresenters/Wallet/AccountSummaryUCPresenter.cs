@@ -27,8 +27,9 @@ namespace FM.SHD.Presenters.UserControlPresenters.Wallet
             _accountSummaryUcView.UpdateAccount += AccountSummaryUcViewOnUpdateAccount;
         }
 
-        private void AccountSummaryUcViewOnUpdateAccount(long id)
+        private void AccountSummaryUcViewOnUpdateAccount(AccountDto accountDto)
         {
+            _accountPresenter.AccountDto = accountDto;
             _accountPresenter.GetView().ShowDialog("Редактирование транзакции");
         }
 

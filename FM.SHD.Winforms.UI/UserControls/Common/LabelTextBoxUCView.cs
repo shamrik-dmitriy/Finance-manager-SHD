@@ -44,5 +44,10 @@ namespace SHDML.Winforms.UI.UserControls.Common
         {
             return textBox.Text;
         }
+
+        public void SetTextBoxValue(string text)
+        {
+            textBox.Text = text;
+        }
     }
 }

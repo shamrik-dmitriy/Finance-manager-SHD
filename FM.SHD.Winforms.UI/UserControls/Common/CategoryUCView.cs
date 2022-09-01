@@ -91,6 +91,22 @@ namespace SHDML.Winforms.UI.UserControls.Common
             SetDropDownStyle(ComboBoxStyle.DropDown);
         }
 
+        public void SetCategoryId(BaseDto baseDto)
+        {
+            if (baseDto != null)
+            {
+                foreach (var item in categoryComboBox.Items)
+                {
+                    if (((BaseDto)item).Id == baseDto.Id)
+                    {
+                        categoryComboBox.SelectedIndex = categoryComboBox.FindStringExact(baseDto.Name);
+                    }
+                }
+
+                // categoryComboBox.Select();
+            }
+        }
+
         public void SetStyleDropDownList()
         {
             SetDropDownStyle(ComboBoxStyle.DropDownList);

@@ -33,5 +33,7 @@ namespace FM.SHD.Presenters.IntrefacesViews.UserControl.Common
         void SetStyleDropDown();
 
         #endregion
+
+        void SetCategoryId(BaseDto baseDto);
     }
 }
