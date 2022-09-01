@@ -30,7 +30,7 @@ namespace FM.SHD.Presenters.UserControlPresenters.Wallet
         private void AccountSummaryUcViewOnUpdateAccount(AccountDto accountDto)
         {
             _accountPresenter.AccountDto = accountDto;
-            _accountPresenter.GetView().ShowDialog("Редактирование транзакции");
+            _accountPresenter.GetView().ShowDialog("Редактирование счёта");
         }
 
         public IAccountSummaryUCView GetUserControlView()

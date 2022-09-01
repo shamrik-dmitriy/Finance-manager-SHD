@@ -65,14 +65,14 @@ namespace FM.SHD.Presenters.ViewPresenters
                 _accountView.AddUserControl(_labelTextboxUcPresenter.GetUserControlView());
 
                 _accountUcPresenter.SetCategoryValues();
-                _accountUcPresenter.GetUserControlView().SetCategoryId(AccountDto);
                 _accountView.AddUserControl(_accountUcPresenter.GetUserControlView());
-                
+                _accountUcPresenter.GetUserControlView().SetCategoryId(AccountDto.CategoryId);
+
                 _currencyUcPresenter.SetCategoryValues();
                 _currencyUcPresenter.SetStyleDropDownList();
-                _currencyUcPresenter.GetUserControlView().SetCategoryId(AccountDto);
                 _accountView.AddUserControl(_currencyUcPresenter.GetUserControlView());
-                
+                _currencyUcPresenter.GetUserControlView().SetCategoryId(AccountDto.CurrencyId);
+
                 _checkboxUcPresenter.GetUserControlView().SetCheckboxState(AccountDto.IsClosed);
                 _accountView.AddUserControl(_checkboxUcPresenter.GetUserControlView());
                 _accountView.AddUserControl(_continueCancelButtonsUcPresenter.GetUserControlView());

@@ -55,7 +55,7 @@ namespace SHDML.Winforms.UI.UserControls.Common
         {
             if (sender is not ComboBox combobox) return;
             var id = (long)combobox.SelectedValue;
-            SelectedIndexChanged?.Invoke(id);
+           SelectedIndexChanged?.Invoke(id);
         }
 
         private void comboBoxCategoryName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -91,19 +91,11 @@ namespace SHDML.Winforms.UI.UserControls.Common
             SetDropDownStyle(ComboBoxStyle.DropDown);
         }
 
-        public void SetCategoryId(BaseDto baseDto)
+        public void SetCategoryId(long? id)
         {
-            if (baseDto != null)
+            if (id != null)
             {
-                foreach (var item in categoryComboBox.Items)
-                {
-                    if (((BaseDto)item).Id == baseDto.Id)
-                    {
-                        categoryComboBox.SelectedIndex = categoryComboBox.FindStringExact(baseDto.Name);
-                    }
-                }
-
-                // categoryComboBox.Select();
+                categoryComboBox.SelectedIndex = categoryComboBox.FindId<BaseDto>(id);
             }
         }
 

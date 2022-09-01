@@ -34,6 +34,6 @@ namespace FM.SHD.Presenters.IntrefacesViews.UserControl.Common
 
         #endregion
 
-        void SetCategoryId(BaseDto baseDto);
+        void SetCategoryId(long? id);
     }
 }
