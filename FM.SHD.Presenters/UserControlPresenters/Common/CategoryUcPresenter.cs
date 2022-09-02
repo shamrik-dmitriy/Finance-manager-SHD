@@ -8,11 +8,13 @@ using FM.SHD.Services.ComponentsServices.TypeTransactionService;
 using FM.SHD.Services.ContragentServices;
 using FM.SHD.Services.CurrencyServices;
 using FM.SHD.Services.IdentityServices;
+using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Presenters.UserControlPresenters.Common
 {
     public class CategoryUcPresenter<T> :
         ICategoryUCPresenter<AccountServices>,
+        ICategoryUCPresenter<AccountCategoryServices>,
         ICategoryUCPresenter<TypeTransactionServices>,
         ICategoryUCPresenter<CategoriesServices>,
         ICategoryUCPresenter<IdentityServices>,
@@ -40,7 +42,7 @@ namespace FM.SHD.Presenters.UserControlPresenters.Common
 
         private void CategoryUcViewOnOnLoadUserControlView()
         {
-            _categoryUcView.SetDataSource(((IBaseCategoryServices)_service).GetAll());
+            
         }
 
         private event Action<long> SelectedIndexChanged;
@@ -83,6 +85,11 @@ namespace FM.SHD.Presenters.UserControlPresenters.Common
         public long? GetCategoryId(bool isPossibleNull = false)
         {
             return _categoryUcView.GetCategoryId();
+        }      
+        
+        public BaseDto GetCategoryDto()
+        {
+            return _categoryUcView.GetCategoryDto();
         }
 
         public void SetVisible(bool isVisible)

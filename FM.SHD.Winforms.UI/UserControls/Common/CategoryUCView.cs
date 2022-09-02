@@ -35,6 +35,19 @@ namespace SHDML.Winforms.UI.UserControls.Common
             return (long?)categoryComboBox.SelectedValue;
         }
 
+        public BaseDto GetCategoryDto()
+        {
+            foreach (var item in categoryComboBox.Items)
+            {
+                if (((BaseDto)item).Id == (long)categoryComboBox.SelectedValue)
+                {
+                    return (BaseDto)item;
+                }
+            }
+
+            return null;
+        }
+
         private void CategoryUCView_Load(object sender, EventArgs e)
         {
             OnLoadUserControlView?.Invoke();
@@ -55,7 +68,7 @@ namespace SHDML.Winforms.UI.UserControls.Common
         {
             if (sender is not ComboBox combobox) return;
             var id = (long)combobox.SelectedValue;
-           SelectedIndexChanged?.Invoke(id);
+            SelectedIndexChanged?.Invoke(id);
         }
 
         private void comboBoxCategoryName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -95,8 +108,9 @@ namespace SHDML.Winforms.UI.UserControls.Common
         {
             if (id != null)
             {
-                categoryComboBox.SelectedIndex = categoryComboBox.FindId<BaseDto>(id);
+                SetValue(categoryComboBox.FindId<BaseDto>(id));
             }
+            Refresh();
         }
 
         public void SetStyleDropDownList()

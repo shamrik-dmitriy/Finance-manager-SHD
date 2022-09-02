@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
 using FM.SHD.Services.CommonServices;
+using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Presenters.Interfaces.UserControls.Common
 {
@@ -15,6 +16,7 @@ namespace FM.SHD.Presenters.Interfaces.UserControls.Common
 
         void SetText(string text);
         long? GetCategoryId(bool isPossibleNull = false);
+        BaseDto GetCategoryDto();
 
         void SetVisible(bool isVisible);
 

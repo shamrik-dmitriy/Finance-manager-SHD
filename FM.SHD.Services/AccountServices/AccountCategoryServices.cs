@@ -8,7 +8,7 @@ using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Services.AccountServices
 {
-    public class AccountCategoryServices : IAccountCategoryServices
+    public class AccountCategoryServices : IAccountCategoryServices, IBaseCategoryServices
     {
         private readonly IAccountCategoryRepository _accountCategoryRepository;
         private readonly IModelValidator _modelValidator;
@@ -66,6 +66,11 @@ namespace FM.SHD.Services.AccountServices
         {
             _modelValidator.ValidateModel(accountCategoryModel);
             // Тут вызываем дополнительную валидацию
+        }
+
+        IEnumerable<BaseDto> IBaseCategoryServices.GetAll()
+        {
+            return GetAll();
         }
     }
 }

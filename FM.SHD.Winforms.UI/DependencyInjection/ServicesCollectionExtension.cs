@@ -66,6 +66,7 @@ namespace SHDML.Winforms.UI.DependencyInjection
                 .AddTransient<IAccountsInfoTransactionUCView, AccountsInfoTransactionUCView>()
                 .AddTransient<IAccountsInfoTransactionUCPresenter, AccountsInfoTransactionUCPresenter>()
                 .AddTransient<ICategoryUCPresenter<AccountServices>, CategoryUcPresenter<IAccountServices>>()
+                .AddTransient<ICategoryUCPresenter<AccountCategoryServices>, CategoryUcPresenter<IAccountCategoryServices>>()
                 .AddTransient<ICategoryUCPresenter<TypeTransactionServices>,
                     CategoryUcPresenter<ITypeTransactionServices>>()
                 .AddTransient<ICategoryUCPresenter<CategoriesServices>, CategoryUcPresenter<ICategoriesServices>>()
