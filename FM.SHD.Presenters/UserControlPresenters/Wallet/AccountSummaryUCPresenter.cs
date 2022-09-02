@@ -31,6 +31,11 @@ namespace FM.SHD.Presenters.UserControlPresenters.Wallet
         {
             _accountPresenter.AccountDto = accountDto;
             _accountPresenter.GetView().ShowDialog("Редактирование счёта");
+
+            /*
+             * TODO: BUG:
+             * https://stackoverflow.com/questions/1218517/very-strange-bug-when-using-show-dialog-on-c-sharp-winform
+             */
         }
 
         public IAccountSummaryUCView GetUserControlView()
