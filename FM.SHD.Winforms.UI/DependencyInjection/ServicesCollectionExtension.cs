@@ -1,3 +1,4 @@
+
 using FM.SHD.Infastructure.Impl.Factory;
 using FM.SHD.Infastructure.Impl.Repositories;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Account;
@@ -29,7 +30,6 @@ using FM.SHD.Services.CurrencyServices;
 using FM.SHD.Services.IdentityServices;
 using FM.SHD.Services.Repositories;
 using FM.SHD.Services.SingleTransactionServices;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SHDML.Winforms.UI.UserControls.Common;
 using SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls;
@@ -37,7 +37,8 @@ using SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions;
 using SHDML.Winforms.UI.UserControls.Wallet;
 using SHDML.Winforms.UI.Views.Account;
 using SHDML.Winforms.UI.Views.Transactions;
-using IContrAgentUCPresenter = FM.SHD.Presenters.Interfaces.UserControls.Transactions.IContrAgentUCPresenter;
+using IMainView = FM.SHD.Presenters.NewViews.IMainView;
+using MainPresenter = FM.SHD.Presenters.NewPresenters.MainPresenter;
 
 namespace SHDML.Winforms.UI.DependencyInjection
 {

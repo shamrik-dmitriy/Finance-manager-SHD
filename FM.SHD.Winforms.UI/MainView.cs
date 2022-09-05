@@ -1,17 +1,13 @@
-﻿using Microsoft.Extensions.Logging;
+﻿
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
-using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
-using FM.SHD.Presenters.IntrefacesViews.UserControl.Wallet;
-using FM.SHDML.Core.Models.AccountModel;
+using FM.SHD.Presenters.NewViews;
 using FM.SHDML.Core.Models.Dtos;
 using FM.SHDML.Core.Models.Dtos.UIDto;
-using SHDML.Winforms.UI.UserControls.Common;
 using SHDML.Winforms.UI.UserControls.Wallet;
 using SHDML.Winforms.UI.Views.Transactions;
 
@@ -27,12 +23,22 @@ namespace SHDML.Winforms.UI
 
         private readonly EventAggregator _eventAggregator;
 
-        public MainView(EventAggregator eventAggregator)
+        private readonly ApplicationContext _context;
+        
+        //public MainView(EventAggregator eventAggregator)
+        public MainView(ApplicationContext applicationContext)
         {
-            _eventAggregator = eventAggregator;
+            _context = applicationContext;
+        //    _eventAggregator = eventAggregator;
             InitializeComponent();
         }
 
+        public new void Show()
+        {
+            _context.MainForm = this;
+            Application.Run(_context);
+        }
+        
         private void buttonAddTransaction_Click(object sender, EventArgs e)
         {
             AddTransaction?.Invoke();

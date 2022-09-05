@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using SHDML.Winforms.UI.DependencyInjection;
+using MainPresenter = FM.SHD.Presenters.NewPresenters.MainPresenter;
 
 namespace SHDML.Winforms.UI
 {
@@ -40,6 +41,7 @@ namespace SHDML.Winforms.UI
                         .AddSingleton<EventAggregator>()
                         .AddTransient<IApplicationEvent, OnSelectedTypeOfTransactionApplicationEvent>()
                         .AddServices()
+                        .AddScoped<ApplicationContext>()
                         .AddViews()
                         .AddUserControlViews()
                         .AddSingleton<SystemRecentOpenFilesSettings>()
@@ -60,7 +62,7 @@ namespace SHDML.Winforms.UI
                 try
                 {
                     var mainPresenter = services.GetRequiredService<MainPresenter>();
-                    Application.Run((MainView)mainPresenter.GetView());
+                    mainPresenter.Run();
                 }
                 catch (Exception exception)
                 {
