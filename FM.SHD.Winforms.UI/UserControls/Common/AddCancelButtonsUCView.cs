@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
 
-namespace SHDML.Winforms.UI.UserControls.Common
+namespace FM.SHD.Winforms.UI.UserControls.Common
 {
     public partial class AddCancelButtonsUCView : UserControl, IAddCancelButtonsUCView
     {

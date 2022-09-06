@@ -1,4 +1,4 @@
-namespace SHDML.CORE.MODEL.Receipt
+namespace FM.SHDML.Core.Models.old.model.Receipt
 {
     public class ItemModel
     {

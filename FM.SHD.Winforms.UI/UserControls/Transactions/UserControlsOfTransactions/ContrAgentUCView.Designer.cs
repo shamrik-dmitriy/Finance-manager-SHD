@@ -1,5 +1,5 @@
 ﻿
-namespace SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions
+namespace FM.SHD.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions
 {
     partial class ContrAgentUCView
     {

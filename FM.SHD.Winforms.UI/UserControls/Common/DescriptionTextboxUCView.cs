@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
-using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 
-namespace SHDML.Winforms.UI.UserControls.Common
+namespace FM.SHD.Winforms.UI.UserControls.Common
 {
     public partial class DescriptionTextboxUCView : UserControl, IDescriptionTextboxUCView
     {

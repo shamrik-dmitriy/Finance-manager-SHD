@@ -2,10 +2,10 @@
 using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
-using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
+using FM.SHD.Presenters.NewViews;
 
-namespace SHDML.Winforms.UI.Views.Account
+namespace FM.SHD.Winforms.UI.Views.Account
 {
     public partial class AccountView : Form, IAccountView
     {
@@ -19,6 +19,12 @@ namespace SHDML.Winforms.UI.Views.Account
 
         public event Action OnLoadView;
         public event Action OnClosingView;
+
+        public void SetTitle(string title)
+        {
+            Title = title;
+            TitleDefault = title;
+        }
 
         #endregion
 
@@ -41,18 +47,15 @@ namespace SHDML.Winforms.UI.Views.Account
             _eventAggregator = eventAggregator;
         }
 
-        public void ShowDialog(string title)
-        {
-            Title = title;
-            TitleDefault = title;
-
-            base.ShowDialog();
-        }
-
-        void IView.ShowDialog()
+        public new void Show()
         {
             base.ShowDialog();
         }
+
+        /*void IView.ShowDialog()
+        {
+            base.ShowDialog();
+        }*/
 
         public void AddUserControl(IUserControlView userControlView)
         {

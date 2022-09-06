@@ -7,7 +7,7 @@ using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
 using FM.SHDML.Core.Models.Dtos;
 
-namespace SHDML.Winforms.UI.Views.Transactions
+namespace FM.SHD.Winforms.UI.Views.Transactions
 {
     public partial class SingleTransactionView : Form, ISingleTransactionView
     {

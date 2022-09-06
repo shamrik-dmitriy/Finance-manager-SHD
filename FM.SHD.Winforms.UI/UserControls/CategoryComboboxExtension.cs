@@ -1,11 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using FM.SHDML.Core.Models.Dtos;
 
-namespace SHDML.Winforms.UI.UserControls
+namespace FM.SHD.Winforms.UI.UserControls
 {
     public static class CategoryComboboxExtension
     {

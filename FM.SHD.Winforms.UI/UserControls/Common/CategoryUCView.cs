@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
 using FM.SHDML.Core.Models.Dtos;
 
-namespace SHDML.Winforms.UI.UserControls.Common
+namespace FM.SHD.Winforms.UI.UserControls.Common
 {
     public partial class CategoryUCView : UserControl, ICategoryUCView
     {

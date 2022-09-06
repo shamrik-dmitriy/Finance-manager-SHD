@@ -8,6 +8,7 @@ using FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction;
 using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
 using FM.SHD.Presenters.Interfaces.Views;
 using FM.SHD.Presenters.IntrefacesViews;
+using FM.SHD.Presenters.NewPresenters;
 using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.CommonServices;
 using FM.SHD.Services.Repositories;

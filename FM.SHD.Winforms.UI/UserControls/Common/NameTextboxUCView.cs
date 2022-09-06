@@ -3,9 +3,8 @@ using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
-using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 
-namespace SHDML.Winforms.UI.UserControls.Common
+namespace FM.SHD.Winforms.UI.UserControls.Common
 {
     public partial class NameTextboxUCView : UserControl, INameTextboxUCView
     {

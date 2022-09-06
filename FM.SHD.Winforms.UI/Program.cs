@@ -1,22 +1,18 @@
 using System;
 using System.Threading;
 using System.Windows.Forms;
-using FM.SHD.Infastructure.Impl.Factory;
-using FM.SHD.Infastructure.Impl.Repositories;
-using FM.SHD.Infrastructure.Dal.Factory;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
-using FM.SHD.Presenters.ViewPresenters;
 using FM.SHD.Services.CommonServices;
 using FM.SHD.Settings.Services;
 using FM.SHD.Settings.Services.SettingsCollection;
+using FM.SHD.Winforms.UI.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using SHDML.Winforms.UI.DependencyInjection;
 using MainPresenter = FM.SHD.Presenters.NewPresenters.MainPresenter;
 
-namespace SHDML.Winforms.UI
+namespace FM.SHD.Winforms.UI
 {
     static class Program
     {
@@ -56,7 +52,7 @@ namespace SHDML.Winforms.UI
                 });
 
             var host = builder.Build();
-            using (var serviceScope = host.Services.CreateScope())
+            using var serviceScope = host.Services.CreateScope();
             {
                 var services = serviceScope.ServiceProvider;
                 try

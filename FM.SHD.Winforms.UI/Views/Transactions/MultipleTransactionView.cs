@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using SHDML.Winforms.UI.UserControls.Transactions;
+using FM.SHD.Winforms.UI.UserControls.Transactions;
 
-namespace SHDML.Winforms.UI.Views.Transactions
+namespace FM.SHD.Winforms.UI.Views.Transactions
 {
     public partial class MultipleTransactionView : Form
     {

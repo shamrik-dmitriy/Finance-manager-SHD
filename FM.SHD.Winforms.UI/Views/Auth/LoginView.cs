@@ -1,16 +1,9 @@
-﻿using FM.SHD.Presenters.IntrefacesViews;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
+using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
 
-namespace SHDML.Winforms.UI.Views.Auth
+namespace FM.SHD.Winforms.UI.Views.Auth
 {
     public partial class LoginView : Form, ILoginView
     {

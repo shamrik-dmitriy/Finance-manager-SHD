@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 
-namespace SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions
+namespace FM.SHD.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions
 {
     public partial class SumTransactionUCView : UserControl, ISumTransactionUCView
     {

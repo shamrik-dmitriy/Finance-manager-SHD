@@ -1,6 +1,6 @@
-﻿using SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions;
+﻿using FM.SHD.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions;
 
-namespace SHDML.Winforms.UI.Views.Transactions
+namespace FM.SHD.Winforms.UI.Views.Transactions
 {
     partial class MultipleTransactionView
     {

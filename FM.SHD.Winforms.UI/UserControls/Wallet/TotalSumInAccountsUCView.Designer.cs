@@ -1,5 +1,5 @@
 ﻿
-namespace SHDML.Winforms.UI.UserControls.Wallet
+namespace FM.SHD.Winforms.UI.UserControls.Wallet
 {
     partial class TotalSumInAccountsUCView
     {

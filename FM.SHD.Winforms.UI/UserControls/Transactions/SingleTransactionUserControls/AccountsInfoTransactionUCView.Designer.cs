@@ -1,7 +1,5 @@
 ﻿
-using SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions;
-
-namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls
+namespace FM.SHD.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls
 {
     partial class AccountsInfoTransactionUCView
     {

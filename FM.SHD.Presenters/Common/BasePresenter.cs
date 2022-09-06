@@ -1,7 +1,7 @@
 namespace FM.SHD.Presenters.Common
 {
     public abstract class BasePresenter <TView> : IPresenter
-    where TView : IView
+        where TView : IView
     {
         protected TView View { get; private set; }
 
@@ -25,6 +25,6 @@ namespace FM.SHD.Presenters.Common
             View = view;
         }
 
-        public abstract void Run(TArg argument);
+        public abstract void Run(TArg accountDto);
     }
 }

@@ -1,17 +1,16 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
 using FM.SHD.Presenters.NewViews;
+using FM.SHD.Winforms.UI.UserControls.Wallet;
+using FM.SHD.Winforms.UI.Views.Transactions;
 using FM.SHDML.Core.Models.Dtos;
 using FM.SHDML.Core.Models.Dtos.UIDto;
-using SHDML.Winforms.UI.UserControls.Wallet;
-using SHDML.Winforms.UI.Views.Transactions;
 
-namespace SHDML.Winforms.UI
+namespace FM.SHD.Winforms.UI
 {
     public partial class MainView : Form, IMainView
     {
@@ -38,7 +37,12 @@ namespace SHDML.Winforms.UI
             _context.MainForm = this;
             Application.Run(_context);
         }
-        
+
+        public void AddUserControl(IUserControlView userControlView)
+        {
+            throw new NotImplementedException();
+        }
+
         private void buttonAddTransaction_Click(object sender, EventArgs e)
         {
             AddTransaction?.Invoke();
@@ -72,7 +76,7 @@ namespace SHDML.Winforms.UI
 
         private void MainView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _eventAggregator.Dispose();
+           // _eventAggregator.Dispose();
         }
 
         private void addAccountButton_Click(object sender, EventArgs e)

@@ -7,6 +7,6 @@ namespace FM.SHD.Presenters.Common
 
     public interface IPresenter<in T>
     {
-        void Run(T argument);
+        void Run(T accountDto);
     }
 }

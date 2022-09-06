@@ -1,4 +1,4 @@
-namespace SHDML.CORE.MODEL.TransationModel
+namespace FM.SHDML.Core.Models.old.model.TransationModel
 {
     /// <summary>
     ///     Тип операции
