@@ -9,6 +9,7 @@ namespace FM.SHD.Presenters.Common
         {
             View = view;
         }
+        public abstract void SetTitle(string title);
 
         public void Run()
         {
@@ -24,6 +25,8 @@ namespace FM.SHD.Presenters.Common
         {
             View = view;
         }
+
+        public abstract void SetTitle(string title);
 
         public abstract void Run(TArg accountDto);
     }

@@ -4,9 +4,10 @@ using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Presenters.NewPresenters
 {
-    public abstract class BaseAccountPresenter : BasePresenter<IAccountView, AccountDto>
+    public abstract class BaseLoginPresenter
+        : BasePresenter<ILoginView, IdentityDto>
     {
-        public BaseAccountPresenter(IAccountView view) : base(view)
+        public BaseLoginPresenter(ILoginView view) : base(view)
         {
         }
     }

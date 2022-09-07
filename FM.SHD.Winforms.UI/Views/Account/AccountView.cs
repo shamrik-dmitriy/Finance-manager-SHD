@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
@@ -61,6 +62,13 @@ namespace FM.SHD.Winforms.UI.Views.Account
         {
             var userControl = (UserControl)userControlView;
             flowLayoutPanel1.Controls.Add(userControl);
+        }
+
+        public void AddHorizontalLine()
+        {
+            flowLayoutPanel1.Controls.Add(new Label()
+                { BorderStyle = BorderStyle.FixedSingle, Anchor = AnchorStyles.Top, Size = new Size(359, 2) });
+
         }
 
         public void CloseView()

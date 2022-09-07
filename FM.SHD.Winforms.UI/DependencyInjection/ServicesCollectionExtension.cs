@@ -16,10 +16,10 @@ using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Wallet;
 using FM.SHD.Presenters.NewPresenters;
+using FM.SHD.Presenters.NewViews;
 using FM.SHD.Presenters.UserControlPresenters.Common;
 using FM.SHD.Presenters.UserControlPresenters.Transactions;
 using FM.SHD.Presenters.UserControlPresenters.Wallet;
-using FM.SHD.Presenters.ViewPresenters;
 using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.CategoriesServices;
 using FM.SHD.Services.CommonServices;
@@ -51,7 +51,7 @@ namespace FM.SHD.Winforms.UI.DependencyInjection
                 .AddScoped<MainPresenter>()
                 .AddTransient<ISingleTransactionView, SingleTransactionView>()
                 .AddTransient<SingleTransactionPresenter>()
-                .AddTransient<FM.SHD.Presenters.NewViews.IAccountView, AccountView>()
+                .AddTransient<IAccountView, AccountView>()
                 .AddTransient<AccountPresenter>();
         }
 

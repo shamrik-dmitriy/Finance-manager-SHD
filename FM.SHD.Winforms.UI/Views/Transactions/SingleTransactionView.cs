@@ -5,6 +5,7 @@ using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
+using FM.SHD.Presenters.NewViews;
 using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Winforms.UI.Views.Transactions
@@ -84,7 +85,7 @@ namespace FM.SHD.Winforms.UI.Views.Transactions
         }
 
         #endregion
-        
+
         private void addedSingleTransactionButton_Click(object sender, EventArgs e)
         {
             Add?.Invoke(sender, e);
@@ -105,19 +106,6 @@ namespace FM.SHD.Winforms.UI.Views.Transactions
         public new void ShowDialog()
         {
             base.ShowDialog();
-        }
-
-        public void ShowDialog(string title)
-        {
-            Title = title;
-            TitleDefault = title;
-
-            base.ShowDialog();
-        }
-
-        public void CloseView()
-        {
-            Close();
         }
 
         public void AddUserControl(IUserControlView userControlView)
@@ -152,6 +140,12 @@ namespace FM.SHD.Winforms.UI.Views.Transactions
         {
             singleTransactionDesktopflowLayoutPanel.Controls.Add(new Label()
                 { BorderStyle = BorderStyle.FixedSingle, Anchor = AnchorStyles.Top, Size = new Size(359, 2) });
+        }
+
+        public void SetTitle(string title)
+        {
+            Title = title;
+            TitleDefault = title;
         }
 
         private void OnFormClosing(object sender, FormClosingEventArgs e)

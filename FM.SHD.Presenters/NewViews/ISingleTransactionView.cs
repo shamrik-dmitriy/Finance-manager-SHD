@@ -1,9 +1,9 @@
 using System;
+using FM.SHD.Presenters.Common;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
 using FM.SHDML.Core.Models.Dtos;
-using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
 
-namespace FM.SHD.Presenters.IntrefacesViews
+namespace FM.SHD.Presenters.NewViews
 {
     public interface ISingleTransactionView : IView
     {
@@ -13,6 +13,6 @@ namespace FM.SHD.Presenters.IntrefacesViews
 
         void AddUserControl(IUserControlView userControlView);
         SingleTransactionDto GetTransactionInfo();
-        void AddHorizontalLine();
+        void SetTitle(string title);
     }
 }

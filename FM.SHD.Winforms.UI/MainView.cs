@@ -23,12 +23,12 @@ namespace FM.SHD.Winforms.UI
         private readonly EventAggregator _eventAggregator;
 
         private readonly ApplicationContext _context;
-        
+
         //public MainView(EventAggregator eventAggregator)
         public MainView(ApplicationContext applicationContext)
         {
             _context = applicationContext;
-        //    _eventAggregator = eventAggregator;
+            //    _eventAggregator = eventAggregator;
             InitializeComponent();
         }
 
@@ -38,7 +38,17 @@ namespace FM.SHD.Winforms.UI
             Application.Run(_context);
         }
 
+        public void SetTitle(string title)
+        {
+            Text = title;
+        }
+
         public void AddUserControl(IUserControlView userControlView)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddHorizontalLine()
         {
             throw new NotImplementedException();
         }
@@ -52,18 +62,7 @@ namespace FM.SHD.Winforms.UI
         {
             new MultipleTransactionView("Добавить группу транзакций (чек)").ShowDialog();
         }
-
-        public new void ShowDialog()
-        {
-            base.ShowDialog();
-        }
-
-        public void ShowDialog(string title)
-        {
-            base.Text = title;
-            base.ShowDialog();
-        }
-
+        
         public void CloseView()
         {
             Close();
@@ -76,7 +75,7 @@ namespace FM.SHD.Winforms.UI
 
         private void MainView_FormClosing(object sender, FormClosingEventArgs e)
         {
-           // _eventAggregator.Dispose();
+            // _eventAggregator.Dispose();
         }
 
         private void addAccountButton_Click(object sender, EventArgs e)

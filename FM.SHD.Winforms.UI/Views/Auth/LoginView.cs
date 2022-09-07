@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
+using FM.SHD.Presenters.NewViews;
 
 namespace FM.SHD.Winforms.UI.Views.Auth
 {
@@ -19,21 +20,20 @@ namespace FM.SHD.Winforms.UI.Views.Auth
             Close();
         }
 
+        public void SetTitle(string title)
+        {
+            Text = title;
+        }
+
         public void AddUserControl(IUserControlView userControlView)
         {
             var userControl = (UserControl)userControlView;
             flowLayoutPanel.Controls.Add(userControl);
         }
 
-        public void ShowDialog(string title)
+        public void AddHorizontalLine()
         {
-            base.Text = title;
-            ShowDialog();
-        }
-
-        void IView.ShowDialog()
-        {
-            ShowDialog();
+            throw new NotImplementedException();
         }
 
         private void LoginView_Load(object sender, EventArgs e)

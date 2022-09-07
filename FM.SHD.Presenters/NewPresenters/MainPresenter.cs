@@ -7,7 +7,6 @@ using FM.SHD.Infastructure.Impl.Repositories.Specific.Account;
 using FM.SHD.Presenters.Common;
 using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
 using FM.SHD.Presenters.NewViews;
-using FM.SHD.Presenters.ViewPresenters;
 using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.CommonServices;
 using FM.SHD.Settings.Services;
@@ -64,16 +63,15 @@ namespace FM.SHD.Presenters.NewPresenters
         private void OnAddAccount()
         {
             var accountPresenter = _serviceProvider.GetRequiredService<AccountPresenter>();
+            accountPresenter.SetTitle("Добавить счёт");
             accountPresenter.Run(null);
-            //var view = accountPresenter.GetView();
-            //view.ShowDialog("Добавить счёт");
         }
 
         private void OnAddTransaction()
         {
             var singleTransactionPresenter = _serviceProvider.GetRequiredService<SingleTransactionPresenter>();
-            var view = singleTransactionPresenter.GetView();
-            view.ShowDialog("Добавить операцию");
+            singleTransactionPresenter.SetTitle("Добавить операцию");
+            singleTransactionPresenter.Run(null);
         }
 
         private void OnOpenDataFile(string filePath)
@@ -170,6 +168,11 @@ namespace FM.SHD.Presenters.NewPresenters
         }
 
         #region Public Methods
+
+        public override void SetTitle(string title)
+        {
+            throw new NotImplementedException();
+        }
 
         public void Run()
         {

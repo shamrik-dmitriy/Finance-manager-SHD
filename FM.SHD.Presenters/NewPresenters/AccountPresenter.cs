@@ -89,7 +89,6 @@ namespace FM.SHD.Presenters.NewPresenters
 
                 _checkboxUcPresenter.GetUserControlView().SetCheckboxState(AccountDto.IsClosed);
                 _view.AddUserControl(_checkboxUcPresenter.GetUserControlView());
-                _view.AddUserControl(_continueCancelButtonsUcPresenter.GetUserControlView());
             }
             else
             {
@@ -102,8 +101,10 @@ namespace FM.SHD.Presenters.NewPresenters
                 _currencyUcPresenter.SetCategoryValues();
                 _view.AddUserControl(_currencyUcPresenter.GetUserControlView());
                 _view.AddUserControl(_checkboxUcPresenter.GetUserControlView());
-                _view.AddUserControl(_continueCancelButtonsUcPresenter.GetUserControlView());
             }
+
+            _view.AddHorizontalLine();
+            _view.AddUserControl(_continueCancelButtonsUcPresenter.GetUserControlView());
 
             _continueCancelButtonsUcPresenter.Continue += ContinueCancelButtonsUcPresenterOnContinue;
             _currencyUcPresenter.CategoryChanged += CurrencyUcPresenterOnCategoryChanged;

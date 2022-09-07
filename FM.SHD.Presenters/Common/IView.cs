@@ -8,6 +8,8 @@ namespace FM.SHD.Presenters.Common
         event Action OnLoadView;
         void Show();
         void Close();
+        void SetTitle(string title);
         void AddUserControl(IUserControlView userControlView);
+        void AddHorizontalLine();
     }
 }

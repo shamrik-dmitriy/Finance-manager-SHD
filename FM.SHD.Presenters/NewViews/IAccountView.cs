@@ -7,6 +7,5 @@ namespace FM.SHD.Presenters.NewViews
     {
         event Action OnLoadView;
         event Action OnClosingView;
-        void SetTitle(string title);
     }
 }
