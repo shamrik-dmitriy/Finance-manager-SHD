@@ -5,7 +5,7 @@ using FM.SHD.Presenters.IntrefacesViews.UserControl;
 using FM.SHDML.Core.Models.Dtos;
 using FM.SHDML.Core.Models.Dtos.UIDto;
 
-namespace FM.SHD.Presenters.NewViews
+namespace FM.SHD.Presenters.IntrefacesViews.Views
 {
     public interface IMainView : IView
     {

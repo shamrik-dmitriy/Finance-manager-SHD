@@ -1,11 +1,11 @@
 using System;
 using FM.SHD.Presenters.Interfaces.UserControls.Common;
-using FM.SHD.Presenters.NewViews;
+using FM.SHD.Presenters.IntrefacesViews.Views;
 using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.CurrencyServices;
 using FM.SHDML.Core.Models.Dtos;
 
-namespace FM.SHD.Presenters.NewPresenters
+namespace FM.SHD.Presenters.ViewPresenters
 {
     public class AccountPresenter : BaseAccountPresenter
     {

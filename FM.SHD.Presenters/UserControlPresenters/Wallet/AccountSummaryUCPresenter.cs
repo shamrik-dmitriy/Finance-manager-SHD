@@ -1,6 +1,6 @@
 using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Wallet;
-using FM.SHD.Presenters.NewPresenters;
+using FM.SHD.Presenters.ViewPresenters;
 using FM.SHD.Services.AccountServices;
 using FM.SHDML.Core.Models.Dtos;
 

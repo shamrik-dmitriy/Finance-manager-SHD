@@ -5,7 +5,7 @@ using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
-using FM.SHD.Presenters.NewViews;
+using FM.SHD.Presenters.IntrefacesViews.Views;
 using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Winforms.UI.Views.Transactions

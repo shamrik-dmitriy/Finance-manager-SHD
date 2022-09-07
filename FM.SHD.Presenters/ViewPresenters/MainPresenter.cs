@@ -6,7 +6,7 @@ using FM.SHD.Infastructure.Impl.Repositories;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Account;
 using FM.SHD.Presenters.Common;
 using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
-using FM.SHD.Presenters.NewViews;
+using FM.SHD.Presenters.IntrefacesViews.Views;
 using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.CommonServices;
 using FM.SHD.Settings.Services;
@@ -14,7 +14,7 @@ using FM.SHD.Settings.Services.SettingsCollection;
 using FM.SHDML.Core.Models.Dtos.UIDto;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FM.SHD.Presenters.NewPresenters
+namespace FM.SHD.Presenters.ViewPresenters
 {
     public class MainPresenter : BasePresenter<IMainView>
     {

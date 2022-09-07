@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
-using FM.SHD.Presenters.NewViews;
+using FM.SHD.Presenters.IntrefacesViews.Views;
 using FM.SHD.Winforms.UI.UserControls.Wallet;
 using FM.SHD.Winforms.UI.Views.Transactions;
 using FM.SHDML.Core.Models.Dtos;

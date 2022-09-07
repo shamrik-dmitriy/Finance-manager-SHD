@@ -15,11 +15,11 @@ using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Wallet;
-using FM.SHD.Presenters.NewPresenters;
-using FM.SHD.Presenters.NewViews;
+using FM.SHD.Presenters.IntrefacesViews.Views;
 using FM.SHD.Presenters.UserControlPresenters.Common;
 using FM.SHD.Presenters.UserControlPresenters.Transactions;
 using FM.SHD.Presenters.UserControlPresenters.Wallet;
+using FM.SHD.Presenters.ViewPresenters;
 using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.CategoriesServices;
 using FM.SHD.Services.CommonServices;
@@ -36,9 +36,9 @@ using FM.SHD.Winforms.UI.UserControls.Wallet;
 using FM.SHD.Winforms.UI.Views.Account;
 using FM.SHD.Winforms.UI.Views.Transactions;
 using Microsoft.Extensions.DependencyInjection;
-using IAccountView = FM.SHD.Presenters.NewViews.IAccountView;
-using IMainView = FM.SHD.Presenters.NewViews.IMainView;
-using MainPresenter = FM.SHD.Presenters.NewPresenters.MainPresenter;
+using IAccountView = FM.SHD.Presenters.IntrefacesViews.Views.IAccountView;
+using IMainView = FM.SHD.Presenters.IntrefacesViews.Views.IMainView;
+using MainPresenter = FM.SHD.Presenters.ViewPresenters.MainPresenter;
 
 namespace FM.SHD.Winforms.UI.DependencyInjection
 {

@@ -3,7 +3,7 @@ using FM.SHD.Presenters.Common;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
 using FM.SHDML.Core.Models.Dtos;
 
-namespace FM.SHD.Presenters.NewViews
+namespace FM.SHD.Presenters.IntrefacesViews.Views
 {
     public interface ISingleTransactionView : IView
     {

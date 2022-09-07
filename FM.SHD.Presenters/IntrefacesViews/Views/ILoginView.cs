@@ -1,6 +1,6 @@
 using FM.SHD.Presenters.Common;
 
-namespace FM.SHD.Presenters.NewViews
+namespace FM.SHD.Presenters.IntrefacesViews.Views
 {
     public interface ILoginView : IView
     {

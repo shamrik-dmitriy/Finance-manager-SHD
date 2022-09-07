@@ -1,7 +1,7 @@
 using System;
 using FM.SHD.Presenters.Interfaces.UserControls.Common;
 using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
-using FM.SHD.Presenters.NewViews;
+using FM.SHD.Presenters.IntrefacesViews.Views;
 using FM.SHD.Services.CategoriesServices;
 using FM.SHD.Services.ComponentsServices.TypeTransactionService;
 using FM.SHD.Services.ContragentServices;
@@ -9,7 +9,7 @@ using FM.SHD.Services.IdentityServices;
 using FM.SHD.Services.SingleTransactionServices;
 using FM.SHDML.Core.Models.Dtos;
 
-namespace FM.SHD.Presenters.NewPresenters
+namespace FM.SHD.Presenters.ViewPresenters
 {
     public class SingleTransactionPresenter : BaseSingleTransactionPresenter
     {

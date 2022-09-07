@@ -1,10 +1,10 @@
 using System;
 using FM.SHD.Presenters.Interfaces.UserControls.Common;
-using FM.SHD.Presenters.NewViews;
+using FM.SHD.Presenters.IntrefacesViews.Views;
 using FM.SHD.Services.UserServices;
 using FM.SHDML.Core.Models.Dtos;
 
-namespace FM.SHD.Presenters.NewPresenters
+namespace FM.SHD.Presenters.ViewPresenters
 {
     public class LoginPresenter : BaseLoginPresenter
     {

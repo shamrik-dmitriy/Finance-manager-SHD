@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
-using FM.SHD.Presenters.NewViews;
+using FM.SHD.Presenters.IntrefacesViews.Views;
 
 namespace FM.SHD.Winforms.UI.Views.Account
 {

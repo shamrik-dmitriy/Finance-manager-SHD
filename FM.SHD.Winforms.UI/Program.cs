@@ -10,7 +10,7 @@ using FM.SHD.Winforms.UI.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using MainPresenter = FM.SHD.Presenters.NewPresenters.MainPresenter;
+using MainPresenter = FM.SHD.Presenters.ViewPresenters.MainPresenter;
 
 namespace FM.SHD.Winforms.UI
 {
