@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Main;
 using FM.SHDML.Core.Models.Dtos;
@@ -23,9 +25,11 @@ namespace FM.SHD.Winforms.UI.UserControls.Main
             MessageBox.Show("");
         }
 
-        public void SetData(IEnumerable<TransactionDto> allTransactionsDtos)
+        public void SetData(List<TransactionExtendedDto> allTransactionsDtos)
         {
-            dataGridViewTransaction.DataSource = allTransactionsDtos;
+            var t = new BindingList<TransactionExtendedDto>(allTransactionsDtos);
+            dataGridViewTransaction.AutoGenerateColumns = false;
+            dataGridViewTransaction.DataSource = t;
         }
     }
 }

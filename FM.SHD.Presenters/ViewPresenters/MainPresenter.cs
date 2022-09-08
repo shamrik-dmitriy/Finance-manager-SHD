@@ -161,7 +161,7 @@ namespace FM.SHD.Presenters.ViewPresenters
                 
                 var dgv = _serviceProvider.GetRequiredService<IAllTransactionUCPresenter>();
                 _view.AddUserControl(dgv.GetUserControlView());
-                dgv.GetUserControlView().SetData(_transactionServices.GetAll());
+                dgv.GetUserControlView().SetData(_transactionServices.GetExtendedTransactions());
             }
             else
             {

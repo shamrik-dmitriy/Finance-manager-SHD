@@ -29,12 +29,31 @@
         private void InitializeComponent()
         {
             this.dataGridViewTransaction = new System.Windows.Forms.DataGridView();
+            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnContragent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnIdentity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDebitAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCreditAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransaction)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewTransaction
             // 
             this.dataGridViewTransaction.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewTransaction.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnName,
+            this.ColumnDescription,
+            this.ColumnSum,
+            this.ColumnDate,
+            this.ColumnCategory,
+            this.ColumnContragent,
+            this.ColumnIdentity,
+            this.ColumnDebitAccount,
+            this.ColumnCreditAccount});
             this.dataGridViewTransaction.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewTransaction.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewTransaction.MinimumSize = new System.Drawing.Size(300, 300);
@@ -43,6 +62,69 @@
             this.dataGridViewTransaction.Size = new System.Drawing.Size(1040, 798);
             this.dataGridViewTransaction.TabIndex = 0;
             this.dataGridViewTransaction.SelectionChanged += new System.EventHandler(this.dataGridViewTransaction_SelectionChanged);
+            // 
+            // ColumnName
+            // 
+            this.ColumnName.DataPropertyName = "Name";
+            this.ColumnName.HeaderText = "Наименование";
+            this.ColumnName.Name = "ColumnName";
+            this.ColumnName.ReadOnly = true;
+            // 
+            // ColumnDescription
+            // 
+            this.ColumnDescription.DataPropertyName = "Description";
+            this.ColumnDescription.HeaderText = "Описание";
+            this.ColumnDescription.Name = "ColumnDescription";
+            this.ColumnDescription.ReadOnly = true;
+            // 
+            // ColumnSum
+            // 
+            this.ColumnSum.DataPropertyName = "Sum";
+            this.ColumnSum.HeaderText = "Сумма";
+            this.ColumnSum.Name = "ColumnSum";
+            this.ColumnSum.ReadOnly = true;
+            // 
+            // ColumnDate
+            // 
+            this.ColumnDate.DataPropertyName = "Date";
+            this.ColumnDate.HeaderText = "Дата";
+            this.ColumnDate.Name = "ColumnDate";
+            this.ColumnDate.ReadOnly = true;
+            // 
+            // ColumnCategory
+            // 
+            this.ColumnCategory.DataPropertyName = "Category";
+            this.ColumnCategory.HeaderText = "Категория";
+            this.ColumnCategory.Name = "ColumnCategory";
+            this.ColumnCategory.ReadOnly = true;
+            // 
+            // ColumnContragent
+            // 
+            this.ColumnContragent.DataPropertyName = "Contragent";
+            this.ColumnContragent.HeaderText = "Контрагент";
+            this.ColumnContragent.Name = "ColumnContragent";
+            this.ColumnContragent.ReadOnly = true;
+            // 
+            // ColumnIdentity
+            // 
+            this.ColumnIdentity.DataPropertyName = "Identity";
+            this.ColumnIdentity.HeaderText = "Член семьи";
+            this.ColumnIdentity.Name = "ColumnIdentity";
+            this.ColumnIdentity.ReadOnly = true;
+            // 
+            // ColumnDebitAccount
+            // 
+            this.ColumnDebitAccount.DataPropertyName = "DebitAccount";
+            this.ColumnDebitAccount.HeaderText = "Счёт списания ";
+            this.ColumnDebitAccount.Name = "ColumnDebitAccount";
+            this.ColumnDebitAccount.ReadOnly = true;
+            // 
+            // ColumnCreditAccount
+            // 
+            this.ColumnCreditAccount.DataPropertyName = "CreditAccount";
+            this.ColumnCreditAccount.HeaderText = "Счёт зачисления";
+            this.ColumnCreditAccount.Name = "ColumnCreditAccount";
+            this.ColumnCreditAccount.ReadOnly = true;
             // 
             // AllTransactionUCView
             // 
@@ -61,5 +143,14 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewTransaction;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCategory;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnContragent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIdentity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDebitAccount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCreditAccount;
     }
 }

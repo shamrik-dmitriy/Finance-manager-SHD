@@ -5,6 +5,6 @@ namespace FM.SHD.Presenters.IntrefacesViews.UserControl.Main
 {
     public interface IAllTransactionUCView : IUserControlView
     {
-        void SetData(IEnumerable<TransactionDto> allTransactionsDtos);
+        void SetData(List<TransactionExtendedDto> allTransactionsDtos);
     }
 }

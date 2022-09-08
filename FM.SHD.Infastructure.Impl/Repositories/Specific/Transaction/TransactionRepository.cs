@@ -87,7 +87,8 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction
                     transactionModel.CategoryId = long.Parse(reader["Category_id"].ToString());
                     transactionModel.ContragentId = long.Parse(reader["Contragent_id"].ToString());
                     transactionModel.IdentityId = long.Parse(reader["Identity_id"].ToString());
-                    transactionModel.ReceiptId = long.Parse(reader["Receipt_id"].ToString());
+                    if (reader["Receipt_id"].GetType() != typeof(DBNull))
+                        transactionModel.ReceiptId = long.Parse(reader["Receipt_id"].ToString());
                     transactions.Add(transactionModel);
                 }
             }
@@ -192,6 +193,45 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction
                     transactionModel.ContragentId = long.Parse(reader["Contragent_id"].ToString());
                     transactionModel.IdentityId = long.Parse(reader["Identity_id"].ToString());
                     transactionModel.ReceiptId = long.Parse(reader["Receipt_id"].ToString());
+                    transactions.Add(transactionModel);
+                }
+            }
+
+            return transactions;
+        }
+
+        public IEnumerable<TransactionExtendedModel> GetExtendedTransactions()
+        {
+            var sql =
+                "SELECT t.Id, t.Name, t.Description, dac.name as debit_acc_name, cac.Name as credit_acc_name, t.Sum, t.Date, " +
+                "tt.Name as transaction_type, c.Name as category_name, ct.Name as contragent_name, id.Name as identity " +
+                "    FROM Transactions t " +
+                "INNER JOIN TransactionType tt USING(Id) " +
+                "INNER JOIN Categories c USING(Id) " +
+                "INNER JOIN Contragents ct USING(Id) " +
+                "INNER JOIN Account dac ON dac.Id = t.DebitAccount_id " +
+                "INNER JOIN Account cac ON cac.Id = t.CreditAccount_id " +
+                "INNER JOIN Identity id USING(Id)";
+
+            var transactions = new List<TransactionExtendedModel>();
+
+            using (var reader = SqliteDataProvider.CreateReader(sql))
+            {
+                while (reader.Read())
+                {
+                    var transactionModel = new TransactionExtendedModel();
+                    transactionModel.Id = long.Parse(reader["Id"].ToString());
+                    transactionModel.Name = reader["Name"].ToString();
+                    transactionModel.Description = reader["Description"].ToString();
+                    transactionModel.DebitAccount = reader["debit_acc_name"].ToString();
+                    transactionModel.CreditAccount = reader["credit_acc_name"].ToString();
+                    transactionModel.Sum = decimal.Parse(reader["Sum"].ToString());
+                    transactionModel.Date = DateTime.Parse(reader["Date"].ToString());
+                    transactionModel.TypeTransaction = reader["transaction_type"].ToString();
+                    transactionModel.Category = reader["category_name"].ToString();
+                    transactionModel.Contragent = reader["contragent_name"].ToString();
+                    transactionModel.Identity = reader["identity"].ToString();
+                    //transactionModel.ReceiptId = long.Parse(reader["Receipt_id"].ToString());
                     transactions.Add(transactionModel);
                 }
             }

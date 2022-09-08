@@ -12,5 +12,6 @@ namespace FM.SHD.Services.Repositories
         IEnumerable<ITransactionModel> GetAll();
         TransactionModel GetById(int id);
         IEnumerable<ITransactionModel> GetAllRecordsAssociatedWithAReceipt(long receiptId);
+        IEnumerable<TransactionExtendedModel> GetExtendedTransactions();
     }
 }

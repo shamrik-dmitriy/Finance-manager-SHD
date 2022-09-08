@@ -13,5 +13,6 @@ namespace FM.SHD.Services.TransactionServices
         void DeleteById(int transactionId);
         IEnumerable<TransactionDto> GetAll();
         TransactionDto GetById(int id);
+        List<TransactionExtendedDto> GetExtendedTransactions();
     }
 }

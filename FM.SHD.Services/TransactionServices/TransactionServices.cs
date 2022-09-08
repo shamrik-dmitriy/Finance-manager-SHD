@@ -20,31 +20,33 @@ namespace FM.SHD.Services.TransactionServices
             _modelValidator = modelValidator;
             _mapper = new MapperConfiguration(config =>
             {
+                config.CreateMap<TransactionExtendedModel, TransactionExtendedDto>();
                 config.CreateMap<TransactionModel, TransactionDto>();
                 config.CreateMap<TransactionDto, TransactionModel>()
                     .ForMember(
-                        x=>x.TypeTransactionId,
-                        opt => 
-                            opt.MapFrom(src => src.TypeTransactionId.HasValue ? src.TypeTransactionId.Value : (long?)null))
+                        x => x.TypeTransactionId,
+                        opt =>
+                            opt.MapFrom(src =>
+                                src.TypeTransactionId.HasValue ? src.TypeTransactionId.Value : (long?)null))
                     .ForMember(
-                        x=>x.CategoryId,
-                        opt => 
+                        x => x.CategoryId,
+                        opt =>
                             opt.MapFrom(src => src.CategoryId.HasValue ? src.CategoryId.Value : (long?)null))
                     .ForMember(
-                        x=>x.ContragentId,
-                        opt => 
+                        x => x.ContragentId,
+                        opt =>
                             opt.MapFrom(src => src.ContragentId.HasValue ? src.ContragentId.Value : (long?)null))
                     .ForMember(
-                        x=>x.IdentityId,
-                        opt => 
+                        x => x.IdentityId,
+                        opt =>
                             opt.MapFrom(src => src.IdentityId.HasValue ? src.IdentityId.Value : (long?)null))
                     .ForMember(
-                        x=>x.CreditAccountId,
-                        opt => 
+                        x => x.CreditAccountId,
+                        opt =>
                             opt.MapFrom(src => src.CreditAccountId.HasValue ? src.CreditAccountId.Value : (long?)null))
                     .ForMember(
-                        x=>x.DebitAccountId,
-                        opt => 
+                        x => x.DebitAccountId,
+                        opt =>
                             opt.MapFrom(src => src.DebitAccountId.HasValue ? src.DebitAccountId.Value : (long?)null));
             }).CreateMapper();
         }
@@ -71,6 +73,11 @@ namespace FM.SHD.Services.TransactionServices
         public TransactionDto GetById(int id)
         {
             return _mapper.Map<TransactionDto>(_transactionRepository.GetById(id));
+        }
+
+        public List<TransactionExtendedDto> GetExtendedTransactions()
+        {
+            return _transactionRepository.GetExtendedTransactions().Select(x => _mapper.Map<TransactionExtendedDto>(x)).ToList();
         }
 
         public void Delete(TransactionDto transactionDto)
