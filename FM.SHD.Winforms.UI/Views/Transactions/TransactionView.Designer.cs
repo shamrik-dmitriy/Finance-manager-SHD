@@ -1,6 +1,6 @@
 ﻿namespace FM.SHD.Winforms.UI.Views.Transactions
 {
-    partial class SingleTransactionView
+    partial class TransactionView
     {
         /// <summary>
         /// Required designer variable.
@@ -53,7 +53,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(382, 400);
-            this.Name = "SingleTransactionView";
+            this.Name = "TransactionView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddSingleTransactionForm";
             this.Load += new System.EventHandler(this.AddSingleTransactionForm_Load);

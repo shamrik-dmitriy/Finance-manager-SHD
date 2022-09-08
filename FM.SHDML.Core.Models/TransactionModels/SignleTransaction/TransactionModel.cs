@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FM.SHDML.Core.Models.TransactionModels.SignleTransaction
 {
-    public class SingleTransactionModel : ISingleTransactionModel
+    public class TransactionModel : ITransactionModel
     {
         public long Id { get; set; }
 

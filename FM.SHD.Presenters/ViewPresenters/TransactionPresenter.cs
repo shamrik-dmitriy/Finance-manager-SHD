@@ -6,18 +6,18 @@ using FM.SHD.Services.CategoriesServices;
 using FM.SHD.Services.ComponentsServices.TypeTransactionService;
 using FM.SHD.Services.ContragentServices;
 using FM.SHD.Services.IdentityServices;
-using FM.SHD.Services.SingleTransactionServices;
+using FM.SHD.Services.TransactionServices;
 using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Presenters.ViewPresenters
 {
-    public class SingleTransactionPresenter : BaseSingleTransactionPresenter
+    public class TransactionPresenter : BaseTransactionPresenter
     {
-        private readonly ISingleTransactionView _view;
+        private readonly ITransactionView _view;
 
         #region Private member variables
 
-        private ISingleTransactionServices _singleTransactionServices;
+        private ITransactionServices _transactionServices;
         private readonly ICategoryUCPresenter<TypeTransactionServices> _typeTransactionUcPresenter;
         private readonly INameUCPresenter _nameUcPresenter;
         private readonly IDescriptionUCPresenter _descriptionUcPresenter;
@@ -31,9 +31,9 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         #region Constructor / Destructor
 
-        public SingleTransactionPresenter(
-            ISingleTransactionView view,
-            ISingleTransactionServices singleTransactionServices,
+        public TransactionPresenter(
+            ITransactionView view,
+            ITransactionServices transactionServices,
             ICategoryUCPresenter<TypeTransactionServices> typeTransactionUcPresenter,
             INameUCPresenter nameUcPresenter,
             IDescriptionUCPresenter descriptionUcPresenter,
@@ -45,7 +45,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             : base(view)
         {
             _view = view;
-            _singleTransactionServices = singleTransactionServices;
+            _transactionServices = transactionServices;
 
             _typeTransactionUcPresenter = typeTransactionUcPresenter;
             _nameUcPresenter = nameUcPresenter;
@@ -64,7 +64,7 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         #region Public Properties
 
-        public SingleTransactionDto SingleTransactionDto { get; set; }
+        public TransactionDto TransactionDto { get; set; }
 
         #endregion
 
@@ -75,9 +75,9 @@ namespace FM.SHD.Presenters.ViewPresenters
             _view.SetTitle(title);
         }
 
-        public override void Run(SingleTransactionDto accountDto)
+        public override void Run(TransactionDto accountDto)
         {
-            SingleTransactionDto = accountDto;
+            TransactionDto = accountDto;
             _view.Show();
         }
 
@@ -97,42 +97,42 @@ namespace FM.SHD.Presenters.ViewPresenters
             _contrAgentUcPresenter.SetText("Контрагент");
             _identityUcPresenter.SetText("Член семьи");
 
-            if (SingleTransactionDto != null)
+            if (TransactionDto != null)
             {
                 _typeTransactionUcPresenter.SetCategoryValues();
                 _typeTransactionUcPresenter.SetStyleDropDownList();
                 _view.AddUserControl(_typeTransactionUcPresenter.GetUserControlView());
-                _typeTransactionUcPresenter.GetUserControlView().SetCategoryId(SingleTransactionDto.TypeTransactionId);
+                _typeTransactionUcPresenter.GetUserControlView().SetCategoryId(TransactionDto.TypeTransactionId);
 
                 _view.AddUserControl(_nameUcPresenter.GetUserControlView());
-                _nameUcPresenter.GetUserControlView().SetName(SingleTransactionDto.Name);
+                _nameUcPresenter.GetUserControlView().SetName(TransactionDto.Name);
 
                 _view.AddUserControl(_descriptionUcPresenter.GetUserControlView());
-                _descriptionUcPresenter.GetUserControlView().SetDescription(SingleTransactionDto.Description);
+                _descriptionUcPresenter.GetUserControlView().SetDescription(TransactionDto.Description);
 
                 _view.AddHorizontalLine();
                 _view.AddUserControl(_accountsInfoTransactionUcPresenter
                     .GetUserControlView());
-                _accountsInfoTransactionUcPresenter.SetDate(SingleTransactionDto.Date);
-                _accountsInfoTransactionUcPresenter.SetSum(SingleTransactionDto.Sum);
-                _accountsInfoTransactionUcPresenter.SetCreditAccountId(SingleTransactionDto.CreditAccountId);
-                _accountsInfoTransactionUcPresenter.SetDebitAccountId(SingleTransactionDto.DebitAccountId);
+                _accountsInfoTransactionUcPresenter.SetDate(TransactionDto.Date);
+                _accountsInfoTransactionUcPresenter.SetSum(TransactionDto.Sum);
+                _accountsInfoTransactionUcPresenter.SetCreditAccountId(TransactionDto.CreditAccountId);
+                _accountsInfoTransactionUcPresenter.SetDebitAccountId(TransactionDto.DebitAccountId);
                 _view.AddHorizontalLine();
 
                 _categoriesUcPresenter.SetStyleDropDown();
                 _categoriesUcPresenter.SetCategoryValues();
                 _view.AddUserControl(_categoriesUcPresenter.GetUserControlView());
-                _categoriesUcPresenter.GetUserControlView().SetCategoryId(SingleTransactionDto.CategoryId);
+                _categoriesUcPresenter.GetUserControlView().SetCategoryId(TransactionDto.CategoryId);
 
                 _contrAgentUcPresenter.SetStyleDropDown();
                 _contrAgentUcPresenter.SetCategoryValues();
                 _view.AddUserControl(_contrAgentUcPresenter.GetUserControlView());
-                _contrAgentUcPresenter.GetUserControlView().SetCategoryId(SingleTransactionDto.ContragentId);
+                _contrAgentUcPresenter.GetUserControlView().SetCategoryId(TransactionDto.ContragentId);
 
                 _identityUcPresenter.SetStyleDropDown();
                 _identityUcPresenter.SetCategoryValues();
                 _view.AddUserControl(_identityUcPresenter.GetUserControlView());
-                _identityUcPresenter.GetUserControlView().SetCategoryId(SingleTransactionDto.IdentityId);
+                _identityUcPresenter.GetUserControlView().SetCategoryId(TransactionDto.IdentityId);
             }
             else
             {
@@ -170,7 +170,7 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void ContinueCancelButtonsUcPresenterOnContinue()
         {
-            _singleTransactionServices.Add(new SingleTransactionDto
+            _transactionServices.Add(new TransactionDto
             {
                 TypeTransactionId = _typeTransactionUcPresenter.GetCategoryId(),
                 Name = _nameUcPresenter.GetName(),
@@ -184,12 +184,6 @@ namespace FM.SHD.Presenters.ViewPresenters
                 IdentityId = _identityUcPresenter.GetCategoryId()
             });
             _view.Close();
-        }
-
-        private void SingleTransactionViewOnAdd(object sender, EventArgs e)
-        {
-            SingleTransactionDto dto = _view.GetTransactionInfo();
-            _singleTransactionServices.Add(dto);
         }
 
         #endregion

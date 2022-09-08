@@ -8,7 +8,7 @@ using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using FM.SHDML.Core.Models.Dtos;
 
-namespace FM.SHD.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls
+namespace FM.SHD.Winforms.UI.UserControls.Transactions.TransactionUserControls
 {
     public partial class TypeTransactionUCView : UserControl, ITypeTransactionUCView
     {

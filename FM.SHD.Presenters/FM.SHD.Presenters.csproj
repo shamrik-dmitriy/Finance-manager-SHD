@@ -18,9 +18,7 @@
 
     <ItemGroup>
       <Compile Remove="IntrefacesViews\IAccountView.cs" />
-      <Compile Remove="ViewPresenters\AccountPresenter.cs" />
       <Compile Remove="Interfaces\Views\IAccountPresenter.cs" />
-      <Compile Remove="ViewPresenters\MainPresenter.cs" />
     </ItemGroup>
 
 </Project>

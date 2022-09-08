@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FM.SHDML.Core.Models.TransactionModels.SignleTransaction
 {
-    public interface ISingleTransactionModel
+    public interface ITransactionModel
     {
         long Id { get; set; }
 

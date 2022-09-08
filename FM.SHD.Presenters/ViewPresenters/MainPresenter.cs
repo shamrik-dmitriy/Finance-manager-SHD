@@ -4,11 +4,14 @@ using System.IO;
 using System.Linq;
 using FM.SHD.Infastructure.Impl.Repositories;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Account;
+using FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction;
 using FM.SHD.Presenters.Common;
+using FM.SHD.Presenters.Interfaces.UserControls.Main;
 using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
 using FM.SHD.Presenters.IntrefacesViews.Views;
 using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.CommonServices;
+using FM.SHD.Services.TransactionServices;
 using FM.SHD.Settings.Services;
 using FM.SHD.Settings.Services.SettingsCollection;
 using FM.SHDML.Core.Models.Dtos.UIDto;
@@ -27,6 +30,7 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private List<RecentOpenFilesDto> RecentOpenFilesDtos { get; set; }
         private IAccountServices _accountServices;
+        private ITransactionServices _transactionServices;
 
         #endregion
 
@@ -69,9 +73,9 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void OnAddTransaction()
         {
-            var singleTransactionPresenter = _serviceProvider.GetRequiredService<SingleTransactionPresenter>();
-            singleTransactionPresenter.SetTitle("Добавить операцию");
-            singleTransactionPresenter.Run(null);
+            var transactionPresenter = _serviceProvider.GetRequiredService<TransactionPresenter>();
+            transactionPresenter.SetTitle("Добавить операцию");
+            transactionPresenter.Run(null);
         }
 
         private void OnOpenDataFile(string filePath)
@@ -141,7 +145,7 @@ namespace FM.SHD.Presenters.ViewPresenters
 
                 CreateConnection(_recentOpenFilesSettings.GetSetting().RecentOpen.Last().FilePath);
                 _accountServices = new AccountServices(new AccountRepository(_repositoryManager), new ModelValidator());
-                List<IAccountSummaryUCPresenter> data = new List<IAccountSummaryUCPresenter>();
+                var data = new List<IAccountSummaryUCPresenter>();
                 foreach (var accountDto in _accountServices.GetAll()
                              .Select((value, index) => new { Index = index, Value = value }))
                 {
@@ -150,6 +154,14 @@ namespace FM.SHD.Presenters.ViewPresenters
                     data.Add(s);
                     _view.AddAccountsSummaryUserControl(s.GetUserControlView());
                 }
+
+                _transactionServices =
+                    new TransactionServices(new TransactionRepository(_repositoryManager),
+                        new ModelValidator());
+                
+                var dgv = _serviceProvider.GetRequiredService<IAllTransactionUCPresenter>();
+                _view.AddUserControl(dgv.GetUserControlView());
+                dgv.GetUserControlView().SetData(_transactionServices.GetAll());
             }
             else
             {

@@ -45,7 +45,16 @@ namespace FM.SHD.Winforms.UI
 
         public void AddUserControl(IUserControlView userControlView)
         {
-            throw new NotImplementedException();
+            splitContainerTransactions.Panel2.Controls.Add((UserControl)userControlView);
+            /*var userControl = (UserControl)userControlView;
+            singleTransactionDesktopflowLayoutPanel.Controls.Add(userControl);
+            
+            var c = new TabControl.ControlCollection(tabControl1).Add((UserControl)userControlView);
+            var tp = new TabPage().Control
+            tabControl1.TabPages.Add(new TabPage()
+            {
+                Text = "",
+            });*/
         }
 
         public void AddHorizontalLine()
@@ -62,7 +71,7 @@ namespace FM.SHD.Winforms.UI
         {
             new MultipleTransactionView("Добавить группу транзакций (чек)").ShowDialog();
         }
-        
+
         public void CloseView()
         {
             Close();

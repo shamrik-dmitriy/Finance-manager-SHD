@@ -2,7 +2,7 @@
 
 namespace FM.SHDML.Core.Models.Dtos
 {
-    public class SingleTransactionDto : BaseDto
+    public class TransactionDto : BaseDto
     {
         public long? TypeTransactionId { get; set; }
 

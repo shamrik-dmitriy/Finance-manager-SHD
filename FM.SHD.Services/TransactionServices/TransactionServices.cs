@@ -1,26 +1,27 @@
-﻿using FM.SHD.Services.CommonServices;
-using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using FM.SHD.Services.CommonServices;
 using FM.SHD.Services.Repositories;
 using FM.SHDML.Core.Models.Dtos;
+using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
 
-namespace FM.SHD.Services.SingleTransactionServices
+namespace FM.SHD.Services.TransactionServices
 {
-    public class SingleTransactionServices : ISingleTransactionServices
+    public class TransactionServices : ITransactionServices
     {
-        private readonly ISingleTransactionRepository _singleTransactionRepository;
+        private readonly ITransactionRepository _transactionRepository;
         private readonly IModelValidator _modelValidator;
         private readonly IMapper _mapper;
 
-        public SingleTransactionServices(ISingleTransactionRepository repository, IModelValidator modelValidator)
+        public TransactionServices(ITransactionRepository repository, IModelValidator modelValidator)
         {
-            _singleTransactionRepository = repository;
+            _transactionRepository = repository;
             _modelValidator = modelValidator;
             _mapper = new MapperConfiguration(config =>
             {
-                config.CreateMap<SingleTransactionDto, SingleTransactionModel>()
+                config.CreateMap<TransactionModel, TransactionDto>();
+                config.CreateMap<TransactionDto, TransactionModel>()
                     .ForMember(
                         x=>x.TypeTransactionId,
                         opt => 
@@ -48,43 +49,43 @@ namespace FM.SHD.Services.SingleTransactionServices
             }).CreateMapper();
         }
 
-        public long Add(SingleTransactionDto singleTransactionDto)
+        public long Add(TransactionDto transactionDto)
         {
-            var model = _mapper.Map<SingleTransactionModel>(singleTransactionDto);
+            var model = _mapper.Map<TransactionModel>(transactionDto);
             ValidateModel(model);
-            return _singleTransactionRepository.Add(model);
+            return _transactionRepository.Add(model);
         }
 
-        public void Update(SingleTransactionDto singleTransactionDto)
+        public void Update(TransactionDto transactionDto)
         {
-            var model = _mapper.Map<SingleTransactionModel>(singleTransactionDto);
+            var model = _mapper.Map<TransactionModel>(transactionDto);
             ValidateModel(model);
-            _singleTransactionRepository.Update(model);
+            _transactionRepository.Update(model);
         }
 
-        IEnumerable<SingleTransactionDto> ISingleTransactionServices.GetAll()
+        IEnumerable<TransactionDto> ITransactionServices.GetAll()
         {
-            return _singleTransactionRepository.GetAll().Select(x => _mapper.Map<SingleTransactionDto>(x));
+            return _transactionRepository.GetAll().Select(x => _mapper.Map<TransactionDto>(x));
         }
 
-        public SingleTransactionDto GetById(int id)
+        public TransactionDto GetById(int id)
         {
-            return _mapper.Map<SingleTransactionDto>(_singleTransactionRepository.GetById(id));
+            return _mapper.Map<TransactionDto>(_transactionRepository.GetById(id));
         }
 
-        public void Delete(SingleTransactionDto singleTransactionDto)
+        public void Delete(TransactionDto transactionDto)
         {
-            _singleTransactionRepository.Delete(_mapper.Map<SingleTransactionModel>(singleTransactionDto));
+            _transactionRepository.Delete(_mapper.Map<TransactionModel>(transactionDto));
         }
 
-        public void DeleteById(int singleTransactionId)
+        public void DeleteById(int transactionId)
         {
-            _singleTransactionRepository.DeleteById(singleTransactionId);
+            _transactionRepository.DeleteById(transactionId);
         }
 
-        public void ValidateModel(SingleTransactionModel singleTransactionModel)
+        public void ValidateModel(TransactionModel transactionModel)
         {
-            _modelValidator.ValidateModel(singleTransactionModel);
+            _modelValidator.ValidateModel(transactionModel);
             // Тут вызываем дополнительную валидацию
         }
     }

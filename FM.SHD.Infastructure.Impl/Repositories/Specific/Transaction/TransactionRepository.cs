@@ -4,77 +4,77 @@ using FM.SHD.Infrastructure.Dal.Providers;
 using FM.SHD.Services.Repositories;
 using FM.SHDML.Core.Models.TransactionModels.SignleTransaction;
 
-namespace FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction
+namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction
 {
-    public class SingleTransactionRepository : BaseSpecificRepository, ISingleTransactionRepository
+    public class TransactionRepository : BaseSpecificRepository, ITransactionRepository
     {
-        private const string TABLE_NAME = "SingleTransaction";
+        private const string TABLE_NAME = "Transactions";
 
-        public SingleTransactionRepository(IRepositoryManager repositoryManager) : base(repositoryManager)
+        public TransactionRepository(IRepositoryManager repositoryManager) : base(repositoryManager)
         {
         }
 
-        public long Add(ISingleTransactionModel singleTransactionModel)
+        public long Add(ITransactionModel transactionModel)
         {
             var sql =
                 $"INSERT INTO {TABLE_NAME} (Type_id, Name, Description, DebitAccount_id, CreditAccount_id, Sum, Date, Category_id, Contragent_id, Identity_id) " +
                 $"VALUES (@Type_id, @Name, @Description, @DebitAccount_id, @CreditAccount_id, @Sum, @Date, @Category_id, @Contragent_id, @Identity_id);";
 
             var dataparameters = new List<DataParameter>();
-            dataparameters.Add(new DataParameter("@Type_id", singleTransactionModel.TypeTransactionId));
-            dataparameters.Add(new DataParameter("@Name", singleTransactionModel.Name));
-            dataparameters.Add(new DataParameter("@Description", singleTransactionModel.Description));
-            dataparameters.Add(new DataParameter("@DebitAccount_id", singleTransactionModel.DebitAccountId));
-            dataparameters.Add(new DataParameter("@CreditAccount_id", singleTransactionModel.CreditAccountId));
-            dataparameters.Add(new DataParameter("@Sum", singleTransactionModel.Sum));
-            dataparameters.Add(new DataParameter("@Date", singleTransactionModel.Date));
-            dataparameters.Add(new DataParameter("@Category_id", singleTransactionModel.CategoryId));
-            dataparameters.Add(new DataParameter("@Contragent_id", singleTransactionModel.ContragentId));
-            dataparameters.Add(new DataParameter("@Identity_id", singleTransactionModel.IdentityId));
+            dataparameters.Add(new DataParameter("@Type_id", transactionModel.TypeTransactionId));
+            dataparameters.Add(new DataParameter("@Name", transactionModel.Name));
+            dataparameters.Add(new DataParameter("@Description", transactionModel.Description));
+            dataparameters.Add(new DataParameter("@DebitAccount_id", transactionModel.DebitAccountId));
+            dataparameters.Add(new DataParameter("@CreditAccount_id", transactionModel.CreditAccountId));
+            dataparameters.Add(new DataParameter("@Sum", transactionModel.Sum));
+            dataparameters.Add(new DataParameter("@Date", transactionModel.Date));
+            dataparameters.Add(new DataParameter("@Category_id", transactionModel.CategoryId));
+            dataparameters.Add(new DataParameter("@Contragent_id", transactionModel.ContragentId));
+            dataparameters.Add(new DataParameter("@Identity_id", transactionModel.IdentityId));
 
             return SqliteDataProvider.ExecuteSqlInsertCommand(sql, dataparameters.ToArray());
         }
 
-        public void Delete(ISingleTransactionModel singleTransactionModel)
+        public void Delete(ITransactionModel transactionModel)
         {
-            if (CheckRecordIsExist(TABLE_NAME, singleTransactionModel.Id))
+            if (CheckRecordIsExist(TABLE_NAME, transactionModel.Id))
             {
                 var sql = $"DELETE FROM {TABLE_NAME} WHERE Id=@Id;";
                 var dataparameters = new List<DataParameter>();
-                dataparameters.Add(new DataParameter("@Id", singleTransactionModel.Id));
+                dataparameters.Add(new DataParameter("@Id", transactionModel.Id));
 
                 SqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
             }
             else
                 throw new ArgumentException(
-                    $"В хранилище отсутствует запись с идентификатором {singleTransactionModel.Id}");
+                    $"В хранилище отсутствует запись с идентификатором {transactionModel.Id}");
         }
 
-        public void DeleteById(int singleTransactionId)
+        public void DeleteById(int transactionId)
         {
-            if (CheckRecordIsExist(TABLE_NAME, singleTransactionId))
+            if (CheckRecordIsExist(TABLE_NAME, transactionId))
             {
                 var sql = $"DELETE FROM {TABLE_NAME} WHERE Id=@Id";
                 var dataparameters = new List<DataParameter>();
-                dataparameters.Add(new DataParameter("@Id", singleTransactionId));
+                dataparameters.Add(new DataParameter("@Id", transactionId));
 
                 SqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
             }
             else
-                throw new ArgumentException($"В хранилище отсутствует запись с идентификатором {singleTransactionId}");
+                throw new ArgumentException($"В хранилище отсутствует запись с идентификатором {transactionId}");
         }
 
-        public IEnumerable<ISingleTransactionModel> GetAll()
+        public IEnumerable<ITransactionModel> GetAll()
         {
             var sql = $"SELECT * FROM {TABLE_NAME};";
 
-            var singleTransactions = new List<SingleTransactionModel>();
+            var transactions = new List<TransactionModel>();
 
             using (var reader = SqliteDataProvider.CreateReader(sql))
             {
                 while (reader.Read())
                 {
-                    var transactionModel = new SingleTransactionModel();
+                    var transactionModel = new TransactionModel();
                     transactionModel.Id = long.Parse(reader["Id"].ToString());
                     transactionModel.TypeTransactionId = int.Parse(reader["Type_id"].ToString());
                     transactionModel.Name = reader["Name"].ToString();
@@ -86,16 +86,16 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction
                     transactionModel.CategoryId = long.Parse(reader["Category_id"].ToString());
                     transactionModel.ContragentId = long.Parse(reader["Contragent_id"].ToString());
                     transactionModel.IdentityId = long.Parse(reader["Identity_id"].ToString());
-                    singleTransactions.Add(transactionModel);
+                    transactions.Add(transactionModel);
                 }
             }
 
-            return singleTransactions;
+            return transactions;
         }
 
-        public void Update(ISingleTransactionModel singleTransactionModel)
+        public void Update(ITransactionModel transactionModel)
         {
-            if (CheckRecordIsExist(TABLE_NAME, singleTransactionModel.Id))
+            if (CheckRecordIsExist(TABLE_NAME, transactionModel.Id))
             {
                 var sql = $"UPDATE {TABLE_NAME} SET " +
                           $"Type_id = @Type_id, " +
@@ -111,25 +111,25 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction
                           $"WHERE Id = @Id;";
 
                 var dataparameters = new List<DataParameter>();
-                dataparameters.Add(new DataParameter("@Id", singleTransactionModel.Id));
-                dataparameters.Add(new DataParameter("@Type_id", singleTransactionModel.TypeTransactionId));
-                dataparameters.Add(new DataParameter("@Name", singleTransactionModel.Name));
-                dataparameters.Add(new DataParameter("@Description", singleTransactionModel.Description));
-                dataparameters.Add(new DataParameter("@DebitAccount_id", singleTransactionModel.DebitAccountId));
-                dataparameters.Add(new DataParameter("@CreditAccount_id", singleTransactionModel.CreditAccountId));
-                dataparameters.Add(new DataParameter("@Sum", singleTransactionModel.Sum));
-                dataparameters.Add(new DataParameter("@Date", singleTransactionModel.Date));
-                dataparameters.Add(new DataParameter("@Category_id", singleTransactionModel.CategoryId));
-                dataparameters.Add(new DataParameter("@Contragent_id", singleTransactionModel.ContragentId));
-                dataparameters.Add(new DataParameter("@Identity_id", singleTransactionModel.IdentityId));
+                dataparameters.Add(new DataParameter("@Id", transactionModel.Id));
+                dataparameters.Add(new DataParameter("@Type_id", transactionModel.TypeTransactionId));
+                dataparameters.Add(new DataParameter("@Name", transactionModel.Name));
+                dataparameters.Add(new DataParameter("@Description", transactionModel.Description));
+                dataparameters.Add(new DataParameter("@DebitAccount_id", transactionModel.DebitAccountId));
+                dataparameters.Add(new DataParameter("@CreditAccount_id", transactionModel.CreditAccountId));
+                dataparameters.Add(new DataParameter("@Sum", transactionModel.Sum));
+                dataparameters.Add(new DataParameter("@Date", transactionModel.Date));
+                dataparameters.Add(new DataParameter("@Category_id", transactionModel.CategoryId));
+                dataparameters.Add(new DataParameter("@Contragent_id", transactionModel.ContragentId));
+                dataparameters.Add(new DataParameter("@Identity_id", transactionModel.IdentityId));
                 SqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
             }
             else
                 throw new ArgumentException(
-                    $"В хранилище отсутствует запись с идентификатором {singleTransactionModel.Id}");
+                    $"В хранилище отсутствует запись с идентификатором {transactionModel.Id}");
         }
 
-        SingleTransactionModel ISingleTransactionRepository.GetById(int id)
+        TransactionModel ITransactionRepository.GetById(int id)
         {
             if (CheckRecordIsExist(TABLE_NAME, id))
             {
@@ -138,7 +138,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction
                 var dataparameters = new List<DataParameter>();
                 dataparameters.Add(new DataParameter("@Id", id));
 
-                var transactionModel = new SingleTransactionModel();
+                var transactionModel = new TransactionModel();
 
                 using (var reader = SqliteDataProvider.CreateReader(sql, dataparameters.ToArray()))
                 {

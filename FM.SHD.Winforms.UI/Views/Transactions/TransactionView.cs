@@ -10,7 +10,7 @@ using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Winforms.UI.Views.Transactions
 {
-    public partial class SingleTransactionView : Form, ISingleTransactionView
+    public partial class TransactionView : Form, ITransactionView
     {
         #region Private member variables
 
@@ -40,17 +40,17 @@ namespace FM.SHD.Winforms.UI.Views.Transactions
 
         #region Constructors
 
-        public SingleTransactionView()
+        public TransactionView()
         {
             InitializeComponent();
         }
 
-        public SingleTransactionView(EventAggregator eventAggregator) : this()
+        public TransactionView(EventAggregator eventAggregator) : this()
         {
             _eventAggregator = eventAggregator;
         }
 
-        public SingleTransactionView(string typeTransactionOperations, EventAggregator eventAggregator) : this()
+        public TransactionView(string typeTransactionOperations, EventAggregator eventAggregator) : this()
         {
             Title = typeTransactionOperations;
             TitleDefault = typeTransactionOperations;
@@ -114,9 +114,9 @@ namespace FM.SHD.Winforms.UI.Views.Transactions
             singleTransactionDesktopflowLayoutPanel.Controls.Add(userControl);
         }
 
-        public SingleTransactionDto GetTransactionInfo()
+        public TransactionDto GetTransactionInfo()
         {
-            return new SingleTransactionDto();
+            return new TransactionDto();
             /*
             var accountUser = billingInfoFlowLayoutPanel.Controls[0] as AccountsInfoTransactionUCView;
             
