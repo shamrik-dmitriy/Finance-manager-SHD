@@ -25,7 +25,6 @@
     <ProjectReference Include="..\FM.SHD.Infrastructure.Events\FM.SHD.Infrastructure.Events.csproj" />
     <ProjectReference Include="..\FM.SHD.Presenters\FM.SHD.Presenters.csproj" />
     <ProjectReference Include="..\FM.SHD.Services\FM.SHD.Services.csproj" />
-    <ProjectReference Include="..\SHDML.BLL.DTO\SHDML.BLL.DTO.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -11,5 +11,6 @@ namespace FM.SHD.Services.Repositories
         void DeleteById(int transactionId);
         IEnumerable<ITransactionModel> GetAll();
         TransactionModel GetById(int id);
+        IEnumerable<ITransactionModel> GetAllRecordsAssociatedWithAReceipt(long receiptId);
     }
 }

@@ -29,5 +29,6 @@ namespace FM.SHDML.Core.Models.TransactionModels.SignleTransaction
         long? ContragentId { get; set; }
 
         long? IdentityId { get; set; }
+        long? ReceiptId { get; set; }
     }
 }

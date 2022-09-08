@@ -31,5 +31,6 @@ namespace FM.SHDML.Core.Models.TransactionModels.SignleTransaction
         public long? ContragentId { get; set; }
 
         public long? IdentityId { get; set; }
+        public long? ReceiptId { get; set; }
     }
 }

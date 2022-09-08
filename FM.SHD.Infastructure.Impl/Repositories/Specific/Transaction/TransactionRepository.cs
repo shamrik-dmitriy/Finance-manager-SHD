@@ -17,8 +17,8 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction
         public long Add(ITransactionModel transactionModel)
         {
             var sql =
-                $"INSERT INTO {TABLE_NAME} (Type_id, Name, Description, DebitAccount_id, CreditAccount_id, Sum, Date, Category_id, Contragent_id, Identity_id) " +
-                $"VALUES (@Type_id, @Name, @Description, @DebitAccount_id, @CreditAccount_id, @Sum, @Date, @Category_id, @Contragent_id, @Identity_id);";
+                $"INSERT INTO {TABLE_NAME} (Type_id, Name, Description, DebitAccount_id, CreditAccount_id, Sum, Date, Category_id, Contragent_id, Identity_id, Receipt_id) " +
+                $"VALUES (@Type_id, @Name, @Description, @DebitAccount_id, @CreditAccount_id, @Sum, @Date, @Category_id, @Contragent_id, @Identity_id, @Receipt_id);";
 
             var dataparameters = new List<DataParameter>();
             dataparameters.Add(new DataParameter("@Type_id", transactionModel.TypeTransactionId));
@@ -31,6 +31,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction
             dataparameters.Add(new DataParameter("@Category_id", transactionModel.CategoryId));
             dataparameters.Add(new DataParameter("@Contragent_id", transactionModel.ContragentId));
             dataparameters.Add(new DataParameter("@Identity_id", transactionModel.IdentityId));
+            dataparameters.Add(new DataParameter("@Receipt_id", transactionModel.ReceiptId));
 
             return SqliteDataProvider.ExecuteSqlInsertCommand(sql, dataparameters.ToArray());
         }
@@ -86,6 +87,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction
                     transactionModel.CategoryId = long.Parse(reader["Category_id"].ToString());
                     transactionModel.ContragentId = long.Parse(reader["Contragent_id"].ToString());
                     transactionModel.IdentityId = long.Parse(reader["Identity_id"].ToString());
+                    transactionModel.ReceiptId = long.Parse(reader["Receipt_id"].ToString());
                     transactions.Add(transactionModel);
                 }
             }
@@ -108,6 +110,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction
                           $"Category = @Category_id, " +
                           $"Contragent_id = @Contragent_id, " +
                           $"Identity_id = @Identity_id " +
+                          $"Receipt_id = @Receipt_id " +
                           $"WHERE Id = @Id;";
 
                 var dataparameters = new List<DataParameter>();
@@ -122,6 +125,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction
                 dataparameters.Add(new DataParameter("@Category_id", transactionModel.CategoryId));
                 dataparameters.Add(new DataParameter("@Contragent_id", transactionModel.ContragentId));
                 dataparameters.Add(new DataParameter("@Identity_id", transactionModel.IdentityId));
+                dataparameters.Add(new DataParameter("@Receipt_id", transactionModel.ReceiptId));
                 SqliteDataProvider.ExecuteNonQuery(sql, dataparameters.ToArray());
             }
             else
@@ -155,6 +159,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction
                         transactionModel.CategoryId = long.Parse(reader["Category_id"].ToString());
                         transactionModel.ContragentId = long.Parse(reader["Contragent_id"].ToString());
                         transactionModel.IdentityId = long.Parse(reader["Identity_id"].ToString());
+                        transactionModel.ReceiptId = long.Parse(reader["Receipt_id"].ToString());
                     }
 
                     return transactionModel;
@@ -162,6 +167,36 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction
             }
             else
                 throw new ArgumentException($"В хранилище отсутствует запись с идентификатором {id}");
+        }
+
+        public IEnumerable<ITransactionModel> GetAllRecordsAssociatedWithAReceipt(long receiptId)
+        {
+            var sql = $"SELECT * FROM {TABLE_NAME} WHERE Receipt_id=@Receipt_id;";
+
+            var transactions = new List<TransactionModel>();
+
+            using (var reader = SqliteDataProvider.CreateReader(sql))
+            {
+                while (reader.Read())
+                {
+                    var transactionModel = new TransactionModel();
+                    transactionModel.Id = long.Parse(reader["Id"].ToString());
+                    transactionModel.TypeTransactionId = int.Parse(reader["Type_id"].ToString());
+                    transactionModel.Name = reader["Name"].ToString();
+                    transactionModel.Description = reader["Description"].ToString();
+                    transactionModel.CreditAccountId = long.Parse(reader["CreditAccount_id"].ToString());
+                    transactionModel.DebitAccountId = long.Parse(reader["DebitAccount_id"].ToString());
+                    transactionModel.Sum = decimal.Parse(reader["Sum"].ToString());
+                    transactionModel.Date = DateTime.Parse(reader["Date"].ToString());
+                    transactionModel.CategoryId = long.Parse(reader["Category_id"].ToString());
+                    transactionModel.ContragentId = long.Parse(reader["Contragent_id"].ToString());
+                    transactionModel.IdentityId = long.Parse(reader["Identity_id"].ToString());
+                    transactionModel.ReceiptId = long.Parse(reader["Receipt_id"].ToString());
+                    transactions.Add(transactionModel);
+                }
+            }
+
+            return transactions;
         }
     }
 }

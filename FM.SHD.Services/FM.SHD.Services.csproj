@@ -6,16 +6,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FM.SHDML.Core.Models\FM.SHDML.Core.Models.csproj" />
-    <ProjectReference Include="..\SHDML.BLL.DTO\SHDML.BLL.DTO.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Collection" Version="8.0.0" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="AllTransactionsServices" />
   </ItemGroup>
 
 </Project>
