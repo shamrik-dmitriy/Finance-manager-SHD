@@ -1,5 +1,5 @@
 ﻿
-namespace SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls
+namespace FM.SHD.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls
 {
     partial class TypeTransactionUCView
     {

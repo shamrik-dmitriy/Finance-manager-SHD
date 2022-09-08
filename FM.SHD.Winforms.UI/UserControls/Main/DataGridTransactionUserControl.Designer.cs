@@ -1,4 +1,4 @@
-﻿namespace SHDML.Winforms.UI.UserControls.Main
+﻿namespace FM.SHD.Winforms.UI.UserControls.Main
 {
     partial class DataGridTransactionUserControl
     {

@@ -1,14 +1,15 @@
 using System;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
 
-namespace FM.SHD.Presenters.IntrefacesViews
+namespace FM.SHD.Presenters.Common
 {
-    public interface IAccountView : IView
+    public interface IView
     {
         event Action OnLoadView;
-        event Action OnClosingView;
-
+        void Show();
+        void Close();
+        void SetTitle(string title);
         void AddUserControl(IUserControlView userControlView);
- 
+        void AddHorizontalLine();
     }
 }

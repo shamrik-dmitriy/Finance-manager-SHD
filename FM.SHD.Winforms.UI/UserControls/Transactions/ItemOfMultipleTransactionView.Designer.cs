@@ -1,4 +1,4 @@
-﻿namespace SHDML.Winforms.UI.UserControls.Transactions
+﻿namespace FM.SHD.Winforms.UI.UserControls.Transactions
 {
     partial class ItemOfMultipleTransaction
     {

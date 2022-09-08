@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace SHDML.Winforms.UI.UserControls.Login
+namespace FM.SHD.Winforms.UI.UserControls.Login
 {
     public partial class LoginUCView : UserControl
     {

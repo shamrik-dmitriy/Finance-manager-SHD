@@ -1,5 +1,5 @@
 ﻿
-namespace SHDML.Winforms.UI.UserControls.Common
+namespace FM.SHD.Winforms.UI.UserControls.Common
 {
     partial class LabelTextBoxUCView
     {

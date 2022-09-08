@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace SHDML.Winforms.UI.UserControls.Transactions
+namespace FM.SHD.Winforms.UI.UserControls.Transactions
 {
     public partial class ItemOfMultipleTransaction : UserControl
     {

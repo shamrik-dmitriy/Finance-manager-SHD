@@ -1,4 +1,4 @@
-﻿namespace SHDML.Winforms.UI.Views.Account
+﻿namespace FM.SHD.Winforms.UI.Views.Account
 {
     partial class AccountView
     {

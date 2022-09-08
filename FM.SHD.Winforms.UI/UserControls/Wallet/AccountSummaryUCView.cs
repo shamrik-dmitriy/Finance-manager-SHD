@@ -1,44 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Wallet;
-using FM.SHDML.Core.Models.AccountModel;
 using FM.SHDML.Core.Models.Dtos;
 
-namespace SHDML.Winforms.UI.UserControls.Wallet
+namespace FM.SHD.Winforms.UI.UserControls.Wallet
 {
     public partial class AccountSummaryUCView : UserControl, IAccountSummaryUCView
     {
-        private long Id { get; }
+        private AccountDto AccountDto { get; set; }
 
         public AccountSummaryUCView()
         {
             InitializeComponent();
         }
 
-        public AccountSummaryUCView(AccountDto accountDto) : this()
-        {
-            Id = accountDto.Id;
-            SetData(accountDto);
-        }
-
-        public event Action<long> UpdateAccount;
+        public event Action<AccountDto> UpdateAccount;
 
         public void SetData(AccountDto accountDto)
         {
-            accountNameLabel.Text = accountDto.Name;
-            accountSumLabel.Text = accountDto.CurrentSum.ToString();
+            AccountDto = accountDto;
+            accountNameLabel.Text = AccountDto.Name;
+            accountSumLabel.Text = AccountDto.CurrentSum.ToString();
         }
 
         private void account_Click(object sender, EventArgs e)
         {
-            UpdateAccount?.Invoke(Id);
+            UpdateAccount?.Invoke(AccountDto);
         }
     }
 }

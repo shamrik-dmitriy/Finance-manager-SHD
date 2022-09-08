@@ -1,4 +1,4 @@
-﻿namespace SHDML.Winforms.UI.Views.Auth
+﻿namespace FM.SHD.Winforms.UI.Views.Auth
 {
     partial class LoginView
     {

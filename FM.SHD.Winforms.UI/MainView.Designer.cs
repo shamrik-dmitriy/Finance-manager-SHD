@@ -1,7 +1,7 @@
 ﻿
-using SHDML.Winforms.UI.UserControls.Login;
+using FM.SHD.Winforms.UI.UserControls.Login;
 
-namespace SHDML.Winforms.UI
+namespace FM.SHD.Winforms.UI
 {
 	partial class MainView
 	{
@@ -49,7 +49,7 @@ namespace SHDML.Winforms.UI
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainerDesktop = new System.Windows.Forms.SplitContainer();
             this.splitContainerLeftSideBar = new System.Windows.Forms.SplitContainer();
-            this.loginucView1 = new SHDML.Winforms.UI.UserControls.Login.LoginUCView();
+            this.loginucView1 = new LoginUCView();
             this.splitContainerWallet = new System.Windows.Forms.SplitContainer();
             this.accountActionAndTotalSumsplitContainer = new System.Windows.Forms.SplitContainer();
             this.addAccountButton = new System.Windows.Forms.Button();
@@ -115,14 +115,14 @@ namespace SHDML.Winforms.UI
             this.настройкиToolStripMenuItem,
             this.ваToolStripMenuItem,
             this.quitToolStripMenuItem});
-            this.файлToolStripMenuItem.Image = global::SHDML.Winforms.UI.Properties.Resources.free_icon_font_file_invoice_dollar_7928219;
+            this.файлToolStripMenuItem.Image = global::FM.SHD.Winforms.UI.Properties.Resources.free_icon_font_file_invoice_dollar_7928219;
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
             // toolStripMenuItemCreateDataFile
             // 
-            this.toolStripMenuItemCreateDataFile.Image = global::SHDML.Winforms.UI.Properties.Resources.free_icon_font_add_document_3914213;
+            this.toolStripMenuItemCreateDataFile.Image = global::FM.SHD.Winforms.UI.Properties.Resources.free_icon_font_add_document_3914213;
             this.toolStripMenuItemCreateDataFile.Name = "toolStripMenuItemCreateDataFile";
             this.toolStripMenuItemCreateDataFile.Size = new System.Drawing.Size(134, 22);
             this.toolStripMenuItemCreateDataFile.Text = "Создать";
@@ -132,7 +132,7 @@ namespace SHDML.Winforms.UI
             // 
             this.toolStripMenuItemOpenDataFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.открытьToolStripMenuItem});
-            this.toolStripMenuItemOpenDataFile.Image = global::SHDML.Winforms.UI.Properties.Resources.free_icon_font_folder_upload_7653219;
+            this.toolStripMenuItemOpenDataFile.Image = global::FM.SHD.Winforms.UI.Properties.Resources.free_icon_font_folder_upload_7653219;
             this.toolStripMenuItemOpenDataFile.Name = "toolStripMenuItemOpenDataFile";
             this.toolStripMenuItemOpenDataFile.Size = new System.Drawing.Size(134, 22);
             this.toolStripMenuItemOpenDataFile.Text = "Открыть";
@@ -151,7 +151,7 @@ namespace SHDML.Winforms.UI
             // 
             // настройкиToolStripMenuItem
             // 
-            this.настройкиToolStripMenuItem.Image = global::SHDML.Winforms.UI.Properties.Resources.free_icon_font_settings_sliders_3917103;
+            this.настройкиToolStripMenuItem.Image = global::FM.SHD.Winforms.UI.Properties.Resources.free_icon_font_settings_sliders_3917103;
             this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
             this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.настройкиToolStripMenuItem.Text = "Настройки";

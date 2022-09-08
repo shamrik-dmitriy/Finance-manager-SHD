@@ -13,5 +13,9 @@ namespace FM.SHD.Presenters.Interfaces.UserControls.Transactions
        long? GetCreditAccountId();
        decimal GetSum();
        DateTime GetDate();
+       void SetDate(DateTime date);
+       void SetSum(decimal sum);
+       void SetCreditAccountId(long? creditAccountId);
+       void SetDebitAccountId(long? debitAccountId);
     }
 }

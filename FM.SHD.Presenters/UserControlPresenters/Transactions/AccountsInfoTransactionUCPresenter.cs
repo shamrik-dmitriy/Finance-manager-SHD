@@ -15,8 +15,6 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
         private readonly IAccountServices _accountServices;
 
         private readonly ICategoryUCPresenter<AccountServices> _debitAccountInfoUcPresenter;
-
-        //private readonly IAccountInfoUCPresenter _debitAccountInfoUcPresenter;
         private readonly ISumTransactionUCPresenter _sumTransactionUcPresenter;
         private readonly ICategoryUCPresenter<AccountServices> _creditAccountInfoUcPresenter;
         private readonly IDateTransactionUCPresenter _dateTransactionUcPresenter;
@@ -73,11 +71,18 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
 
         private void AccountsInfoUcViewOnOnLoadControlView()
         {
+            _creditAccountInfoUcPresenter.SetCategoryValues();
+            _creditAccountInfoUcPresenter.SetStyleDropDownList();
             _accountsInfoTransactionUcView.AddAccountInfo(_creditAccountInfoUcPresenter.GetUserControlView());
+
             _accountsInfoTransactionUcView.AddSumm(_sumTransactionUcPresenter.GetUserControlView());
+
+
+            _debitAccountInfoUcPresenter.SetCategoryValues();
+            _debitAccountInfoUcPresenter.SetStyleDropDownList();
             _accountsInfoTransactionUcView.AddAccountInfo(_debitAccountInfoUcPresenter.GetUserControlView());
+
             _accountsInfoTransactionUcView.AddDate(_dateTransactionUcPresenter.GetUserControlView());
-            //_accountsInfoTransactionUcView.SetAccounts(_accountServices.GetAll());
         }
 
         public IAccountsInfoTransactionUCView GetUserControlView()
@@ -130,6 +135,26 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
         public DateTime GetDate()
         {
             return _dateTransactionUcPresenter.GetDate();
+        }
+
+        public void SetDate(DateTime date)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetSum(decimal sum)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetCreditAccountId(long? creditAccountId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetDebitAccountId(long? debitAccountId)
+        {
+            throw new NotImplementedException();
         }
 
         public event Action<long> CategoryChanged;

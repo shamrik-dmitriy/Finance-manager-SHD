@@ -1,4 +1,4 @@
-﻿namespace SHDML.Winforms.UI.Views.Transactions
+﻿namespace FM.SHD.Winforms.UI.Views.Transactions
 {
     partial class SingleTransactionView
     {

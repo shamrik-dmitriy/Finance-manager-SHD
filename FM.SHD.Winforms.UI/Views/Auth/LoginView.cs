@@ -1,16 +1,10 @@
-﻿using FM.SHD.Presenters.IntrefacesViews;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
+using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
+using FM.SHD.Presenters.IntrefacesViews.Views;
 
-namespace SHDML.Winforms.UI.Views.Auth
+namespace FM.SHD.Winforms.UI.Views.Auth
 {
     public partial class LoginView : Form, ILoginView
     {
@@ -26,21 +20,20 @@ namespace SHDML.Winforms.UI.Views.Auth
             Close();
         }
 
+        public void SetTitle(string title)
+        {
+            Text = title;
+        }
+
         public void AddUserControl(IUserControlView userControlView)
         {
             var userControl = (UserControl)userControlView;
             flowLayoutPanel.Controls.Add(userControl);
         }
 
-        public void ShowDialog(string title)
+        public void AddHorizontalLine()
         {
-            base.Text = title;
-            ShowDialog();
-        }
-
-        void IView.ShowDialog()
-        {
-            ShowDialog();
+            throw new NotImplementedException();
         }
 
         private void LoginView_Load(object sender, EventArgs e)

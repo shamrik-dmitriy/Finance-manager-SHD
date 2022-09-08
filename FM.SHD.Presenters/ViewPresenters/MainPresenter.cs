@@ -1,15 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using FM.SHD.Infastructure.Impl.Repositories;
-using FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction;
+using FM.SHD.Infastructure.Impl.Repositories.Specific.Account;
+using FM.SHD.Presenters.Common;
 using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
-using FM.SHD.Presenters.Interfaces.Views;
-using FM.SHD.Presenters.IntrefacesViews;
+using FM.SHD.Presenters.IntrefacesViews.Views;
 using FM.SHD.Services.AccountServices;
-using FM.SHD.Services.Repositories;
-using FM.SHD.Services.SingleTransactionServices;
+using FM.SHD.Services.CommonServices;
 using FM.SHD.Settings.Services;
 using FM.SHD.Settings.Services.SettingsCollection;
 using FM.SHDML.Core.Models.Dtos.UIDto;
@@ -17,52 +16,65 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace FM.SHD.Presenters.ViewPresenters
 {
-    public class MainPresenter : IMainPresenter
+    public class MainPresenter : BasePresenter<IMainView>
     {
-        private IMainView _mainView;
+        #region Private member variables
+
+        private readonly IMainView _view;
+        private readonly IServiceProvider _serviceProvider;
         private readonly IRepositoryManager _repositoryManager;
-
-        private IServiceProvider _serviceProvider;
-
         private readonly SettingServices<SystemRecentOpenFilesSettings> _recentOpenFilesSettings;
-        private readonly IAccountServices _accountServices;
-        private readonly IAccountSummaryUCPresenter _accountSummaryUcPresenter;
-
-        public MainPresenter(
-            IServiceProvider serviceProvider,
-            SettingServices<SystemRecentOpenFilesSettings> recentOpenFilesSettings,
-            IMainView mainView,
-            IRepositoryManager repositoryManager)
-        {
-            _mainView = mainView;
-            _repositoryManager = repositoryManager;
-            _serviceProvider = serviceProvider;
-            _recentOpenFilesSettings = recentOpenFilesSettings;
-
-            _mainView.OnLoadView += MainViewOnOnLoadView;
-            _mainView.OpenDataFile += MainViewOnOpenDataFile;
-            _mainView.AddTransaction += MainViewOnAddTransaction;
-            _mainView.AddAccount += MainViewOnAddAccount;
-        }
 
         private List<RecentOpenFilesDto> RecentOpenFilesDtos { get; set; }
+        private IAccountServices _accountServices;
 
-        private bool LoadListRecentOpenFiles()
+        #endregion
+
+        #region Constructor / Destructor
+
+        public MainPresenter(
+            IMainView view,
+            IServiceProvider serviceProvider,
+            SettingServices<SystemRecentOpenFilesSettings> settingServices,
+            IRepositoryManager repositoryManager)
+            : base(view)
         {
-            RecentOpenFilesDtos = _recentOpenFilesSettings.GetSetting().RecentOpen
-                .Select(x => new RecentOpenFilesDto()
-                {
-                    FileName = x.FileName, FilePath = x.FilePath
-                }).ToList();
-
-            if (RecentOpenFilesDtos.Count == 0)
-                return false;
-
-            _mainView.AddElementInRecentOpenItems(RecentOpenFilesDtos);
-            return true;
+            _view = view;
+            _serviceProvider = serviceProvider;
+            _repositoryManager = repositoryManager;
+            _recentOpenFilesSettings = settingServices;
+            
+            _view.OnLoadView += OnLoadView;
+            _view.OpenDataFile += OnOpenDataFile;
+            _view.AddTransaction += OnAddTransaction;
+            _view.AddAccount += OnAddAccount;
         }
 
-        private void MainViewOnOpenDataFile(string filePath)
+        ~MainPresenter()
+        {
+            _view.OnLoadView -= OnLoadView;
+            _view.OpenDataFile -= OnOpenDataFile;
+            _view.AddTransaction -= OnAddTransaction;
+            _view.AddAccount -= OnAddAccount;
+        }
+
+        #endregion
+
+        private void OnAddAccount()
+        {
+            var accountPresenter = _serviceProvider.GetRequiredService<AccountPresenter>();
+            accountPresenter.SetTitle("Добавить счёт");
+            accountPresenter.Run(null);
+        }
+
+        private void OnAddTransaction()
+        {
+            var singleTransactionPresenter = _serviceProvider.GetRequiredService<SingleTransactionPresenter>();
+            singleTransactionPresenter.SetTitle("Добавить операцию");
+            singleTransactionPresenter.Run(null);
+        }
+
+        private void OnOpenDataFile(string filePath)
         {
             var fileName = Path.GetFileName(filePath);
             var recentOpenItem = new RecentOpenFilesDto()
@@ -94,13 +106,13 @@ namespace FM.SHD.Presenters.ViewPresenters
                 RecentOpenFilesDtos.Add(recentOpenItem);
             }
 
-            _mainView.AddElementInRecentOpenItems(RecentOpenFilesDtos);
+            _view.AddElementInRecentOpenItems(RecentOpenFilesDtos);
 
             _recentOpenFilesSettings.GetSetting().RecentOpen =
                 RecentOpenFilesDtos.Select(x => (x.FileName, x.FilePath)).ToList();
             _recentOpenFilesSettings.Save();
 
-            _mainView.SetViewOnActiveUI();
+            _view.SetViewOnActiveUI();
             CreateConnection(filePath);
         }
 
@@ -113,29 +125,38 @@ namespace FM.SHD.Presenters.ViewPresenters
             return true;
         }
 
-
         private void CreateConnection(string filePath)
         {
             _repositoryManager.ConfigureConnection($"DataSource={filePath}");
             _repositoryManager.CreateConnection();
         }
 
-        private void MainViewOnOnLoadView()
+        private void OnLoadView()
         {
             var isLoad = LoadListRecentOpenFiles();
 
             if (isLoad)
             {
-                _mainView.SetViewOnActiveUI();
+                _view.SetViewOnActiveUI();
 
                 CreateConnection(_recentOpenFilesSettings.GetSetting().RecentOpen.Last().FilePath);
+                _accountServices = new AccountServices(new AccountRepository(_repositoryManager), new ModelValidator());
+                List<IAccountSummaryUCPresenter> data = new List<IAccountSummaryUCPresenter>();
+                foreach (var accountDto in _accountServices.GetAll()
+                             .Select((value, index) => new { Index = index, Value = value }))
+                {
+                    var s = _serviceProvider.GetRequiredService<IAccountSummaryUCPresenter>();
+                    s.GetUserControlView().SetData(accountDto.Value);
+                    data.Add(s);
+                    _view.AddAccountsSummaryUserControl(s.GetUserControlView());
+                }
             }
             else
             {
-                _mainView.SetViewOnUnActiveUI();
+                _view.SetViewOnUnActiveUI();
             }
 
-            _mainView.SetVisibleUserLoginInfo(false);
+            _view.SetVisibleUserLoginInfo(false);
 
             /*
              * 1. Следует проверить, зашифрован ли открываемый файл.
@@ -146,23 +167,37 @@ namespace FM.SHD.Presenters.ViewPresenters
             // _mainView.SetAccountsData(_accountServices.GetAll());
         }
 
-        private void MainViewOnAddAccount()
+        #region Public Methods
+
+        public override void SetTitle(string title)
         {
-            var accountPresenter = _serviceProvider.GetRequiredService<AccountPresenter>();
-            var view = accountPresenter.GetView();
-            view.ShowDialog("Добавить счёт");
+            throw new NotImplementedException();
         }
 
-        private void MainViewOnAddTransaction()
+        public void Run()
         {
-            var singleTransactionPresenter = _serviceProvider.GetRequiredService<SingleTransactionPresenter>();
-            var view = singleTransactionPresenter.GetView();
-            view.ShowDialog("Добавить операцию");
+            View.Show();
         }
 
-        public IMainView GetView()
+        #endregion
+
+        #region Private methods
+
+        private bool LoadListRecentOpenFiles()
         {
-            return _mainView;
+            RecentOpenFilesDtos = _recentOpenFilesSettings.GetSetting().RecentOpen
+                .Select(x => new RecentOpenFilesDto()
+                {
+                    FileName = x.FileName, FilePath = x.FilePath
+                }).ToList();
+
+            if (RecentOpenFilesDtos.Count == 0)
+                return false;
+
+            _view.AddElementInRecentOpenItems(RecentOpenFilesDtos);
+            return true;
         }
+
+        #endregion
     }
 }

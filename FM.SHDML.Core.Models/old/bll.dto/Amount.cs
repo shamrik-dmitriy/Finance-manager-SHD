@@ -1,4 +1,4 @@
-namespace SHDML.BLL.DTO
+namespace FM.SHDML.Core.Models.old.bll.dto
 {
     public class Amount
     {

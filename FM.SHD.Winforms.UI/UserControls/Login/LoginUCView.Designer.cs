@@ -1,5 +1,5 @@
 ﻿
-namespace SHDML.Winforms.UI.UserControls.Login
+namespace FM.SHD.Winforms.UI.UserControls.Login
 {
     partial class LoginUCView
     {

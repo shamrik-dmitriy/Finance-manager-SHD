@@ -4,5 +4,6 @@ namespace FM.SHD.Presenters.IntrefacesViews.UserControl.Common
     {
         bool GetCheckboxState();
         void SetText(string text);
+        void SetCheckboxState(bool isClosed);
     }
 }

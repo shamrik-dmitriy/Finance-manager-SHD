@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
 using FM.SHDML.Core.Models.Dtos;
 
-namespace SHDML.Winforms.UI.UserControls.Common
+namespace FM.SHD.Winforms.UI.UserControls.Common
 {
     public partial class CategoryUCView : UserControl, ICategoryUCView
     {
@@ -33,6 +33,19 @@ namespace SHDML.Winforms.UI.UserControls.Common
         public long? GetCategoryId()
         {
             return (long?)categoryComboBox.SelectedValue;
+        }
+
+        public BaseDto GetCategoryDto()
+        {
+            foreach (var item in categoryComboBox.Items)
+            {
+                if (((BaseDto)item).Id == (long)categoryComboBox.SelectedValue)
+                {
+                    return (BaseDto)item;
+                }
+            }
+
+            return null;
         }
 
         private void CategoryUCView_Load(object sender, EventArgs e)
@@ -89,6 +102,15 @@ namespace SHDML.Winforms.UI.UserControls.Common
         public void SetStyleDropDown()
         {
             SetDropDownStyle(ComboBoxStyle.DropDown);
+        }
+
+        public void SetCategoryId(long? id)
+        {
+            if (id != null)
+            {
+                SetValue(categoryComboBox.FindId<BaseDto>(id));
+            }
+            Refresh();
         }
 
         public void SetStyleDropDownList()

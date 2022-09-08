@@ -4,5 +4,6 @@ namespace FM.SHD.Presenters.IntrefacesViews.UserControl.Common
     {
         void SetLabelText(string text);
         string GetTextBoxValue();
+        void SetTextBoxValue(string text);
     }
 }

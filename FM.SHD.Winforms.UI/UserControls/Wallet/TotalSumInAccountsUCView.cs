@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace SHDML.Winforms.UI.UserControls.Wallet
+namespace FM.SHD.Winforms.UI.UserControls.Wallet
 {
     public partial class TotalSumInAccountsUCView : UserControl
     {

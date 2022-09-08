@@ -17,6 +17,7 @@ namespace FM.SHD.Presenters.IntrefacesViews.UserControl.Common
 
         void SetLabelText(string text);
         long? GetCategoryId();
+        BaseDto GetCategoryDto();
         void SetDataSource(IEnumerable<BaseDto> value);
 
         #endregion
@@ -33,5 +34,7 @@ namespace FM.SHD.Presenters.IntrefacesViews.UserControl.Common
         void SetStyleDropDown();
 
         #endregion
+
+        void SetCategoryId(long? id);
     }
 }

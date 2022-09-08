@@ -7,5 +7,6 @@ namespace FM.SHD.Presenters.Interfaces.UserControls.Common
         ILabelTextBoxUCView GetUserControlView();
         void SetText(string text);
         string GetTextBoxValue();
+        void SetValue(string text);
     }
 }

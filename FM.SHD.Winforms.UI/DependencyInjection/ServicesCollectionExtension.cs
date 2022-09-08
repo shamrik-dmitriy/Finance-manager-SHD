@@ -11,11 +11,11 @@ using FM.SHD.Infrastructure.Dal.Factory;
 using FM.SHD.Presenters.Interfaces.UserControls.Common;
 using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
 using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
-using FM.SHD.Presenters.Interfaces.Views;
 using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Wallet;
+using FM.SHD.Presenters.IntrefacesViews.Views;
 using FM.SHD.Presenters.UserControlPresenters.Common;
 using FM.SHD.Presenters.UserControlPresenters.Transactions;
 using FM.SHD.Presenters.UserControlPresenters.Wallet;
@@ -29,17 +29,18 @@ using FM.SHD.Services.CurrencyServices;
 using FM.SHD.Services.IdentityServices;
 using FM.SHD.Services.Repositories;
 using FM.SHD.Services.SingleTransactionServices;
-using Microsoft.Extensions.Configuration;
+using FM.SHD.Winforms.UI.UserControls.Common;
+using FM.SHD.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls;
+using FM.SHD.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions;
+using FM.SHD.Winforms.UI.UserControls.Wallet;
+using FM.SHD.Winforms.UI.Views.Account;
+using FM.SHD.Winforms.UI.Views.Transactions;
 using Microsoft.Extensions.DependencyInjection;
-using SHDML.Winforms.UI.UserControls.Common;
-using SHDML.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls;
-using SHDML.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions;
-using SHDML.Winforms.UI.UserControls.Wallet;
-using SHDML.Winforms.UI.Views.Account;
-using SHDML.Winforms.UI.Views.Transactions;
-using IContrAgentUCPresenter = FM.SHD.Presenters.Interfaces.UserControls.Transactions.IContrAgentUCPresenter;
+using IAccountView = FM.SHD.Presenters.IntrefacesViews.Views.IAccountView;
+using IMainView = FM.SHD.Presenters.IntrefacesViews.Views.IMainView;
+using MainPresenter = FM.SHD.Presenters.ViewPresenters.MainPresenter;
 
-namespace SHDML.Winforms.UI.DependencyInjection
+namespace FM.SHD.Winforms.UI.DependencyInjection
 {
     public static class ServicesCollectionExtension
     {
@@ -66,6 +67,7 @@ namespace SHDML.Winforms.UI.DependencyInjection
                 .AddTransient<IAccountsInfoTransactionUCView, AccountsInfoTransactionUCView>()
                 .AddTransient<IAccountsInfoTransactionUCPresenter, AccountsInfoTransactionUCPresenter>()
                 .AddTransient<ICategoryUCPresenter<AccountServices>, CategoryUcPresenter<IAccountServices>>()
+                .AddTransient<ICategoryUCPresenter<AccountCategoryServices>, CategoryUcPresenter<IAccountCategoryServices>>()
                 .AddTransient<ICategoryUCPresenter<TypeTransactionServices>,
                     CategoryUcPresenter<ITypeTransactionServices>>()
                 .AddTransient<ICategoryUCPresenter<CategoriesServices>, CategoryUcPresenter<ICategoriesServices>>()
@@ -90,7 +92,7 @@ namespace SHDML.Winforms.UI.DependencyInjection
                 .AddTransient<ICheckboxUCView, CheckboxUCView>()
                 .AddTransient<ICheckboxUCPresenter, CheckboxUCPresenter>()
                 .AddTransient<IAccountView, AccountView>()
-                .AddTransient<IAccountPresenter, AccountPresenter>()
+                .AddTransient<BaseAccountPresenter, AccountPresenter>()
                 .AddTransient<IAccountSummaryUCView, AccountSummaryUCView>()
                 .AddTransient<IAccountSummaryUCPresenter, AccountSummaryUCPresenter>();
         }

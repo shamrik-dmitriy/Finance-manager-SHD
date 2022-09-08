@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
-using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl;
+using FM.SHD.Presenters.IntrefacesViews.Views;
 
-namespace SHDML.Winforms.UI.Views.Account
+namespace FM.SHD.Winforms.UI.Views.Account
 {
     public partial class AccountView : Form, IAccountView
     {
@@ -19,6 +20,12 @@ namespace SHDML.Winforms.UI.Views.Account
 
         public event Action OnLoadView;
         public event Action OnClosingView;
+
+        public void SetTitle(string title)
+        {
+            Title = title;
+            TitleDefault = title;
+        }
 
         #endregion
 
@@ -41,23 +48,27 @@ namespace SHDML.Winforms.UI.Views.Account
             _eventAggregator = eventAggregator;
         }
 
-        public void ShowDialog(string title)
-        {
-            Title = title;
-            TitleDefault = title;
-
-            base.ShowDialog();
-        }
-
-        void IView.ShowDialog()
+        public new void Show()
         {
             base.ShowDialog();
         }
+
+        /*void IView.ShowDialog()
+        {
+            base.ShowDialog();
+        }*/
 
         public void AddUserControl(IUserControlView userControlView)
         {
             var userControl = (UserControl)userControlView;
             flowLayoutPanel1.Controls.Add(userControl);
+        }
+
+        public void AddHorizontalLine()
+        {
+            flowLayoutPanel1.Controls.Add(new Label()
+                { BorderStyle = BorderStyle.FixedSingle, Anchor = AnchorStyles.Top, Size = new Size(359, 2) });
+
         }
 
         public void CloseView()

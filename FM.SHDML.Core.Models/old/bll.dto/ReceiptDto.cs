@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using SHDML.CORE.MODEL.Receipt;
-using SHDML.CORE.MODEL.Receipt.Types;
+using FM.SHDML.Core.Models.old.model.Receipt;
+using FM.SHDML.Core.Models.old.model.Receipt.Types;
 
-namespace SHDML.BLL.DTO
+namespace FM.SHDML.Core.Models.old.bll.dto
 {
     public class ReceiptDto
     {

@@ -8,10 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SHDML.Winforms.UI.Properties {
-    using System;
-    
-    
+namespace FM.SHD.Winforms.UI.Properties {
     /// <summary>
     ///   Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
     /// </summary>

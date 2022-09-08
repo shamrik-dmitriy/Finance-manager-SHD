@@ -1,4 +1,4 @@
-namespace SHDML.CORE.MODEL.Receipt.Types
+namespace FM.SHDML.Core.Models.old.model.Receipt.Types
 {
     public enum OperationType
     {
