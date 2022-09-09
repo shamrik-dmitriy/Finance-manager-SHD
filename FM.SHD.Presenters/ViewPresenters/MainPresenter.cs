@@ -5,7 +5,9 @@ using System.Linq;
 using FM.SHD.Infastructure.Impl.Repositories;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Account;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction;
+using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Common;
+using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.Interfaces.UserControls.Main;
 using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
 using FM.SHD.Presenters.IntrefacesViews.Views;
@@ -23,6 +25,7 @@ namespace FM.SHD.Presenters.ViewPresenters
     {
         #region Private member variables
 
+        private readonly EventAggregator _eventAggregator;
         private readonly IMainView _view;
         private readonly IServiceProvider _serviceProvider;
         private readonly IRepositoryManager _repositoryManager;
@@ -37,21 +40,43 @@ namespace FM.SHD.Presenters.ViewPresenters
         #region Constructor / Destructor
 
         public MainPresenter(
+            EventAggregator eventAggregator,
             IMainView view,
             IServiceProvider serviceProvider,
             SettingServices<SystemRecentOpenFilesSettings> settingServices,
             IRepositoryManager repositoryManager)
             : base(view)
         {
+            _eventAggregator = eventAggregator;
             _view = view;
             _serviceProvider = serviceProvider;
             _repositoryManager = repositoryManager;
             _recentOpenFilesSettings = settingServices;
-            
+
             _view.OnLoadView += OnLoadView;
             _view.OpenDataFile += OnOpenDataFile;
             _view.AddTransaction += OnAddTransaction;
             _view.AddAccount += OnAddAccount;
+
+            _eventAggregator.Subscribe<OnChangingAccountsApplicationEvent>(OnChangingAccounts);
+        }
+
+        private void OnChangingAccounts(OnChangingAccountsApplicationEvent args)
+        {
+            _allTransactionUcPresenter.GetUserControlView().ClearData();
+            _allTransactionUcPresenter.GetUserControlView().SetData(_transactionServices.GetExtendedTransactions());
+            //var dgv = _serviceProvider.GetRequiredService<IAllTransactionUCPresenter>();
+            //_view.AddUserControl(dgv.GetUserControlView());
+            //dgv.GetUserControlView().SetData(_transactionServices.GetExtendedTransactions());
+            
+            /*_view.ClearAccountsSummaryUserControls();
+            foreach (var accountDto in _accountServices.GetAll()
+                         .Select((value, index) => new { Index = index, Value = value }))
+            {
+                var s = _serviceProvider.GetRequiredService<IAccountSummaryUCPresenter>();
+                s.GetUserControlView().SetData(accountDto.Value);
+                _view.AddAccountsSummaryUserControl(s.GetUserControlView());
+            }*/
         }
 
         ~MainPresenter()
@@ -135,6 +160,9 @@ namespace FM.SHD.Presenters.ViewPresenters
             _repositoryManager.CreateConnection();
         }
 
+
+        private List<IAccountSummaryUCPresenter> _accountSummaries;
+        private IAllTransactionUCPresenter _allTransactionUcPresenter;
         private void OnLoadView()
         {
             var isLoad = LoadListRecentOpenFiles();
@@ -145,23 +173,23 @@ namespace FM.SHD.Presenters.ViewPresenters
 
                 CreateConnection(_recentOpenFilesSettings.GetSetting().RecentOpen.Last().FilePath);
                 _accountServices = new AccountServices(new AccountRepository(_repositoryManager), new ModelValidator());
-                var data = new List<IAccountSummaryUCPresenter>();
+                _accountSummaries = new List<IAccountSummaryUCPresenter>();
                 foreach (var accountDto in _accountServices.GetAll()
                              .Select((value, index) => new { Index = index, Value = value }))
                 {
                     var s = _serviceProvider.GetRequiredService<IAccountSummaryUCPresenter>();
+                    _accountSummaries.Add(s);
                     s.GetUserControlView().SetData(accountDto.Value);
-                    data.Add(s);
                     _view.AddAccountsSummaryUserControl(s.GetUserControlView());
                 }
 
                 _transactionServices =
                     new TransactionServices(new TransactionRepository(_repositoryManager),
                         new ModelValidator());
-                
-                var dgv = _serviceProvider.GetRequiredService<IAllTransactionUCPresenter>();
-                _view.AddUserControl(dgv.GetUserControlView());
-                dgv.GetUserControlView().SetData(_transactionServices.GetExtendedTransactions());
+
+                _allTransactionUcPresenter = _serviceProvider.GetRequiredService<IAllTransactionUCPresenter>();
+                _view.AddUserControl(_allTransactionUcPresenter.GetUserControlView());
+                _allTransactionUcPresenter.GetUserControlView().SetData(_transactionServices.GetExtendedTransactions());
             }
             else
             {

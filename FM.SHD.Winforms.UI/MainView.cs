@@ -142,6 +142,11 @@ namespace FM.SHD.Winforms.UI
             }
         }
 
+        public void ClearAccountsSummaryUserControls()
+        {
+            accoutsFlowLayoutPanel.Controls.Clear();
+        }
+
         public void SetViewOnActiveUI()
         {
             splitContainerDesktop.Visible = true;

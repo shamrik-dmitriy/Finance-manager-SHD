@@ -76,19 +76,19 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction
                 while (reader.Read())
                 {
                     var transactionModel = new TransactionModel();
-                    transactionModel.Id = long.Parse(reader["Id"].ToString());
-                    transactionModel.TypeTransactionId = int.Parse(reader["Type_id"].ToString());
-                    transactionModel.Name = reader["Name"].ToString();
-                    transactionModel.Description = reader["Description"].ToString();
-                    transactionModel.CreditAccountId = long.Parse(reader["CreditAccount_id"].ToString());
-                    transactionModel.DebitAccountId = long.Parse(reader["DebitAccount_id"].ToString());
-                    transactionModel.Sum = decimal.Parse(reader["Sum"].ToString());
-                    transactionModel.Date = DateTime.Parse(reader["Date"].ToString());
-                    transactionModel.CategoryId = long.Parse(reader["Category_id"].ToString());
-                    transactionModel.ContragentId = long.Parse(reader["Contragent_id"].ToString());
-                    transactionModel.IdentityId = long.Parse(reader["Identity_id"].ToString());
+                    transactionModel.Id = reader.GetInt64(0);
+                    transactionModel.TypeTransactionId = reader.GetInt64(1);
+                    transactionModel.Name = reader.GetString(2);
+                    transactionModel.Description = reader.GetString(3);
+                    transactionModel.CreditAccountId = reader.GetInt64(4);
+                    transactionModel.DebitAccountId = reader.GetInt64(5);
+                    transactionModel.Sum = decimal.Parse(reader.GetString(6).Replace('.', ','));
+                    transactionModel.Date = reader.GetDateTime(7);
+                    transactionModel.CategoryId = reader.GetInt64(8);
+                    transactionModel.ContragentId = reader.GetInt64(9);
+                    transactionModel.IdentityId = reader.GetInt64(10);
                     if (reader["Receipt_id"].GetType() != typeof(DBNull))
-                        transactionModel.ReceiptId = long.Parse(reader["Receipt_id"].ToString());
+                        transactionModel.ReceiptId = reader.GetInt64(11);
                     transactions.Add(transactionModel);
                 }
             }
@@ -149,18 +149,19 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction
                 {
                     while (reader.Read())
                     {
-                        transactionModel.Id = Int64.Parse(reader["Id"].ToString());
-                        transactionModel.TypeTransactionId = long.Parse(reader["Type_id"].ToString());
-                        transactionModel.Name = reader["Name"].ToString();
-                        transactionModel.Description = reader["Description"].ToString();
-                        transactionModel.CreditAccountId = long.Parse(reader["CreditAccount_id"].ToString());
-                        transactionModel.DebitAccountId = long.Parse(reader["DebitAccount_id"].ToString());
-                        transactionModel.Sum = decimal.Parse(reader["Sum"].ToString());
-                        transactionModel.Date = DateTime.Parse(reader["Date"].ToString());
-                        transactionModel.CategoryId = long.Parse(reader["Category_id"].ToString());
-                        transactionModel.ContragentId = long.Parse(reader["Contragent_id"].ToString());
-                        transactionModel.IdentityId = long.Parse(reader["Identity_id"].ToString());
-                        transactionModel.ReceiptId = long.Parse(reader["Receipt_id"].ToString());
+                        transactionModel.Id = reader.GetInt64(0);
+                        transactionModel.TypeTransactionId = reader.GetInt64(1);
+                        transactionModel.Name = reader.GetString(2);
+                        transactionModel.Description = reader.GetString(3);
+                        transactionModel.CreditAccountId = reader.GetInt64(4);
+                        transactionModel.DebitAccountId = reader.GetInt64(5);
+                        transactionModel.Sum = decimal.Parse(reader.GetString(6).Replace('.', ','));
+                        transactionModel.Date = reader.GetDateTime(7);
+                        transactionModel.CategoryId = reader.GetInt64(8);
+                        transactionModel.ContragentId = reader.GetInt64(9);
+                        transactionModel.IdentityId = reader.GetInt64(10);
+                        if (reader["Receipt_id"].GetType() != typeof(DBNull))
+                            transactionModel.ReceiptId = reader.GetInt64(11);
                     }
 
                     return transactionModel;
@@ -181,18 +182,19 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction
                 while (reader.Read())
                 {
                     var transactionModel = new TransactionModel();
-                    transactionModel.Id = long.Parse(reader["Id"].ToString());
-                    transactionModel.TypeTransactionId = int.Parse(reader["Type_id"].ToString());
-                    transactionModel.Name = reader["Name"].ToString();
-                    transactionModel.Description = reader["Description"].ToString();
-                    transactionModel.CreditAccountId = long.Parse(reader["CreditAccount_id"].ToString());
-                    transactionModel.DebitAccountId = long.Parse(reader["DebitAccount_id"].ToString());
-                    transactionModel.Sum = decimal.Parse(reader["Sum"].ToString());
-                    transactionModel.Date = DateTime.Parse(reader["Date"].ToString());
-                    transactionModel.CategoryId = long.Parse(reader["Category_id"].ToString());
-                    transactionModel.ContragentId = long.Parse(reader["Contragent_id"].ToString());
-                    transactionModel.IdentityId = long.Parse(reader["Identity_id"].ToString());
-                    transactionModel.ReceiptId = long.Parse(reader["Receipt_id"].ToString());
+                    transactionModel.Id = reader.GetInt64(0);
+                    transactionModel.TypeTransactionId = reader.GetInt64(1);
+                    transactionModel.Name = reader.GetString(2);
+                    transactionModel.Description = reader.GetString(3);
+                    transactionModel.CreditAccountId = reader.GetInt64(4);
+                    transactionModel.DebitAccountId = reader.GetInt64(5);
+                    transactionModel.Sum = decimal.Parse(reader.GetString(6).Replace('.', ','));
+                    transactionModel.Date = reader.GetDateTime(7);
+                    transactionModel.CategoryId = reader.GetInt64(8);
+                    transactionModel.ContragentId = reader.GetInt64(9);
+                    transactionModel.IdentityId = reader.GetInt64(10);
+                    if (reader["Receipt_id"].GetType() != typeof(DBNull))
+                        transactionModel.ReceiptId = reader.GetInt64(11);
                     transactions.Add(transactionModel);
                 }
             }

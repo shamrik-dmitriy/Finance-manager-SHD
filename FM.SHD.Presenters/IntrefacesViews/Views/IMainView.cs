@@ -20,5 +20,6 @@ namespace FM.SHD.Presenters.IntrefacesViews.Views
         void SetViewOnUnActiveUI();
         void SetVisibleUserLoginInfo(bool isVisible);
 
+        void ClearAccountsSummaryUserControls();
     }
 }

@@ -1,4 +1,6 @@
 using System;
+using FM.SHD.Infrastructure.Events;
+using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.Interfaces.UserControls.Common;
 using FM.SHD.Presenters.IntrefacesViews.Views;
 using FM.SHD.Services.AccountServices;
@@ -12,6 +14,7 @@ namespace FM.SHD.Presenters.ViewPresenters
         #region Private member variable
 
         private readonly IAccountServices _accountServices;
+        private readonly EventAggregator _eventAggregator;
         private readonly IAccountView _view;
         private readonly INameUCPresenter _nameUcPresenter;
         private readonly IDescriptionUCPresenter _descriptionUcPresenter;
@@ -26,6 +29,7 @@ namespace FM.SHD.Presenters.ViewPresenters
         #region Constructor
 
         public AccountPresenter(
+            EventAggregator eventAggregator,
             IAccountView view,
             IAccountServices accountServices,
             INameUCPresenter nameUcPresenter,
@@ -38,6 +42,7 @@ namespace FM.SHD.Presenters.ViewPresenters
         )
             : base(view)
         {
+            _eventAggregator = eventAggregator;
             _view = view;
             _accountServices = accountServices;
             _nameUcPresenter = nameUcPresenter;
@@ -103,7 +108,7 @@ namespace FM.SHD.Presenters.ViewPresenters
                 _view.AddUserControl(_checkboxUcPresenter.GetUserControlView());
             }
 
-            _view.AddHorizontalLine();
+           // _view.AddHorizontalLine();
             _view.AddUserControl(_continueCancelButtonsUcPresenter.GetUserControlView());
 
             _continueCancelButtonsUcPresenter.Continue += ContinueCancelButtonsUcPresenterOnContinue;
@@ -140,7 +145,6 @@ namespace FM.SHD.Presenters.ViewPresenters
                     IsClosed = Convert.ToBoolean(_checkboxUcPresenter.GetCheckboxState())
                 });
             }
-
             _continueCancelButtonsUcPresenter.Continue -= ContinueCancelButtonsUcPresenterOnContinue;
             _currencyUcPresenter.CategoryChanged -= CurrencyUcPresenterOnCategoryChanged;
 

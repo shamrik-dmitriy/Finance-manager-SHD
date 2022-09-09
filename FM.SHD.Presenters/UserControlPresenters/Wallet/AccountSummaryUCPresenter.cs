@@ -28,16 +28,11 @@ namespace FM.SHD.Presenters.UserControlPresenters.Wallet
         {
             _accountPresenter.SetTitle("Редактирование счёта");
             _accountPresenter.Run(accountDto);
+            _accountSummaryUcView.SetData(_accountServices.GetById(accountDto.Id));
         }
 
         public IAccountSummaryUCView GetUserControlView()
         {
-            return _accountSummaryUcView;
-        }
-
-        public IAccountSummaryUCView GetUserControlView(AccountDto accountDto)
-        {
-            _accountSummaryUcView.SetData(accountDto);
             return _accountSummaryUcView;
         }
     }

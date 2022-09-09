@@ -22,14 +22,18 @@ namespace FM.SHD.Winforms.UI.UserControls.Main
 
         private void dataGridViewTransaction_SelectionChanged(object sender, System.EventArgs e)
         {
-            MessageBox.Show("");
+            //MessageBox.Show("");
         }
 
         public void SetData(List<TransactionExtendedDto> allTransactionsDtos)
         {
-            var t = new BindingList<TransactionExtendedDto>(allTransactionsDtos);
             dataGridViewTransaction.AutoGenerateColumns = false;
-            dataGridViewTransaction.DataSource = t;
+            dataGridViewTransaction.DataSource = new BindingList<TransactionExtendedDto>(allTransactionsDtos);
+        }
+
+        public void ClearData()
+        {
+            dataGridViewTransaction.Rows.Clear();
         }
     }
 }
