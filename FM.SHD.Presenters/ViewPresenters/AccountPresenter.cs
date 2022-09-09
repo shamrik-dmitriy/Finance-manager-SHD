@@ -1,6 +1,7 @@
 using System;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
+using FM.SHD.Presenters.Events.Accounts;
 using FM.SHD.Presenters.Interfaces.UserControls.Common;
 using FM.SHD.Presenters.IntrefacesViews.Views;
 using FM.SHD.Services.AccountServices;
@@ -108,7 +109,7 @@ namespace FM.SHD.Presenters.ViewPresenters
                 _view.AddUserControl(_checkboxUcPresenter.GetUserControlView());
             }
 
-           // _view.AddHorizontalLine();
+            // _view.AddHorizontalLine();
             _view.AddUserControl(_continueCancelButtonsUcPresenter.GetUserControlView());
 
             _continueCancelButtonsUcPresenter.Continue += ContinueCancelButtonsUcPresenterOnContinue;
@@ -145,9 +146,11 @@ namespace FM.SHD.Presenters.ViewPresenters
                     IsClosed = Convert.ToBoolean(_checkboxUcPresenter.GetCheckboxState())
                 });
             }
+
             _continueCancelButtonsUcPresenter.Continue -= ContinueCancelButtonsUcPresenterOnContinue;
             _currencyUcPresenter.CategoryChanged -= CurrencyUcPresenterOnCategoryChanged;
 
+            _eventAggregator.Publish(new OnChangingAccountsApplicationEvent());
             _view.Close();
         }
 

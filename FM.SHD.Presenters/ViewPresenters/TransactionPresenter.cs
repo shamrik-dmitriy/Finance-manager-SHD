@@ -60,6 +60,11 @@ namespace FM.SHD.Presenters.ViewPresenters
             _typeTransactionUcPresenter.CategoryChanged += TypeTransactionUcPresenterOnCategoryChanged;
         }
 
+        ~TransactionPresenter()
+        {
+            _view.OnLoadView -= OnLoadView;
+        }
+
         #endregion
 
         #region Public Properties
@@ -170,19 +175,38 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void ContinueCancelButtonsUcPresenterOnContinue()
         {
-            _transactionServices.Add(new TransactionDto
+            if (TransactionDto != null)
             {
-                TypeTransactionId = _typeTransactionUcPresenter.GetCategoryId(),
-                Name = _nameUcPresenter.GetName(),
-                Description = _descriptionUcPresenter.GetDescription(),
-                DebitAccountId = _accountsInfoTransactionUcPresenter.GetDebitAccountId(),
-                Sum = _accountsInfoTransactionUcPresenter.GetSum(),
-                CreditAccountId = _accountsInfoTransactionUcPresenter.GetCreditAccountId(),
-                Date = _accountsInfoTransactionUcPresenter.GetDate(),
-                CategoryId = _categoriesUcPresenter.GetCategoryId(),
-                ContragentId = _contrAgentUcPresenter.GetCategoryId(),
-                IdentityId = _identityUcPresenter.GetCategoryId()
-            });
+                TransactionDto.TypeTransactionId = _typeTransactionUcPresenter.GetCategoryId();
+                TransactionDto.Name = _nameUcPresenter.GetName();
+                TransactionDto.Description = _descriptionUcPresenter.GetDescription();
+                TransactionDto.DebitAccountId = _accountsInfoTransactionUcPresenter.GetDebitAccountId();
+                TransactionDto.Sum = _accountsInfoTransactionUcPresenter.GetSum();
+                TransactionDto.CreditAccountId = _accountsInfoTransactionUcPresenter.GetCreditAccountId();
+                TransactionDto.Date = _accountsInfoTransactionUcPresenter.GetDate();
+                TransactionDto.CategoryId = _categoriesUcPresenter.GetCategoryId();
+                TransactionDto.ContragentId = _contrAgentUcPresenter.GetCategoryId();
+                TransactionDto.IdentityId = _identityUcPresenter.GetCategoryId();
+                _transactionServices.Update(TransactionDto);
+            }
+            else
+            {
+                _transactionServices.Add(new TransactionDto
+                {
+                    TypeTransactionId = _typeTransactionUcPresenter.GetCategoryId(),
+                    Name = _nameUcPresenter.GetName(),
+                    Description = _descriptionUcPresenter.GetDescription(),
+                    DebitAccountId = _accountsInfoTransactionUcPresenter.GetDebitAccountId(),
+                    Sum = _accountsInfoTransactionUcPresenter.GetSum(),
+                    CreditAccountId = _accountsInfoTransactionUcPresenter.GetCreditAccountId(),
+                    Date = _accountsInfoTransactionUcPresenter.GetDate(),
+                    CategoryId = _categoriesUcPresenter.GetCategoryId(),
+                    ContragentId = _contrAgentUcPresenter.GetCategoryId(),
+                    IdentityId = _identityUcPresenter.GetCategoryId()
+                });
+                _continueCancelButtonsUcPresenter.Continue -= ContinueCancelButtonsUcPresenterOnContinue;
+            }
+
             _view.Close();
         }
 

@@ -207,13 +207,13 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction
             var sql =
                 "SELECT t.Id, t.Name, t.Description, dac.name as debit_acc_name, cac.Name as credit_acc_name, t.Sum, t.Date, " +
                 "tt.Name as transaction_type, c.Name as category_name, ct.Name as contragent_name, id.Name as identity " +
-                "    FROM Transactions t " +
-                "INNER JOIN TransactionType tt USING(Id) " +
-                "INNER JOIN Categories c USING(Id) " +
-                "INNER JOIN Contragents ct USING(Id) " +
+                "FROM Transactions t " +
+                "INNER JOIN TransactionType tt ON tt.Id = t.Type_id " +
+                "INNER JOIN Categories c ON c.Id = t.Category_id " +
+                "INNER JOIN Contragents ct ON ct.Id = t.Contragent_id " +
                 "INNER JOIN Account dac ON dac.Id = t.DebitAccount_id " +
                 "INNER JOIN Account cac ON cac.Id = t.CreditAccount_id " +
-                "INNER JOIN Identity id USING(Id)";
+                "INNER JOIN Identity id ON id.Id = t.Identity_id";
 
             var transactions = new List<TransactionExtendedModel>();
 
