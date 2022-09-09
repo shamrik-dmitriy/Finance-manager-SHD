@@ -204,8 +204,8 @@ namespace FM.SHD.Presenters.ViewPresenters
                     ContragentId = _contrAgentUcPresenter.GetCategoryId(),
                     IdentityId = _identityUcPresenter.GetCategoryId()
                 });
-                _continueCancelButtonsUcPresenter.Continue -= ContinueCancelButtonsUcPresenterOnContinue;
             }
+              _continueCancelButtonsUcPresenter.Continue -= ContinueCancelButtonsUcPresenterOnContinue;
 
             _view.Close();
         }

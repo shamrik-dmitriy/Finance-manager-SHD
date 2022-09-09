@@ -102,8 +102,8 @@ namespace FM.SHD.Winforms.UI.Views.Transactions
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
-
-        public new void ShowDialog()
+        
+        public new void Show()
         {
             base.ShowDialog();
         }

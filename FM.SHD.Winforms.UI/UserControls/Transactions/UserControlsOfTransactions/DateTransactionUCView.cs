@@ -27,5 +27,11 @@ namespace FM.SHD.Winforms.UI.UserControls.Transactions.UserControlsOfTransaction
         {
             return Date + Time;
         }
+
+        public void SetDate(DateTime date)
+        {
+            Date = date;
+            Time = date.TimeOfDay;
+        }
     }
 }

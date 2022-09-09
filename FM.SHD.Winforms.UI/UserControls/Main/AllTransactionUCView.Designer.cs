@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.dataGridViewTransaction = new System.Windows.Forms.DataGridView();
+            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSum = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,6 +46,7 @@
             // 
             this.dataGridViewTransaction.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewTransaction.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnId,
             this.ColumnName,
             this.ColumnDescription,
             this.ColumnSum,
@@ -61,7 +63,15 @@
             this.dataGridViewTransaction.RowTemplate.Height = 25;
             this.dataGridViewTransaction.Size = new System.Drawing.Size(1040, 798);
             this.dataGridViewTransaction.TabIndex = 0;
+            this.dataGridViewTransaction.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTransaction_CellClick);
             this.dataGridViewTransaction.SelectionChanged += new System.EventHandler(this.dataGridViewTransaction_SelectionChanged);
+            // 
+            // ColumnId
+            // 
+            this.ColumnId.DataPropertyName = "Id";
+            this.ColumnId.HeaderText = "Id";
+            this.ColumnId.Name = "ColumnId";
+            this.ColumnId.Visible = false;
             // 
             // ColumnName
             // 
@@ -143,6 +153,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewTransaction;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSum;

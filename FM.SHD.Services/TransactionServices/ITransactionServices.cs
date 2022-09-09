@@ -10,9 +10,10 @@ namespace FM.SHD.Services.TransactionServices
         long Add(TransactionDto transactionDto);
         void Update(TransactionDto transactionDto);
         void Delete(TransactionDto transactionDto);
-        void DeleteById(int transactionId);
+        void DeleteById(long transactionId);
         IEnumerable<TransactionDto> GetAll();
-        TransactionDto GetById(int id);
+        TransactionDto GetById(long id);
+        TransactionExtendedDto GetExtendedById(long id);
         List<TransactionExtendedDto> GetExtendedTransactions();
     }
 }

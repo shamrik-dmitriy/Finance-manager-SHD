@@ -1,20 +1,39 @@
 using FM.SHD.Presenters.Interfaces.UserControls.Main;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Main;
+using FM.SHD.Presenters.ViewPresenters;
+using FM.SHD.Services.TransactionServices;
+using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Presenters.UserControlPresenters.Main
 {
     public class AllTransactionUCPresenter : IAllTransactionUCPresenter
     {
-        private readonly IAllTransactionUCView _allTransactionUcView;
+        private readonly IAllTransactionUCView _view;
+        private readonly BaseTransactionPresenter _baseTransactionPresenter;
+        private readonly ITransactionServices _transactionServices;
 
-        public AllTransactionUCPresenter(IAllTransactionUCView allTransactionUcView)
+        public AllTransactionUCPresenter(
+            IAllTransactionUCView view,
+            BaseTransactionPresenter baseTransactionPresenter,
+            ITransactionServices transactionServices)
         {
-            _allTransactionUcView = allTransactionUcView;
+            _view = view;
+            _baseTransactionPresenter = baseTransactionPresenter;
+            _transactionServices = transactionServices;
+
+            _view.UpdateTransaction += ViewOnUpdateTransaction;
+        }
+
+        private void ViewOnUpdateTransaction(TransactionExtendedDto transactionExtendedDto)
+        {
+            _baseTransactionPresenter.SetTitle("Редактирование транзакции");
+            _baseTransactionPresenter.Run(_transactionServices.GetById(transactionExtendedDto.Id));
+            _view.SetData(_transactionServices.GetExtendedById(transactionExtendedDto.Id));
         }
 
         public IAllTransactionUCView GetUserControlView()
         {
-            return _allTransactionUcView;
+            return _view;
         }
     }
 }

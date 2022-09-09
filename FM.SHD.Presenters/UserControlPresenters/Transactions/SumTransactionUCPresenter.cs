@@ -22,5 +22,10 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
         {
             return _sumTransactionUcView.GetSum();
         }
+
+        public void SetSum(decimal sum)
+        {
+            _sumTransactionUcView.SetSum(sum);
+        }
     }
 }

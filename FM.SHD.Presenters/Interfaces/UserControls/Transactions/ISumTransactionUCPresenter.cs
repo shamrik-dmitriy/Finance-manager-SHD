@@ -6,5 +6,6 @@ namespace FM.SHD.Presenters.Interfaces.UserControls.Transactions
     {
         ISumTransactionUCView GetUserControlView();
         decimal GetSum();
+        void SetSum(decimal sum);
     }
 }

@@ -96,6 +96,7 @@ namespace FM.SHD.Winforms.UI.DependencyInjection
                 .AddTransient<ICheckboxUCPresenter, CheckboxUCPresenter>()
                 .AddTransient<IAccountView, AccountView>()
                 .AddTransient<BaseAccountPresenter, AccountPresenter>()
+                .AddTransient<BaseTransactionPresenter, TransactionPresenter>()
                 .AddTransient<IAccountSummaryUCView, AccountSummaryUCView>()
                 .AddTransient<IAccountSummaryUCPresenter, AccountSummaryUCPresenter>()
                 .AddTransient<IAllTransactionUCView, AllTransactionUCView>()

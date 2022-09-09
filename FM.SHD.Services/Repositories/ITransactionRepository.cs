@@ -8,9 +8,11 @@ namespace FM.SHD.Services.Repositories
         long Add(ITransactionModel transactionModel);
         void Update(ITransactionModel transactionModel);
         void Delete(ITransactionModel transactionModel);
-        void DeleteById(int transactionId);
+        void DeleteById(long transactionId);
         IEnumerable<ITransactionModel> GetAll();
-        TransactionModel GetById(int id);
+        TransactionModel GetById(long id);
+        TransactionExtendedModel GetExtendedById(long id);
+        
         IEnumerable<ITransactionModel> GetAllRecordsAssociatedWithAReceipt(long receiptId);
         IEnumerable<TransactionExtendedModel> GetExtendedTransactions();
     }

@@ -70,9 +70,14 @@ namespace FM.SHD.Services.TransactionServices
             return _transactionRepository.GetAll().Select(x => _mapper.Map<TransactionDto>(x));
         }
 
-        public TransactionDto GetById(int id)
+        public TransactionDto GetById(long id)
         {
             return _mapper.Map<TransactionDto>(_transactionRepository.GetById(id));
+        }
+
+        public TransactionExtendedDto GetExtendedById(long id)
+        {
+            return _mapper.Map<TransactionExtendedDto>(_transactionRepository.GetExtendedById(id));
         }
 
         public List<TransactionExtendedDto> GetExtendedTransactions()
@@ -85,7 +90,7 @@ namespace FM.SHD.Services.TransactionServices
             _transactionRepository.Delete(_mapper.Map<TransactionModel>(transactionDto));
         }
 
-        public void DeleteById(int transactionId)
+        public void DeleteById(long transactionId)
         {
             _transactionRepository.DeleteById(transactionId);
         }
