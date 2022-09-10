@@ -12,7 +12,7 @@ namespace FM.SHD.Presenters.IntrefacesViews.Views
         event Action<int> OnChangeTypeTransaction;
 
         void AddUserControl(IUserControlView userControlView);
-        TransactionDto GetTransactionInfo();
         void SetTitle(string title);
+        void Clear();
     }
 }

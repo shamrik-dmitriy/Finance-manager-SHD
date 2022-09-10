@@ -101,7 +101,8 @@ namespace FM.SHD.Presenters.ViewPresenters
             _categoriesUcPresenter.SetText("Категория");
             _contrAgentUcPresenter.SetText("Контрагент");
             _identityUcPresenter.SetText("Член семьи");
-
+            _view.Clear();
+            
             if (TransactionDto != null)
             {
                 _typeTransactionUcPresenter.SetCategoryValues();
@@ -205,7 +206,8 @@ namespace FM.SHD.Presenters.ViewPresenters
                     IdentityId = _identityUcPresenter.GetCategoryId()
                 });
             }
-              _continueCancelButtonsUcPresenter.Continue -= ContinueCancelButtonsUcPresenterOnContinue;
+
+            _continueCancelButtonsUcPresenter.Continue -= ContinueCancelButtonsUcPresenterOnContinue;
 
             _view.Close();
         }

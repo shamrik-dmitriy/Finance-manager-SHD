@@ -70,39 +70,10 @@ namespace FM.SHD.Winforms.UI.Views.Transactions
         {
             OnLoadView?.Invoke();
             _eventAggregator.Subscribe<OnChangeNameTransactionTextApplicationEvent>(ActionChangeTextBoxNameTransaction);
-
-            // _typeTransactionUcView.OnLoadUserControlView += TypeTransactionUserControlViewOnLoadUserControlView;
-            /*
-            if (SingleTransactionDTO != null)
-            {
-            }
-            else
-            {
-                selectTypeTransactionUserControl.TypeOperationSelectedIndexChanged +=
-                    new EventHandler(SelectTypeTransaction_SelectedIndexChanged);
-                selectTypeTransactionUserControl.typeOperationsCombobox.SelectedIndex = 0;
-            }*/
         }
 
         #endregion
 
-        private void addedSingleTransactionButton_Click(object sender, EventArgs e)
-        {
-            Add?.Invoke(sender, e);
-
-            /*var t = billingInfoFlowLayoutPanel.Controls[0] as AccountsInfoTransactionUCView;
-            SingleTransactionDTO = new SingleTransactionDTO
-            {
-                Name = nameTransactiontextBox.Text,
-                Description = descriptionTransactiontextBox.Text,
-                Sum = t.Sum
-            };
-            // TODO: Отправить данные в БД
-            */
-            this.DialogResult = DialogResult.OK;
-            this.Close();
-        }
-        
         public new void Show()
         {
             base.ShowDialog();
@@ -114,28 +85,6 @@ namespace FM.SHD.Winforms.UI.Views.Transactions
             singleTransactionDesktopflowLayoutPanel.Controls.Add(userControl);
         }
 
-        public TransactionDto GetTransactionInfo()
-        {
-            return new TransactionDto();
-            /*
-            var accountUser = billingInfoFlowLayoutPanel.Controls[0] as AccountsInfoTransactionUCView;
-            
-            return SingleTransactionDTO = new SingleTransactionDTO
-            {
-                TypeTransaction = selectTypeTransactionUserControl.Transaction,
-                Name = nameTransactiontextBox.Text,
-                Description = descriptionTransactiontextBox.Text,
-                Sum = accountUser.Sum,
-                DebitAccount = accountUser.DebitAccount,
-                CreditAccount = accountUser.CreditAccount,
-                Category = _categoryTransactionUcView.CategoryName,
-                Date = accountUser.Date + accountUser.Time,
-                Contragent = _contrAgentUcView.ContragentName,
-                FamilyMember = _familyMemberUcView.FamilyMemberName
-            };*/
-        }
-
-
         public void AddHorizontalLine()
         {
             singleTransactionDesktopflowLayoutPanel.Controls.Add(new Label()
@@ -146,6 +95,11 @@ namespace FM.SHD.Winforms.UI.Views.Transactions
         {
             Title = title;
             TitleDefault = title;
+        }
+
+        public void Clear()
+        {
+            singleTransactionDesktopflowLayoutPanel.Controls.Clear();
         }
 
         private void OnFormClosing(object sender, FormClosingEventArgs e)

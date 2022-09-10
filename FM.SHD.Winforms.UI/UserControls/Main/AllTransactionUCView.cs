@@ -17,6 +17,7 @@ namespace FM.SHD.Winforms.UI.UserControls.Main
 
         private void DataGridTransactionUserControl_Load(object sender, System.EventArgs e)
         {
+            dataGridViewTransaction.MultiSelect = false;
             dataGridViewTransaction.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 

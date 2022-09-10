@@ -63,7 +63,7 @@
             this.dataGridViewTransaction.RowTemplate.Height = 25;
             this.dataGridViewTransaction.Size = new System.Drawing.Size(1040, 798);
             this.dataGridViewTransaction.TabIndex = 0;
-            this.dataGridViewTransaction.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTransaction_CellClick);
+            this.dataGridViewTransaction.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTransaction_CellClick);
             this.dataGridViewTransaction.SelectionChanged += new System.EventHandler(this.dataGridViewTransaction_SelectionChanged);
             // 
             // ColumnId
