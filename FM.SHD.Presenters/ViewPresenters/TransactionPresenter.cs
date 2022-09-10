@@ -1,4 +1,6 @@
 using System;
+using FM.SHD.Infrastructure.Events;
+using FM.SHD.Presenters.Events.Transactions;
 using FM.SHD.Presenters.Interfaces.UserControls.Common;
 using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
 using FM.SHD.Presenters.IntrefacesViews.Views;
@@ -13,6 +15,7 @@ namespace FM.SHD.Presenters.ViewPresenters
 {
     public class TransactionPresenter : BaseTransactionPresenter
     {
+        private readonly EventAggregator _eventAggregator;
         private readonly ITransactionView _view;
 
         #region Private member variables
@@ -32,6 +35,7 @@ namespace FM.SHD.Presenters.ViewPresenters
         #region Constructor / Destructor
 
         public TransactionPresenter(
+            EventAggregator eventAggregator,
             ITransactionView view,
             ITransactionServices transactionServices,
             ICategoryUCPresenter<TypeTransactionServices> typeTransactionUcPresenter,
@@ -44,6 +48,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             IContinueCancelButtonsUCPresenter continueCancelButtonsUcPresenter)
             : base(view)
         {
+            _eventAggregator = eventAggregator;
             _view = view;
             _transactionServices = transactionServices;
 
@@ -84,6 +89,7 @@ namespace FM.SHD.Presenters.ViewPresenters
         {
             TransactionDto = accountDto;
             _view.Show();
+            //
         }
 
         #endregion
@@ -102,7 +108,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             _contrAgentUcPresenter.SetText("Контрагент");
             _identityUcPresenter.SetText("Член семьи");
             _view.Clear();
-            
+
             if (TransactionDto != null)
             {
                 _typeTransactionUcPresenter.SetCategoryValues();
@@ -205,6 +211,7 @@ namespace FM.SHD.Presenters.ViewPresenters
                     ContragentId = _contrAgentUcPresenter.GetCategoryId(),
                     IdentityId = _identityUcPresenter.GetCategoryId()
                 });
+                _eventAggregator.Publish(new OnAddedTransactionApplicationEvent());
             }
 
             _continueCancelButtonsUcPresenter.Continue -= ContinueCancelButtonsUcPresenterOnContinue;

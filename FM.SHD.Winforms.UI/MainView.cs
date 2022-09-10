@@ -15,8 +15,8 @@ namespace FM.SHD.Winforms.UI
     public partial class MainView : Form, IMainView
     {
         public event Action OnLoadView;
-        public event Action AddTransaction;
-        public event Action AddAccount;
+        public event Action AddingTransaction;
+        public event Action AddingAccount;
 
         public event Action<string> OpenDataFile;
 
@@ -62,7 +62,7 @@ namespace FM.SHD.Winforms.UI
 
         private void buttonAddTransaction_Click(object sender, EventArgs e)
         {
-            AddTransaction?.Invoke();
+            AddingTransaction?.Invoke();
         }
 
         private void buttonAddReceipt_Click(object sender, EventArgs e)
@@ -87,7 +87,7 @@ namespace FM.SHD.Winforms.UI
 
         private void addAccountButton_Click(object sender, EventArgs e)
         {
-            AddAccount?.Invoke();
+            AddingAccount?.Invoke();
         }
 
         public void AddAccountsSummaryUserControl(IUserControlView userControlView)
