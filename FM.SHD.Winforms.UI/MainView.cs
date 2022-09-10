@@ -24,11 +24,9 @@ namespace FM.SHD.Winforms.UI
 
         private readonly ApplicationContext _context;
 
-        //public MainView(EventAggregator eventAggregator)
         public MainView(ApplicationContext applicationContext)
         {
             _context = applicationContext;
-            //    _eventAggregator = eventAggregator;
             InitializeComponent();
         }
 

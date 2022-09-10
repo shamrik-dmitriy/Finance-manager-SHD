@@ -55,8 +55,12 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
                 }
                 case 1:
                 {
-                    _creditAccountInfoUcPresenter.SetText("Зачислить на счёт");
-                    _debitAccountInfoUcPresenter.SetVisible(false);
+                    //_creditAccountInfoUcPresenter.SetText("Зачислить на счёт");
+                    //_debitAccountInfoUcPresenter.SetVisible(false);
+                    
+                    _creditAccountInfoUcPresenter.SetText("Списать со счёта");
+                    _debitAccountInfoUcPresenter.SetText("Зачислить на счёт");
+                    _debitAccountInfoUcPresenter.SetVisible(true);
                     break;
                 }
                 case 2:
@@ -74,12 +78,11 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
             _debitAccountInfoUcPresenter.SetCategoryValues();
             _debitAccountInfoUcPresenter.SetStyleDropDownList();
             _accountsInfoTransactionUcView.AddAccountInfo(_debitAccountInfoUcPresenter.GetUserControlView());
-
-            _accountsInfoTransactionUcView.AddSumm(_sumTransactionUcPresenter.GetUserControlView());
-
+            
             _creditAccountInfoUcPresenter.SetCategoryValues();
             _creditAccountInfoUcPresenter.SetStyleDropDownList();
             _accountsInfoTransactionUcView.AddAccountInfo(_creditAccountInfoUcPresenter.GetUserControlView());
+            _accountsInfoTransactionUcView.AddSumm(_sumTransactionUcPresenter.GetUserControlView());
 
             _accountsInfoTransactionUcView.AddDate(_dateTransactionUcPresenter.GetUserControlView());
         }
@@ -96,18 +99,23 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
                 case 1:
                 {
                     _debitAccountInfoUcPresenter.SetText("Списать со счёта");
+                    _debitAccountInfoUcPresenter.SetVisible(true);
                     _creditAccountInfoUcPresenter.SetVisible(false);
                     break;
                 }
                 case 2:
                 {
-                    _debitAccountInfoUcPresenter.SetText("Зачислить на счёт");
-                    _creditAccountInfoUcPresenter.SetVisible(false);
+                    _creditAccountInfoUcPresenter.SetText("Зачислить на счёт");
+                    _debitAccountInfoUcPresenter.SetVisible(false);
+                    _creditAccountInfoUcPresenter.SetVisible(true);
+                    
                     break;
                 }
                 case 3:
                 {
                     _debitAccountInfoUcPresenter.SetText("Списать со счёта");
+                    _debitAccountInfoUcPresenter.SetVisible(true);
+
                     _creditAccountInfoUcPresenter.SetText("Зачислить на счёт");
                     _creditAccountInfoUcPresenter.SetVisible(true);
                     break;

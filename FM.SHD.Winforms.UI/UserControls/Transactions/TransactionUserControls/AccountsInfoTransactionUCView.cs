@@ -12,34 +12,7 @@ namespace FM.SHD.Winforms.UI.UserControls.Transactions.TransactionUserControls
     {
         private readonly EventAggregator _eventAggregator;
 
-
-        //public decimal Sum => _sumTransactionUcView.Sum;
-
         private int TransactionType { get; set; }
-
-        //public string DebitAccount
-        //{
-        //    get => _debitAccountInfoUcView.Name;
-        //    set => _debitAccountInfoUcView.Name = value;
-        //}
-
-        //public string CreditAccount
-        //{
-        //   get => _creditAccountInfoUcView.Name;
-        //    set => _creditAccountInfoUcView.Name = value;
-        //}
-
-        //public DateTime Date
-        //{
-        //   get => _dateTransactionUcView.Date;
-        //    set => _dateTransactionUcView.Date = value;
-        //}
-
-        //public TimeSpan Time
-        //{
-        //    get => _dateTransactionUcView.Time;
-        //    set => _dateTransactionUcView.Time = value;
-        //}
 
         public AccountsInfoTransactionUCView()
         {
