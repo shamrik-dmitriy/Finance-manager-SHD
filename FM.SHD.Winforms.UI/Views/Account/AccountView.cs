@@ -80,6 +80,8 @@ namespace FM.SHD.Winforms.UI.Views.Account
         {
             OnLoadView?.Invoke();
             _eventAggregator.Subscribe<OnChangeNameTransactionTextApplicationEvent>(ActionChangeTextBoxNameTransaction);
+            AcceptButton = (Button)Controls.Find("continueButton", true)[0];
+            CancelButton = (Button)Controls.Find("cancelButton", true)[0];
         }
 
         private void ActionChangeTextBoxNameTransaction(OnChangeNameTransactionTextApplicationEvent obj)
