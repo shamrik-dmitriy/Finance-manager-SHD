@@ -80,8 +80,10 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction
                     transactionModel.TypeTransactionId = reader.GetInt64(1);
                     transactionModel.Name = reader.GetString(2);
                     transactionModel.Description = reader.GetString(3);
-                    transactionModel.CreditAccountId = reader.GetInt64(4);
-                    transactionModel.DebitAccountId = reader.GetInt64(5);
+                    if (reader["DebitAccount_id"].GetType() != typeof(DBNull))
+                        transactionModel.CreditAccountId = reader.GetInt64(4);
+                    if (reader["DebitAccount_id"].GetType() != typeof(DBNull))
+                        transactionModel.DebitAccountId = reader.GetInt64(5);
                     transactionModel.Sum = decimal.Parse(reader.GetString(6).Replace('.', ','));
                     transactionModel.Date = reader.GetDateTime(7);
                     transactionModel.CategoryId = reader.GetInt64(8);
@@ -158,8 +160,10 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction
                         transactionModel.CategoryId = reader.GetInt64(6);
                         transactionModel.ContragentId = reader.GetInt64(7);
                         transactionModel.IdentityId = reader.GetInt64(8);
-                        transactionModel.DebitAccountId = reader.GetInt64(9);
-                        transactionModel.CreditAccountId = reader.GetInt64(10);
+                        if (reader["DebitAccount_id"].GetType() != typeof(DBNull))
+                            transactionModel.DebitAccountId = reader.GetInt64(9);
+                        if (reader["CreditAccount_id"].GetType() != typeof(DBNull))
+                            transactionModel.CreditAccountId = reader.GetInt64(10);
                         if (reader["Receipt_id"].GetType() != typeof(DBNull))
                             transactionModel.ReceiptId = reader.GetInt64(11);
                     }
@@ -186,8 +190,10 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction
                     transactionModel.TypeTransactionId = reader.GetInt64(1);
                     transactionModel.Name = reader.GetString(2);
                     transactionModel.Description = reader.GetString(3);
-                    transactionModel.CreditAccountId = reader.GetInt64(4);
-                    transactionModel.DebitAccountId = reader.GetInt64(5);
+                    if (reader["CreditAccount_id"].GetType() != typeof(DBNull))
+                        transactionModel.CreditAccountId = reader.GetInt64(4);
+                    if (reader["DebitAccount_id"].GetType() != typeof(DBNull))
+                        transactionModel.DebitAccountId = reader.GetInt64(5);
                     transactionModel.Sum = decimal.Parse(reader.GetString(6).Replace('.', ','));
                     transactionModel.Date = reader.GetDateTime(7);
                     transactionModel.CategoryId = reader.GetInt64(8);
@@ -206,15 +212,16 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction
         {
             if (CheckRecordIsExist(TABLE_NAME, id))
             {
-                var sql = "SELECT t.Id, t.Name, t.Description, dac.name as debit_acc_name, cac.Name as credit_acc_name, t.Sum, t.Date, " +
-                          "tt.Name as transaction_type, c.Name as category_name, ct.Name as contragent_name, id.Name as identity " +
-                          "FROM Transactions t " +
-                          "INNER JOIN TransactionType tt ON tt.Id = t.Type_id " +
-                          "INNER JOIN Categories c ON c.Id = t.Category_id " +
-                          "INNER JOIN Contragents ct ON ct.Id = t.Contragent_id " +
-                          "INNER JOIN Account dac ON dac.Id = t.DebitAccount_id " +
-                          "INNER JOIN Account cac ON cac.Id = t.CreditAccount_id " +
-                          "INNER JOIN Identity id ON id.Id = t.Identity_id WHERE t.Id = @Id;";
+                var sql =
+                    "SELECT t.Id, t.Name, t.Description, dac.name as debit_acc_name, cac.Name as credit_acc_name, t.Sum, t.Date, " +
+                    "tt.Name as transaction_type, c.Name as category_name, ct.Name as contragent_name, id.Name as identity " +
+                    "FROM Transactions t " +
+                    "INNER JOIN TransactionType tt ON tt.Id = t.Type_id " +
+                    "INNER JOIN Categories c ON c.Id = t.Category_id " +
+                    "INNER JOIN Contragents ct ON ct.Id = t.Contragent_id " +
+                    "LEFT JOIN Account dac ON dac.Id = t.DebitAccount_id " +
+                    "LEFT JOIN Account cac ON cac.Id = t.CreditAccount_id " +
+                    "INNER JOIN Identity id ON id.Id = t.Identity_id WHERE t.Id = @Id;";
 
                 var dataparameters = new List<DataParameter>();
                 dataparameters.Add(new DataParameter("@Id", id));
@@ -230,14 +237,14 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction
                         transactionModel.Description = reader["Description"].ToString();
                         transactionModel.DebitAccount = reader["debit_acc_name"].ToString();
                         transactionModel.CreditAccount = reader["credit_acc_name"].ToString();
-                        transactionModel.Sum = decimal.Parse(reader["Sum"].ToString().Replace('.',','));
+                        transactionModel.Sum = decimal.Parse(reader["Sum"].ToString().Replace('.', ','));
                         transactionModel.Date = DateTime.Parse(reader["Date"].ToString());
                         transactionModel.TypeTransaction = reader["transaction_type"].ToString();
                         transactionModel.Category = reader["category_name"].ToString();
                         transactionModel.Contragent = reader["contragent_name"].ToString();
                         transactionModel.Identity = reader["identity"].ToString();
-                       // if (reader["Receipt_id"].GetType() != typeof(DBNull))
-                       //     transactionModel.ReceiptId = reader.GetInt64(11);
+                        // if (reader["Receipt_id"].GetType() != typeof(DBNull))
+                        //     transactionModel.ReceiptId = reader.GetInt64(11);
                     }
 
                     return transactionModel;
@@ -261,7 +268,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction
                 "INNER JOIN Identity id ON id.Id = t.Identity_id";
 
             var transactions = new List<TransactionExtendedModel>();
-            
+
             using (var reader = SqliteDataProvider.CreateReader(sql))
             {
                 while (reader.Read())
