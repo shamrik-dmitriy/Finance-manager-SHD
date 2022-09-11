@@ -28,6 +28,6 @@ namespace FM.SHD.Presenters.Common
 
         public abstract void SetTitle(string title);
 
-        public abstract void Run(TArg accountDto);
+        public abstract void Run(TArg dto);
     }
 }

@@ -27,5 +27,7 @@ namespace FM.SHD.Winforms.UI.UserControls.Wallet
         {
             UpdateAccount?.Invoke(AccountDto);
         }
+        
+        
     }
 }

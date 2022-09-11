@@ -15,8 +15,8 @@ namespace FM.SHD.Winforms.UI
     public partial class MainView : Form, IMainView
     {
         public event Action OnLoadView;
-        public event Action AddTransaction;
-        public event Action AddAccount;
+        public event Action AddingTransaction;
+        public event Action AddingAccount;
 
         public event Action<string> OpenDataFile;
 
@@ -24,11 +24,9 @@ namespace FM.SHD.Winforms.UI
 
         private readonly ApplicationContext _context;
 
-        //public MainView(EventAggregator eventAggregator)
         public MainView(ApplicationContext applicationContext)
         {
             _context = applicationContext;
-            //    _eventAggregator = eventAggregator;
             InitializeComponent();
         }
 
@@ -45,7 +43,16 @@ namespace FM.SHD.Winforms.UI
 
         public void AddUserControl(IUserControlView userControlView)
         {
-            throw new NotImplementedException();
+            splitContainerTransactions.Panel2.Controls.Add((UserControl)userControlView);
+            /*var userControl = (UserControl)userControlView;
+            singleTransactionDesktopflowLayoutPanel.Controls.Add(userControl);
+            
+            var c = new TabControl.ControlCollection(tabControl1).Add((UserControl)userControlView);
+            var tp = new TabPage().Control
+            tabControl1.TabPages.Add(new TabPage()
+            {
+                Text = "",
+            });*/
         }
 
         public void AddHorizontalLine()
@@ -55,14 +62,14 @@ namespace FM.SHD.Winforms.UI
 
         private void buttonAddTransaction_Click(object sender, EventArgs e)
         {
-            AddTransaction?.Invoke();
+            AddingTransaction?.Invoke();
         }
 
         private void buttonAddReceipt_Click(object sender, EventArgs e)
         {
             new MultipleTransactionView("Добавить группу транзакций (чек)").ShowDialog();
         }
-        
+
         public void CloseView()
         {
             Close();
@@ -80,7 +87,7 @@ namespace FM.SHD.Winforms.UI
 
         private void addAccountButton_Click(object sender, EventArgs e)
         {
-            AddAccount?.Invoke();
+            AddingAccount?.Invoke();
         }
 
         public void AddAccountsSummaryUserControl(IUserControlView userControlView)
@@ -131,6 +138,11 @@ namespace FM.SHD.Winforms.UI
                 splitContainerLeftSideBar.Panel1MinSize = 0;
                 splitContainerLeftSideBar.SplitterDistance = 0;
             }
+        }
+
+        public void ClearAccountsSummaryUserControls()
+        {
+            accoutsFlowLayoutPanel.Controls.Clear();
         }
 
         public void SetViewOnActiveUI()

@@ -9,6 +9,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
     public class AccountRepository : BaseSpecificRepository, IAccountRepository
     {
         private const string TABLE_NAME = "Account";
+
         public AccountRepository(IRepositoryManager repositoryManager) : base(repositoryManager)
         {
         }
@@ -73,22 +74,22 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
 
             var account = new List<AccountModel>();
 
-            using (var reader = SqliteDataProvider.CreateReader(sql))
+            using var reader = SqliteDataProvider.CreateReader(sql);
+            while (reader.Read())
             {
-                while (reader.Read())
-                {
-                    var accountModel = new AccountModel();
-                    accountModel.Id = long.Parse(reader["Id"].ToString());
-                    accountModel.Name = reader["Name"].ToString();
-                    accountModel.Description = reader["Description"].ToString();
-                    accountModel.CurrentSum = decimal.Parse(reader["CurrentSum"].ToString());
-                    accountModel.InitialSum = decimal.Parse(reader["InitialSum"].ToString());
-                    accountModel.IsClosed = Convert.ToBoolean(reader["IsClosed"]);
-                    accountModel.CurrencyId = long.Parse(reader["CurrencyId"].ToString());
-                    accountModel.CategoryId = int.Parse(reader["CategoryId"].ToString());
-                    accountModel.IdentityId = int.Parse(reader["IdentityId"].ToString());
-                    account.Add(accountModel);
-                }
+                var accountModel = new AccountModel();
+                //{
+                accountModel.Id = reader.GetInt64(0);
+                accountModel.Name = reader.GetString(1);
+                accountModel.Description = reader.GetString(2);
+                accountModel.CurrentSum = decimal.Parse(reader.GetString(3).Replace('.', ','));
+                accountModel.InitialSum = decimal.Parse(reader.GetString(4).Replace('.', ','));
+                accountModel.IsClosed = Convert.ToBoolean(reader.GetInt64(5));
+                accountModel.CurrencyId = reader.GetInt64(6);
+                accountModel.CategoryId = reader.GetInt64(7);
+                accountModel.IdentityId = reader.GetInt64(8);
+                //};
+                account.Add(accountModel);
             }
 
             return account;
@@ -96,35 +97,32 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
 
         public AccountModel GetById(long id)
         {
-            if (CheckRecordIsExist(TABLE_NAME, id))
+            if (!CheckRecordIsExist(TABLE_NAME, id))
+                throw new ArgumentException($"В хранилище отсутствует запись с идентификатором {id}");
+            var sql = $"SELECT * FROM {TABLE_NAME} WHERE Id = @Id;";
+
+            var dataparameters = new List<DataParameter>();
+            dataparameters.Add(new DataParameter("@Id", id));
+
+            var accountModel = new AccountModel();
+
+            using (var reader = SqliteDataProvider.CreateReader(sql, dataparameters.ToArray()))
             {
-                var sql = $"SELECT * FROM {TABLE_NAME} WHERE Id = @Id;";
-
-                var dataparameters = new List<DataParameter>();
-                dataparameters.Add(new DataParameter("@Id", id));
-
-                var accountModel = new AccountModel();
-
-                using (var reader = SqliteDataProvider.CreateReader(sql, dataparameters.ToArray()))
+                while (reader.Read())
                 {
-                    while (reader.Read())
-                    {
-                        accountModel.Id = long.Parse(reader["Id"].ToString());
-                        accountModel.Name = reader["Name"].ToString();
-                        accountModel.Description = reader["Description"].ToString();
-                        accountModel.CurrentSum = (decimal)reader["CurrentSum"];
-                        accountModel.InitialSum = (decimal)reader["InitialSum"];
-                        accountModel.IsClosed = (bool)reader["IsClosed"];
-                        accountModel.CurrencyId = long.Parse(reader["CurrencyId"].ToString());
-                        accountModel.CategoryId = (int)reader["CategoryId"];
-                        accountModel.IdentityId = (int)reader["IdentityId"];
-                    }
-
-                    return accountModel;
+                    accountModel.Id = reader.GetInt64(0);
+                    accountModel.Name = reader.GetString(1);
+                    accountModel.Description = reader.GetString(2);
+                    accountModel.CurrentSum = decimal.Parse(reader.GetString(3).Replace('.', ','));
+                    accountModel.InitialSum = decimal.Parse(reader.GetString(4).Replace('.', ','));
+                    accountModel.IsClosed = Convert.ToBoolean(reader.GetInt64(5));
+                    accountModel.CurrencyId = reader.GetInt64(6);
+                    accountModel.CategoryId = reader.GetInt64(7);
+                    accountModel.IdentityId = reader.GetInt64(8);
                 }
-            }
 
-            throw new ArgumentException($"В хранилище отсутствует запись с идентификатором {id}");
+                return accountModel;
+            }
         }
 
         public void Update(IAccountModel accountModel)

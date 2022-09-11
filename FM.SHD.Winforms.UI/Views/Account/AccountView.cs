@@ -20,6 +20,11 @@ namespace FM.SHD.Winforms.UI.Views.Account
 
         public event Action OnLoadView;
         public event Action OnClosingView;
+        public bool ShowMessageDelete(string title, string message)
+        {
+            return MessageBox.Show(message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
+                   DialogResult.Yes;
+        }
 
         public void SetTitle(string title)
         {
@@ -52,12 +57,7 @@ namespace FM.SHD.Winforms.UI.Views.Account
         {
             base.ShowDialog();
         }
-
-        /*void IView.ShowDialog()
-        {
-            base.ShowDialog();
-        }*/
-
+        
         public void AddUserControl(IUserControlView userControlView)
         {
             var userControl = (UserControl)userControlView;
@@ -80,6 +80,8 @@ namespace FM.SHD.Winforms.UI.Views.Account
         {
             OnLoadView?.Invoke();
             _eventAggregator.Subscribe<OnChangeNameTransactionTextApplicationEvent>(ActionChangeTextBoxNameTransaction);
+            AcceptButton = (Button)Controls.Find("continueButton", true)[0];
+            CancelButton = (Button)Controls.Find("cancelButton", true)[0];
         }
 
         private void ActionChangeTextBoxNameTransaction(OnChangeNameTransactionTextApplicationEvent obj)

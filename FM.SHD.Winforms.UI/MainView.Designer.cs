@@ -49,7 +49,7 @@ namespace FM.SHD.Winforms.UI
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainerDesktop = new System.Windows.Forms.SplitContainer();
             this.splitContainerLeftSideBar = new System.Windows.Forms.SplitContainer();
-            this.loginucView1 = new LoginUCView();
+            this.loginucView1 = new FM.SHD.Winforms.UI.UserControls.Login.LoginUCView();
             this.splitContainerWallet = new System.Windows.Forms.SplitContainer();
             this.accountActionAndTotalSumsplitContainer = new System.Windows.Forms.SplitContainer();
             this.addAccountButton = new System.Windows.Forms.Button();
@@ -60,13 +60,6 @@ namespace FM.SHD.Winforms.UI
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonAddReceipt = new System.Windows.Forms.Button();
             this.buttonAddTransaction = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ColumnTypeOperation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAccount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDateOperation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSumm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPageCategories = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerDesktop)).BeginInit();
@@ -88,10 +81,8 @@ namespace FM.SHD.Winforms.UI
             this.tabPageTransactions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTransactions)).BeginInit();
             this.splitContainerTransactions.Panel1.SuspendLayout();
-            this.splitContainerTransactions.Panel2.SuspendLayout();
             this.splitContainerTransactions.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -365,10 +356,6 @@ namespace FM.SHD.Winforms.UI
             // 
             this.splitContainerTransactions.Panel1.Controls.Add(this.flowLayoutPanel3);
             this.splitContainerTransactions.Panel1MinSize = 27;
-            // 
-            // splitContainerTransactions.Panel2
-            // 
-            this.splitContainerTransactions.Panel2.Controls.Add(this.dataGridView1);
             this.splitContainerTransactions.Size = new System.Drawing.Size(871, 569);
             this.splitContainerTransactions.SplitterDistance = 30;
             this.splitContainerTransactions.TabIndex = 3;
@@ -402,57 +389,6 @@ namespace FM.SHD.Winforms.UI
             this.buttonAddTransaction.Text = "Добавить операцию";
             this.buttonAddTransaction.UseVisualStyleBackColor = true;
             this.buttonAddTransaction.Click += new System.EventHandler(this.buttonAddTransaction_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnTypeOperation,
-            this.ColumnAccount,
-            this.ColumnDateOperation,
-            this.ColumnSumm,
-            this.ColumnEdit,
-            this.ColumnDelete});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(871, 535);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // ColumnTypeOperation
-            // 
-            this.ColumnTypeOperation.HeaderText = "Тип операции";
-            this.ColumnTypeOperation.Name = "ColumnTypeOperation";
-            // 
-            // ColumnAccount
-            // 
-            this.ColumnAccount.HeaderText = "Счёт";
-            this.ColumnAccount.Name = "ColumnAccount";
-            // 
-            // ColumnDateOperation
-            // 
-            this.ColumnDateOperation.HeaderText = "Дата";
-            this.ColumnDateOperation.Name = "ColumnDateOperation";
-            // 
-            // ColumnSumm
-            // 
-            this.ColumnSumm.HeaderText = "Сумма";
-            this.ColumnSumm.Name = "ColumnSumm";
-            // 
-            // ColumnEdit
-            // 
-            this.ColumnEdit.HeaderText = "Изменить";
-            this.ColumnEdit.Name = "ColumnEdit";
-            this.ColumnEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColumnEdit.Text = "Изменить";
-            // 
-            // ColumnDelete
-            // 
-            this.ColumnDelete.HeaderText = "Удалить";
-            this.ColumnDelete.Name = "ColumnDelete";
-            this.ColumnDelete.Text = "Удалить";
             // 
             // tabPageCategories
             // 
@@ -496,11 +432,9 @@ namespace FM.SHD.Winforms.UI
             this.tabControl1.ResumeLayout(false);
             this.tabPageTransactions.ResumeLayout(false);
             this.splitContainerTransactions.Panel1.ResumeLayout(false);
-            this.splitContainerTransactions.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTransactions)).EndInit();
             this.splitContainerTransactions.ResumeLayout(false);
             this.flowLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -532,13 +466,6 @@ namespace FM.SHD.Winforms.UI
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Button buttonAddReceipt;
         private System.Windows.Forms.Button buttonAddTransaction;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTypeOperation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAccount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateOperation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSumm;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnDelete;
         private System.Windows.Forms.TabPage tabPageCategories;
         private System.Windows.Forms.SplitContainer splitContainerWallet;
         private System.Windows.Forms.SplitContainer accountActionAndTotalSumsplitContainer;

@@ -7,6 +7,7 @@ namespace FM.SHD.Presenters.Interfaces.UserControls.Wallet
     public interface IAccountSummaryUCPresenter
     {
         IAccountSummaryUCView GetUserControlView();
-        IAccountSummaryUCView GetUserControlView(AccountDto accountDto);
+        
+        
     }
 }

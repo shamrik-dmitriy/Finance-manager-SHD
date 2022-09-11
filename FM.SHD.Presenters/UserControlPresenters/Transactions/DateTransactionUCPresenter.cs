@@ -22,5 +22,10 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
         {
             return _dateTransactionUcView.GetDate();
         }
+
+        public void SetDate(DateTime date)
+        {
+            _dateTransactionUcView.SetDate(date);
+        }
     }
 }

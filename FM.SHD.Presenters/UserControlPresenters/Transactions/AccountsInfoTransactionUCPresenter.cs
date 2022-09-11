@@ -55,8 +55,12 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
                 }
                 case 1:
                 {
-                    _creditAccountInfoUcPresenter.SetText("Зачислить на счёт");
-                    _debitAccountInfoUcPresenter.SetVisible(false);
+                    //_creditAccountInfoUcPresenter.SetText("Зачислить на счёт");
+                    //_debitAccountInfoUcPresenter.SetVisible(false);
+                    
+                    _creditAccountInfoUcPresenter.SetText("Списать со счёта");
+                    _debitAccountInfoUcPresenter.SetText("Зачислить на счёт");
+                    _debitAccountInfoUcPresenter.SetVisible(true);
                     break;
                 }
                 case 2:
@@ -71,16 +75,14 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
 
         private void AccountsInfoUcViewOnOnLoadControlView()
         {
-            _creditAccountInfoUcPresenter.SetCategoryValues();
-            _creditAccountInfoUcPresenter.SetStyleDropDownList();
-            _accountsInfoTransactionUcView.AddAccountInfo(_creditAccountInfoUcPresenter.GetUserControlView());
-
-            _accountsInfoTransactionUcView.AddSumm(_sumTransactionUcPresenter.GetUserControlView());
-
-
             _debitAccountInfoUcPresenter.SetCategoryValues();
             _debitAccountInfoUcPresenter.SetStyleDropDownList();
             _accountsInfoTransactionUcView.AddAccountInfo(_debitAccountInfoUcPresenter.GetUserControlView());
+            
+            _creditAccountInfoUcPresenter.SetCategoryValues();
+            _creditAccountInfoUcPresenter.SetStyleDropDownList();
+            _accountsInfoTransactionUcView.AddAccountInfo(_creditAccountInfoUcPresenter.GetUserControlView());
+            _accountsInfoTransactionUcView.AddSumm(_sumTransactionUcPresenter.GetUserControlView());
 
             _accountsInfoTransactionUcView.AddDate(_dateTransactionUcPresenter.GetUserControlView());
         }
@@ -96,21 +98,26 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
             {
                 case 1:
                 {
-                    _creditAccountInfoUcPresenter.SetText("Списать со счёта");
-                    _debitAccountInfoUcPresenter.SetVisible(false);
+                    _debitAccountInfoUcPresenter.SetText("Списать со счёта");
+                    _debitAccountInfoUcPresenter.SetVisible(true);
+                    _creditAccountInfoUcPresenter.SetVisible(false);
                     break;
                 }
                 case 2:
                 {
                     _creditAccountInfoUcPresenter.SetText("Зачислить на счёт");
                     _debitAccountInfoUcPresenter.SetVisible(false);
+                    _creditAccountInfoUcPresenter.SetVisible(true);
+                    
                     break;
                 }
                 case 3:
                 {
-                    _creditAccountInfoUcPresenter.SetText("Списать со счёта");
-                    _debitAccountInfoUcPresenter.SetText("Зачислить на счёт");
+                    _debitAccountInfoUcPresenter.SetText("Списать со счёта");
                     _debitAccountInfoUcPresenter.SetVisible(true);
+
+                    _creditAccountInfoUcPresenter.SetText("Зачислить на счёт");
+                    _creditAccountInfoUcPresenter.SetVisible(true);
                     break;
                 }
             }
@@ -139,22 +146,24 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
 
         public void SetDate(DateTime date)
         {
-            throw new NotImplementedException();
+            _dateTransactionUcPresenter.SetDate(date);
         }
 
         public void SetSum(decimal sum)
         {
-            throw new NotImplementedException();
+            _sumTransactionUcPresenter.SetSum(sum);
         }
 
         public void SetCreditAccountId(long? creditAccountId)
         {
-            throw new NotImplementedException();
+            //_creditAccountInfoUcPresenter.SetCategoryValues();
+            _creditAccountInfoUcPresenter.GetUserControlView().SetCategoryId(creditAccountId);
         }
 
         public void SetDebitAccountId(long? debitAccountId)
         {
-            throw new NotImplementedException();
+            _debitAccountInfoUcPresenter.SetCategoryValues();
+            _debitAccountInfoUcPresenter.GetUserControlView().SetCategoryId(debitAccountId);;
         }
 
         public event Action<long> CategoryChanged;

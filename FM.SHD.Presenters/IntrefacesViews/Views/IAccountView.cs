@@ -7,5 +7,6 @@ namespace FM.SHD.Presenters.IntrefacesViews.Views
     {
         event Action OnLoadView;
         event Action OnClosingView;
+        bool ShowMessageDelete(string title, string message);
     }
 }

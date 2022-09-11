@@ -20,7 +20,7 @@ namespace FM.SHD.Infastructure.Impl.Providers.Sqlite
 
         public SqliteConnection Connection => _connection;
 
-        #endregion 
+        #endregion
 
         #region Constructors
 
@@ -55,8 +55,14 @@ namespace FM.SHD.Infastructure.Impl.Providers.Sqlite
 
                     using (new LongRunningQueryDetector(() => sql, () => parameters))
                     {
-                        var reader = sqliteCommand.ExecuteReader();
-                        var dt = new DataTable();
+                        using var reader = sqliteCommand.ExecuteReader();
+
+                        var dataSet = new DataSet();
+                        dataSet.EnforceConstraints = false;
+
+                        var dt = new DataTable(reader.GetSchemaTable().Rows[0]["BaseTableName"].ToString());
+                        dataSet.Tables.Add(dt);
+
                         dt.Load(reader);
                         return dt.CreateDataReader();
                     }
@@ -93,6 +99,7 @@ namespace FM.SHD.Infastructure.Impl.Providers.Sqlite
                     {
                         dataTable.Load(reader);
                     }
+
                     return dataTable;
                 }
             }
@@ -225,8 +232,10 @@ namespace FM.SHD.Infastructure.Impl.Providers.Sqlite
                     sqliteParameter.DbType = TypeParameterConverter.ToDbType(dataParameter.DataType);
                     sqliteParameter.Value = dataParameter.Value;
                 }
+
                 command.Parameters.Add(sqliteParameter);
             }
+
             return command;
         }
 

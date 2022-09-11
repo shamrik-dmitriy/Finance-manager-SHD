@@ -4,13 +4,21 @@ using System.IO;
 using System.Linq;
 using FM.SHD.Infastructure.Impl.Repositories;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Account;
+using FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction;
+using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Common;
+using FM.SHD.Presenters.Events;
+using FM.SHD.Presenters.Events.Accounts;
+using FM.SHD.Presenters.Events.Transactions;
+using FM.SHD.Presenters.Interfaces.UserControls.Main;
 using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
 using FM.SHD.Presenters.IntrefacesViews.Views;
 using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.CommonServices;
+using FM.SHD.Services.TransactionServices;
 using FM.SHD.Settings.Services;
 using FM.SHD.Settings.Services.SettingsCollection;
+using FM.SHDML.Core.Models.Dtos;
 using FM.SHDML.Core.Models.Dtos.UIDto;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -20,6 +28,7 @@ namespace FM.SHD.Presenters.ViewPresenters
     {
         #region Private member variables
 
+        private readonly EventAggregator _eventAggregator;
         private readonly IMainView _view;
         private readonly IServiceProvider _serviceProvider;
         private readonly IRepositoryManager _repositoryManager;
@@ -27,51 +36,59 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private List<RecentOpenFilesDto> RecentOpenFilesDtos { get; set; }
         private IAccountServices _accountServices;
+        private ITransactionServices _transactionServices;
 
         #endregion
 
         #region Constructor / Destructor
 
         public MainPresenter(
+            EventAggregator eventAggregator,
             IMainView view,
             IServiceProvider serviceProvider,
             SettingServices<SystemRecentOpenFilesSettings> settingServices,
             IRepositoryManager repositoryManager)
             : base(view)
         {
+            _eventAggregator = eventAggregator;
             _view = view;
             _serviceProvider = serviceProvider;
             _repositoryManager = repositoryManager;
             _recentOpenFilesSettings = settingServices;
-            
+
             _view.OnLoadView += OnLoadView;
             _view.OpenDataFile += OnOpenDataFile;
-            _view.AddTransaction += OnAddTransaction;
-            _view.AddAccount += OnAddAccount;
+            _view.AddingTransaction += OnAddingTransaction;
+            _view.AddingAccount += OnAddingAccount;
+
+            _eventAggregator.Subscribe<OnChangingAccountsApplicationEvent>(OnChangingAccount);
+            _eventAggregator.Subscribe<OnDeletingAccountsApplicationEvent>(OnDeletingAccount);
+            _eventAggregator.Subscribe<OnAddedTransactionApplicationEvent>(AddedTransaction);
+            _eventAggregator.Subscribe<OnDeleteTransactionApplicationEvent>(DeleteTransaction);
         }
 
         ~MainPresenter()
         {
             _view.OnLoadView -= OnLoadView;
             _view.OpenDataFile -= OnOpenDataFile;
-            _view.AddTransaction -= OnAddTransaction;
-            _view.AddAccount -= OnAddAccount;
+            _view.AddingTransaction -= OnAddingTransaction;
+            _view.AddingAccount -= OnAddingAccount;
         }
 
         #endregion
 
-        private void OnAddAccount()
+        private void OnAddingAccount()
         {
             var accountPresenter = _serviceProvider.GetRequiredService<AccountPresenter>();
             accountPresenter.SetTitle("Добавить счёт");
             accountPresenter.Run(null);
         }
 
-        private void OnAddTransaction()
+        private void OnAddingTransaction()
         {
-            var singleTransactionPresenter = _serviceProvider.GetRequiredService<SingleTransactionPresenter>();
-            singleTransactionPresenter.SetTitle("Добавить операцию");
-            singleTransactionPresenter.Run(null);
+            var transactionPresenter = _serviceProvider.GetRequiredService<TransactionPresenter>();
+            transactionPresenter.SetTitle("Добавить операцию");
+            transactionPresenter.Run(null);
         }
 
         private void OnOpenDataFile(string filePath)
@@ -131,6 +148,9 @@ namespace FM.SHD.Presenters.ViewPresenters
             _repositoryManager.CreateConnection();
         }
 
+        private List<IAccountSummaryUCPresenter> _accountSummaryPresenters;
+        private IAllTransactionUCPresenter _allTransactionUcPresenter;
+
         private void OnLoadView()
         {
             var isLoad = LoadListRecentOpenFiles();
@@ -140,16 +160,18 @@ namespace FM.SHD.Presenters.ViewPresenters
                 _view.SetViewOnActiveUI();
 
                 CreateConnection(_recentOpenFilesSettings.GetSetting().RecentOpen.Last().FilePath);
+
                 _accountServices = new AccountServices(new AccountRepository(_repositoryManager), new ModelValidator());
-                List<IAccountSummaryUCPresenter> data = new List<IAccountSummaryUCPresenter>();
-                foreach (var accountDto in _accountServices.GetAll()
-                             .Select((value, index) => new { Index = index, Value = value }))
-                {
-                    var s = _serviceProvider.GetRequiredService<IAccountSummaryUCPresenter>();
-                    s.GetUserControlView().SetData(accountDto.Value);
-                    data.Add(s);
-                    _view.AddAccountsSummaryUserControl(s.GetUserControlView());
-                }
+                _transactionServices =
+                    new TransactionServices(new TransactionRepository(_repositoryManager),
+                        new ModelValidator());
+
+                SetAccounts();
+
+                _allTransactionUcPresenter = _serviceProvider.GetRequiredService<IAllTransactionUCPresenter>();
+                _view.AddUserControl(_allTransactionUcPresenter.GetUserControlView());
+
+                SetTransactions();
             }
             else
             {
@@ -164,14 +186,39 @@ namespace FM.SHD.Presenters.ViewPresenters
              *  1.2 Если файл не зашифрован -  _mainView.SetVisibleUserLoginInfo(false);
              * 2. Нужно загрузить все данные из файла - добавить методы на загрузку того, что лежит на главной форме - операции, кошельки, информация о пользователе 
              */
-            // _mainView.SetAccountsData(_accountServices.GetAll());
+        }
+
+        private void OnDeletingAccount(OnDeletingAccountsApplicationEvent obj)
+        {
+            ReloadAccounts();
+            ReloadTransactions();
+        }
+
+        private void ReloadAccounts()
+        {
+            _view.ClearAccountsSummaryUserControls();
+            _accountSummaryPresenters.Clear();
+            SetAccounts();
+        }
+
+        private void SetAccounts()
+        {
+            _accountSummaryPresenters = new List<IAccountSummaryUCPresenter>();
+            foreach (var accountDto in _accountServices.GetAll()
+                         .Select((value, index) => new { Index = index, Value = value }))
+            {
+                var s = _serviceProvider.GetRequiredService<IAccountSummaryUCPresenter>();
+                _accountSummaryPresenters.Add(s);
+                s.GetUserControlView().SetData(accountDto.Value);
+                _view.AddAccountsSummaryUserControl(s.GetUserControlView());
+            }
         }
 
         #region Public Methods
 
         public override void SetTitle(string title)
         {
-            throw new NotImplementedException();
+            _view.SetTitle(title);
         }
 
         public void Run()
@@ -182,6 +229,37 @@ namespace FM.SHD.Presenters.ViewPresenters
         #endregion
 
         #region Private methods
+
+        private void DeleteTransaction(OnDeleteTransactionApplicationEvent args)
+        {
+            ReloadTransactions();
+        }
+
+        private void AddedTransaction(OnAddedTransactionApplicationEvent args)
+        {
+            ReloadTransactions();
+        }
+
+        private void ReloadTransactions()
+        {
+            _allTransactionUcPresenter.GetUserControlView().ClearData();
+            SetTransactions();
+        }
+
+        private void SetTransactions()
+        {
+            _allTransactionUcPresenter.GetUserControlView().SetData(ReloadTransactionsFromDb());
+        }
+
+        private List<TransactionExtendedDto> ReloadTransactionsFromDb()
+        {
+            return _transactionServices.GetExtendedTransactions();
+        }
+
+        private void OnChangingAccount(OnChangingAccountsApplicationEvent args)
+        {
+            ReloadTransactions();
+        }
 
         private bool LoadListRecentOpenFiles()
         {

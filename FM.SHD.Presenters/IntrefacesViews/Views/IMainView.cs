@@ -9,8 +9,8 @@ namespace FM.SHD.Presenters.IntrefacesViews.Views
 {
     public interface IMainView : IView
     {
-        event Action AddTransaction;
-        event Action AddAccount;
+        event Action AddingTransaction;
+        event Action AddingAccount;
         event Action<string> OpenDataFile;
 
         void AddAccountsSummaryUserControl(IUserControlView userControlView);
@@ -20,5 +20,6 @@ namespace FM.SHD.Presenters.IntrefacesViews.Views
         void SetViewOnUnActiveUI();
         void SetVisibleUserLoginInfo(bool isVisible);
 
+        void ClearAccountsSummaryUserControls();
     }
 }

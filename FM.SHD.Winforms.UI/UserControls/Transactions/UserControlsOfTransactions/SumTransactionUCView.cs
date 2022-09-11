@@ -35,5 +35,10 @@ namespace FM.SHD.Winforms.UI.UserControls.Transactions.UserControlsOfTransaction
         {
             return Sum;
         }
+
+        public void SetSum(decimal sum)
+        {
+            Sum = sum;
+        }
     }
 }

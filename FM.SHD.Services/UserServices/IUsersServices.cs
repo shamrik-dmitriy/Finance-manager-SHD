@@ -6,11 +6,11 @@ namespace FM.SHD.Services.UserServices
 {
     public interface IUsersServices
     {
-        void ValidateModel(UserModel singleTransactionModel);
-        long Add(UserDto singleTransactionDto);
-        void Update(UserDto singleTransactionDto);
-        void Delete(UserDto singleTransactionDto);
-        void DeleteById(int singleTransactionId);
+        void ValidateModel(UserModel userModel);
+        long Add(UserDto userDto);
+        void Update(UserDto userDto);
+        void Delete(UserDto userDto);
+        void DeleteById(int userId);
         IEnumerable<UserDto> GetAll();
         UserDto GetById(int id);
     }

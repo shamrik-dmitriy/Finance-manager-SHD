@@ -7,5 +7,6 @@ namespace FM.SHD.Presenters.Interfaces.UserControls.Transactions
     {
         IDateTransactionUCView GetUserControlView();
         DateTime GetDate();
+        void SetDate(DateTime date);
     }
 }

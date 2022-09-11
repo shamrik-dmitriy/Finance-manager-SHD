@@ -14,9 +14,9 @@ namespace FM.SHD.Services.AccountServices
         private IModelValidator _modelValidator;
         private readonly IMapper _mapper;
 
-        public AccountServices(IAccountRepository singleTransactionRepository, IModelValidator modelValidator)
+        public AccountServices(IAccountRepository accountRepository, IModelValidator modelValidator)
         {
-            _accountRepository = singleTransactionRepository;
+            _accountRepository = accountRepository;
             _modelValidator = modelValidator;
             _mapper = new MapperConfiguration(config =>
             {

@@ -5,18 +5,20 @@ using FM.SHD.Infastructure.Impl.Repositories.Specific.Categories;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Contragents;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Currency;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Identities;
-using FM.SHD.Infastructure.Impl.Repositories.Specific.SingleTransaction;
+using FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.TypeTransaction;
 using FM.SHD.Infrastructure.Dal.Factory;
 using FM.SHD.Presenters.Interfaces.UserControls.Common;
+using FM.SHD.Presenters.Interfaces.UserControls.Main;
 using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
 using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
-using FM.SHD.Presenters.IntrefacesViews;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
+using FM.SHD.Presenters.IntrefacesViews.UserControl.Main;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Wallet;
 using FM.SHD.Presenters.IntrefacesViews.Views;
 using FM.SHD.Presenters.UserControlPresenters.Common;
+using FM.SHD.Presenters.UserControlPresenters.Main;
 using FM.SHD.Presenters.UserControlPresenters.Transactions;
 using FM.SHD.Presenters.UserControlPresenters.Wallet;
 using FM.SHD.Presenters.ViewPresenters;
@@ -28,9 +30,10 @@ using FM.SHD.Services.ContragentServices;
 using FM.SHD.Services.CurrencyServices;
 using FM.SHD.Services.IdentityServices;
 using FM.SHD.Services.Repositories;
-using FM.SHD.Services.SingleTransactionServices;
+using FM.SHD.Services.TransactionServices;
 using FM.SHD.Winforms.UI.UserControls.Common;
-using FM.SHD.Winforms.UI.UserControls.Transactions.SingleTransactionUserControls;
+using FM.SHD.Winforms.UI.UserControls.Main;
+using FM.SHD.Winforms.UI.UserControls.Transactions.TransactionUserControls;
 using FM.SHD.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions;
 using FM.SHD.Winforms.UI.UserControls.Wallet;
 using FM.SHD.Winforms.UI.Views.Account;
@@ -49,8 +52,8 @@ namespace FM.SHD.Winforms.UI.DependencyInjection
             return serviceCollection
                 .AddScoped<IMainView, MainView>()
                 .AddScoped<MainPresenter>()
-                .AddTransient<ISingleTransactionView, SingleTransactionView>()
-                .AddTransient<SingleTransactionPresenter>()
+                .AddTransient<ITransactionView, TransactionView>()
+                .AddTransient<TransactionPresenter>()
                 .AddTransient<IAccountView, AccountView>()
                 .AddTransient<AccountPresenter>();
         }
@@ -79,8 +82,8 @@ namespace FM.SHD.Winforms.UI.DependencyInjection
                 .AddTransient<IContrAgentUCPresenter, ContrAgentUCPresenter>()
                 .AddTransient<IIdentityUCView, IdentityUCView>()
                 .AddTransient<IIdentityUCPresenter, IdentityUCPresenter>()
-                .AddTransient<IAddCancelButtonsUCView, AddCancelButtonsUCView>()
-                .AddTransient<IContinueCancelButtonsUCPresenter, ContinueCancelButtonsUcPresenter>()
+                .AddTransient<IDataControlButtonsUCView, DataControlButtonsUCView>()
+                .AddTransient<IContinueCancelButtonsUCPresenter, DataControlButtonsUcPresenter>()
                 .AddTransient<IAccountInfoUCView, AccountInfoUCView>()
                 .AddTransient<IAccountInfoUCPresenter, AccountInfoUCPresenter>()
                 .AddTransient<ISumTransactionUCView, SumTransactionUCView>()
@@ -93,8 +96,11 @@ namespace FM.SHD.Winforms.UI.DependencyInjection
                 .AddTransient<ICheckboxUCPresenter, CheckboxUCPresenter>()
                 .AddTransient<IAccountView, AccountView>()
                 .AddTransient<BaseAccountPresenter, AccountPresenter>()
+                .AddTransient<BaseTransactionPresenter, TransactionPresenter>()
                 .AddTransient<IAccountSummaryUCView, AccountSummaryUCView>()
-                .AddTransient<IAccountSummaryUCPresenter, AccountSummaryUCPresenter>();
+                .AddTransient<IAccountSummaryUCPresenter, AccountSummaryUCPresenter>()
+                .AddTransient<IAllTransactionUCView, AllTransactionUCView>()
+                .AddTransient<IAllTransactionUCPresenter, AllTransactionUCPresenter>();
         }
 
         public static IServiceCollection AddRepositories(this IServiceCollection
@@ -103,7 +109,7 @@ namespace FM.SHD.Winforms.UI.DependencyInjection
             return serviceCollection
                 .AddScoped<ISqliteConnectionFactory, SqliteConnectionFactory>()
                 .AddScoped<IRepositoryManager, RepositoryManager>()
-                .AddTransient<ISingleTransactionRepository, SingleTransactionRepository>()
+                .AddTransient<ITransactionRepository, TransactionRepository>()
                 .AddTransient<IAccountRepository, AccountRepository>()
                 .AddTransient<ITypeTransactionRepository, TypeTransactionRepository>()
                 .AddTransient<IAccountCategoryRepository, AccountCategoryRepository>()
@@ -116,7 +122,7 @@ namespace FM.SHD.Winforms.UI.DependencyInjection
         public static IServiceCollection AddServices(this IServiceCollection serviceCollection)
         {
             return serviceCollection
-                .AddTransient<ISingleTransactionServices, SingleTransactionServices>()
+                .AddTransient<ITransactionServices, TransactionServices>()
                 .AddTransient<IAccountServices, AccountServices>()
                 .AddTransient<ITypeTransactionServices, TypeTransactionServices>()
                 .AddTransient<IAccountCategoryServices, AccountCategoryServices>()
