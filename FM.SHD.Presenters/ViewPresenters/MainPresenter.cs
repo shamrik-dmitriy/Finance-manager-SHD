@@ -63,6 +63,7 @@ namespace FM.SHD.Presenters.ViewPresenters
 
             _eventAggregator.Subscribe<OnChangingAccountsApplicationEvent>(OnChangingAccounts);
             _eventAggregator.Subscribe<OnAddedTransactionApplicationEvent>(AddedTransaction);
+            _eventAggregator.Subscribe<OnDeleteTransactionApplicationEvent>(DeleteTransaction);
         }
 
         ~MainPresenter()
@@ -209,6 +210,11 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         #region Private methods
 
+        private void DeleteTransaction(OnDeleteTransactionApplicationEvent args)
+        {
+            ReloadTransactions();
+        }
+        
         private void AddedTransaction(OnAddedTransactionApplicationEvent args)
         {
             ReloadTransactions();

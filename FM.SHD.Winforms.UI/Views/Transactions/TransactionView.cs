@@ -102,6 +102,12 @@ namespace FM.SHD.Winforms.UI.Views.Transactions
             singleTransactionDesktopflowLayoutPanel.Controls.Clear();
         }
 
+        public bool ShowMessageDelete(string title, string message)
+        {
+            return MessageBox.Show(message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
+                   DialogResult.Yes;
+        }
+
         private void OnFormClosing(object sender, FormClosingEventArgs e)
         {
             _eventAggregator.Unsubscribe<OnChangeNameTransactionTextApplicationEvent>(

@@ -14,5 +14,6 @@ namespace FM.SHD.Presenters.IntrefacesViews.Views
         void AddUserControl(IUserControlView userControlView);
         void SetTitle(string title);
         void Clear();
+        bool ShowMessageDelete(string title, string message);
     }
 }

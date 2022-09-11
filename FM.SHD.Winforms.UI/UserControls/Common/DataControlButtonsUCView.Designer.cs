@@ -1,6 +1,6 @@
 ﻿namespace FM.SHD.Winforms.UI.UserControls.Common
 {
-    partial class AddCancelButtonsUCView
+    partial class DataControlButtonsUCView
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -31,6 +31,7 @@
             this.buttonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.continueButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.buttonsTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,6 +43,7 @@
             this.buttonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.buttonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.buttonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.buttonsTableLayoutPanel.Controls.Add(this.deleteButton, 0, 0);
             this.buttonsTableLayoutPanel.Controls.Add(this.continueButton, 0, 0);
             this.buttonsTableLayoutPanel.Controls.Add(this.cancelButton, 2, 0);
             this.buttonsTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
@@ -75,15 +77,26 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // deleteButton
+            // 
+            this.deleteButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.deleteButton.AutoSize = true;
+            this.deleteButton.Location = new System.Drawing.Point(121, 3);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(112, 26);
+            this.deleteButton.TabIndex = 2;
+            this.deleteButton.Text = "Удалить";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
             // AddCancelButtonsUCView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.buttonsTableLayoutPanel);
-            this.Name = "AddCancelButtonsUCView";
+            this.Name = "DataControlButtonsUCView";
             this.Size = new System.Drawing.Size(360, 38);
-            this.Load += new System.EventHandler(this.AddCancelUCView_Load);
             this.buttonsTableLayoutPanel.ResumeLayout(false);
             this.buttonsTableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -96,5 +109,6 @@
         private System.Windows.Forms.TableLayoutPanel buttonsTableLayoutPanel;
         private System.Windows.Forms.Button continueButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button deleteButton;
     }
 }

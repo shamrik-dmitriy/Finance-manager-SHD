@@ -28,7 +28,7 @@ namespace FM.SHD.Presenters.ViewPresenters
         private readonly ICategoryUCPresenter<CategoriesServices> _categoriesUcPresenter;
         private readonly ICategoryUCPresenter<ContragentServices> _contrAgentUcPresenter;
         private readonly ICategoryUCPresenter<IdentityServices> _identityUcPresenter;
-        private readonly IContinueCancelButtonsUCPresenter _continueCancelButtonsUcPresenter;
+        private readonly IContinueCancelButtonsUCPresenter _dataControlButtonsUcPresenter;
 
         #endregion
 
@@ -45,7 +45,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             ICategoryUCPresenter<CategoriesServices> categoriesUcPresenter,
             ICategoryUCPresenter<ContragentServices> contrAgentUcPresenter,
             ICategoryUCPresenter<IdentityServices> identityUcPresenter,
-            IContinueCancelButtonsUCPresenter continueCancelButtonsUcPresenter)
+            IContinueCancelButtonsUCPresenter dataControlButtonsUcPresenter)
             : base(view)
         {
             _eventAggregator = eventAggregator;
@@ -59,7 +59,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             _categoriesUcPresenter = categoriesUcPresenter;
             _contrAgentUcPresenter = contrAgentUcPresenter;
             _identityUcPresenter = identityUcPresenter;
-            _continueCancelButtonsUcPresenter = continueCancelButtonsUcPresenter;
+            _dataControlButtonsUcPresenter = dataControlButtonsUcPresenter;
 
             _view.OnLoadView += OnLoadView;
             _typeTransactionUcPresenter.CategoryChanged += TypeTransactionUcPresenterOnCategoryChanged;
@@ -145,6 +145,11 @@ namespace FM.SHD.Presenters.ViewPresenters
                 _identityUcPresenter.SetCategoryValues();
                 _view.AddUserControl(_identityUcPresenter.GetUserControlView());
                 _identityUcPresenter.GetUserControlView().SetCategoryId(TransactionDto.IdentityId);
+
+                _view.AddHorizontalLine();
+                _dataControlButtonsUcPresenter.SetTextButtonContinue("Применить");
+                _dataControlButtonsUcPresenter.SetVisibleButtonDelete(true);
+                _view.AddUserControl(_dataControlButtonsUcPresenter.GetUserControlView());
             }
             else
             {
@@ -172,15 +177,26 @@ namespace FM.SHD.Presenters.ViewPresenters
                 _identityUcPresenter.SetStyleDropDown();
                 _identityUcPresenter.SetCategoryValues();
                 _view.AddUserControl(_identityUcPresenter.GetUserControlView());
+
+                _view.AddHorizontalLine();
+                _dataControlButtonsUcPresenter.SetVisibleButtonDelete(false);
+                _view.AddUserControl(_dataControlButtonsUcPresenter.GetUserControlView());
             }
 
-            _view.AddHorizontalLine();
-            _view.AddUserControl(_continueCancelButtonsUcPresenter.GetUserControlView());
-
-            _continueCancelButtonsUcPresenter.Continue += ContinueCancelButtonsUcPresenterOnContinue;
+            _dataControlButtonsUcPresenter.Continue += DataControlButtonsUcPresenterOnContinue;
+            _dataControlButtonsUcPresenter.Delete += DataControlsButtonsUcPresenterOnDelete;
         }
 
-        private void ContinueCancelButtonsUcPresenterOnContinue()
+        private void DataControlsButtonsUcPresenterOnDelete()
+        {
+            if (_view.ShowMessageDelete("Удаление транзакции", $"Транзакция \"{TransactionDto.Name}\" будет удалена, продолжить?"))
+            {
+                _transactionServices.DeleteById(TransactionDto.Id);
+                _eventAggregator.Publish(new OnDeleteTransactionApplicationEvent());
+            }
+        }
+
+        private void DataControlButtonsUcPresenterOnContinue()
         {
             if (TransactionDto != null)
             {
@@ -214,7 +230,8 @@ namespace FM.SHD.Presenters.ViewPresenters
                 _eventAggregator.Publish(new OnAddedTransactionApplicationEvent());
             }
 
-            _continueCancelButtonsUcPresenter.Continue -= ContinueCancelButtonsUcPresenterOnContinue;
+            _dataControlButtonsUcPresenter.Continue -= DataControlButtonsUcPresenterOnContinue;
+            _dataControlButtonsUcPresenter.Delete -= DataControlsButtonsUcPresenterOnDelete;
 
             _view.Close();
         }

@@ -23,7 +23,7 @@ namespace FM.SHD.Presenters.ViewPresenters
         private readonly ICategoryUCPresenter<AccountCategoryServices> _accountUcPresenter;
         private readonly ICategoryUCPresenter<CurrencyServices> _currencyUcPresenter;
         private readonly ICheckboxUCPresenter _checkboxUcPresenter;
-        private readonly IContinueCancelButtonsUCPresenter _continueCancelButtonsUcPresenter;
+        private readonly IContinueCancelButtonsUCPresenter _dataControlButtonsUcPresenter;
 
         #endregion
 
@@ -39,7 +39,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             ICategoryUCPresenter<AccountCategoryServices> accountUcPresenter,
             ICategoryUCPresenter<CurrencyServices> currencyUcPresenter,
             ICheckboxUCPresenter checkboxUcPresenter,
-            IContinueCancelButtonsUCPresenter continueCancelButtonsUcPresenter
+            IContinueCancelButtonsUCPresenter dataControlButtonsUcPresenter
         )
             : base(view)
         {
@@ -52,7 +52,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             _accountUcPresenter = accountUcPresenter;
             _currencyUcPresenter = currencyUcPresenter;
             _checkboxUcPresenter = checkboxUcPresenter;
-            _continueCancelButtonsUcPresenter = continueCancelButtonsUcPresenter;
+            _dataControlButtonsUcPresenter = dataControlButtonsUcPresenter;
 
             _view.OnLoadView += OnLoadView;
         }
@@ -95,6 +95,8 @@ namespace FM.SHD.Presenters.ViewPresenters
 
                 _checkboxUcPresenter.GetUserControlView().SetCheckboxState(AccountDto.IsClosed);
                 _view.AddUserControl(_checkboxUcPresenter.GetUserControlView());
+                _dataControlButtonsUcPresenter.SetTextButtonContinue("Применить");
+                _view.AddUserControl(_dataControlButtonsUcPresenter.GetUserControlView());
             }
             else
             {
@@ -107,20 +109,28 @@ namespace FM.SHD.Presenters.ViewPresenters
                 _currencyUcPresenter.SetCategoryValues();
                 _view.AddUserControl(_currencyUcPresenter.GetUserControlView());
                 _view.AddUserControl(_checkboxUcPresenter.GetUserControlView());
+                _dataControlButtonsUcPresenter.SetVisibleButtonDelete(false);
+                _view.AddUserControl(_dataControlButtonsUcPresenter.GetUserControlView());
             }
 
-            // _view.AddHorizontalLine();
-            _view.AddUserControl(_continueCancelButtonsUcPresenter.GetUserControlView());
-
-            _continueCancelButtonsUcPresenter.Continue += ContinueCancelButtonsUcPresenterOnContinue;
+            _dataControlButtonsUcPresenter.Continue += DataControlButtonsUcPresenterOnContinue;
+            _dataControlButtonsUcPresenter.Delete += DataControlsButtonsUcPresenterOnDelete;
             _currencyUcPresenter.CategoryChanged += CurrencyUcPresenterOnCategoryChanged;
+        }
+
+        private void DataControlsButtonsUcPresenterOnDelete()
+        {
+            if (_view.ShowMessageDelete("Удаление счёта", $"Счёт \"{AccountDto.Name}\" будет удален, продолжить?"))
+            {
+                _accountServices.DeleteById(AccountDto.Id);
+            }
         }
 
         private void CurrencyUcPresenterOnCategoryChanged(long id)
         {
         }
 
-        private void ContinueCancelButtonsUcPresenterOnContinue()
+        private void DataControlButtonsUcPresenterOnContinue()
         {
             if (AccountDto != null)
             {
@@ -147,7 +157,8 @@ namespace FM.SHD.Presenters.ViewPresenters
                 });
             }
 
-            _continueCancelButtonsUcPresenter.Continue -= ContinueCancelButtonsUcPresenterOnContinue;
+            _dataControlButtonsUcPresenter.Continue -= DataControlButtonsUcPresenterOnContinue;
+            _dataControlButtonsUcPresenter.Delete -= DataControlsButtonsUcPresenterOnDelete;
             _currencyUcPresenter.CategoryChanged -= CurrencyUcPresenterOnCategoryChanged;
 
             _eventAggregator.Publish(new OnChangingAccountsApplicationEvent());
