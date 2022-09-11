@@ -44,6 +44,9 @@
             // 
             // dataGridViewTransaction
             // 
+            this.dataGridViewTransaction.AllowUserToAddRows = false;
+            this.dataGridViewTransaction.AllowUserToDeleteRows = false;
+            this.dataGridViewTransaction.AllowUserToResizeColumns = false;
             this.dataGridViewTransaction.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewTransaction.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnId,
@@ -60,6 +63,7 @@
             this.dataGridViewTransaction.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewTransaction.MinimumSize = new System.Drawing.Size(300, 300);
             this.dataGridViewTransaction.Name = "dataGridViewTransaction";
+            this.dataGridViewTransaction.RowHeadersVisible = false;
             this.dataGridViewTransaction.RowTemplate.Height = 25;
             this.dataGridViewTransaction.Size = new System.Drawing.Size(1040, 798);
             this.dataGridViewTransaction.TabIndex = 0;

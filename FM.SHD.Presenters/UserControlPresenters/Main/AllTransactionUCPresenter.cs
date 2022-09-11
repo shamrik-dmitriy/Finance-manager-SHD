@@ -1,3 +1,6 @@
+using System;
+using FM.SHD.Infrastructure.Events;
+using FM.SHD.Presenters.Events.Transactions;
 using FM.SHD.Presenters.Interfaces.UserControls.Main;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Main;
 using FM.SHD.Presenters.ViewPresenters;
@@ -28,7 +31,14 @@ namespace FM.SHD.Presenters.UserControlPresenters.Main
         {
             _baseTransactionPresenter.SetTitle("Редактирование транзакции");
             _baseTransactionPresenter.Run(_transactionServices.GetById(transactionExtendedDto.Id));
-            _view.SetData(_transactionServices.GetExtendedById(transactionExtendedDto.Id));
+            try
+            {
+                _view.SetData(_transactionServices.GetExtendedById(transactionExtendedDto.Id));
+            }
+            catch (ArgumentException)
+            {
+                // ignored
+            }
         }
 
         public IAllTransactionUCView GetUserControlView()

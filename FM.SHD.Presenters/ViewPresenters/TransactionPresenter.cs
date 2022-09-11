@@ -193,6 +193,10 @@ namespace FM.SHD.Presenters.ViewPresenters
             {
                 _transactionServices.DeleteById(TransactionDto.Id);
                 _eventAggregator.Publish(new OnDeleteTransactionApplicationEvent());
+                
+                _dataControlButtonsUcPresenter.Continue -= DataControlButtonsUcPresenterOnContinue;
+                _dataControlButtonsUcPresenter.Delete -= DataControlsButtonsUcPresenterOnDelete;
+                _view.Close();
             }
         }
 
