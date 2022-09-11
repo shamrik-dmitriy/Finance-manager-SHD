@@ -89,7 +89,6 @@ namespace FM.SHD.Presenters.ViewPresenters
         {
             TransactionDto = accountDto;
             _view.Show();
-            //
         }
 
         #endregion
@@ -189,7 +188,8 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void DataControlsButtonsUcPresenterOnDelete()
         {
-            if (_view.ShowMessageDelete("Удаление транзакции", $"Транзакция \"{TransactionDto.Name}\" будет удалена, продолжить?"))
+            if (_view.ShowMessageDelete("Удаление транзакции",
+                    $"Транзакция \"{TransactionDto.Name}\" будет удалена, продолжить?"))
             {
                 _transactionServices.DeleteById(TransactionDto.Id);
                 _eventAggregator.Publish(new OnDeleteTransactionApplicationEvent());
@@ -203,9 +203,30 @@ namespace FM.SHD.Presenters.ViewPresenters
                 TransactionDto.TypeTransactionId = _typeTransactionUcPresenter.GetCategoryId();
                 TransactionDto.Name = _nameUcPresenter.GetName();
                 TransactionDto.Description = _descriptionUcPresenter.GetDescription();
-                TransactionDto.DebitAccountId = _accountsInfoTransactionUcPresenter.GetDebitAccountId();
+
+                switch (TransactionDto.TypeTransactionId)
+                {
+                    case 1:
+                    {
+                        TransactionDto.DebitAccountId = _accountsInfoTransactionUcPresenter.GetDebitAccountId();
+                        TransactionDto.CreditAccountId = null;
+                        break;
+                    }
+                    case 2:
+                    {
+                        TransactionDto.DebitAccountId = null;
+                        TransactionDto.CreditAccountId = _accountsInfoTransactionUcPresenter.GetCreditAccountId();
+                        break;
+                    }
+                    case 3:
+                    {
+                        TransactionDto.DebitAccountId = _accountsInfoTransactionUcPresenter.GetDebitAccountId();
+                        TransactionDto.CreditAccountId = _accountsInfoTransactionUcPresenter.GetCreditAccountId();
+                        break;
+                    }
+                }
+
                 TransactionDto.Sum = _accountsInfoTransactionUcPresenter.GetSum();
-                TransactionDto.CreditAccountId = _accountsInfoTransactionUcPresenter.GetCreditAccountId();
                 TransactionDto.Date = _accountsInfoTransactionUcPresenter.GetDate();
                 TransactionDto.CategoryId = _categoriesUcPresenter.GetCategoryId();
                 TransactionDto.ContragentId = _contrAgentUcPresenter.GetCategoryId();
@@ -214,19 +235,40 @@ namespace FM.SHD.Presenters.ViewPresenters
             }
             else
             {
-                _transactionServices.Add(new TransactionDto
+                var transactionDto = new TransactionDto();
+                switch (_typeTransactionUcPresenter.GetCategoryId())
                 {
-                    TypeTransactionId = _typeTransactionUcPresenter.GetCategoryId(),
-                    Name = _nameUcPresenter.GetName(),
-                    Description = _descriptionUcPresenter.GetDescription(),
-                    DebitAccountId = _accountsInfoTransactionUcPresenter.GetDebitAccountId(),
-                    Sum = _accountsInfoTransactionUcPresenter.GetSum(),
-                    CreditAccountId = _accountsInfoTransactionUcPresenter.GetCreditAccountId(),
-                    Date = _accountsInfoTransactionUcPresenter.GetDate(),
-                    CategoryId = _categoriesUcPresenter.GetCategoryId(),
-                    ContragentId = _contrAgentUcPresenter.GetCategoryId(),
-                    IdentityId = _identityUcPresenter.GetCategoryId()
-                });
+                    case 1:
+                    {
+                        transactionDto.DebitAccountId = _accountsInfoTransactionUcPresenter.GetDebitAccountId();
+                        transactionDto.CreditAccountId = null;
+                        break;
+                    }
+                    case 2:
+                    {
+                        transactionDto.DebitAccountId = null;
+                        transactionDto.CreditAccountId = _accountsInfoTransactionUcPresenter.GetCreditAccountId();
+                        break;
+                    }
+                    case 3:
+                    {
+                        transactionDto.DebitAccountId = _accountsInfoTransactionUcPresenter.GetDebitAccountId();
+                        transactionDto.CreditAccountId = _accountsInfoTransactionUcPresenter.GetCreditAccountId();
+                        ;
+                        break;
+                    }
+                }
+
+                transactionDto.TypeTransactionId = _typeTransactionUcPresenter.GetCategoryId();
+                transactionDto.Name = _nameUcPresenter.GetName();
+                transactionDto.Description = _descriptionUcPresenter.GetDescription();
+                transactionDto.Sum = _accountsInfoTransactionUcPresenter.GetSum();
+                transactionDto.Date = _accountsInfoTransactionUcPresenter.GetDate();
+                transactionDto.CategoryId = _categoriesUcPresenter.GetCategoryId();
+                transactionDto.ContragentId = _contrAgentUcPresenter.GetCategoryId();
+                transactionDto.IdentityId = _identityUcPresenter.GetCategoryId();
+
+                _transactionServices.Add(transactionDto);
                 _eventAggregator.Publish(new OnAddedTransactionApplicationEvent());
             }
 

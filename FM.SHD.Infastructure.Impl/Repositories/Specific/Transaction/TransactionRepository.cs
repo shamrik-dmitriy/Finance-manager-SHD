@@ -256,12 +256,12 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction
                 "INNER JOIN TransactionType tt ON tt.Id = t.Type_id " +
                 "INNER JOIN Categories c ON c.Id = t.Category_id " +
                 "INNER JOIN Contragents ct ON ct.Id = t.Contragent_id " +
-                "INNER JOIN Account dac ON dac.Id = t.DebitAccount_id " +
-                "INNER JOIN Account cac ON cac.Id = t.CreditAccount_id " +
+                "LEFT JOIN Account dac ON dac.Id = t.DebitAccount_id " +
+                "LEFT JOIN Account cac ON cac.Id = t.CreditAccount_id " +
                 "INNER JOIN Identity id ON id.Id = t.Identity_id";
 
             var transactions = new List<TransactionExtendedModel>();
-
+            
             using (var reader = SqliteDataProvider.CreateReader(sql))
             {
                 while (reader.Read())

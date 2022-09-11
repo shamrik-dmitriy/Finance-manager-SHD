@@ -18,7 +18,6 @@ namespace FM.SHDML.Core.Models.TransactionModels.SignleTransaction
 
         public long? DebitAccountId { get; set; }
 
-        [Required(ErrorMessage = "Укажите счёт для транзакции")]
         public long? CreditAccountId { get; set; }
 
         public decimal Sum { get; set; }

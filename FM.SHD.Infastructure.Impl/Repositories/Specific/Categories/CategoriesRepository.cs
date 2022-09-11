@@ -24,11 +24,11 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Categories
             {
                 while (reader.Read())
                 {
-                    var transactionModel = new CategoriesModel();
-                    transactionModel.Id = long.Parse(reader["Id"].ToString());
-                    transactionModel.Name = reader["Name"].ToString();
-                    transactionModel.Description = reader["Description"].ToString();
-                    typeTransactions.Add(transactionModel);
+                    var categoriesModel = new CategoriesModel();
+                    categoriesModel.Id = long.Parse(reader["Id"].ToString());
+                    categoriesModel.Name = reader["Name"].ToString();
+                    categoriesModel.Description = reader["Description"].ToString();
+                    typeTransactions.Add(categoriesModel);
                 }
             }
 

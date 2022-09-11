@@ -123,6 +123,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             if (_view.ShowMessageDelete("Удаление счёта", $"Счёт \"{AccountDto.Name}\" будет удален, продолжить?"))
             {
                 _accountServices.DeleteById(AccountDto.Id);
+                _eventAggregator.Publish(new OnDeletingAccountsApplicationEvent());
             }
         }
 
