@@ -1,4 +1,3 @@
-using System;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events.Transactions;
 using FM.SHD.Presenters.Interfaces.UserControls.Common;

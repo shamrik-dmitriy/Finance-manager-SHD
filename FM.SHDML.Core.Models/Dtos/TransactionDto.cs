@@ -21,5 +21,31 @@ namespace FM.SHDML.Core.Models.Dtos
         public long? ContragentId { get; set; }
 
         public long? IdentityId { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            var dto = obj as TransactionDto;
+            if (dto == null)
+                return false;
+            if (dto.TypeTransactionId != TypeTransactionId)
+                return false;
+            if (dto.Description != Description)
+                return false;
+            if (dto.DebitAccountId != DebitAccountId)
+                return false;
+            if (dto.CreditAccountId != CreditAccountId)
+                return false;
+            if (dto.Sum != Sum)
+                return false;
+            if (dto.Date != Date)
+                return false;
+            if (dto.CategoryId != CategoryId)
+                return false;
+            if (dto.CategoryId != CategoryId)
+                return false;
+            if (dto.IdentityId != IdentityId)
+                return false;
+            return true;
+        }
     }
 }

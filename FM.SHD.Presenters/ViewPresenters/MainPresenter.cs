@@ -73,6 +73,11 @@ namespace FM.SHD.Presenters.ViewPresenters
             _view.OpenDataFile -= OnOpenDataFile;
             _view.AddingTransaction -= OnAddingTransaction;
             _view.AddingAccount -= OnAddingAccount;
+
+            _eventAggregator.Unsubscribe<OnChangingAccountsApplicationEvent>(OnChangingAccount);
+            _eventAggregator.Unsubscribe<OnDeletingAccountsApplicationEvent>(OnDeletingAccount);
+            _eventAggregator.Unsubscribe<OnAddedTransactionApplicationEvent>(AddedTransaction);
+            _eventAggregator.Unsubscribe<OnDeleteTransactionApplicationEvent>(DeleteTransaction);
         }
 
         #endregion
