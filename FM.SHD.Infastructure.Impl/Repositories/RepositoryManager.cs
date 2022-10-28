@@ -1,4 +1,5 @@
 using FM.SHD.Infastructure.Impl.Providers.Sqlite;
+using FM.SHD.Infrastructure.Dal;
 using FM.SHD.Infrastructure.Dal.Factory;
 using FM.SHD.Infrastructure.Dal.Providers.DataBaseParameters;
 using FM.SHD.Infrastructure.Dal.Providers.Interfaces;
@@ -7,7 +8,6 @@ namespace FM.SHD.Infastructure.Impl.Repositories
 {
     public class RepositoryManager : IRepositoryManager
     {
-        private string _connectionString;
         private readonly ISqliteConnectionFactory _sqliteConnectionFactory;
         
        /* public RepositoryManager(string connectionString, ISqliteConnectionFactory sqliteConnectionFactory)
@@ -21,17 +21,17 @@ namespace FM.SHD.Infastructure.Impl.Repositories
             _sqliteConnectionFactory = sqliteConnectionFactory;
         }
 
-        public void ConfigureConnection(string connectionString)
+        public void ConfigureConnection(ConnectionString connectionString)
         {
-            _connectionString = connectionString;
+            ConnectionString = connectionString;
         }
         
         public SqliteDatabaseParameters Parameters =>
-            _sqliteConnectionFactory.GetSqliteDatabaseParameters(_connectionString);
+            _sqliteConnectionFactory.GetSqliteDatabaseParameters(ConnectionString);
 
         public IConnection CreateConnection()
         {
-            return _sqliteConnectionFactory.CreateConnection(_connectionString);
+            return _sqliteConnectionFactory.CreateConnection(ConnectionString);
         }
 
         public string DataBaseInfo
@@ -43,12 +43,10 @@ namespace FM.SHD.Infastructure.Impl.Repositories
             }
         }
         
-        public string ConnectionString
+        public ConnectionString ConnectionString { get; private set; }
+        public void ConfigureConnection(string connectionString)
         {
-            get
-            {
-                return _connectionString;
-            }
+            throw new System.NotImplementedException();
         }
     }
 }

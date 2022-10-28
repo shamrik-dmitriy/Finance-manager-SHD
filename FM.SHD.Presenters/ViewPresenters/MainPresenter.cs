@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using FM.SHD.Domain;
 using FM.SHD.Infastructure.Impl.Repositories;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Account;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction;
+using FM.SHD.Infrastructure.Dal;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Common;
 using FM.SHD.Presenters.Events;
@@ -37,6 +39,7 @@ namespace FM.SHD.Presenters.ViewPresenters
         private List<RecentOpenFilesDto> RecentOpenFilesDtos { get; set; }
         private IAccountServices _accountServices;
         private ITransactionServices _transactionServices;
+        private TransactionsDomain _transactionsDomain;
 
         #endregion
 
@@ -60,7 +63,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             _view.OpenDataFile += OnOpenDataFile;
             _view.AddingTransaction += OnAddingTransaction;
             _view.AddingAccount += OnAddingAccount;
-
+            
             _eventAggregator.Subscribe<OnChangingAccountsApplicationEvent>(OnChangingAccount);
             _eventAggregator.Subscribe<OnDeletingAccountsApplicationEvent>(OnDeletingAccount);
             _eventAggregator.Subscribe<OnAddedTransactionApplicationEvent>(AddedTransaction);
@@ -149,7 +152,7 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void CreateConnection(string filePath)
         {
-            _repositoryManager.ConfigureConnection($"DataSource={filePath}");
+            _repositoryManager.ConfigureConnection(new ConnectionString(filePath));
             _repositoryManager.CreateConnection();
         }
 
@@ -158,39 +161,49 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void OnLoadView()
         {
-            var isLoad = LoadListRecentOpenFiles();
-
-            if (isLoad)
+            //try
             {
-                _view.SetViewOnActiveUI();
+                var isLoad = LoadListRecentOpenFiles();
 
-                CreateConnection(_recentOpenFilesSettings.GetSetting().RecentOpen.Last().FilePath);
+                if (isLoad)
+                {
+                    _view.SetViewOnActiveUI();
 
-                _accountServices = new AccountServices(new AccountRepository(_repositoryManager), new ModelValidator());
-                _transactionServices =
-                    new TransactionServices(new TransactionRepository(_repositoryManager),
-                        new ModelValidator());
 
-                SetAccounts();
+                    CreateConnection(_recentOpenFilesSettings.GetSetting().RecentOpen.Last().FilePath);
 
-                _allTransactionUcPresenter = _serviceProvider.GetRequiredService<IAllTransactionUCPresenter>();
-                _view.AddUserControl(_allTransactionUcPresenter.GetUserControlView());
+                    _accountServices =
+                        new AccountServices(new AccountRepository(_repositoryManager), new ModelValidator());
+                    _transactionServices =
+                        new TransactionServices(new TransactionRepository(_repositoryManager),
+                            new ModelValidator());
 
-                SetTransactions();
+                    SetAccounts();
+
+                    _allTransactionUcPresenter = _serviceProvider.GetRequiredService<IAllTransactionUCPresenter>();
+                    _view.AddUserControl(_allTransactionUcPresenter.GetUserControlView());
+
+                    SetTransactions();
+                }
+                else
+                {
+                    _view.SetViewOnUnActiveUI();
+                }
+
+                _transactionsDomain = new TransactionsDomain(_eventAggregator, _transactionServices, _accountServices);
+                _view.SetVisibleUserLoginInfo(false);
+
+                /*
+                 * 1. Следует проверить, зашифрован ли открываемый файл.
+                 *  1.1 Если файл зашифрован - вызываем форму логина. После успешного логина  _mainView.SetVisibleUserLoginInfo(true);
+                 *  1.2 Если файл не зашифрован -  _mainView.SetVisibleUserLoginInfo(false);
+                 * 2. Нужно загрузить все данные из файла - добавить методы на загрузку того, что лежит на главной форме - операции, кошельки, информация о пользователе 
+                 */
             }
-            else
+            //catch (ArgumentException)
             {
-                _view.SetViewOnUnActiveUI();
+                var s = 0;
             }
-
-            _view.SetVisibleUserLoginInfo(false);
-
-            /*
-             * 1. Следует проверить, зашифрован ли открываемый файл.
-             *  1.1 Если файл зашифрован - вызываем форму логина. После успешного логина  _mainView.SetVisibleUserLoginInfo(true);
-             *  1.2 Если файл не зашифрован -  _mainView.SetVisibleUserLoginInfo(false);
-             * 2. Нужно загрузить все данные из файла - добавить методы на загрузку того, что лежит на главной форме - операции, кошельки, информация о пользователе 
-             */
         }
 
         private void OnDeletingAccount(OnDeletingAccountsApplicationEvent obj)
@@ -237,6 +250,7 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void DeleteTransaction(OnDeleteTransactionApplicationEvent args)
         {
+            _transactionsDomain.OnDeleteTransaction(args.TransactionDto);
             ReloadTransactions();
         }
 

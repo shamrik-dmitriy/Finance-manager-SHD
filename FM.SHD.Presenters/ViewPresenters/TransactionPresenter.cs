@@ -190,8 +190,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             if (_view.ShowMessageDelete("Удаление транзакции",
                     $"Транзакция \"{TransactionDto.Name}\" будет удалена, продолжить?"))
             {
-                _transactionServices.DeleteById(TransactionDto.Id);
-                _eventAggregator.Publish(new OnDeleteTransactionApplicationEvent());
+                _eventAggregator.Publish(new OnDeleteTransactionApplicationEvent(TransactionDto));
                 
                 _dataControlButtonsUcPresenter.Continue -= DataControlButtonsUcPresenterOnContinue;
                 _dataControlButtonsUcPresenter.Delete -= DataControlsButtonsUcPresenterOnDelete;

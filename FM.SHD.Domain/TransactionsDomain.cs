@@ -9,13 +9,13 @@ namespace FM.SHD.Domain
     public class TransactionsDomain
     {
         private readonly EventAggregator _eventAggregator;
-        private readonly TransactionServices _transactionServices;
-        private readonly AccountServices _accountServices;
+        private readonly ITransactionServices _transactionServices;
+        private readonly IAccountServices _accountServices;
 
         public TransactionsDomain(
             EventAggregator eventAggregator,
-            TransactionServices transactionServices,
-            AccountServices accountServices
+            ITransactionServices transactionServices,
+            IAccountServices accountServices
         )
         {
             _eventAggregator = eventAggregator;
@@ -95,6 +95,7 @@ namespace FM.SHD.Domain
                     break;
                 }
             }
+            _transactionServices.DeleteById(dto.Id);
         }
     }
 }
