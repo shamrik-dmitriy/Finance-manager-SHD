@@ -19,7 +19,6 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         #region Private member variables
 
-        private ITransactionServices _transactionServices;
         private readonly ICategoryUCPresenter<TypeTransactionServices> _typeTransactionUcPresenter;
         private readonly INameUCPresenter _nameUcPresenter;
         private readonly IDescriptionUCPresenter _descriptionUcPresenter;
@@ -36,7 +35,6 @@ namespace FM.SHD.Presenters.ViewPresenters
         public TransactionPresenter(
             EventAggregator eventAggregator,
             ITransactionView view,
-            ITransactionServices transactionServices,
             ICategoryUCPresenter<TypeTransactionServices> typeTransactionUcPresenter,
             INameUCPresenter nameUcPresenter,
             IDescriptionUCPresenter descriptionUcPresenter,
@@ -49,7 +47,6 @@ namespace FM.SHD.Presenters.ViewPresenters
         {
             _eventAggregator = eventAggregator;
             _view = view;
-            _transactionServices = transactionServices;
 
             _typeTransactionUcPresenter = typeTransactionUcPresenter;
             _nameUcPresenter = nameUcPresenter;
@@ -233,7 +230,8 @@ namespace FM.SHD.Presenters.ViewPresenters
                 TransactionDto.CategoryId = _categoriesUcPresenter.GetCategoryId();
                 TransactionDto.ContragentId = _contrAgentUcPresenter.GetCategoryId();
                 TransactionDto.IdentityId = _identityUcPresenter.GetCategoryId();
-                _transactionServices.Update(TransactionDto);
+                _eventAggregator.Publish(new OnUpdateTransactionApplicationEvent(TransactionDto));
+
             }
             else
             {
@@ -270,8 +268,7 @@ namespace FM.SHD.Presenters.ViewPresenters
                 transactionDto.ContragentId = _contrAgentUcPresenter.GetCategoryId();
                 transactionDto.IdentityId = _identityUcPresenter.GetCategoryId();
 
-                _transactionServices.Add(transactionDto);
-                _eventAggregator.Publish(new OnAddedTransactionApplicationEvent());
+                _eventAggregator.Publish(new OnAddedTransactionApplicationEvent(transactionDto));
             }
 
             _dataControlButtonsUcPresenter.Continue -= DataControlButtonsUcPresenterOnContinue;

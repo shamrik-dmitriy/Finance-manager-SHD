@@ -256,7 +256,9 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void AddedTransaction(OnAddedTransactionApplicationEvent args)
         {
+            _transactionsDomain.OnAddedTransaction(args.TransactionDto);
             ReloadTransactions();
+            ReloadAccounts();
         }
 
         private void ReloadTransactions()

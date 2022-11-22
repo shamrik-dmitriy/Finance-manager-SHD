@@ -1,5 +1,4 @@
-﻿using System;
-using FM.SHD.Infrastructure.Events;
+﻿using FM.SHD.Infrastructure.Events;
 using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.TransactionServices;
 using FM.SHDML.Core.Models.Dtos;
@@ -54,6 +53,8 @@ namespace FM.SHD.Domain
                     break;
                 }
             }
+
+            _transactionServices.Add(dto);
         }
 
         public void OnUpdateTransaction(TransactionDto dto)
@@ -95,6 +96,7 @@ namespace FM.SHD.Domain
                     break;
                 }
             }
+
             _transactionServices.DeleteById(dto.Id);
         }
     }
