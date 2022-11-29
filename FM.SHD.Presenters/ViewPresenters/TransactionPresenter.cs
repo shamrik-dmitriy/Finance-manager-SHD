@@ -199,6 +199,7 @@ namespace FM.SHD.Presenters.ViewPresenters
         {
             if (TransactionDto != null)
             {
+                
                 TransactionDto.TypeTransactionId = _typeTransactionUcPresenter.GetCategoryId();
                 TransactionDto.Name = _nameUcPresenter.GetName();
                 TransactionDto.Description = _descriptionUcPresenter.GetDescription();
@@ -230,6 +231,7 @@ namespace FM.SHD.Presenters.ViewPresenters
                 TransactionDto.CategoryId = _categoriesUcPresenter.GetCategoryId();
                 TransactionDto.ContragentId = _contrAgentUcPresenter.GetCategoryId();
                 TransactionDto.IdentityId = _identityUcPresenter.GetCategoryId();
+                
                 _eventAggregator.Publish(new OnUpdateTransactionApplicationEvent(TransactionDto));
 
             }
@@ -254,7 +256,6 @@ namespace FM.SHD.Presenters.ViewPresenters
                     {
                         transactionDto.DebitAccountId = _accountsInfoTransactionUcPresenter.GetDebitAccountId();
                         transactionDto.CreditAccountId = _accountsInfoTransactionUcPresenter.GetCreditAccountId();
-                        ;
                         break;
                     }
                 }

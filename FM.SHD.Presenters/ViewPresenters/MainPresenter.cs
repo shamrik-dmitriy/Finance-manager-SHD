@@ -9,7 +9,6 @@ using FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction;
 using FM.SHD.Infrastructure.Dal;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Common;
-using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.Events.Accounts;
 using FM.SHD.Presenters.Events.Transactions;
 using FM.SHD.Presenters.Interfaces.UserControls.Main;
@@ -63,11 +62,12 @@ namespace FM.SHD.Presenters.ViewPresenters
             _view.OpenDataFile += OnOpenDataFile;
             _view.AddingTransaction += OnAddingTransaction;
             _view.AddingAccount += OnAddingAccount;
-            
+
             _eventAggregator.Subscribe<OnChangingAccountsApplicationEvent>(OnChangingAccount);
             _eventAggregator.Subscribe<OnDeletingAccountsApplicationEvent>(OnDeletingAccount);
-            _eventAggregator.Subscribe<OnAddedTransactionApplicationEvent>(AddedTransaction);
-            _eventAggregator.Subscribe<OnDeleteTransactionApplicationEvent>(DeleteTransaction);
+            _eventAggregator.Subscribe<OnAddedTransactionApplicationEvent>(OnAddedTransaction);
+            _eventAggregator.Subscribe<OnDeleteTransactionApplicationEvent>(OnDeleteTransaction);
+            _eventAggregator.Subscribe<OnUpdateTransactionApplicationEvent>(OnUpdateTransaction);
         }
 
         ~MainPresenter()
@@ -79,8 +79,9 @@ namespace FM.SHD.Presenters.ViewPresenters
 
             _eventAggregator.Unsubscribe<OnChangingAccountsApplicationEvent>(OnChangingAccount);
             _eventAggregator.Unsubscribe<OnDeletingAccountsApplicationEvent>(OnDeletingAccount);
-            _eventAggregator.Unsubscribe<OnAddedTransactionApplicationEvent>(AddedTransaction);
-            _eventAggregator.Unsubscribe<OnDeleteTransactionApplicationEvent>(DeleteTransaction);
+            _eventAggregator.Unsubscribe<OnAddedTransactionApplicationEvent>(OnAddedTransaction);
+            _eventAggregator.Unsubscribe<OnDeleteTransactionApplicationEvent>(OnDeleteTransaction);
+            _eventAggregator.Unsubscribe<OnUpdateTransactionApplicationEvent>(OnUpdateTransaction);
         }
 
         #endregion
@@ -248,13 +249,21 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         #region Private methods
 
-        private void DeleteTransaction(OnDeleteTransactionApplicationEvent args)
+        private void OnUpdateTransaction(OnUpdateTransactionApplicationEvent args)
+        {
+            _transactionsDomain.OnUpdateTransaction(args.TransactionDto);
+            ReloadTransactions();
+            ReloadAccounts();
+        }
+
+        private void OnDeleteTransaction(OnDeleteTransactionApplicationEvent args)
         {
             _transactionsDomain.OnDeleteTransaction(args.TransactionDto);
             ReloadTransactions();
+            ReloadAccounts();
         }
 
-        private void AddedTransaction(OnAddedTransactionApplicationEvent args)
+        private void OnAddedTransaction(OnAddedTransactionApplicationEvent args)
         {
             _transactionsDomain.OnAddedTransaction(args.TransactionDto);
             ReloadTransactions();
