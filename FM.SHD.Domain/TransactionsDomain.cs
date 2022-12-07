@@ -57,102 +57,162 @@ namespace FM.SHD.Domain
             _transactionServices.Add(dto);
         }
 
-        public void OnUpdateTransaction(TransactionDto dto)
+        public void OnUpdateTransaction(TransactionDto newTransactionDto)
         {
-            var oldTransactionDto = _transactionServices.GetById(dto.Id);
-            if (dto.Equals(oldTransactionDto)) return;
+            TransactionDto resultTransactionDto = new TransactionDto();
+
+            // Расход - дебит счёт, доход - кредит счёт.
+            var oldTransactionDto = _transactionServices.GetById(newTransactionDto.Id);
+            if (newTransactionDto.Equals(oldTransactionDto)) return;
 
             var oldTypeTransaction = (TransactionType)oldTransactionDto.TypeTransactionId;
-            var newTypeTransaction = (TransactionType)dto.TypeTransactionId;
-/* TODO: Додедлать
- *  - узнаём поменялись ли счета
- *      - если счета не поменялись
- *          - меняем тип операции у счёта на поле [CurrentSum] с - на +
- *          - обновляем счёт;
- *      - если счета поменялись
- *          1. Смена типа транзакции с "Расход" на "Доход"
- *              - узнаем с какого счёта будет списана сумма дохода (расход)
- *              - узнаем на какой счёт будет начислена сумма дохода (доход)
- *              - на счёте, который был раньше "Расходом" возвращаем поле [CurrentSum]
- *              в предыдущее значение (Делаем + по полю на текущую сумму), и на счёте
- *              который стал "Доходом" делаем также + по полю (т.е. старый счёт вернули как было, а новый обновили)
- *              - меняем счета в моделе данных;
- *          2. Смена типа транзакции с "Доход" на "Расход"
- *              - узнаем с какого счёта будет списана сумма дохода
- *              - узнаем на какой счёт будет начислена сумма дохода (расход)
- *              - на счёте, который был раньше "Доходом" возвращаем поле [CurrentSum]
- *              в предыдущее значение (Делаем - по полю на текущую сумму), и на счёте
- *              который стал "Расходом" делаем также- по полю (т.е. старый счёт вернули как было, а новый обновили)
- *              - меняем счета в моделе данных;
- *          3. Смена типа транзакции с "Доход" на "Перевод"
- *              - узнаем счёт на который была начислена сумма дохода (доход)
- *              - узнаем счёт на который будет начислена сумма перевода со счёта дохода
- *              - у счёта (доход) снимаем (минусуем) сумму дохода по полю [CurrnetSum]
- *                и добавляем её к счёту на который переводим
- *              - обновляем информацию о счетах
- *          4. Смена типа транзакции с "Расход" на "Перевод"
- *              - узнаем счёт с которого была списана сумма расхода (расход)
- *              - узнаем счёт на который будет начислена сумма перевода со счёта расхода
- *              - у счёта (расход) снимаем (минусуем) сумму дохода по полю [CurrnetSum]
- *                и добавляем её к счёту на который переводим
- *              - обновляем информацию о счетах
- */
+            var newTypeTransaction = (TransactionType)newTransactionDto.TypeTransactionId;
+
+            if (oldTypeTransaction != newTypeTransaction)
+            {
+            }
+            // Тип транзакции не поменялся
+            else
+            {
+                // Узнаем какой тип транзакции был
+                switch (oldTypeTransaction)
+                {
+                    // Расход
+                    case TransactionType.Expense:
+                    {
+                        // Изменился ли счёт
+                        if (oldTransactionDto.DebitAccountId != newTransactionDto.DebitAccountId)
+                        {
+                        }
+                        // Счёт не изменился
+                        else
+                        {
+                            // Изменилась ли сумма транзакции
+                            if (oldTransactionDto.Sum != newTransactionDto.Sum)
+                            {
+                                var deltaSum = newTransactionDto.Sum - oldTransactionDto.Sum;
+                                switch (deltaSum)
+                                {
+                                    case > 0:
+                                    {
+                                        resultTransactionDto.Sum = oldTransactionDto.Sum += deltaSum;
+                                        break;
+                                    }
+                                    case < 0:
+                                        resultTransactionDto.Sum = oldTransactionDto.Sum -= deltaSum;
+                                        break;
+                                }
+                            }
+                            // Сумма транзакции не изменилась
+                            else
+                            {
+                            }
+                        }
+
+                        break;
+                    }
+                    // Доход
+                    case TransactionType.Income:
+                    {
+                        if (oldTransactionDto.CreditAccountId != newTransactionDto.CreditAccountId)
+                        {
+                        }
+
+                        break;
+                    }
+                    // Перевод
+                    case TransactionType.Transfer:
+                    {
+                        if (oldTransactionDto.DebitAccountId != newTransactionDto.DebitAccountId)
+                        {
+                        }
+
+                        if (oldTransactionDto.CreditAccountId != newTransactionDto.CreditAccountId)
+                        {
+                        }
+
+                        break;
+                    }
+                }
+            }
+
+            // Поля, от которых независит какое-либо изменение внутри транзакций и счетов
+            resultTransactionDto.Name = oldTransactionDto.Name != newTransactionDto.Name
+                ? newTransactionDto.Name
+                : oldTransactionDto.Name;
+            resultTransactionDto.Description = oldTransactionDto.Description != newTransactionDto.Description
+                ? newTransactionDto.Description
+                : oldTransactionDto.Description;
+            resultTransactionDto.Date = oldTransactionDto.Date != newTransactionDto.Date
+                ? newTransactionDto.Date
+                : oldTransactionDto.Date;
+            resultTransactionDto.CategoryId = oldTransactionDto.CategoryId != newTransactionDto.CategoryId
+                ? newTransactionDto.CategoryId
+                : oldTransactionDto.CategoryId;
+            resultTransactionDto.ContragentId = oldTransactionDto.ContragentId != newTransactionDto.ContragentId
+                ? newTransactionDto.ContragentId
+                : oldTransactionDto.ContragentId;
+            resultTransactionDto.IdentityId = oldTransactionDto.IdentityId != newTransactionDto.IdentityId
+                ? newTransactionDto.IdentityId
+                : oldTransactionDto.IdentityId;
+            _transactionServices.Update(resultTransactionDto);
+/* TODO: Ниже удалить*/
+
+
             if (oldTypeTransaction != newTypeTransaction)
             {
                 if (oldTypeTransaction == TransactionType.Expense
                     &&
                     newTypeTransaction == TransactionType.Income)
                 {
-                    var expenseAccount = _accountServices.GetById((long)dto.DebitAccountId);
-                    expenseAccount.CurrentSum += dto.Sum;
+                    var expenseAccount = _accountServices.GetById((long)newTransactionDto.DebitAccountId);
+                    expenseAccount.CurrentSum += newTransactionDto.Sum;
                     _accountServices.Update(expenseAccount);
                 }
                 else if (oldTypeTransaction == TransactionType.Income
                          &&
                          newTypeTransaction == TransactionType.Expense)
                 {
-                    
                 }
                 else if (newTypeTransaction == TransactionType.Transfer)
                 {
-                    
                 }
                 //oldTransactionDto.TypeTransactionId = dto.TypeTransactionId;
             }
 
-
-            if (oldTransactionDto.Description != dto.Description)
-                oldTransactionDto.Description = dto.Description;
-            if (oldTransactionDto.DebitAccountId != dto.DebitAccountId)
-                oldTransactionDto.DebitAccountId = dto.DebitAccountId;
-            if (oldTransactionDto.CreditAccountId != dto.CreditAccountId)
-                oldTransactionDto.CreditAccountId = dto.CreditAccountId;
-            if (oldTransactionDto.Sum != dto.Sum)
+            if (oldTransactionDto.Description != newTransactionDto.Description)
+                oldTransactionDto.Description = newTransactionDto.Description;
+            if (oldTransactionDto.DebitAccountId != newTransactionDto.DebitAccountId)
+                oldTransactionDto.DebitAccountId = newTransactionDto.DebitAccountId;
+            if (oldTransactionDto.CreditAccountId != newTransactionDto.CreditAccountId)
+                oldTransactionDto.CreditAccountId = newTransactionDto.CreditAccountId;
+            
+            if (oldTransactionDto.Sum != newTransactionDto.Sum)
             {
-                oldTransactionDto.Sum = dto.Sum;
-                switch ((TransactionType)dto.TypeTransactionId)
+                oldTransactionDto.Sum = newTransactionDto.Sum;
+                switch ((TransactionType)newTransactionDto.TypeTransactionId)
                 {
                     case TransactionType.Expense:
                     {
-                        var expenseAccount = _accountServices.GetById((long)dto.DebitAccountId);
-                        expenseAccount.CurrentSum += dto.Sum;
+                        var expenseAccount = _accountServices.GetById((long)newTransactionDto.DebitAccountId);
+                        expenseAccount.CurrentSum += newTransactionDto.Sum;
                         _accountServices.Update(expenseAccount);
                         break;
                     }
                     case TransactionType.Income:
                     {
-                        var incomeAccount = _accountServices.GetById((long)dto.CreditAccountId);
-                        incomeAccount.CurrentSum -= dto.Sum;
+                        var incomeAccount = _accountServices.GetById((long)newTransactionDto.CreditAccountId);
+                        incomeAccount.CurrentSum -= newTransactionDto.Sum;
                         _accountServices.Update(incomeAccount);
                         break;
                     }
                     case TransactionType.Transfer:
                     {
-                        var expenseAccount = _accountServices.GetById((long)dto.DebitAccountId);
-                        expenseAccount.CurrentSum += dto.Sum;
+                        var expenseAccount = _accountServices.GetById((long)newTransactionDto.DebitAccountId);
+                        expenseAccount.CurrentSum += newTransactionDto.Sum;
 
-                        var incomeAccount = _accountServices.GetById((long)dto.CreditAccountId);
-                        incomeAccount.CurrentSum -= dto.Sum;
+                        var incomeAccount = _accountServices.GetById((long)newTransactionDto.CreditAccountId);
+                        incomeAccount.CurrentSum -= newTransactionDto.Sum;
 
                         _accountServices.Update(expenseAccount);
                         _accountServices.Update(incomeAccount);
@@ -161,14 +221,14 @@ namespace FM.SHD.Domain
                 }
             }
 
-            if (oldTransactionDto.Date != dto.Date)
-                oldTransactionDto.Date = dto.Date;
-            if (oldTransactionDto.CategoryId != dto.CategoryId)
-                oldTransactionDto.CategoryId = dto.CategoryId;
-            if (oldTransactionDto.CategoryId != dto.CategoryId)
-                oldTransactionDto.CategoryId = dto.CategoryId;
-            if (oldTransactionDto.IdentityId != dto.IdentityId)
-                oldTransactionDto.IdentityId = dto.IdentityId;
+            if (oldTransactionDto.Date != newTransactionDto.Date)
+                oldTransactionDto.Date = newTransactionDto.Date;
+            if (oldTransactionDto.CategoryId != newTransactionDto.CategoryId)
+                oldTransactionDto.CategoryId = newTransactionDto.CategoryId;
+            if (oldTransactionDto.CategoryId != newTransactionDto.CategoryId)
+                oldTransactionDto.CategoryId = newTransactionDto.CategoryId;
+            if (oldTransactionDto.IdentityId != newTransactionDto.IdentityId)
+                oldTransactionDto.IdentityId = newTransactionDto.IdentityId;
             _transactionServices.Update(oldTransactionDto);
         }
 

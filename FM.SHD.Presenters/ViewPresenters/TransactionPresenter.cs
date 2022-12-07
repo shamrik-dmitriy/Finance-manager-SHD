@@ -242,18 +242,21 @@ namespace FM.SHD.Presenters.ViewPresenters
                 {
                     case 1:
                     {
+                        // Расход
                         transactionDto.DebitAccountId = _accountsInfoTransactionUcPresenter.GetDebitAccountId();
                         transactionDto.CreditAccountId = null;
                         break;
                     }
                     case 2:
                     {
+                        // Доход
                         transactionDto.DebitAccountId = null;
                         transactionDto.CreditAccountId = _accountsInfoTransactionUcPresenter.GetCreditAccountId();
                         break;
                     }
                     case 3:
                     {
+                        // Перевод
                         transactionDto.DebitAccountId = _accountsInfoTransactionUcPresenter.GetDebitAccountId();
                         transactionDto.CreditAccountId = _accountsInfoTransactionUcPresenter.GetCreditAccountId();
                         break;
