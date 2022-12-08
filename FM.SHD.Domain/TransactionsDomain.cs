@@ -81,42 +81,25 @@ namespace FM.SHD.Domain
                     case TransactionType.Expense:
                     {
                         // Изменился ли счёт
-                        if (oldTransactionDto.DebitAccountId != newTransactionDto.DebitAccountId)
-                        {
-                        }
-                        // Счёт не изменился
-                        else
-                        {
-                            // Изменилась ли сумма транзакции
-                            if (oldTransactionDto.Sum != newTransactionDto.Sum)
-                            {
-                                var deltaSum = newTransactionDto.Sum - oldTransactionDto.Sum;
-                                switch (deltaSum)
-                                {
-                                    case > 0:
-                                    {
-                                        resultTransactionDto.Sum = oldTransactionDto.Sum += deltaSum;
-                                        break;
-                                    }
-                                    case < 0:
-                                        resultTransactionDto.Sum = oldTransactionDto.Sum -= deltaSum;
-                                        break;
-                                }
-                            }
-                            // Сумма транзакции не изменилась
-                            else
-                            {
-                            }
-                        }
+                        resultTransactionDto.DebitAccountId =
+                            oldTransactionDto.DebitAccountId != newTransactionDto.DebitAccountId
+                                ? newTransactionDto.DebitAccountId
+                                : oldTransactionDto.DebitAccountId;
+                        // Изменилась ли сумма транзакции
+                        AmountCorrection(newTransactionDto, oldTransactionDto, resultTransactionDto);
 
                         break;
                     }
                     // Доход
                     case TransactionType.Income:
                     {
-                        if (oldTransactionDto.CreditAccountId != newTransactionDto.CreditAccountId)
-                        {
-                        }
+                        // Изменился ли счёт
+                        resultTransactionDto.CreditAccountId =
+                            oldTransactionDto.CreditAccountId != newTransactionDto.CreditAccountId
+                                ? newTransactionDto.CreditAccountId
+                                : oldTransactionDto.CreditAccountId;
+                        // Изменилась ли сумма транзакции
+                        AmountCorrection(newTransactionDto, oldTransactionDto, resultTransactionDto);
 
                         break;
                     }
@@ -186,7 +169,7 @@ namespace FM.SHD.Domain
                 oldTransactionDto.DebitAccountId = newTransactionDto.DebitAccountId;
             if (oldTransactionDto.CreditAccountId != newTransactionDto.CreditAccountId)
                 oldTransactionDto.CreditAccountId = newTransactionDto.CreditAccountId;
-            
+
             if (oldTransactionDto.Sum != newTransactionDto.Sum)
             {
                 oldTransactionDto.Sum = newTransactionDto.Sum;
@@ -230,6 +213,21 @@ namespace FM.SHD.Domain
             if (oldTransactionDto.IdentityId != newTransactionDto.IdentityId)
                 oldTransactionDto.IdentityId = newTransactionDto.IdentityId;
             _transactionServices.Update(oldTransactionDto);
+        }
+
+        private static void AmountCorrection(TransactionDto newTransactionDto, TransactionDto oldTransactionDto,
+            TransactionDto resultTransactionDto)
+        {
+            if (oldTransactionDto.Sum != newTransactionDto.Sum)
+            {
+                var deltaSum = newTransactionDto.Sum - oldTransactionDto.Sum;
+                resultTransactionDto.Sum = deltaSum switch
+                {
+                    > 0 => oldTransactionDto.Sum += deltaSum,
+                    < 0 => oldTransactionDto.Sum -= deltaSum,
+                    _ => resultTransactionDto.Sum
+                };
+            }
         }
 
         public void OnDeleteTransaction(TransactionDto dto)
