@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Services.Repositories
 {
@@ -15,5 +16,6 @@ namespace FM.SHD.Services.Repositories
         void DeleteById(long accountModelId);
         IEnumerable<IAccountModel> GetAll();
         AccountModel GetById(long id);
+        bool CheckExist(IAccountModel accountModel);
     }
 }

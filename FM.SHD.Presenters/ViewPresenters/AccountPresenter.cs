@@ -1,4 +1,5 @@
 using System;
+using System.Xml;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.Events.Accounts;
@@ -124,6 +125,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             {
                 _accountServices.DeleteById(AccountDto.Id);
                 _eventAggregator.Publish(new OnDeletingAccountsApplicationEvent());
+                _view.Close();
             }
         }
 
