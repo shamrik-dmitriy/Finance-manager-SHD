@@ -60,7 +60,6 @@ namespace FM.SHD.Winforms.UI
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonAddReceipt = new System.Windows.Forms.Button();
             this.buttonAddTransaction = new System.Windows.Forms.Button();
-            this.tabPageCategories = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerDesktop)).BeginInit();
             this.splitContainerDesktop.Panel1.SuspendLayout();
@@ -314,6 +313,7 @@ namespace FM.SHD.Winforms.UI
             // 
             // accoutsFlowLayoutPanel
             // 
+            this.accoutsFlowLayoutPanel.AutoScroll = true;
             this.accoutsFlowLayoutPanel.BackColor = System.Drawing.Color.White;
             this.accoutsFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.accoutsFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -325,7 +325,6 @@ namespace FM.SHD.Winforms.UI
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPageTransactions);
-            this.tabControl1.Controls.Add(this.tabPageCategories);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -378,6 +377,7 @@ namespace FM.SHD.Winforms.UI
             this.buttonAddReceipt.TabIndex = 3;
             this.buttonAddReceipt.Text = "Добавить чек";
             this.buttonAddReceipt.UseVisualStyleBackColor = true;
+            this.buttonAddReceipt.Visible = false;
             this.buttonAddReceipt.Click += new System.EventHandler(this.buttonAddReceipt_Click);
             // 
             // buttonAddTransaction
@@ -389,16 +389,6 @@ namespace FM.SHD.Winforms.UI
             this.buttonAddTransaction.Text = "Добавить операцию";
             this.buttonAddTransaction.UseVisualStyleBackColor = true;
             this.buttonAddTransaction.Click += new System.EventHandler(this.buttonAddTransaction_Click);
-            // 
-            // tabPageCategories
-            // 
-            this.tabPageCategories.Location = new System.Drawing.Point(4, 24);
-            this.tabPageCategories.Name = "tabPageCategories";
-            this.tabPageCategories.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCategories.Size = new System.Drawing.Size(877, 575);
-            this.tabPageCategories.TabIndex = 1;
-            this.tabPageCategories.Text = "Категории";
-            this.tabPageCategories.UseVisualStyleBackColor = true;
             // 
             // MainView
             // 
@@ -466,7 +456,6 @@ namespace FM.SHD.Winforms.UI
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Button buttonAddReceipt;
         private System.Windows.Forms.Button buttonAddTransaction;
-        private System.Windows.Forms.TabPage tabPageCategories;
         private System.Windows.Forms.SplitContainer splitContainerWallet;
         private System.Windows.Forms.SplitContainer accountActionAndTotalSumsplitContainer;
         private System.Windows.Forms.Button addAccountButton;
