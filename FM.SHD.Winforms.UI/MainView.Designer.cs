@@ -210,6 +210,7 @@ namespace FM.SHD.Winforms.UI
             // 
             // splitContainerDesktop
             // 
+            this.splitContainerDesktop.Cursor = System.Windows.Forms.Cursors.Default;
             this.splitContainerDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerDesktop.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainerDesktop.IsSplitterFixed = true;
@@ -224,7 +225,7 @@ namespace FM.SHD.Winforms.UI
             // 
             this.splitContainerDesktop.Panel2.Controls.Add(this.tabControl1);
             this.splitContainerDesktop.Size = new System.Drawing.Size(1208, 603);
-            this.splitContainerDesktop.SplitterDistance = 319;
+            this.splitContainerDesktop.SplitterDistance = 335;
             this.splitContainerDesktop.TabIndex = 2;
             // 
             // splitContainerLeftSideBar
@@ -246,7 +247,7 @@ namespace FM.SHD.Winforms.UI
             // 
             this.splitContainerLeftSideBar.Panel2.BackColor = System.Drawing.SystemColors.Control;
             this.splitContainerLeftSideBar.Panel2.Controls.Add(this.splitContainerWallet);
-            this.splitContainerLeftSideBar.Size = new System.Drawing.Size(319, 603);
+            this.splitContainerLeftSideBar.Size = new System.Drawing.Size(335, 603);
             this.splitContainerLeftSideBar.SplitterDistance = 77;
             this.splitContainerLeftSideBar.TabIndex = 0;
             // 
@@ -258,7 +259,7 @@ namespace FM.SHD.Winforms.UI
             this.loginucView1.Location = new System.Drawing.Point(0, 0);
             this.loginucView1.MinimumSize = new System.Drawing.Size(309, 70);
             this.loginucView1.Name = "loginucView1";
-            this.loginucView1.Size = new System.Drawing.Size(319, 77);
+            this.loginucView1.Size = new System.Drawing.Size(335, 77);
             this.loginucView1.TabIndex = 0;
             // 
             // splitContainerWallet
@@ -279,7 +280,7 @@ namespace FM.SHD.Winforms.UI
             // 
             this.splitContainerWallet.Panel2.BackColor = System.Drawing.SystemColors.Control;
             this.splitContainerWallet.Panel2.Controls.Add(this.accoutsFlowLayoutPanel);
-            this.splitContainerWallet.Size = new System.Drawing.Size(319, 522);
+            this.splitContainerWallet.Size = new System.Drawing.Size(335, 522);
             this.splitContainerWallet.SplitterDistance = 94;
             this.splitContainerWallet.SplitterWidth = 1;
             this.splitContainerWallet.TabIndex = 1;
@@ -294,7 +295,7 @@ namespace FM.SHD.Winforms.UI
             // accountActionAndTotalSumsplitContainer.Panel1
             // 
             this.accountActionAndTotalSumsplitContainer.Panel1.Controls.Add(this.addAccountButton);
-            this.accountActionAndTotalSumsplitContainer.Size = new System.Drawing.Size(319, 94);
+            this.accountActionAndTotalSumsplitContainer.Size = new System.Drawing.Size(335, 94);
             this.accountActionAndTotalSumsplitContainer.SplitterDistance = 32;
             this.accountActionAndTotalSumsplitContainer.TabIndex = 0;
             // 
@@ -319,8 +320,10 @@ namespace FM.SHD.Winforms.UI
             this.accoutsFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.accoutsFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.accoutsFlowLayoutPanel.Name = "accoutsFlowLayoutPanel";
-            this.accoutsFlowLayoutPanel.Size = new System.Drawing.Size(319, 427);
+            this.accoutsFlowLayoutPanel.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.accoutsFlowLayoutPanel.Size = new System.Drawing.Size(335, 427);
             this.accoutsFlowLayoutPanel.TabIndex = 0;
+            this.accoutsFlowLayoutPanel.WrapContents = false;
             // 
             // tabControl1
             // 
@@ -329,7 +332,7 @@ namespace FM.SHD.Winforms.UI
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(885, 603);
+            this.tabControl1.Size = new System.Drawing.Size(869, 603);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPageTransactions
@@ -338,7 +341,7 @@ namespace FM.SHD.Winforms.UI
             this.tabPageTransactions.Location = new System.Drawing.Point(4, 24);
             this.tabPageTransactions.Name = "tabPageTransactions";
             this.tabPageTransactions.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTransactions.Size = new System.Drawing.Size(877, 575);
+            this.tabPageTransactions.Size = new System.Drawing.Size(861, 575);
             this.tabPageTransactions.TabIndex = 0;
             this.tabPageTransactions.Text = "Транзакции";
             this.tabPageTransactions.UseVisualStyleBackColor = true;
@@ -355,7 +358,7 @@ namespace FM.SHD.Winforms.UI
             // 
             this.splitContainerTransactions.Panel1.Controls.Add(this.flowLayoutPanel3);
             this.splitContainerTransactions.Panel1MinSize = 27;
-            this.splitContainerTransactions.Size = new System.Drawing.Size(871, 569);
+            this.splitContainerTransactions.Size = new System.Drawing.Size(855, 569);
             this.splitContainerTransactions.SplitterDistance = 30;
             this.splitContainerTransactions.TabIndex = 3;
             // 
@@ -366,7 +369,7 @@ namespace FM.SHD.Winforms.UI
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(871, 30);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(855, 30);
             this.flowLayoutPanel3.TabIndex = 0;
             // 
             // buttonAddReceipt

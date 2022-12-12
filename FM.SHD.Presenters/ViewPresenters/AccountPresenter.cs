@@ -124,7 +124,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             if (_view.ShowMessageDelete("Удаление счёта", $"Счёт \"{AccountDto.Name}\" будет удален, продолжить?"))
             {
                 _accountServices.DeleteById(AccountDto.Id);
-                _eventAggregator.Publish(new OnDeletingAccountsApplicationEvent());
+                _eventAggregator.Publish(new OnDeletingAccountApplicationEvent());
                 _view.Close();
             }
         }
@@ -145,6 +145,7 @@ namespace FM.SHD.Presenters.ViewPresenters
                 AccountDto.IdentityId = 1;
                 AccountDto.IsClosed = Convert.ToBoolean(_checkboxUcPresenter.GetCheckboxState());
                 _accountServices.Update(AccountDto);
+                _eventAggregator.Publish(new OnChangingAccountApplicationEvent());
             }
             else
             {
@@ -158,13 +159,13 @@ namespace FM.SHD.Presenters.ViewPresenters
                     IdentityId = 1,
                     IsClosed = Convert.ToBoolean(_checkboxUcPresenter.GetCheckboxState())
                 });
+                _eventAggregator.Publish(new OnAddedAccountApplicationEvent());
             }
 
             _dataControlButtonsUcPresenter.Continue -= DataControlButtonsUcPresenterOnContinue;
             _dataControlButtonsUcPresenter.Delete -= DataControlsButtonsUcPresenterOnDelete;
             _currencyUcPresenter.CategoryChanged -= CurrencyUcPresenterOnCategoryChanged;
 
-            _eventAggregator.Publish(new OnChangingAccountsApplicationEvent());
             _view.Close();
         }
 

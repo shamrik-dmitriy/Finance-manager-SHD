@@ -63,11 +63,18 @@ namespace FM.SHD.Presenters.ViewPresenters
             _view.AddingTransaction += OnAddingTransaction;
             _view.AddingAccount += OnAddingAccount;
 
-            _eventAggregator.Subscribe<OnChangingAccountsApplicationEvent>(OnChangingAccount);
-            _eventAggregator.Subscribe<OnDeletingAccountsApplicationEvent>(OnDeletingAccount);
+            _eventAggregator.Subscribe<OnAddedAccountApplicationEvent>(OnAddedAccount);
+            _eventAggregator.Subscribe<OnChangingAccountApplicationEvent>(OnChangingAccount);
+            _eventAggregator.Subscribe<OnDeletingAccountApplicationEvent>(OnDeletingAccount);
+
             _eventAggregator.Subscribe<OnAddedTransactionApplicationEvent>(OnAddedTransaction);
             _eventAggregator.Subscribe<OnDeleteTransactionApplicationEvent>(OnDeleteTransaction);
             _eventAggregator.Subscribe<OnUpdateTransactionApplicationEvent>(OnUpdateTransaction);
+        }
+
+        private void OnAddedAccount(OnAddedAccountApplicationEvent obj)
+        {
+            ReloadAccounts();
         }
 
         ~MainPresenter()
@@ -77,8 +84,8 @@ namespace FM.SHD.Presenters.ViewPresenters
             _view.AddingTransaction -= OnAddingTransaction;
             _view.AddingAccount -= OnAddingAccount;
 
-            _eventAggregator.Unsubscribe<OnChangingAccountsApplicationEvent>(OnChangingAccount);
-            _eventAggregator.Unsubscribe<OnDeletingAccountsApplicationEvent>(OnDeletingAccount);
+            _eventAggregator.Unsubscribe<OnChangingAccountApplicationEvent>(OnChangingAccount);
+            _eventAggregator.Unsubscribe<OnDeletingAccountApplicationEvent>(OnDeletingAccount);
             _eventAggregator.Unsubscribe<OnAddedTransactionApplicationEvent>(OnAddedTransaction);
             _eventAggregator.Unsubscribe<OnDeleteTransactionApplicationEvent>(OnDeleteTransaction);
             _eventAggregator.Unsubscribe<OnUpdateTransactionApplicationEvent>(OnUpdateTransaction);
@@ -207,7 +214,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             }
         }
 
-        private void OnDeletingAccount(OnDeletingAccountsApplicationEvent obj)
+        private void OnDeletingAccount(OnDeletingAccountApplicationEvent obj)
         {
             ReloadAccounts();
             ReloadTransactions();
@@ -286,8 +293,9 @@ namespace FM.SHD.Presenters.ViewPresenters
             return _transactionServices.GetExtendedTransactions();
         }
 
-        private void OnChangingAccount(OnChangingAccountsApplicationEvent args)
+        private void OnChangingAccount(OnChangingAccountApplicationEvent args)
         {
+            ReloadAccounts();
             ReloadTransactions();
         }
 
