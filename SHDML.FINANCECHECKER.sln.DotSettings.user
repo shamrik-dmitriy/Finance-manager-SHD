@@ -21,4 +21,5 @@
 	
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/Initialized/@EntryValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=dc30d91b_002Dbd2b_002D49c6_002Dacbb_002D29a4735c4e2f_0023FM_002ESHD_002EServices_002ETests/@EntryIndexedValue">True</s:Boolean>
+	
 	</wpf:ResourceDictionary>

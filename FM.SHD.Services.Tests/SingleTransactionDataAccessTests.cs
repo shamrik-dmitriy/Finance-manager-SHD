@@ -37,16 +37,16 @@ namespace FM.SHD.Services.Tests
         {
             var singleTransaction = new SingleTransactionModel()
             {
-                Account = "Банковская карта",
-                Category = "Продукты",
-                Contragent = "АО ТАНДЕР",
+                Account = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ",
+                Category = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
+                Contragent = "пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ",
                 Date = DateTime.Now.ToString(),
-                Description = "Вкусное молочко",
-                Name = "Молоко Лужайкино 2.5%",
+                Description = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
+                Name = "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 2.5%",
                 Id = 1,
-                FamilyMember = "Дима",
+                FamilyMember = "пїЅпїЅпїЅпїЅ",
                 Sum = "10.00",
-                Type = "Расход"
+                Type = "пїЅпїЅпїЅпїЅпїЅпїЅ"
             };
 
             try
@@ -65,16 +65,16 @@ namespace FM.SHD.Services.Tests
         {
             var singleTransaction = new SingleTransactionModel()
             {
-                Account = "Банковская карта",
-                Category = "Продукты",
-                Contragent = "АО ТАНДЕР",
+                Account = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ",
+                Category = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
+                Contragent = "пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ",
                 Date = DateTime.Now.ToString(),
-                Description = "Вкусное молочко",
-                Name = "Молоко Лужайкино 2.5%",
+                Description = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
+                Name = "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 2.5%",
                 Id = 1,
-                FamilyMember = "Дима",
+                FamilyMember = "пїЅпїЅпїЅпїЅ",
                 Sum = "10.00",
-                Type = "Расход"
+                Type = "пїЅпїЅпїЅпїЅпїЅпїЅ"
             };
 
             try
@@ -94,16 +94,16 @@ namespace FM.SHD.Services.Tests
             var s = _singleTransactionServices.GetById(3);
             var singleTransaction = new SingleTransactionModel()
             {
-                Account = "Банковская карта",
-                Category = "Продукты",
-                Contragent = "АО ТАНДЕР",
+                Account = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ",
+                Category = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
+                Contragent = "пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ",
                 Date = DateTime.Now.ToString(),
-                Description = "Вкусное молочко",
-                Name = "Молоко Лужайкино 2.5%",
+                Description = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
+                Name = "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 2.5%",
                 Id = 4,
-                FamilyMember = "Дима",
+                FamilyMember = "пїЅпїЅпїЅпїЅ",
                 Sum = "10.00",
-                Type = "Расход"
+                Type = "пїЅпїЅпїЅпїЅпїЅпїЅ"
             };
 
             try
@@ -125,12 +125,12 @@ namespace FM.SHD.Services.Tests
         {
             if (exception != null)
             {
-                _testOutputHelper.WriteLine("****** Возникла одна или несколько ошибок: ******");
+                _testOutputHelper.WriteLine("****** пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ: ******");
                 _testOutputHelper.WriteLine(exception.Message);
             }
             /* var sBuilder = new StringBuilder();
              JObject jObject = JObject.FromObject(_singleTransactionServicesFixutre.SingleTransactionModel);
-             sBuilder.AppendLine("****** Нет ошибок ******");
+             sBuilder.AppendLine("****** пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ ******");
              foreach (var jProp in jObject.Properties())
              {
                  sBuilder.Append(jProp.Name).Append(" ---> ").Append(jProp.Value).AppendLine();
