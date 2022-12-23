@@ -58,6 +58,22 @@ namespace FM.SHD.Domain
             _transactionServices.Add(dto);
         }
 
+        private void TransferAccountChangedAmountNotChanged(TransactionDto oldTransactionDto,
+            TransactionDto newTransactionDto, bool isDebit)
+        {
+            var oldAccount = _accountServices.GetById(isDebit
+                ? (long)oldTransactionDto.DebitAccountId
+                : (long)oldTransactionDto.CreditAccountId);
+            oldAccount.CurrentSum += oldTransactionDto.Sum;
+            _accountServices.Update(oldAccount);
+
+            var newAccount = _accountServices.GetById(isDebit
+                ? (long)oldTransactionDto.DebitAccountId
+                : (long)oldTransactionDto.CreditAccountId);
+            newAccount.CurrentSum -= oldTransactionDto.Sum;
+            _accountServices.Update(newAccount);
+        }
+
         public void OnUpdateTransaction(TransactionDto newTransactionDto)
         {
             TransactionDto resultTransactionDto = new TransactionDto();
@@ -143,13 +159,7 @@ namespace FM.SHD.Domain
                             // Сумма списания не изменилась
                             else
                             {
-                                var oldAccount = _accountServices.GetById((long)oldTransactionDto.DebitAccountId);
-                                oldAccount.CurrentSum += oldTransactionDto.Sum;
-                                _accountServices.Update(oldAccount);
-
-                                var newAccount = _accountServices.GetById((long)newTransactionDto.DebitAccountId);
-                                newAccount.CurrentSum -= oldTransactionDto.Sum;
-                                _accountServices.Update(newAccount);
+                                TransferAccountChangedAmountNotChanged(oldTransactionDto, newTransactionDto, true);
                             }
                         }
                         // Счёт списания не изменился
@@ -189,13 +199,7 @@ namespace FM.SHD.Domain
                             // Сумма списания не изменилась
                             else
                             {
-                                var oldAccount = _accountServices.GetById((long)oldTransactionDto.DebitAccountId);
-                                oldAccount.CurrentSum += oldTransactionDto.Sum;
-                                _accountServices.Update(oldAccount);
-
-                                var newAccount = _accountServices.GetById((long)newTransactionDto.DebitAccountId);
-                                newAccount.CurrentSum -= oldTransactionDto.Sum;
-                                _accountServices.Update(newAccount);
+                                TransferAccountChangedAmountNotChanged(oldTransactionDto, newTransactionDto, true);
                             }
                         }
 
@@ -238,13 +242,7 @@ namespace FM.SHD.Domain
                             // Сумма списания не изменилась
                             else
                             {
-                                var oldAccount = _accountServices.GetById((long)oldTransactionDto.CreditAccountId);
-                                oldAccount.CurrentSum += oldTransactionDto.Sum;
-                                _accountServices.Update(oldAccount);
-
-                                var newAccount = _accountServices.GetById((long)newTransactionDto.CreditAccountId);
-                                newAccount.CurrentSum -= oldTransactionDto.Sum;
-                                _accountServices.Update(newAccount);
+                                TransferAccountChangedAmountNotChanged(oldTransactionDto, newTransactionDto, false);
                             }
                         }
                         else
@@ -283,13 +281,7 @@ namespace FM.SHD.Domain
                             // Сумма списания не изменилась
                             else
                             {
-                                var oldAccount = _accountServices.GetById((long)oldTransactionDto.CreditAccountId);
-                                oldAccount.CurrentSum += oldTransactionDto.Sum;
-                                _accountServices.Update(oldAccount);
-
-                                var newAccount = _accountServices.GetById((long)newTransactionDto.CreditAccountId);
-                                newAccount.CurrentSum -= oldTransactionDto.Sum;
-                                _accountServices.Update(newAccount);
+                                TransferAccountChangedAmountNotChanged(oldTransactionDto, newTransactionDto, false);
                             }
                         }
 
