@@ -127,6 +127,110 @@ namespace FM.SHD.Domain
             // Тип транзакции поменялся
             if (oldTypeTransaction != newTypeTransaction)
             {
+                resultTransactionDto.TypeTransactionId = newTransactionDto.TypeTransactionId;
+
+                // Узнаем какой тип транзакции стал
+                switch (newTypeTransaction)
+                {
+                    // Расход
+                    case TransactionType.Expense:
+                    {
+                        // Узнаем какой тип транзакции был
+                        if ((TransactionType)oldTransactionDto.TypeTransactionId == TransactionType.Income)
+                        {
+                        }
+                        else
+                        {
+                            // Transfer
+                        }
+
+                        break;
+                    }
+                    // Доход
+                    case TransactionType.Income:
+                    {
+                        // Узнаем какой тип транзакции был
+                        if ((TransactionType)oldTransactionDto.TypeTransactionId == TransactionType.Expense)
+                        {
+                        }
+                        else
+                        {
+                            // Transfer
+                        }
+
+                        break;
+                    }
+                    // Перевод
+                    case TransactionType.Transfer:
+                    {
+                        // Узнаем какой тип транзакции был
+                        if ((TransactionType)oldTransactionDto.TypeTransactionId == TransactionType.Income)
+                        {
+                        }
+                        else
+                        {
+                            // Expense
+                        }
+
+                        break;
+                    }
+                }
+
+                // Узнаем какой тип транзакции был
+                switch (oldTypeTransaction)
+                {
+                    // Расход
+                    case TransactionType.Expense:
+                    {
+                        // Изменился ли счёт
+                        resultTransactionDto.DebitAccountId = CheckChangeAccount(oldTransactionDto.DebitAccountId,
+                            newTransactionDto.DebitAccountId);
+                        // Изменилась ли сумма транзакции
+                        CheckAccountsSum(newTransactionDto, oldTransactionDto, resultTransactionDto,
+                            oldTypeTransaction);
+                        break;
+                    }
+                    // Доход
+                    case TransactionType.Income:
+                    {
+                        // Изменился ли счёт
+                        resultTransactionDto.CreditAccountId = CheckChangeAccount(oldTransactionDto.CreditAccountId,
+                            newTransactionDto.CreditAccountId);
+                        // Изменилась ли сумма транзакции
+                        CheckAccountsSum(newTransactionDto, oldTransactionDto, resultTransactionDto,
+                            oldTypeTransaction);
+                        break;
+                    }
+                    // Перевод
+                    case TransactionType.Transfer:
+                    {
+                        // Изменился ли счёт списания
+                        if (oldTransactionDto.DebitAccountId != newTransactionDto.DebitAccountId)
+                            resultTransactionDto.DebitAccountId = newTransactionDto.DebitAccountId;
+
+                        // Изменилась ли сумма списания
+                        if (newTransactionDto.Sum - oldTransactionDto.Sum != 0)
+                            TransferCheck2(newTransactionDto, oldTransactionDto, true);
+                        // Сумма списания не изменилась
+                        else
+                            TransferAccountChangedAmountNotChanged(oldTransactionDto, newTransactionDto, true);
+
+                        // Изменился ли счёт пополнения
+                        if (oldTransactionDto.CreditAccountId != newTransactionDto.CreditAccountId)
+                            resultTransactionDto.CreditAccountId = newTransactionDto.CreditAccountId;
+
+                        // Изменилась ли сумма списания
+                        if (newTransactionDto.Sum - oldTransactionDto.Sum != 0)
+                            TransferCheck2(newTransactionDto, oldTransactionDto, false);
+                        // Сумма списания не изменилась
+                        else
+                            TransferAccountChangedAmountNotChanged(oldTransactionDto, newTransactionDto, false);
+
+                        break;
+                    }
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(oldTypeTransaction));
+                }
             }
             // Тип транзакции не поменялся
             else
