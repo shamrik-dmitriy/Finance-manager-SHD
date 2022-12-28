@@ -145,48 +145,28 @@ namespace FM.SHD.Domain
                                     resultTransactionDto.CreditAccountId = newTransactionDto.CreditAccountId;
                                     resultTransactionDto.Sum = newTransactionDto.Sum;
 
-                                    var deltaSum = newTransactionDto.Sum - oldTransactionDto.Sum;
                                     var accountDto =
                                         _accountServices.GetById((long)resultTransactionDto.CreditAccountId);
-
-                                    switch (deltaSum)
-                                    {
-                                        case > 0:
-                                            accountDto.CurrentSum += deltaSum;
-                                            _accountServices.Update(accountDto);
-                                            break;
-                                        case < 0:
-                                            accountDto.CurrentSum -= deltaSum;
-                                            _accountServices.Update(accountDto);
-                                            break;
-                                    }
+                                    accountDto.CurrentSum -= oldTransactionDto.Sum;
+                                    accountDto.CurrentSum += newTransactionDto.Sum;
+                                    _accountServices.Update(accountDto);
                                 }
                                 // Счёт не был изменён
                                 else
                                 {
-                                    resultTransactionDto.CreditAccountId = newTransactionDto.DebitAccountId;
+                                    resultTransactionDto.CreditAccountId = oldTransactionDto.DebitAccountId;
                                     resultTransactionDto.Sum = newTransactionDto.Sum;
 
-                                    var deltaSum = newTransactionDto.Sum - oldTransactionDto.Sum;
                                     var accountDto =
                                         _accountServices.GetById((long)resultTransactionDto.CreditAccountId);
-
-                                    switch (deltaSum)
-                                    {
-                                        case > 0:
-                                            accountDto.CurrentSum += deltaSum;
-                                            _accountServices.Update(accountDto);
-                                            break;
-                                        case < 0:
-                                            accountDto.CurrentSum -= deltaSum;
-                                            _accountServices.Update(accountDto);
-                                            break;
-                                    }
+                                    accountDto.CurrentSum -= oldTransactionDto.Sum;
+                                    accountDto.CurrentSum += newTransactionDto.Sum;
+                                    _accountServices.Update(accountDto);
                                 }
 
                                 break;
                             }
-                            // Перевод с Debit на Credit
+                            // Перевод с Debit на Credit TODO 28.12.22 Переделать в соответствии с аналогом выше
                             case TransactionType.Transfer:
                             {
                                 // Был расход, стал перевод
@@ -217,9 +197,8 @@ namespace FM.SHD.Domain
                                 else
                                 {
                                     resultTransactionDto.DebitAccountId = oldTransactionDto.DebitAccountId;
-                                    
                                 }
-                                
+
                                 // Зачислить на счёт - поле добавляется
                                 resultTransactionDto.CreditAccountId = newTransactionDto.CreditAccountId;
                                 break;
@@ -242,44 +221,24 @@ namespace FM.SHD.Domain
                                 {
                                     resultTransactionDto.DebitAccountId = newTransactionDto.DebitAccountId;
                                     resultTransactionDto.Sum = newTransactionDto.Sum;
-                                    
-                                    var deltaSum = newTransactionDto.Sum - oldTransactionDto.Sum;
-                                    var accountDto =
-                                        _accountServices.GetById((long)resultTransactionDto.DebitAccountId);
 
-                                    switch (deltaSum)
-                                    {
-                                        case > 0:
-                                            accountDto.CurrentSum += deltaSum;
-                                            _accountServices.Update(accountDto);
-                                            break;
-                                        case < 0:
-                                            accountDto.CurrentSum -= deltaSum;
-                                            _accountServices.Update(accountDto);
-                                            break;
-                                    }
+                                    var accountDto =
+                                        _accountServices.GetById((long)resultTransactionDto.CreditAccountId);
+                                    accountDto.CurrentSum += oldTransactionDto.Sum;
+                                    accountDto.CurrentSum -= newTransactionDto.Sum;
+                                    _accountServices.Update(accountDto);
                                 }
                                 // Счёт не был изменён
                                 else
                                 {
                                     resultTransactionDto.DebitAccountId = oldTransactionDto.CreditAccountId;
                                     resultTransactionDto.Sum = newTransactionDto.Sum;
-                                    
-                                    var deltaSum = newTransactionDto.Sum - oldTransactionDto.Sum;
+
                                     var accountDto =
                                         _accountServices.GetById((long)resultTransactionDto.DebitAccountId);
-
-                                    switch (deltaSum)
-                                    {
-                                        case > 0:
-                                            accountDto.CurrentSum += deltaSum;
-                                            _accountServices.Update(accountDto);
-                                            break;
-                                        case < 0:
-                                            accountDto.CurrentSum -= deltaSum;
-                                            _accountServices.Update(accountDto);
-                                            break;
-                                    }
+                                    accountDto.CurrentSum += oldTransactionDto.Sum;
+                                    accountDto.CurrentSum -= newTransactionDto.Sum;
+                                    _accountServices.Update(accountDto);
                                 }
 
                                 break;
@@ -301,7 +260,6 @@ namespace FM.SHD.Domain
                             // Доход - credit
                             case TransactionType.Income:
                             {
-
                                 break;
                             }
                             // Расход
@@ -324,25 +282,39 @@ namespace FM.SHD.Domain
                     // Расход
                     case TransactionType.Expense:
                     {
-                        // Изменился ли счёт
-                        resultTransactionDto.DebitAccountId = CheckChangeAccount(oldTransactionDto.DebitAccountId,
-                            newTransactionDto.DebitAccountId);
                         resultTransactionDto.Sum = newTransactionDto.Sum;
-                        
-                        // Изменилась ли сумма транзакции
-                        CheckAccountsSum(newTransactionDto, oldTransactionDto, oldTypeTransaction);
+
+                        // Изменился счёт
+                        resultTransactionDto.DebitAccountId =
+                            oldTransactionDto.DebitAccountId != newTransactionDto.DebitAccountId
+                                ? newTransactionDto.DebitAccountId
+                                : oldTransactionDto.DebitAccountId;
+
+                        resultTransactionDto.Sum = newTransactionDto.Sum;
+
+                        var accountDto =
+                            _accountServices.GetById((long)resultTransactionDto.DebitAccountId);
+                        accountDto.CurrentSum += oldTransactionDto.Sum;
+                        accountDto.CurrentSum -= newTransactionDto.Sum;
+                        _accountServices.Update(accountDto);
+
                         break;
                     }
                     // Доход
                     case TransactionType.Income:
                     {
-                        // Изменился ли счёт
-                        resultTransactionDto.CreditAccountId = CheckChangeAccount(oldTransactionDto.CreditAccountId,
-                            newTransactionDto.CreditAccountId);
+                        resultTransactionDto.CreditAccountId =
+                            oldTransactionDto.CreditAccountId != newTransactionDto.CreditAccountId
+                                ? newTransactionDto.CreditAccountId
+                                : oldTransactionDto.CreditAccountId;
                         resultTransactionDto.Sum = newTransactionDto.Sum;
                         
-                        // Изменилась ли сумма транзакции
-                        CheckAccountsSum(newTransactionDto, oldTransactionDto, oldTypeTransaction);
+                        var accountDto =
+                            _accountServices.GetById((long)resultTransactionDto.CreditAccountId);
+                        accountDto.CurrentSum -= oldTransactionDto.Sum;
+                        accountDto.CurrentSum += newTransactionDto.Sum;
+                        _accountServices.Update(accountDto);
+
                         break;
                     }
                     // Перевод
@@ -398,61 +370,7 @@ namespace FM.SHD.Domain
                 : oldTransactionDto.IdentityId;
             _transactionServices.Update(resultTransactionDto);
         }
-
-        private void CheckAccountsSum(TransactionDto newTransactionDto, TransactionDto oldTransactionDto, TransactionType transactionType)
-        {
-            if (oldTransactionDto.Sum != newTransactionDto.Sum)
-            {
-                AccountDto accountDto;
-                switch (transactionType)
-                {
-                    case TransactionType.Expense:
-                    {
-                        accountDto = _accountServices.GetById((long)oldTransactionDto.DebitAccountId);
-                        AmountCorrection(newTransactionDto.Sum, oldTransactionDto.Sum, accountDto);
-
-                        break;
-                    }
-                    case TransactionType.Income:
-                    {
-                        accountDto = _accountServices.GetById((long)oldTransactionDto.CreditAccountId);
-                        AmountCorrection(newTransactionDto.Sum, oldTransactionDto.Sum, 
-                            accountDto);
-                        break;
-                    }
-                    case TransactionType.Transfer:
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException(nameof(transactionType), transactionType, null);
-                }
-            }
-        }
-
-        private void AmountCorrection(decimal newTransactionSum,
-            decimal oldTransactionSum, AccountDto accountDto)
-        {
-            var deltaSum = newTransactionSum - oldTransactionSum;
-
-            switch (deltaSum)
-            {
-                case > 0:
-                    accountDto.CurrentSum += deltaSum;
-                    _accountServices.Update(accountDto);
-                    break;
-                case < 0:
-                    accountDto.CurrentSum -= deltaSum;
-                    _accountServices.Update(accountDto);
-                    break;
-            }
-        }
-
-        private long? CheckChangeAccount(long? oldTransactionAccountId, long? newTransactionAccountId)
-        {
-            return oldTransactionAccountId != newTransactionAccountId
-                ? newTransactionAccountId
-                : oldTransactionAccountId;
-        }
-
+        
         public void OnDeleteTransaction(TransactionDto dto)
         {
             switch ((TransactionType)dto.TypeTransactionId)
