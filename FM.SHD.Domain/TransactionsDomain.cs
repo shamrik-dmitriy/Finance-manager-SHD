@@ -127,8 +127,201 @@ namespace FM.SHD.Domain
             // Тип транзакции поменялся
             if (oldTypeTransaction != newTypeTransaction)
             {
+                // Узнаем какой тип транзакции был
+                switch (oldTypeTransaction)
+                {
+                    // Расход - debit
+                    case TransactionType.Expense:
+                    {
+                        switch (newTypeTransaction)
+                        {
+                            // Доход - credit
+                            case TransactionType.Income:
+                            {
+                                // Счета - был Debit, стал Credit
+                                // Счёт был изменён
+                                if (oldTransactionDto.DebitAccountId != newTransactionDto.CreditAccountId)
+                                {
+                                    resultTransactionDto.CreditAccountId = newTransactionDto.CreditAccountId;
+
+                                    var deltaSum = newTransactionDto.Sum - oldTransactionDto.Sum;
+                                    var accountDto =
+                                        _accountServices.GetById((long)resultTransactionDto.CreditAccountId);
+
+                                    switch (deltaSum)
+                                    {
+                                        case > 0:
+                                            resultTransactionDto.Sum = oldTransactionDto.Sum + deltaSum;
+                                            accountDto.CurrentSum += deltaSum;
+                                            _accountServices.Update(accountDto);
+                                            break;
+                                        case < 0:
+                                            resultTransactionDto.Sum = oldTransactionDto.Sum - deltaSum;
+                                            accountDto.CurrentSum -= deltaSum;
+                                            _accountServices.Update(accountDto);
+                                            break;
+                                    }
+                                }
+                                // Счёт не был изменён
+                                else
+                                {
+                                    resultTransactionDto.CreditAccountId = newTransactionDto.DebitAccountId;
+
+                                    var deltaSum = newTransactionDto.Sum - oldTransactionDto.Sum;
+                                    var accountDto =
+                                        _accountServices.GetById((long)resultTransactionDto.CreditAccountId);
+
+                                    switch (deltaSum)
+                                    {
+                                        case > 0:
+                                            resultTransactionDto.Sum = oldTransactionDto.Sum + deltaSum;
+                                            accountDto.CurrentSum += deltaSum;
+                                            _accountServices.Update(accountDto);
+                                            break;
+                                        case < 0:
+                                            resultTransactionDto.Sum = oldTransactionDto.Sum - deltaSum;
+                                            accountDto.CurrentSum -= deltaSum;
+                                            _accountServices.Update(accountDto);
+                                            break;
+                                    }
+                                }
+
+                                break;
+                            }
+                            // Перевод с Debit на Credit
+                            case TransactionType.Transfer:
+                            {
+                                // Был расход, стал перевод
+                                // Нужно узнать поменялся ли счёт
+                                // Поменялся ли счёт Debit
+                                if (oldTransactionDto.DebitAccountId != newTransactionDto.DebitAccountId)
+                                {
+                                    resultTransactionDto.DebitAccountId = newTransactionDto.DebitAccountId;
+                                    
+                                    // Изменилась ли сумма
+                                    var deltaSum = newTransactionDto.Sum - oldTransactionDto.Sum;
+                                    var accountDto =
+                                        _accountServices.GetById((long)resultTransactionDto.DebitAccountId);
+
+                                    switch (deltaSum)
+                                    {
+                                        case > 0:
+                                            resultTransactionDto.Sum = oldTransactionDto.Sum + deltaSum;
+                                            accountDto.CurrentSum += deltaSum;
+                                            _accountServices.Update(accountDto);
+                                            break;
+                                        case < 0:
+                                            resultTransactionDto.Sum = oldTransactionDto.Sum - deltaSum;
+                                            accountDto.CurrentSum -= deltaSum;
+                                            _accountServices.Update(accountDto);
+                                            break;
+                                    }
+                                }
+                                else
+                                {
+                                    resultTransactionDto.DebitAccountId = oldTransactionDto.DebitAccountId;
+                                    
+                                }
+                                
+                                // Зачислить на счёт - поле добавляется
+                                resultTransactionDto.CreditAccountId = newTransactionDto.CreditAccountId;
+                                break;
+                            }
+                        }
+
+                        break;
+                    }
+                    // Доход - credit
+                    case TransactionType.Income:
+                    {
+                        switch (newTypeTransaction)
+                        {
+                            // Расход - debit
+                            case TransactionType.Expense:
+                            {
+                                // Счета - был credit, стал debit
+                                // Счёт был изменён
+                                if (oldTransactionDto.CreditAccountId != newTransactionDto.DebitAccountId)
+                                {
+                                    resultTransactionDto.DebitAccountId = newTransactionDto.DebitAccountId;
+
+                                    var deltaSum = newTransactionDto.Sum - oldTransactionDto.Sum;
+                                    var accountDto =
+                                        _accountServices.GetById((long)resultTransactionDto.DebitAccountId);
+
+                                    switch (deltaSum)
+                                    {
+                                        case > 0:
+                                            resultTransactionDto.Sum = oldTransactionDto.Sum + deltaSum;
+                                            accountDto.CurrentSum += deltaSum;
+                                            _accountServices.Update(accountDto);
+                                            break;
+                                        case < 0:
+                                            resultTransactionDto.Sum = oldTransactionDto.Sum - deltaSum;
+                                            accountDto.CurrentSum -= deltaSum;
+                                            _accountServices.Update(accountDto);
+                                            break;
+                                    }
+                                }
+                                // Счёт не был изменён
+                                else
+                                {
+                                    resultTransactionDto.DebitAccountId = oldTransactionDto.CreditAccountId;
+
+                                    var deltaSum = newTransactionDto.Sum - oldTransactionDto.Sum;
+                                    var accountDto =
+                                        _accountServices.GetById((long)resultTransactionDto.DebitAccountId);
+
+                                    switch (deltaSum)
+                                    {
+                                        case > 0:
+                                            resultTransactionDto.Sum = oldTransactionDto.Sum + deltaSum;
+                                            accountDto.CurrentSum += deltaSum;
+                                            _accountServices.Update(accountDto);
+                                            break;
+                                        case < 0:
+                                            resultTransactionDto.Sum = oldTransactionDto.Sum - deltaSum;
+                                            accountDto.CurrentSum -= deltaSum;
+                                            _accountServices.Update(accountDto);
+                                            break;
+                                    }
+                                }
+
+                                break;
+                            }
+                            // Перевод
+                            case TransactionType.Transfer:
+                            {
+                                break;
+                            }
+                        }
+
+                        break;
+                    }
+                    // Перевод
+                    case TransactionType.Transfer:
+                    {
+                        switch (newTypeTransaction)
+                        {
+                            // Доход - credit
+                            case TransactionType.Income:
+                            {
+
+                                break;
+                            }
+                            // Расход
+                            case TransactionType.Expense:
+                            {
+                                break;
+                            }
+                        }
+
+                        break;
+                    }
+                }
             }
             // Тип транзакции не поменялся
+            // TODO: Перепроверить
             else
             {
                 // Узнаем какой тип транзакции был
