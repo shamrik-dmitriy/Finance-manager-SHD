@@ -143,6 +143,7 @@ namespace FM.SHD.Domain
                                 if (oldTransactionDto.DebitAccountId != newTransactionDto.CreditAccountId)
                                 {
                                     resultTransactionDto.CreditAccountId = newTransactionDto.CreditAccountId;
+                                    resultTransactionDto.Sum = newTransactionDto.Sum;
 
                                     var deltaSum = newTransactionDto.Sum - oldTransactionDto.Sum;
                                     var accountDto =
@@ -151,12 +152,10 @@ namespace FM.SHD.Domain
                                     switch (deltaSum)
                                     {
                                         case > 0:
-                                            resultTransactionDto.Sum = oldTransactionDto.Sum + deltaSum;
                                             accountDto.CurrentSum += deltaSum;
                                             _accountServices.Update(accountDto);
                                             break;
                                         case < 0:
-                                            resultTransactionDto.Sum = oldTransactionDto.Sum - deltaSum;
                                             accountDto.CurrentSum -= deltaSum;
                                             _accountServices.Update(accountDto);
                                             break;
@@ -166,6 +165,7 @@ namespace FM.SHD.Domain
                                 else
                                 {
                                     resultTransactionDto.CreditAccountId = newTransactionDto.DebitAccountId;
+                                    resultTransactionDto.Sum = newTransactionDto.Sum;
 
                                     var deltaSum = newTransactionDto.Sum - oldTransactionDto.Sum;
                                     var accountDto =
@@ -174,12 +174,10 @@ namespace FM.SHD.Domain
                                     switch (deltaSum)
                                     {
                                         case > 0:
-                                            resultTransactionDto.Sum = oldTransactionDto.Sum + deltaSum;
                                             accountDto.CurrentSum += deltaSum;
                                             _accountServices.Update(accountDto);
                                             break;
                                         case < 0:
-                                            resultTransactionDto.Sum = oldTransactionDto.Sum - deltaSum;
                                             accountDto.CurrentSum -= deltaSum;
                                             _accountServices.Update(accountDto);
                                             break;
@@ -197,7 +195,8 @@ namespace FM.SHD.Domain
                                 if (oldTransactionDto.DebitAccountId != newTransactionDto.DebitAccountId)
                                 {
                                     resultTransactionDto.DebitAccountId = newTransactionDto.DebitAccountId;
-                                    
+                                    resultTransactionDto.Sum = newTransactionDto.Sum;
+
                                     // Изменилась ли сумма
                                     var deltaSum = newTransactionDto.Sum - oldTransactionDto.Sum;
                                     var accountDto =
@@ -206,12 +205,10 @@ namespace FM.SHD.Domain
                                     switch (deltaSum)
                                     {
                                         case > 0:
-                                            resultTransactionDto.Sum = oldTransactionDto.Sum + deltaSum;
                                             accountDto.CurrentSum += deltaSum;
                                             _accountServices.Update(accountDto);
                                             break;
                                         case < 0:
-                                            resultTransactionDto.Sum = oldTransactionDto.Sum - deltaSum;
                                             accountDto.CurrentSum -= deltaSum;
                                             _accountServices.Update(accountDto);
                                             break;
@@ -244,7 +241,8 @@ namespace FM.SHD.Domain
                                 if (oldTransactionDto.CreditAccountId != newTransactionDto.DebitAccountId)
                                 {
                                     resultTransactionDto.DebitAccountId = newTransactionDto.DebitAccountId;
-
+                                    resultTransactionDto.Sum = newTransactionDto.Sum;
+                                    
                                     var deltaSum = newTransactionDto.Sum - oldTransactionDto.Sum;
                                     var accountDto =
                                         _accountServices.GetById((long)resultTransactionDto.DebitAccountId);
@@ -252,12 +250,10 @@ namespace FM.SHD.Domain
                                     switch (deltaSum)
                                     {
                                         case > 0:
-                                            resultTransactionDto.Sum = oldTransactionDto.Sum + deltaSum;
                                             accountDto.CurrentSum += deltaSum;
                                             _accountServices.Update(accountDto);
                                             break;
                                         case < 0:
-                                            resultTransactionDto.Sum = oldTransactionDto.Sum - deltaSum;
                                             accountDto.CurrentSum -= deltaSum;
                                             _accountServices.Update(accountDto);
                                             break;
@@ -267,7 +263,8 @@ namespace FM.SHD.Domain
                                 else
                                 {
                                     resultTransactionDto.DebitAccountId = oldTransactionDto.CreditAccountId;
-
+                                    resultTransactionDto.Sum = newTransactionDto.Sum;
+                                    
                                     var deltaSum = newTransactionDto.Sum - oldTransactionDto.Sum;
                                     var accountDto =
                                         _accountServices.GetById((long)resultTransactionDto.DebitAccountId);
@@ -275,12 +272,10 @@ namespace FM.SHD.Domain
                                     switch (deltaSum)
                                     {
                                         case > 0:
-                                            resultTransactionDto.Sum = oldTransactionDto.Sum + deltaSum;
                                             accountDto.CurrentSum += deltaSum;
                                             _accountServices.Update(accountDto);
                                             break;
                                         case < 0:
-                                            resultTransactionDto.Sum = oldTransactionDto.Sum - deltaSum;
                                             accountDto.CurrentSum -= deltaSum;
                                             _accountServices.Update(accountDto);
                                             break;
@@ -332,9 +327,10 @@ namespace FM.SHD.Domain
                         // Изменился ли счёт
                         resultTransactionDto.DebitAccountId = CheckChangeAccount(oldTransactionDto.DebitAccountId,
                             newTransactionDto.DebitAccountId);
+                        resultTransactionDto.Sum = newTransactionDto.Sum;
+                        
                         // Изменилась ли сумма транзакции
-                        CheckAccountsSum(newTransactionDto, oldTransactionDto, resultTransactionDto,
-                            oldTypeTransaction);
+                        CheckAccountsSum(newTransactionDto, oldTransactionDto, oldTypeTransaction);
                         break;
                     }
                     // Доход
@@ -343,9 +339,10 @@ namespace FM.SHD.Domain
                         // Изменился ли счёт
                         resultTransactionDto.CreditAccountId = CheckChangeAccount(oldTransactionDto.CreditAccountId,
                             newTransactionDto.CreditAccountId);
+                        resultTransactionDto.Sum = newTransactionDto.Sum;
+                        
                         // Изменилась ли сумма транзакции
-                        CheckAccountsSum(newTransactionDto, oldTransactionDto, resultTransactionDto,
-                            oldTypeTransaction);
+                        CheckAccountsSum(newTransactionDto, oldTransactionDto, oldTypeTransaction);
                         break;
                     }
                     // Перевод
@@ -402,8 +399,7 @@ namespace FM.SHD.Domain
             _transactionServices.Update(resultTransactionDto);
         }
 
-        private void CheckAccountsSum(TransactionDto newTransactionDto, TransactionDto oldTransactionDto,
-            TransactionDto resultTransactionDto, TransactionType transactionType)
+        private void CheckAccountsSum(TransactionDto newTransactionDto, TransactionDto oldTransactionDto, TransactionType transactionType)
         {
             if (oldTransactionDto.Sum != newTransactionDto.Sum)
             {
@@ -413,15 +409,14 @@ namespace FM.SHD.Domain
                     case TransactionType.Expense:
                     {
                         accountDto = _accountServices.GetById((long)oldTransactionDto.DebitAccountId);
-                        AmountCorrection(newTransactionDto.Sum, oldTransactionDto.Sum, resultTransactionDto,
-                            accountDto);
+                        AmountCorrection(newTransactionDto.Sum, oldTransactionDto.Sum, accountDto);
 
                         break;
                     }
                     case TransactionType.Income:
                     {
                         accountDto = _accountServices.GetById((long)oldTransactionDto.CreditAccountId);
-                        AmountCorrection(newTransactionDto.Sum, oldTransactionDto.Sum, resultTransactionDto,
+                        AmountCorrection(newTransactionDto.Sum, oldTransactionDto.Sum, 
                             accountDto);
                         break;
                     }
@@ -434,19 +429,17 @@ namespace FM.SHD.Domain
         }
 
         private void AmountCorrection(decimal newTransactionSum,
-            decimal oldTransactionSum, TransactionDto resultTransactionDto, AccountDto accountDto)
+            decimal oldTransactionSum, AccountDto accountDto)
         {
             var deltaSum = newTransactionSum - oldTransactionSum;
 
             switch (deltaSum)
             {
                 case > 0:
-                    resultTransactionDto.Sum = oldTransactionSum + deltaSum;
                     accountDto.CurrentSum += deltaSum;
                     _accountServices.Update(accountDto);
                     break;
                 case < 0:
-                    resultTransactionDto.Sum = oldTransactionSum - deltaSum;
                     accountDto.CurrentSum -= deltaSum;
                     _accountServices.Update(accountDto);
                     break;

@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FM.SHD.Winforms.UI", "FM.SH
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FM.SHD.Domain", "FM.SHD.Domain\FM.SHD.Domain.csproj", "{4B4826D5-A7A3-441B-AEA2-786EDC388808}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{E7635F90-BC39-44F2-A9BC-F000EC0C1506}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,10 @@ Global
 		{4B4826D5-A7A3-441B-AEA2-786EDC388808}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B4826D5-A7A3-441B-AEA2-786EDC388808}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B4826D5-A7A3-441B-AEA2-786EDC388808}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7635F90-BC39-44F2-A9BC-F000EC0C1506}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7635F90-BC39-44F2-A9BC-F000EC0C1506}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7635F90-BC39-44F2-A9BC-F000EC0C1506}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7635F90-BC39-44F2-A9BC-F000EC0C1506}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
