@@ -308,7 +308,7 @@ namespace FM.SHD.Domain
                                 ? newTransactionDto.CreditAccountId
                                 : oldTransactionDto.CreditAccountId;
                         resultTransactionDto.Sum = newTransactionDto.Sum;
-                        
+
                         var accountDto =
                             _accountServices.GetById((long)resultTransactionDto.CreditAccountId);
                         accountDto.CurrentSum -= oldTransactionDto.Sum;
@@ -320,27 +320,72 @@ namespace FM.SHD.Domain
                     // Перевод
                     case TransactionType.Transfer:
                     {
+                        resultTransactionDto.Sum = newTransactionDto.Sum;
+
                         // Изменился ли счёт списания
-                        if (oldTransactionDto.DebitAccountId != newTransactionDto.DebitAccountId)
-                            resultTransactionDto.DebitAccountId = newTransactionDto.DebitAccountId;
+                        resultTransactionDto.DebitAccountId =
+                            oldTransactionDto.DebitAccountId != newTransactionDto.DebitAccountId
+                                ? newTransactionDto.DebitAccountId
+                                : oldTransactionDto.DebitAccountId;
 
-                        // Изменилась ли сумма списания
-                        if (newTransactionDto.Sum - oldTransactionDto.Sum != 0)
-                            TransferCheck2(newTransactionDto, oldTransactionDto, true);
-                        // Сумма списания не изменилась
+                        resultTransactionDto.Sum = newTransactionDto.Sum;
+
+                        if (resultTransactionDto.DebitAccountId != oldTransactionDto.DebitAccountId)
+                        {
+                            // Корректировка суммы
+                            var oldAccountDto =
+                                _accountServices.GetById((long)oldTransactionDto.DebitAccountId);
+                            var newAccountDto =
+                                _accountServices.GetById((long)newTransactionDto.DebitAccountId);
+                            oldAccountDto.CurrentSum += oldTransactionDto.Sum;
+                            newAccountDto.CurrentSum -= newTransactionDto.Sum;
+                            _accountServices.Update(oldAccountDto);
+                            _accountServices.Update(newAccountDto);
+                        }
                         else
-                            TransferAccountChangedAmountNotChanged(oldTransactionDto, newTransactionDto, true);
+                        {
+                            if (resultTransactionDto.Sum - oldTransactionDto.Sum > 0)
+                            {
+                                // Корректировка суммы
+                                var currentAccountDto =
+                                    _accountServices.GetById((long)newTransactionDto.DebitAccountId);
+                                currentAccountDto.CurrentSum += oldTransactionDto.Sum;
+                                currentAccountDto.CurrentSum -= newTransactionDto.Sum;
+                                _accountServices.Update(currentAccountDto);
+                            }
+                        }
 
-                        // Изменился ли счёт пополнения
-                        if (oldTransactionDto.CreditAccountId != newTransactionDto.CreditAccountId)
-                            resultTransactionDto.CreditAccountId = newTransactionDto.CreditAccountId;
 
-                        // Изменилась ли сумма списания
-                        if (newTransactionDto.Sum - oldTransactionDto.Sum != 0)
-                            TransferCheck2(newTransactionDto, oldTransactionDto, false);
-                        // Сумма списания не изменилась
+                        // Изменился ли счёт зачисления
+                        resultTransactionDto.CreditAccountId =
+                            oldTransactionDto.CreditAccountId != newTransactionDto.CreditAccountId
+                                ? newTransactionDto.CreditAccountId
+                                : oldTransactionDto.CreditAccountId;
+
+                        if (resultTransactionDto.CreditAccountId != oldTransactionDto.CreditAccountId)
+                        {
+                            // Корректировка суммы
+                            var oldAccountDto =
+                                _accountServices.GetById((long)oldTransactionDto.CreditAccountId);
+                            var newAccountDto =
+                                _accountServices.GetById((long)newTransactionDto.CreditAccountId);
+                            oldAccountDto.CurrentSum -= oldTransactionDto.Sum;
+                            newAccountDto.CurrentSum += newTransactionDto.Sum;
+                            _accountServices.Update(oldAccountDto);
+                            _accountServices.Update(newAccountDto);
+                        }
                         else
-                            TransferAccountChangedAmountNotChanged(oldTransactionDto, newTransactionDto, false);
+                        {
+                            if (resultTransactionDto.Sum - oldTransactionDto.Sum > 0)
+                            {
+                                // Корректировка суммы
+                                var currentAccountDto =
+                                    _accountServices.GetById((long)newTransactionDto.CreditAccountId);
+                                currentAccountDto.CurrentSum -= oldTransactionDto.Sum;
+                                currentAccountDto.CurrentSum += newTransactionDto.Sum;
+                                _accountServices.Update(currentAccountDto);
+                            }
+                        }
 
                         break;
                     }
@@ -370,7 +415,7 @@ namespace FM.SHD.Domain
                 : oldTransactionDto.IdentityId;
             _transactionServices.Update(resultTransactionDto);
         }
-        
+
         public void OnDeleteTransaction(TransactionDto dto)
         {
             switch ((TransactionType)dto.TypeTransactionId)
