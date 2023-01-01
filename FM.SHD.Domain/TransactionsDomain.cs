@@ -175,12 +175,12 @@ namespace FM.SHD.Domain
                                 {
                                     resultTransactionDto.DebitAccountId = newTransactionDto.DebitAccountId;
                                     resultTransactionDto.Sum = newTransactionDto.Sum;
-                                    
+
                                     var oldAccountDto =
                                         _accountServices.GetById((long)oldTransactionDto.DebitAccountId);
                                     oldAccountDto.CurrentSum += oldTransactionDto.Sum;
                                     _accountServices.Update(oldAccountDto);
-                                    
+
                                     var newAccountDto =
                                         _accountServices.GetById((long)resultTransactionDto.DebitAccountId);
                                     newAccountDto.CurrentSum -= newTransactionDto.Sum;
@@ -190,7 +190,7 @@ namespace FM.SHD.Domain
                                 {
                                     resultTransactionDto.DebitAccountId = oldTransactionDto.DebitAccountId;
                                     resultTransactionDto.Sum = newTransactionDto.Sum;
-                                    
+
                                     var accountDto =
                                         _accountServices.GetById((long)resultTransactionDto.DebitAccountId);
                                     accountDto.CurrentSum += oldTransactionDto.Sum;
@@ -199,13 +199,14 @@ namespace FM.SHD.Domain
                                 }
 
                                 // Зачислить на счёт - поле добавляется
-                                resultTransactionDto.CreditAccountId = newTransactionDto.CreditAccountId;                                    resultTransactionDto.Sum = newTransactionDto.Sum;
-                                    
+                                resultTransactionDto.CreditAccountId = newTransactionDto.CreditAccountId;
+                                resultTransactionDto.Sum = newTransactionDto.Sum;
+
                                 var creditAccountDto =
                                     _accountServices.GetById((long)resultTransactionDto.CreditAccountId);
                                 creditAccountDto.CurrentSum += resultTransactionDto.Sum;
                                 _accountServices.Update(creditAccountDto);
-                                
+
                                 break;
                             }
                         }
@@ -248,9 +249,47 @@ namespace FM.SHD.Domain
 
                                 break;
                             }
-                            // Перевод
+                            // Перевод с Debit на Credit
                             case TransactionType.Transfer:
                             {
+                                // Был Доход, стал перевод
+                                // Поменялся ли счёт Credit
+                                if (oldTransactionDto.CreditAccountId != newTransactionDto.CreditAccountId)
+                                {
+                                    resultTransactionDto.CreditAccountId = newTransactionDto.CreditAccountId;
+                                    resultTransactionDto.Sum = newTransactionDto.Sum;
+
+                                    var oldAccountDto =
+                                        _accountServices.GetById((long)oldTransactionDto.CreditAccountId);
+                                    oldAccountDto.CurrentSum -= oldTransactionDto.Sum;
+                                    _accountServices.Update(oldAccountDto);
+
+                                    var newAccountDto =
+                                        _accountServices.GetById((long)resultTransactionDto.CreditAccountId);
+                                    newAccountDto.CurrentSum += newTransactionDto.Sum;
+                                    _accountServices.Update(newAccountDto);
+                                }
+                                else
+                                {
+                                    resultTransactionDto.CreditAccountId = oldTransactionDto.CreditAccountId;
+                                    resultTransactionDto.Sum = newTransactionDto.Sum;
+
+                                    var accountDto =
+                                        _accountServices.GetById((long)resultTransactionDto.CreditAccountId);
+                                    accountDto.CurrentSum -= oldTransactionDto.Sum;
+                                    accountDto.CurrentSum += resultTransactionDto.Sum;
+                                    _accountServices.Update(accountDto);
+                                }
+
+                                // Списать со счёта - поле добавляется
+                                resultTransactionDto.DebitAccountId = newTransactionDto.DebitAccountId;
+                                resultTransactionDto.Sum = newTransactionDto.Sum;
+
+                                var debitAccountDto =
+                                    _accountServices.GetById((long)resultTransactionDto.DebitAccountId);
+                                debitAccountDto.CurrentSum -= resultTransactionDto.Sum;
+                                _accountServices.Update(debitAccountDto);
+
                                 break;
                             }
                         }
