@@ -166,41 +166,46 @@ namespace FM.SHD.Domain
 
                                 break;
                             }
-                            // Перевод с Debit на Credit TODO 28.12.22 Переделать в соответствии с аналогом выше
+                            // Перевод с Debit на Credit
                             case TransactionType.Transfer:
                             {
                                 // Был расход, стал перевод
-                                // Нужно узнать поменялся ли счёт
                                 // Поменялся ли счёт Debit
                                 if (oldTransactionDto.DebitAccountId != newTransactionDto.DebitAccountId)
                                 {
                                     resultTransactionDto.DebitAccountId = newTransactionDto.DebitAccountId;
                                     resultTransactionDto.Sum = newTransactionDto.Sum;
-
-                                    // Изменилась ли сумма
-                                    var deltaSum = newTransactionDto.Sum - oldTransactionDto.Sum;
-                                    var accountDto =
+                                    
+                                    var oldAccountDto =
+                                        _accountServices.GetById((long)oldTransactionDto.DebitAccountId);
+                                    oldAccountDto.CurrentSum += oldTransactionDto.Sum;
+                                    _accountServices.Update(oldAccountDto);
+                                    
+                                    var newAccountDto =
                                         _accountServices.GetById((long)resultTransactionDto.DebitAccountId);
-
-                                    switch (deltaSum)
-                                    {
-                                        case > 0:
-                                            accountDto.CurrentSum += deltaSum;
-                                            _accountServices.Update(accountDto);
-                                            break;
-                                        case < 0:
-                                            accountDto.CurrentSum -= deltaSum;
-                                            _accountServices.Update(accountDto);
-                                            break;
-                                    }
+                                    newAccountDto.CurrentSum -= newTransactionDto.Sum;
+                                    _accountServices.Update(newAccountDto);
                                 }
                                 else
                                 {
                                     resultTransactionDto.DebitAccountId = oldTransactionDto.DebitAccountId;
+                                    resultTransactionDto.Sum = newTransactionDto.Sum;
+                                    
+                                    var accountDto =
+                                        _accountServices.GetById((long)resultTransactionDto.DebitAccountId);
+                                    accountDto.CurrentSum += oldTransactionDto.Sum;
+                                    accountDto.CurrentSum -= resultTransactionDto.Sum;
+                                    _accountServices.Update(accountDto);
                                 }
 
                                 // Зачислить на счёт - поле добавляется
-                                resultTransactionDto.CreditAccountId = newTransactionDto.CreditAccountId;
+                                resultTransactionDto.CreditAccountId = newTransactionDto.CreditAccountId;                                    resultTransactionDto.Sum = newTransactionDto.Sum;
+                                    
+                                var creditAccountDto =
+                                    _accountServices.GetById((long)resultTransactionDto.CreditAccountId);
+                                creditAccountDto.CurrentSum += resultTransactionDto.Sum;
+                                _accountServices.Update(creditAccountDto);
+                                
                                 break;
                             }
                         }
