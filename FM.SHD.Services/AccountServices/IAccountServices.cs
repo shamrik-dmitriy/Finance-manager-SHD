@@ -19,5 +19,6 @@ namespace FM.SHD.Services.AccountServices
         void DeleteById(long id);
         IEnumerable<AccountDto> GetAll();
         AccountDto GetById(long id);
+        bool CheckExist(AccountDto accountDto);
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events.Transactions;
 using FM.SHD.Presenters.Interfaces.UserControls.Common;
@@ -20,7 +19,6 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         #region Private member variables
 
-        private ITransactionServices _transactionServices;
         private readonly ICategoryUCPresenter<TypeTransactionServices> _typeTransactionUcPresenter;
         private readonly INameUCPresenter _nameUcPresenter;
         private readonly IDescriptionUCPresenter _descriptionUcPresenter;
@@ -37,7 +35,6 @@ namespace FM.SHD.Presenters.ViewPresenters
         public TransactionPresenter(
             EventAggregator eventAggregator,
             ITransactionView view,
-            ITransactionServices transactionServices,
             ICategoryUCPresenter<TypeTransactionServices> typeTransactionUcPresenter,
             INameUCPresenter nameUcPresenter,
             IDescriptionUCPresenter descriptionUcPresenter,
@@ -50,7 +47,6 @@ namespace FM.SHD.Presenters.ViewPresenters
         {
             _eventAggregator = eventAggregator;
             _view = view;
-            _transactionServices = transactionServices;
 
             _typeTransactionUcPresenter = typeTransactionUcPresenter;
             _nameUcPresenter = nameUcPresenter;
@@ -191,8 +187,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             if (_view.ShowMessageDelete("Удаление транзакции",
                     $"Транзакция \"{TransactionDto.Name}\" будет удалена, продолжить?"))
             {
-                _transactionServices.DeleteById(TransactionDto.Id);
-                _eventAggregator.Publish(new OnDeleteTransactionApplicationEvent());
+                _eventAggregator.Publish(new OnDeleteTransactionApplicationEvent(TransactionDto));
                 
                 _dataControlButtonsUcPresenter.Continue -= DataControlButtonsUcPresenterOnContinue;
                 _dataControlButtonsUcPresenter.Delete -= DataControlsButtonsUcPresenterOnDelete;
@@ -204,6 +199,7 @@ namespace FM.SHD.Presenters.ViewPresenters
         {
             if (TransactionDto != null)
             {
+                
                 TransactionDto.TypeTransactionId = _typeTransactionUcPresenter.GetCategoryId();
                 TransactionDto.Name = _nameUcPresenter.GetName();
                 TransactionDto.Description = _descriptionUcPresenter.GetDescription();
@@ -235,7 +231,9 @@ namespace FM.SHD.Presenters.ViewPresenters
                 TransactionDto.CategoryId = _categoriesUcPresenter.GetCategoryId();
                 TransactionDto.ContragentId = _contrAgentUcPresenter.GetCategoryId();
                 TransactionDto.IdentityId = _identityUcPresenter.GetCategoryId();
-                _transactionServices.Update(TransactionDto);
+                
+                _eventAggregator.Publish(new OnUpdateTransactionApplicationEvent(TransactionDto));
+
             }
             else
             {
@@ -244,21 +242,23 @@ namespace FM.SHD.Presenters.ViewPresenters
                 {
                     case 1:
                     {
+                        // Расход
                         transactionDto.DebitAccountId = _accountsInfoTransactionUcPresenter.GetDebitAccountId();
                         transactionDto.CreditAccountId = null;
                         break;
                     }
                     case 2:
                     {
+                        // Доход
                         transactionDto.DebitAccountId = null;
                         transactionDto.CreditAccountId = _accountsInfoTransactionUcPresenter.GetCreditAccountId();
                         break;
                     }
                     case 3:
                     {
+                        // Перевод
                         transactionDto.DebitAccountId = _accountsInfoTransactionUcPresenter.GetDebitAccountId();
                         transactionDto.CreditAccountId = _accountsInfoTransactionUcPresenter.GetCreditAccountId();
-                        ;
                         break;
                     }
                 }
@@ -272,8 +272,7 @@ namespace FM.SHD.Presenters.ViewPresenters
                 transactionDto.ContragentId = _contrAgentUcPresenter.GetCategoryId();
                 transactionDto.IdentityId = _identityUcPresenter.GetCategoryId();
 
-                _transactionServices.Add(transactionDto);
-                _eventAggregator.Publish(new OnAddedTransactionApplicationEvent());
+                _eventAggregator.Publish(new OnAddedTransactionApplicationEvent(transactionDto));
             }
 
             _dataControlButtonsUcPresenter.Continue -= DataControlButtonsUcPresenterOnContinue;

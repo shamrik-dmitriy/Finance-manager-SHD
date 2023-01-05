@@ -1,3 +1,4 @@
+using FM.SHD.Infrastructure.Dal;
 using FM.SHD.Infrastructure.Dal.Providers.DataBaseParameters;
 using FM.SHD.Infrastructure.Dal.Providers.Interfaces;
 
@@ -11,7 +12,7 @@ namespace FM.SHD.Infastructure.Impl.Repositories
 
         string DataBaseInfo { get; }
         
-        string ConnectionString { get; }
-        void ConfigureConnection(string connectionString);
+        ConnectionString ConnectionString { get; }
+        void ConfigureConnection(ConnectionString connectionString);
     }
 }

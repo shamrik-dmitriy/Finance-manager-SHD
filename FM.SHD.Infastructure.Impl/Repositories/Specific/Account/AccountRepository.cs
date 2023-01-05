@@ -3,6 +3,7 @@ using FM.SHD.Services.Repositories;
 using FM.SHDML.Core.Models.AccountModel;
 using System;
 using System.Collections.Generic;
+using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
 {
@@ -123,6 +124,11 @@ namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
 
                 return accountModel;
             }
+        }
+
+        public bool CheckExist(IAccountModel accountModel)
+        {
+            return CheckRecordIsExist(TABLE_NAME, accountModel.Id);
         }
 
         public void Update(IAccountModel accountModel)

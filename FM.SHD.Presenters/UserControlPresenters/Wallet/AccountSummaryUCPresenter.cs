@@ -28,7 +28,8 @@ namespace FM.SHD.Presenters.UserControlPresenters.Wallet
         {
             _accountPresenter.SetTitle("Редактирование счёта");
             _accountPresenter.Run(accountDto);
-            _accountSummaryUcView.SetData(_accountServices.GetById(accountDto.Id));
+            if(_accountServices.CheckExist(accountDto))
+                _accountSummaryUcView.SetData(_accountServices.GetById(accountDto.Id));
         }
 
         public IAccountSummaryUCView GetUserControlView()
