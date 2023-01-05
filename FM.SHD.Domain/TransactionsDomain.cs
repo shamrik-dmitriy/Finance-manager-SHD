@@ -1,5 +1,4 @@
 ﻿using System;
-using FM.SHD.Infrastructure.Events;
 using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.TransactionServices;
 using FM.SHDML.Core.Models.Dtos;
@@ -8,17 +7,14 @@ namespace FM.SHD.Domain
 {
     public class TransactionsDomain
     {
-        private readonly EventAggregator _eventAggregator;
         private readonly ITransactionServices _transactionServices;
         private readonly IAccountServices _accountServices;
 
         public TransactionsDomain(
-            EventAggregator eventAggregator,
             ITransactionServices transactionServices,
             IAccountServices accountServices
         )
         {
-            _eventAggregator = eventAggregator;
             _transactionServices = transactionServices;
             _accountServices = accountServices;
         }
@@ -277,11 +273,32 @@ namespace FM.SHD.Domain
                         // Корректируется и удаляется счёт списания - debit, корректируется счёт пополнения - credit
                         case TransactionType.Income:
                         {
+                            var debitAccount = _accountServices.GetById((long)oldTransactionDto.DebitAccountId);
+                            debitAccount.CurrentSum += oldTransactionDto.Sum;
+                            _accountServices.Update(debitAccount);
+                            resultTransactionDto.DebitAccountId = null;
+
+                            var creditAccount = _accountServices.GetById((long)oldTransactionDto.CreditAccountId);
+                            creditAccount.CurrentSum += oldTransactionDto.Sum;
+                            _accountServices.Update(creditAccount);
+
+                            resultTransactionDto.CreditAccountId = oldTransactionDto.CreditAccountId;
                             break;
                         }
+
                         // Корректируется и удаляется счёт пополнения - credit, корректируется счёт списания - debit
                         case TransactionType.Expense:
                         {
+                            var creditAccount = _accountServices.GetById((long)oldTransactionDto.CreditAccountId);
+                            creditAccount.CurrentSum -= oldTransactionDto.Sum;
+                            _accountServices.Update(creditAccount);
+                            resultTransactionDto.CreditAccountId = null;
+
+                            var debitAccount = _accountServices.GetById((long)oldTransactionDto.DebitAccountId);
+                            debitAccount.CurrentSum -= oldTransactionDto.Sum;
+                            _accountServices.Update(debitAccount);
+
+                            resultTransactionDto.CreditAccountId = oldTransactionDto.CreditAccountId;
                             break;
                         }
                     }
@@ -337,7 +354,7 @@ namespace FM.SHD.Domain
                 case TransactionType.Transfer:
                 {
                     resultTransactionDto.Sum = newTransactionDto.Sum;
-                    
+
                     // Обновление счёта списания
                     resultTransactionDto.DebitAccountId =
                         oldTransactionDto.DebitAccountId != newTransactionDto.DebitAccountId
