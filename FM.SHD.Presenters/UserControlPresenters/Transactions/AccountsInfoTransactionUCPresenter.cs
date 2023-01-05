@@ -75,13 +75,12 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
 
         private void AccountsInfoUcViewOnOnLoadControlView()
         {
-            _debitAccountInfoUcPresenter.SetCategoryValues();
             _debitAccountInfoUcPresenter.SetStyleDropDownList();
             _accountsInfoTransactionUcView.AddAccountInfo(_debitAccountInfoUcPresenter.GetUserControlView());
             
-            _creditAccountInfoUcPresenter.SetCategoryValues();
             _creditAccountInfoUcPresenter.SetStyleDropDownList();
             _accountsInfoTransactionUcView.AddAccountInfo(_creditAccountInfoUcPresenter.GetUserControlView());
+            
             _accountsInfoTransactionUcView.AddSumm(_sumTransactionUcPresenter.GetUserControlView());
 
             _accountsInfoTransactionUcView.AddDate(_dateTransactionUcPresenter.GetUserControlView());
@@ -156,14 +155,14 @@ namespace FM.SHD.Presenters.UserControlPresenters.Transactions
 
         public void SetCreditAccountId(long? creditAccountId)
         {
-            //_creditAccountInfoUcPresenter.SetCategoryValues();
+            _creditAccountInfoUcPresenter.SetCategoryValues();
             _creditAccountInfoUcPresenter.GetUserControlView().SetCategoryId(creditAccountId);
         }
 
         public void SetDebitAccountId(long? debitAccountId)
         {
             _debitAccountInfoUcPresenter.SetCategoryValues();
-            _debitAccountInfoUcPresenter.GetUserControlView().SetCategoryId(debitAccountId);;
+            _debitAccountInfoUcPresenter.GetUserControlView().SetCategoryId(debitAccountId);
         }
 
         public event Action<long> CategoryChanged;
