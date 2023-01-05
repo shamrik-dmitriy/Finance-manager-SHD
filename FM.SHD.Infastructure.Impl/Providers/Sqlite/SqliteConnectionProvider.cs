@@ -4,9 +4,11 @@ using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FM.SHD.Infrastructure.Dal;
 
 namespace FM.SHD.Infastructure.Impl.Providers.Sqlite
 {
@@ -47,14 +49,21 @@ namespace FM.SHD.Infastructure.Impl.Providers.Sqlite
             _dataProvider = new Lazy<SqliteDataProvider>(() => new SqliteDataProvider(Connection));
         }
 
-        public SqliteConnectionProvider(string connectionString)
+        public SqliteConnectionProvider(ConnectionString connectionString)
         {
-            if (string.IsNullOrWhiteSpace(connectionString))
-                throw new ArgumentNullException(nameof(connectionString));
+            if (File.Exists(connectionString.GetPath()))
+            {
+                if (string.IsNullOrWhiteSpace(connectionString.GetPath()))
+                    throw new ArgumentNullException(nameof(connectionString));
 
-            _connection = new Lazy<SqliteConnection>(() => new SqliteConnection(connectionString));
+                _connection = new Lazy<SqliteConnection>(() => new SqliteConnection(connectionString.GetConnectionString()));
 
-            _dataProvider = new Lazy<SqliteDataProvider>(() => new SqliteDataProvider(Connection));
+                _dataProvider = new Lazy<SqliteDataProvider>(() => new SqliteDataProvider(Connection));
+            }
+            else
+            {
+                throw new FileNotFoundException($"Файл {connectionString.GetPath()} не найден. Возможно, он был удалён или перемещён");
+            }
         }
 
         ~SqliteConnectionProvider()
@@ -98,8 +107,11 @@ namespace FM.SHD.Infastructure.Impl.Providers.Sqlite
                 return;
             if (!disposing)
             {
-                string message = string.Format("{0}{1}{2}{3}", "----------------------------- not disposed connection ------------------------", Environment.NewLine, "Call Stack: ", Environment.StackTrace);
+                string message = string.Format("{0}{1}{2}{3}",
+                    "----------------------------- not disposed connection ------------------------",
+                    Environment.NewLine, "Call Stack: ", Environment.StackTrace);
             }
+
             _disposed = true;
             if (disposing)
             {

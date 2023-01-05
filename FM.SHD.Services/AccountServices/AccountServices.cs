@@ -54,6 +54,13 @@ namespace FM.SHD.Services.AccountServices
             return _mapper.Map<AccountDto>(_accountRepository.GetById(id));
         }
 
+        public bool CheckExist(AccountDto accountDto)
+        {
+            var model = _mapper.Map<AccountModel>(accountDto);
+            ValidateModel(model);
+            return _accountRepository.CheckExist(model);
+        }
+
         public void Update(AccountDto accountDto)
         {
             var model = _mapper.Map<AccountModel>(accountDto);

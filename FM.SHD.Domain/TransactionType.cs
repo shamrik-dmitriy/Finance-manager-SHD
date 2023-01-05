@@ -1,4 +1,4 @@
-namespace FM.SHDML.Core.Models.old.model.TransationModel
+namespace FM.SHD.Domain
 {
     /// <summary>
     ///     Тип операции
@@ -6,18 +6,18 @@ namespace FM.SHDML.Core.Models.old.model.TransationModel
     public enum TransactionType
     {
         /// <summary>
-        ///     Доход
-        /// </summary>
-        Income = 0,
-        
-        /// <summary>
         ///     Расход
         /// </summary>
         Expense = 1,
-        
+
+        /// <summary>
+        ///     Доход
+        /// </summary>
+        Income = 2,
+
         /// <summary>
         ///     Перевод
         /// </summary>
-        Transfer =2
+        Transfer = 3
     }
 }

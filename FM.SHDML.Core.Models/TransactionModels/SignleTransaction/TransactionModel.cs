@@ -16,8 +16,14 @@ namespace FM.SHDML.Core.Models.TransactionModels.SignleTransaction
         [MaxLength(255, ErrorMessage = "Длина описания транзакции не может превышать 255 символов")]
         public string Description { get; set; }
 
+        /// <summary>
+        ///     Счёт списания
+        /// </summary>
         public long? DebitAccountId { get; set; }
 
+        /// <summary>
+        ///     Счет пополнения
+        /// </summary>
         public long? CreditAccountId { get; set; }
 
         public decimal Sum { get; set; }
