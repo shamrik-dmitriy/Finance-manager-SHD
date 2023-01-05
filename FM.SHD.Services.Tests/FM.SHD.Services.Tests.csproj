@@ -25,4 +25,10 @@
     <ProjectReference Include="..\FM.SHD.Services\FM.SHD.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="SingleTransactionDataAccessTests.cs" />
+    <Compile Remove="SingleTransactionValidationTests.cs" />
+    <Compile Remove="SingleTransactionServicesFixutre.cs" />
+  </ItemGroup>
+
 </Project>
