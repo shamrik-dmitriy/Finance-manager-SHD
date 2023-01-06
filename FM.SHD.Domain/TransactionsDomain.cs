@@ -54,13 +54,13 @@ namespace FM.SHD.Domain
             _transactionServices.Add(dto);
         }
 
-        public void OnUpdateTransaction(TransactionDto newTransactionDto)
+        public TransactionDto OnUpdateTransaction(TransactionDto newTransactionDto)
         {
-            TransactionDto resultTransactionDto = new TransactionDto();
+            var resultTransactionDto = new TransactionDto();
 
             // Расход - дебит счёт, доход - кредит счёт.
             var oldTransactionDto = _transactionServices.GetById(newTransactionDto.Id);
-            if (newTransactionDto.Equals(oldTransactionDto)) return;
+            if (newTransactionDto.Equals(oldTransactionDto)) return oldTransactionDto;
 
             var oldTypeTransaction = (TransactionType)oldTransactionDto.TypeTransactionId;
             var newTypeTransaction = (TransactionType)newTransactionDto.TypeTransactionId;
@@ -91,7 +91,7 @@ namespace FM.SHD.Domain
             resultTransactionDto.IdentityId = oldTransactionDto.IdentityId != newTransactionDto.IdentityId
                 ? newTransactionDto.IdentityId
                 : oldTransactionDto.IdentityId;
-            _transactionServices.Update(resultTransactionDto);
+            return resultTransactionDto;
         }
 
         private void ProcessingOfTypeTransactionHasChanged(TransactionDto newTransactionDto,

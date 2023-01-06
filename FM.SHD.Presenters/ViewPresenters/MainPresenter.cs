@@ -198,7 +198,7 @@ namespace FM.SHD.Presenters.ViewPresenters
                     _view.SetViewOnUnActiveUI();
                 }
 
-                _transactionsDomain = new TransactionsDomain(_eventAggregator, _transactionServices, _accountServices);
+                _transactionsDomain = new TransactionsDomain(_transactionServices, _accountServices);
                 _view.SetVisibleUserLoginInfo(false);
 
                 /*
@@ -258,7 +258,10 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void OnUpdateTransaction(OnUpdateTransactionApplicationEvent args)
         {
-            _transactionsDomain.OnUpdateTransaction(args.TransactionDto);
+            var resultTransactionDto = _transactionsDomain.OnUpdateTransaction(args.TransactionDto);
+            if (resultTransactionDto.Equals(args.TransactionDto))
+                _transactionServices.Update(resultTransactionDto);
+
             ReloadTransactions();
             ReloadAccounts();
         }
