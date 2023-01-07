@@ -315,8 +315,6 @@ namespace FM.SHD.Domain
             {
                 case TransactionType.Expense:
                 {
-                    resultTransactionDto.Sum = newTransactionDto.Sum;
-
                     // Обновление счёта списания
                     resultTransactionDto.DebitAccountId =
                         oldTransactionDto.DebitAccountId != newTransactionDto.DebitAccountId
