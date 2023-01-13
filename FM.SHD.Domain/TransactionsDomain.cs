@@ -351,7 +351,6 @@ namespace FM.SHD.Domain
                 // Перевод
                 case TransactionType.Transfer:
                 {
-                    resultTransactionDto.Sum = newTransactionDto.Sum;
 
                     // Обновление счёта списания
                     resultTransactionDto.DebitAccountId =
@@ -375,7 +374,7 @@ namespace FM.SHD.Domain
                     }
                     else
                     {
-                        if (resultTransactionDto.Sum - oldTransactionDto.Sum > 0)
+                        //if (resultTransactionDto.Sum - oldTransactionDto.Sum > 0)
                         {
                             // Корректировка суммы
                             var currentAccountDto =
@@ -406,7 +405,7 @@ namespace FM.SHD.Domain
                     }
                     else
                     {
-                        if (resultTransactionDto.Sum - oldTransactionDto.Sum > 0)
+                       // if (resultTransactionDto.Sum - oldTransactionDto.Sum > 0)
                         {
                             // Корректировка суммы
                             var currentAccountDto =
