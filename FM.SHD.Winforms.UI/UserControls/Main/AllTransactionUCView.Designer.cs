@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewTransaction = new System.Windows.Forms.DataGridView();
             this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +48,7 @@
             this.dataGridViewTransaction.AllowUserToAddRows = false;
             this.dataGridViewTransaction.AllowUserToDeleteRows = false;
             this.dataGridViewTransaction.AllowUserToResizeColumns = false;
+            this.dataGridViewTransaction.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewTransaction.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewTransaction.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnId,
@@ -62,10 +64,11 @@
             this.dataGridViewTransaction.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewTransaction.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewTransaction.MinimumSize = new System.Drawing.Size(300, 300);
+            this.dataGridViewTransaction.MultiSelect = false;
             this.dataGridViewTransaction.Name = "dataGridViewTransaction";
             this.dataGridViewTransaction.RowHeadersVisible = false;
             this.dataGridViewTransaction.RowTemplate.Height = 25;
-            this.dataGridViewTransaction.Size = new System.Drawing.Size(1040, 798);
+            this.dataGridViewTransaction.Size = new System.Drawing.Size(1732, 1255);
             this.dataGridViewTransaction.TabIndex = 0;
             this.dataGridViewTransaction.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTransaction_CellClick);
             this.dataGridViewTransaction.SelectionChanged += new System.EventHandler(this.dataGridViewTransaction_SelectionChanged);
@@ -144,10 +147,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.AutoSize = true;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Controls.Add(this.dataGridViewTransaction);
+            this.DoubleBuffered = true;
             this.Name = "AllTransactionUCView";
-            this.Size = new System.Drawing.Size(1040, 798);
+            this.Size = new System.Drawing.Size(1732, 1255);
             this.Load += new System.EventHandler(this.DataGridTransactionUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransaction)).EndInit();
             this.ResumeLayout(false);
