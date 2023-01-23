@@ -145,8 +145,7 @@ namespace FM.SHD.Presenters.ViewPresenters
                 RecentOpenFilesDtos.Select(x => (x.FileName, x.FilePath)).ToList();
             _recentOpenFilesSettings.Save();
 
-            _view.SetViewOnActiveUI();
-            CreateConnection(filePath);
+            LoadData();
         }
 
         private bool IsFindAndReplaceRecentOpenFile(string filePath, string fileName, RecentOpenFilesDto recentOpenItem)
@@ -175,30 +174,13 @@ namespace FM.SHD.Presenters.ViewPresenters
 
                 if (isLoad)
                 {
-                    _view.SetViewOnActiveUI();
-
-
-                    CreateConnection(_recentOpenFilesSettings.GetSetting().RecentOpen.Last().FilePath);
-
-                    _accountServices =
-                        new AccountServices(new AccountRepository(_repositoryManager), new ModelValidator());
-                    _transactionServices =
-                        new TransactionServices(new TransactionRepository(_repositoryManager),
-                            new ModelValidator());
-
-                    SetAccounts();
-
-                    _allTransactionUcPresenter = _serviceProvider.GetRequiredService<IAllTransactionUCPresenter>();
-                    _view.AddUserControl(_allTransactionUcPresenter.GetUserControlView());
-
-                    SetTransactions();
+                    LoadData();
                 }
                 else
                 {
                     _view.SetViewOnUnActiveUI();
                 }
 
-                _transactionsDomain = new TransactionsDomain(_transactionServices, _accountServices);
                 _view.SetVisibleUserLoginInfo(false);
 
                 /*
@@ -212,6 +194,28 @@ namespace FM.SHD.Presenters.ViewPresenters
             {
                 var s = 0;
             }
+        }
+
+        private void LoadData()
+        {
+            _view.SetViewOnActiveUI();
+
+            CreateConnection(_recentOpenFilesSettings.GetSetting().RecentOpen.Last().FilePath);
+
+            _accountServices =
+                new AccountServices(new AccountRepository(_repositoryManager), new ModelValidator());
+            _transactionServices =
+                new TransactionServices(new TransactionRepository(_repositoryManager),
+                    new ModelValidator());
+
+            SetAccounts();
+
+            _allTransactionUcPresenter = _serviceProvider.GetRequiredService<IAllTransactionUCPresenter>();
+            _view.AddUserControl(_allTransactionUcPresenter.GetUserControlView());
+
+            SetTransactions();
+
+            _transactionsDomain = new TransactionsDomain(_transactionServices, _accountServices);
         }
 
         private void OnDeletingAccount(OnDeletingAccountApplicationEvent obj)
