@@ -4,7 +4,6 @@ using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category;
-using FM.SHD.UI.WindowsForms.UserControls.Presenters.UIInterfaces;
 using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Winforms.UI.UserControls.Transactions.TransactionUserControls

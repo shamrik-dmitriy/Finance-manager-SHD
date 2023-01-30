@@ -1,4 +1,3 @@
-using FM.SHD.Domain;
 using FM.SHD.Infastructure.Impl.Factory;
 using FM.SHD.Infastructure.Impl.Repositories;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Account;
@@ -9,6 +8,10 @@ using FM.SHD.Infastructure.Impl.Repositories.Specific.Identities;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.TypeTransaction;
 using FM.SHD.Infrastructure.Dal.Factory;
+using FM.SHD.Plugin.Transaction.WindowsForms.Presenters;
+using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Transactions;
+using FM.SHD.Plugin.Transaction.WindowsForms.Views;
+using FM.SHD.Plugin.Transaction.WindowsForms.Views.Transactions.TransactionUserControls;
 using FM.SHD.Presenters.Interfaces.UserControls.Main;
 using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
 using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
@@ -29,21 +32,18 @@ using FM.SHD.Services.CurrencyServices;
 using FM.SHD.Services.IdentityServices;
 using FM.SHD.Services.Repositories;
 using FM.SHD.Services.TransactionServices;
-using FM.SHD.UI.WindowsForms.UserControls.Presenters;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Checkbox;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.ContinueCancelButtons;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Description;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Label;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Name;
-using FM.SHD.UI.WindowsForms.UserControls.Presenters.UIInterfaces;
 using FM.SHD.UI.WindowsForms.UserControls.Views;
 using FM.SHD.Winforms.UI.UserControls.Main;
 using FM.SHD.Winforms.UI.UserControls.Transactions.TransactionUserControls;
 using FM.SHD.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions;
 using FM.SHD.Winforms.UI.UserControls.Wallet;
 using FM.SHD.Winforms.UI.Views.Account;
-using FM.SHD.Winforms.UI.Views.Transactions;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FM.SHD.Winforms.UI.DependencyInjection

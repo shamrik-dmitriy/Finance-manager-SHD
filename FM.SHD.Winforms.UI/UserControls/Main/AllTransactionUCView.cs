@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Windows.Forms;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Main;
 using FM.SHDML.Core.Models.Dtos;

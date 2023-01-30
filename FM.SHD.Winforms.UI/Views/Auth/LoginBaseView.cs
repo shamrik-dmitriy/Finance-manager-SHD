@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using FM.SHD.Presenters.IntrefacesViews;
-using FM.SHD.Presenters.IntrefacesViews.UserControl;
 using FM.SHD.Presenters.IntrefacesViews.Views;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.UIInterfaces;
 

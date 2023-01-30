@@ -2,7 +2,7 @@ using System;
 using FM.SHD.UI.WindowsForms.Presenters;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.UIInterfaces;
 
-namespace FM.SHD.Presenters.IntrefacesViews.Views
+namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters
 {
     public interface ITransactionBaseView : IBaseView
     {

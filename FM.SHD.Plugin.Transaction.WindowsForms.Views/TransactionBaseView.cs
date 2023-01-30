@@ -2,16 +2,11 @@
 using System.Drawing;
 using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
-using FM.SHD.Presenters.Events;
-using FM.SHD.Presenters.IntrefacesViews;
-using FM.SHD.Presenters.IntrefacesViews.UserControl;
-using FM.SHD.Presenters.IntrefacesViews.Views;
-using FM.SHD.UI.WindowsForms.UserControls.Presenters.Events;
+using FM.SHD.Plugin.Transaction.WindowsForms.Presenters;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Name.Events;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.UIInterfaces;
-using FM.SHDML.Core.Models.Dtos;
 
-namespace FM.SHD.Winforms.UI.Views.Transactions
+namespace FM.SHD.Plugin.Transaction.WindowsForms.Views
 {
     public partial class TransactionBaseView : Form, ITransactionBaseView
     {

@@ -1,13 +1,10 @@
 using System;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using FM.SHD.Domain;
 using FM.SHD.Infrastructure.Events;
-using FM.SHD.Plugins.Infrastructure;
-using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.ViewPresenters;
 using FM.SHD.Services.CommonServices;
 using FM.SHD.Settings.Services;
@@ -36,7 +33,8 @@ namespace FM.SHD.Winforms.UI
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
 
             // TODO: Захардкожено, исправить
-            var moduleAssembly = System.Reflection.Assembly.LoadFrom(@"D:\repos\SHD\FM.SHD.Plugin.Transaction\bin\Debug\net5.0-windows\FM.SHD.Plugin.Transaction.dll");
+            //var moduleAssembly = System.Reflection.Assembly.LoadFrom(@"D:\repos\SHD\FM.SHD.Plugin.Transaction\bin\Debug\net5.0-windows\FM.SHD.Plugin.Transaction.dll");
+         /*   var moduleAssembly = System.Reflection.Assembly.LoadFrom(@"A:\Repositories\Finance-manager-SHD\FM.SHD.Plugin.Transaction\bin\Debug\net5.0-windows\FM.SHD.Plugin.Transaction.dll");
             var moduleTypes = moduleAssembly.GetTypes().Where(t => 
                 t.GetInterfaces().Contains(typeof(IPlugin)));
 
@@ -46,7 +44,7 @@ namespace FM.SHD.Winforms.UI
             });
 
             var transactionModule = modules.Where(x => x.Id == "Transaction");
-
+*/
             var builder = new HostBuilder()
                 .ConfigureServices((hostBuilder, services) =>
                 {

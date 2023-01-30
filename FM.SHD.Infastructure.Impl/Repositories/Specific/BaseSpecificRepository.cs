@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using FM.SHD.Infastructure.Impl.Factory;
 using FM.SHD.Infrastructure.Dal.Providers;
 using FM.SHD.Infrastructure.Dal.Providers.Interfaces;
 

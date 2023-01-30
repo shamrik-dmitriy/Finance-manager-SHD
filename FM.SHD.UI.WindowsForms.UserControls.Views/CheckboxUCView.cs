@@ -1,6 +1,5 @@
 ﻿using System.Windows.Forms;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Checkbox;
-using FM.SHD.UI.WindowsForms.UserControls.Presenters.UIInterfaces;
 
 namespace FM.SHD.UI.WindowsForms.UserControls.Views
 {

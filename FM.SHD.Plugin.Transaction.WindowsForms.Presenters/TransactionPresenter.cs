@@ -1,7 +1,7 @@
 using FM.SHD.Infrastructure.Events;
-using FM.SHD.Presenters.Events.Transactions;
+using FM.SHD.Plugin.Transaction.WindowsForms.Presenters;
+using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Events;
 using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
-using FM.SHD.Presenters.IntrefacesViews.Views;
 using FM.SHD.Services.CategoriesServices;
 using FM.SHD.Services.ComponentsServices.TypeTransactionService;
 using FM.SHD.Services.ContragentServices;

@@ -10,4 +10,8 @@
       <Folder Include="NewDirectory2" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\FM.SHD.UI.WindowsForms.Presenters\FM.SHD.UI.WindowsForms.Presenters.csproj" />
+    </ItemGroup>
+
 </Project>

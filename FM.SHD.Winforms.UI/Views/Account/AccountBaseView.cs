@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.IntrefacesViews.Views;
-using FM.SHD.UI.WindowsForms.UserControls.Presenters.Events;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Name.Events;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.UIInterfaces;
 

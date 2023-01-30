@@ -35,4 +35,8 @@
       </Compile>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\FM.SHD.Plugin.Transaction.WindowsForms.Presenters\FM.SHD.Plugin.Transaction.WindowsForms.Presenters.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.ContinueCancelButtons;
-using FM.SHD.UI.WindowsForms.UserControls.Presenters.UIInterfaces;
 
 namespace FM.SHD.UI.WindowsForms.UserControls.Views
 {

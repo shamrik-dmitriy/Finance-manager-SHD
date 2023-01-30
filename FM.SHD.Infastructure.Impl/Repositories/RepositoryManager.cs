@@ -1,4 +1,3 @@
-using FM.SHD.Infastructure.Impl.Providers.Sqlite;
 using FM.SHD.Infrastructure.Dal;
 using FM.SHD.Infrastructure.Dal.Factory;
 using FM.SHD.Infrastructure.Dal.Providers.DataBaseParameters;
