@@ -1,21 +1,23 @@
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Presenters.Events.Transactions;
-using FM.SHD.Presenters.Interfaces.UserControls.Common;
 using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
 using FM.SHD.Presenters.IntrefacesViews.Views;
 using FM.SHD.Services.CategoriesServices;
 using FM.SHD.Services.ComponentsServices.TypeTransactionService;
 using FM.SHD.Services.ContragentServices;
 using FM.SHD.Services.IdentityServices;
-using FM.SHD.Services.TransactionServices;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.ContinueCancelButtons;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Description;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Name;
 using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Presenters.ViewPresenters
 {
-    public class TransactionPresenter : BaseTransactionPresenter
+    public class TransactionPresenter : BaseBaseTransactionPresenter
     {
         private readonly EventAggregator _eventAggregator;
-        private readonly ITransactionView _view;
+        private readonly ITransactionBaseView _baseView;
 
         #region Private member variables
 
@@ -34,7 +36,7 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         public TransactionPresenter(
             EventAggregator eventAggregator,
-            ITransactionView view,
+            ITransactionBaseView baseView,
             ICategoryUCPresenter<TypeTransactionServices> typeTransactionUcPresenter,
             INameUCPresenter nameUcPresenter,
             IDescriptionUCPresenter descriptionUcPresenter,
@@ -43,10 +45,10 @@ namespace FM.SHD.Presenters.ViewPresenters
             ICategoryUCPresenter<ContragentServices> contrAgentUcPresenter,
             ICategoryUCPresenter<IdentityServices> identityUcPresenter,
             IContinueCancelButtonsUCPresenter dataControlButtonsUcPresenter)
-            : base(view)
+            : base(baseView)
         {
             _eventAggregator = eventAggregator;
-            _view = view;
+            _baseView = baseView;
 
             _typeTransactionUcPresenter = typeTransactionUcPresenter;
             _nameUcPresenter = nameUcPresenter;
@@ -57,13 +59,13 @@ namespace FM.SHD.Presenters.ViewPresenters
             _identityUcPresenter = identityUcPresenter;
             _dataControlButtonsUcPresenter = dataControlButtonsUcPresenter;
 
-            _view.OnLoadView += OnLoadView;
+            _baseView.OnLoadView += OnLoadBaseView;
             _typeTransactionUcPresenter.CategoryChanged += TypeTransactionUcPresenterOnCategoryChanged;
         }
 
         ~TransactionPresenter()
         {
-            _view.OnLoadView -= OnLoadView;
+            _baseView.OnLoadView -= OnLoadBaseView;
         }
 
         #endregion
@@ -78,13 +80,13 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         public override void SetTitle(string title)
         {
-            _view.SetTitle(title);
+            _baseView.SetTitle(title);
         }
 
         public override void Run(TransactionDto accountDto)
         {
             TransactionDto = accountDto;
-            _view.Show();
+            _baseView.Show();
         }
 
         #endregion
@@ -96,86 +98,86 @@ namespace FM.SHD.Presenters.ViewPresenters
             _accountsInfoTransactionUcPresenter.CategoryChanged(id);
         }
 
-        private void OnLoadView()
+        private void OnLoadBaseView()
         {
             _typeTransactionUcPresenter.SetText("Тип транзакции");
             _categoriesUcPresenter.SetText("Категория");
             _contrAgentUcPresenter.SetText("Контрагент");
             _identityUcPresenter.SetText("Член семьи");
-            _view.Clear();
+            _baseView.Clear();
 
             if (TransactionDto != null)
             {
                 _typeTransactionUcPresenter.SetCategoryValues();
                 _typeTransactionUcPresenter.SetStyleDropDownList();
-                _view.AddUserControl(_typeTransactionUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_typeTransactionUcPresenter.GetUserControlView());
                 _typeTransactionUcPresenter.GetUserControlView().SetCategoryId(TransactionDto.TypeTransactionId);
 
-                _view.AddUserControl(_nameUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_nameUcPresenter.GetUserControlView());
                 _nameUcPresenter.GetUserControlView().SetName(TransactionDto.Name);
 
-                _view.AddUserControl(_descriptionUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_descriptionUcPresenter.GetUserControlView());
                 _descriptionUcPresenter.GetUserControlView().SetDescription(TransactionDto.Description);
 
-                _view.AddHorizontalLine();
-                _view.AddUserControl(_accountsInfoTransactionUcPresenter
+                _baseView.AddHorizontalLine();
+                _baseView.AddUserControl(_accountsInfoTransactionUcPresenter
                     .GetUserControlView());
                 _accountsInfoTransactionUcPresenter.SetDate(TransactionDto.Date);
                 _accountsInfoTransactionUcPresenter.SetSum(TransactionDto.Sum);
                 _accountsInfoTransactionUcPresenter.SetCreditAccountId(TransactionDto.CreditAccountId);
                 _accountsInfoTransactionUcPresenter.SetDebitAccountId(TransactionDto.DebitAccountId);
-                _view.AddHorizontalLine();
+                _baseView.AddHorizontalLine();
 
                 _categoriesUcPresenter.SetStyleDropDown();
                 _categoriesUcPresenter.SetCategoryValues();
-                _view.AddUserControl(_categoriesUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_categoriesUcPresenter.GetUserControlView());
                 _categoriesUcPresenter.GetUserControlView().SetCategoryId(TransactionDto.CategoryId);
 
                 _contrAgentUcPresenter.SetStyleDropDown();
                 _contrAgentUcPresenter.SetCategoryValues();
-                _view.AddUserControl(_contrAgentUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_contrAgentUcPresenter.GetUserControlView());
                 _contrAgentUcPresenter.GetUserControlView().SetCategoryId(TransactionDto.ContragentId);
 
                 _identityUcPresenter.SetStyleDropDown();
                 _identityUcPresenter.SetCategoryValues();
-                _view.AddUserControl(_identityUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_identityUcPresenter.GetUserControlView());
                 _identityUcPresenter.GetUserControlView().SetCategoryId(TransactionDto.IdentityId);
 
-                _view.AddHorizontalLine();
+                _baseView.AddHorizontalLine();
                 _dataControlButtonsUcPresenter.SetTextButtonContinue("Применить");
                 _dataControlButtonsUcPresenter.SetVisibleButtonDelete(true);
-                _view.AddUserControl(_dataControlButtonsUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_dataControlButtonsUcPresenter.GetUserControlView());
             }
             else
             {
                 _typeTransactionUcPresenter.SetCategoryValues();
                 _typeTransactionUcPresenter.SetStyleDropDownList();
-                _view.AddUserControl(_typeTransactionUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_typeTransactionUcPresenter.GetUserControlView());
 
-                _view.AddUserControl(_nameUcPresenter.GetUserControlView());
-                _view.AddUserControl(_descriptionUcPresenter
+                _baseView.AddUserControl(_nameUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_descriptionUcPresenter
                     .GetUserControlView());
 
-                _view.AddHorizontalLine();
-                _view.AddUserControl(_accountsInfoTransactionUcPresenter
+                _baseView.AddHorizontalLine();
+                _baseView.AddUserControl(_accountsInfoTransactionUcPresenter
                     .GetUserControlView());
-                _view.AddHorizontalLine();
+                _baseView.AddHorizontalLine();
 
                 _categoriesUcPresenter.SetStyleDropDown();
                 _categoriesUcPresenter.SetCategoryValues();
-                _view.AddUserControl(_categoriesUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_categoriesUcPresenter.GetUserControlView());
 
                 _contrAgentUcPresenter.SetStyleDropDown();
                 _contrAgentUcPresenter.SetCategoryValues();
-                _view.AddUserControl(_contrAgentUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_contrAgentUcPresenter.GetUserControlView());
 
                 _identityUcPresenter.SetStyleDropDown();
                 _identityUcPresenter.SetCategoryValues();
-                _view.AddUserControl(_identityUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_identityUcPresenter.GetUserControlView());
 
-                _view.AddHorizontalLine();
+                _baseView.AddHorizontalLine();
                 _dataControlButtonsUcPresenter.SetVisibleButtonDelete(false);
-                _view.AddUserControl(_dataControlButtonsUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_dataControlButtonsUcPresenter.GetUserControlView());
             }
 
             _dataControlButtonsUcPresenter.Continue += DataControlButtonsUcPresenterOnContinue;
@@ -184,14 +186,14 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void DataControlsButtonsUcPresenterOnDelete()
         {
-            if (_view.ShowMessageDelete("Удаление транзакции",
+            if (_baseView.ShowMessageDelete("Удаление транзакции",
                     $"Транзакция \"{TransactionDto.Name}\" будет удалена, продолжить?"))
             {
                 _eventAggregator.Publish(new OnDeleteTransactionApplicationEvent(TransactionDto));
                 
                 _dataControlButtonsUcPresenter.Continue -= DataControlButtonsUcPresenterOnContinue;
                 _dataControlButtonsUcPresenter.Delete -= DataControlsButtonsUcPresenterOnDelete;
-                _view.Close();
+                _baseView.Close();
             }
         }
 
@@ -278,7 +280,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             _dataControlButtonsUcPresenter.Continue -= DataControlButtonsUcPresenterOnContinue;
             _dataControlButtonsUcPresenter.Delete -= DataControlsButtonsUcPresenterOnDelete;
 
-            _view.Close();
+            _baseView.Close();
         }
 
         #endregion

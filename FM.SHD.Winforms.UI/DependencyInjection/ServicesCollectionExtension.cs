@@ -9,16 +9,13 @@ using FM.SHD.Infastructure.Impl.Repositories.Specific.Identities;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.TypeTransaction;
 using FM.SHD.Infrastructure.Dal.Factory;
-using FM.SHD.Presenters.Interfaces.UserControls.Common;
 using FM.SHD.Presenters.Interfaces.UserControls.Main;
 using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
 using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
-using FM.SHD.Presenters.IntrefacesViews.UserControl.Common;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Main;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Wallet;
 using FM.SHD.Presenters.IntrefacesViews.Views;
-using FM.SHD.Presenters.UserControlPresenters.Common;
 using FM.SHD.Presenters.UserControlPresenters.Main;
 using FM.SHD.Presenters.UserControlPresenters.Transactions;
 using FM.SHD.Presenters.UserControlPresenters.Wallet;
@@ -32,7 +29,15 @@ using FM.SHD.Services.CurrencyServices;
 using FM.SHD.Services.IdentityServices;
 using FM.SHD.Services.Repositories;
 using FM.SHD.Services.TransactionServices;
-using FM.SHD.Winforms.UI.UserControls.Common;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Checkbox;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.ContinueCancelButtons;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Description;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Label;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Name;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.UIInterfaces;
+using FM.SHD.UI.WindowsForms.UserControls.Views;
 using FM.SHD.Winforms.UI.UserControls.Main;
 using FM.SHD.Winforms.UI.UserControls.Transactions.TransactionUserControls;
 using FM.SHD.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions;
@@ -40,9 +45,6 @@ using FM.SHD.Winforms.UI.UserControls.Wallet;
 using FM.SHD.Winforms.UI.Views.Account;
 using FM.SHD.Winforms.UI.Views.Transactions;
 using Microsoft.Extensions.DependencyInjection;
-using IAccountView = FM.SHD.Presenters.IntrefacesViews.Views.IAccountView;
-using IMainView = FM.SHD.Presenters.IntrefacesViews.Views.IMainView;
-using MainPresenter = FM.SHD.Presenters.ViewPresenters.MainPresenter;
 
 namespace FM.SHD.Winforms.UI.DependencyInjection
 {
@@ -51,11 +53,11 @@ namespace FM.SHD.Winforms.UI.DependencyInjection
         public static IServiceCollection AddViews(this IServiceCollection serviceCollection)
         {
             return serviceCollection
-                .AddScoped<IMainView, MainView>()
-                .AddScoped<MainPresenter>()
-                .AddTransient<ITransactionView, TransactionView>()
+                .AddScoped<IMainBaseView, MainBaseView>()
+                .AddScoped<MainBasePresenter>()
+                .AddTransient<ITransactionBaseView, TransactionBaseView>()
                 .AddTransient<TransactionPresenter>()
-                .AddTransient<IAccountView, AccountView>()
+                .AddTransient<IAccountBaseView, AccountBaseView>()
                 .AddTransient<AccountPresenter>();
         }
 
@@ -70,21 +72,21 @@ namespace FM.SHD.Winforms.UI.DependencyInjection
                 .AddTransient<IDescriptionUCPresenter, DescriptionUcPresenter>()
                 .AddTransient<IAccountsInfoTransactionUCView, AccountsInfoTransactionUCView>()
                 .AddTransient<IAccountsInfoTransactionUCPresenter, AccountsInfoTransactionUCPresenter>()
-                .AddTransient<ICategoryUCPresenter<AccountServices>, CategoryUcPresenter<IAccountServices>>()
-                .AddTransient<ICategoryUCPresenter<AccountCategoryServices>, CategoryUcPresenter<IAccountCategoryServices>>()
+                .AddTransient<ICategoryUCPresenter<AccountServices>, CategoryUCPresenter<IAccountServices>>()
+                .AddTransient<ICategoryUCPresenter<AccountCategoryServices>, CategoryUCPresenter<IAccountCategoryServices>>()
                 .AddTransient<ICategoryUCPresenter<TypeTransactionServices>,
-                    CategoryUcPresenter<ITypeTransactionServices>>()
-                .AddTransient<ICategoryUCPresenter<CategoriesServices>, CategoryUcPresenter<ICategoriesServices>>()
-                .AddTransient<ICategoryUCPresenter<ContragentServices>, CategoryUcPresenter<IContragentServices>>()
-                .AddTransient<ICategoryUCPresenter<IdentityServices>, CategoryUcPresenter<IIdentityServices>>()
-                .AddTransient<ICategoryUCPresenter<CurrencyServices>, CategoryUcPresenter<ICurrencyServices>>()
+                    CategoryUCPresenter<ITypeTransactionServices>>()
+                .AddTransient<ICategoryUCPresenter<CategoriesServices>, CategoryUCPresenter<ICategoriesServices>>()
+                .AddTransient<ICategoryUCPresenter<ContragentServices>, CategoryUCPresenter<IContragentServices>>()
+                .AddTransient<ICategoryUCPresenter<IdentityServices>, CategoryUCPresenter<IIdentityServices>>()
+                .AddTransient<ICategoryUCPresenter<CurrencyServices>, CategoryUCPresenter<ICurrencyServices>>()
                 .AddTransient<ICategoryUCView, CategoryUCView>()
                 .AddTransient<IContrAgentUCView, ContrAgentUCView>()
                 .AddTransient<IContrAgentUCPresenter, ContrAgentUCPresenter>()
                 .AddTransient<IIdentityUCView, IdentityUCView>()
                 .AddTransient<IIdentityUCPresenter, IdentityUCPresenter>()
-                .AddTransient<IDataControlButtonsUCView, DataControlButtonsUCView>()
-                .AddTransient<IContinueCancelButtonsUCPresenter, DataControlButtonsUcPresenter>()
+                .AddTransient<IContinueCancelButtonsUcView, ContinueCancelButtonsUcView>()
+                .AddTransient<IContinueCancelButtonsUCPresenter, ContinueCancelButtonsUCPresenter>()
                 .AddTransient<IAccountInfoUCView, AccountInfoUCView>()
                 .AddTransient<IAccountInfoUCPresenter, AccountInfoUCPresenter>()
                 .AddTransient<ISumTransactionUCView, SumTransactionUCView>()
@@ -95,9 +97,9 @@ namespace FM.SHD.Winforms.UI.DependencyInjection
                 .AddTransient<ILabelTextboxUcPresenter, LabelTextboxPresenter>()
                 .AddTransient<ICheckboxUCView, CheckboxUCView>()
                 .AddTransient<ICheckboxUCPresenter, CheckboxUCPresenter>()
-                .AddTransient<IAccountView, AccountView>()
-                .AddTransient<BaseAccountPresenter, AccountPresenter>()
-                .AddTransient<BaseTransactionPresenter, TransactionPresenter>()
+                .AddTransient<IAccountBaseView, AccountBaseView>()
+                .AddTransient<BaseBaseAccountPresenter, AccountPresenter>()
+                .AddTransient<BaseBaseTransactionPresenter, TransactionPresenter>()
                 .AddTransient<IAccountSummaryUCView, AccountSummaryUCView>()
                 .AddTransient<IAccountSummaryUCPresenter, AccountSummaryUCPresenter>()
                 .AddTransient<IAllTransactionUCView, AllTransactionUCView>()

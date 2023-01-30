@@ -1,19 +1,22 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using FM.SHD.Domain;
 using FM.SHD.Infrastructure.Events;
+using FM.SHD.Plugins.Infrastructure;
 using FM.SHD.Presenters.Events;
+using FM.SHD.Presenters.ViewPresenters;
 using FM.SHD.Services.CommonServices;
 using FM.SHD.Settings.Services;
 using FM.SHD.Settings.Services.SettingsCollection;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Events;
 using FM.SHD.Winforms.UI.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using MainPresenter = FM.SHD.Presenters.ViewPresenters.MainPresenter;
 
 namespace FM.SHD.Winforms.UI
 {
@@ -32,8 +35,19 @@ namespace FM.SHD.Winforms.UI
             Application.ThreadException += ApplicationOnThreadException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
 
+            // TODO: Захардкожено, исправить
+            var moduleAssembly = System.Reflection.Assembly.LoadFrom(@"D:\repos\SHD\FM.SHD.Plugin.Transaction\bin\Debug\net5.0-windows\FM.SHD.Plugin.Transaction.dll");
+            var moduleTypes = moduleAssembly.GetTypes().Where(t => 
+                t.GetInterfaces().Contains(typeof(IPlugin)));
 
-          var builder = new HostBuilder()
+            var modules = moduleTypes.Select( type =>
+            {   
+                return  (IPlugin) Activator.CreateInstance(type,"");
+            });
+
+            var transactionModule = modules.Where(x => x.Id == "Transaction");
+
+            var builder = new HostBuilder()
                 .ConfigureServices((hostBuilder, services) =>
                 {
                     services
@@ -61,7 +75,7 @@ namespace FM.SHD.Winforms.UI
                 var services = serviceScope.ServiceProvider;
                 try
                 {
-                    var mainPresenter = services.GetRequiredService<MainPresenter>();
+                    var mainPresenter = services.GetRequiredService<MainBasePresenter>();
                     mainPresenter.Run();
                 }
                 catch (Exception exception)
@@ -84,18 +98,16 @@ namespace FM.SHD.Winforms.UI
         private static void ApplicationOnThreadException(object sender, ThreadExceptionEventArgs e)
         {
             StringBuilder stringBuilder = new StringBuilder();
-            
+
             if (e.Exception is FileNotFoundException)
             {
                 stringBuilder.Append(String.Format(
                     $"Произошла ошибка при работе с файлом. {Environment.NewLine}" +
                     $"{e.Exception.Message}{Environment.NewLine}"));
                 MessageBox.Show(stringBuilder.ToString(), "Произошла ошибка при работе с файлом");
-                
             }
             else
             {
-
                 var message = String.Format(
                     $"Произошла ошибка. {Environment.NewLine}" +
                     $"{e.Exception.Message}{Environment.NewLine}" +

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net5.0-windows</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
@@ -14,6 +14,8 @@
       <ProjectReference Include="..\FM.SHD.Infrastructure.Events\FM.SHD.Infrastructure.Events.csproj" />
       <ProjectReference Include="..\FM.SHD.Services\FM.SHD.Services.csproj" />
       <ProjectReference Include="..\FM.SHD.Settings.Services\FM.SHD.Settings.Services.csproj" />
+      <ProjectReference Include="..\FM.SHD.UI.WindowsForms.Presenters\FM.SHD.UI.WindowsForms.Presenters.csproj" />
+      <ProjectReference Include="..\FM.SHD.UI.WindowsForms.UserControls.Presenters\FM.SHD.UI.WindowsForms.UserControls.Presenters.csproj" />
     </ItemGroup>
 
     <ItemGroup>

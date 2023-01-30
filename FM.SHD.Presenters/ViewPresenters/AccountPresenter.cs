@@ -1,23 +1,26 @@
 using System;
-using System.Xml;
 using FM.SHD.Infrastructure.Events;
-using FM.SHD.Presenters.Events;
 using FM.SHD.Presenters.Events.Accounts;
-using FM.SHD.Presenters.Interfaces.UserControls.Common;
 using FM.SHD.Presenters.IntrefacesViews.Views;
 using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.CurrencyServices;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Checkbox;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.ContinueCancelButtons;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Description;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Label;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Name;
 using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Presenters.ViewPresenters
 {
-    public class AccountPresenter : BaseAccountPresenter
+    public class AccountPresenter : BaseBaseAccountPresenter
     {
         #region Private member variable
 
         private readonly IAccountServices _accountServices;
         private readonly EventAggregator _eventAggregator;
-        private readonly IAccountView _view;
+        private readonly IAccountBaseView _baseView;
         private readonly INameUCPresenter _nameUcPresenter;
         private readonly IDescriptionUCPresenter _descriptionUcPresenter;
         private readonly ILabelTextboxUcPresenter _labelTextboxUcPresenter;
@@ -32,7 +35,7 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         public AccountPresenter(
             EventAggregator eventAggregator,
-            IAccountView view,
+            IAccountBaseView baseView,
             IAccountServices accountServices,
             INameUCPresenter nameUcPresenter,
             IDescriptionUCPresenter descriptionUcPresenter,
@@ -42,10 +45,10 @@ namespace FM.SHD.Presenters.ViewPresenters
             ICheckboxUCPresenter checkboxUcPresenter,
             IContinueCancelButtonsUCPresenter dataControlButtonsUcPresenter
         )
-            : base(view)
+            : base(baseView)
         {
             _eventAggregator = eventAggregator;
-            _view = view;
+            _baseView = baseView;
             _accountServices = accountServices;
             _nameUcPresenter = nameUcPresenter;
             _descriptionUcPresenter = descriptionUcPresenter;
@@ -55,19 +58,19 @@ namespace FM.SHD.Presenters.ViewPresenters
             _checkboxUcPresenter = checkboxUcPresenter;
             _dataControlButtonsUcPresenter = dataControlButtonsUcPresenter;
 
-            _view.OnLoadView += OnLoadView;
+            _baseView.OnLoadView += OnLoadBaseView;
         }
 
         ~AccountPresenter()
         {
-            _view.OnLoadView -= OnLoadView;
+            _baseView.OnLoadView -= OnLoadBaseView;
         }
 
         #endregion
 
         #region Private methods
 
-        private void OnLoadView()
+        private void OnLoadBaseView()
         {
             _labelTextboxUcPresenter.SetText("Начальная сумма");
             _accountUcPresenter.SetText("Категория счёта");
@@ -76,42 +79,42 @@ namespace FM.SHD.Presenters.ViewPresenters
 
             if (AccountDto != null)
             {
-                _view.AddUserControl(_nameUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_nameUcPresenter.GetUserControlView());
                 _nameUcPresenter.GetUserControlView().SetName(AccountDto.Name);
 
-                _view.AddUserControl(_descriptionUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_descriptionUcPresenter.GetUserControlView());
                 _descriptionUcPresenter.GetUserControlView().SetDescription(AccountDto.Description);
 
-                _view.AddUserControl(_labelTextboxUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_labelTextboxUcPresenter.GetUserControlView());
                 _labelTextboxUcPresenter.SetValue(AccountDto.InitialSum.ToString());
 
                 _accountUcPresenter.SetCategoryValues();
-                _view.AddUserControl(_accountUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_accountUcPresenter.GetUserControlView());
                 _accountUcPresenter.GetUserControlView().SetCategoryId(AccountDto.CategoryId);
 
                 _currencyUcPresenter.SetCategoryValues();
                 _currencyUcPresenter.SetStyleDropDownList();
-                _view.AddUserControl(_currencyUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_currencyUcPresenter.GetUserControlView());
                 _currencyUcPresenter.GetUserControlView().SetCategoryId(AccountDto.CurrencyId);
 
                 _checkboxUcPresenter.GetUserControlView().SetCheckboxState(AccountDto.IsClosed);
-                _view.AddUserControl(_checkboxUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_checkboxUcPresenter.GetUserControlView());
                 _dataControlButtonsUcPresenter.SetTextButtonContinue("Применить");
-                _view.AddUserControl(_dataControlButtonsUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_dataControlButtonsUcPresenter.GetUserControlView());
             }
             else
             {
-                _view.AddUserControl(_nameUcPresenter.GetUserControlView());
-                _view.AddUserControl(_descriptionUcPresenter.GetUserControlView());
-                _view.AddUserControl(_labelTextboxUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_nameUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_descriptionUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_labelTextboxUcPresenter.GetUserControlView());
                 _accountUcPresenter.SetCategoryValues();
-                _view.AddUserControl(_accountUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_accountUcPresenter.GetUserControlView());
                 _currencyUcPresenter.SetStyleDropDownList();
                 _currencyUcPresenter.SetCategoryValues();
-                _view.AddUserControl(_currencyUcPresenter.GetUserControlView());
-                _view.AddUserControl(_checkboxUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_currencyUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_checkboxUcPresenter.GetUserControlView());
                 _dataControlButtonsUcPresenter.SetVisibleButtonDelete(false);
-                _view.AddUserControl(_dataControlButtonsUcPresenter.GetUserControlView());
+                _baseView.AddUserControl(_dataControlButtonsUcPresenter.GetUserControlView());
             }
 
             _dataControlButtonsUcPresenter.Continue += DataControlButtonsUcPresenterOnContinue;
@@ -121,11 +124,11 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void DataControlsButtonsUcPresenterOnDelete()
         {
-            if (_view.ShowMessageDelete("Удаление счёта", $"Счёт \"{AccountDto.Name}\" будет удален, продолжить?"))
+            if (_baseView.ShowMessageDelete("Удаление счёта", $"Счёт \"{AccountDto.Name}\" будет удален, продолжить?"))
             {
                 _accountServices.DeleteById(AccountDto.Id);
                 _eventAggregator.Publish(new OnDeletingAccountApplicationEvent());
-                _view.Close();
+                _baseView.Close();
             }
         }
 
@@ -166,7 +169,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             _dataControlButtonsUcPresenter.Delete -= DataControlsButtonsUcPresenterOnDelete;
             _currencyUcPresenter.CategoryChanged -= CurrencyUcPresenterOnCategoryChanged;
 
-            _view.Close();
+            _baseView.Close();
         }
 
         public AccountDto AccountDto { get; set; }
@@ -176,12 +179,12 @@ namespace FM.SHD.Presenters.ViewPresenters
         public override void Run(AccountDto accountDto)
         {
             AccountDto = accountDto;
-            _view.Show();
+            _baseView.Show();
         }
 
         public override void SetTitle(string title)
         {
-            _view.SetTitle(title);
+            _baseView.SetTitle(title);
         }
     }
 }

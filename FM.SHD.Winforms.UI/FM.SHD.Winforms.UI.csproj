@@ -23,8 +23,10 @@
   <ItemGroup>
     <ProjectReference Include="..\FM.SHD.Infastructure.Impl\FM.SHD.Infastructure.Impl.csproj" />
     <ProjectReference Include="..\FM.SHD.Infrastructure.Events\FM.SHD.Infrastructure.Events.csproj" />
+    <ProjectReference Include="..\FM.SHD.Plugins.Infrastructure\FM.SHD.Plugins.Infrastructure.csproj" />
     <ProjectReference Include="..\FM.SHD.Presenters\FM.SHD.Presenters.csproj" />
     <ProjectReference Include="..\FM.SHD.Services\FM.SHD.Services.csproj" />
+    <ProjectReference Include="..\FM.SHD.UI.WindowsForms.UserControls.Views\FM.SHD.UI.WindowsForms.UserControls.Views.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,15 +39,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Update="UserControls\Common\NameTextboxUCView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControls\Common\DescriptionTextboxUCView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControls\Common\CategoryUCView.cs">
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControls\Common\SumTransactionUCView.cs">
       <SubType>UserControl</SubType>

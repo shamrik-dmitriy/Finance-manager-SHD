@@ -1,10 +1,10 @@
 using System;
 using FM.SHD.Infrastructure.Events;
-using FM.SHD.Presenters.Events;
-using FM.SHD.Presenters.Interfaces.UserControls.Common;
 using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
 using FM.SHD.Services.AccountServices;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Events;
 
 namespace FM.SHD.Presenters.UserControlPresenters.Transactions
 {

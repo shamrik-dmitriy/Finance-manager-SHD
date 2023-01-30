@@ -1,16 +1,17 @@
 using System;
-using FM.SHD.Presenters.Interfaces.UserControls.Common;
 using FM.SHD.Presenters.IntrefacesViews.Views;
 using FM.SHD.Services.UserServices;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.ContinueCancelButtons;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Label;
 using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Presenters.ViewPresenters
 {
-    public class LoginPresenter : BaseLoginPresenter
+    public class LoginPresenter : BaseBaseLoginPresenter
     {
         #region Private member variable
 
-        private readonly ILoginView _view;
+        private readonly ILoginBaseView _baseView;
         private readonly IUsersServices _usersServices;
         private readonly ILabelTextboxUcPresenter _loginPresenter;
         private readonly ILabelTextboxUcPresenter _passwordPresenter;
@@ -20,19 +21,19 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         #region Constructor / Destructor
 
-        public LoginPresenter(ILoginView view,
+        public LoginPresenter(ILoginBaseView baseView,
             IUsersServices usersServices,
             ILabelTextboxUcPresenter loginPresenter,
             ILabelTextboxUcPresenter passwordPresenter,
-            IContinueCancelButtonsUCPresenter continueCancelButtonsUcPresenter) : base(view)
+            IContinueCancelButtonsUCPresenter continueCancelButtonsUcPresenter) : base(baseView)
         {
-            _view = view;
+            _baseView = baseView;
             _usersServices = usersServices;
             _loginPresenter = loginPresenter;
             _passwordPresenter = passwordPresenter;
             _continueCancelButtonsUcPresenter = continueCancelButtonsUcPresenter;
 
-            _view.OnLoadView += LoginViewOnOnLoadView;
+            _baseView.OnLoadView += LoginBaseViewOnOnLoadBaseView;
         }
 
         #endregion
@@ -41,27 +42,27 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         public override void SetTitle(string title)
         {
-            _view.SetTitle(title);
+            _baseView.SetTitle(title);
         }
 
         public override void Run(IdentityDto accountDto)
         {
-            _view.Show();
+            _baseView.Show();
         }
 
         #endregion
 
         #region Private methods
 
-        private void LoginViewOnOnLoadView()
+        private void LoginBaseViewOnOnLoadBaseView()
         {
             _loginPresenter.SetText("Логин:");
-            _view.AddUserControl(_loginPresenter.GetUserControlView());
+            _baseView.AddUserControl(_loginPresenter.GetUserControlView());
             _passwordPresenter.SetText("Пароль:");
-            _view.AddUserControl(_passwordPresenter.GetUserControlView());
+            _baseView.AddUserControl(_passwordPresenter.GetUserControlView());
             _continueCancelButtonsUcPresenter.SetTextButtonContinue("Войти");
             _continueCancelButtonsUcPresenter.SetTextButtonCancel("Выйти");
-            _view.AddUserControl(_continueCancelButtonsUcPresenter.GetUserControlView());
+            _baseView.AddUserControl(_continueCancelButtonsUcPresenter.GetUserControlView());
 
             _continueCancelButtonsUcPresenter.Continue += ContinueCancelButtonsUcPresenterOnContinue;
         }

@@ -1,13 +1,14 @@
-using FM.SHD.Presenters.Common;
+
 using FM.SHD.Presenters.IntrefacesViews.Views;
+using FM.SHD.UI.WindowsForms.Presenters;
 using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Presenters.ViewPresenters
 {
-    public abstract class BaseTransactionPresenter 
-        : BasePresenter<ITransactionView, TransactionDto>
+    public abstract class BaseBaseTransactionPresenter 
+        : BaseBasePresenter<ITransactionBaseView, TransactionDto>
     {
-        public BaseTransactionPresenter(ITransactionView view) : base(view)
+        public BaseBaseTransactionPresenter(ITransactionBaseView baseView) : base(baseView)
         {
         }
     }

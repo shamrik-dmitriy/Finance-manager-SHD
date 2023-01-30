@@ -1,13 +1,13 @@
-using FM.SHD.Presenters.Common;
 using FM.SHD.Presenters.IntrefacesViews.Views;
+using FM.SHD.UI.WindowsForms.Presenters;
 using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Presenters.ViewPresenters
 {
-    public abstract class BaseLoginPresenter
-        : BasePresenter<ILoginView, IdentityDto>
+    public abstract class BaseBaseLoginPresenter
+        : BaseBasePresenter<ILoginBaseView, IdentityDto>
     {
-        public BaseLoginPresenter(ILoginView view) : base(view)
+        public BaseBaseLoginPresenter(ILoginBaseView baseView) : base(baseView)
         {
         }
     }
