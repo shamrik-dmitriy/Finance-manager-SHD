@@ -1,7 +1,13 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:Int64 x:Key="/Default/Environment/Hierarchy/Build/BuildTool/MsbuildVersion/@EntryValue">1114112</s:Int64>
 	<s:String x:Key="/Default/Environment/Hierarchy/Build/BuildTool/CustomBuildToolPath/@EntryValue">C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe</s:String>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=FM_002ESHD_002EInfrastructure_002FUI_002EWindowsForms_002FFM_002ESHD_002EUI_002EWindowsForms_002EUserControls_002EViews_002FContinueCancelButtonsUcView/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=UI_002FFM_002ESHD_002EWinforms_002EUI_002FMainBaseView/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=UI_002FFM_002ESHD_002EWinforms_002EUI_002FUserControls_002FCommon_002FDataControlButtonsUCView/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=UI_002FFM_002ESHD_002EWinforms_002EUI_002FUserControls_002FTransactions_002FTransactionUserControls_002FAccountsInfoTransactionUCView/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=UI_002FFM_002ESHD_002EWinforms_002EUI_002FViews_002FAccount_002FAccountBaseView/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=UI_002FFM_002ESHD_002EWinforms_002EUI_002FViews_002FAuth_002FLoginBaseView/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=UI_002FFM_002ESHD_002EWinforms_002EUI_002FViews_002FTransactions_002FTransactionBaseView/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=UI_002FSHDML_002EWinforms_002EUI_002FTransactions_002FMultipleTransactionView/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=UI_002FSHDML_002EWinforms_002EUI_002FTransactions_002FSingleTransactionView/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=UI_002FSHDML_002EWinforms_002EUI_002FUserControls_002FAuthorization_002FAuthUCView/@EntryIndexedValue">True</s:Boolean>
