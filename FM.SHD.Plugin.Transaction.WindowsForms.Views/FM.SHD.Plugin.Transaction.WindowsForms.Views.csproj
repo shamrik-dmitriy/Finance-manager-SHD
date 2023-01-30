@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <UseWindowsForms>true</UseWindowsForms>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Update="Transactions\TransactionUserControls\AccountsInfoTransactionUCView.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
+      <Compile Update="Transactions\TransactionUserControls\TypeTransactionUCView.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
+      <Compile Update="Transactions\UserControlsOfTransactions\AccountInfoUCView.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
+      <Compile Update="Transactions\UserControlsOfTransactions\ContrAgentUCView.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
+      <Compile Update="Transactions\UserControlsOfTransactions\DateTransactionUCView.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
+      <Compile Update="Transactions\UserControlsOfTransactions\IdentityUCView.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
+      <Compile Update="Transactions\UserControlsOfTransactions\SumTransactionUCView.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
+      <Compile Update="Transactions\ItemOfMultipleTransactionView.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
+      <Compile Update="MultipleTransactionView.cs">
+        <SubType>Form</SubType>
+      </Compile>
+    </ItemGroup>
+
+</Project>

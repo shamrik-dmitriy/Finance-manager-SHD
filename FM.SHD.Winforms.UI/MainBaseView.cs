@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
-using FM.SHD.Presenters.IntrefacesViews.UserControl;
 using FM.SHD.Presenters.IntrefacesViews.Views;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.UIInterfaces;
 using FM.SHD.Winforms.UI.UserControls.Wallet;
-using FM.SHD.Winforms.UI.Views.Transactions;
 using FM.SHDML.Core.Models.Dtos;
 using FM.SHDML.Core.Models.Dtos.UIDto;
 
@@ -68,7 +66,7 @@ namespace FM.SHD.Winforms.UI
 
         private void buttonAddReceipt_Click(object sender, EventArgs e)
         {
-            new MultipleTransactionView("Добавить группу транзакций (чек)").ShowDialog();
+           throw new NotImplementedException();
         }
 
         public void CloseView()
