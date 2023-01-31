@@ -4,9 +4,9 @@ using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Presenters.ViewPresenters
 {
-    public abstract class BaseBaseAccountPresenter : BaseBasePresenter<IAccountBaseView, AccountDto>
+    public abstract class BaseAccountPresenter : BasePresenter<IAccountBaseView, AccountDto>
     {
-        public BaseBaseAccountPresenter(IAccountBaseView baseView) : base(baseView)
+        public BaseAccountPresenter(IAccountBaseView baseView) : base(baseView)
         {
         }
     }

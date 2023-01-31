@@ -7,7 +7,7 @@ using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Presenters.ViewPresenters
 {
-    public class LoginPresenter : BaseBaseLoginPresenter
+    public class LoginPresenter : BaseLoginPresenter
     {
         #region Private member variable
 

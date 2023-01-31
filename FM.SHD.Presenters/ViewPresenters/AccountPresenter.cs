@@ -14,7 +14,7 @@ using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Presenters.ViewPresenters
 {
-    public class AccountPresenter : BaseBaseAccountPresenter
+    public class AccountPresenter : BaseAccountPresenter
     {
         #region Private member variable
 

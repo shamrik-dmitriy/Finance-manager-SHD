@@ -8,12 +8,9 @@ using FM.SHD.Infastructure.Impl.Repositories.Specific.Identities;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.TypeTransaction;
 using FM.SHD.Infrastructure.Dal.Factory;
-using FM.SHD.Presenters.Interfaces.UserControls.Main;
 using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
-using FM.SHD.Presenters.IntrefacesViews.UserControl.Main;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Wallet;
 using FM.SHD.Presenters.IntrefacesViews.Views;
-using FM.SHD.Presenters.UserControlPresenters.Main;
 using FM.SHD.Presenters.UserControlPresenters.Wallet;
 using FM.SHD.Presenters.ViewPresenters;
 using FM.SHD.Services.AccountServices;
@@ -25,6 +22,11 @@ using FM.SHD.Services.CurrencyServices;
 using FM.SHD.Services.IdentityServices;
 using FM.SHD.Services.Repositories;
 using FM.SHD.Services.TransactionServices;
+using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions;
+using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.AClasses;
+using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Presenters;
+using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.UserControl;
+using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Views;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Checkbox;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.ContinueCancelButtons;
@@ -32,7 +34,6 @@ using FM.SHD.UI.WindowsForms.UserControls.Presenters.Description;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Label;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Name;
 using FM.SHD.UI.WindowsForms.UserControls.Views;
-using FM.SHD.Winforms.UI.UserControls.Main;
 using FM.SHD.Winforms.UI.UserControls.Wallet;
 using FM.SHD.Winforms.UI.Views.Account;
 using Microsoft.Extensions.DependencyInjection;
@@ -89,8 +90,8 @@ namespace FM.SHD.Winforms.UI.DependencyInjection
                 .AddTransient<ICheckboxUCView, CheckboxUCView>()
                 .AddTransient<ICheckboxUCPresenter, CheckboxUCPresenter>()
                 .AddTransient<IAccountBaseView, AccountBaseView>()
-                .AddTransient<BaseBaseAccountPresenter, AccountPresenter>()
-                .AddTransient<BaseBaseTransactionPresenter, TransactionPresenter>()
+                .AddTransient<BaseAccountPresenter, AccountPresenter>()
+                .AddTransient<ATransactionBasePresenter, TransactionPresenter>()
                 .AddTransient<IAccountSummaryUCView, AccountSummaryUCView>()
                 .AddTransient<IAccountSummaryUCPresenter, AccountSummaryUCPresenter>()
                 .AddTransient<IAllTransactionUCView, AllTransactionUCView>()

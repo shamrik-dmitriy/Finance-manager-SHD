@@ -5,6 +5,7 @@ using System.Threading;
 using System.Windows.Forms;
 using FM.SHD.Domain;
 using FM.SHD.Infrastructure.Events;
+using FM.SHD.Infrastructure.Events.ApplicationEvents;
 using FM.SHD.Presenters.ViewPresenters;
 using FM.SHD.Services.CommonServices;
 using FM.SHD.Settings.Services;

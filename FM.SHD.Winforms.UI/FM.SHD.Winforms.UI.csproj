@@ -26,6 +26,7 @@
     <ProjectReference Include="..\FM.SHD.Plugins.Infrastructure\FM.SHD.Plugins.Infrastructure.csproj" />
     <ProjectReference Include="..\FM.SHD.Presenters\FM.SHD.Presenters.csproj" />
     <ProjectReference Include="..\FM.SHD.Services\FM.SHD.Services.csproj" />
+    <ProjectReference Include="..\FM.SHD.UI.WindowsForms.SharedInterfaces\FM.SHD.UI.WindowsForms.SharedInterfaces.csproj" />
     <ProjectReference Include="..\FM.SHD.UI.WindowsForms.UserControls.Views\FM.SHD.UI.WindowsForms.UserControls.Views.csproj" />
   </ItemGroup>
 

@@ -4,10 +4,10 @@ using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Presenters.ViewPresenters
 {
-    public abstract class BaseBaseLoginPresenter
-        : BaseBasePresenter<ILoginBaseView, IdentityDto>
+    public abstract class BaseLoginPresenter
+        : BasePresenter<ILoginBaseView, IdentityDto>
     {
-        public BaseBaseLoginPresenter(ILoginBaseView baseView) : base(baseView)
+        public BaseLoginPresenter(ILoginBaseView baseView) : base(baseView)
         {
         }
     }

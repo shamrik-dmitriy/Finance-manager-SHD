@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms;
-using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.NewDirectory1.Transactions;
+using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.UserControl;
 
 namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Transactions.UserControlsOfTransactions
 {

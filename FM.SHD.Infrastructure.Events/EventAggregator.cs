@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using FM.SHD.Infrastructure.Events.ApplicationEvents;
 
 namespace FM.SHD.Infrastructure.Events
 {

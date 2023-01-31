@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
-using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.NewDirectory1.Transactions;
+using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.UserControl;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category;
 using FM.SHDML.Core.Models.Dtos;
 

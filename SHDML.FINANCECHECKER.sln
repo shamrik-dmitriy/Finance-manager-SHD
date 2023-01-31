@@ -55,6 +55,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FM.SHD.Plugin.Transaction.W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FM.SHD.Plugin.Transaction.WindowsForms.Presenters", "FM.SHD.Plugin.Transaction.WindowsForms.Presenters\FM.SHD.Plugin.Transaction.WindowsForms.Presenters.csproj", "{6A23F3DD-4F4E-49E7-B33A-B1DAF9C9CF12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FM.SHD.UI.WindowsForms.SharedInterfaces", "FM.SHD.UI.WindowsForms.SharedInterfaces\FM.SHD.UI.WindowsForms.SharedInterfaces.csproj", "{6125CE23-0757-4A27-8FE4-35D6AC9C26CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -133,6 +135,10 @@ Global
 		{6A23F3DD-4F4E-49E7-B33A-B1DAF9C9CF12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A23F3DD-4F4E-49E7-B33A-B1DAF9C9CF12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A23F3DD-4F4E-49E7-B33A-B1DAF9C9CF12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6125CE23-0757-4A27-8FE4-35D6AC9C26CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6125CE23-0757-4A27-8FE4-35D6AC9C26CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6125CE23-0757-4A27-8FE4-35D6AC9C26CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6125CE23-0757-4A27-8FE4-35D6AC9C26CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -158,6 +164,7 @@ Global
 		{73AEDB05-C4AC-4092-B250-0131F9516D0B} = {2936C762-91CF-49D9-B401-CFACCDA0A042}
 		{8D859EBA-57CA-49F3-91DA-938F428E7FCD} = {4DDCD87D-F434-4E74-A6E4-00101875FBD8}
 		{6A23F3DD-4F4E-49E7-B33A-B1DAF9C9CF12} = {4DDCD87D-F434-4E74-A6E4-00101875FBD8}
+		{6125CE23-0757-4A27-8FE4-35D6AC9C26CE} = {2936C762-91CF-49D9-B401-CFACCDA0A042}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {113471EA-60C2-4820-9880-80921366C122}

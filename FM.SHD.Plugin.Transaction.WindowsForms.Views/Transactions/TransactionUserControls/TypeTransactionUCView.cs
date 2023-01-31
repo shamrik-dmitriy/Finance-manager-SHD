@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
-using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.NewDirectory1.Transactions;
+using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.UserControl;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category.Events;
 using FM.SHDML.Core.Models.Dtos;
 

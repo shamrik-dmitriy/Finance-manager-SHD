@@ -9,12 +9,12 @@ namespace FM.SHD.Presenters.UserControlPresenters.Wallet
     public class AccountSummaryUCPresenter : IAccountSummaryUCPresenter
     {
         private readonly IAccountSummaryUCView _accountSummaryUcView;
-        private readonly BaseBaseAccountPresenter _baseAccountPresenter;
+        private readonly BaseAccountPresenter _baseAccountPresenter;
         private readonly IAccountServices _accountServices;
 
         public AccountSummaryUCPresenter(
             IAccountSummaryUCView accountSummaryUcView,
-            BaseBaseAccountPresenter baseAccountPresenter,
+            BaseAccountPresenter baseAccountPresenter,
             IAccountServices accountServices)
         {
             _accountSummaryUcView = accountSummaryUcView;
