@@ -12,7 +12,6 @@
       <ProjectReference Include="..\FM.SHD.Domain\FM.SHD.Domain.csproj" />
       <ProjectReference Include="..\FM.SHD.Infastructure.Impl\FM.SHD.Infastructure.Impl.csproj" />
       <ProjectReference Include="..\FM.SHD.Infrastructure.Events\FM.SHD.Infrastructure.Events.csproj" />
-      <ProjectReference Include="..\FM.SHD.Plugin.Transaction.WindowsForms.Presenters\FM.SHD.Plugin.Transaction.WindowsForms.Presenters.csproj" />
       <ProjectReference Include="..\FM.SHD.Services\FM.SHD.Services.csproj" />
       <ProjectReference Include="..\FM.SHD.Settings.Services\FM.SHD.Settings.Services.csproj" />
       <ProjectReference Include="..\FM.SHD.UI.WindowsForms.Presenters\FM.SHD.UI.WindowsForms.Presenters.csproj" />
@@ -22,6 +21,11 @@
     <ItemGroup>
       <Compile Remove="IntrefacesViews\IAccountView.cs" />
       <Compile Remove="Interfaces\Views\IAccountPresenter.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Interfaces\UserControls\Main" />
+      <Folder Include="UserControlPresenters\Main" />
     </ItemGroup>
 
 </Project>

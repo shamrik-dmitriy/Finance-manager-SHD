@@ -1,5 +1,5 @@
 ﻿
-namespace FM.SHD.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions
+namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Transactions.UserControlsOfTransactions
 {
     partial class SumTransactionUCView
     {

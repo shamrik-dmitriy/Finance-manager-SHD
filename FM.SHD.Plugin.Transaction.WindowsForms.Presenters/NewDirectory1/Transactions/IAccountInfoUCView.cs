@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.UIInterfaces;
 using FM.SHDML.Core.Models.Dtos;
 
-namespace FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions
+namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.NewDirectory1.Transactions
 {
     public interface IAccountInfoUCView : IUserControlView
     {

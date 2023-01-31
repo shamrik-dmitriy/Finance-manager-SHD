@@ -2,10 +2,8 @@ using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.NewDirectory1.Transactio
 
 namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Transactions
 {
-    public interface ISumTransactionUCPresenter
+    public interface IAllTransactionUCPresenter
     {
-        ISumTransactionUCView GetUserControlView();
-        decimal GetSum();
-        void SetSum(decimal sum);
+        IAllTransactionUCView GetUserControlView();
     }
 }

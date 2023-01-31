@@ -1,7 +1,7 @@
 using System;
-using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
+using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.NewDirectory1.Transactions;
 
-namespace FM.SHD.Presenters.Interfaces.UserControls.Transactions
+namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Transactions
 {
     public interface IDateTransactionUCPresenter
     {

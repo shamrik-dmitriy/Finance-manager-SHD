@@ -1,7 +1,6 @@
 using FM.SHD.Infrastructure.Events;
-using FM.SHD.Plugin.Transaction.WindowsForms.Presenters;
-using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Events;
-using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
+using FM.SHD.Infrastructure.Events.ApplicationEvents.Transactions;
+using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Transactions;
 using FM.SHD.Services.CategoriesServices;
 using FM.SHD.Services.ComponentsServices.TypeTransactionService;
 using FM.SHD.Services.ContragentServices;
@@ -12,7 +11,7 @@ using FM.SHD.UI.WindowsForms.UserControls.Presenters.Description;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Name;
 using FM.SHDML.Core.Models.Dtos;
 
-namespace FM.SHD.Presenters.ViewPresenters
+namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters
 {
     public class TransactionPresenter : BaseBaseTransactionPresenter
     {

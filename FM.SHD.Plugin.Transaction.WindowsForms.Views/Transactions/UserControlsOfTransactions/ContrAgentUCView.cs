@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
-using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
+using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.NewDirectory1.Transactions;
 
-namespace FM.SHD.Winforms.UI.UserControls.Transactions.UserControlsOfTransactions
+namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Transactions.UserControlsOfTransactions
 {
     public partial class ContrAgentUCView : UserControl, IContrAgentUCView
     {

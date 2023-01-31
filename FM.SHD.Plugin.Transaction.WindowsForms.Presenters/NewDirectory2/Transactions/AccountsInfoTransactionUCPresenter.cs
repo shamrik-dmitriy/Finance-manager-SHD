@@ -1,12 +1,12 @@
 using System;
 using FM.SHD.Infrastructure.Events;
-using FM.SHD.Presenters.Interfaces.UserControls.Transactions;
-using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
+using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.NewDirectory1.Transactions;
+using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Transactions;
 using FM.SHD.Services.AccountServices;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category;
-using FM.SHD.UI.WindowsForms.UserControls.Presenters.Events;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category.Events;
 
-namespace FM.SHD.Presenters.UserControlPresenters.Transactions
+namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.NewDirectory2.Transactions
 {
     public class AccountsInfoTransactionUCPresenter : IAccountsInfoTransactionUCPresenter
     {

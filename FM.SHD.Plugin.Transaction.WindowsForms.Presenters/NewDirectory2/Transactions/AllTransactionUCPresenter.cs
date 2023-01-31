@@ -1,11 +1,10 @@
 using System;
-using FM.SHD.Presenters.Interfaces.UserControls.Main;
-using FM.SHD.Presenters.IntrefacesViews.UserControl.Main;
-using FM.SHD.Presenters.ViewPresenters;
+using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.NewDirectory1.Transactions;
+using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Transactions;
 using FM.SHD.Services.TransactionServices;
 using FM.SHDML.Core.Models.Dtos;
 
-namespace FM.SHD.Presenters.UserControlPresenters.Main
+namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.NewDirectory2.Transactions
 {
     public class AllTransactionUCPresenter : IAllTransactionUCPresenter
     {

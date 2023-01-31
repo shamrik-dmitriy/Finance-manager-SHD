@@ -6,6 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Folder Include="Events" />
       <Folder Include="NewDirectory1" />
       <Folder Include="NewDirectory2" />
     </ItemGroup>

@@ -4,4 +4,8 @@
         <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\FM.SHDML.Core.Models\FM.SHDML.Core.Models.csproj" />
+    </ItemGroup>
+
 </Project>

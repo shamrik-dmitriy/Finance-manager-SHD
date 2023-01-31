@@ -4,8 +4,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
-using FM.SHD.Presenters.IntrefacesViews.UserControl.Transactions;
-using FM.SHD.UI.WindowsForms.UserControls.Presenters.Events;
+using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.NewDirectory1.Transactions;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category.Events;
 using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Transactions.TransactionUserControls

@@ -1,7 +1,6 @@
-using FM.SHD.Infrastructure.Events;
 using FM.SHDML.Core.Models.Dtos;
 
-namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Events
+namespace FM.SHD.Infrastructure.Events.ApplicationEvents.Transactions
 {
     public class OnDeleteTransactionApplicationEvent : IApplicationEvent
     {

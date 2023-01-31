@@ -1,4 +1,4 @@
-﻿namespace FM.SHD.Winforms.UI.UserControls.Main
+﻿namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Transactions
 {
     partial class AllTransactionUCView
     {
