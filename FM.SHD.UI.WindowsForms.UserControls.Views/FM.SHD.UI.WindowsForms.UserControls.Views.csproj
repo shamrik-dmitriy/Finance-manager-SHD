@@ -5,6 +5,18 @@
         <UseWindowsForms>true</UseWindowsForms>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <OutputPath>..\build\bin\Debug\</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <OutputPath>..\build\bin\Release\</OutputPath>
+    </PropertyGroup>
+
     <ItemGroup>
       <Compile Update="CategoryUCView.cs">
         <SubType>UserControl</SubType>

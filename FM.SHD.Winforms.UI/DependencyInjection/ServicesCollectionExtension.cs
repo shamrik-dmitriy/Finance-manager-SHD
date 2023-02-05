@@ -48,7 +48,9 @@ namespace FM.SHD.Winforms.UI.DependencyInjection
                 .AddScoped<IMainBaseView, MainBaseView>()
                 .AddScoped<MainBasePresenter>()
                 .AddTransient<ITransactionBaseView, TransactionBaseView>()
-                .AddTransient<TransactionPresenter>()
+                //.AddTransient<TransactionPresenter>()
+                // Было во AddUsersControlViews
+                .AddTransient<ATransactionBasePresenter, TransactionPresenter>()
                 .AddTransient<IAccountBaseView, AccountBaseView>()
                 .AddTransient<AccountPresenter>();
         }
@@ -91,7 +93,6 @@ namespace FM.SHD.Winforms.UI.DependencyInjection
                 .AddTransient<ICheckboxUCPresenter, CheckboxUCPresenter>()
                 .AddTransient<IAccountBaseView, AccountBaseView>()
                 .AddTransient<BaseAccountPresenter, AccountPresenter>()
-                .AddTransient<ATransactionBasePresenter, TransactionPresenter>()
                 .AddTransient<IAccountSummaryUCView, AccountSummaryUCView>()
                 .AddTransient<IAccountSummaryUCPresenter, AccountSummaryUCPresenter>()
                 .AddTransient<IAllTransactionUCView, AllTransactionUCView>()

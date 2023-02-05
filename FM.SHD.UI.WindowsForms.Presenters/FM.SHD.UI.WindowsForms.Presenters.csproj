@@ -5,6 +5,18 @@
         <UseWindowsForms>true</UseWindowsForms>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <OutputPath>..\build\bin\Debug\</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <OutputPath>..\build\bin\Release\</OutputPath>
+    </PropertyGroup>
+
     <ItemGroup>
       <ProjectReference Include="..\FM.SHD.UI.WindowsForms.UserControls.Presenters\FM.SHD.UI.WindowsForms.UserControls.Presenters.csproj" />
     </ItemGroup>
