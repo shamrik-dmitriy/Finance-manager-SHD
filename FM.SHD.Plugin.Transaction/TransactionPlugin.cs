@@ -25,8 +25,9 @@ namespace FM.SHD.Plugin.Transaction
         public bool IsAddDataToTab => true;
         public bool IsAddDataToMenu => false;
 
-        public TransactionPlugin()
+        public TransactionPlugin(IServiceCollection serviceCollection)
         {
+            _serviceCollection = serviceCollection;
         }
 
         public void SetConnectionString(string connectionString)
@@ -34,16 +35,24 @@ namespace FM.SHD.Plugin.Transaction
             _connectionString = connectionString;
         }
 
-        public TransactionPlugin(IServiceCollection serviceCollection, string connectionString)
+        public TransactionPlugin(string connectionString)
         {
             _connectionString = connectionString;
-            _serviceCollection = serviceCollection;
-            AddTransactions(_serviceCollection);
         }
 
-        private IServiceCollection AddTransactions(IServiceCollection serviceCollection)
+        public TabPage GetTab()
         {
-            return serviceCollection
+            throw new NotImplementedException();
+        }
+
+        public ToolStripMenuItem GetMenuItem()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IServiceCollection Add()
+        {
+            return _serviceCollection
                 //Views
                 .AddTransient<ITransactionBaseView, TransactionBaseView>()
                 .AddTransient<ATransactionBasePresenter, TransactionPresenter>()
@@ -64,16 +73,6 @@ namespace FM.SHD.Plugin.Transaction
                 .AddTransient<IDateTransactionUCPresenter, DateTransactionUCPresenter>()
                 .AddTransient<IAllTransactionUCView, AllTransactionUCView>()
                 .AddTransient<IAllTransactionUCPresenter, AllTransactionUCPresenter>();
-        }
-
-        public TabPage GetTab()
-        {
-            throw new NotImplementedException();
-        }
-
-        public ToolStripMenuItem GetMenuItem()
-        {
-            throw new NotImplementedException();
         }
     }
 }

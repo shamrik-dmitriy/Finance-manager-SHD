@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace FM.SHD.Plugins.Infrastructure
 {
@@ -36,24 +37,28 @@ namespace FM.SHD.Plugins.Infrastructure
 
         public void LoadPlugins()
         {
-            var dlls = Directory.GetFiles(Path.Combine(_path,"Modules"), "FM.SHD.Plugin.*.dll", SearchOption.AllDirectories);
+            var dlls = Directory.GetFiles(Path.Combine(_path,"Modules"), "FM.SHD.Plugin.*.dll", SearchOption.TopDirectoryOnly);
 
             foreach (var dll in dlls)
             {
                 var plugin = Assembly.LoadFrom(dll);
-                var pluginClass = plugin.GetTypes()
-                    .SingleOrDefault(type => typeof(IPlugin).IsAssignableFrom(type));
-                if (pluginClass == null) continue;
-
-                var pluginInstance = Activator.CreateInstance(pluginClass);
-                //var loadMethod = pluginClass.GetMethod("MethodName");
-                //loadMethod.Invoke(pluginInstance, null);
                 Plugins.Add(plugin);
             }
         }
 
-        public void UpdateServices()
+        public IServiceCollection UpdateServices()
         {
+            var pluginClass = Plugins.First().GetTypes()
+                .SingleOrDefault(type => typeof(IPlugin).IsAssignableFrom(type));
+            //if (pluginClass == null) continue;
+
+            var pluginInstance = Activator.CreateInstance(pluginClass, _services);
+                
+            var loadMethod = pluginClass.GetMethod("Add");
+            var t = loadMethod.Invoke(pluginInstance, null);
+            return (IServiceCollection)t;
+            //loadMethod.Invoke(pluginInstance, null);
+            
             foreach (var type in Types)
             {
                 _services.AddTransient(type);

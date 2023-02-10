@@ -14,9 +14,9 @@ namespace FM.SHD.Plugins.Infrastructure
 
             var pluginManager = new PluginManager(services, path);
             pluginManager.LoadPlugins();
-            pluginManager.UpdateServices();
+            return pluginManager.UpdateServices();
 
-            return services;
+           // return services;
         }
     }
 }

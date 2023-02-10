@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace FM.SHD.Plugins.Infrastructure
 {
@@ -14,5 +15,7 @@ namespace FM.SHD.Plugins.Infrastructure
         TabPage GetTab();
 
         ToolStripMenuItem GetMenuItem();
+
+        IServiceCollection Add();
     }
 }
