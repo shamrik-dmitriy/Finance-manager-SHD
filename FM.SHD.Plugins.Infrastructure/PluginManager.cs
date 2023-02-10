@@ -28,7 +28,7 @@ namespace FM.SHD.Plugins.Infrastructure
             }
         }
 
-        public PluginManager(string path, IServiceCollection services)
+        public PluginManager(IServiceCollection services, string path)
         {
             _path = path;
             _services = services;
@@ -36,7 +36,7 @@ namespace FM.SHD.Plugins.Infrastructure
 
         public void LoadPlugins()
         {
-            var dlls = Directory.GetFiles(_path, "FM.SHD.Plugin.*.dll", SearchOption.AllDirectories);
+            var dlls = Directory.GetFiles(Path.Combine(_path,"Modules"), "FM.SHD.Plugin.*.dll", SearchOption.AllDirectories);
 
             foreach (var dll in dlls)
             {
@@ -46,8 +46,8 @@ namespace FM.SHD.Plugins.Infrastructure
                 if (pluginClass == null) continue;
 
                 var pluginInstance = Activator.CreateInstance(pluginClass);
-                var loadMethod = pluginClass.GetMethod("MethodName");
-                loadMethod.Invoke(pluginInstance, null);
+                //var loadMethod = pluginClass.GetMethod("MethodName");
+                //loadMethod.Invoke(pluginInstance, null);
                 Plugins.Add(plugin);
             }
         }

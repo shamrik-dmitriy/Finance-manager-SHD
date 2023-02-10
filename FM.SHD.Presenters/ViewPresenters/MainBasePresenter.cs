@@ -18,6 +18,7 @@ using FM.SHD.Services.TransactionServices;
 using FM.SHD.Settings.Services;
 using FM.SHD.Settings.Services.SettingsCollection;
 using FM.SHD.UI.WindowsForms.Presenters;
+using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Presenters;
 using FM.SHDML.Core.Models.Dtos;
 using FM.SHDML.Core.Models.Dtos.UIDto;
 using Microsoft.Extensions.DependencyInjection;
@@ -101,9 +102,11 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void OnAddingTransaction()
         {
-            var transactionPresenter = _serviceProvider.GetRequiredService<TransactionPresenter>();
+            //TODOА-ля  var transactionPresenter _plugins.GetPluginPresenter("TransactionPresenter", "Добавить операцию");
+            /*var transactionPresenter = _serviceProvider.GetRequiredService<TransactionPresenter>();
             transactionPresenter.SetTitle("Добавить операцию");
             transactionPresenter.Run(null);
+        */
         }
 
         private void OnOpenDataFile(string filePath)

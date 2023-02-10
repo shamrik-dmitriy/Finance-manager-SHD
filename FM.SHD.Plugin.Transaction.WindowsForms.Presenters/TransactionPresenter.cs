@@ -15,7 +15,7 @@ using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters
 {
-    public class Presenter : ATransactionBasePresenter
+    public class TransactionPresenter : ATransactionBasePresenter
     {
         private readonly EventAggregator _eventAggregator;
         private readonly ITransactionBaseView _baseView;
@@ -35,7 +35,7 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters
 
         #region Constructor / Destructor
 
-        public Presenter(
+        public TransactionPresenter(
             EventAggregator eventAggregator,
             ITransactionBaseView baseView,
             ICategoryUCPresenter<TypeTransactionServices> typeTransactionUcPresenter,
@@ -64,7 +64,7 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters
             _typeTransactionUcPresenter.CategoryChanged += TypeTransactionUcPresenterOnCategoryChanged;
         }
 
-        ~Presenter()
+        ~TransactionPresenter()
         {
             _baseView.OnLoadView -= OnLoadBaseView;
         }

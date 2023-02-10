@@ -47,10 +47,10 @@ namespace FM.SHD.Winforms.UI.DependencyInjection
             return serviceCollection
                 .AddScoped<IMainBaseView, MainBaseView>()
                 .AddScoped<MainBasePresenter>()
-                .AddTransient<ITransactionBaseView, TransactionBaseView>()
+                //.AddTransient<ITransactionBaseView, TransactionBaseView>()
                 //.AddTransient<TransactionPresenter>()
                 // Было во AddUsersControlViews
-                .AddTransient<ATransactionBasePresenter, TransactionPresenter>()
+                //.AddTransient<ATransactionBasePresenter, TransactionPresenter>()
                 .AddTransient<IAccountBaseView, AccountBaseView>()
                 .AddTransient<AccountPresenter>();
         }
@@ -58,16 +58,17 @@ namespace FM.SHD.Winforms.UI.DependencyInjection
         public static IServiceCollection AddUserControlViews(this IServiceCollection serviceCollection)
         {
             return serviceCollection
-                .AddTransient<ITypeTransactionUCView, TypeTransactionUCView>()
-                .AddTransient<ITypeTransactionUCPresenter, TypeTransactionUCPresenter>()
+                //.AddTransient<ITypeTransactionUCView, TypeTransactionUCView>()
+                //.AddTransient<ITypeTransactionUCPresenter, TypeTransactionUCPresenter>()
                 .AddTransient<INameTextboxUCView, NameTextboxUCView>()
                 .AddTransient<INameUCPresenter, NameUcPresenter>()
                 .AddTransient<IDescriptionTextboxUCView, DescriptionTextboxUCView>()
                 .AddTransient<IDescriptionUCPresenter, DescriptionUcPresenter>()
-                .AddTransient<IAccountsInfoTransactionUCView, AccountsInfoTransactionUCView>()
-                .AddTransient<IAccountsInfoTransactionUCPresenter, AccountsInfoTransactionUCPresenter>()
+                //.AddTransient<IAccountsInfoTransactionUCView, AccountsInfoTransactionUCView>()
+                //.AddTransient<IAccountsInfoTransactionUCPresenter, AccountsInfoTransactionUCPresenter>()
                 .AddTransient<ICategoryUCPresenter<AccountServices>, CategoryUCPresenter<IAccountServices>>()
-                .AddTransient<ICategoryUCPresenter<AccountCategoryServices>, CategoryUCPresenter<IAccountCategoryServices>>()
+                .AddTransient<ICategoryUCPresenter<AccountCategoryServices>,
+                    CategoryUCPresenter<IAccountCategoryServices>>()
                 .AddTransient<ICategoryUCPresenter<TypeTransactionServices>,
                     CategoryUCPresenter<ITypeTransactionServices>>()
                 .AddTransient<ICategoryUCPresenter<CategoriesServices>, CategoryUCPresenter<ICategoriesServices>>()
@@ -75,18 +76,18 @@ namespace FM.SHD.Winforms.UI.DependencyInjection
                 .AddTransient<ICategoryUCPresenter<IdentityServices>, CategoryUCPresenter<IIdentityServices>>()
                 .AddTransient<ICategoryUCPresenter<CurrencyServices>, CategoryUCPresenter<ICurrencyServices>>()
                 .AddTransient<ICategoryUCView, CategoryUCView>()
-                .AddTransient<IContrAgentUCView, ContrAgentUCView>()
-                .AddTransient<IContrAgentUCPresenter, ContrAgentUCPresenter>()
-                .AddTransient<IIdentityUCView, IdentityUCView>()
-                .AddTransient<IIdentityUCPresenter, IdentityUCPresenter>()
+                //.AddTransient<IContrAgentUCView, ContrAgentUCView>()
+                //.AddTransient<IContrAgentUCPresenter, ContrAgentUCPresenter>()
+                //.AddTransient<IIdentityUCView, IdentityUCView>()
+                //.AddTransient<IIdentityUCPresenter, IdentityUCPresenter>()
                 .AddTransient<IContinueCancelButtonsUcView, ContinueCancelButtonsUcView>()
                 .AddTransient<IContinueCancelButtonsUCPresenter, ContinueCancelButtonsUCPresenter>()
-                .AddTransient<IAccountInfoUCView, AccountInfoUCView>()
-                .AddTransient<IAccountInfoUCPresenter, AccountInfoUCPresenter>()
-                .AddTransient<ISumTransactionUCView, SumTransactionUCView>()
-                .AddTransient<ISumTransactionUCPresenter, SumTransactionUCPresenter>()
-                .AddTransient<IDateTransactionUCView, DateTransactionUCView>()
-                .AddTransient<IDateTransactionUCPresenter, DateTransactionUCPresenter>()
+                //.AddTransient<IAccountInfoUCView, AccountInfoUCView>()
+                //.AddTransient<IAccountInfoUCPresenter, AccountInfoUCPresenter>()
+                //.AddTransient<ISumTransactionUCView, SumTransactionUCView>()
+                //.AddTransient<ISumTransactionUCPresenter, SumTransactionUCPresenter>()
+                //.AddTransient<IDateTransactionUCView, DateTransactionUCView>()
+                //.AddTransient<IDateTransactionUCPresenter, DateTransactionUCPresenter>()
                 .AddTransient<ILabelTextBoxUCView, LabelTextBoxUCView>()
                 .AddTransient<ILabelTextboxUcPresenter, LabelTextboxPresenter>()
                 .AddTransient<ICheckboxUCView, CheckboxUCView>()
@@ -94,9 +95,9 @@ namespace FM.SHD.Winforms.UI.DependencyInjection
                 .AddTransient<IAccountBaseView, AccountBaseView>()
                 .AddTransient<BaseAccountPresenter, AccountPresenter>()
                 .AddTransient<IAccountSummaryUCView, AccountSummaryUCView>()
-                .AddTransient<IAccountSummaryUCPresenter, AccountSummaryUCPresenter>()
-                .AddTransient<IAllTransactionUCView, AllTransactionUCView>()
-                .AddTransient<IAllTransactionUCPresenter, AllTransactionUCPresenter>();
+                .AddTransient<IAccountSummaryUCPresenter, AccountSummaryUCPresenter>();
+            //.AddTransient<IAllTransactionUCView, AllTransactionUCView>()
+            //.AddTransient<IAllTransactionUCPresenter, AllTransactionUCPresenter>();
         }
 
         public static IServiceCollection AddRepositories(this IServiceCollection
