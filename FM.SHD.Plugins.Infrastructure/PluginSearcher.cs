@@ -88,17 +88,4 @@ namespace FM.SHD.Plugins.Infrastructure
             _pluginAssemblyLoadingContext.Unload();
         }
     }
-
-    internal class PluginAssemblyLoadingContext
-    {
-        public PluginAssemblyLoadingContext(string name)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Assembly LoadFromAssemblyPath(string assemblyPath)
-        {
-            throw new NotImplementedException();
-        }
-    }
 }
