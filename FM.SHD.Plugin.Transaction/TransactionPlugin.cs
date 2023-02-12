@@ -5,7 +5,7 @@ using FM.SHD.Plugin.Transaction.WindowsForms.Views;
 using FM.SHD.Plugin.Transaction.WindowsForms.Views.Transactions;
 using FM.SHD.Plugin.Transaction.WindowsForms.Views.Transactions.TransactionUserControls;
 using FM.SHD.Plugin.Transaction.WindowsForms.Views.Transactions.UserControlsOfTransactions;
-using FM.SHD.Plugins.Infrastructure;
+using FM.SHD.Plugins.Interfaces;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.AClasses;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Presenters;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.UserControl;

@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FM.SHD.Plugins.Infrastructure
+namespace FM.SHD.Plugins.Interfaces
 {
     public interface IPlugin
     {

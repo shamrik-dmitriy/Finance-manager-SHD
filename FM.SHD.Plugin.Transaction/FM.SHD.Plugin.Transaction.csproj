@@ -19,7 +19,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\FM.SHD.Plugin.Transaction.WindowsForms.Views\FM.SHD.Plugin.Transaction.WindowsForms.Views.csproj" />
-      <ProjectReference Include="..\FM.SHD.Plugins.Infrastructure\FM.SHD.Plugins.Infrastructure.csproj" />
+      <ProjectReference Include="..\FM.SHD.Plugins.Interfaces\FM.SHD.Plugins.Interfaces.csproj" />
       <ProjectReference Include="..\FM.SHD.UI.WindowsForms.SharedInterfaces\FM.SHD.UI.WindowsForms.SharedInterfaces.csproj" />
     </ItemGroup>
 

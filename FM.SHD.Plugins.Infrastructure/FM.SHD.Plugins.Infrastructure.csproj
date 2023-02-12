@@ -21,4 +21,9 @@
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\FM.SHD.Plugin.Transaction\FM.SHD.Plugin.Transaction.csproj" />
+      <ProjectReference Include="..\FM.SHD.Plugins.Interfaces\FM.SHD.Plugins.Interfaces.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Loader;
+using FM.SHD.Plugins.Interfaces;
 
 namespace FM.SHD.Plugins.Infrastructure
 {
