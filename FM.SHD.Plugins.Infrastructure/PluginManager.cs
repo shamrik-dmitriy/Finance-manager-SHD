@@ -3,19 +3,41 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using FM.SHD.Plugin.Transaction;
 using FM.SHD.Plugins.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace FM.SHD.Plugins.Infrastructure
 {
-    public class PluginManager
+    internal class PluginCollection<T> where T : IPlugin
+    //internal class PluginCollection
     {
-        private readonly string _path;
+        public PluginCollection()
+        {
+        }
+
+        public T GetPlugin(string pluginName)
+        {
+            return _plugins[pluginName];
+        }
+
+        public IReadOnlyCollection<T> GetPlugins()
+        {
+            return _plugins.Values;
+        }
+        private Dictionary<string, T> _plugins = new Dictionary<string, T>();
+    }
+
+    public class PluginManager : IPluginManager
+    {
+        private PluginCollection<IPlugin> s = new PluginCollection<IPlugin>();
+        
         private readonly IServiceCollection _services;
         public ICollection<Assembly> Plugins { get; private set; } = new List<Assembly>();
 
         private IList<Type> _types;
+        private object? pluginInstance;
 
         public IList<Type> Types
         {
@@ -30,22 +52,24 @@ namespace FM.SHD.Plugins.Infrastructure
             }
         }
 
-        public PluginManager(IServiceCollection services, string path)
+        public PluginManager(IServiceCollection services)
         {
-            _path = path;
             _services = services;
         }
 
         public void LoadPlugins()
         {
-            var dlls = Directory.GetFiles(Path.Combine(_path,"Modules"), "FM.SHD.Plugin.*.dll", SearchOption.TopDirectoryOnly);
+            var dlls = Directory.GetFiles(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Modules"),
+                "FM.SHD.Plugin.*.dll", SearchOption.TopDirectoryOnly);
 
             foreach (var dll in dlls)
             {
                 var plugin = Assembly.LoadFrom(dll);
+                s.Register(plugin);
                 Plugins.Add(plugin);
             }
         }
+
 
         public IServiceCollection UpdateServices()
         {
@@ -53,13 +77,13 @@ namespace FM.SHD.Plugins.Infrastructure
                 .SingleOrDefault(type => typeof(IPlugin).IsAssignableFrom(type));
             //if (pluginClass == null) continue;
 
-            var pluginInstance = Activator.CreateInstance(pluginClass, _services);
-                
+            pluginInstance = Activator.CreateInstance(pluginClass, _services);
+
             var loadMethod = pluginClass.GetMethod("Add");
             var t = loadMethod.Invoke(pluginInstance, null);
             return (IServiceCollection)t;
             //loadMethod.Invoke(pluginInstance, null);
-            
+
             foreach (var type in Types)
             {
                 _services.AddTransient(type);
@@ -253,5 +277,10 @@ namespace FM.SHD.Plugins.Infrastructure
            return Plugins.Where(predicate);
        }
     */
+        public IPlugin GetPlugin<T>()
+        {
+            var tmp = typeof(T);
+            return Plugins[tmp.Name];
+        }
     }
 }

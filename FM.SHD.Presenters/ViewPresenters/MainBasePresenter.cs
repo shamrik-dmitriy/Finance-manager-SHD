@@ -9,6 +9,7 @@ using FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction;
 using FM.SHD.Infrastructure.Dal;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Infrastructure.Events.ApplicationEvents.Transactions;
+using FM.SHD.Plugins.Interfaces;
 using FM.SHD.Presenters.Events.Accounts;
 using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
 using FM.SHD.Presenters.IntrefacesViews.Views;
@@ -33,6 +34,7 @@ namespace FM.SHD.Presenters.ViewPresenters
         private readonly IMainBaseView _baseView;
         private readonly IServiceProvider _serviceProvider;
         private readonly IRepositoryManager _repositoryManager;
+        private readonly IPluginManager _pluginManager;
         private readonly SettingServices<SystemRecentOpenFilesSettings> _recentOpenFilesSettings;
 
         private List<RecentOpenFilesDto> RecentOpenFilesDtos { get; set; }
@@ -49,13 +51,14 @@ namespace FM.SHD.Presenters.ViewPresenters
             IMainBaseView baseView,
             IServiceProvider serviceProvider,
             SettingServices<SystemRecentOpenFilesSettings> settingServices,
-            IRepositoryManager repositoryManager)
+            IRepositoryManager repositoryManager, IPluginManager pluginManager)
             : base(baseView)
         {
             _eventAggregator = eventAggregator;
             _baseView = baseView;
             _serviceProvider = serviceProvider;
             _repositoryManager = repositoryManager;
+            _pluginManager = pluginManager;
             _recentOpenFilesSettings = settingServices;
 
             _baseView.OnLoadView += OnLoadBaseView;
@@ -102,11 +105,8 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void OnAddingTransaction()
         {
-            //TODOА-ля  var transactionPresenter _plugins.GetPluginPresenter("TransactionPresenter", "Добавить операцию");
-            /*var transactionPresenter = _serviceProvider.GetRequiredService<TransactionPresenter>();
-            transactionPresenter.SetTitle("Добавить операцию");
-            transactionPresenter.Run(null);
-        */
+            var transactionPresenter = (ITransactionPlugin)_pluginManager.GetPlugin<ITransactionPlugin>();
+            transactionPresenter.GetPluginPresenter("TransactionPresenter", "Добавить транзакцию").Run(null);
         }
 
         private void OnOpenDataFile(string filePath)

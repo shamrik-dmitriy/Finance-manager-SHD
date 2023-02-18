@@ -39,7 +39,7 @@ namespace FM.SHD.Winforms.UI
                 {
                     services
                         .AddSingleton<EventAggregator>()
-                        .AddPluginManager(AppContext.BaseDirectory)
+                        .AddPluginManager()
                         .AddTransient<IApplicationEvent, OnSelectedTypeOfTransactionApplicationEvent>()
                         .AddServices()
                         .AddScoped<ApplicationContext>()

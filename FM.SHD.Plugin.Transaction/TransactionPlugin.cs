@@ -6,17 +6,20 @@ using FM.SHD.Plugin.Transaction.WindowsForms.Views.Transactions;
 using FM.SHD.Plugin.Transaction.WindowsForms.Views.Transactions.TransactionUserControls;
 using FM.SHD.Plugin.Transaction.WindowsForms.Views.Transactions.UserControlsOfTransactions;
 using FM.SHD.Plugins.Interfaces;
+using FM.SHD.UI.WindowsForms.Presenters;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.AClasses;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Presenters;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.UserControl;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Views;
+using FM.SHDML.Core.Models.Dtos;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FM.SHD.Plugin.Transaction
 {
-    public class TransactionPlugin : IPlugin
+    public class TransactionPlugin : ITransactionPlugin, IPlugin
     {
         private readonly IServiceCollection _serviceCollection;
+        private readonly IServiceProvider _provider;
         private string _connectionString;
 
         public string Name => "Плагин транзакций";
@@ -25,9 +28,10 @@ namespace FM.SHD.Plugin.Transaction
         public bool IsAddDataToTab => true;
         public bool IsAddDataToMenu => false;
 
-        public TransactionPlugin(IServiceCollection serviceCollection)
+        public TransactionPlugin(IServiceCollection serviceCollection, IServiceProvider provider)
         {
             _serviceCollection = serviceCollection;
+            _provider = provider;
         }
 
         public void SetConnectionString(string connectionString)
@@ -73,6 +77,17 @@ namespace FM.SHD.Plugin.Transaction
                 .AddTransient<IDateTransactionUCPresenter, DateTransactionUCPresenter>()
                 .AddTransient<IAllTransactionUCView, AllTransactionUCView>()
                 .AddTransient<IAllTransactionUCPresenter, AllTransactionUCPresenter>();
+        }
+
+        public IBasePresenter<ITransactionBaseView> GetPluginPresenter()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IBasePresenter<ITransactionBaseView> GetPluginPresenter(string pluginPresenterName, string captionText,
+            BaseDto dto = null)
+        {
+            return _provider.GetRequiredService<IBasePresenter<ITransactionBaseView>>();
         }
     }
 }

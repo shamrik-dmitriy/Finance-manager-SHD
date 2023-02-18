@@ -6,21 +6,17 @@ namespace FM.SHD.Plugins.Infrastructure
 {
     public static class PluginManagerExtensions
     {
-        public static IServiceCollection AddPluginManager(this IServiceCollection services, string path)
+        public static IServiceCollection AddPluginManager(this IServiceCollection services)
         {
             if (services == null)
             {
                 throw new ArgumentNullException(nameof(services));
             }
 
-            var pluginSearcher = new PluginSearcher<TransactionPlugin>();
-            pluginSearcher.SearchPlugins();
-
-            
-            var pluginManager = new PluginManager(services, path);
+            // Найти все плагины и подключить их в систему
+            var pluginManager = new PluginManager(services);
             pluginManager.LoadPlugins();
             return pluginManager.UpdateServices();
-           // return services;
         }
     }
 }
