@@ -7,6 +7,7 @@ using FM.SHD.Domain;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Infrastructure.Events.ApplicationEvents;
 using FM.SHD.Plugins.Infrastructure;
+using FM.SHD.Plugins.Interfaces;
 using FM.SHD.Presenters.ViewPresenters;
 using FM.SHD.Services.CommonServices;
 using FM.SHD.Settings.Services;
@@ -39,7 +40,8 @@ namespace FM.SHD.Winforms.UI
                 {
                     services
                         .AddSingleton<EventAggregator>()
-                        .AddPluginManager()
+                        .AddPlugins()
+                        .AddSingleton<IPluginManager, PluginManager>(provider => new PluginManager(services))
                         .AddTransient<IApplicationEvent, OnSelectedTypeOfTransactionApplicationEvent>()
                         .AddServices()
                         .AddScoped<ApplicationContext>()

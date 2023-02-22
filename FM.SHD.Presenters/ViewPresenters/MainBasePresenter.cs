@@ -59,6 +59,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             _serviceProvider = serviceProvider;
             _repositoryManager = repositoryManager;
             _pluginManager = pluginManager;
+            _pluginManager.SetServiceProvider(_serviceProvider);
             _recentOpenFilesSettings = settingServices;
 
             _baseView.OnLoadView += OnLoadBaseView;

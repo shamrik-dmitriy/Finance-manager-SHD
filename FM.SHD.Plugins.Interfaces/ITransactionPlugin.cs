@@ -4,9 +4,11 @@ using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Plugins.Interfaces
 {
-    public interface ITransactionPlugin
+    public interface ITransactionPlugin : IPlugin
     {
         public IBasePresenter<ITransactionBaseView> GetPluginPresenter();
-        public IBasePresenter<ITransactionBaseView> GetPluginPresenter(string pluginPresenterName, string captionText, BaseDto dto = null);
+
+        public IBasePresenter<ITransactionBaseView> GetPluginPresenter(string pluginPresenterName, string captionText,
+            BaseDto dto = null);
     }
 }

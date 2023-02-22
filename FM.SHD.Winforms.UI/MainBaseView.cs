@@ -44,11 +44,11 @@ namespace FM.SHD.Winforms.UI
         {
             splitContainerTransactions.Panel2.Controls.Add((UserControl)userControlView);
             /*var userControl = (UserControl)userControlView;
-            singleTransactionDesktopflowLayoutPanel.Controls.Add(userControl);
+            singleTransactionDesktopflowLayoutPanel.Controls.AddPluginServices(userControl);
             
-            var c = new TabControl.ControlCollection(tabControl1).Add((UserControl)userControlView);
+            var c = new TabControl.ControlCollection(tabControl1).AddPluginServices((UserControl)userControlView);
             var tp = new TabPage().Control
-            tabControl1.TabPages.Add(new TabPage()
+            tabControl1.TabPages.AddPluginServices(new TabPage()
             {
                 Text = "",
             });*/

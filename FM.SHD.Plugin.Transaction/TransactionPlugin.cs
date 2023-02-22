@@ -16,10 +16,10 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace FM.SHD.Plugin.Transaction
 {
-    public class TransactionPlugin : ITransactionPlugin, IPlugin
+    public class TransactionPlugin : ITransactionPlugin
     {
         private readonly IServiceCollection _serviceCollection;
-        private readonly IServiceProvider _provider;
+        private IServiceProvider _provider;
         private string _connectionString;
 
         public string Name => "Плагин транзакций";
@@ -28,10 +28,9 @@ namespace FM.SHD.Plugin.Transaction
         public bool IsAddDataToTab => true;
         public bool IsAddDataToMenu => false;
 
-        public TransactionPlugin(IServiceCollection serviceCollection, IServiceProvider provider)
+        public TransactionPlugin(IServiceCollection serviceCollection)
         {
             _serviceCollection = serviceCollection;
-            _provider = provider;
         }
 
         public void SetConnectionString(string connectionString)
@@ -54,7 +53,7 @@ namespace FM.SHD.Plugin.Transaction
             throw new NotImplementedException();
         }
 
-        public IServiceCollection Add()
+        public IServiceCollection AddPluginServices()
         {
             return _serviceCollection
                 //Views
@@ -77,6 +76,11 @@ namespace FM.SHD.Plugin.Transaction
                 .AddTransient<IDateTransactionUCPresenter, DateTransactionUCPresenter>()
                 .AddTransient<IAllTransactionUCView, AllTransactionUCView>()
                 .AddTransient<IAllTransactionUCPresenter, AllTransactionUCPresenter>();
+        }
+
+        public void SetServiceProvider(IServiceProvider provider)
+        {
+            _provider = provider;
         }
 
         public IBasePresenter<ITransactionBaseView> GetPluginPresenter()

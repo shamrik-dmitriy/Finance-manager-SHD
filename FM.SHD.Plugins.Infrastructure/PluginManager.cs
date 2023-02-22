@@ -6,90 +6,22 @@ using System.Reflection;
 using FM.SHD.Plugin.Transaction;
 using FM.SHD.Plugins.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
+using static System.Console;
 
 namespace FM.SHD.Plugins.Infrastructure
 {
-    internal class PluginCollection<T> where T : IPlugin
-    //internal class PluginCollection
-    {
-        public PluginCollection()
-        {
-        }
-
-        public T GetPlugin(string pluginName)
-        {
-            return _plugins[pluginName];
-        }
-
-        public IReadOnlyCollection<T> GetPlugins()
-        {
-            return _plugins.Values;
-        }
-        private Dictionary<string, T> _plugins = new Dictionary<string, T>();
-    }
-
     public class PluginManager : IPluginManager
     {
-        private PluginCollection<IPlugin> s = new PluginCollection<IPlugin>();
-        
+        public IEnumerable<IGrouping<string, AssemblyInfo>> PluginGroups { get; set; }
+
         private readonly IServiceCollection _services;
-        public ICollection<Assembly> Plugins { get; private set; } = new List<Assembly>();
-
-        private IList<Type> _types;
-        private object? pluginInstance;
-
-        public IList<Type> Types
-        {
-            get
-            {
-                if (_types == null)
-                {
-                    LoadPlugins();
-                }
-
-                return _types.ToList();
-            }
-        }
+        private IServiceProvider _serviceProvider;
 
         public PluginManager(IServiceCollection services)
         {
             _services = services;
         }
-
-        public void LoadPlugins()
-        {
-            var dlls = Directory.GetFiles(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Modules"),
-                "FM.SHD.Plugin.*.dll", SearchOption.TopDirectoryOnly);
-
-            foreach (var dll in dlls)
-            {
-                var plugin = Assembly.LoadFrom(dll);
-                s.Register(plugin);
-                Plugins.Add(plugin);
-            }
-        }
-
-
-        public IServiceCollection UpdateServices()
-        {
-            var pluginClass = Plugins.First().GetTypes()
-                .SingleOrDefault(type => typeof(IPlugin).IsAssignableFrom(type));
-            //if (pluginClass == null) continue;
-
-            pluginInstance = Activator.CreateInstance(pluginClass, _services);
-
-            var loadMethod = pluginClass.GetMethod("Add");
-            var t = loadMethod.Invoke(pluginInstance, null);
-            return (IServiceCollection)t;
-            //loadMethod.Invoke(pluginInstance, null);
-
-            foreach (var type in Types)
-            {
-                _services.AddTransient(type);
-            }
-        }
-
+        
 
         /*   var moduleAssembly = System.Reflection.Assembly.LoadFrom(@"A:\Repositories\Finance-manager-SHD\FM.SHD.Plugin.Transaction\bin\Debug\net5.0-windows\FM.SHD.Plugin.Transaction.dll");
            var moduleTypes = moduleAssembly.GetTypes().Where(t => 
@@ -153,7 +85,7 @@ namespace FM.SHD.Plugins.Infrastructure
            foreach (Assembly assembly in GetAssemblies(predicate))
                foreach (Type type in assembly.GetTypes())
                    if (typeof(T).GetTypeInfo().IsAssignableFrom(type) && type.GetTypeInfo().IsClass)
-                       implementations.Add(type);
+                       implementations.AddPluginServices(type);
 
            return implementations;
        }
@@ -262,7 +194,7 @@ namespace FM.SHD.Plugins.Infrastructure
                {
                    T instance = (T)Activator.CreateInstance(implementation, args);
 
-                   instances.Add(instance);
+                   instances.AddPluginServices(instance);
                }
            }
 
@@ -279,8 +211,14 @@ namespace FM.SHD.Plugins.Infrastructure
     */
         public IPlugin GetPlugin<T>()
         {
-            var tmp = typeof(T);
-            return Plugins[tmp.Name];
+            //var tmp = typeof(T);
+            // return Plugins[tmp.Name];
+            return new TransactionPlugin(_services);
+        }
+
+        public void SetServiceProvider(IServiceProvider serviceProvider)
+        {
+            _serviceProvider = serviceProvider;
         }
     }
 }

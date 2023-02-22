@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FM.SHD.Plugins.Interfaces
@@ -16,6 +17,8 @@ namespace FM.SHD.Plugins.Interfaces
 
         ToolStripMenuItem GetMenuItem();
 
-        IServiceCollection Add();
+        IServiceCollection AddPluginServices();
+
+        void SetServiceProvider(IServiceProvider provider);
     }
 }
