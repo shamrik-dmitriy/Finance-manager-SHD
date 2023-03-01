@@ -107,7 +107,8 @@ namespace FM.SHD.Presenters.ViewPresenters
         private void OnAddingTransaction()
         {
             var transactionPresenter = (ITransactionPlugin)_pluginManager.GetPlugin<ITransactionPlugin>();
-            transactionPresenter.GetPluginPresenter("TransactionPresenter", "Добавить транзакцию").Run(null);
+           //transactionPresenter.SetServiceProvider(_serviceProvider);
+           transactionPresenter.GetPluginPresenter("TransactionPresenter", "Добавить транзакцию").Show();//(null);
         }
 
         private void OnOpenDataFile(string filePath)

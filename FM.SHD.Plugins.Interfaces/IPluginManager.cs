@@ -5,7 +5,7 @@ namespace FM.SHD.Plugins.Interfaces
 {
     public interface IPluginManager
     {
-        IPlugin GetPlugin<T>();
+        T GetPlugin<T>();
         void SetServiceProvider(IServiceProvider serviceProvider);
     }
 }

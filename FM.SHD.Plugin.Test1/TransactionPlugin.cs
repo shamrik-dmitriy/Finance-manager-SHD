@@ -16,10 +16,10 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace FM.SHD.Plugin.Transaction
 {
-    public class TransactionPlugin : IPlugin, ITransactionPlugin
+    public class Test1Plugin : Itest1Plugin
     {
         private readonly IServiceCollection _serviceCollection;
-        private IServiceProvider _provider;
+        private readonly IServiceProvider _provider;
         private string _connectionString;
 
         public string Name => "Плагин транзакций";
@@ -28,9 +28,10 @@ namespace FM.SHD.Plugin.Transaction
         public bool IsAddDataToTab => true;
         public bool IsAddDataToMenu => false;
 
-        public TransactionPlugin(IServiceCollection serviceCollection)
+        public TransactionPlugin(IServiceCollection serviceCollection, IServiceProvider provider)
         {
             _serviceCollection = serviceCollection;
+            _provider = provider;
         }
 
         public void SetConnectionString(string connectionString)
@@ -53,7 +54,7 @@ namespace FM.SHD.Plugin.Transaction
             throw new NotImplementedException();
         }
 
-        public IServiceCollection AddPluginServices()
+        public IServiceCollection Add()
         {
             return _serviceCollection
                 //Views
@@ -78,20 +79,15 @@ namespace FM.SHD.Plugin.Transaction
                 .AddTransient<IAllTransactionUCPresenter, AllTransactionUCPresenter>();
         }
 
-        public void SetServiceProvider(IServiceProvider provider)
-        {
-            _provider = provider;
-        }
-
         public IBasePresenter<ITransactionBaseView> GetPluginPresenter()
         {
             throw new NotImplementedException();
         }
 
-        public ITransactionBaseView GetPluginPresenter(string pluginPresenterName, string captionText,
+        public IBasePresenter<ITransactionBaseView> GetPluginPresenter(string pluginPresenterName, string captionText,
             BaseDto dto = null)
         {
-            return _provider.GetRequiredService<ITransactionBaseView>();
+            return _provider.GetRequiredService<IBasePresenter<ITransactionBaseView>>();
         }
     }
 }

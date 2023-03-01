@@ -41,6 +41,7 @@ namespace FM.SHD.Winforms.UI
                     services
                         .AddSingleton<EventAggregator>()
                         .AddPlugins()
+                        .AddPluginsTypes()
                         .AddSingleton<IPluginManager, PluginManager>(provider => new PluginManager(services))
                         .AddTransient<IApplicationEvent, OnSelectedTypeOfTransactionApplicationEvent>()
                         .AddServices()
