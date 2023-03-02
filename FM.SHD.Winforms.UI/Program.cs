@@ -42,7 +42,7 @@ namespace FM.SHD.Winforms.UI
                         .AddSingleton<EventAggregator>()
                         .AddPlugins()
                         .AddPluginsTypes()
-                        .AddSingleton<IPluginManager, PluginManager>(provider => new PluginManager(services))
+                        .AddSingleton<IPluginManager, PluginManager>()
                         .AddTransient<IApplicationEvent, OnSelectedTypeOfTransactionApplicationEvent>()
                         .AddServices()
                         .AddScoped<ApplicationContext>()
@@ -61,18 +61,16 @@ namespace FM.SHD.Winforms.UI
                 });
 
             var host = builder.Build();
-            using var serviceScope = host.Services.CreateScope();
+
+            var services = host.Services;
+            try
             {
-                var services = serviceScope.ServiceProvider;
-                try
-                {
-                    var mainPresenter = services.GetRequiredService<MainBasePresenter>();
-                    mainPresenter.Run();
-                }
-                catch (Exception exception)
-                {
-                    Console.WriteLine($"Error: {exception.Message}");
-                }
+                var mainPresenter = services.GetRequiredService<MainBasePresenter>();
+                mainPresenter.Run();
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine($"Error: {exception.Message}");
             }
         }
 
