@@ -18,8 +18,8 @@ namespace FM.SHD.Plugin.Transaction
 {
     public class TransactionPlugin : IPlugin, ITransactionPlugin
     {
+        private readonly IServiceProvider _serviceProvider;
         private readonly IServiceCollection _serviceCollection;
-        private IServiceProvider _provider;
         private string _connectionString;
 
         public string Name => "Плагин транзакций";
@@ -31,6 +31,11 @@ namespace FM.SHD.Plugin.Transaction
         public TransactionPlugin(IServiceCollection serviceCollection)
         {
             _serviceCollection = serviceCollection;
+        }
+
+        public TransactionPlugin(IServiceProvider serviceProvider)
+        {
+            _serviceProvider = serviceProvider;
         }
 
         public void SetConnectionString(string connectionString)
@@ -78,20 +83,15 @@ namespace FM.SHD.Plugin.Transaction
                 .AddTransient<IAllTransactionUCPresenter, AllTransactionUCPresenter>();
         }
 
-        public void SetServiceProvider(IServiceProvider provider)
-        {
-            _provider = provider;
-        }
-
         public IBasePresenter<ITransactionBaseView> GetPluginPresenter()
         {
             throw new NotImplementedException();
         }
 
-        public ITransactionBaseView GetPluginPresenter(string pluginPresenterName, string captionText,
+        public ATransactionBasePresenter GetPluginPresenter(string pluginPresenterName, string captionText,
             BaseDto dto = null)
         {
-            return _provider.GetRequiredService<ITransactionBaseView>();
+            return _serviceProvider.GetRequiredService<ATransactionBasePresenter>();
         }
     }
 }
