@@ -59,7 +59,6 @@ namespace FM.SHD.Presenters.ViewPresenters
             _serviceProvider = serviceProvider;
             _repositoryManager = repositoryManager;
             _pluginManager = pluginManager;
-            _pluginManager.SetServiceProvider(_serviceProvider);
             _recentOpenFilesSettings = settingServices;
 
             _baseView.OnLoadView += OnLoadBaseView;
@@ -107,8 +106,7 @@ namespace FM.SHD.Presenters.ViewPresenters
         private void OnAddingTransaction()
         {
             var transactionPresenter = (ITransactionPlugin)_pluginManager.GetPlugin<ITransactionPlugin>();
-           //transactionPresenter.SetServiceProvider(_serviceProvider);
-           transactionPresenter.GetPluginPresenter("TransactionPresenter", "Добавить транзакцию").Show();//(null);
+           transactionPresenter.GetPluginPresenter("TransactionPresenter", "Добавить транзакцию").Run(null);//(null);
         }
 
         private void OnOpenDataFile(string filePath)
