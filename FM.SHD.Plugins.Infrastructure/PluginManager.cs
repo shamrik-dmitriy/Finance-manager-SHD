@@ -12,8 +12,6 @@ namespace FM.SHD.Plugins.Infrastructure
 {
     public class PluginManager : IPluginManager
     {
-        public IEnumerable<IGrouping<string, AssemblyInfo>> PluginGroups { get; set; }
-
         private readonly IServiceCollection _services;
         private IServiceProvider _serviceProvider;
 
@@ -22,6 +20,10 @@ namespace FM.SHD.Plugins.Infrastructure
             _services = services;
         }
 
+        public PluginManager(IServiceProvider provider)
+        {
+            _serviceProvider = provider;
+        }
 
         /*   var moduleAssembly = System.Reflection.Assembly.LoadFrom(@"A:\Repositories\Finance-manager-SHD\FM.SHD.Plugin.Transaction\bin\Debug\net5.0-windows\FM.SHD.Plugin.Transaction.dll");
            var moduleTypes = moduleAssembly.GetTypes().Where(t => 
@@ -209,17 +211,10 @@ namespace FM.SHD.Plugins.Infrastructure
            return Plugins.Where(predicate);
        }
     */
+
         public T GetPlugin<T>()
         {
-            //PluginAssemblyLoader.LoadAssemblies();
             return _serviceProvider.GetRequiredService<T>();
-            //PluginAssemblyLoader.PluginAssemblyGroups.Select(x => x)
-            //return new TransactionPlugin(_services);
-        }
-
-        public void SetServiceProvider(IServiceProvider serviceProvider)
-        {
-            _serviceProvider = serviceProvider;
         }
     }
 }
