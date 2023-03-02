@@ -1,10 +1,6 @@
-using System;
 using System.Linq;
-using System.Reflection;
-using FM.SHD.Plugin.Transaction;
 using FM.SHD.Plugins.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace FM.SHD.Plugins.Infrastructure
 {
@@ -29,10 +25,6 @@ namespace FM.SHD.Plugins.Infrastructure
                     var pluginInterface = pluginClass.GetInterfaces().First(x => x.Name == $"I{pluginClass.Name}");
 
                     services.AddSingleton(pluginInterface, pluginClass);
-                    //services.AddSingleton(pluginInterface, x =>
-                    //{
-                    //    return new Func<IServiceProvider,dynamic>(provider => new TransactionPlugin(services));
-                    //});
                 }
             }
 
