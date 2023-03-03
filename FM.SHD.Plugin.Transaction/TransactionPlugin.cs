@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using FM.SHD.Plugin.Transaction.WindowsForms.Presenters;
+using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.UserControls;
 using FM.SHD.Plugin.Transaction.WindowsForms.Views;
 using FM.SHD.Plugin.Transaction.WindowsForms.Views.Transactions;
 using FM.SHD.Plugin.Transaction.WindowsForms.Views.Transactions.TransactionUserControls;

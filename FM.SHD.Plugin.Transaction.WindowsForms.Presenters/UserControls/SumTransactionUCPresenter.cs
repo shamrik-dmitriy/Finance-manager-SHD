@@ -1,7 +1,7 @@
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Presenters;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.UserControl;
 
-namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters
+namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.UserControls
 {
     public class SumTransactionUCPresenter : ISumTransactionUCPresenter
     {

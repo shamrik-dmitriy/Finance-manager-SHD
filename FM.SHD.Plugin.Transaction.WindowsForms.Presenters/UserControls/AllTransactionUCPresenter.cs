@@ -5,7 +5,7 @@ using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Presenters;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.UserControl;
 using FM.SHDML.Core.Models.Dtos;
 
-namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters
+namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.UserControls
 {
     public class AllTransactionUCPresenter : IAllTransactionUCPresenter
     {
