@@ -111,7 +111,17 @@ namespace FM.SHD.UI.WindowsForms.UserControls.Views
             {
                 SetValue(categoryComboBox.FindId<BaseDto>(id));
             }
+
             Refresh();
+        }
+
+        public void SetCategoryFirst()
+        {
+            if (categoryComboBox.Items[0] != null)
+            {
+                categoryComboBox.SelectedItem = categoryComboBox.Items[0];
+                Refresh();
+            }
         }
 
         public void SetStyleDropDownList()

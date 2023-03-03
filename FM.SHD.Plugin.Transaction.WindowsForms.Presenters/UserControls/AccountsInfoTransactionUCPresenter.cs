@@ -6,7 +6,7 @@ using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.UserControl;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category.Events;
 
-namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters
+namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.UserControls
 {
     public class AccountsInfoTransactionUCPresenter : IAccountsInfoTransactionUCPresenter
     {
@@ -76,9 +76,13 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters
         private void AccountsInfoUcViewOnOnLoadControlView()
         {
             _debitAccountInfoUcPresenter.SetStyleDropDownList();
+            _debitAccountInfoUcPresenter.SetCategoryValues();
+            _debitAccountInfoUcPresenter.GetUserControlView().SetCategoryFirst();
             _accountsInfoTransactionUcView.AddAccountInfo(_debitAccountInfoUcPresenter.GetUserControlView());
 
             _creditAccountInfoUcPresenter.SetStyleDropDownList();
+            _creditAccountInfoUcPresenter.SetCategoryValues();
+            _creditAccountInfoUcPresenter.GetUserControlView().SetCategoryFirst();
             _accountsInfoTransactionUcView.AddAccountInfo(_creditAccountInfoUcPresenter.GetUserControlView());
 
             _accountsInfoTransactionUcView.AddSumm(_sumTransactionUcPresenter.GetUserControlView());

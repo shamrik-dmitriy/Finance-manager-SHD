@@ -37,5 +37,7 @@ namespace FM.SHD.UI.WindowsForms.UserControls.Presenters.Category
         #endregion
 
         void SetCategoryId(long? id);
+        
+        void SetCategoryFirst();
     }
 }
