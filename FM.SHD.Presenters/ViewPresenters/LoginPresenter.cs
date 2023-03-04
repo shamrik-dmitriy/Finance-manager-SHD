@@ -39,14 +39,15 @@ namespace FM.SHD.Presenters.ViewPresenters
         #endregion
 
         #region Public methods
-
-        public override void SetTitle(string title)
+        
+        public override void Run(IdentityDto transactionDto)
         {
-            _baseView.SetTitle(title);
+            _baseView.Show();
         }
 
-        public override void Run(IdentityDto accountDto)
+        public override void Run(string title, IdentityDto transactionDto = default(IdentityDto))
         {
+            _baseView.SetTitle(title);
             _baseView.Show();
         }
 

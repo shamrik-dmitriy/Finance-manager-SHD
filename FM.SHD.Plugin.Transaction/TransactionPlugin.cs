@@ -12,7 +12,6 @@ using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.AClasses;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Presenters;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.UserControl;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Views;
-using FM.SHDML.Core.Models.Dtos;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FM.SHD.Plugin.Transaction
@@ -89,8 +88,7 @@ namespace FM.SHD.Plugin.Transaction
             throw new NotImplementedException();
         }
 
-        public ATransactionBasePresenter GetPluginPresenter(string pluginPresenterName, string captionText,
-            BaseDto dto = null)
+        public ATransactionBasePresenter GetPluginPresenter(string pluginPresenterName)
         {
             return _serviceProvider.GetRequiredService<ATransactionBasePresenter>();
         }

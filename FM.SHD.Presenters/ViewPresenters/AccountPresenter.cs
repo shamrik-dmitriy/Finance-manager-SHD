@@ -176,15 +176,17 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         #endregion
 
-        public override void Run(AccountDto accountDto)
+        public override void Run(AccountDto transactionDto)
         {
-            AccountDto = accountDto;
+            AccountDto = transactionDto;
             _baseView.Show();
         }
 
-        public override void SetTitle(string title)
+        public override void Run(string title, AccountDto transactionDto = default(AccountDto))
         {
+            AccountDto = transactionDto;
             _baseView.SetTitle(title);
+            _baseView.Show();
         }
     }
 }

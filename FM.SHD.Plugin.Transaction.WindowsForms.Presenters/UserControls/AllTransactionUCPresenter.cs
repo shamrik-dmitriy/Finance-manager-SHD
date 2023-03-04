@@ -27,8 +27,8 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.UserControls
 
         private void ViewOnUpdateTransaction(TransactionExtendedDto transactionExtendedDto)
         {
-            _aTransactionBasePresenter.SetTitle("Редактирование транзакции");
-            _aTransactionBasePresenter.Run(_transactionServices.GetById(transactionExtendedDto.Id));
+            _aTransactionBasePresenter.Run("Редактирование транзакции",
+                _transactionServices.GetById(transactionExtendedDto.Id));
             try
             {
                 _view.SetData(_transactionServices.GetExtendedById(transactionExtendedDto.Id));

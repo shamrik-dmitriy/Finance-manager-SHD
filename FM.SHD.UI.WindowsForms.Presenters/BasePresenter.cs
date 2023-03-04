@@ -25,9 +25,8 @@ namespace FM.SHD.UI.WindowsForms.Presenters
         {
             BaseView = baseView;
         }
-
-        public abstract void SetTitle(string title);
-
-        public abstract void Run(TArg dto);
+        
+        public abstract void Run(TArg transactionDto);
+        public abstract void Run(string title, TArg transactionDto = default(TArg));
     }
 }

@@ -99,14 +99,13 @@ namespace FM.SHD.Presenters.ViewPresenters
         private void OnAddingAccount()
         {
             var accountPresenter = _serviceProvider.GetRequiredService<AccountPresenter>();
-            accountPresenter.SetTitle("Добавить счёт");
-            accountPresenter.Run(null);
+            accountPresenter.Run("Добавить счёт");
         }
 
         private void OnAddingTransaction()
         {
-            var transactionPresenter = (ITransactionPlugin)_pluginManager.GetPlugin<ITransactionPlugin>();
-           transactionPresenter.GetPluginPresenter("TransactionPresenter", "Добавить транзакцию").Run(null);//(null);
+            var transactionPresenter = _pluginManager.GetPlugin<ITransactionPlugin>();
+            transactionPresenter.GetPluginPresenter("TransactionPresenter").Run("Добавить транзакцию");
         }
 
         private void OnOpenDataFile(string filePath)

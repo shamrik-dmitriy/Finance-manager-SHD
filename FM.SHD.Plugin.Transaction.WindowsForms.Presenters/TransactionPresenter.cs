@@ -78,15 +78,17 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters
         #endregion
 
         #region Public methods
-
-        public override void SetTitle(string title)
+        
+        public override void Run(TransactionDto transactionDto)
         {
-            _baseView.SetTitle(title);
+            TransactionDto = transactionDto;
+            _baseView.Show();
         }
 
-        public override void Run(TransactionDto accountDto)
+        public override void Run(string title, TransactionDto transactionDto = default)
         {
-            TransactionDto = accountDto;
+            TransactionDto = transactionDto;
+            _baseView.SetTitle(title);
             _baseView.Show();
         }
 
@@ -191,7 +193,7 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters
                     $"Транзакция \"{TransactionDto.Name}\" будет удалена, продолжить?"))
             {
                 _eventAggregator.Publish(new OnDeleteTransactionApplicationEvent(TransactionDto));
-                
+
                 _dataControlButtonsUcPresenter.Continue -= DataControlButtonsUcPresenterOnContinue;
                 _dataControlButtonsUcPresenter.Delete -= DataControlsButtonsUcPresenterOnDelete;
                 _baseView.Close();
@@ -202,7 +204,6 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters
         {
             if (TransactionDto != null)
             {
-                
                 TransactionDto.TypeTransactionId = _typeTransactionUcPresenter.GetCategoryId();
                 TransactionDto.Name = _nameUcPresenter.GetName();
                 TransactionDto.Description = _descriptionUcPresenter.GetDescription();
@@ -234,9 +235,8 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters
                 TransactionDto.CategoryId = _categoriesUcPresenter.GetCategoryId();
                 TransactionDto.ContragentId = _contrAgentUcPresenter.GetCategoryId();
                 TransactionDto.IdentityId = _identityUcPresenter.GetCategoryId();
-                
-                _eventAggregator.Publish(new OnUpdateTransactionApplicationEvent(TransactionDto));
 
+                _eventAggregator.Publish(new OnUpdateTransactionApplicationEvent(TransactionDto));
             }
             else
             {
