@@ -1,3 +1,4 @@
+using FM.SHD.Domain;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Infrastructure.Events.ApplicationEvents.Transactions;
 using FM.SHD.Services.CategoriesServices;
@@ -208,21 +209,21 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters
                 TransactionDto.Name = _nameUcPresenter.GetName();
                 TransactionDto.Description = _descriptionUcPresenter.GetDescription();
 
-                switch (TransactionDto.TypeTransactionId)
+                switch ((TransactionType)TransactionDto.TypeTransactionId)
                 {
-                    case 1:
+                    case TransactionType.Expense:
                     {
                         TransactionDto.DebitAccountId = _accountsInfoTransactionUcPresenter.GetDebitAccountId();
                         TransactionDto.CreditAccountId = null;
                         break;
                     }
-                    case 2:
+                    case TransactionType.Income:
                     {
                         TransactionDto.DebitAccountId = null;
                         TransactionDto.CreditAccountId = _accountsInfoTransactionUcPresenter.GetCreditAccountId();
                         break;
                     }
-                    case 3:
+                    case TransactionType.Transfer:
                     {
                         TransactionDto.DebitAccountId = _accountsInfoTransactionUcPresenter.GetDebitAccountId();
                         TransactionDto.CreditAccountId = _accountsInfoTransactionUcPresenter.GetCreditAccountId();
@@ -241,7 +242,8 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters
             else
             {
                 var transactionDto = new TransactionDto();
-                switch (_typeTransactionUcPresenter.GetCategoryId())
+                var typeTransaction = _typeTransactionUcPresenter.GetCategoryId();
+                switch (typeTransaction)
                 {
                     case 1:
                     {
@@ -266,7 +268,7 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters
                     }
                 }
 
-                transactionDto.TypeTransactionId = _typeTransactionUcPresenter.GetCategoryId();
+                transactionDto.TypeTransactionId = typeTransaction;
                 transactionDto.Name = _nameUcPresenter.GetName();
                 transactionDto.Description = _descriptionUcPresenter.GetDescription();
                 transactionDto.Sum = _accountsInfoTransactionUcPresenter.GetSum();

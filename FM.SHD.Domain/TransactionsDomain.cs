@@ -58,6 +58,7 @@ namespace FM.SHD.Domain
         {
             TransactionDto resultTransactionDto = new TransactionDto();
 
+            resultTransactionDto.Id = newTransactionDto.Id;
             // Расход - дебит счёт, доход - кредит счёт.
             var oldTransactionDto = _transactionServices.GetById(newTransactionDto.Id);
             if (newTransactionDto.Equals(oldTransactionDto)) return;
@@ -98,6 +99,7 @@ namespace FM.SHD.Domain
             TransactionType oldTypeTransaction,
             TransactionType newTypeTransaction, TransactionDto oldTransactionDto, TransactionDto resultTransactionDto)
         {
+            resultTransactionDto.TypeTransactionId = newTransactionDto.TypeTransactionId;
             // Узнаем какой тип транзакции был
             switch (oldTypeTransaction)
             {
@@ -311,6 +313,7 @@ namespace FM.SHD.Domain
         private void ProcessingOfTypeTransactionHasNotChanged(TransactionDto newTransactionDto,
             TransactionType oldTypeTransaction, TransactionDto resultTransactionDto, TransactionDto oldTransactionDto)
         {
+            resultTransactionDto.TypeTransactionId = oldTransactionDto.TypeTransactionId;
             switch (oldTypeTransaction)
             {
                 case TransactionType.Expense:
