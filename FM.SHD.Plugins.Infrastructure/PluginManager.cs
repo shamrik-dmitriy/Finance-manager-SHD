@@ -210,6 +210,12 @@ namespace FM.SHD.Plugins.Infrastructure
 
            return Plugins.Where(predicate);
        }
+    
+        public static IReadOnlyCollection<Type> GetPluginsTypes(Assembly assembly)
+        {
+            return assembly.GetTypes().Where(type => !type.IsAbstract && typeof(T).IsAssignableFrom(type)).ToArray();
+        }
+    
     */
 
         public T GetPlugin<T>()

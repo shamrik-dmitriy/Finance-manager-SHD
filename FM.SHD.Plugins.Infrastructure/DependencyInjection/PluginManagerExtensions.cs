@@ -1,9 +1,7 @@
 using System;
-using FM.SHD.Plugin.Transaction;
-using FM.SHD.Plugins.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FM.SHD.Plugins.Infrastructure
+namespace FM.SHD.Plugins.Infrastructure.DependencyInjection
 {
     public static class PluginManagerExtensions
     {

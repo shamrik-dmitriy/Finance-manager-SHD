@@ -1,10 +1,9 @@
 using System;
 using System.Linq;
-using System.Reflection;
 using FM.SHD.Plugins.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FM.SHD.Plugins.Infrastructure
+namespace FM.SHD.Plugins.Infrastructure.DependencyInjection
 {
     public class PluginsServiceCollectionTypesAdder
     {

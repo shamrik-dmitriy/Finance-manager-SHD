@@ -7,6 +7,7 @@ using FM.SHD.Domain;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Infrastructure.Events.ApplicationEvents;
 using FM.SHD.Plugins.Infrastructure;
+using FM.SHD.Plugins.Infrastructure.DependencyInjection;
 using FM.SHD.Plugins.Interfaces;
 using FM.SHD.Presenters.ViewPresenters;
 using FM.SHD.Services.CommonServices;
