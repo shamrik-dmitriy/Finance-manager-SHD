@@ -8,6 +8,5 @@ namespace FM.SHD.Plugins.Interfaces
     {
         public IBasePresenter<ITransactionBaseView> GetPluginPresenter();
 
-        public ATransactionBasePresenter GetPluginPresenter(string pluginPresenterName);
     }
 }
