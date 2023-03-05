@@ -166,7 +166,7 @@ namespace FM.SHD.Presenters.ViewPresenters
         }
 
         private List<IAccountSummaryUCPresenter> _accountSummaryPresenters;
-        private IAllTransactionUCPresenter _allTransactionUcPresenter;
+        private IListAllTransactionUCPresenter _listAllTransactionUcPresenter;
 
         private void OnLoadBaseView()
         {
@@ -178,7 +178,6 @@ namespace FM.SHD.Presenters.ViewPresenters
                 {
                     _baseView.SetViewOnActiveUI();
 
-
                     CreateConnection(_recentOpenFilesSettings.GetSetting().RecentOpen.Last().FilePath);
 
                     _accountServices =
@@ -189,10 +188,12 @@ namespace FM.SHD.Presenters.ViewPresenters
 
                     SetAccounts();
 
-                    _allTransactionUcPresenter = _serviceProvider.GetRequiredService<IAllTransactionUCPresenter>();
-                    _baseView.AddUserControl(_allTransactionUcPresenter.GetUserControlView());
+                    _baseView.AddTab(_pluginManager.GetPlugin<ITransactionPlugin>().GetTab());
+                    
+                    //_listAllTransactionUcPresenter = _serviceProvider.GetRequiredService<IListAllTransactionUCPresenter>();
+                    //_baseView.AddUserControl(_listAllTransactionUcPresenter.GetUserControlView());
 
-                    SetTransactions();
+                    //SetTransactions();
                 }
                 else
                 {
@@ -280,13 +281,13 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void ReloadTransactions()
         {
-            _allTransactionUcPresenter.GetUserControlView().ClearData();
-            SetTransactions();
+            _listAllTransactionUcPresenter.GetUserControlView().ClearData();
+            //SetTransactions();
         }
 
         private void SetTransactions()
         {
-            _allTransactionUcPresenter.GetUserControlView().SetData(ReloadTransactionsFromDb());
+            _listAllTransactionUcPresenter.GetUserControlView().SetData(ReloadTransactionsFromDb());
         }
 
         private List<TransactionExtendedDto> ReloadTransactionsFromDb()

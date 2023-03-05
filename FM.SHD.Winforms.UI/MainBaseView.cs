@@ -42,7 +42,7 @@ namespace FM.SHD.Winforms.UI
 
         public void AddUserControl(IUserControlView userControlView)
         {
-            splitContainerTransactions.Panel2.Controls.Add((UserControl)userControlView);
+            //splitContainerTransactions.Panel2.Controls.Add((UserControl)userControlView);
             /*var userControl = (UserControl)userControlView;
             singleTransactionDesktopflowLayoutPanel.Controls.AddPluginServices(userControl);
             
@@ -142,6 +142,11 @@ namespace FM.SHD.Winforms.UI
         public void ClearAccountsSummaryUserControls()
         {
             accoutsFlowLayoutPanel.Controls.Clear();
+        }
+
+        public void AddTab(TabPage tabPage)
+        {
+            tabControl1.TabPages.Add(tabPage);
         }
 
         public void SetViewOnActiveUI()

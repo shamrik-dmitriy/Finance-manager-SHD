@@ -42,11 +42,14 @@
       <Compile Update="Transactions\ItemOfMultipleTransactionView.cs">
         <SubType>UserControl</SubType>
       </Compile>
-      <Compile Update="MultipleTransactionView.cs">
-        <SubType>Form</SubType>
-      </Compile>
       <Compile Update="Transactions\AllTransactionUCView.cs">
         <SubType>UserControl</SubType>
+      </Compile>
+      <Compile Update="Additional\MultipleTransactionView.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Additional\TransactionBaseView.cs">
+        <SubType>Form</SubType>
       </Compile>
     </ItemGroup>
 

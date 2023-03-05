@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Windows.Forms;
 using FM.SHD.Plugin.Transaction.WindowsForms.Presenters;
-using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.UserControls;
+using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional;
+using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional.UserControls;
+using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Base;
 using FM.SHD.Plugin.Transaction.WindowsForms.Views;
-using FM.SHD.Plugin.Transaction.WindowsForms.Views.Transactions;
-using FM.SHD.Plugin.Transaction.WindowsForms.Views.Transactions.TransactionUserControls;
-using FM.SHD.Plugin.Transaction.WindowsForms.Views.Transactions.UserControlsOfTransactions;
+using FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional;
+using FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional.Transactions;
+using FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional.Transactions.TransactionUserControls;
+using FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional.Transactions.UserControlsOfTransactions;
+using FM.SHD.Plugin.Transaction.WindowsForms.Views.Base;
 using FM.SHD.Plugins.Interfaces;
+using FM.SHD.Plugins.Shared.UI;
 using FM.SHD.UI.WindowsForms.Presenters;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.AClasses;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Presenters;
@@ -16,7 +21,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace FM.SHD.Plugin.Transaction
 {
-    public class TransactionPlugin : IPlugin, ITransactionPlugin
+    public class TransactionPlugin : ITransactionPlugin
     {
         private readonly IServiceProvider _serviceProvider;
         private readonly IServiceCollection _serviceCollection;
@@ -24,6 +29,7 @@ namespace FM.SHD.Plugin.Transaction
 
         public string Name => "Плагин транзакций";
         public string Id => "Transaction";
+        public string TabText => "Транзакции";
         public string Description => "Плагин добавляет функциональность для работы с транзакциями";
         public bool IsAddDataToTab => true;
         public bool IsAddDataToMenu => false;
@@ -50,7 +56,13 @@ namespace FM.SHD.Plugin.Transaction
 
         public TabPage GetTab()
         {
-            throw new NotImplementedException();
+            
+            // Конструируем вкладку
+            return new TabPage()
+            {
+                Text = TabText,
+                Controls = { new TabPageContent() }
+            };
         }
 
         public ToolStripMenuItem GetMenuItem()
@@ -79,8 +91,8 @@ namespace FM.SHD.Plugin.Transaction
                 .AddTransient<ISumTransactionUCPresenter, SumTransactionUCPresenter>()
                 .AddTransient<IDateTransactionUCView, DateTransactionUCView>()
                 .AddTransient<IDateTransactionUCPresenter, DateTransactionUCPresenter>()
-                .AddTransient<IAllTransactionUCView, AllTransactionUCView>()
-                .AddTransient<IAllTransactionUCPresenter, AllTransactionUCPresenter>();
+                .AddTransient<IListAllTransactionUCView, ListAllTransactionUcView>()
+                .AddTransient<IListAllTransactionUCPresenter, ListAllTransactionUcPresenter>();
         }
 
         public IBasePresenter<ITransactionBaseView> GetPluginPresenter()

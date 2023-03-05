@@ -96,8 +96,8 @@ namespace FM.SHD.Winforms.UI.DependencyInjection
                 .AddTransient<BaseAccountPresenter, AccountPresenter>()
                 .AddTransient<IAccountSummaryUCView, AccountSummaryUCView>()
                 .AddTransient<IAccountSummaryUCPresenter, AccountSummaryUCPresenter>();
-            //.AddTransient<IAllTransactionUCView, AllTransactionUCView>()
-            //.AddTransient<IAllTransactionUCPresenter, AllTransactionUCPresenter>();
+            //.AddTransient<IListAllTransactionUCView, ListAllTransactionUcView>()
+            //.AddTransient<IListAllTransactionUCPresenter, ListAllTransactionUcPresenter>();
         }
 
         public static IServiceCollection AddRepositories(this IServiceCollection

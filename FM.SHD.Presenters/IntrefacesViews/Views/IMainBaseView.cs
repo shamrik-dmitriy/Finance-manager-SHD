@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using FM.SHD.UI.WindowsForms.Presenters;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.UIInterfaces;
 using FM.SHDML.Core.Models.Dtos;
@@ -19,7 +20,8 @@ namespace FM.SHD.Presenters.IntrefacesViews.Views
         void AddElementInRecentOpenItems(List<RecentOpenFilesDto> recentOpenFiles);
         void SetViewOnUnActiveUI();
         void SetVisibleUserLoginInfo(bool isVisible);
-
         void ClearAccountsSummaryUserControls();
+
+        void AddTab(TabPage tabPage);
     }
 }
