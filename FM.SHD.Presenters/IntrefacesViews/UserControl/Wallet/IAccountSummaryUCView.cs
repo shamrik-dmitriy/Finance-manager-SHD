@@ -1,5 +1,5 @@
 using System;
-using FM.SHDML.Core.Models.AccountModel;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.UIInterfaces;
 using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Presenters.IntrefacesViews.UserControl.Wallet

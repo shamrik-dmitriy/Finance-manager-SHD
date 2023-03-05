@@ -1,5 +1,5 @@
 using FM.SHD.Infrastructure.Events;
-using FM.SHDML.Core.Models.Dtos;
+using FM.SHD.Infrastructure.Events.ApplicationEvents;
 
 namespace FM.SHD.Presenters.Events.Accounts
 {

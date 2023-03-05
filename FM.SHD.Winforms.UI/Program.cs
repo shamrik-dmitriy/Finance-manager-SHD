@@ -5,15 +5,19 @@ using System.Threading;
 using System.Windows.Forms;
 using FM.SHD.Domain;
 using FM.SHD.Infrastructure.Events;
-using FM.SHD.Presenters.Events;
+using FM.SHD.Infrastructure.Events.ApplicationEvents;
+using FM.SHD.Plugins.Infrastructure;
+using FM.SHD.Plugins.Infrastructure.DependencyInjection;
+using FM.SHD.Plugins.Interfaces;
+using FM.SHD.Presenters.ViewPresenters;
 using FM.SHD.Services.CommonServices;
 using FM.SHD.Settings.Services;
 using FM.SHD.Settings.Services.SettingsCollection;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category.Events;
 using FM.SHD.Winforms.UI.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using MainPresenter = FM.SHD.Presenters.ViewPresenters.MainPresenter;
 
 namespace FM.SHD.Winforms.UI
 {
@@ -32,12 +36,14 @@ namespace FM.SHD.Winforms.UI
             Application.ThreadException += ApplicationOnThreadException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
 
-
-          var builder = new HostBuilder()
+            var builder = new HostBuilder()
                 .ConfigureServices((hostBuilder, services) =>
                 {
                     services
                         .AddSingleton<EventAggregator>()
+                        .AddPlugins()
+                        .AddPluginsTypes()
+                        .AddSingleton<IPluginManager, PluginManager>()
                         .AddTransient<IApplicationEvent, OnSelectedTypeOfTransactionApplicationEvent>()
                         .AddServices()
                         .AddScoped<ApplicationContext>()
@@ -56,18 +62,16 @@ namespace FM.SHD.Winforms.UI
                 });
 
             var host = builder.Build();
-            using var serviceScope = host.Services.CreateScope();
+
+            var services = host.Services;
+            try
             {
-                var services = serviceScope.ServiceProvider;
-                try
-                {
-                    var mainPresenter = services.GetRequiredService<MainPresenter>();
-                    mainPresenter.Run();
-                }
-                catch (Exception exception)
-                {
-                    Console.WriteLine($"Error: {exception.Message}");
-                }
+                var mainPresenter = services.GetRequiredService<MainBasePresenter>();
+                mainPresenter.Run();
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine($"Error: {exception.Message}");
             }
         }
 
@@ -84,18 +88,16 @@ namespace FM.SHD.Winforms.UI
         private static void ApplicationOnThreadException(object sender, ThreadExceptionEventArgs e)
         {
             StringBuilder stringBuilder = new StringBuilder();
-            
+
             if (e.Exception is FileNotFoundException)
             {
                 stringBuilder.Append(String.Format(
                     $"Произошла ошибка при работе с файлом. {Environment.NewLine}" +
                     $"{e.Exception.Message}{Environment.NewLine}"));
                 MessageBox.Show(stringBuilder.ToString(), "Произошла ошибка при работе с файлом");
-                
             }
             else
             {
-
                 var message = String.Format(
                     $"Произошла ошибка. {Environment.NewLine}" +
                     $"{e.Exception.Message}{Environment.NewLine}" +

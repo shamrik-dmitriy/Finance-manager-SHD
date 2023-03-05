@@ -3,7 +3,6 @@ using FM.SHD.Services.Repositories;
 using FM.SHDML.Core.Models.AccountModel;
 using System;
 using System.Collections.Generic;
-using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Infastructure.Impl.Repositories.Specific.Account
 {

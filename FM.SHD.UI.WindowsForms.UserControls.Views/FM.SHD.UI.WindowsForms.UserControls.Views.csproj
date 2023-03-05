@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <UseWindowsForms>true</UseWindowsForms>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <OutputPath>..\build\bin\Debug\</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <OutputPath>..\build\bin\Release\</OutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Update="CategoryUCView.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\FM.SHD.Infrastructure.Events\FM.SHD.Infrastructure.Events.csproj" />
+      <ProjectReference Include="..\FM.SHD.UI.WindowsForms.UserControls.Presenters\FM.SHD.UI.WindowsForms.UserControls.Presenters.csproj" />
+      <ProjectReference Include="..\FM.SHDML.Core.Models\FM.SHDML.Core.Models.csproj" />
+    </ItemGroup>
+
+</Project>

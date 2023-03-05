@@ -9,16 +9,16 @@ namespace FM.SHD.Presenters.UserControlPresenters.Wallet
     public class AccountSummaryUCPresenter : IAccountSummaryUCPresenter
     {
         private readonly IAccountSummaryUCView _accountSummaryUcView;
-        private readonly BaseAccountPresenter _accountPresenter;
+        private readonly BaseAccountPresenter _baseAccountPresenter;
         private readonly IAccountServices _accountServices;
 
         public AccountSummaryUCPresenter(
             IAccountSummaryUCView accountSummaryUcView,
-            BaseAccountPresenter accountPresenter,
+            BaseAccountPresenter baseAccountPresenter,
             IAccountServices accountServices)
         {
             _accountSummaryUcView = accountSummaryUcView;
-            _accountPresenter = accountPresenter;
+            _baseAccountPresenter = baseAccountPresenter;
             _accountServices = accountServices;
 
             _accountSummaryUcView.UpdateAccount += AccountSummaryUcViewOnUpdateAccount;
@@ -26,9 +26,8 @@ namespace FM.SHD.Presenters.UserControlPresenters.Wallet
 
         private void AccountSummaryUcViewOnUpdateAccount(AccountDto accountDto)
         {
-            _accountPresenter.SetTitle("Редактирование счёта");
-            _accountPresenter.Run(accountDto);
-            if(_accountServices.CheckExist(accountDto))
+            _baseAccountPresenter.Run("Редактирование счёта", accountDto);
+            if (_accountServices.CheckExist(accountDto))
                 _accountSummaryUcView.SetData(_accountServices.GetById(accountDto.Id));
         }
 
