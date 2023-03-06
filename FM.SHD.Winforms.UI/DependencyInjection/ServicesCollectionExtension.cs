@@ -34,6 +34,7 @@ using FM.SHD.UI.WindowsForms.UserControls.Presenters.Description;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Label;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Name;
 using FM.SHD.UI.WindowsForms.UserControls.Views;
+using FM.SHD.UI.WindowsForms.UserControls.Views.Additional;
 using FM.SHD.Winforms.UI.UserControls.Wallet;
 using FM.SHD.Winforms.UI.Views.Account;
 using Microsoft.Extensions.DependencyInjection;

@@ -1,4 +1,4 @@
-﻿namespace FM.SHD.UI.WindowsForms.UserControls.Views
+﻿namespace FM.SHD.UI.WindowsForms.UserControls.Views.Additional
 {
     partial class NameTextboxUCView
     {

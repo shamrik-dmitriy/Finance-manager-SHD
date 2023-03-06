@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Description;
 
-namespace FM.SHD.UI.WindowsForms.UserControls.Views
+namespace FM.SHD.UI.WindowsForms.UserControls.Views.Additional
 {
     public partial class DescriptionTextboxUCView : UserControl, IDescriptionTextboxUCView
     {

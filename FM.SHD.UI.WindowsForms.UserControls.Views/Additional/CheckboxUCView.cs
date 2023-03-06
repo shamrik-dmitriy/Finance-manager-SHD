@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Checkbox;
 
-namespace FM.SHD.UI.WindowsForms.UserControls.Views
+namespace FM.SHD.UI.WindowsForms.UserControls.Views.Additional
 {
     public partial class CheckboxUCView : UserControl, ICheckboxUCView
     {

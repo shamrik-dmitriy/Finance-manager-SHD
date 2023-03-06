@@ -6,7 +6,7 @@ using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category;
 using FM.SHD.UI.WindowsForms.UserControls.Views.Extensions;
 using FM.SHDML.Core.Models.Dtos;
 
-namespace FM.SHD.UI.WindowsForms.UserControls.Views
+namespace FM.SHD.UI.WindowsForms.UserControls.Views.Additional
 {
     public partial class CategoryUCView : UserControl, ICategoryUCView
     {

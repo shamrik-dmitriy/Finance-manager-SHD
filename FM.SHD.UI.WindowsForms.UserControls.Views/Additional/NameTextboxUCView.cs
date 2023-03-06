@@ -4,7 +4,7 @@ using FM.SHD.Infrastructure.Events;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Name;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Name.Events;
 
-namespace FM.SHD.UI.WindowsForms.UserControls.Views
+namespace FM.SHD.UI.WindowsForms.UserControls.Views.Additional
 {
     public partial class NameTextboxUCView : UserControl, INameTextboxUCView
     {
