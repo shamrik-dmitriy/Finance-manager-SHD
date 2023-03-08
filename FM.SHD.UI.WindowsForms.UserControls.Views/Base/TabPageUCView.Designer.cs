@@ -1,7 +1,7 @@
 ﻿
-namespace FM.SHD.Plugins.Shared.UI
+namespace FM.SHD.UI.WindowsForms.UserControls.Views.Base
 {
-    partial class TabPageContent
+    partial class TabPageUCView
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -85,12 +85,12 @@ namespace FM.SHD.Plugins.Shared.UI
             this.buttonAddTransaction.Text = "Добавить операцию";
             this.buttonAddTransaction.UseVisualStyleBackColor = true;
             // 
-            // TabPageContent
+            // TabPageUCView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainerDesktop);
-            this.Name = "TabPageContent";
+            this.Name = "TabPageUCView";
             this.Size = new System.Drawing.Size(481, 291);
             this.splitContainerDesktop.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerDesktop)).EndInit();

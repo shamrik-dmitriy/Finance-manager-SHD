@@ -22,6 +22,7 @@ using FM.SHD.Services.CurrencyServices;
 using FM.SHD.Services.IdentityServices;
 using FM.SHD.Services.Repositories;
 using FM.SHD.Services.TransactionServices;
+using FM.SHD.UI.WindowsForms.SharedInterfaces;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.AClasses;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Presenters;
@@ -33,8 +34,10 @@ using FM.SHD.UI.WindowsForms.UserControls.Presenters.ContinueCancelButtons;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Description;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Label;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Name;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.TabPage;
 using FM.SHD.UI.WindowsForms.UserControls.Views;
 using FM.SHD.UI.WindowsForms.UserControls.Views.Additional;
+using FM.SHD.UI.WindowsForms.UserControls.Views.Base;
 using FM.SHD.Winforms.UI.UserControls.Wallet;
 using FM.SHD.Winforms.UI.Views.Account;
 using Microsoft.Extensions.DependencyInjection;
@@ -59,6 +62,8 @@ namespace FM.SHD.Winforms.UI.DependencyInjection
         public static IServiceCollection AddUserControlViews(this IServiceCollection serviceCollection)
         {
             return serviceCollection
+                .AddTransient<ITabPageUCView, TabPageUCView>()
+                .AddTransient<ITabPageUCPresenter, TabPageUCPresenter>()
                 //.AddTransient<ITypeTransactionUCView, TypeTransactionUCView>()
                 //.AddTransient<ITypeTransactionUCPresenter, TypeTransactionUCPresenter>()
                 .AddTransient<INameTextboxUCView, NameTextboxUCView>()

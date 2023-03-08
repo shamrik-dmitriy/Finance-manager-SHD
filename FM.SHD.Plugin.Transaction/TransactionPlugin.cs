@@ -11,12 +11,14 @@ using FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional.Transactions.Trans
 using FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional.Transactions.UserControlsOfTransactions;
 using FM.SHD.Plugin.Transaction.WindowsForms.Views.Base;
 using FM.SHD.Plugins.Interfaces;
-using FM.SHD.Plugins.Shared.UI;
 using FM.SHD.UI.WindowsForms.Presenters;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.AClasses;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Presenters;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.UserControl;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Views;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.TabPage;
+using FM.SHD.UI.WindowsForms.UserControls.Views.Additional;
+using FM.SHD.UI.WindowsForms.UserControls.Views.Base;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FM.SHD.Plugin.Transaction
@@ -56,13 +58,17 @@ namespace FM.SHD.Plugin.Transaction
 
         public TabPage GetTab()
         {
-            
+
+            var tabPageUCPresenter = _serviceProvider.GetRequiredService<ITabPageUCPresenter>();
+            tabPageUCPresenter.GetUserControlView().AddUserControlToWorkspaceBlock(_serviceProvider.GetRequiredService<IListAllTransactionUCPresenter>().GetUserControlView());
+            tabPageUCPresenter.GetUserControlView().AddUserControlToButtonBlock(new NameTextboxUCView(){Text = "da"});
             // Конструируем вкладку
-            return new TabPage()
+            var tabPage = new TabPage()
             {
-                Text = TabText,
-                Controls = { new TabPageContent() }
+                Text = TabText
             };
+            tabPage.Controls.Add((UserControl)tabPageUCPresenter.GetUserControlView());
+            return tabPage;
         }
 
         public ToolStripMenuItem GetMenuItem()

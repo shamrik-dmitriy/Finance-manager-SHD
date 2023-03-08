@@ -8,6 +8,7 @@ namespace FM.SHD.Plugins.Interfaces
         string Name { get; }
         string Description { get; }
         string Id { get; }
+        string TabText { get; }
 
         bool IsAddDataToTab { get; }
         bool IsAddDataToMenu { get; }
