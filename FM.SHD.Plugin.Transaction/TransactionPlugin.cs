@@ -58,16 +58,18 @@ namespace FM.SHD.Plugin.Transaction
 
         public TabPage GetTab()
         {
-
             var tabPageUCPresenter = _serviceProvider.GetRequiredService<ITabPageUCPresenter>();
 
-            var uc = _serviceProvider.GetRequiredService<IListAllTransactionUCPresenter>()
-                .GetUserControlView();
-           
-            tabPageUCPresenter.GetUserControlView().AddUserControlToWorkspaceBlock((UserControl)uc);
-            
+            tabPageUCPresenter.GetUserControlView().AddUserControlToWorkspaceBlock((UserControl)_serviceProvider
+                .GetRequiredService<IListAllTransactionUCPresenter>()
+                .GetUserControlView());
+
+            tabPageUCPresenter.GetUserControlView().AddUserControlToWorkspaceBlock((UserControl)_serviceProvider
+                .GetRequiredService<IListAllTransactionUCPresenter>()
+                .GetUserControlView());
+
             //tabPageUCPresenter.GetUserControlView().AddUserControlToButtonBlock(new ContinueCancelButtonsUcView());
-           // tabPageUCPresenter.GetUserControlView().AddUserControlToButtonBlock(new NameTextboxUCView(){Text = "Net"});
+            // tabPageUCPresenter.GetUserControlView().AddUserControlToButtonBlock(new NameTextboxUCView(){Text = "Net"});
             // Конструируем вкладку
             var tabPage = new TabPage()
             {
