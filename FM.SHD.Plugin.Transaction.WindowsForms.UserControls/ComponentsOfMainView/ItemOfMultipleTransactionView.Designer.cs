@@ -1,4 +1,4 @@
-﻿namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional.Transactions
+﻿namespace FM.SHD.Plugin.Transaction.WindowsForms.UserControls.ComponentsOfMainView
 {
     partial class ItemOfMultipleTransaction
     {

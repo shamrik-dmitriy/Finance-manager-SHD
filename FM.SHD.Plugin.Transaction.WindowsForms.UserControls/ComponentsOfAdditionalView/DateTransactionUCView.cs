@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.UserControl;
 
-namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional.Transactions.UserControlsOfTransactions
+namespace FM.SHD.Plugin.Transaction.WindowsForms.UserControls
 {
     public partial class DateTransactionUCView : UserControl, IDateTransactionUCView
     {

@@ -1,4 +1,4 @@
-﻿namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional
+﻿namespace FM.SHD.Plugin.Transaction.WindowsForms.Views
 {
     partial class TransactionBaseView
     {

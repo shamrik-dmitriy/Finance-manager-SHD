@@ -1,4 +1,4 @@
-﻿namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Base
+﻿namespace FM.SHD.Plugin.Transaction.WindowsForms.UserControls.ComponentsOfMainView
 {
     partial class ListAllTransactionUcView
     {

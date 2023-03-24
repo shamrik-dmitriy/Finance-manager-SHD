@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
-using FM.SHD.Plugin.Transaction.WindowsForms.Presenters;
 using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional;
 using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional.UserControls;
 using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Base;
-using FM.SHD.Plugin.Transaction.WindowsForms.Views;
+using FM.SHD.Plugin.Transaction.WindowsForms.UserControls;
 using FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional;
-using FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional.Transactions;
-using FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional.Transactions.TransactionUserControls;
-using FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional.Transactions.UserControlsOfTransactions;
 using FM.SHD.Plugin.Transaction.WindowsForms.Views.Base;
 using FM.SHD.Plugins.Interfaces;
 using FM.SHD.UI.WindowsForms.Presenters;
@@ -16,9 +12,9 @@ using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.AClasses;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Presenters;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.UserControl;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Views;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Button;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.TabPage;
 using FM.SHD.UI.WindowsForms.UserControls.Views.Additional;
-using FM.SHD.UI.WindowsForms.UserControls.Views.Base;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FM.SHD.Plugin.Transaction
@@ -60,8 +56,12 @@ namespace FM.SHD.Plugin.Transaction
         {
             var tabPageUCPresenter = _serviceProvider.GetRequiredService<ITabPageUCPresenter>();
 
-            tabPageUCPresenter.GetUserControlView().AddUserControlToWorkspaceBlock((UserControl)_serviceProvider
-                .GetRequiredService<IListAllTransactionUCPresenter>()
+            tabPageUCPresenter.GetUserControlView().AddUserControlToButtonBlock((UserControl)_serviceProvider
+                .GetRequiredService<IButtonUCPresenter>()
+                .GetUserControlView());tabPageUCPresenter.GetUserControlView().AddUserControlToButtonBlock((UserControl)_serviceProvider
+                .GetRequiredService<IButtonUCPresenter>()
+                .GetUserControlView());tabPageUCPresenter.GetUserControlView().AddUserControlToButtonBlock((UserControl)_serviceProvider
+                .GetRequiredService<IButtonUCPresenter>()
                 .GetUserControlView());
 
             tabPageUCPresenter.GetUserControlView().AddUserControlToWorkspaceBlock((UserControl)_serviceProvider

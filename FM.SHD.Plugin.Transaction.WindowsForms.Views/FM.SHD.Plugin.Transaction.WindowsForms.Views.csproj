@@ -45,16 +45,17 @@
       <Compile Update="Transactions\AllTransactionUCView.cs">
         <SubType>UserControl</SubType>
       </Compile>
-      <Compile Update="Additional\MultipleTransactionView.cs">
+      <Compile Update="MultipleTransactionView.cs">
         <SubType>Form</SubType>
       </Compile>
-      <Compile Update="Additional\TransactionBaseView.cs">
+      <Compile Update="TransactionBaseView.cs">
         <SubType>Form</SubType>
       </Compile>
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\FM.SHD.Plugin.Transaction.WindowsForms.Presenters\FM.SHD.Plugin.Transaction.WindowsForms.Presenters.csproj" />
+      <ProjectReference Include="..\FM.SHD.Plugin.Transaction.WindowsForms.UserControls\FM.SHD.Plugin.Transaction.WindowsForms.UserControls.csproj" />
     </ItemGroup>
 
 </Project>

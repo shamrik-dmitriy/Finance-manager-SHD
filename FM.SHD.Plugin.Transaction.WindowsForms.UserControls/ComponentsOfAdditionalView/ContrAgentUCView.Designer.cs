@@ -1,7 +1,7 @@
 ﻿
-namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional.Transactions.UserControlsOfTransactions
+namespace FM.SHD.Plugin.Transaction.WindowsForms.UserControls.ComponentsOfAdditionalView
 {
-    partial class IdentityUCView
+    partial class ContrAgentUCView
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -29,34 +29,34 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional.Transactions.U
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBoxFamilyMemberName = new System.Windows.Forms.ComboBox();
+            this.comboBoxContrAgentName = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // comboBoxFamilyMemberName
+            // comboBoxContrAgentName
             // 
-            this.comboBoxFamilyMemberName.FormattingEnabled = true;
-            this.comboBoxFamilyMemberName.Location = new System.Drawing.Point(124, 2);
-            this.comboBoxFamilyMemberName.Name = "comboBoxFamilyMemberName";
-            this.comboBoxFamilyMemberName.Size = new System.Drawing.Size(230, 23);
-            this.comboBoxFamilyMemberName.TabIndex = 14;
+            this.comboBoxContrAgentName.FormattingEnabled = true;
+            this.comboBoxContrAgentName.Location = new System.Drawing.Point(124, 2);
+            this.comboBoxContrAgentName.Name = "comboBoxContrAgentName";
+            this.comboBoxContrAgentName.Size = new System.Drawing.Size(230, 23);
+            this.comboBoxContrAgentName.TabIndex = 16;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(10, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 15);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Член семьи";
+            this.label1.Size = new System.Drawing.Size(69, 15);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Контрагент";
             // 
-            // IdentityUCView
+            // ContrAgentUCView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.comboBoxFamilyMemberName);
+            this.Controls.Add(this.comboBoxContrAgentName);
             this.Controls.Add(this.label1);
-            this.Name = "IdentityUCView";
+            this.Name = "ContrAgentUCView";
             this.Size = new System.Drawing.Size(360, 28);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -65,7 +65,7 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional.Transactions.U
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBoxFamilyMemberName;
+        private System.Windows.Forms.ComboBox comboBoxContrAgentName;
         private System.Windows.Forms.Label label1;
     }
 }

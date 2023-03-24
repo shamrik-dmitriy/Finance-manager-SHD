@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net5.0-windows</TargetFramework>
@@ -10,18 +10,16 @@
     </PropertyGroup>
     
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <OutputPath>..\build\bin\Debug\Modules</OutputPath>
+      <OutputPath>..\build\bin\Debug\Modules\</OutputPath>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-      <OutputPath>..\build\bin\Release\Modules</OutputPath>
+      <OutputPath>..\build\bin\Debug\Modules\</OutputPath>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\FM.SHD.Plugin.Transaction.WindowsForms.UserControls\FM.SHD.Plugin.Transaction.WindowsForms.UserControls.csproj" />
       <ProjectReference Include="..\FM.SHD.Plugin.Transaction.WindowsForms.Views\FM.SHD.Plugin.Transaction.WindowsForms.Views.csproj" />
       <ProjectReference Include="..\FM.SHD.Plugins.Interfaces\FM.SHD.Plugins.Interfaces.csproj" />
-      <ProjectReference Include="..\FM.SHD.UI.WindowsForms.SharedInterfaces\FM.SHD.UI.WindowsForms.SharedInterfaces.csproj" />
       <ProjectReference Include="..\FM.SHD.UI.WindowsForms.UserControls.Views\FM.SHD.UI.WindowsForms.UserControls.Views.csproj" />
     </ItemGroup>
 

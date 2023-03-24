@@ -1,5 +1,5 @@
 ﻿
-namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional.Transactions.UserControlsOfTransactions
+namespace FM.SHD.Plugin.Transaction.WindowsForms.UserControls.ComponentsOfAdditionalView
 {
     partial class AccountInfoUCView
     {

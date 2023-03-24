@@ -1,7 +1,7 @@
 ﻿
-namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional.Transactions.UserControlsOfTransactions
+namespace FM.SHD.Plugin.Transaction.WindowsForms.UserControls.ComponentsOfAdditionalView
 {
-    partial class SumTransactionUCView
+    partial class IdentityUCView
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -29,34 +29,34 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional.Transactions.U
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelSum = new System.Windows.Forms.Label();
-            this.sumTextBox = new System.Windows.Forms.TextBox();
+            this.comboBoxFamilyMemberName = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // labelSum
+            // comboBoxFamilyMemberName
             // 
-            this.labelSum.AutoSize = true;
-            this.labelSum.Location = new System.Drawing.Point(10, 5);
-            this.labelSum.Name = "labelSum";
-            this.labelSum.Size = new System.Drawing.Size(45, 15);
-            this.labelSum.TabIndex = 5;
-            this.labelSum.Text = "Сумма";
+            this.comboBoxFamilyMemberName.FormattingEnabled = true;
+            this.comboBoxFamilyMemberName.Location = new System.Drawing.Point(124, 2);
+            this.comboBoxFamilyMemberName.Name = "comboBoxFamilyMemberName";
+            this.comboBoxFamilyMemberName.Size = new System.Drawing.Size(230, 23);
+            this.comboBoxFamilyMemberName.TabIndex = 14;
             // 
-            // sumTextBox
+            // label1
             // 
-            this.sumTextBox.Location = new System.Drawing.Point(124, 2);
-            this.sumTextBox.Name = "sumTextBox";
-            this.sumTextBox.Size = new System.Drawing.Size(227, 23);
-            this.sumTextBox.TabIndex = 4;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 15);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Член семьи";
             // 
-            // SumTransactionUCView
+            // IdentityUCView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.Controls.Add(this.labelSum);
-            this.Controls.Add(this.sumTextBox);
-            this.Name = "SumTransactionUCView";
+            this.Controls.Add(this.comboBoxFamilyMemberName);
+            this.Controls.Add(this.label1);
+            this.Name = "IdentityUCView";
             this.Size = new System.Drawing.Size(360, 28);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -65,7 +65,7 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional.Transactions.U
 
         #endregion
 
-        private System.Windows.Forms.Label labelSum;
-        private System.Windows.Forms.TextBox sumTextBox;
+        private System.Windows.Forms.ComboBox comboBoxFamilyMemberName;
+        private System.Windows.Forms.Label label1;
     }
 }

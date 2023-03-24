@@ -1,7 +1,7 @@
 ﻿
-namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional.Transactions.UserControlsOfTransactions
+namespace FM.SHD.Plugin.Transaction.WindowsForms.UserControls.ComponentsOfAdditionalView
 {
-    partial class ContrAgentUCView
+    partial class SumTransactionUCView
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -29,34 +29,34 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional.Transactions.U
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBoxContrAgentName = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelSum = new System.Windows.Forms.Label();
+            this.sumTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // comboBoxContrAgentName
+            // labelSum
             // 
-            this.comboBoxContrAgentName.FormattingEnabled = true;
-            this.comboBoxContrAgentName.Location = new System.Drawing.Point(124, 2);
-            this.comboBoxContrAgentName.Name = "comboBoxContrAgentName";
-            this.comboBoxContrAgentName.Size = new System.Drawing.Size(230, 23);
-            this.comboBoxContrAgentName.TabIndex = 16;
+            this.labelSum.AutoSize = true;
+            this.labelSum.Location = new System.Drawing.Point(10, 5);
+            this.labelSum.Name = "labelSum";
+            this.labelSum.Size = new System.Drawing.Size(45, 15);
+            this.labelSum.TabIndex = 5;
+            this.labelSum.Text = "Сумма";
             // 
-            // label1
+            // sumTextBox
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 15);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Контрагент";
+            this.sumTextBox.Location = new System.Drawing.Point(124, 2);
+            this.sumTextBox.Name = "sumTextBox";
+            this.sumTextBox.Size = new System.Drawing.Size(227, 23);
+            this.sumTextBox.TabIndex = 4;
             // 
-            // ContrAgentUCView
+            // SumTransactionUCView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.comboBoxContrAgentName);
-            this.Controls.Add(this.label1);
-            this.Name = "ContrAgentUCView";
+            this.AutoSize = true;
+            this.Controls.Add(this.labelSum);
+            this.Controls.Add(this.sumTextBox);
+            this.Name = "SumTransactionUCView";
             this.Size = new System.Drawing.Size(360, 28);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -65,7 +65,7 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional.Transactions.U
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBoxContrAgentName;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelSum;
+        private System.Windows.Forms.TextBox sumTextBox;
     }
 }
