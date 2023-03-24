@@ -30,7 +30,7 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional
         private readonly ICategoryUCPresenter<CategoriesServices> _categoriesUcPresenter;
         private readonly ICategoryUCPresenter<ContragentServices> _contrAgentUcPresenter;
         private readonly ICategoryUCPresenter<IdentityServices> _identityUcPresenter;
-        private readonly IContinueCancelButtonsUCPresenter _dataControlButtonsUcPresenter;
+        private readonly IContinueCancelButtonsUCPresenter _continueCancelButtonUcPresenter;
 
         #endregion
 
@@ -46,7 +46,7 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional
             ICategoryUCPresenter<CategoriesServices> categoriesUcPresenter,
             ICategoryUCPresenter<ContragentServices> contrAgentUcPresenter,
             ICategoryUCPresenter<IdentityServices> identityUcPresenter,
-            IContinueCancelButtonsUCPresenter dataControlButtonsUcPresenter)
+            IContinueCancelButtonsUCPresenter continueCancelButtonUcPresenter)
             : base(baseView)
         {
             _eventAggregator = eventAggregator;
@@ -59,7 +59,7 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional
             _categoriesUcPresenter = categoriesUcPresenter;
             _contrAgentUcPresenter = contrAgentUcPresenter;
             _identityUcPresenter = identityUcPresenter;
-            _dataControlButtonsUcPresenter = dataControlButtonsUcPresenter;
+            _continueCancelButtonUcPresenter = continueCancelButtonUcPresenter;
 
             _baseView.OnLoadView += OnLoadBaseView;
             _typeTransactionUcPresenter.CategoryChanged += TypeTransactionUcPresenterOnCategoryChanged;
@@ -148,9 +148,9 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional
                 _identityUcPresenter.GetUserControlView().SetCategoryId(TransactionDto.IdentityId);
 
                 _baseView.AddHorizontalLine();
-                _dataControlButtonsUcPresenter.SetTextButtonContinue("Применить");
-                _dataControlButtonsUcPresenter.SetVisibleButtonDelete(true);
-                _baseView.AddUserControl(_dataControlButtonsUcPresenter.GetUserControlView());
+                _continueCancelButtonUcPresenter.SetTextButtonContinue("Применить");
+                _continueCancelButtonUcPresenter.SetVisibleButtonDelete(true);
+                _baseView.AddUserControl(_continueCancelButtonUcPresenter.GetUserControlView());
             }
             else
             {
@@ -180,12 +180,12 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional
                 _baseView.AddUserControl(_identityUcPresenter.GetUserControlView());
 
                 _baseView.AddHorizontalLine();
-                _dataControlButtonsUcPresenter.SetVisibleButtonDelete(false);
-                _baseView.AddUserControl(_dataControlButtonsUcPresenter.GetUserControlView());
+                _continueCancelButtonUcPresenter.SetVisibleButtonDelete(false);
+                _baseView.AddUserControl(_continueCancelButtonUcPresenter.GetUserControlView());
             }
 
-            _dataControlButtonsUcPresenter.Continue += DataControlButtonsUcPresenterOnContinue;
-            _dataControlButtonsUcPresenter.Delete += DataControlsButtonsUcPresenterOnDelete;
+            _continueCancelButtonUcPresenter.Continue += ContinueCancelButtonUcPresenterOnContinue;
+            _continueCancelButtonUcPresenter.Delete += DataControlsButtonsUcPresenterOnDelete;
         }
 
         private void DataControlsButtonsUcPresenterOnDelete()
@@ -195,13 +195,13 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional
             {
                 _eventAggregator.Publish(new OnDeleteTransactionApplicationEvent(TransactionDto));
 
-                _dataControlButtonsUcPresenter.Continue -= DataControlButtonsUcPresenterOnContinue;
-                _dataControlButtonsUcPresenter.Delete -= DataControlsButtonsUcPresenterOnDelete;
+                _continueCancelButtonUcPresenter.Continue -= ContinueCancelButtonUcPresenterOnContinue;
+                _continueCancelButtonUcPresenter.Delete -= DataControlsButtonsUcPresenterOnDelete;
                 _baseView.Close();
             }
         }
 
-        private void DataControlButtonsUcPresenterOnContinue()
+        private void ContinueCancelButtonUcPresenterOnContinue()
         {
             if (TransactionDto != null)
             {
@@ -280,8 +280,8 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional
                 _eventAggregator.Publish(new OnAddedTransactionApplicationEvent(transactionDto));
             }
 
-            _dataControlButtonsUcPresenter.Continue -= DataControlButtonsUcPresenterOnContinue;
-            _dataControlButtonsUcPresenter.Delete -= DataControlsButtonsUcPresenterOnDelete;
+            _continueCancelButtonUcPresenter.Continue -= ContinueCancelButtonUcPresenterOnContinue;
+            _continueCancelButtonUcPresenter.Delete -= DataControlsButtonsUcPresenterOnDelete;
 
             _baseView.Close();
         }

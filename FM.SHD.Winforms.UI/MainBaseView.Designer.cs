@@ -199,7 +199,6 @@ namespace FM.SHD.Winforms.UI
             // 
             // splitContainerDesktop
             // 
-            this.splitContainerDesktop.Cursor = System.Windows.Forms.Cursors.Default;
             this.splitContainerDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerDesktop.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainerDesktop.IsSplitterFixed = true;
@@ -330,6 +329,7 @@ namespace FM.SHD.Winforms.UI
             this.ClientSize = new System.Drawing.Size(1208, 627);
             this.Controls.Add(this.splitContainerDesktop);
             this.Controls.Add(this.menuStrip1);
+            this.MinimumSize = new System.Drawing.Size(640, 480);
             this.Name = "MainBaseView";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainView_FormClosing);

@@ -12,10 +12,23 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Base
         public ListAllTransactionUcView()
         {
             InitializeComponent();
+            Dock = DockStyle.Fill;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            dataGridViewTransaction.Dock = DockStyle.Fill;
+            dataGridViewTransaction.AutoSize = true;
+            dataGridViewTransaction.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewTransaction.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+            dataGridViewTransaction.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dataGridViewTransaction.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+
+            // dataGridViewTransaction.AutoSizeRowsMode = 
         }
 
         private void DataGridTransactionUserControl_Load(object sender, System.EventArgs e)
         {
+            OnLoadUserControl?.Invoke();
             dataGridViewTransaction.MultiSelect = false;
             dataGridViewTransaction.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
@@ -25,7 +38,7 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Base
             //MessageBox.Show("");
         }
 
-        public BindingList<TransactionExtendedDto> _transactionExtendedDtos;
+        private BindingList<TransactionExtendedDto> _transactionExtendedDtos;
 
         public void SetData(List<TransactionExtendedDto> allTransactionsDtos)
         {
@@ -71,6 +84,14 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Base
                     }
                 }
             }
+        }
+
+        public event Action OnLoadUserControl;
+
+        private void dataGridViewTransaction_Resize(object sender, EventArgs e)
+        {
+            dataGridViewTransaction.AutoResizeRows();
+            dataGridViewTransaction.AutoResizeColumns();
         }
     }
 }

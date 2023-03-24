@@ -19,6 +19,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\FM.SHD.Domain\FM.SHD.Domain.csproj" />
+      <ProjectReference Include="..\FM.SHD.Presenters\FM.SHD.Presenters.csproj" />
       <ProjectReference Include="..\FM.SHD.UI.WindowsForms.Presenters\FM.SHD.UI.WindowsForms.Presenters.csproj" />
       <ProjectReference Include="..\FM.SHD.UI.WindowsForms.SharedInterfaces\FM.SHD.UI.WindowsForms.SharedInterfaces.csproj" />
     </ItemGroup>

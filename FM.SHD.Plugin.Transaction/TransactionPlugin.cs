@@ -60,15 +60,29 @@ namespace FM.SHD.Plugin.Transaction
         {
 
             var tabPageUCPresenter = _serviceProvider.GetRequiredService<ITabPageUCPresenter>();
-            tabPageUCPresenter.GetUserControlView().AddUserControlToWorkspaceBlock(_serviceProvider.GetRequiredService<IListAllTransactionUCPresenter>().GetUserControlView());
-            tabPageUCPresenter.GetUserControlView().AddUserControlToButtonBlock(new NameTextboxUCView(){Text = "da"});
+
+            var uc = _serviceProvider.GetRequiredService<IListAllTransactionUCPresenter>()
+                .GetUserControlView();
+           
+            tabPageUCPresenter.GetUserControlView().AddUserControlToWorkspaceBlock((UserControl)uc);
+            
+            //tabPageUCPresenter.GetUserControlView().AddUserControlToButtonBlock(new ContinueCancelButtonsUcView());
+           // tabPageUCPresenter.GetUserControlView().AddUserControlToButtonBlock(new NameTextboxUCView(){Text = "Net"});
             // Конструируем вкладку
             var tabPage = new TabPage()
             {
-                Text = TabText
+                Text = TabText,
+                Dock = DockStyle.Fill,
+                AutoSize = true,
+                AutoSizeMode = AutoSizeMode.GrowAndShrink
             };
             tabPage.Controls.Add((UserControl)tabPageUCPresenter.GetUserControlView());
             return tabPage;
+        }
+
+        private void UcOnOnLoad()
+        {
+            throw new NotImplementedException();
         }
 
         public ToolStripMenuItem GetMenuItem()

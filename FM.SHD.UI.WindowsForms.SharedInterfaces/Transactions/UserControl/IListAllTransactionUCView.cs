@@ -8,6 +8,7 @@ namespace FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.UserControl
     public interface IListAllTransactionUCView : IUserControlView
     {
         event Action<TransactionExtendedDto> UpdateTransaction;
+        event Action OnLoadUserControl;
         
         void SetData(List<TransactionExtendedDto> allTransactionsDtos);
         void SetData(TransactionExtendedDto transactionsDtos);

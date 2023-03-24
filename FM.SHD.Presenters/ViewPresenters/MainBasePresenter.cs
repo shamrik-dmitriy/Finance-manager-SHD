@@ -2,25 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using FM.SHD.Domain;
 using FM.SHD.Infastructure.Impl.Repositories;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Account;
-using FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction;
 using FM.SHD.Infrastructure.Dal;
 using FM.SHD.Infrastructure.Events;
-using FM.SHD.Infrastructure.Events.ApplicationEvents.Transactions;
 using FM.SHD.Plugins.Interfaces;
 using FM.SHD.Presenters.Events.Accounts;
 using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
 using FM.SHD.Presenters.IntrefacesViews.Views;
 using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.CommonServices;
-using FM.SHD.Services.TransactionServices;
 using FM.SHD.Settings.Services;
 using FM.SHD.Settings.Services.SettingsCollection;
 using FM.SHD.UI.WindowsForms.Presenters;
-using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Presenters;
-using FM.SHDML.Core.Models.Dtos;
 using FM.SHDML.Core.Models.Dtos.UIDto;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -39,8 +33,6 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private List<RecentOpenFilesDto> RecentOpenFilesDtos { get; set; }
         private IAccountServices _accountServices;
-        private ITransactionServices _transactionServices;
-        private TransactionsDomain _transactionsDomain;
 
         #endregion
 
@@ -63,16 +55,14 @@ namespace FM.SHD.Presenters.ViewPresenters
 
             _baseView.OnLoadView += OnLoadBaseView;
             _baseView.OpenDataFile += OnOpenDataFile;
-            _baseView.AddingTransaction += OnAddingTransaction;
             _baseView.AddingAccount += OnAddingAccount;
 
+            // Возможно стоит добавить условие приоритета - какие события должны отрабатываться первыми, а какие за ними
             _eventAggregator.Subscribe<OnAddedAccountApplicationEvent>(OnAddedAccount);
             _eventAggregator.Subscribe<OnChangingAccountApplicationEvent>(OnChangingAccount);
             _eventAggregator.Subscribe<OnDeletingAccountApplicationEvent>(OnDeletingAccount);
-
-            _eventAggregator.Subscribe<OnAddedTransactionApplicationEvent>(OnAddedTransaction);
-            _eventAggregator.Subscribe<OnDeleteTransactionApplicationEvent>(OnDeleteTransaction);
-            _eventAggregator.Subscribe<OnUpdateTransactionApplicationEvent>(OnUpdateTransaction);
+            
+            _eventAggregator.Subscribe<OnReloadAccountsApplicationEvent>(OnReloadAccounts);
         }
 
         private void OnAddedAccount(OnAddedAccountApplicationEvent obj)
@@ -84,14 +74,16 @@ namespace FM.SHD.Presenters.ViewPresenters
         {
             _baseView.OnLoadView -= OnLoadBaseView;
             _baseView.OpenDataFile -= OnOpenDataFile;
-            _baseView.AddingTransaction -= OnAddingTransaction;
             _baseView.AddingAccount -= OnAddingAccount;
 
             _eventAggregator.Unsubscribe<OnChangingAccountApplicationEvent>(OnChangingAccount);
+            _eventAggregator.Unsubscribe<OnReloadAccountsApplicationEvent>(OnReloadAccounts);
             _eventAggregator.Unsubscribe<OnDeletingAccountApplicationEvent>(OnDeletingAccount);
-            _eventAggregator.Unsubscribe<OnAddedTransactionApplicationEvent>(OnAddedTransaction);
-            _eventAggregator.Unsubscribe<OnDeleteTransactionApplicationEvent>(OnDeleteTransaction);
-            _eventAggregator.Unsubscribe<OnUpdateTransactionApplicationEvent>(OnUpdateTransaction);
+        }
+
+        private void OnReloadAccounts(OnReloadAccountsApplicationEvent obj)
+        {
+            ReloadAccounts();
         }
 
         #endregion
@@ -102,6 +94,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             accountPresenter.Run("Добавить счёт");
         }
 
+        // TODO: Перенести в модуль транзакций
         private void OnAddingTransaction()
         {
             var transactionPresenter = _pluginManager.GetPlugin<ITransactionPlugin>();
@@ -166,7 +159,6 @@ namespace FM.SHD.Presenters.ViewPresenters
         }
 
         private List<IAccountSummaryUCPresenter> _accountSummaryPresenters;
-        private IListAllTransactionUCPresenter _listAllTransactionUcPresenter;
 
         private void OnLoadBaseView()
         {
@@ -182,26 +174,16 @@ namespace FM.SHD.Presenters.ViewPresenters
 
                     _accountServices =
                         new AccountServices(new AccountRepository(_repositoryManager), new ModelValidator());
-                    _transactionServices =
-                        new TransactionServices(new TransactionRepository(_repositoryManager),
-                            new ModelValidator());
-
                     SetAccounts();
 
                     _baseView.AddTab(_pluginManager.GetPlugin<ITransactionPlugin>().GetTab());
-                    _baseView.AddTab(_pluginManager.GetPlugin<ICategoriesPlugin>().GetTab());
-                    
-                    //_listAllTransactionUcPresenter = _serviceProvider.GetRequiredService<IListAllTransactionUCPresenter>();
-                    //_baseView.AddUserControl(_listAllTransactionUcPresenter.GetUserControlView());
-
-                    //SetTransactions();
+                    //_baseView.AddTab(_pluginManager.GetPlugin<ICategoriesPlugin>().GetTab());
                 }
                 else
                 {
                     _baseView.SetViewOnUnActiveUI();
                 }
 
-                _transactionsDomain = new TransactionsDomain(_transactionServices, _accountServices);
                 _baseView.SetVisibleUserLoginInfo(false);
 
                 /*
@@ -220,7 +202,6 @@ namespace FM.SHD.Presenters.ViewPresenters
         private void OnDeletingAccount(OnDeletingAccountApplicationEvent obj)
         {
             ReloadAccounts();
-            ReloadTransactions();
         }
 
         private void ReloadAccounts()
@@ -259,47 +240,9 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         #region Private methods
 
-        private void OnUpdateTransaction(OnUpdateTransactionApplicationEvent args)
-        {
-            _transactionsDomain.OnUpdateTransaction(args.TransactionDto);
-            ReloadTransactions();
-            ReloadAccounts();
-        }
-
-        private void OnDeleteTransaction(OnDeleteTransactionApplicationEvent args)
-        {
-            _transactionsDomain.OnDeleteTransaction(args.TransactionDto);
-            ReloadTransactions();
-            ReloadAccounts();
-        }
-
-        private void OnAddedTransaction(OnAddedTransactionApplicationEvent args)
-        {
-            _transactionsDomain.OnAddedTransaction(args.TransactionDto);
-            ReloadTransactions();
-            ReloadAccounts();
-        }
-
-        private void ReloadTransactions()
-        {
-            _listAllTransactionUcPresenter.GetUserControlView().ClearData();
-            //SetTransactions();
-        }
-
-        private void SetTransactions()
-        {
-            _listAllTransactionUcPresenter.GetUserControlView().SetData(ReloadTransactionsFromDb());
-        }
-
-        private List<TransactionExtendedDto> ReloadTransactionsFromDb()
-        {
-            return _transactionServices.GetExtendedTransactions();
-        }
-
         private void OnChangingAccount(OnChangingAccountApplicationEvent args)
         {
             ReloadAccounts();
-            ReloadTransactions();
         }
 
         private bool LoadListRecentOpenFiles()

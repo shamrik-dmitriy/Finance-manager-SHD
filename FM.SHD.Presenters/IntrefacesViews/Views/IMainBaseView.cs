@@ -10,7 +10,6 @@ namespace FM.SHD.Presenters.IntrefacesViews.Views
 {
     public interface IMainBaseView : IBaseView
     {
-        event Action AddingTransaction;
         event Action AddingAccount;
         event Action<string> OpenDataFile;
 

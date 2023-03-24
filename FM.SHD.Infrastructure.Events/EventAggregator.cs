@@ -22,6 +22,16 @@ namespace FM.SHD.Infrastructure.Events
             }
         }
 
+        public void Publish<T>() where T : IApplicationEvent
+        {
+            if (!_subscriptions.TryGetValue(typeof(T), out var subscribers)) return;
+            foreach (var subscriber in subscribers.ToArray())
+            {
+                var action = (Action<T>)subscriber;
+                action.Invoke(default);
+            }
+        }
+
         public void Subscribe<T>(Action<T> action) where T : IApplicationEvent
         {
             var subscribers = _subscriptions.GetOrAdd(typeof(T), t => new List<object>());

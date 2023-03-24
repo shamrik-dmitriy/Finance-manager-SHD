@@ -69,6 +69,7 @@
             this.dataGridViewTransaction.TabIndex = 0;
             this.dataGridViewTransaction.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTransaction_CellClick);
             this.dataGridViewTransaction.SelectionChanged += new System.EventHandler(this.dataGridViewTransaction_SelectionChanged);
+            this.dataGridViewTransaction.Resize += new System.EventHandler(this.dataGridViewTransaction_Resize);
             // 
             // ColumnId
             // 
@@ -79,64 +80,82 @@
             // 
             // ColumnName
             // 
+            this.ColumnName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ColumnName.DataPropertyName = "Name";
             this.ColumnName.HeaderText = "Наименование";
+            this.ColumnName.MinimumWidth = 100;
             this.ColumnName.Name = "ColumnName";
             this.ColumnName.ReadOnly = true;
             // 
             // ColumnDescription
             // 
+            this.ColumnDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ColumnDescription.DataPropertyName = "Description";
             this.ColumnDescription.HeaderText = "Описание";
+            this.ColumnDescription.MinimumWidth = 100;
             this.ColumnDescription.Name = "ColumnDescription";
             this.ColumnDescription.ReadOnly = true;
             // 
             // ColumnSum
             // 
+            this.ColumnSum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ColumnSum.DataPropertyName = "Sum";
             this.ColumnSum.HeaderText = "Сумма";
+            this.ColumnSum.MinimumWidth = 100;
             this.ColumnSum.Name = "ColumnSum";
             this.ColumnSum.ReadOnly = true;
             // 
             // ColumnDate
             // 
+            this.ColumnDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ColumnDate.DataPropertyName = "Date";
             this.ColumnDate.HeaderText = "Дата";
+            this.ColumnDate.MinimumWidth = 100;
             this.ColumnDate.Name = "ColumnDate";
             this.ColumnDate.ReadOnly = true;
             // 
             // ColumnCategory
             // 
+            this.ColumnCategory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ColumnCategory.DataPropertyName = "Category";
             this.ColumnCategory.HeaderText = "Категория";
+            this.ColumnCategory.MinimumWidth = 100;
             this.ColumnCategory.Name = "ColumnCategory";
             this.ColumnCategory.ReadOnly = true;
             // 
             // ColumnContragent
             // 
+            this.ColumnContragent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ColumnContragent.DataPropertyName = "Contragent";
             this.ColumnContragent.HeaderText = "Контрагент";
+            this.ColumnContragent.MinimumWidth = 100;
             this.ColumnContragent.Name = "ColumnContragent";
             this.ColumnContragent.ReadOnly = true;
             // 
             // ColumnIdentity
             // 
+            this.ColumnIdentity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ColumnIdentity.DataPropertyName = "Identity";
             this.ColumnIdentity.HeaderText = "Член семьи";
+            this.ColumnIdentity.MinimumWidth = 100;
             this.ColumnIdentity.Name = "ColumnIdentity";
             this.ColumnIdentity.ReadOnly = true;
             // 
             // ColumnDebitAccount
             // 
+            this.ColumnDebitAccount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ColumnDebitAccount.DataPropertyName = "DebitAccount";
             this.ColumnDebitAccount.HeaderText = "Счёт списания ";
+            this.ColumnDebitAccount.MinimumWidth = 100;
             this.ColumnDebitAccount.Name = "ColumnDebitAccount";
             this.ColumnDebitAccount.ReadOnly = true;
             // 
             // ColumnCreditAccount
             // 
+            this.ColumnCreditAccount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ColumnCreditAccount.DataPropertyName = "CreditAccount";
             this.ColumnCreditAccount.HeaderText = "Счёт зачисления";
+            this.ColumnCreditAccount.MinimumWidth = 100;
             this.ColumnCreditAccount.Name = "ColumnCreditAccount";
             this.ColumnCreditAccount.ReadOnly = true;
             // 

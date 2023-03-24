@@ -31,17 +31,13 @@ namespace FM.SHD.UI.WindowsForms.UserControls.Views.Base
         {
             this.splitContainerDesktop = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanelButtonsBlock = new System.Windows.Forms.FlowLayoutPanel();
-            this.buttonAddReceipt = new System.Windows.Forms.Button();
-            this.buttonAddTransaction = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerDesktop)).BeginInit();
             this.splitContainerDesktop.Panel1.SuspendLayout();
             this.splitContainerDesktop.SuspendLayout();
-            this.flowLayoutPanelButtonsBlock.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainerDesktop
             // 
-            this.splitContainerDesktop.Cursor = System.Windows.Forms.Cursors.Default;
             this.splitContainerDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerDesktop.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainerDesktop.Location = new System.Drawing.Point(0, 0);
@@ -53,49 +49,29 @@ namespace FM.SHD.UI.WindowsForms.UserControls.Views.Base
             this.splitContainerDesktop.Panel1.Controls.Add(this.flowLayoutPanelButtonsBlock);
             this.splitContainerDesktop.Panel1MinSize = 27;
             this.splitContainerDesktop.Size = new System.Drawing.Size(481, 291);
-            this.splitContainerDesktop.SplitterDistance = 30;
+            this.splitContainerDesktop.SplitterDistance = 137;
             this.splitContainerDesktop.TabIndex = 4;
             // 
             // flowLayoutPanelButtonsBlock
             // 
-            this.flowLayoutPanelButtonsBlock.Controls.Add(this.buttonAddReceipt);
-            this.flowLayoutPanelButtonsBlock.Controls.Add(this.buttonAddTransaction);
             this.flowLayoutPanelButtonsBlock.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanelButtonsBlock.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanelButtonsBlock.Name = "flowLayoutPanelButtonsBlock";
-            this.flowLayoutPanelButtonsBlock.Size = new System.Drawing.Size(481, 30);
+            this.flowLayoutPanelButtonsBlock.Size = new System.Drawing.Size(481, 137);
             this.flowLayoutPanelButtonsBlock.TabIndex = 0;
-            // 
-            // buttonAddReceipt
-            // 
-            this.buttonAddReceipt.Location = new System.Drawing.Point(3, 3);
-            this.buttonAddReceipt.Name = "buttonAddReceipt";
-            this.buttonAddReceipt.Size = new System.Drawing.Size(116, 23);
-            this.buttonAddReceipt.TabIndex = 3;
-            this.buttonAddReceipt.Text = "Добавить чек";
-            this.buttonAddReceipt.UseVisualStyleBackColor = true;
-            this.buttonAddReceipt.Visible = false;
-            // 
-            // buttonAddTransaction
-            // 
-            this.buttonAddTransaction.Location = new System.Drawing.Point(125, 3);
-            this.buttonAddTransaction.Name = "buttonAddTransaction";
-            this.buttonAddTransaction.Size = new System.Drawing.Size(132, 23);
-            this.buttonAddTransaction.TabIndex = 1;
-            this.buttonAddTransaction.Text = "Добавить операцию";
-            this.buttonAddTransaction.UseVisualStyleBackColor = true;
             // 
             // TabPageUCView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Controls.Add(this.splitContainerDesktop);
             this.Name = "TabPageUCView";
             this.Size = new System.Drawing.Size(481, 291);
+            this.Load += new System.EventHandler(this.TabPageUCView_Load);
             this.splitContainerDesktop.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerDesktop)).EndInit();
             this.splitContainerDesktop.ResumeLayout(false);
-            this.flowLayoutPanelButtonsBlock.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -104,7 +80,5 @@ namespace FM.SHD.UI.WindowsForms.UserControls.Views.Base
 
         private System.Windows.Forms.SplitContainer splitContainerDesktop;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelButtonsBlock;
-        private System.Windows.Forms.Button buttonAddReceipt;
-        private System.Windows.Forms.Button buttonAddTransaction;
     }
 }
