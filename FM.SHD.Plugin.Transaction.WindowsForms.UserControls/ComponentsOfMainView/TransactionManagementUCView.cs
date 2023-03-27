@@ -17,5 +17,17 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.UserControls.ComponentsOfMainVi
         }
 
         public event Action AddTransaction;
+        public event Action Search;
+        public event Action AddReceipt;
+
+        private void buttonAddReceipt_Click(object sender, EventArgs e)
+        {
+            AddReceipt?.Invoke();
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            Search?.Invoke();
+        }
     }
 }

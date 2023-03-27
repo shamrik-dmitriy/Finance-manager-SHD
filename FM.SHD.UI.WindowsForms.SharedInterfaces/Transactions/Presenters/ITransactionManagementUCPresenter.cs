@@ -5,5 +5,6 @@ namespace FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Presenters
     public interface ITransactionManagementUCPresenter
     {
         ITransactionManagementUCView GetUserControlView();
+
     }
 }

@@ -70,6 +70,7 @@
             this.buttonAddReceipt.TabIndex = 1;
             this.buttonAddReceipt.Text = "Добавить чек";
             this.buttonAddReceipt.UseVisualStyleBackColor = true;
+            this.buttonAddReceipt.Click += new System.EventHandler(this.buttonAddReceipt_Click);
             // 
             // textBox1
             // 
@@ -88,6 +89,7 @@
             this.buttonSearch.TabIndex = 3;
             this.buttonSearch.Text = "Поиск";
             this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // TransactionManagementUCView
             // 

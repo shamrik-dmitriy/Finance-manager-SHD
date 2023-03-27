@@ -1,4 +1,5 @@
-﻿using FM.SHD.Plugins.Interfaces;
+﻿using System;
+using FM.SHD.Plugins.Interfaces;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.UserControl;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Presenters;
 
@@ -16,6 +17,8 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Base
             _transactionManagementUCView = transactionManagementUCView;
 
             _transactionManagementUCView.AddTransaction += OnAddingTransaction;
+            _transactionManagementUCView.Search += OnSearch;
+            _transactionManagementUCView.AddReceipt += OnAddingReceipt;
         }
 
         public ITransactionManagementUCView GetUserControlView()
@@ -27,6 +30,16 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Base
         {
             var transactionPresenter = _pluginManager.GetPlugin<ITransactionPlugin>();
             transactionPresenter.GetPluginPresenter("TransactionPresenter").Run("Добавить транзакцию");
+        }
+        
+        private void OnAddingReceipt()
+        {
+            throw new InvalidOperationException("Функциональность не реализована");
+        }
+        
+        private void OnSearch()
+        {
+            throw new InvalidOperationException("Функциональность не реализована");
         }
     }
 }
