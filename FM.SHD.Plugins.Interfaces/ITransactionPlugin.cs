@@ -6,7 +6,6 @@ namespace FM.SHD.Plugins.Interfaces
 {
     public interface ITransactionPlugin: IPlugin
     {
-        public IBasePresenter<ITransactionBaseView> GetPluginPresenter();
 
         public ATransactionBasePresenter GetPluginPresenter(string pluginPresenterName);
     }

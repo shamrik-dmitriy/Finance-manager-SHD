@@ -24,7 +24,6 @@ namespace FM.SHD.Plugin.Transaction
     {
         private readonly IServiceProvider _serviceProvider;
         private readonly IServiceCollection _serviceCollection;
-        private string _connectionString;
 
         public string Name => "Плагин транзакций";
         public string Id => "Transaction";
@@ -43,16 +42,6 @@ namespace FM.SHD.Plugin.Transaction
             _serviceProvider = serviceProvider;
         }
 
-        public void SetConnectionString(string connectionString)
-        {
-            _connectionString = connectionString;
-        }
-
-        public TransactionPlugin(string connectionString)
-        {
-            _connectionString = connectionString;
-        }
-
         public TabPage GetTab()
         {
             var tabPageUCPresenter = _serviceProvider.GetRequiredService<ITabPageUCPresenter>();
@@ -65,8 +54,6 @@ namespace FM.SHD.Plugin.Transaction
                 .GetRequiredService<IListAllTransactionUCPresenter>()
                 .GetUserControlView());
 
-            //tabPageUCPresenter.GetUserControlView().AddUserControlToButtonBlock(new ContinueCancelButtonsUcView());
-            // tabPageUCPresenter.GetUserControlView().AddUserControlToButtonBlock(new NameTextboxUCView(){Text = "Net"});
             // Конструируем вкладку
             var tabPage = new TabPage()
             {
@@ -77,11 +64,6 @@ namespace FM.SHD.Plugin.Transaction
             };
             tabPage.Controls.Add((UserControl)tabPageUCPresenter.GetUserControlView());
             return tabPage;
-        }
-
-        private void UcOnOnLoad()
-        {
-            throw new NotImplementedException();
         }
 
         public ToolStripMenuItem GetMenuItem()
@@ -114,11 +96,6 @@ namespace FM.SHD.Plugin.Transaction
                 .AddTransient<IListAllTransactionUCPresenter, ListAllTransactionUcPresenter>()
                 .AddTransient<ITransactionManagementUCView, TransactionManagementUCView>()
                 .AddTransient<ITransactionManagementUCPresenter, TransactionManagementUCPresenter>();
-        }
-
-        public IBasePresenter<ITransactionBaseView> GetPluginPresenter()
-        {
-            throw new NotImplementedException();
         }
 
         public ATransactionBasePresenter GetPluginPresenter(string pluginPresenterName)
