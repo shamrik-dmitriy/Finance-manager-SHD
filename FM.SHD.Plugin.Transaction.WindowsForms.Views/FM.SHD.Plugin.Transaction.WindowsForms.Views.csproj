@@ -42,16 +42,20 @@
       <Compile Update="Transactions\ItemOfMultipleTransactionView.cs">
         <SubType>UserControl</SubType>
       </Compile>
+      <Compile Update="Transactions\AllTransactionUCView.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
       <Compile Update="MultipleTransactionView.cs">
         <SubType>Form</SubType>
       </Compile>
-      <Compile Update="Transactions\AllTransactionUCView.cs">
-        <SubType>UserControl</SubType>
+      <Compile Update="TransactionBaseView.cs">
+        <SubType>Form</SubType>
       </Compile>
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\FM.SHD.Plugin.Transaction.WindowsForms.Presenters\FM.SHD.Plugin.Transaction.WindowsForms.Presenters.csproj" />
+      <ProjectReference Include="..\FM.SHD.Plugin.Transaction.WindowsForms.UserControls\FM.SHD.Plugin.Transaction.WindowsForms.UserControls.csproj" />
     </ItemGroup>
 
 </Project>

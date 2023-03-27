@@ -4,7 +4,7 @@ using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Views;
 
 namespace FM.SHD.Plugins.Interfaces
 {
-    public interface ITransactionPlugin
+    public interface ITransactionPlugin: IPlugin
     {
         public IBasePresenter<ITransactionBaseView> GetPluginPresenter();
 

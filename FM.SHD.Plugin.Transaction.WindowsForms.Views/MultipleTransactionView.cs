@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using FM.SHD.Plugin.Transaction.WindowsForms.Views.Transactions;
+using FM.SHD.Plugin.Transaction.WindowsForms.UserControls.ComponentsOfMainView;
 
 namespace FM.SHD.Plugin.Transaction.WindowsForms.Views
 {

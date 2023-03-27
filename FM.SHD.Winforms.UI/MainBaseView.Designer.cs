@@ -55,11 +55,6 @@ namespace FM.SHD.Winforms.UI
             this.addAccountButton = new System.Windows.Forms.Button();
             this.accoutsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPageTransactions = new System.Windows.Forms.TabPage();
-            this.splitContainerTransactions = new System.Windows.Forms.SplitContainer();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.buttonAddReceipt = new System.Windows.Forms.Button();
-            this.buttonAddTransaction = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerDesktop)).BeginInit();
             this.splitContainerDesktop.Panel1.SuspendLayout();
@@ -76,12 +71,6 @@ namespace FM.SHD.Winforms.UI
             ((System.ComponentModel.ISupportInitialize)(this.accountActionAndTotalSumsplitContainer)).BeginInit();
             this.accountActionAndTotalSumsplitContainer.Panel1.SuspendLayout();
             this.accountActionAndTotalSumsplitContainer.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPageTransactions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTransactions)).BeginInit();
-            this.splitContainerTransactions.Panel1.SuspendLayout();
-            this.splitContainerTransactions.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -210,7 +199,6 @@ namespace FM.SHD.Winforms.UI
             // 
             // splitContainerDesktop
             // 
-            this.splitContainerDesktop.Cursor = System.Windows.Forms.Cursors.Default;
             this.splitContainerDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerDesktop.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainerDesktop.IsSplitterFixed = true;
@@ -327,71 +315,12 @@ namespace FM.SHD.Winforms.UI
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPageTransactions);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(869, 603);
             this.tabControl1.TabIndex = 0;
-            // 
-            // tabPageTransactions
-            // 
-            this.tabPageTransactions.Controls.Add(this.splitContainerTransactions);
-            this.tabPageTransactions.Location = new System.Drawing.Point(4, 24);
-            this.tabPageTransactions.Name = "tabPageTransactions";
-            this.tabPageTransactions.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTransactions.Size = new System.Drawing.Size(861, 575);
-            this.tabPageTransactions.TabIndex = 0;
-            this.tabPageTransactions.Text = "Транзакции";
-            this.tabPageTransactions.UseVisualStyleBackColor = true;
-            // 
-            // splitContainerTransactions
-            // 
-            this.splitContainerTransactions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerTransactions.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerTransactions.Location = new System.Drawing.Point(3, 3);
-            this.splitContainerTransactions.Name = "splitContainerTransactions";
-            this.splitContainerTransactions.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainerTransactions.Panel1
-            // 
-            this.splitContainerTransactions.Panel1.Controls.Add(this.flowLayoutPanel3);
-            this.splitContainerTransactions.Panel1MinSize = 27;
-            this.splitContainerTransactions.Size = new System.Drawing.Size(855, 569);
-            this.splitContainerTransactions.SplitterDistance = 30;
-            this.splitContainerTransactions.TabIndex = 3;
-            // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.Controls.Add(this.buttonAddReceipt);
-            this.flowLayoutPanel3.Controls.Add(this.buttonAddTransaction);
-            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(855, 30);
-            this.flowLayoutPanel3.TabIndex = 0;
-            // 
-            // buttonAddReceipt
-            // 
-            this.buttonAddReceipt.Location = new System.Drawing.Point(3, 3);
-            this.buttonAddReceipt.Name = "buttonAddReceipt";
-            this.buttonAddReceipt.Size = new System.Drawing.Size(116, 23);
-            this.buttonAddReceipt.TabIndex = 3;
-            this.buttonAddReceipt.Text = "Добавить чек";
-            this.buttonAddReceipt.UseVisualStyleBackColor = true;
-            this.buttonAddReceipt.Visible = false;
-            this.buttonAddReceipt.Click += new System.EventHandler(this.buttonAddReceipt_Click);
-            // 
-            // buttonAddTransaction
-            // 
-            this.buttonAddTransaction.Location = new System.Drawing.Point(125, 3);
-            this.buttonAddTransaction.Name = "buttonAddTransaction";
-            this.buttonAddTransaction.Size = new System.Drawing.Size(132, 23);
-            this.buttonAddTransaction.TabIndex = 1;
-            this.buttonAddTransaction.Text = "Добавить операцию";
-            this.buttonAddTransaction.UseVisualStyleBackColor = true;
-            this.buttonAddTransaction.Click += new System.EventHandler(this.buttonAddTransaction_Click);
             // 
             // MainBaseView
             // 
@@ -400,6 +329,7 @@ namespace FM.SHD.Winforms.UI
             this.ClientSize = new System.Drawing.Size(1208, 627);
             this.Controls.Add(this.splitContainerDesktop);
             this.Controls.Add(this.menuStrip1);
+            this.MinimumSize = new System.Drawing.Size(640, 480);
             this.Name = "MainBaseView";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainView_FormClosing);
@@ -422,12 +352,6 @@ namespace FM.SHD.Winforms.UI
             this.accountActionAndTotalSumsplitContainer.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.accountActionAndTotalSumsplitContainer)).EndInit();
             this.accountActionAndTotalSumsplitContainer.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPageTransactions.ResumeLayout(false);
-            this.splitContainerTransactions.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTransactions)).EndInit();
-            this.splitContainerTransactions.ResumeLayout(false);
-            this.flowLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -454,11 +378,6 @@ namespace FM.SHD.Winforms.UI
         private System.Windows.Forms.SplitContainer splitContainerDesktop;
         private System.Windows.Forms.SplitContainer splitContainerLeftSideBar;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPageTransactions;
-        private System.Windows.Forms.SplitContainer splitContainerTransactions;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.Button buttonAddReceipt;
-        private System.Windows.Forms.Button buttonAddTransaction;
         private System.Windows.Forms.SplitContainer splitContainerWallet;
         private System.Windows.Forms.SplitContainer accountActionAndTotalSumsplitContainer;
         private System.Windows.Forms.Button addAccountButton;

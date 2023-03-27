@@ -14,7 +14,6 @@ namespace FM.SHD.Winforms.UI
     public partial class MainBaseView : Form, IMainBaseView
     {
         public event Action OnLoadView;
-        public event Action AddingTransaction;
         public event Action AddingAccount;
 
         public event Action<string> OpenDataFile;
@@ -42,31 +41,12 @@ namespace FM.SHD.Winforms.UI
 
         public void AddUserControl(IUserControlView userControlView)
         {
-            splitContainerTransactions.Panel2.Controls.Add((UserControl)userControlView);
-            /*var userControl = (UserControl)userControlView;
-            singleTransactionDesktopflowLayoutPanel.Controls.AddPluginServices(userControl);
-            
-            var c = new TabControl.ControlCollection(tabControl1).AddPluginServices((UserControl)userControlView);
-            var tp = new TabPage().Control
-            tabControl1.TabPages.AddPluginServices(new TabPage()
-            {
-                Text = "",
-            });*/
+            //TODO: Пересмотреть функционал этого метода
         }
 
         public void AddHorizontalLine()
         {
             throw new NotImplementedException();
-        }
-
-        private void buttonAddTransaction_Click(object sender, EventArgs e)
-        {
-            AddingTransaction?.Invoke();
-        }
-
-        private void buttonAddReceipt_Click(object sender, EventArgs e)
-        {
-           throw new NotImplementedException();
         }
 
         public void CloseView()
@@ -142,6 +122,11 @@ namespace FM.SHD.Winforms.UI
         public void ClearAccountsSummaryUserControls()
         {
             accoutsFlowLayoutPanel.Controls.Clear();
+        }
+
+        public void AddTab(TabPage tabPage)
+        {
+            tabControl1.TabPages.Add(tabPage);
         }
 
         public void SetViewOnActiveUI()

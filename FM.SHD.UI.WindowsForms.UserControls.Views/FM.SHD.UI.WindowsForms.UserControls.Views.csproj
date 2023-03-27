@@ -18,7 +18,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Update="CategoryUCView.cs">
+      <Compile Update="Base\TabPageUCView.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
+      <Compile Update="Additional\CategoryUCView.cs">
         <SubType>UserControl</SubType>
       </Compile>
     </ItemGroup>

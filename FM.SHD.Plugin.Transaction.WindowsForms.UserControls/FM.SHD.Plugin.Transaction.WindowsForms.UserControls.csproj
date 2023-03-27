@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <UseWindowsForms>true</UseWindowsForms>
+    </PropertyGroup>
+    <PropertyGroup>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    </PropertyGroup>
+    <ItemGroup>
+      <Compile Update="ComponentsOfAdditionalView\AccountInfoUCView.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
+      <Compile Update="ComponentsOfAdditionalView\AccountsInfoTransactionUCView.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
+      <Compile Update="ComponentsOfAdditionalView\ContrAgentUCView.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
+      <Compile Update="ComponentsOfAdditionalView\DateTransactionUCView.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
+      <Compile Update="ComponentsOfAdditionalView\IdentityUCView.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
+      <Compile Update="ComponentsOfAdditionalView\SumTransactionUCView.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
+      <Compile Update="ComponentsOfAdditionalView\TypeTransactionUCView.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
+      <Compile Update="ComponentsOfMainView\ItemOfMultipleTransactionView.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
+      <Compile Update="ComponentsOfMainView\ListAllTransactionUcView.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\FM.SHD.Infrastructure.Events\FM.SHD.Infrastructure.Events.csproj" />
+      <ProjectReference Include="..\FM.SHD.UI.WindowsForms.SharedInterfaces\FM.SHD.UI.WindowsForms.SharedInterfaces.csproj" />
+    </ItemGroup>
+</Project>

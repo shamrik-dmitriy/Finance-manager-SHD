@@ -1,4 +1,4 @@
-﻿using FM.SHD.Plugin.Transaction.WindowsForms.Views.Transactions.UserControlsOfTransactions;
+﻿using FM.SHD.Plugin.Transaction.WindowsForms.UserControls.ComponentsOfAdditionalView;
 
 namespace FM.SHD.Plugin.Transaction.WindowsForms.Views
 {
