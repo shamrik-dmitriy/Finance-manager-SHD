@@ -6,7 +6,7 @@ using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.UserControl;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category;
 using FM.SHDML.Core.Models.Dtos;
 
-namespace FM.SHD.Plugin.Transaction.WindowsForms.UserControls
+namespace FM.SHD.Plugin.Transaction.WindowsForms.UserControls.ComponentsOfAdditionalView
 {
     public partial class AccountsInfoTransactionUCView : UserControl, IAccountsInfoTransactionUCView
     {

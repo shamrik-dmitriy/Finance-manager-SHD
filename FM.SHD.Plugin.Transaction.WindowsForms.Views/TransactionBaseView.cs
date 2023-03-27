@@ -6,7 +6,7 @@ using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Views;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Name.Events;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.UIInterfaces;
 
-namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional
+namespace FM.SHD.Plugin.Transaction.WindowsForms.Views
 {
     public partial class TransactionBaseView : Form, ITransactionBaseView
     {

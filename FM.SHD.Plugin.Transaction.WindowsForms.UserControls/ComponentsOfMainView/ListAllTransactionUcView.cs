@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.UserControl;
 using FM.SHDML.Core.Models.Dtos;
 
-namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Base
+namespace FM.SHD.Plugin.Transaction.WindowsForms.UserControls.ComponentsOfMainView
 {
     public partial class ListAllTransactionUcView : UserControl, IListAllTransactionUCView
     {

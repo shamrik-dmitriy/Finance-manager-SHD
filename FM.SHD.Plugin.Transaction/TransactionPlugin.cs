@@ -4,8 +4,9 @@ using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional;
 using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional.UserControls;
 using FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Base;
 using FM.SHD.Plugin.Transaction.WindowsForms.UserControls;
-using FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional;
-using FM.SHD.Plugin.Transaction.WindowsForms.Views.Base;
+using FM.SHD.Plugin.Transaction.WindowsForms.UserControls.ComponentsOfAdditionalView;
+using FM.SHD.Plugin.Transaction.WindowsForms.UserControls.ComponentsOfMainView;
+using FM.SHD.Plugin.Transaction.WindowsForms.Views;
 using FM.SHD.Plugins.Interfaces;
 using FM.SHD.UI.WindowsForms.Presenters;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.AClasses;
@@ -57,11 +58,7 @@ namespace FM.SHD.Plugin.Transaction
             var tabPageUCPresenter = _serviceProvider.GetRequiredService<ITabPageUCPresenter>();
 
             tabPageUCPresenter.GetUserControlView().AddUserControlToButtonBlock((UserControl)_serviceProvider
-                .GetRequiredService<IButtonUCPresenter>()
-                .GetUserControlView());tabPageUCPresenter.GetUserControlView().AddUserControlToButtonBlock((UserControl)_serviceProvider
-                .GetRequiredService<IButtonUCPresenter>()
-                .GetUserControlView());tabPageUCPresenter.GetUserControlView().AddUserControlToButtonBlock((UserControl)_serviceProvider
-                .GetRequiredService<IButtonUCPresenter>()
+                .GetRequiredService<ITransactionManagementUCPresenter>()
                 .GetUserControlView());
 
             tabPageUCPresenter.GetUserControlView().AddUserControlToWorkspaceBlock((UserControl)_serviceProvider
@@ -114,7 +111,9 @@ namespace FM.SHD.Plugin.Transaction
                 .AddTransient<IDateTransactionUCView, DateTransactionUCView>()
                 .AddTransient<IDateTransactionUCPresenter, DateTransactionUCPresenter>()
                 .AddTransient<IListAllTransactionUCView, ListAllTransactionUcView>()
-                .AddTransient<IListAllTransactionUCPresenter, ListAllTransactionUcPresenter>();
+                .AddTransient<IListAllTransactionUCPresenter, ListAllTransactionUcPresenter>()
+                .AddTransient<ITransactionManagementUCView, TransactionManagementUCView>()
+                .AddTransient<ITransactionManagementUCPresenter, TransactionManagementUCPresenter>();
         }
 
         public IBasePresenter<ITransactionBaseView> GetPluginPresenter()

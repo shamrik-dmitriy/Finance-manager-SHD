@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional.Transactions;
+using FM.SHD.Plugin.Transaction.WindowsForms.UserControls.ComponentsOfMainView;
 
-namespace FM.SHD.Plugin.Transaction.WindowsForms.Views.Additional
+namespace FM.SHD.Plugin.Transaction.WindowsForms.Views
 {
     public partial class MultipleTransactionView : Form
     {
