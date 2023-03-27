@@ -18,7 +18,7 @@ namespace FM.SHD.UI.WindowsForms.UserControls.Views.Base
 
         public void AddUserControlToButtonBlock(UserControl userControl)
         {
-            splitContainerDesktop.Panel1.Controls[0].Controls.Add(userControl);
+            splitContainerDesktop.Panel1.Controls.Add(userControl);
             Refresh();
         }
         
