@@ -9,5 +9,6 @@ namespace FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.UserControl
 {
     public interface ITransactionManagementUCView : IUserControlView
     {
+        event Action AddTransaction;
     }
 }

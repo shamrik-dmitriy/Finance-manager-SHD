@@ -94,13 +94,6 @@ namespace FM.SHD.Presenters.ViewPresenters
             accountPresenter.Run("Добавить счёт");
         }
 
-        // TODO: Перенести в модуль транзакций
-        private void OnAddingTransaction()
-        {
-            var transactionPresenter = _pluginManager.GetPlugin<ITransactionPlugin>();
-            transactionPresenter.GetPluginPresenter("TransactionPresenter").Run("Добавить транзакцию");
-        }
-
         private void OnOpenDataFile(string filePath)
         {
             var fileName = Path.GetFileName(filePath);

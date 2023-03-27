@@ -59,6 +59,7 @@
             this.buttonAddTransaction.TabIndex = 0;
             this.buttonAddTransaction.Text = "Добавить транзакцию";
             this.buttonAddTransaction.UseVisualStyleBackColor = true;
+            this.buttonAddTransaction.Click += new System.EventHandler(this.buttonAddTransaction_Click);
             // 
             // buttonAddReceipt
             // 
