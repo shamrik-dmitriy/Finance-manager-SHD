@@ -42,7 +42,7 @@
             this.singleTransactionDesktopflowLayoutPanel.Size = new System.Drawing.Size(366, 361);
             this.singleTransactionDesktopflowLayoutPanel.TabIndex = 6;
             // 
-            // SingleTransactionView
+            // TransactionBaseView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -55,7 +55,7 @@
             this.MinimumSize = new System.Drawing.Size(382, 400);
             this.Name = "TransactionBaseView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "AddSingleTransactionForm";
+            this.Text = "AddSingleTransactionView";
             this.Load += new System.EventHandler(this.AddSingleTransactionForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

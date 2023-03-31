@@ -11,6 +11,7 @@ namespace FM.SHD.UI.WindowsForms.UserControls.Views.Base
         public TabPageUCView()
         {
             InitializeComponent();
+
             Dock = DockStyle.Fill;
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
