@@ -5,9 +5,9 @@ using FM.SHDML.Core.Models.Dtos;
 namespace FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.AClasses
 {
     public abstract class ATransactionBasePresenter 
-        : BasePresenter<ITransactionBaseView, TransactionDto>
+        : BasePresenter<ITransactionManagementView, TransactionDto>
     {
-        public ATransactionBasePresenter(ITransactionBaseView baseView) : base(baseView)
+        public ATransactionBasePresenter(ITransactionManagementView managementView) : base(managementView)
         {
         }
     }

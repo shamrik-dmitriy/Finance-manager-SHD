@@ -8,7 +8,7 @@ using FM.SHD.UI.WindowsForms.UserControls.Presenters.UIInterfaces;
 
 namespace FM.SHD.Plugin.Transaction.WindowsForms.Views
 {
-    public partial class TransactionBaseView : Form, ITransactionBaseView
+    public partial class TransactionManagementView : Form, ITransactionManagementView
     {
         #region Private member variables
 
@@ -38,17 +38,17 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Views
 
         #region Constructors
 
-        public TransactionBaseView()
+        public TransactionManagementView()
         {
             InitializeComponent();
         }
 
-        public TransactionBaseView(EventAggregator eventAggregator) : this()
+        public TransactionManagementView(EventAggregator eventAggregator) : this()
         {
             _eventAggregator = eventAggregator;
         }
 
-        public TransactionBaseView(string typeTransactionOperations, EventAggregator eventAggregator) : this()
+        public TransactionManagementView(string typeTransactionOperations, EventAggregator eventAggregator) : this()
         {
             Title = typeTransactionOperations;
             TitleDefault = typeTransactionOperations;

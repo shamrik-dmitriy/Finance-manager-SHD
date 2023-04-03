@@ -75,7 +75,7 @@ namespace FM.SHD.Plugin.Transaction
         {
             return _serviceCollection
                 //Views
-                .AddTransient<ITransactionBaseView, TransactionBaseView>()
+                .AddTransient<ITransactionManagementView, TransactionManagementView>()
                 .AddTransient<ATransactionBasePresenter, TransactionPresenter>()
                 //UserControls
                 .AddTransient<ITypeTransactionUCView, TypeTransactionUCView>()

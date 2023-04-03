@@ -19,11 +19,11 @@ namespace FM.SHD.UI.WindowsForms.Presenters
     public abstract class BasePresenter <TView, TArg> : IBasePresenter<TArg>
         where TView : IBaseView
     {
-        protected TView BaseView { get; private set; }
+        protected TView ManagementView { get; private set; }
 
-        protected BasePresenter(TView baseView)
+        protected BasePresenter(TView managementView)
         {
-            BaseView = baseView;
+            ManagementView = managementView;
         }
         
         public abstract void Run(TArg transactionDto);

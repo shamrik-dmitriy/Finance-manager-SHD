@@ -48,7 +48,7 @@
       <Compile Update="MultipleTransactionView.cs">
         <SubType>Form</SubType>
       </Compile>
-      <Compile Update="TransactionBaseView.cs">
+      <Compile Update="TransactionManagementView.cs">
         <SubType>Form</SubType>
       </Compile>
     </ItemGroup>

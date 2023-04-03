@@ -4,7 +4,7 @@ using FM.SHD.UI.WindowsForms.UserControls.Presenters.UIInterfaces;
 
 namespace FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Views
 {
-    public interface ITransactionBaseView : IBaseView
+    public interface ITransactionManagementView : IBaseView
     {
         event Action OnLoadView;
         event EventHandler Add;

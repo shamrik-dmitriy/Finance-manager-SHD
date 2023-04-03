@@ -1,6 +1,6 @@
 ﻿namespace FM.SHD.Plugin.Transaction.WindowsForms.Views
 {
-    partial class TransactionBaseView
+    partial class TransactionManagementView
     {
         /// <summary>
         /// Required designer variable.
@@ -42,7 +42,7 @@
             this.singleTransactionDesktopflowLayoutPanel.Size = new System.Drawing.Size(366, 361);
             this.singleTransactionDesktopflowLayoutPanel.TabIndex = 6;
             // 
-            // TransactionBaseView
+            // TransactionManagementView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -53,7 +53,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(382, 400);
-            this.Name = "TransactionBaseView";
+            this.Name = "TransactionManagementView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddSingleTransactionView";
             this.Load += new System.EventHandler(this.AddSingleTransactionForm_Load);
