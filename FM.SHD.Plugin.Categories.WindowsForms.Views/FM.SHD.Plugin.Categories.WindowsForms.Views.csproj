@@ -13,4 +13,10 @@
       <ProjectReference Include="..\FM.SHD.UI.WindowsForms.SharedInterfaces\FM.SHD.UI.WindowsForms.SharedInterfaces.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="CategoryManagementView.cs">
+        <SubType>Form</SubType>
+      </Compile>
+    </ItemGroup>
+
 </Project>
