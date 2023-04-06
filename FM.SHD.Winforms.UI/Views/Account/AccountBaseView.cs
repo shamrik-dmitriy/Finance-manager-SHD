@@ -81,12 +81,12 @@ namespace FM.SHD.Winforms.UI.Views.Account
         private void AccountView_Load(object sender, EventArgs e)
         {
             OnLoadView?.Invoke();
-            _eventAggregator.Subscribe<OnChangeNameTransactionTextApplicationEvent>(ActionChangeTextBoxNameTransaction);
+            _eventAggregator.Subscribe<OnChangeNameTextApplicationEvent>(ActionChangeTextBoxNameTransaction);
             AcceptButton = (Button)Controls.Find("continueButton", true)[0];
             CancelButton = (Button)Controls.Find("cancelButton", true)[0];
         }
 
-        private void ActionChangeTextBoxNameTransaction(OnChangeNameTransactionTextApplicationEvent obj)
+        private void ActionChangeTextBoxNameTransaction(OnChangeNameTextApplicationEvent obj)
         {
             Title = string.IsNullOrWhiteSpace(obj.Text) ? TitleDefault : TitleDefault + ": " + obj.Text;
         }

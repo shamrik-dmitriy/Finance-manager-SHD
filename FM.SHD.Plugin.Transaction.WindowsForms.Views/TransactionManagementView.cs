@@ -19,8 +19,6 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Views
         #region Public events
 
         public event Action OnLoadView;
-        public event EventHandler Add;
-        public event Action<int> OnChangeTypeTransaction;
 
         #endregion
 
@@ -59,7 +57,7 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Views
 
         #region Private methods
 
-        private void ActionChangeTextBoxNameTransaction(OnChangeNameTransactionTextApplicationEvent obj)
+        private void ActionChangeTextBoxName(OnChangeNameTextApplicationEvent obj)
         {
             Title = string.IsNullOrWhiteSpace(obj.Text) ? TitleDefault : TitleDefault + ": " + obj.Text;
         }
@@ -67,7 +65,7 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Views
         private void AddSingleTransactionForm_Load(object sender, EventArgs e)
         {
             OnLoadView?.Invoke();
-            _eventAggregator.Subscribe<OnChangeNameTransactionTextApplicationEvent>(ActionChangeTextBoxNameTransaction);
+            _eventAggregator.Subscribe<OnChangeNameTextApplicationEvent>(ActionChangeTextBoxName);
            AcceptButton = (Button)Controls.Find("continueButton", true)[0];
             CancelButton = (Button)Controls.Find("cancelButton", true)[0];
         }
@@ -110,8 +108,8 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Views
 
         private void OnFormClosing(object sender, FormClosingEventArgs e)
         {
-            _eventAggregator.Unsubscribe<OnChangeNameTransactionTextApplicationEvent>(
-                ActionChangeTextBoxNameTransaction);
+            _eventAggregator.Unsubscribe<OnChangeNameTextApplicationEvent>(
+                ActionChangeTextBoxName);
         }
     }
 }
