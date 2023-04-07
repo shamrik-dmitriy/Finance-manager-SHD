@@ -22,7 +22,7 @@ namespace FM.SHD.UI.WindowsForms.UserControls.Views.Additional
 
         private void textBoxName_TextChanged(object sender, EventArgs e)
         {
-            _eventAggregator.Publish(new OnChangeNameTextApplicationEvent()
+            _eventAggregator.Publish(new OnChangeTitleViewApplicationEvent()
                 { Text = textBoxTransactionName.Text });
         }
 

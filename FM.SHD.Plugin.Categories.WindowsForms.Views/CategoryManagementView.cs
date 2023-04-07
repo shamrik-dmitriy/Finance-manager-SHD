@@ -79,14 +79,14 @@ namespace FM.SHD.Plugin.Categories.WindowsForms.Views
 
         #region Private methods
 
-        private void ActionChangeTextBoxName(OnChangeNameTextApplicationEvent obj)
+        private void ActionChangeTextBoxName(OnChangeTitleViewApplicationEvent obj)
         {
             Title = string.IsNullOrWhiteSpace(obj.Text) ? TitleDefault : TitleDefault + ": " + obj.Text;
         }
         
         private void OnFormClosing(object sender, FormClosingEventArgs e)
         {
-            _eventAggregator.Unsubscribe<OnChangeNameTextApplicationEvent>(
+            _eventAggregator.Unsubscribe<OnChangeTitleViewApplicationEvent>(
                 ActionChangeTextBoxName);
         }
 
