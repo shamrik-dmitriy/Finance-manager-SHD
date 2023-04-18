@@ -16,7 +16,8 @@ namespace FM.SHD.Winforms.UI
         public event Action OnLoadView;
         public event Action AddingAccount;
 
-        public event Action<string> OpenDataFile;
+        public event Action<string> OpeningDataFile;
+        public event Action<string> CreatingDataFile;
 
         private readonly EventAggregator _eventAggregator;
 
@@ -174,7 +175,7 @@ namespace FM.SHD.Winforms.UI
         private void OnClickLoadDataFile(object sender, EventArgs e)
         {
             var filePath = ((ToolStripMenuItem)sender).ToolTipText;
-            OpenDataFile?.Invoke(filePath);
+            OpeningDataFile?.Invoke(filePath);
         }
 
         public void SetViewOnCompleteLoadData()
@@ -197,8 +198,25 @@ namespace FM.SHD.Winforms.UI
             var openFileDialog = new OpenFileDialog()
             {
             };
-            openFileDialog.ShowDialog();
-            OpenDataFile?.Invoke(openFileDialog.FileName);
+            if (openFileDialog.ShowDialog() == DialogResult.Cancel)
+                return;
+            OpeningDataFile?.Invoke(openFileDialog.FileName);
+        }
+
+        private void toolStripMenuItemCreateDataFile_Click(object sender, EventArgs e)
+        {
+            var saveFileDialog = new SaveFileDialog()
+            {
+                Title = "Создать новую БД",
+                DefaultExt = ".fmshd",
+                SupportMultiDottedExtensions = true,
+                Filter = "Файл БД | *.fmshd",
+                FilterIndex = 1
+            };
+            if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
+                return;
+            CreatingDataFile?.Invoke(saveFileDialog.FileName);
+            MessageBox.Show($"Файл {saveFileDialog.FileName} успешно сохранён");
         }
     }
 }

@@ -11,7 +11,8 @@ namespace FM.SHD.Presenters.IntrefacesViews.Views
     public interface IMainBaseView : IBaseView
     {
         event Action AddingAccount;
-        event Action<string> OpenDataFile;
+        event Action<string> OpeningDataFile;
+        event Action<string> CreatingDataFile;
 
         void AddAccountsSummaryUserControl(IUserControlView userControlView);
         void SetAccountsData(IEnumerable<AccountDto> accountDtos);

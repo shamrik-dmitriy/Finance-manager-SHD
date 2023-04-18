@@ -103,9 +103,9 @@ namespace FM.SHD.Winforms.UI
             // 
             this.toolStripMenuItemCreateDataFile.Image = global::FM.SHD.Winforms.UI.Properties.Resources.free_icon_font_add_document_3914213;
             this.toolStripMenuItemCreateDataFile.Name = "toolStripMenuItemCreateDataFile";
-            this.toolStripMenuItemCreateDataFile.Size = new System.Drawing.Size(134, 22);
+            this.toolStripMenuItemCreateDataFile.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemCreateDataFile.Text = "Создать";
-            this.toolStripMenuItemCreateDataFile.Visible = false;
+            this.toolStripMenuItemCreateDataFile.Click += new System.EventHandler(this.toolStripMenuItemCreateDataFile_Click);
             // 
             // toolStripMenuItemOpenDataFile
             // 
@@ -113,38 +113,38 @@ namespace FM.SHD.Winforms.UI
             this.открытьToolStripMenuItem});
             this.toolStripMenuItemOpenDataFile.Image = global::FM.SHD.Winforms.UI.Properties.Resources.free_icon_font_folder_upload_7653219;
             this.toolStripMenuItemOpenDataFile.Name = "toolStripMenuItemOpenDataFile";
-            this.toolStripMenuItemOpenDataFile.Size = new System.Drawing.Size(134, 22);
+            this.toolStripMenuItemOpenDataFile.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItemOpenDataFile.Text = "Открыть";
             // 
             // открытьToolStripMenuItem
             // 
             this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.открытьToolStripMenuItem.Text = "Открыть...";
             this.открытьToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItemOpenDataFile_Click);
             // 
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(131, 6);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(177, 6);
             // 
             // настройкиToolStripMenuItem
             // 
             this.настройкиToolStripMenuItem.Image = global::FM.SHD.Winforms.UI.Properties.Resources.free_icon_font_settings_sliders_3917103;
             this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
-            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.настройкиToolStripMenuItem.Text = "Настройки";
             this.настройкиToolStripMenuItem.Visible = false;
             // 
             // ваToolStripMenuItem
             // 
             this.ваToolStripMenuItem.Name = "ваToolStripMenuItem";
-            this.ваToolStripMenuItem.Size = new System.Drawing.Size(131, 6);
+            this.ваToolStripMenuItem.Size = new System.Drawing.Size(177, 6);
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.quitToolStripMenuItem.Text = "Выйти";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.closeInToolStripMenuItem_Click);
             // 

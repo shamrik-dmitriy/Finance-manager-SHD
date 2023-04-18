@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using FM.SHD.Data;
+using FM.SHD.Domain.Accounts;
 using FM.SHD.Infastructure.Impl.Repositories;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Account;
 using FM.SHD.Infrastructure.Dal;
@@ -54,7 +56,8 @@ namespace FM.SHD.Presenters.ViewPresenters
             _recentOpenFilesSettings = settingServices;
 
             _baseView.OnLoadView += OnLoadBaseView;
-            _baseView.OpenDataFile += OnOpenDataFile;
+            _baseView.OpeningDataFile += OnOpeningDataFile;
+            _baseView.CreatingDataFile += OnCreatingDataFile;
             _baseView.AddingAccount += OnAddingAccount;
 
             // Возможно стоит добавить условие приоритета - какие события должны отрабатываться первыми, а какие за ними
@@ -73,7 +76,8 @@ namespace FM.SHD.Presenters.ViewPresenters
         ~MainBasePresenter()
         {
             _baseView.OnLoadView -= OnLoadBaseView;
-            _baseView.OpenDataFile -= OnOpenDataFile;
+            _baseView.OpeningDataFile -= OnOpeningDataFile;
+            _baseView.CreatingDataFile -= OnCreatingDataFile;
             _baseView.AddingAccount -= OnAddingAccount;
 
             _eventAggregator.Unsubscribe<OnChangingAccountApplicationEvent>(OnChangingAccount);
@@ -93,8 +97,32 @@ namespace FM.SHD.Presenters.ViewPresenters
             var accountPresenter = _serviceProvider.GetRequiredService<AccountPresenter>();
             accountPresenter.Run("Добавить счёт");
         }
+        
+        private void OnCreatingDataFile(string filePath)
+        {
+            var fileName = Path.GetFileName(filePath);
+            var recentOpenItem = new RecentOpenFilesDto()
+            {
+                FileName = fileName,
+                FilePath = filePath
+            };
+            
+            if (!IsFindAndReplaceRecentOpenFile(filePath, fileName, recentOpenItem))
+            {
+                RecentOpenFilesDtos.Add(recentOpenItem);
+            }
+            
+            _baseView.AddElementInRecentOpenItems(RecentOpenFilesDtos);
 
-        private void OnOpenDataFile(string filePath)
+            _recentOpenFilesSettings.GetSetting().RecentOpen =
+                RecentOpenFilesDtos.Select(x => (x.FileName, x.FilePath)).ToList();
+            _recentOpenFilesSettings.Save();
+
+            _baseView.SetViewOnActiveUI();
+            CreateConnection(filePath);
+        }
+        
+        private void OnOpeningDataFile(string filePath)
         {
             var fileName = Path.GetFileName(filePath);
             var recentOpenItem = new RecentOpenFilesDto()
@@ -147,6 +175,13 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void CreateConnection(string filePath)
         {
+            ApplicationDbContext db =
+                new ApplicationDbContext(filePath);
+                                                  
+            db.Accounts.Add(new Account() { Category = new AccountCategory() { Name = "Test" } });
+            db.SaveChangesAsync();
+            
+            
             _repositoryManager.ConfigureConnection(new ConnectionString(filePath));
             _repositoryManager.CreateConnection();
         }
@@ -163,6 +198,7 @@ namespace FM.SHD.Presenters.ViewPresenters
                 {
                     _baseView.SetViewOnActiveUI();
 
+                    
                     CreateConnection(_recentOpenFilesSettings.GetSetting().RecentOpen.Last().FilePath);
 
                     _accountServices =
