@@ -1,6 +1,6 @@
 namespace FM.SHDML.Core.Models.Dtos
 {
-    public class CategoriesDto : BaseDto
+    public class CategoryDto : BaseDto
     {
         /// <summary>
         ///     Описание

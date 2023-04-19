@@ -40,7 +40,7 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         #region Public methods
         
-        public override void Run(IdentityDto transactionDto)
+        public override void Run(IdentityDto categoryDto)
         {
             _baseView.Show();
         }

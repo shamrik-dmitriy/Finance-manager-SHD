@@ -80,9 +80,9 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional
 
         #region Public methods
         
-        public override void Run(TransactionDto transactionDto)
+        public override void Run(TransactionDto categoryDto)
         {
-            TransactionDto = transactionDto;
+            TransactionDto = categoryDto;
             _managementView.Show();
         }
 

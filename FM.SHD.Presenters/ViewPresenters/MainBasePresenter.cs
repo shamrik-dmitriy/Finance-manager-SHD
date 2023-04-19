@@ -170,7 +170,7 @@ namespace FM.SHD.Presenters.ViewPresenters
                     SetAccounts();
 
                     _baseView.AddTab(_pluginManager.GetPlugin<ITransactionPlugin>().GetTab());
-                    //_baseView.AddTab(_pluginManager.GetPlugin<ICategoriesPlugin>().GetTab());
+                    _baseView.AddTab(_pluginManager.GetPlugin<ICategoriesPlugin>().GetTab());
                 }
                 else
                 {

@@ -18,6 +18,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\FM.SHD.Plugin.Categories.WindowsForms.Presenters\FM.SHD.Plugin.Categories.WindowsForms.Presenters.csproj" />
+      <ProjectReference Include="..\FM.SHD.Plugin.Categories.WindowsForms.Views\FM.SHD.Plugin.Categories.WindowsForms.Views.csproj" />
       <ProjectReference Include="..\FM.SHD.Plugin.Transaction.WindowsForms.Views\FM.SHD.Plugin.Transaction.WindowsForms.Views.csproj" />
       <ProjectReference Include="..\FM.SHD.Plugins.Interfaces\FM.SHD.Plugins.Interfaces.csproj" />
       <ProjectReference Include="..\FM.SHD.UI.WindowsForms.UserControls.Views\FM.SHD.UI.WindowsForms.UserControls.Views.csproj" />
