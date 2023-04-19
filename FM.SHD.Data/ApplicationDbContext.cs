@@ -10,10 +10,10 @@ using FM.SHD.Domain.Currencies;
 using FM.SHD.Domain.Transactions;
 using FM.SHD.Domain.Users;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+
 namespace FM.SHD.Data
 {
-    public partial class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
         private readonly string _connectionString;
 
@@ -47,8 +47,7 @@ namespace FM.SHD.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlite(_connectionString);
+                optionsBuilder.UseSqlite("Data Source="+_connectionString);
             }
         }
 
@@ -231,10 +230,6 @@ namespace FM.SHD.Data
 
                 entity.Property(e => e.Password).IsRequired();
             });
-
-            OnModelCreatingPartial(modelBuilder);
         }
-
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }

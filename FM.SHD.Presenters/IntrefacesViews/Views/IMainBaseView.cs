@@ -13,7 +13,7 @@ namespace FM.SHD.Presenters.IntrefacesViews.Views
         event Action AddingAccount;
         event Action<string> OpeningDataFile;
         event Action<string> CreatingDataFile;
-
+            
         void AddAccountsSummaryUserControl(IUserControlView userControlView);
         void SetAccountsData(IEnumerable<AccountDto> accountDtos);
         void SetViewOnActiveUI();
@@ -22,6 +22,7 @@ namespace FM.SHD.Presenters.IntrefacesViews.Views
         void SetVisibleUserLoginInfo(bool isVisible);
         void ClearAccountsSummaryUserControls();
 
+        bool RequestOnOpenLastFile(string fileName);
         void AddTab(TabPage tabPage);
     }
 }

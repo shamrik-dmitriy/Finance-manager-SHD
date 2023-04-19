@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using FM.SHD.Data;
-using FM.SHD.Domain.Accounts;
 using FM.SHD.Infastructure.Impl.Repositories;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Account;
-using FM.SHD.Infrastructure.Dal;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Plugins.Interfaces;
 using FM.SHD.Presenters.Events.Accounts;
@@ -18,6 +16,7 @@ using FM.SHD.Settings.Services;
 using FM.SHD.Settings.Services.SettingsCollection;
 using FM.SHD.UI.WindowsForms.Presenters;
 using FM.SHDML.Core.Models.Dtos.UIDto;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FM.SHD.Presenters.ViewPresenters
@@ -60,11 +59,12 @@ namespace FM.SHD.Presenters.ViewPresenters
             _baseView.CreatingDataFile += OnCreatingDataFile;
             _baseView.AddingAccount += OnAddingAccount;
 
+
             // Возможно стоит добавить условие приоритета - какие события должны отрабатываться первыми, а какие за ними
             _eventAggregator.Subscribe<OnAddedAccountApplicationEvent>(OnAddedAccount);
             _eventAggregator.Subscribe<OnChangingAccountApplicationEvent>(OnChangingAccount);
             _eventAggregator.Subscribe<OnDeletingAccountApplicationEvent>(OnDeletingAccount);
-            
+
             _eventAggregator.Subscribe<OnReloadAccountsApplicationEvent>(OnReloadAccounts);
         }
 
@@ -97,21 +97,30 @@ namespace FM.SHD.Presenters.ViewPresenters
             var accountPresenter = _serviceProvider.GetRequiredService<AccountPresenter>();
             accountPresenter.Run("Добавить счёт");
         }
-        
+
+        private void CreateApplicationDbContext(string pathToDb)
+        {
+            var applicationDbContext = new ApplicationDbContext(pathToDb);
+            applicationDbContext.Database.Migrate();
+        }
+
         private void OnCreatingDataFile(string filePath)
         {
+            CreateApplicationDbContext(filePath);
+
             var fileName = Path.GetFileName(filePath);
+
             var recentOpenItem = new RecentOpenFilesDto()
             {
                 FileName = fileName,
                 FilePath = filePath
             };
-            
+
             if (!IsFindAndReplaceRecentOpenFile(filePath, fileName, recentOpenItem))
             {
                 RecentOpenFilesDtos.Add(recentOpenItem);
             }
-            
+
             _baseView.AddElementInRecentOpenItems(RecentOpenFilesDtos);
 
             _recentOpenFilesSettings.GetSetting().RecentOpen =
@@ -119,9 +128,8 @@ namespace FM.SHD.Presenters.ViewPresenters
             _recentOpenFilesSettings.Save();
 
             _baseView.SetViewOnActiveUI();
-            CreateConnection(filePath);
         }
-        
+
         private void OnOpeningDataFile(string filePath)
         {
             var fileName = Path.GetFileName(filePath);
@@ -161,7 +169,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             _recentOpenFilesSettings.Save();
 
             _baseView.SetViewOnActiveUI();
-            CreateConnection(filePath);
+            CreateApplicationDbContext(filePath);
         }
 
         private bool IsFindAndReplaceRecentOpenFile(string filePath, string fileName, RecentOpenFilesDto recentOpenItem)
@@ -173,59 +181,39 @@ namespace FM.SHD.Presenters.ViewPresenters
             return true;
         }
 
-        private void CreateConnection(string filePath)
-        {
-            ApplicationDbContext db =
-                new ApplicationDbContext(filePath);
-                                                  
-            db.Accounts.Add(new Account() { Category = new AccountCategory() { Name = "Test" } });
-            db.SaveChangesAsync();
-            
-            
-            _repositoryManager.ConfigureConnection(new ConnectionString(filePath));
-            _repositoryManager.CreateConnection();
-        }
-
         private List<IAccountSummaryUCPresenter> _accountSummaryPresenters;
 
         private void OnLoadBaseView()
         {
-            //try
+            if (LoadListRecentOpenFiles())
             {
-                var isLoad = LoadListRecentOpenFiles();
-
-                if (isLoad)
+                var pathToFile = _recentOpenFilesSettings.GetSetting().RecentOpen.Last().FilePath;
+                if (_baseView.RequestOnOpenLastFile(pathToFile))
                 {
                     _baseView.SetViewOnActiveUI();
-
-                    
-                    CreateConnection(_recentOpenFilesSettings.GetSetting().RecentOpen.Last().FilePath);
+                    CreateApplicationDbContext(pathToFile);
 
                     _accountServices =
                         new AccountServices(new AccountRepository(_repositoryManager), new ModelValidator());
                     SetAccounts();
 
                     _baseView.AddTab(_pluginManager.GetPlugin<ITransactionPlugin>().GetTab());
-                    //_baseView.AddTab(_pluginManager.GetPlugin<ICategoriesPlugin>().GetTab());
+                    _baseView.AddTab(_pluginManager.GetPlugin<ICategoriesPlugin>().GetTab());
                 }
                 else
                 {
                     _baseView.SetViewOnUnActiveUI();
                 }
-
-                _baseView.SetVisibleUserLoginInfo(false);
-
-                /*
-                 * 1. Следует проверить, зашифрован ли открываемый файл.
-                 *  1.1 Если файл зашифрован - вызываем форму логина. После успешного логина  _mainView.SetVisibleUserLoginInfo(true);
-                 *  1.2 Если файл не зашифрован -  _mainView.SetVisibleUserLoginInfo(false);
-                 * 2. Нужно загрузить все данные из файла - добавить методы на загрузку того, что лежит на главной форме - операции, кошельки, информация о пользователе 
-                 */
             }
-            //catch (ArgumentException)
-            {
-                var s = 0;
-            }
+
+            _baseView.SetVisibleUserLoginInfo(false);
+
+            /*
+             * 1. Следует проверить, зашифрован ли открываемый файл.
+             *  1.1 Если файл зашифрован - вызываем форму логина. После успешного логина  _mainView.SetVisibleUserLoginInfo(true);
+             *  1.2 Если файл не зашифрован -  _mainView.SetVisibleUserLoginInfo(false);
+             * 2. Нужно загрузить все данные из файла - добавить методы на загрузку того, что лежит на главной форме - операции, кошельки, информация о пользователе 
+             */
         }
 
         private void OnDeletingAccount(OnDeletingAccountApplicationEvent obj)

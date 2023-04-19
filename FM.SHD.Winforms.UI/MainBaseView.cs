@@ -125,6 +125,14 @@ namespace FM.SHD.Winforms.UI
             accoutsFlowLayoutPanel.Controls.Clear();
         }
 
+        public bool RequestOnOpenLastFile(string fileName)
+        {
+            return MessageBox.Show($"Желаете продолжить работу с базой данных {fileName}?",
+                       "Возобновить работу с ранее открытым файлом?", MessageBoxButtons.YesNo,
+                       MessageBoxIcon.Question) ==
+                   DialogResult.Yes;
+        }
+
         public void AddTab(TabPage tabPage)
         {
             tabControl1.TabPages.Add(tabPage);
@@ -216,7 +224,8 @@ namespace FM.SHD.Winforms.UI
             if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
                 return;
             CreatingDataFile?.Invoke(saveFileDialog.FileName);
-            MessageBox.Show($"Файл {saveFileDialog.FileName} успешно сохранён");
+            MessageBox.Show($"Файл базы данных {saveFileDialog.FileName} успешно создан и сохранён",
+                "Создание базы данных", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
