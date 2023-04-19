@@ -1,11 +1,8 @@
-﻿
-
-#nullable disable
+﻿#nullable disable
 
 using System;
 using FM.SHD.Domain.Accounts;
 using FM.SHD.Domain.Categories;
-using FM.SHD.Domain.Contragents;
 using FM.SHD.Domain.Currencies;
 using FM.SHD.Domain.Transactions;
 using FM.SHD.Domain.Users;
@@ -15,13 +12,13 @@ namespace FM.SHD.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        private readonly string _connectionString;
+        private string _connectionString;
 
-        public ApplicationDbContext(string connectionString)
+        public void SetConnectionString(string pathToDb)
         {
-            _connectionString = connectionString;
+            _connectionString = pathToDb;
         }
-        
+
         public ApplicationDbContext()
         {
         }
@@ -47,7 +44,7 @@ namespace FM.SHD.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlite("Data Source="+_connectionString);
+                optionsBuilder.UseSqlite("Data Source=" + _connectionString);
             }
         }
 

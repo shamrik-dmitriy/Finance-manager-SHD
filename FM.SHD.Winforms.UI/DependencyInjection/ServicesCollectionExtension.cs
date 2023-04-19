@@ -1,3 +1,4 @@
+using FM.SHD.Data;
 using FM.SHD.Infastructure.Impl.Factory;
 using FM.SHD.Infastructure.Impl.Repositories;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Account;
@@ -93,6 +94,7 @@ namespace FM.SHD.Winforms.UI.DependencyInjection
                 serviceCollection)
         {
             return serviceCollection
+                .AddDbContext<ApplicationDbContext>()
                 .AddScoped<ISqliteConnectionFactory, SqliteConnectionFactory>()
                 .AddScoped<IRepositoryManager, RepositoryManager>()
                 .AddTransient<ITransactionRepository, TransactionRepository>()

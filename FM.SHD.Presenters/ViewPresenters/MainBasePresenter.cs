@@ -100,7 +100,8 @@ namespace FM.SHD.Presenters.ViewPresenters
 
         private void CreateApplicationDbContext(string pathToDb)
         {
-            var applicationDbContext = new ApplicationDbContext(pathToDb);
+            var applicationDbContext = _serviceProvider.GetRequiredService<ApplicationDbContext>();
+            applicationDbContext.SetConnectionString(pathToDb);
             applicationDbContext.Database.Migrate();
         }
 
