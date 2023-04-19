@@ -18,24 +18,24 @@ namespace FM.SHD.Services.CategoriesServices
             _categoriesRepository = categoriesRepository;
             _mapper = new MapperConfiguration(config =>
             {
-                config.CreateMap<CategoriesModel, CategoriesDto>();
-                config.CreateMap<CategoriesDto, CategoriesModel>();
+                config.CreateMap<CategoriesModel, CategoryDto>();
+                config.CreateMap<CategoryDto, CategoriesModel>();
             }).CreateMapper();
         }
 
-        public IEnumerable<CategoriesDto> GetAll()
+        public IEnumerable<CategoryDto> GetAll()
         {
-            return _categoriesRepository.GetAll().Select(x => _mapper.Map<CategoriesDto>(x));
+            return _categoriesRepository.GetAll().Select(x => _mapper.Map<CategoryDto>(x));
         }
 
-        public CategoriesDto GetById(int id)
+        public CategoryDto GetById(int id)
         {
-            return _mapper.Map<CategoriesDto>(_categoriesRepository.GetById(id));
+            return _mapper.Map<CategoryDto>(_categoriesRepository.GetById(id));
         }       
         
-        public CategoriesDto GetByName(string name)
+        public CategoryDto GetByName(string name)
         {
-            return _mapper.Map<CategoriesDto>(_categoriesRepository.GetByName(name));
+            return _mapper.Map<CategoryDto>(_categoriesRepository.GetByName(name));
         }
 
         IEnumerable<BaseDto> IBaseCategoryServices.GetAll()

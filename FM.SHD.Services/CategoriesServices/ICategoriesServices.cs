@@ -5,10 +5,10 @@ namespace FM.SHD.Services.CategoriesServices
 {
     public interface ICategoriesServices
     {
-        IEnumerable<CategoriesDto> GetAll();
+        IEnumerable<CategoryDto> GetAll();
         
-        CategoriesDto GetById(int id);
+        CategoryDto GetById(int id);
         
-        CategoriesDto GetByName(string name);
+        CategoryDto GetByName(string name);
     }
 }

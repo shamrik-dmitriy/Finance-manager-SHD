@@ -9,4 +9,9 @@
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\FM.SHD.Plugins.Interfaces\FM.SHD.Plugins.Interfaces.csproj" />
+      <ProjectReference Include="..\FM.SHD.UI.WindowsForms.SharedInterfaces\FM.SHD.UI.WindowsForms.SharedInterfaces.csproj" />
+    </ItemGroup>
+
 </Project>

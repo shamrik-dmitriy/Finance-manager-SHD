@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
+using FM.SHD.Plugin.Categories.WindowsForms.Presenters;
+using FM.SHD.Plugin.Categories.WindowsForms.Views;
 using FM.SHD.Plugins.Interfaces;
+using FM.SHD.UI.WindowsForms.SharedInterfaces.AClasses;
+using FM.SHD.UI.WindowsForms.SharedInterfaces.Categories.Views;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.TabPage;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -46,7 +50,20 @@ namespace FM.SHD.Plugin.Categories
 
         public IServiceCollection AddPluginServices()
         {
-            return _serviceCollection;
+            return _serviceCollection
+                //Views
+                .AddTransient<ICategoryManagementView, CategoryManagementView>()
+                .AddTransient<ACategoriesBasePresenter, CategoryPresenter>()
+                //UserControls
+                .AddTransient<IListAllCategoryUCView, ListAllCategoryUcView>()
+                .AddTransient<IListAllCategoryUCPresenter, IListAllCategoryUCPresenter>()
+                .AddTransient<ICategoryManagementUCView, CategoryManagementUCView>()
+                .AddTransient<ICategoryManagementUCPresenter, CategoryManagementUCPresenter>();
+        }
+
+        public ACategoriesBasePresenter GetPluginPresenter(string pluginPresenterName)
+        {
+            return _serviceProvider.GetRequiredService<ACategoriesBasePresenter>();
         }
     }
 }

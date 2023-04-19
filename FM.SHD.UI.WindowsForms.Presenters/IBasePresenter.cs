@@ -7,6 +7,6 @@ namespace FM.SHD.UI.WindowsForms.Presenters
 
     public interface IBasePresenter<in T>
     {
-        void Run(T transactionDto);
+        void Run(T categoryDto);
     }
 }

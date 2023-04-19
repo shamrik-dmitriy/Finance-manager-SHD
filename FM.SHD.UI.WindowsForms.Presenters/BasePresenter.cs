@@ -26,7 +26,7 @@ namespace FM.SHD.UI.WindowsForms.Presenters
             ManagementView = managementView;
         }
         
-        public abstract void Run(TArg transactionDto);
+        public abstract void Run(TArg categoryDto);
         public abstract void Run(string title, TArg transactionDto = default(TArg));
     }
 }
