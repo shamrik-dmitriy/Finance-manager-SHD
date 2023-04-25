@@ -4,8 +4,8 @@ using System.IO;
 using System.Linq;
 using FM.SHD.Data;
 using FM.SHD.Infastructure.Impl.Repositories;
-using FM.SHD.Infastructure.Impl.Repositories.Specific.Account;
 using FM.SHD.Infrastructure.Events;
+using FM.SHD.Infrastructure.Repositories.Accounts;
 using FM.SHD.Plugins.Interfaces;
 using FM.SHD.Presenters.Events.Accounts;
 using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
@@ -195,7 +195,9 @@ namespace FM.SHD.Presenters.ViewPresenters
                     CreateApplicationDbContext(pathToFile);
 
                     _accountServices =
-                        new AccountServices(new AccountRepository(_repositoryManager), new ModelValidator());
+                        new AccountServices(
+                            new AccountRepository(_serviceProvider.GetRequiredService<ApplicationDbContext>()),
+                            new ModelValidator());
                     SetAccounts();
 
                     _baseView.AddTab(_pluginManager.GetPlugin<ITransactionPlugin>().GetTab());

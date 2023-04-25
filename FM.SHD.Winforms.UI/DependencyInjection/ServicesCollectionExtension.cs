@@ -1,14 +1,14 @@
 using FM.SHD.Data;
 using FM.SHD.Infastructure.Impl.Factory;
 using FM.SHD.Infastructure.Impl.Repositories;
-using FM.SHD.Infastructure.Impl.Repositories.Specific.Account;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Categories;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Contragents;
-using FM.SHD.Infastructure.Impl.Repositories.Specific.Currency;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Identities;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.Transaction;
 using FM.SHD.Infastructure.Impl.Repositories.Specific.TypeTransaction;
 using FM.SHD.Infrastructure.Dal.Factory;
+using FM.SHD.Infrastructure.Repositories.Accounts;
+using FM.SHD.Infrastructure.Repositories.Currency;
 using FM.SHD.Presenters.Interfaces.UserControls.Wallet;
 using FM.SHD.Presenters.IntrefacesViews.UserControl.Wallet;
 using FM.SHD.Presenters.IntrefacesViews.Views;

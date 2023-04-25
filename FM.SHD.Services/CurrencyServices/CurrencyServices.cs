@@ -20,8 +20,8 @@ namespace FM.SHD.Services.CurrencyServices
             _modelValidator = modelValidator;
             _mapper = new MapperConfiguration(config =>
             {
-                config.CreateMap<CurrencyModel, CurrencyDto>();
-                config.CreateMap<CurrencyDto, CurrencyModel>();
+                config.CreateMap<ICurrencyModel, CurrencyDto>();
+                config.CreateMap<CurrencyDto, ICurrencyModel>();
             }).CreateMapper();
         }
 

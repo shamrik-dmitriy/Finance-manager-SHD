@@ -67,6 +67,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FM.SHD.Plugin.Transaction.W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FM.SHD.Data", "FM.SHD.Data\FM.SHD.Data.csproj", "{EB7ED69E-A0FB-4B16-B99C-44AEEF2BC951}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FM.SHD.Infrastructure.Repositories", "FM.SHD.Infrastructure.Repositories\FM.SHD.Infrastructure.Repositories.csproj", "{BB1E38A3-F0BE-4E5A-9B13-36968637BD7D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -165,6 +167,10 @@ Global
 		{EB7ED69E-A0FB-4B16-B99C-44AEEF2BC951}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB7ED69E-A0FB-4B16-B99C-44AEEF2BC951}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB7ED69E-A0FB-4B16-B99C-44AEEF2BC951}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB1E38A3-F0BE-4E5A-9B13-36968637BD7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB1E38A3-F0BE-4E5A-9B13-36968637BD7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB1E38A3-F0BE-4E5A-9B13-36968637BD7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB1E38A3-F0BE-4E5A-9B13-36968637BD7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -196,6 +202,7 @@ Global
 		{1DEA5119-4DC0-4E38-91BE-0DEC3137BD9E} = {6810829E-98AE-4295-B5F4-3318AE0CF8A3}
 		{375B56E2-861B-4DA5-A5A2-036F10B8A208} = {4DDCD87D-F434-4E74-A6E4-00101875FBD8}
 		{EB7ED69E-A0FB-4B16-B99C-44AEEF2BC951} = {62F4F71A-D81C-4804-A1D1-2FC387964DE9}
+		{BB1E38A3-F0BE-4E5A-9B13-36968637BD7D} = {A5AB77FA-53AB-479C-9CEC-11111ECEB8E9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {113471EA-60C2-4820-9880-80921366C122}

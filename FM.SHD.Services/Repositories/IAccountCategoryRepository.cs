@@ -1,5 +1,6 @@
-using System.Collections.Generic;
+using System.Linq;
 using FM.SHDML.Core.Models.Categories.AccountCategory;
+using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Services.Repositories
 {
@@ -8,8 +9,8 @@ namespace FM.SHD.Services.Repositories
         long Add(IAccountCategoryModel accountCategoryModel);
         void Update(IAccountCategoryModel accountCategoryModel);
         void Delete(IAccountCategoryModel accountCategoryModel);
-        void DeleteById(long accountCategoryModel);
-        IEnumerable<IAccountCategoryModel> GetAll();
+        void DeleteById(long accountCategoryId);
+        IQueryable<IAccountCategoryModel> GetAll();
         IAccountCategoryModel GetById(long id);
     }
 }

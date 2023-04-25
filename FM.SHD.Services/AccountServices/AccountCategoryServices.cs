@@ -21,8 +21,8 @@ namespace FM.SHD.Services.AccountServices
             _modelValidator = modelValidator;
             _mapper = new MapperConfiguration(config =>
             {
-                config.CreateMap<AccountCategoryDto, AccountCategoryModel>();
-                config.CreateMap<AccountCategoryModel, AccountCategoryDto>();
+                config.CreateMap<AccountCategoryDto, IAccountCategoryModel>();
+                config.CreateMap<IAccountCategoryModel, AccountCategoryDto>();
             }).CreateMapper();
         }
 

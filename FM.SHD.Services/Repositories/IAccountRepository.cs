@@ -11,6 +11,6 @@ namespace FM.SHD.Services.Repositories
         void DeleteById(long accountModelId);
         IEnumerable<IAccountModel> GetAll();
         AccountModel GetById(long id);
-        bool CheckExist(IAccountModel accountModel);
+        bool CheckExist(AccountModel model);
     }
 }

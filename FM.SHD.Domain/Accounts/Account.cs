@@ -20,8 +20,8 @@ namespace FM.SHD.Domain.Accounts
         public string Description { get; set; }
         public string CurrentSum { get; set; }
         public string InitialSum { get; set; }
-        public byte[] IsClosed { get; set; }
-        public byte[] CurrencyId { get; set; }
+        public bool IsClosed { get; set; }
+        public long CurrencyId { get; set; }
         public long? CategoryId { get; set; }
         public long IdentityId { get; set; }
 

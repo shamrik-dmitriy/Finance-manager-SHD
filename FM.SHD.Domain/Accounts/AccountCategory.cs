@@ -13,7 +13,7 @@ namespace FM.SHD.Domain.Accounts
 
         public long Id { get; set; }
         public string Name { get; set; }
-        public byte[] Description { get; set; }
+        public string Description { get; set; }
 
         public virtual ICollection<Account> Accounts { get; set; }
     }
