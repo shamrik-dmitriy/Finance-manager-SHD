@@ -41,7 +41,7 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.UserControls.ComponentsOfAdditi
             financeInfoOfOperationflowLayoutPanel.Controls.Add((UserControl)userControlView);
         }
 
-        public void AddAccountInfo(ICategoryUCView userControlView)
+        public void AddAccountInfo(ICategoryComboboxUCView userControlView)
         {
             financeInfoOfOperationflowLayoutPanel.Controls.Add((UserControl)userControlView);
         }

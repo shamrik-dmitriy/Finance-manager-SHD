@@ -10,7 +10,7 @@ namespace FM.SHD.UI.WindowsForms.UserControls.Presenters.Category
 
         void SetCategoryValues();
 
-        ICategoryUCView GetUserControlView();
+        ICategoryComboboxUCView GetUserControlView();
 
         void SetText(string text);
         long? GetCategoryId(bool isPossibleNull = false);

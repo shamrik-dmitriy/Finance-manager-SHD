@@ -11,7 +11,7 @@ namespace FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.UserControl
         void SetAccounts(IEnumerable<AccountDto> getAll);
         event Action OnLoadUserControlView;
         void AddDate(IDateTransactionUCView getUserControlView);
-        void AddAccountInfo(ICategoryUCView userControlView);
+        void AddAccountInfo(ICategoryComboboxUCView userControlView);
         void AddSumm(ISumTransactionUCView getUserControlView);
     }
 }

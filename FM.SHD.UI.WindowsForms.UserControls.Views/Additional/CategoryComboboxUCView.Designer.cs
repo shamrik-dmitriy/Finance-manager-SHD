@@ -1,7 +1,7 @@
 ﻿
 namespace FM.SHD.UI.WindowsForms.UserControls.Views.Additional
 {
-    partial class CategoryUCView
+    partial class CategoryComboboxUCView
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -51,13 +51,13 @@ namespace FM.SHD.UI.WindowsForms.UserControls.Views.Additional
             this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBoxCategoryName_SelectedIndexChanged);
             this.categoryComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxCategoryName_Validating);
             // 
-            // CategoryUCView
+            // CategoryComboboxUCView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.categoryComboBox);
             this.Controls.Add(this.label);
-            this.Name = "CategoryUCView";
+            this.Name = "CategoryComboboxUCView";
             this.Size = new System.Drawing.Size(360, 28);
             this.Load += new System.EventHandler(this.CategoryUCView_Load);
             this.ResumeLayout(false);

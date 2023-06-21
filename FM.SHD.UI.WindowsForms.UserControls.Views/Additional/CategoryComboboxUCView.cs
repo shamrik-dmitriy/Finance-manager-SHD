@@ -8,7 +8,7 @@ using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.UI.WindowsForms.UserControls.Views.Additional
 {
-    public partial class CategoryUCView : UserControl, ICategoryUCView
+    public partial class CategoryComboboxUCView : UserControl, ICategoryComboboxUCView
     {
         public string CategoryName
         {
@@ -16,14 +16,14 @@ namespace FM.SHD.UI.WindowsForms.UserControls.Views.Additional
             set => categoryComboBox.Text = value;
         }
 
-        public CategoryUCView()
+        public CategoryComboboxUCView()
         {
             InitializeComponent();
             categoryComboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             categoryComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
-        public CategoryUCView(string labelText) : this()
+        public CategoryComboboxUCView(string labelText) : this()
         {
             label.Text = labelText;
         }

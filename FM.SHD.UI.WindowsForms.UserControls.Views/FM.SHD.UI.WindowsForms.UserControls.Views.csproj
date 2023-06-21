@@ -21,7 +21,7 @@
       <Compile Update="Base\TabPageUCView.cs">
         <SubType>UserControl</SubType>
       </Compile>
-      <Compile Update="Additional\CategoryUCView.cs">
+      <Compile Update="Additional\CategoryComboboxUCView.cs">
         <SubType>UserControl</SubType>
       </Compile>
     </ItemGroup>

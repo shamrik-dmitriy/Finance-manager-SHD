@@ -5,7 +5,7 @@ using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.UI.WindowsForms.UserControls.Presenters.Category
 {
-    public interface ICategoryUCView : IUserControlView
+    public interface ICategoryComboboxUCView : IUserControlView
     {
         #region Events
 

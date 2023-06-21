@@ -20,25 +20,25 @@ namespace FM.SHD.UI.WindowsForms.UserControls.Presenters.Category
         ICategoryUCPresenter<CurrencyServices>
     {
         private readonly T _service;
-        private readonly ICategoryUCView _categoryUcView;
+        private readonly ICategoryComboboxUCView _categoryComboboxUCView;
 
         public CategoryUCPresenter(
             T service,
-            ICategoryUCView categoryUcView)
+            ICategoryComboboxUCView categoryComboboxUCView)
         {
             _service = service;
-            _categoryUcView = categoryUcView;
+            _categoryComboboxUCView = categoryComboboxUCView;
 
-            _categoryUcView.OnLoadUserControlView += CategoryUcViewOnOnLoadUserControlView;
-            _categoryUcView.SelectedIndexChanged += CategoryUcViewOnSelectedIndexChanged;
+            _categoryComboboxUCView.OnLoadUserControlView += CategoryComboboxUCViewOnOnLoadUserControlView;
+            _categoryComboboxUCView.SelectedIndexChanged += CategoryComboboxUCViewOnSelectedIndexChanged;
         }
 
-        private void CategoryUcViewOnSelectedIndexChanged(long id)
+        private void CategoryComboboxUCViewOnSelectedIndexChanged(long id)
         {
             SelectedIndexChanged?.Invoke(id);
         }
 
-        private void CategoryUcViewOnOnLoadUserControlView()
+        private void CategoryComboboxUCViewOnOnLoadUserControlView()
         {
             
         }
@@ -67,62 +67,62 @@ namespace FM.SHD.UI.WindowsForms.UserControls.Presenters.Category
 
         public void SetCategoryValues()
         {
-            _categoryUcView.SetDataSource(((IBaseCategoryServices)_service).GetAll());
+            _categoryComboboxUCView.SetDataSource(((IBaseCategoryServices)_service).GetAll());
         }
 
-        public ICategoryUCView GetUserControlView()
+        public ICategoryComboboxUCView GetUserControlView()
         {
-            return _categoryUcView;
+            return _categoryComboboxUCView;
         }
 
         public void SetText(string text)
         {
-            _categoryUcView.SetLabelText(text);
+            _categoryComboboxUCView.SetLabelText(text);
         }
 
         public long? GetCategoryId(bool isPossibleNull = false)
         {
-            return _categoryUcView.GetCategoryId();
+            return _categoryComboboxUCView.GetCategoryId();
         }      
         
         public BaseDto GetCategoryDto()
         {
-            return _categoryUcView.GetCategoryDto();
+            return _categoryComboboxUCView.GetCategoryDto();
         }
 
         public void SetVisible(bool isVisible)
         {
-            _categoryUcView.SetVisible(isVisible);
+            _categoryComboboxUCView.SetVisible(isVisible);
         }
 
         public void SetStyleDropDownList()
         {
-            _categoryUcView.SetStyleDropDownList();
+            _categoryComboboxUCView.SetStyleDropDownList();
         }
 
         public void SetStyleDropDown()
         {
-            _categoryUcView.SetStyleDropDown();
+            _categoryComboboxUCView.SetStyleDropDown();
         }
 
         void ICategoryUCPresenter<TypeTransactionServices>.SetStyleDropDownList()
         {
-            _categoryUcView.SetStyleDropDownList();
+            _categoryComboboxUCView.SetStyleDropDownList();
         }
 
         void ICategoryUCPresenter<TypeTransactionServices>.SetStyleDropDown()
         {
-            _categoryUcView.SetStyleDropDown();
+            _categoryComboboxUCView.SetStyleDropDown();
         }
 
         void ICategoryUCPresenter<AccountServices>.SetStyleDropDownList()
         {
-            _categoryUcView.SetStyleDropDownList();
+            _categoryComboboxUCView.SetStyleDropDownList();
         }
 
         void ICategoryUCPresenter<AccountServices>.SetStyleDropDown()
         {
-            _categoryUcView.SetStyleDropDown();
+            _categoryComboboxUCView.SetStyleDropDown();
         }
     }
 }

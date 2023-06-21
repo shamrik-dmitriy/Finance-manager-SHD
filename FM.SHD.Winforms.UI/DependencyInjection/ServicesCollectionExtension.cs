@@ -76,7 +76,7 @@ namespace FM.SHD.Winforms.UI.DependencyInjection
                 .AddTransient<ICategoryUCPresenter<ContragentServices>, CategoryUCPresenter<IContragentServices>>()
                 .AddTransient<ICategoryUCPresenter<IdentityServices>, CategoryUCPresenter<IIdentityServices>>()
                 .AddTransient<ICategoryUCPresenter<CurrencyServices>, CategoryUCPresenter<ICurrencyServices>>()
-                .AddTransient<ICategoryUCView, CategoryUCView>()
+                .AddTransient<ICategoryComboboxUCView, CategoryComboboxUCView>()
                 .AddTransient<IContinueCancelButtonsUcView, ContinueCancelButtonsUcView>()
                 .AddTransient<IContinueCancelButtonsUCPresenter, ContinueCancelButtonsUCPresenter>()
                 .AddTransient<ILabelTextBoxUCView, LabelTextBoxUCView>()
