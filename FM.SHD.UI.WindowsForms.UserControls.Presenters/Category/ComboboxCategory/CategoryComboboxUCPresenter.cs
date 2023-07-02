@@ -8,21 +8,21 @@ using FM.SHD.Services.CurrencyServices;
 using FM.SHD.Services.IdentityServices;
 using FM.SHDML.Core.Models.Dtos;
 
-namespace FM.SHD.UI.WindowsForms.UserControls.Presenters.Category
+namespace FM.SHD.UI.WindowsForms.UserControls.Presenters.Category.ComboboxCategory
 {
-    public class CategoryUCPresenter<T> :
-        ICategoryUCPresenter<AccountServices>,
-        ICategoryUCPresenter<AccountCategoryServices>,
-        ICategoryUCPresenter<TypeTransactionServices>,
-        ICategoryUCPresenter<CategoriesServices>,
-        ICategoryUCPresenter<IdentityServices>,
-        ICategoryUCPresenter<ContragentServices>,
-        ICategoryUCPresenter<CurrencyServices>
+    public class CategoryComboboxUCPresenter<T> :
+        ICategoryComboboxUCPresenter<AccountServices>,
+        ICategoryComboboxUCPresenter<AccountCategoryServices>,
+        ICategoryComboboxUCPresenter<TypeTransactionServices>,
+        ICategoryComboboxUCPresenter<CategoriesServices>,
+        ICategoryComboboxUCPresenter<IdentityServices>,
+        ICategoryComboboxUCPresenter<ContragentServices>,
+        ICategoryComboboxUCPresenter<CurrencyServices>
     {
         private readonly T _service;
         private readonly ICategoryComboboxUCView _categoryComboboxUCView;
 
-        public CategoryUCPresenter(
+        public CategoryComboboxUCPresenter(
             T service,
             ICategoryComboboxUCView categoryComboboxUCView)
         {
@@ -45,19 +45,19 @@ namespace FM.SHD.UI.WindowsForms.UserControls.Presenters.Category
 
         private event Action<long> SelectedIndexChanged;
 
-        event Action<long> ICategoryUCPresenter<AccountServices>.CategoryChanged
+        event Action<long> ICategoryComboboxUCPresenter<AccountServices>.CategoryChanged
         {
             add => SelectedIndexChanged += value;
             remove => SelectedIndexChanged -= value;
         }   
         
-        event Action<long> ICategoryUCPresenter<CurrencyServices>.CategoryChanged
+        event Action<long> ICategoryComboboxUCPresenter<CurrencyServices>.CategoryChanged
         {
             add => SelectedIndexChanged += value;
             remove => SelectedIndexChanged -= value;
         }
 
-        event Action<long> ICategoryUCPresenter<TypeTransactionServices>.CategoryChanged
+        event Action<long> ICategoryComboboxUCPresenter<TypeTransactionServices>.CategoryChanged
         {
             add => SelectedIndexChanged += value;
             remove => SelectedIndexChanged -= value;
@@ -105,22 +105,22 @@ namespace FM.SHD.UI.WindowsForms.UserControls.Presenters.Category
             _categoryComboboxUCView.SetStyleDropDown();
         }
 
-        void ICategoryUCPresenter<TypeTransactionServices>.SetStyleDropDownList()
+        void ICategoryComboboxUCPresenter<TypeTransactionServices>.SetStyleDropDownList()
         {
             _categoryComboboxUCView.SetStyleDropDownList();
         }
 
-        void ICategoryUCPresenter<TypeTransactionServices>.SetStyleDropDown()
+        void ICategoryComboboxUCPresenter<TypeTransactionServices>.SetStyleDropDown()
         {
             _categoryComboboxUCView.SetStyleDropDown();
         }
 
-        void ICategoryUCPresenter<AccountServices>.SetStyleDropDownList()
+        void ICategoryComboboxUCPresenter<AccountServices>.SetStyleDropDownList()
         {
             _categoryComboboxUCView.SetStyleDropDownList();
         }
 
-        void ICategoryUCPresenter<AccountServices>.SetStyleDropDown()
+        void ICategoryComboboxUCPresenter<AccountServices>.SetStyleDropDown()
         {
             _categoryComboboxUCView.SetStyleDropDown();
         }

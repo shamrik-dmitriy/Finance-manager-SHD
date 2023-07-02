@@ -53,12 +53,12 @@ namespace FM.SHD.Plugin.Categories
             return _serviceCollection
                 //Views
                 .AddTransient<ICategoryManagementView, CategoryManagementView>()
-                .AddTransient<ACategoriesBasePresenter, CategoryPresenter>()
-                //UserControls
-                .AddTransient<IListAllCategoryUCView, ListAllCategoryUcView>()
-                .AddTransient<IListAllCategoryUCPresenter, IListAllCategoryUCPresenter>()
-                .AddTransient<ICategoryManagementUCView, CategoryManagementUCView>()
-                .AddTransient<ICategoryManagementUCPresenter, CategoryManagementUCPresenter>();
+                .AddTransient<ACategoriesBasePresenter, CategoryPresenter>();
+            //UserControls
+            /* .AddTransient<IListAllCategoryUCView, ListAllCategoryUcView>()
+             .AddTransient<IListAllCategoryUCPresenter, IListAllCategoryUCPresenter>()
+             .AddTransient<ICategoryManagementUCView, CategoryManagementUCView>()
+             .AddTransient<ICategoryManagementUCPresenter, CategoryManagementUCPresenter>();*/
         }
 
         public ACategoriesBasePresenter GetPluginPresenter(string pluginPresenterName)

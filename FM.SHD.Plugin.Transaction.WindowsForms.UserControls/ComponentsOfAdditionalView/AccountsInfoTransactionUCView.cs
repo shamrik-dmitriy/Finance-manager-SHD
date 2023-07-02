@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.UserControl;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category.ComboboxCategory;
 using FM.SHDML.Core.Models.Dtos;
 
 namespace FM.SHD.Plugin.Transaction.WindowsForms.UserControls.ComponentsOfAdditionalView

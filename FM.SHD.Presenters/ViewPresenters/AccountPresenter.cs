@@ -5,6 +5,7 @@ using FM.SHD.Presenters.IntrefacesViews.Views;
 using FM.SHD.Services.AccountServices;
 using FM.SHD.Services.CurrencyServices;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category.ComboboxCategory;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Checkbox;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.ContinueCancelButtons;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Description;
@@ -24,8 +25,8 @@ namespace FM.SHD.Presenters.ViewPresenters
         private readonly INameUCPresenter _nameUcPresenter;
         private readonly IDescriptionUCPresenter _descriptionUcPresenter;
         private readonly ILabelTextboxUcPresenter _labelTextboxUcPresenter;
-        private readonly ICategoryUCPresenter<AccountCategoryServices> _accountUcPresenter;
-        private readonly ICategoryUCPresenter<CurrencyServices> _currencyUcPresenter;
+        private readonly ICategoryComboboxUCPresenter<AccountCategoryServices> _accountComboboxUCPresenter;
+        private readonly ICategoryComboboxUCPresenter<CurrencyServices> _currencyComboboxUCPresenter;
         private readonly ICheckboxUCPresenter _checkboxUcPresenter;
         private readonly IContinueCancelButtonsUCPresenter _dataControlButtonsUcPresenter;
 
@@ -40,8 +41,8 @@ namespace FM.SHD.Presenters.ViewPresenters
             INameUCPresenter nameUcPresenter,
             IDescriptionUCPresenter descriptionUcPresenter,
             ILabelTextboxUcPresenter labelTextboxUcPresenter,
-            ICategoryUCPresenter<AccountCategoryServices> accountUcPresenter,
-            ICategoryUCPresenter<CurrencyServices> currencyUcPresenter,
+            ICategoryComboboxUCPresenter<AccountCategoryServices> accountComboboxUCPresenter,
+            ICategoryComboboxUCPresenter<CurrencyServices> currencyComboboxUCPresenter,
             ICheckboxUCPresenter checkboxUcPresenter,
             IContinueCancelButtonsUCPresenter dataControlButtonsUcPresenter
         )
@@ -53,8 +54,8 @@ namespace FM.SHD.Presenters.ViewPresenters
             _nameUcPresenter = nameUcPresenter;
             _descriptionUcPresenter = descriptionUcPresenter;
             _labelTextboxUcPresenter = labelTextboxUcPresenter;
-            _accountUcPresenter = accountUcPresenter;
-            _currencyUcPresenter = currencyUcPresenter;
+            _accountComboboxUCPresenter = accountComboboxUCPresenter;
+            _currencyComboboxUCPresenter = currencyComboboxUCPresenter;
             _checkboxUcPresenter = checkboxUcPresenter;
             _dataControlButtonsUcPresenter = dataControlButtonsUcPresenter;
 
@@ -73,8 +74,8 @@ namespace FM.SHD.Presenters.ViewPresenters
         private void OnLoadBaseView()
         {
             _labelTextboxUcPresenter.SetText("Начальная сумма");
-            _accountUcPresenter.SetText("Категория счёта");
-            _currencyUcPresenter.SetText("Валюта");
+            _accountComboboxUCPresenter.SetText("Категория счёта");
+            _currencyComboboxUCPresenter.SetText("Валюта");
             _checkboxUcPresenter.SetText("Закрытый счёт");
 
             if (AccountDto != null)
@@ -88,14 +89,15 @@ namespace FM.SHD.Presenters.ViewPresenters
                 _baseView.AddUserControl(_labelTextboxUcPresenter.GetUserControlView());
                 _labelTextboxUcPresenter.SetValue(AccountDto.InitialSum.ToString());
 
-                _accountUcPresenter.SetCategoryValues();
-                _baseView.AddUserControl(_accountUcPresenter.GetUserControlView());
-                _accountUcPresenter.GetUserControlView().SetCategoryId(AccountDto.CategoryId);
+                _accountComboboxUCPresenter.SetCategoryValues();
+                _baseView.AddUserControl(_accountComboboxUCPresenter.GetUserControlView());
+                _accountComboboxUCPresenter.GetUserControlView().SetCategoryId(AccountDto.CategoryId);
 
-                _currencyUcPresenter.SetCategoryValues();
-                _currencyUcPresenter.SetStyleDropDownList();
-                _baseView.AddUserControl(_currencyUcPresenter.GetUserControlView());
-                _currencyUcPresenter.GetUserControlView().SetCategoryId(AccountDto.CurrencyId);
+
+                _currencyComboboxUCPresenter.SetCategoryValues();
+                _currencyComboboxUCPresenter.SetStyleDropDownList();
+                _baseView.AddUserControl(_currencyComboboxUCPresenter.GetUserControlView());
+                _currencyComboboxUCPresenter.GetUserControlView().SetCategoryId(AccountDto.CurrencyId);
 
                 _checkboxUcPresenter.GetUserControlView().SetCheckboxState(AccountDto.IsClosed);
                 _baseView.AddUserControl(_checkboxUcPresenter.GetUserControlView());
@@ -107,11 +109,11 @@ namespace FM.SHD.Presenters.ViewPresenters
                 _baseView.AddUserControl(_nameUcPresenter.GetUserControlView());
                 _baseView.AddUserControl(_descriptionUcPresenter.GetUserControlView());
                 _baseView.AddUserControl(_labelTextboxUcPresenter.GetUserControlView());
-                _accountUcPresenter.SetCategoryValues();
-                _baseView.AddUserControl(_accountUcPresenter.GetUserControlView());
-                _currencyUcPresenter.SetStyleDropDownList();
-                _currencyUcPresenter.SetCategoryValues();
-                _baseView.AddUserControl(_currencyUcPresenter.GetUserControlView());
+                _accountComboboxUCPresenter.SetCategoryValues();
+                _baseView.AddUserControl(_accountComboboxUCPresenter.GetUserControlView());
+                _currencyComboboxUCPresenter.SetStyleDropDownList();
+                _currencyComboboxUCPresenter.SetCategoryValues();
+                _baseView.AddUserControl(_currencyComboboxUCPresenter.GetUserControlView());
                 _baseView.AddUserControl(_checkboxUcPresenter.GetUserControlView());
                 _dataControlButtonsUcPresenter.SetVisibleButtonDelete(false);
                 _baseView.AddUserControl(_dataControlButtonsUcPresenter.GetUserControlView());
@@ -119,7 +121,7 @@ namespace FM.SHD.Presenters.ViewPresenters
 
             _dataControlButtonsUcPresenter.Continue += DataControlButtonsUcPresenterOnContinue;
             _dataControlButtonsUcPresenter.Delete += DataControlsButtonsUcPresenterOnDelete;
-            _currencyUcPresenter.CategoryChanged += CurrencyUcPresenterOnCategoryChanged;
+            _currencyComboboxUCPresenter.CategoryChanged += CurrencyComboboxUCPresenterOnCategoryChanged;
         }
 
         private void DataControlsButtonsUcPresenterOnDelete()
@@ -132,7 +134,7 @@ namespace FM.SHD.Presenters.ViewPresenters
             }
         }
 
-        private void CurrencyUcPresenterOnCategoryChanged(long id)
+        private void CurrencyComboboxUCPresenterOnCategoryChanged(long id)
         {
         }
 
@@ -143,8 +145,8 @@ namespace FM.SHD.Presenters.ViewPresenters
                 AccountDto.Name = _nameUcPresenter.GetName();
                 AccountDto.Description = _descriptionUcPresenter.GetDescription();
                 AccountDto.InitialSum = Convert.ToDecimal(_labelTextboxUcPresenter.GetTextBoxValue());
-                AccountDto.CurrencyId = ((CurrencyDto)_currencyUcPresenter.GetCategoryDto()).Id;
-                AccountDto.CategoryId = ((AccountCategoryDto)_accountUcPresenter.GetCategoryDto()).Id;
+                AccountDto.CurrencyId = ((CurrencyDto)_currencyComboboxUCPresenter.GetCategoryDto()).Id;
+                AccountDto.CategoryId = ((AccountCategoryDto)_accountComboboxUCPresenter.GetCategoryDto()).Id;
                 AccountDto.IdentityId = 1;
                 AccountDto.IsClosed = Convert.ToBoolean(_checkboxUcPresenter.GetCheckboxState());
                 _accountServices.Update(AccountDto);
@@ -157,8 +159,8 @@ namespace FM.SHD.Presenters.ViewPresenters
                     Name = _nameUcPresenter.GetName(),
                     Description = _descriptionUcPresenter.GetDescription(),
                     InitialSum = Convert.ToDecimal(_labelTextboxUcPresenter.GetTextBoxValue()),
-                    CurrencyId = _currencyUcPresenter.GetCategoryId(),
-                    CategoryId = _accountUcPresenter.GetCategoryId(),
+                    CurrencyId = _currencyComboboxUCPresenter.GetCategoryId(),
+                    CategoryId = _accountComboboxUCPresenter.GetCategoryId(),
                     IdentityId = 1,
                     IsClosed = Convert.ToBoolean(_checkboxUcPresenter.GetCheckboxState())
                 });
@@ -167,7 +169,7 @@ namespace FM.SHD.Presenters.ViewPresenters
 
             _dataControlButtonsUcPresenter.Continue -= DataControlButtonsUcPresenterOnContinue;
             _dataControlButtonsUcPresenter.Delete -= DataControlsButtonsUcPresenterOnDelete;
-            _currencyUcPresenter.CategoryChanged -= CurrencyUcPresenterOnCategoryChanged;
+            _currencyComboboxUCPresenter.CategoryChanged -= CurrencyComboboxUCPresenterOnCategoryChanged;
 
             _baseView.Close();
         }

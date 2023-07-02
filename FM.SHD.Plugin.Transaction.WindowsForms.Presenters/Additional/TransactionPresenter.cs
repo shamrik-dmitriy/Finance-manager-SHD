@@ -9,6 +9,8 @@ using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.AClasses;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Presenters;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Views;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category.ComboboxCategory;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category.ToolStripDropDownButtonCategory;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.ContinueCancelButtons;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Description;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Name;
@@ -23,13 +25,13 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional
 
         #region Private member variables
 
-        private readonly ICategoryUCPresenter<TypeTransactionServices> _typeTransactionUcPresenter;
+        private readonly ICategoryComboboxUCPresenter<TypeTransactionServices> _typeTransactionComboboxUCPresenter;
         private readonly INameUCPresenter _nameUcPresenter;
         private readonly IDescriptionUCPresenter _descriptionUcPresenter;
         private readonly IAccountsInfoTransactionUCPresenter _accountsInfoTransactionUcPresenter;
-        private readonly ICategoryUCPresenter<CategoriesServices> _categoriesUcPresenter;
-        private readonly ICategoryUCPresenter<ContragentServices> _contrAgentUcPresenter;
-        private readonly ICategoryUCPresenter<IdentityServices> _identityUcPresenter;
+        private readonly ICategoryToolStripUCPresenter<CategoriesServices> _categoriesToolStripUCPresenter;
+        private readonly ICategoryComboboxUCPresenter<ContragentServices> _contrAgentComboboxUCPresenter;
+        private readonly ICategoryComboboxUCPresenter<IdentityServices> _identityComboboxUCPresenter;
         private readonly IContinueCancelButtonsUCPresenter _continueCancelButtonUcPresenter;
 
         #endregion
@@ -39,30 +41,30 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional
         public TransactionPresenter(
             EventAggregator eventAggregator,
             ITransactionManagementView managementView,
-            ICategoryUCPresenter<TypeTransactionServices> typeTransactionUcPresenter,
+            ICategoryComboboxUCPresenter<TypeTransactionServices> typeTransactionComboboxUCPresenter,
             INameUCPresenter nameUcPresenter,
             IDescriptionUCPresenter descriptionUcPresenter,
             IAccountsInfoTransactionUCPresenter accountsInfoTransactionUcPresenter,
-            ICategoryUCPresenter<CategoriesServices> categoriesUcPresenter,
-            ICategoryUCPresenter<ContragentServices> contrAgentUcPresenter,
-            ICategoryUCPresenter<IdentityServices> identityUcPresenter,
+            ICategoryToolStripUCPresenter<CategoriesServices> categoriesToolStripUCPresenter,
+            ICategoryComboboxUCPresenter<ContragentServices> contrAgentComboboxUCPresenter,
+            ICategoryComboboxUCPresenter<IdentityServices> identityComboboxUCPresenter,
             IContinueCancelButtonsUCPresenter continueCancelButtonUcPresenter)
             : base(managementView)
         {
             _eventAggregator = eventAggregator;
             _managementView = managementView;
 
-            _typeTransactionUcPresenter = typeTransactionUcPresenter;
+            _typeTransactionComboboxUCPresenter = typeTransactionComboboxUCPresenter;
             _nameUcPresenter = nameUcPresenter;
             _descriptionUcPresenter = descriptionUcPresenter;
             _accountsInfoTransactionUcPresenter = accountsInfoTransactionUcPresenter;
-            _categoriesUcPresenter = categoriesUcPresenter;
-            _contrAgentUcPresenter = contrAgentUcPresenter;
-            _identityUcPresenter = identityUcPresenter;
+            _categoriesToolStripUCPresenter = categoriesToolStripUCPresenter;
+            _contrAgentComboboxUCPresenter = contrAgentComboboxUCPresenter;
+            _identityComboboxUCPresenter = identityComboboxUCPresenter;
             _continueCancelButtonUcPresenter = continueCancelButtonUcPresenter;
 
             _managementView.OnLoadView += OnLoadManagementView;
-            _typeTransactionUcPresenter.CategoryChanged += TypeTransactionUcPresenterOnCategoryChanged;
+            _typeTransactionComboboxUCPresenter.CategoryChanged += TypeTransactionComboboxUCPresenterOnCategoryChanged;
         }
 
         ~TransactionPresenter()
@@ -97,25 +99,25 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional
 
         #region Private methods
 
-        private void TypeTransactionUcPresenterOnCategoryChanged(long id)
+        private void TypeTransactionComboboxUCPresenterOnCategoryChanged(long id)
         {
             _accountsInfoTransactionUcPresenter.CategoryChanged(id);
         }
 
         private void OnLoadManagementView()
         {
-            _typeTransactionUcPresenter.SetText("Тип транзакции");
-            _categoriesUcPresenter.SetText("Категория");
-            _contrAgentUcPresenter.SetText("Контрагент");
-            _identityUcPresenter.SetText("Член семьи");
+            _typeTransactionComboboxUCPresenter.SetText("Тип транзакции");
+            _categoriesToolStripUCPresenter.SetText("Категория");
+            _contrAgentComboboxUCPresenter.SetText("Контрагент");
+            _identityComboboxUCPresenter.SetText("Член семьи");
             _managementView.Clear();
 
             if (TransactionDto != null)
             {
-                _typeTransactionUcPresenter.SetCategoryValues();
-                _typeTransactionUcPresenter.SetStyleDropDownList();
-                _managementView.AddUserControl(_typeTransactionUcPresenter.GetUserControlView());
-                _typeTransactionUcPresenter.GetUserControlView().SetCategoryId(TransactionDto.TypeTransactionId);
+                _typeTransactionComboboxUCPresenter.SetCategoryValues();
+                _typeTransactionComboboxUCPresenter.SetStyleDropDownList();
+                _managementView.AddUserControl(_typeTransactionComboboxUCPresenter.GetUserControlView());
+                _typeTransactionComboboxUCPresenter.GetUserControlView().SetCategoryId(TransactionDto.TypeTransactionId);
 
                 _managementView.AddUserControl(_nameUcPresenter.GetUserControlView());
                 _nameUcPresenter.GetUserControlView().SetName(TransactionDto.Name);
@@ -132,20 +134,19 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional
                 _accountsInfoTransactionUcPresenter.SetDebitAccountId(TransactionDto.DebitAccountId);
                 _managementView.AddHorizontalLine();
 
-                _categoriesUcPresenter.SetStyleDropDown();
-                _categoriesUcPresenter.SetCategoryValues();
-                _managementView.AddUserControl(_categoriesUcPresenter.GetUserControlView());
-                _categoriesUcPresenter.GetUserControlView().SetCategoryId(TransactionDto.CategoryId);
+                _categoriesToolStripUCPresenter.SetCategoryValues();
+                _managementView.AddUserControl(_categoriesToolStripUCPresenter.GetUserControlView());
+                _categoriesToolStripUCPresenter.GetUserControlView().SetCategoryId(TransactionDto.CategoryId);
 
-                _contrAgentUcPresenter.SetStyleDropDown();
-                _contrAgentUcPresenter.SetCategoryValues();
-                _managementView.AddUserControl(_contrAgentUcPresenter.GetUserControlView());
-                _contrAgentUcPresenter.GetUserControlView().SetCategoryId(TransactionDto.ContragentId);
+                _contrAgentComboboxUCPresenter.SetStyleDropDown();
+                _contrAgentComboboxUCPresenter.SetCategoryValues();
+                _managementView.AddUserControl(_contrAgentComboboxUCPresenter.GetUserControlView());
+                _contrAgentComboboxUCPresenter.GetUserControlView().SetCategoryId(TransactionDto.ContragentId);
 
-                _identityUcPresenter.SetStyleDropDown();
-                _identityUcPresenter.SetCategoryValues();
-                _managementView.AddUserControl(_identityUcPresenter.GetUserControlView());
-                _identityUcPresenter.GetUserControlView().SetCategoryId(TransactionDto.IdentityId);
+                _identityComboboxUCPresenter.SetStyleDropDown();
+                _identityComboboxUCPresenter.SetCategoryValues();
+                _managementView.AddUserControl(_identityComboboxUCPresenter.GetUserControlView());
+                _identityComboboxUCPresenter.GetUserControlView().SetCategoryId(TransactionDto.IdentityId);
 
                 _managementView.AddHorizontalLine();
                 _continueCancelButtonUcPresenter.SetTextButtonContinue("Применить");
@@ -154,9 +155,9 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional
             }
             else
             {
-                _typeTransactionUcPresenter.SetCategoryValues();
-                _typeTransactionUcPresenter.SetStyleDropDownList();
-                _managementView.AddUserControl(_typeTransactionUcPresenter.GetUserControlView());
+                _typeTransactionComboboxUCPresenter.SetCategoryValues();
+                _typeTransactionComboboxUCPresenter.SetStyleDropDownList();
+                _managementView.AddUserControl(_typeTransactionComboboxUCPresenter.GetUserControlView());
 
                 _managementView.AddUserControl(_nameUcPresenter.GetUserControlView());
                 _managementView.AddUserControl(_descriptionUcPresenter
@@ -167,17 +168,16 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional
                     .GetUserControlView());
                 _managementView.AddHorizontalLine();
 
-                _categoriesUcPresenter.SetStyleDropDown();
-                _categoriesUcPresenter.SetCategoryValues();
-                _managementView.AddUserControl(_categoriesUcPresenter.GetUserControlView());
+                _categoriesToolStripUCPresenter.SetCategoryValues();
+                _managementView.AddUserControl(_categoriesToolStripUCPresenter.GetUserControlView());
 
-                _contrAgentUcPresenter.SetStyleDropDown();
-                _contrAgentUcPresenter.SetCategoryValues();
-                _managementView.AddUserControl(_contrAgentUcPresenter.GetUserControlView());
+                _contrAgentComboboxUCPresenter.SetStyleDropDown();
+                _contrAgentComboboxUCPresenter.SetCategoryValues();
+                _managementView.AddUserControl(_contrAgentComboboxUCPresenter.GetUserControlView());
 
-                _identityUcPresenter.SetStyleDropDown();
-                _identityUcPresenter.SetCategoryValues();
-                _managementView.AddUserControl(_identityUcPresenter.GetUserControlView());
+                _identityComboboxUCPresenter.SetStyleDropDown();
+                _identityComboboxUCPresenter.SetCategoryValues();
+                _managementView.AddUserControl(_identityComboboxUCPresenter.GetUserControlView());
 
                 _managementView.AddHorizontalLine();
                 _continueCancelButtonUcPresenter.SetVisibleButtonDelete(false);
@@ -205,7 +205,7 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional
         {
             if (TransactionDto != null)
             {
-                TransactionDto.TypeTransactionId = _typeTransactionUcPresenter.GetCategoryId();
+                TransactionDto.TypeTransactionId = _typeTransactionComboboxUCPresenter.GetCategoryId();
                 TransactionDto.Name = _nameUcPresenter.GetName();
                 TransactionDto.Description = _descriptionUcPresenter.GetDescription();
 
@@ -233,16 +233,16 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional
 
                 TransactionDto.Sum = _accountsInfoTransactionUcPresenter.GetSum();
                 TransactionDto.Date = _accountsInfoTransactionUcPresenter.GetDate();
-                TransactionDto.CategoryId = _categoriesUcPresenter.GetCategoryId();
-                TransactionDto.ContragentId = _contrAgentUcPresenter.GetCategoryId();
-                TransactionDto.IdentityId = _identityUcPresenter.GetCategoryId();
+                TransactionDto.CategoryId = _categoriesToolStripUCPresenter.GetCategoryId();
+                TransactionDto.ContragentId = _contrAgentComboboxUCPresenter.GetCategoryId();
+                TransactionDto.IdentityId = _identityComboboxUCPresenter.GetCategoryId();
 
                 _eventAggregator.Publish(new OnUpdateTransactionApplicationEvent(TransactionDto));
             }
             else
             {
                 var transactionDto = new TransactionDto();
-                var typeTransaction = _typeTransactionUcPresenter.GetCategoryId();
+                var typeTransaction = _typeTransactionComboboxUCPresenter.GetCategoryId();
                 switch (typeTransaction)
                 {
                     case 1:
@@ -273,9 +273,9 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional
                 transactionDto.Description = _descriptionUcPresenter.GetDescription();
                 transactionDto.Sum = _accountsInfoTransactionUcPresenter.GetSum();
                 transactionDto.Date = _accountsInfoTransactionUcPresenter.GetDate();
-                transactionDto.CategoryId = _categoriesUcPresenter.GetCategoryId();
-                transactionDto.ContragentId = _contrAgentUcPresenter.GetCategoryId();
-                transactionDto.IdentityId = _identityUcPresenter.GetCategoryId();
+                transactionDto.CategoryId = _categoriesToolStripUCPresenter.GetCategoryId();
+                transactionDto.ContragentId = _contrAgentComboboxUCPresenter.GetCategoryId();
+                transactionDto.IdentityId = _identityComboboxUCPresenter.GetCategoryId();
 
                 _eventAggregator.Publish(new OnAddedTransactionApplicationEvent(transactionDto));
             }

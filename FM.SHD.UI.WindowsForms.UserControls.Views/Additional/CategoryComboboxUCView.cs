@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category.ComboboxCategory;
 using FM.SHD.UI.WindowsForms.UserControls.Views.Extensions;
 using FM.SHDML.Core.Models.Dtos;
 

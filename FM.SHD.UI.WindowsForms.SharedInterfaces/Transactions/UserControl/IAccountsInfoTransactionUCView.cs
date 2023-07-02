@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category.ComboboxCategory;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.UIInterfaces;
 using FM.SHDML.Core.Models.Dtos;
 

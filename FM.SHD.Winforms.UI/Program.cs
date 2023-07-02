@@ -13,7 +13,7 @@ using FM.SHD.Presenters.ViewPresenters;
 using FM.SHD.Services.CommonServices;
 using FM.SHD.Settings.Services;
 using FM.SHD.Settings.Services.SettingsCollection;
-using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category.Events;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category.ComboboxCategory.Events;
 using FM.SHD.Winforms.UI.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

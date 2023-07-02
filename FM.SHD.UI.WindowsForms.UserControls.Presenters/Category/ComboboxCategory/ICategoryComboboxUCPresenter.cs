@@ -2,9 +2,9 @@ using System;
 using FM.SHD.Services.CommonServices;
 using FM.SHDML.Core.Models.Dtos;
 
-namespace FM.SHD.UI.WindowsForms.UserControls.Presenters.Category
+namespace FM.SHD.UI.WindowsForms.UserControls.Presenters.Category.ComboboxCategory
 {
-    public interface ICategoryUCPresenter<T> where T : IBaseCategoryServices
+    public interface ICategoryComboboxUCPresenter<T> where T : IBaseCategoryServices
     {
         event Action<long> CategoryChanged;
 
@@ -15,7 +15,6 @@ namespace FM.SHD.UI.WindowsForms.UserControls.Presenters.Category
         void SetText(string text);
         long? GetCategoryId(bool isPossibleNull = false);
         BaseDto GetCategoryDto();
-
         void SetVisible(bool isVisible);
 
         #region DropDown styles

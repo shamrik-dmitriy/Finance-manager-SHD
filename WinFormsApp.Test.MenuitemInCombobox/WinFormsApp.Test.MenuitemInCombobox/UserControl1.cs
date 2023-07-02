@@ -58,50 +58,57 @@ namespace WinFormsApp.Test.MenuitemInCombobox
                     {
                         new Category()
                         {
+                            Id = 1,
                             Name = "1",
                             Categories = new List<Category>()
                             {
                                 new Category()
                                 {
+                                    Id = 2,
                                     Name = "2", Categories = new List<Category>()
                                     {
-                                        new Category() { Name = "3" },
-                                        new Category() { Name = "4" },
-                                        new Category() { Name = "5" },
+                                        new Category() { Id = 3, Name = "3" },
+                                        new Category() { Id = 4, Name = "4" },
+                                        new Category() { Id = 5, Name = "5" },
                                         new Category()
                                         {
+                                            Id = 6,
                                             Name = "6", Categories = new List<Category>()
                                             {
-                                                new Category() { Name = "8" },
-                                                new Category() { Name = "9" },
+                                                new Category() { Id = 8, Name = "8" },
+                                                new Category() { Id = 9, Name = "9" },
                                             }
                                         },
-                                        new Category() { Name = "7" }
+                                        new Category() { Id = 7, Name = "7" }
                                     }
                                 }
                             }
                         },
                         new Category()
                         {
+                            Id = 10,
                             Name = "1",
-                            Categories = new List<Category>() { new Category() { Name = "2" } }
+                            Categories = new List<Category>() { new Category() {Id = 11, Name = "2" } }
                         },
                         new Category()
                         {
+                            Id = 12,
                             Name = "Sub2",
-                            Categories = new List<Category>() { new Category() { Name = "SubSub2" } }
+                            Categories = new List<Category>() { new Category() { Id = 13, Name = "SubSub2" } }
                         }
                     }
             },
             new Category()
             {
+                Id = 14,
                 Name = "Second",
                 Categories = new List<Category>()
                 {
                     new Category()
                     {
+                        Id = 15,
                         Name = "SubSecond",
-                        Categories = new List<Category>() { new Category() { Name = "SubSubSecond" } }
+                        Categories = new List<Category>() { new Category() { Id = 16, Name = "SubSubSecond" } }
                     }
                 }
             }
@@ -117,7 +124,7 @@ namespace WinFormsApp.Test.MenuitemInCombobox
                     //Поместить в тег какую-либо служебную информацию 
                     //для идентификации элемента меню
                     //(для поиска в БД)
-                    Tag = ""
+                    Tag = category.Id
                 };
                 
                 cat.Click += CategoryClick;
@@ -138,7 +145,8 @@ namespace WinFormsApp.Test.MenuitemInCombobox
 
         private void CategoryClick(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var categoryItem = (ToolStripMenuItem)sender;
+            MessageBox.Show(categoryItem.Tag.ToString());
         }
 
         private ToolStripItemCollection FillCategory(ToolStripItemCollection parent, List<Category> categories)
@@ -172,8 +180,10 @@ namespace WinFormsApp.Test.MenuitemInCombobox
 
     public class Category
     {
+        public long Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public long ParentId { get; set; }
         public List<Category> Categories { get; set; }
     }
 }

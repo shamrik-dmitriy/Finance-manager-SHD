@@ -30,6 +30,7 @@ using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.UserControl;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Views;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Button;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category.ComboboxCategory;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Checkbox;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.ContinueCancelButtons;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Description;
@@ -67,15 +68,15 @@ namespace FM.SHD.Winforms.UI.DependencyInjection
                 .AddTransient<INameUCPresenter, NameUcPresenter>()
                 .AddTransient<IDescriptionTextboxUCView, DescriptionTextboxUCView>()
                 .AddTransient<IDescriptionUCPresenter, DescriptionUcPresenter>()
-                .AddTransient<ICategoryUCPresenter<AccountServices>, CategoryUCPresenter<IAccountServices>>()
-                .AddTransient<ICategoryUCPresenter<AccountCategoryServices>,
-                    CategoryUCPresenter<IAccountCategoryServices>>()
-                .AddTransient<ICategoryUCPresenter<TypeTransactionServices>,
-                    CategoryUCPresenter<ITypeTransactionServices>>()
-                .AddTransient<ICategoryUCPresenter<CategoriesServices>, CategoryUCPresenter<ICategoriesServices>>()
-                .AddTransient<ICategoryUCPresenter<ContragentServices>, CategoryUCPresenter<IContragentServices>>()
-                .AddTransient<ICategoryUCPresenter<IdentityServices>, CategoryUCPresenter<IIdentityServices>>()
-                .AddTransient<ICategoryUCPresenter<CurrencyServices>, CategoryUCPresenter<ICurrencyServices>>()
+                .AddTransient<ICategoryComboboxUCPresenter<AccountServices>, CategoryComboboxUCPresenter<IAccountServices>>()
+                .AddTransient<ICategoryComboboxUCPresenter<AccountCategoryServices>,
+                    CategoryComboboxUCPresenter<IAccountCategoryServices>>()
+                .AddTransient<ICategoryComboboxUCPresenter<TypeTransactionServices>,
+                    CategoryComboboxUCPresenter<ITypeTransactionServices>>()
+                .AddTransient<ICategoryComboboxUCPresenter<CategoriesServices>, CategoryComboboxUCPresenter<ICategoriesServices>>()
+                .AddTransient<ICategoryComboboxUCPresenter<ContragentServices>, CategoryComboboxUCPresenter<IContragentServices>>()
+                .AddTransient<ICategoryComboboxUCPresenter<IdentityServices>, CategoryComboboxUCPresenter<IIdentityServices>>()
+                .AddTransient<ICategoryComboboxUCPresenter<CurrencyServices>, CategoryComboboxUCPresenter<ICurrencyServices>>()
                 .AddTransient<ICategoryComboboxUCView, CategoryComboboxUCView>()
                 .AddTransient<IContinueCancelButtonsUcView, ContinueCancelButtonsUcView>()
                 .AddTransient<IContinueCancelButtonsUCPresenter, ContinueCancelButtonsUCPresenter>()

@@ -4,7 +4,8 @@ using FM.SHD.Services.AccountServices;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.Presenters;
 using FM.SHD.UI.WindowsForms.SharedInterfaces.Transactions.UserControl;
 using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category;
-using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category.Events;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category.ComboboxCategory;
+using FM.SHD.UI.WindowsForms.UserControls.Presenters.Category.ComboboxCategory.Events;
 
 namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional.UserControls
 {
@@ -14,26 +15,26 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional.UserContr
         private readonly IAccountsInfoTransactionUCView _accountsInfoTransactionUcView;
         private readonly IAccountServices _accountServices;
 
-        private readonly ICategoryUCPresenter<AccountServices> _debitAccountInfoUcPresenter;
+        private readonly ICategoryComboboxUCPresenter<AccountServices> _debitAccountInfoComboboxUCPresenter;
         private readonly ISumTransactionUCPresenter _sumTransactionUcPresenter;
-        private readonly ICategoryUCPresenter<AccountServices> _creditAccountInfoUcPresenter;
+        private readonly ICategoryComboboxUCPresenter<AccountServices> _creditAccountInfoComboboxUCPresenter;
         private readonly IDateTransactionUCPresenter _dateTransactionUcPresenter;
 
         public AccountsInfoTransactionUCPresenter(
             EventAggregator eventAggregator,
             IAccountsInfoTransactionUCView accountsInfoTransactionUcView,
             IAccountServices accountServices,
-            ICategoryUCPresenter<AccountServices> debitAccountInfoUcPresenter,
+            ICategoryComboboxUCPresenter<AccountServices> debitAccountInfoComboboxUCPresenter,
             ISumTransactionUCPresenter sumTransactionUcPresenter,
-            ICategoryUCPresenter<AccountServices> creditAccountInfoUcPresenter,
+            ICategoryComboboxUCPresenter<AccountServices> creditAccountInfoComboboxUCPresenter,
             IDateTransactionUCPresenter dateTransactionUcPresenter)
         {
             _eventAggregator = eventAggregator;
             _accountsInfoTransactionUcView = accountsInfoTransactionUcView;
             _accountServices = accountServices;
-            _debitAccountInfoUcPresenter = debitAccountInfoUcPresenter;
+            _debitAccountInfoComboboxUCPresenter = debitAccountInfoComboboxUCPresenter;
             _sumTransactionUcPresenter = sumTransactionUcPresenter;
-            _creditAccountInfoUcPresenter = creditAccountInfoUcPresenter;
+            _creditAccountInfoComboboxUCPresenter = creditAccountInfoComboboxUCPresenter;
             _dateTransactionUcPresenter = dateTransactionUcPresenter;
 
             _accountsInfoTransactionUcView.OnLoadUserControlView += AccountsInfoUcViewOnOnLoadControlView;
@@ -49,25 +50,25 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional.UserContr
             {
                 case 0:
                 {
-                    _creditAccountInfoUcPresenter.SetText("Списать со счёта");
-                    _debitAccountInfoUcPresenter.SetVisible(false);
+                    _creditAccountInfoComboboxUCPresenter.SetText("Списать со счёта");
+                    _debitAccountInfoComboboxUCPresenter.SetVisible(false);
                     break;
                 }
                 case 1:
                 {
-                    //_creditAccountInfoUcPresenter.SetText("Зачислить на счёт");
-                    //_debitAccountInfoUcPresenter.SetVisible(false);
+                    //_creditAccountInfoComboboxUCPresenter.SetText("Зачислить на счёт");
+                    //_debitAccountInfoComboboxUCPresenter.SetVisible(false);
 
-                    _creditAccountInfoUcPresenter.SetText("Списать со счёта");
-                    _debitAccountInfoUcPresenter.SetText("Зачислить на счёт");
-                    _debitAccountInfoUcPresenter.SetVisible(true);
+                    _creditAccountInfoComboboxUCPresenter.SetText("Списать со счёта");
+                    _debitAccountInfoComboboxUCPresenter.SetText("Зачислить на счёт");
+                    _debitAccountInfoComboboxUCPresenter.SetVisible(true);
                     break;
                 }
                 case 2:
                 {
-                    _creditAccountInfoUcPresenter.SetText("Списать со счёта");
-                    _debitAccountInfoUcPresenter.SetText("Зачислить на счёт");
-                    _debitAccountInfoUcPresenter.SetVisible(true);
+                    _creditAccountInfoComboboxUCPresenter.SetText("Списать со счёта");
+                    _debitAccountInfoComboboxUCPresenter.SetText("Зачислить на счёт");
+                    _debitAccountInfoComboboxUCPresenter.SetVisible(true);
                     break;
                 }
             }
@@ -75,15 +76,15 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional.UserContr
 
         private void AccountsInfoUcViewOnOnLoadControlView()
         {
-            _debitAccountInfoUcPresenter.SetStyleDropDownList();
-            _debitAccountInfoUcPresenter.SetCategoryValues();
-            _debitAccountInfoUcPresenter.GetUserControlView().SetCategoryFirst();
-            _accountsInfoTransactionUcView.AddAccountInfo(_debitAccountInfoUcPresenter.GetUserControlView());
+            _debitAccountInfoComboboxUCPresenter.SetStyleDropDownList();
+            _debitAccountInfoComboboxUCPresenter.SetCategoryValues();
+            _debitAccountInfoComboboxUCPresenter.GetUserControlView().SetCategoryFirst();
+            _accountsInfoTransactionUcView.AddAccountInfo(_debitAccountInfoComboboxUCPresenter.GetUserControlView());
 
-            _creditAccountInfoUcPresenter.SetStyleDropDownList();
-            _creditAccountInfoUcPresenter.SetCategoryValues();
-            _creditAccountInfoUcPresenter.GetUserControlView().SetCategoryFirst();
-            _accountsInfoTransactionUcView.AddAccountInfo(_creditAccountInfoUcPresenter.GetUserControlView());
+            _creditAccountInfoComboboxUCPresenter.SetStyleDropDownList();
+            _creditAccountInfoComboboxUCPresenter.SetCategoryValues();
+            _creditAccountInfoComboboxUCPresenter.GetUserControlView().SetCategoryFirst();
+            _accountsInfoTransactionUcView.AddAccountInfo(_creditAccountInfoComboboxUCPresenter.GetUserControlView());
 
             _accountsInfoTransactionUcView.AddSumm(_sumTransactionUcPresenter.GetUserControlView());
 
@@ -101,26 +102,26 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional.UserContr
             {
                 case 1:
                 {
-                    _debitAccountInfoUcPresenter.SetText("Списать со счёта");
-                    _debitAccountInfoUcPresenter.SetVisible(true);
-                    _creditAccountInfoUcPresenter.SetVisible(false);
+                    _debitAccountInfoComboboxUCPresenter.SetText("Списать со счёта");
+                    _debitAccountInfoComboboxUCPresenter.SetVisible(true);
+                    _creditAccountInfoComboboxUCPresenter.SetVisible(false);
                     break;
                 }
                 case 2:
                 {
-                    _creditAccountInfoUcPresenter.SetText("Зачислить на счёт");
-                    _debitAccountInfoUcPresenter.SetVisible(false);
-                    _creditAccountInfoUcPresenter.SetVisible(true);
+                    _creditAccountInfoComboboxUCPresenter.SetText("Зачислить на счёт");
+                    _debitAccountInfoComboboxUCPresenter.SetVisible(false);
+                    _creditAccountInfoComboboxUCPresenter.SetVisible(true);
 
                     break;
                 }
                 case 3:
                 {
-                    _debitAccountInfoUcPresenter.SetText("Списать со счёта");
-                    _debitAccountInfoUcPresenter.SetVisible(true);
+                    _debitAccountInfoComboboxUCPresenter.SetText("Списать со счёта");
+                    _debitAccountInfoComboboxUCPresenter.SetVisible(true);
 
-                    _creditAccountInfoUcPresenter.SetText("Зачислить на счёт");
-                    _creditAccountInfoUcPresenter.SetVisible(true);
+                    _creditAccountInfoComboboxUCPresenter.SetText("Зачислить на счёт");
+                    _creditAccountInfoComboboxUCPresenter.SetVisible(true);
                     break;
                 }
             }
@@ -129,12 +130,12 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional.UserContr
         public long? GetDebitAccountId()
         {
             // TODO: Переписать
-            return _debitAccountInfoUcPresenter.GetCategoryId(true);
+            return _debitAccountInfoComboboxUCPresenter.GetCategoryId(true);
         }
 
         public long? GetCreditAccountId()
         {
-            return _creditAccountInfoUcPresenter.GetCategoryId();
+            return _creditAccountInfoComboboxUCPresenter.GetCategoryId();
         }
 
         public decimal GetSum()
@@ -159,14 +160,14 @@ namespace FM.SHD.Plugin.Transaction.WindowsForms.Presenters.Additional.UserContr
 
         public void SetCreditAccountId(long? creditAccountId)
         {
-            _creditAccountInfoUcPresenter.SetCategoryValues();
-            _creditAccountInfoUcPresenter.GetUserControlView().SetCategoryId(creditAccountId);
+            _creditAccountInfoComboboxUCPresenter.SetCategoryValues();
+            _creditAccountInfoComboboxUCPresenter.GetUserControlView().SetCategoryId(creditAccountId);
         }
 
         public void SetDebitAccountId(long? debitAccountId)
         {
-            _debitAccountInfoUcPresenter.SetCategoryValues();
-            _debitAccountInfoUcPresenter.GetUserControlView().SetCategoryId(debitAccountId);
+            _debitAccountInfoComboboxUCPresenter.SetCategoryValues();
+            _debitAccountInfoComboboxUCPresenter.GetUserControlView().SetCategoryId(debitAccountId);
         }
 
         public event Action<long> CategoryChanged;

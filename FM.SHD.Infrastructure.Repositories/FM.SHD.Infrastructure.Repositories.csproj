@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\FM.SHD.Infrastructure.Dal\FM.SHD.Infrastructure.Dal.csproj" />
+      <ProjectReference Include="..\FM.SHD.Services\FM.SHD.Services.csproj" />
+    </ItemGroup>
+
+</Project>
