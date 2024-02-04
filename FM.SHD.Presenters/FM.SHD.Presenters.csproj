@@ -21,7 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\FM.SHD.Data\FM.SHD.Data.csproj" />
+      <ProjectReference Include="..\FM.SHD.DAL\FM.SHD.DAL.csproj" />
       <ProjectReference Include="..\FM.SHD.Infastructure.Impl\FM.SHD.Infastructure.Impl.csproj" />
       <ProjectReference Include="..\FM.SHD.Infrastructure.Events\FM.SHD.Infrastructure.Events.csproj" />
       <ProjectReference Include="..\FM.SHD.Infrastructure.Repositories\FM.SHD.Infrastructure.Repositories.csproj" />

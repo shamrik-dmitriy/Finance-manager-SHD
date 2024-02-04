@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using FM.SHD.Data;
+using FM.SHD.DAL.Context;
 using FM.SHD.Infastructure.Impl.Repositories;
 using FM.SHD.Infrastructure.Events;
 using FM.SHD.Infrastructure.Repositories.Accounts;
@@ -194,11 +194,11 @@ namespace FM.SHD.Presenters.ViewPresenters
                     _baseView.SetViewOnActiveUI();
                     CreateApplicationDbContext(pathToFile);
 
-                    _accountServices =
-                        new AccountServices(
-                            new AccountRepository(_serviceProvider.GetRequiredService<ApplicationDbContext>()),
-                            new ModelValidator());
-                    SetAccounts();
+                    // _accountServices =
+                    //     new AccountServices(
+                    //         new AccountRepository(_serviceProvider.GetRequiredService<ApplicationDbContext>()),
+                    //         new ModelValidator());
+                    // SetAccounts();
 
                     _baseView.AddTab(_pluginManager.GetPlugin<ITransactionPlugin>().GetTab());
                     _baseView.AddTab(_pluginManager.GetPlugin<ICategoriesPlugin>().GetTab());
