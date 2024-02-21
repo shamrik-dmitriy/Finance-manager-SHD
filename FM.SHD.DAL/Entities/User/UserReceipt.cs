@@ -1,9 +1,8 @@
-﻿using System;
+﻿#nullable disable
+
 using System.Collections.Generic;
 
-#nullable disable
-
-namespace FM.SHD.DAL.Entities2
+namespace FM.SHD.DAL.Entities.User
 {
     public partial class UserReceipt
     {

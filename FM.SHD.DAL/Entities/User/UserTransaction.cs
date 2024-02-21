@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#nullable disable
 
-#nullable disable
+using FM.SHD.DAL.Entities.System;
 
-namespace FM.SHD.DAL.Entities2
+namespace FM.SHD.DAL.Entities.User
 {
     public partial class UserTransaction
     {

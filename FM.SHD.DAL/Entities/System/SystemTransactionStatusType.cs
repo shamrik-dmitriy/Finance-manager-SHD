@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#nullable disable
 
-#nullable disable
-
-namespace FM.SHD.DAL.Entities2
+namespace FM.SHD.DAL.Entities.System
 {
     public partial class SystemTransactionStatusType
     {

@@ -1,9 +1,9 @@
-﻿using System;
+﻿#nullable disable
+
 using System.Collections.Generic;
+using FM.SHD.DAL.Entities.User;
 
-#nullable disable
-
-namespace FM.SHD.DAL.Entities2
+namespace FM.SHD.DAL.Entities.System
 {
     public partial class SystemCurrency
     {
