@@ -24,35 +24,35 @@ namespace FM.SHD.DAL.Contexts.Configurations.User
 
             builder
                 .HasOne(d => d.SystemTransactionStatesType)
-                .WithMany(p => p.UsrTransactions)
+                .WithMany(p => p.UserTransactions)
                 .HasForeignKey(d => d.SysTransactionStatesTypeId);
 
             builder
                 .HasOne(d => d.UserCategoryContragent)
-                .WithMany(p => p.UsrTransactionusrCategoryContragents)
+                .WithMany(p => p.UserTransactionCategoryContragents)
                 .HasForeignKey(d => d.UsrCategoryContragentId)
                 .OnDelete(DeleteBehavior.SetNull);
 
             builder
                 .HasOne(d => d.UserCategory)
-                .WithMany(p => p.UsrTransactionusrCategories)
+                .WithMany(p => p.UserTransactionCategories)
                 .HasForeignKey(d => d.UsrCategoryId);
 
             builder
                 .HasOne(d => d.UserDebitAccount)
-                .WithMany(p => p.UsrTransactionusrDebitAccounts)
+                .WithMany(p => p.UserTransactionDebitAccounts)
                 .HasForeignKey(d => d.UsrDebitAccountId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder
                 .HasOne(d => d.UserDebitCredit)
-                .WithMany(p => p.UsrTransactionusrDebitCredits)
+                .WithMany(p => p.UserTransactionDebitCredits)
                 .HasForeignKey(d => d.UsrDebitCreditId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder
                 .HasOne(d => d.UserReceipts)
-                .WithMany(p => p.UsrTransactions)
+                .WithMany(p => p.UserTransactions)
                 .HasForeignKey(d => d.UsrReceiptsId)
                 .OnDelete(DeleteBehavior.Cascade);
         }

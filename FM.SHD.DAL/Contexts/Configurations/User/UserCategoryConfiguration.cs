@@ -17,7 +17,7 @@ namespace FM.SHD.DAL.Contexts.Configurations.User
 
             builder
                 .HasOne(d => d.SystemCategoryType)
-                .WithMany(p => p.UsrCategories)
+                .WithMany(p => p.UserCategories)
                 .HasForeignKey(d => d.SysCategoryTypeId);
         }
     }

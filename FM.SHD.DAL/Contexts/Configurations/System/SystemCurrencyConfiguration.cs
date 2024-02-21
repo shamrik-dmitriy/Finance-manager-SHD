@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using FM.SHD.DAL.Entities.System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -23,6 +24,12 @@ namespace FM.SHD.DAL.Contexts.Configurations.System
                 .Property(e => e.Name).IsRequired();
             builder
                 .Property(e => e.Symbol).IsRequired();
+
+            builder.HasData(new List<SystemCurrency>()
+            {
+                new SystemCurrency(){Id = 1, Name = "Рубль", Symbol = "P"},
+                new SystemCurrency(){Id = 2, Name = "Доллар", Symbol = "$"}
+            });
         }
     }
 }

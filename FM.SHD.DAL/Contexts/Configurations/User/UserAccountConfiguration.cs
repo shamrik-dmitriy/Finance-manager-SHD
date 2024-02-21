@@ -36,14 +36,14 @@ namespace FM.SHD.DAL.Contexts.Configurations.User
 
             builder
                 .HasOne(d => d.SystemCurrency)
-                .WithMany(p => p.UsrAccounts)
+                .WithMany(p => p.UserAccounts)
                 .HasForeignKey(d => d.SysCurrencyId)
                 .OnDelete(DeleteBehavior.ClientSetNull);
 
             builder
                 .HasOne(d => d.UserCategory)
-                .WithMany(p => p.UsrAccounts)
-                .HasForeignKey(d => d.UsrCategoryId)
+                .WithMany(p => p.UserAccounts)
+                .HasForeignKey(d => d.UserCategoryId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

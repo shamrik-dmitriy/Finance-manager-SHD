@@ -11,7 +11,7 @@ namespace FM.SHD.DAL.Entities.User
         public string Description { get; set; }
         public string Date { get; set; }
         public long SysTransactionStatesTypeId { get; set; }
-        public byte[] Sum { get; set; }
+        public decimal Sum { get; set; }
         public long UsrCategoryId { get; set; }
         public long? UsrCategoryContragentId { get; set; }
         public long? UsrDebitAccountId { get; set; }

@@ -9,12 +9,12 @@ namespace FM.SHD.DAL.Entities.System
     {
         public SystemCategoryType()
         {
-            UsrCategories = new HashSet<UserCategory>();
+            UserCategories = new HashSet<UserCategory>();
         }
 
         public long Id { get; set; }
         public string Type { get; set; }
 
-        public virtual ICollection<UserCategory> UsrCategories { get; set; }
+        public virtual ICollection<UserCategory> UserCategories { get; set; }
     }
 }

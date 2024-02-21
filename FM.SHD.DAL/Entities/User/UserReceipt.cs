@@ -8,7 +8,7 @@ namespace FM.SHD.DAL.Entities.User
     {
         public UserReceipt()
         {
-            UsrTransactions = new HashSet<UserTransaction>();
+            UserTransactions = new HashSet<UserTransaction>();
         }
 
         public long Id { get; set; }
@@ -20,6 +20,6 @@ namespace FM.SHD.DAL.Entities.User
 
         public virtual UserAccount UserAccount { get; set; }
         public virtual UserCategory UserCategoryContragent { get; set; }
-        public virtual ICollection<UserTransaction> UsrTransactions { get; set; }
+        public virtual ICollection<UserTransaction> UserTransactions { get; set; }
     }
 }

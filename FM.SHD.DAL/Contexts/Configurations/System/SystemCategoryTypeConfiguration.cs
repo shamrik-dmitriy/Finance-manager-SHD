@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using FM.SHD.DAL.Entities.System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -18,6 +19,13 @@ namespace FM.SHD.DAL.Contexts.Configurations.System
                 .IsUnique();
             builder
                 .Property(e => e.Type).IsRequired();
+
+            builder.HasData(new List<SystemCategoryType>()
+            {
+                new SystemCategoryType() { Id = 1, Type = "product_category" },
+                new SystemCategoryType() { Id = 2, Type = "account_category" },
+                new SystemCategoryType() { Id = 3, Type = "contragent_category" },
+            });
         }
     }
 }

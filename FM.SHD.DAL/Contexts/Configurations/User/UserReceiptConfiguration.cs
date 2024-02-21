@@ -20,13 +20,13 @@ namespace FM.SHD.DAL.Contexts.Configurations.User
 
             builder
                 .HasOne(d => d.UserAccount)
-                .WithMany(p => p.UsrReceipts)
+                .WithMany(p => p.UserReceipts)
                 .HasForeignKey(d => d.UsrAccountId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder
                 .HasOne(d => d.UserCategoryContragent)
-                .WithMany(p => p.UsrReceipts)
+                .WithMany(p => p.UserReceipts)
                 .HasForeignKey(d => d.UsrCategoryContragentId)
                 .OnDelete(DeleteBehavior.Cascade);
         }

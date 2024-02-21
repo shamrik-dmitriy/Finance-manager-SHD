@@ -9,12 +9,12 @@ namespace FM.SHD.DAL.Entities.System
     {
         public SystemTransactionState()
         {
-            UsrTransactions = new HashSet<UserTransaction>();
+            UserTransactions = new HashSet<UserTransaction>();
         }
 
         public long Id { get; set; }
-        public long DisplayNameState { get; set; }
+        public string DisplayNameState { get; set; }
 
-        public virtual ICollection<UserTransaction> UsrTransactions { get; set; }
+        public virtual ICollection<UserTransaction> UserTransactions { get; set; }
     }
 }

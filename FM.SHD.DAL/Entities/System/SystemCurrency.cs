@@ -9,13 +9,13 @@ namespace FM.SHD.DAL.Entities.System
     {
         public SystemCurrency()
         {
-            UsrAccounts = new HashSet<UserAccount>();
+            UserAccounts = new HashSet<UserAccount>();
         }
 
         public long Id { get; set; }
         public string Name { get; set; }
         public string Symbol { get; set; }
 
-        public virtual ICollection<UserAccount> UsrAccounts { get; set; }
+        public virtual ICollection<UserAccount> UserAccounts { get; set; }
     }
 }

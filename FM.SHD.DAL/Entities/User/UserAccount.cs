@@ -9,25 +9,25 @@ namespace FM.SHD.DAL.Entities.User
     {
         public UserAccount()
         {
-            UsrReceipts = new HashSet<UserReceipt>();
-            UsrTransactionusrDebitAccounts = new HashSet<UserTransaction>();
-            UsrTransactionusrDebitCredits = new HashSet<UserTransaction>();
+            UserReceipts = new HashSet<UserReceipt>();
+            UserTransactionDebitAccounts = new HashSet<UserTransaction>();
+            UserTransactionDebitCredits = new HashSet<UserTransaction>();
         }
 
         public long Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public byte[] CurrentSum { get; set; }
-        public byte[] InitialSum { get; set; }
-        public long? IsPrivate { get; set; }
-        public long? IsClosed { get; set; }
+        public decimal CurrentSum { get; set; }
+        public decimal InitialSum { get; set; }
+        public bool? IsPrivate { get; set; }
+        public bool? IsClosed { get; set; }
         public long SysCurrencyId { get; set; }
-        public long? UsrCategoryId { get; set; }
+        public long? UserCategoryId { get; set; }
 
         public virtual SystemCurrency SystemCurrency { get; set; }
         public virtual UserCategory UserCategory { get; set; }
-        public virtual ICollection<UserReceipt> UsrReceipts { get; set; }
-        public virtual ICollection<UserTransaction> UsrTransactionusrDebitAccounts { get; set; }
-        public virtual ICollection<UserTransaction> UsrTransactionusrDebitCredits { get; set; }
+        public virtual ICollection<UserReceipt> UserReceipts { get; set; }
+        public virtual ICollection<UserTransaction> UserTransactionDebitAccounts { get; set; }
+        public virtual ICollection<UserTransaction> UserTransactionDebitCredits { get; set; }
     }
 }
