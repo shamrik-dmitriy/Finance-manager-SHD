@@ -17,4 +17,9 @@
       </PackageReference>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\FM.SHD.Currencies\FM.SHD.Currencies.csproj" />
+      <ProjectReference Include="..\FM.SHD.Domain\FM.SHD.Domain.csproj" />
+    </ItemGroup>
+
 </Project>

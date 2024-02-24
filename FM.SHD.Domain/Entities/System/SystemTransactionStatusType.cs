@@ -1,6 +1,6 @@
 ﻿#nullable disable
 
-namespace FM.SHD.DAL.Entities.System
+namespace FM.SHD.Domain.Entities.System
 {
     public partial class SystemTransactionStatusType
     {

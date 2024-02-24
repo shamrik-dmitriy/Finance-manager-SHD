@@ -2,9 +2,8 @@
 
 using FM.SHD.DAL.Contexts.Configurations.System;
 using FM.SHD.DAL.Contexts.Configurations.User;
-using FM.SHD.DAL.Entities;
-using FM.SHD.DAL.Entities.System;
-using FM.SHD.DAL.Entities.User;
+using FM.SHD.Domain.Entities.System;
+using FM.SHD.Domain.Entities.User;
 using Microsoft.EntityFrameworkCore;
 
 namespace FM.SHD.DAL.Contexts
@@ -13,6 +12,8 @@ namespace FM.SHD.DAL.Contexts
     {
         public ApplicationDbContext()
         {
+            Database.EnsureDeleted();
+            Database.EnsureCreated();
         }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -30,19 +31,19 @@ namespace FM.SHD.DAL.Contexts
         public virtual DbSet<UserReceipt> UserReceipts { get; set; }
         public virtual DbSet<UserCategory> UserCategories { get; set; }
 
-        private string _connectionString;
+        private string _connectionString => @"C:\Repos\data.ex";
 
         public void SetConnectionString(string pathToDb)
         {
-            _connectionString = pathToDb;
+        //    _connectionString = pathToDb;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlite("Data Source=" + _connectionString);
-            }
+           // if (!optionsBuilder.IsConfigured)
+           // {
+                optionsBuilder.UseSqlite("Data Source=data.db2");
+           // }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

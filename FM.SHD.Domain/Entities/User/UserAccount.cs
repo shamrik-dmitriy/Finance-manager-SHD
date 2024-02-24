@@ -1,9 +1,9 @@
 ﻿#nullable disable
 
 using System.Collections.Generic;
-using FM.SHD.DAL.Entities.System;
+using FM.SHD.Domain.Entities.System;
 
-namespace FM.SHD.DAL.Entities.User
+namespace FM.SHD.Domain.Entities.User
 {
     public partial class UserAccount
     {

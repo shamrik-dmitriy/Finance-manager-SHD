@@ -1,4 +1,4 @@
-using FM.SHD.DAL.Entities.User;
+using FM.SHD.Domain.Entities.User;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -12,7 +12,7 @@ namespace FM.SHD.DAL.Contexts.Configurations.User
                 .ToTable(nameof(UserReceipt));
             
             builder
-                .HasIndex(e => e.Id, "IX_usr_receipts_id")
+                .HasIndex(e => e.Id, "IX_user_receipts_id")
                 .IsUnique();
 
             builder
@@ -21,13 +21,13 @@ namespace FM.SHD.DAL.Contexts.Configurations.User
             builder
                 .HasOne(d => d.UserAccount)
                 .WithMany(p => p.UserReceipts)
-                .HasForeignKey(d => d.UsrAccountId)
+                .HasForeignKey(d => d.UserAccountId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder
                 .HasOne(d => d.UserCategoryContragent)
                 .WithMany(p => p.UserReceipts)
-                .HasForeignKey(d => d.UsrCategoryContragentId)
+                .HasForeignKey(d => d.UserCategoryContragentId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

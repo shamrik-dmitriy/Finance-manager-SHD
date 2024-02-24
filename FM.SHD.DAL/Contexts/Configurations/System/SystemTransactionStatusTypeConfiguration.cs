@@ -1,4 +1,4 @@
-using FM.SHD.DAL.Entities.System;
+using FM.SHD.Domain.Entities.System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

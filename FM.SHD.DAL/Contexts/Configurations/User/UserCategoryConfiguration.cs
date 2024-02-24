@@ -1,4 +1,4 @@
-using FM.SHD.DAL.Entities.User;
+using FM.SHD.Domain.Entities.User;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -12,7 +12,7 @@ namespace FM.SHD.DAL.Contexts.Configurations.User
                 .ToTable(nameof(UserCategory));
             
             builder
-                .HasIndex(e => e.Id, "IX_usr_categories_id")
+                .HasIndex(e => e.Id, "IX_user_categories_id")
                 .IsUnique();
 
             builder

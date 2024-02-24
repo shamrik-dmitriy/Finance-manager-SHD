@@ -7,6 +7,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\FM.SHD.Domain\FM.SHD.Domain.csproj" />
+      <ProjectReference Include="..\FM.SHD.DAL\FM.SHD.DAL.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -22,6 +23,10 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="NewData" />
     </ItemGroup>
 
 </Project>

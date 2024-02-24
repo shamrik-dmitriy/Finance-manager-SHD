@@ -2,7 +2,7 @@
 
 using System.Collections.Generic;
 
-namespace FM.SHD.DAL.Entities.User
+namespace FM.SHD.Domain.Entities.User
 {
     public partial class UserReceipt
     {
@@ -15,8 +15,8 @@ namespace FM.SHD.DAL.Entities.User
         public string Name { get; set; }
         public string Description { get; set; }
         public string Date { get; set; }
-        public long? UsrCategoryContragentId { get; set; }
-        public long? UsrAccountId { get; set; }
+        public long? UserCategoryContragentId { get; set; }
+        public long? UserAccountId { get; set; }
 
         public virtual UserAccount UserAccount { get; set; }
         public virtual UserCategory UserCategoryContragent { get; set; }

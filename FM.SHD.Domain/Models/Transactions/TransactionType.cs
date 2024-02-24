@@ -2,7 +2,7 @@
 
 using System.Collections.Generic;
 
-namespace FM.SHD.Domain.Transactions
+namespace FM.SHD.Domain.Models.Transactions
 {
     public partial class TransactionType
     {

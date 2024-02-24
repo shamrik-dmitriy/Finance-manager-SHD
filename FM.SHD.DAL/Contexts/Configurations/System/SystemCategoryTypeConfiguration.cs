@@ -1,5 +1,6 @@
 using System.Collections.Generic;
-using FM.SHD.DAL.Entities.System;
+using FM.SHD.Domain.Categories;
+using FM.SHD.Domain.Entities.System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -22,9 +23,9 @@ namespace FM.SHD.DAL.Contexts.Configurations.System
 
             builder.HasData(new List<SystemCategoryType>()
             {
-                new SystemCategoryType() { Id = 1, Type = "product_category" },
-                new SystemCategoryType() { Id = 2, Type = "account_category" },
-                new SystemCategoryType() { Id = 3, Type = "contragent_category" },
+                new() { Id = (int)TypeOfCategory.ProductCategory, Type = nameof(TypeOfCategory.ProductCategory) },
+                new() { Id = (int)TypeOfCategory.AccountCategory, Type = nameof(TypeOfCategory.AccountCategory) },
+                new() { Id = (int)TypeOfCategory.ContragentCategory, Type = nameof(TypeOfCategory.ContragentCategory) },
             });
         }
     }

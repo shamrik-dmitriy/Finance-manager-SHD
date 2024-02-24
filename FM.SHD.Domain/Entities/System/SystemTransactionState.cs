@@ -1,9 +1,9 @@
 ﻿#nullable disable
 
 using System.Collections.Generic;
-using FM.SHD.DAL.Entities.User;
+using FM.SHD.Domain.Entities.User;
 
-namespace FM.SHD.DAL.Entities.System
+namespace FM.SHD.Domain.Entities.System
 {
     public partial class SystemTransactionState
     {

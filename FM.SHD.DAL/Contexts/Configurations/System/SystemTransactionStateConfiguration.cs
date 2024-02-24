@@ -1,5 +1,6 @@
 using System.Collections.Generic;
-using FM.SHD.DAL.Entities.System;
+using FM.SHD.Domain.Entities.System;
+using FM.SHD.Domain.Models.Transactions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -19,9 +20,9 @@ namespace FM.SHD.DAL.Contexts.Configurations.System
                 .IsUnique();
             builder.HasData(new List<SystemTransactionState>()
             {
-                new SystemTransactionState(){Id = 1, DisplayNameState = "Расход"},
-                new SystemTransactionState(){Id = 2, DisplayNameState = "Доход"},
-                new SystemTransactionState(){Id = 3, DisplayNameState = "Перевод"},
+                new() { Id = (int)TypeOfTransactionStates.Расход, DisplayNameState = nameof(TypeOfTransactionStates.Расход) },
+                new() { Id = (int)TypeOfTransactionStates.Доход, DisplayNameState = nameof(TypeOfTransactionStates.Доход) },
+                new() { Id = (int)TypeOfTransactionStates.Перевод, DisplayNameState = nameof(TypeOfTransactionStates.Перевод) },
             });
         }
     }

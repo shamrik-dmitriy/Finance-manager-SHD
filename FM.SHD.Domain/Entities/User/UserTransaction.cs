@@ -1,8 +1,8 @@
 ﻿#nullable disable
 
-using FM.SHD.DAL.Entities.System;
+using FM.SHD.Domain.Entities.System;
 
-namespace FM.SHD.DAL.Entities.User
+namespace FM.SHD.Domain.Entities.User
 {
     public partial class UserTransaction
     {
@@ -12,11 +12,11 @@ namespace FM.SHD.DAL.Entities.User
         public string Date { get; set; }
         public long SysTransactionStatesTypeId { get; set; }
         public decimal Sum { get; set; }
-        public long UsrCategoryId { get; set; }
-        public long? UsrCategoryContragentId { get; set; }
-        public long? UsrDebitAccountId { get; set; }
-        public long? UsrDebitCreditId { get; set; }
-        public long? UsrReceiptsId { get; set; }
+        public long UserCategoryId { get; set; }
+        public long? UserCategoryContragentId { get; set; }
+        public long? UserDebitAccountId { get; set; }
+        public long? UserDebitCreditId { get; set; }
+        public long? UserReceiptsId { get; set; }
 
         public virtual SystemTransactionState SystemTransactionStatesType { get; set; }
         public virtual UserCategory UserCategory { get; set; }

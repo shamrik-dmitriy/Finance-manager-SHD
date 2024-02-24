@@ -1,4 +1,4 @@
-using FM.SHD.DAL.Entities.User;
+using FM.SHD.Domain.Entities.User;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -13,7 +13,7 @@ namespace FM.SHD.DAL.Contexts.Configurations.User
                 .ToTable(nameof(UserTransaction));
             
             builder
-                .HasIndex(e => e.Id, "IX_usr_transactions_id")
+                .HasIndex(e => e.Id, "IX_user_transactions_id")
                 .IsUnique();
 
             builder
@@ -30,30 +30,30 @@ namespace FM.SHD.DAL.Contexts.Configurations.User
             builder
                 .HasOne(d => d.UserCategoryContragent)
                 .WithMany(p => p.UserTransactionCategoryContragents)
-                .HasForeignKey(d => d.UsrCategoryContragentId)
+                .HasForeignKey(d => d.UserCategoryContragentId)
                 .OnDelete(DeleteBehavior.SetNull);
 
             builder
                 .HasOne(d => d.UserCategory)
                 .WithMany(p => p.UserTransactionCategories)
-                .HasForeignKey(d => d.UsrCategoryId);
+                .HasForeignKey(d => d.UserCategoryId);
 
             builder
                 .HasOne(d => d.UserDebitAccount)
                 .WithMany(p => p.UserTransactionDebitAccounts)
-                .HasForeignKey(d => d.UsrDebitAccountId)
+                .HasForeignKey(d => d.UserDebitAccountId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder
                 .HasOne(d => d.UserDebitCredit)
                 .WithMany(p => p.UserTransactionDebitCredits)
-                .HasForeignKey(d => d.UsrDebitCreditId)
+                .HasForeignKey(d => d.UserDebitCreditId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder
                 .HasOne(d => d.UserReceipts)
                 .WithMany(p => p.UserTransactions)
-                .HasForeignKey(d => d.UsrReceiptsId)
+                .HasForeignKey(d => d.UserReceiptsId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }
