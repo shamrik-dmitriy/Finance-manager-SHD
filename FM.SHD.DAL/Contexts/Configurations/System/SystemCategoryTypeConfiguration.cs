@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using FM.SHD.Domain.Categories;
 using FM.SHD.Domain.Entities.System;
+using FM.SHD.Domain.Models.Categories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

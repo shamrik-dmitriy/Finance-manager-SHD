@@ -1,6 +1,7 @@
 ﻿#nullable disable
 
 using System.Collections.Generic;
+using FM.SHD.Domain.Transactions;
 
 namespace FM.SHD.Domain.Models.Transactions
 {
