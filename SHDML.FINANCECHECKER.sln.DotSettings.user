@@ -36,6 +36,7 @@
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=UI_002FSHDML_002EWinforms_002EUI_002FUserControls_002FWallet_002FTotalSumAccountsInfoUCView/@EntryIndexedValue">True</s:Boolean>
 	
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/Initialized/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=bb1e38a3_002Df0be_002D4e5a_002D9b13_002D36968637bd7d_0023FM_002ESHD_002EInfrastructure_002ERepositories/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=dc30d91b_002Dbd2b_002D49c6_002Dacbb_002D29a4735c4e2f_0023FM_002ESHD_002EServices_002ETests/@EntryIndexedValue">True</s:Boolean>
 	
 	</wpf:ResourceDictionary>
